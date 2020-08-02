@@ -51,7 +51,6 @@ module.exports = {
                     { text: 'JQuery', link: '/Frontend/JQuery/JQuery' },
                     { text: 'Ajax', link: '/Frontend/Ajax/Ajax' },
                     { text: 'Axios', link: '/Frontend/Axios/axios' },
-                    { text: '接口', link: '/Frontend/Prot/prot' },
                     { text: '小程序', link: '/Frontend/Wechat/wechat' },
                 ]
                 // link: '/Frontend/'
@@ -166,12 +165,7 @@ module.exports = {
                 {
                     title: 'Axios',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['Axios/axios', 'Axios/axios2']
-                },
-                {
-                    title: '接口',
-                    collapsable: true, //是否折叠侧边栏
-                    children: ['Prot/prot']
+                    children: ['Axios/axios', 'Axios/axios2', 'Axios/axios3']
                 },
                 {
                     title: '小程序',

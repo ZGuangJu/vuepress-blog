@@ -103,6 +103,8 @@ XHR & fetch
 
 4. DELETE:  删除服务器数据
 
+[具体说明](http://zguangju.gitee.io/Frontend/Axios/axios3.html)
+
 ## 七、 API的分类
 
 1. ` REST API `(`restful`)
