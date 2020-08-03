@@ -8,21 +8,46 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- <meta http-equiv="refresh" content="5"> -->
     <title>Document</title>
+
     <script src="./jquery-1.12.4.js"></script>
     <script>
-        var arr = [1, 2, 3, 5, 8, 5, 1] //数组
-        var obj = { 0: 1, 1: 8, 2: 89, 3: 9 } //伪数组
+        $(function () {
+            /*
+            1. prop(n|p|k,v|f)
+            特点和arrt一样
+            */
+            //设置
+            $('span').eq(0).prop('demo', 'it11111')
+            $('span').eq(1).prop('demo', 'zgj')
+            console.log($('span').prop('demo'));
+            /*
+            2. removeProp(name)
+            特点和removeArrt一样
+            */
+            $('span').removeProp('demo')
 
-        var str = "  456    "
+            /*
+            注意：
+            prop方法不仅能操作属性，还能操作属性节点
 
-        console.log(str);
+            */
+            // console.log($('span').prop('class'));
+            // $('span').prop('class', 'box')
+
+            console.log($('input').prop('checked')); //true
+            console.log($('input').attr('checked')); //checked
+
+            /*
+            官方推荐在操作属性节点时，具有true和false两个属性的属性节点，如 checked ，selected 或者disabled 使用prop()，其他使用arrt()
+            */
+        })
     </script>
 </head>
 
 <body>
-    <div>div1</div>
-    <div>div2</div>
-    <div>div3</div>
+    <span class="span1" name="it"></span>
+    <span class="span2" name="zgj"></span>
+    <input type="checkbox">
 </body>
 
 </html>
