@@ -102,6 +102,7 @@ module.exports = {
                     { text: 'vuepress', link: '/Tools/vuepress' },
                     { text: 'vuepress 部署发布', link: '/Tools/vuepress部署' },
                     { text: 'vim 介绍', link: '/Tools/vim' },
+                    { text: 'VScode配置文件', link: '/Tools/vscode' },
                 ],
                 // link: '/Tools/'
             },
@@ -155,7 +156,7 @@ module.exports = {
                 {
                     title: 'JQuery',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['JQuery/JQuery', 'JQuery/JQuery2', 'JQuery/JQuery3']
+                    children: ['JQuery/JQuery', 'JQuery/JQuery2', 'JQuery/JQuery3', 'JQuery/JQuery4']
                 },
                 {
                     title: 'Ajax',
@@ -223,7 +224,7 @@ module.exports = {
             '/Webpack/': ['webpack初识', 'webpackconfigjs'],
 
             '/Backend/': ['JAVA'],
-            '/Tools/': ['git', 'git2', 'yarn', 'npm', 'npm2', 'cmd', 'nrm', 'regex', 'markdown', 'Trojan', 'typecho', '宝塔', 'vuepress', 'vuepress部署', 'vim'],
+            '/Tools/': ['git', 'git2', 'yarn', 'npm', 'npm2', 'cmd', 'nrm', 'regex', 'markdown', 'Trojan', 'typecho', '宝塔', 'vuepress', 'vuepress部署', 'vim', 'vscode'],
 
             '/Other/': [
                 '', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx'

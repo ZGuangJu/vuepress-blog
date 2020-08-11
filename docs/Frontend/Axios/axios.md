@@ -1,7 +1,7 @@
 # Axios
 
 :::tip
-- axios是基于promise封装的
+- axios是基于promise对Ajax的封装
 
 - axios必须在项目里进行一个封装
 1. 为了好管理

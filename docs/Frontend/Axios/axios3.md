@@ -1,6 +1,8 @@
  # Axios 请求方式
 
- ### Axios 请求方法  请求方式是后端定义的
+:::tip
+ 请求方式是一般是后端定义的
+:::
 
 |方式   |  作用     |              特点  |其他 |
 |--     |--        |--                 |---   |
@@ -10,17 +12,26 @@
 |patch  | 更新数据  |（只推送修改的数据）  |三个参数|
 |delete |  删除数据  |                    |两个参数|
 
-##
 
- - 每个请求中console.log()，是为了调用一下，不调用会报错
+## Axios 基本使用
 
+```html
+<!-- 标签引入方式引入axios -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!-- npm安装 -->
+npm i axios  /  yarn add axios  /  bower i axios
+```
+## 方式介绍
 
+### GET
 
-## GET
+- get(别名)
 
-###   get(别名)
+:::warning 注
+默认是get请求方式
+:::
 
-#### 请求路径是 http://localhost:8081/data.json?id=12
+请求路径是 http://localhost:8081/data.json?id=12
 
 ```js
 
@@ -34,7 +45,7 @@
     })
 
 ```
- ### get（其他方式)
+- get（其他方式)
 
 ```js
 axios({
@@ -51,34 +62,34 @@ axios({
     })
 ```
 
-## POST
+### POST
 
-### post（别名）
+- post（别名）
 
-#### 1、 form-data 表单提交（图片上传，文件上传）
-
-```js
-    // 创建一个变量
-    let data = {
-      id: 12
-    }
-    let formData = new FormData()
-    for (let key in data) {
-      formData.append(key, data[key])
-    }
-    // axios发送请求
-    axios.post('/post', formData).then(res => {
-      console.log(res);
-    })
-```
-#### 2、 applicition/josn
-
-```js
-    axios.post('/post', data).then(res => {
-      console.log(res);
-    }),
-```
-### delete（其他方式)
+> 1. form-data 表单提交（图片上传，文件上传）
+>
+> ```js
+>     // 创建一个变量
+>     let data = {
+>       id: 12
+>     }
+>     let formData = new FormData()
+>     for (let key in data) {
+>       formData.append(key, data[key])
+>     }
+>     // axios发送请求
+>     axios.post('/post', formData).then(res => {
+>       console.log(res);
+>     })
+> ```
+> 2. applicition/josn
+>
+> ```js
+>     axios.post('/post', data).then(res => {
+>       console.log(res);
+>     }),
+> ```
+- post（其他方式)
 
 ```js
 axios({
@@ -90,7 +101,7 @@ axios({
       })
 ```
 
-## PUT
+### PUT
 
 ```JS
 
@@ -101,7 +112,7 @@ axios({
 
 ```
 
-## PATCH
+### PATCH
 
 ```JS
     // patch
@@ -110,35 +121,37 @@ axios({
     })
 ```
 
-##   DELETE
+### DELETE
 
-### post（别名）
+- delete（别名）
 
-#### 1、参数在请求体上用data
+> 1. 在请求体上用data
+>
+> ```JS
+>     axios.delete('/delete', {
+>       // 参数在请求体上用data
+>       data: {
+>         id: 12
+>       }
+>     }).then(res => {
+>       console.log(res);
+>     })
+> ```
+> 2. 参数在url上用params
+>
+> ```js
+>  axios.delete('/delete', {
+>       // 参数在url上用params
+>       params: {
+>         id: 12
+>       }
+>     }).then(res => {
+>       console.log(res);
+>     })
+> ```
 
-```JS
-    axios.delete('/delete', {
-      // 参数在请求体上用data
-      data: {
-        id: 12
-      }
-    }).then(res => {
-      console.log(res);
-    })
-```
-#### 2、参数在url上用params
+- delete（其他方式)
 
-```js
- axios.delete('/delete', {
-      // 参数在url上用params
-      params: {
-        id: 12
-      }
-    }).then(res => {
-      console.log(res);
-    })
-```
-###  delete（其他方式)
 ```js
 axios({
       method: "delete",
@@ -164,3 +177,7 @@ axios({
       console.log(res);
     })
 ```
+
+:::warning 注
+ - 每个请求中console.log()，是为了调用一下，不调用会报错
+:::
