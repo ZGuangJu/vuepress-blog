@@ -1,4 +1,11 @@
-# Vue 路由模式
+---
+title: Vue 路由模式
+date: 2019-3-18
+sidebar: 'auto'
+tags:
+ - vue
+publish: true
+---
 
 :::tip
 众所周知，vue-router有两种模式，hash模式和history模式

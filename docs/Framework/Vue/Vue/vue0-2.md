@@ -1,4 +1,11 @@
-# vue 项目创建
+---
+title: Vue 新建项目
+date: 2018-12-10
+sidebar: 'auto'
+tags:
+ - vue
+publish: true
+---
 
 :::tip 提示
 - 如果在创建过程中，有某个选项选择错了想更改，要退出创建，需要重新开始创建；

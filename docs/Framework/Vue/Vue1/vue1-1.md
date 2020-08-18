@@ -1,4 +1,11 @@
-# Vue和vue & 语法
+---
+title: Vue & vue 以及语法
+date: 2019-2-5
+sidebar: 'auto'
+tags:
+ - vue
+publish: true
+---
 
 - Vue是构造函数
 - vue是实例

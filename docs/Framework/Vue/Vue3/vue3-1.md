@@ -1,4 +1,12 @@
-## Vue 路由传参
+---
+title: Vue 路由传参
+date: 2019-2-20
+sidebar: 'auto'
+tags:
+ - vue
+ - 路由
+publish: true
+---
 
   路由传参的方式（三种）
 1. params 传参

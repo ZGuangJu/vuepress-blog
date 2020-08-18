@@ -1,4 +1,13 @@
-# 创建 Vuepress 项目
+---
+title: 创建 Vuepress 项目
+date: 2019-6-15
+sidebar: 'auto'
+categories:
+ - 工具
+tags:
+ - Vuepress
+publish: true
+---
 
 :::tip Vuepress 的优点
 - 界面简洁优雅（个人感觉比 HEXO 好看）

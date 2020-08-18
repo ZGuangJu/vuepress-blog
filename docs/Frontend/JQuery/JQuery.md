@@ -1,4 +1,13 @@
-# jQ 核心函数和方法
+---
+title: jQ 核心函数和方法
+date: 2019-1-5
+sidebar: 'auto'
+categories:
+ - jQuery
+tags:
+ - jQuery
+publish: true
+---
 
 :::tip 介绍
 [jQuery的官网](http://jquery.com/)

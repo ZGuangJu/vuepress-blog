@@ -1,4 +1,13 @@
-# Vue 介绍
+---
+title: Vue
+date: 2018-12-6
+sidebar: 'auto'
+categories:
+ - 前端框架
+tags:
+ - vue
+publish: true
+---
 
 :::tip Vue 是什么
 Vue 是前端开发框架;构建应用式的框架

@@ -1,4 +1,13 @@
-## 数据存储
+---
+title: 小程序 数据存储
+date: 2019-4-20
+sidebar: 'auto'
+categories:
+ - 微信小程序
+tags:
+ - 微信小程序
+publish: true
+---
 
 ### 全局数据
 

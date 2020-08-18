@@ -2,11 +2,16 @@
 # 默认主题
 home: true
 # 主页图片地址
-heroImage: /javascript.gif
+# heroImage: /javascript.gif
+# 图片格式
+# heroImageStyle: {
+#     width: '80%',
+# }
+
 # 主页按钮
-actionText: 从这开始 →
+actionText: About Me
 # 主页按钮链接地址
-actionLink: /Other/
+actionLink: /About/
 features:
 # 主页小标题及内容
 

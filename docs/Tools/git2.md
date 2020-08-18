@@ -1,4 +1,13 @@
-# Git 命令大全
+---
+title: Git 命令大全
+date: 2019-5-25
+sidebar: 'auto'
+categories:
+ - 工具
+tags:
+ - Git
+publish: true
+---
 
 <img src="https://s2.ax1x.com/2020/02/27/3d2VE9.png" alt="git">
 

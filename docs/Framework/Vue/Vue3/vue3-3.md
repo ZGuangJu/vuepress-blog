@@ -1,5 +1,11 @@
-
-# Vue 编程式的导航
+---
+title: Vue 编程式的导航
+date: 2019-3-17
+sidebar: 'auto'
+tags:
+ - vue
+publish: true
+---
 
 ::: tip
 在路由中除了 router-link 标签跳转外很多情况下我们用 js 跳转的情形多，比如登陆成功后跳到首页，不可能 js 模拟点击 router-link 标签。 在 Vue 实例内部，你可以通过 $router 访问路由实例。因此你可以调用 this.$router.push

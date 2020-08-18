@@ -1,4 +1,13 @@
-# Npm 安装和使用
+---
+title: Npm 安装和使用
+date: 2019-6-2
+sidebar: 'auto'
+categories:
+ - 工具
+tags:
+ - npm
+publish: true
+---
 
 :::tip 介绍
 NPM的全称是Node Package Manager，是随同NodeJS一起安装的包管理和分发工具，它很方便让JavaScript开发者下载、安装、上传以及管理已经安装的包，类似的还有 cnpm、[yarn](http://zguangju.gitee.io/Tools/yarn.html)、tyarn ···

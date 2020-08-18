@@ -1,4 +1,13 @@
-## webpack.config.js文件的配置详情
+---
+title: webpack.config.js 文件的配置详情
+date: 2019-6-10
+sidebar: 'auto'
+categories:
+ - Webpack
+tags:
+ - webpack.config.js
+publish: true
+---
 
 1.webpack-dev-server 安装   监听源码自动更新页面
 ```

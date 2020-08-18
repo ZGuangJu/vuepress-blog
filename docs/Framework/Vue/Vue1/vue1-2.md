@@ -1,4 +1,11 @@
-# vue指令
+---
+title: Vue 指令
+date: 2018-12-1
+sidebar: 'auto'
+tags:
+ - vue
+publish: true
+---
 
 vue里都是以 `v-` 开头的，也可称为自定义属性，是属性，在标签行内
 

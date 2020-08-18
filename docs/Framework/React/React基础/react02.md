@@ -1,4 +1,12 @@
-# Node.js和react基础知识第二弹
+---
+title: Node.js 和 react 基础知识第二弹
+date: 2019-3-29
+sidebar: 'auto'
+tags:
+ - react
+ - Node.js
+publish: true
+---
 
 ## nodejs 到底是什么?
 

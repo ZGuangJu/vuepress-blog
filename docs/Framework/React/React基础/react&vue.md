@@ -1,4 +1,14 @@
-# react和vue对比总结
+---
+title: react 和 vue 对比总结
+date: 2019-3-15
+sidebar: 'auto'
+categories:
+ - 前端框架
+tags:
+ - react
+ - vue
+publish: true
+---
 
 react和vue都是做组件化的，整体的功能都类似，但是他们的设计思路是有很多不同的。使用react和vue，主要是理解他们的设计思路的不同。
 

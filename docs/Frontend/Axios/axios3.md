@@ -1,4 +1,13 @@
- # Axios 请求方式
+---
+title: Axios 请求方式
+date: 2019-2-26
+sidebar: 'auto'
+categories:
+ - Axios
+tags:
+ - Axios请求方式
+publish: true
+---
 
 :::tip
  请求方式是一般是后端定义的
@@ -31,7 +40,7 @@ npm i axios  /  yarn add axios  /  bower i axios
 默认是get请求方式
 :::
 
-请求路径是 http://localhost:8081/data.json?id=12
+请求路径是 `http://localhost:8081/data.json?id=12`
 
 ```js
 

@@ -1,4 +1,12 @@
-# React中的class类组件
+---
+title: React 中的 class 类组件
+date: 2019-4-9
+sidebar: 'auto'
+tags:
+ - react
+ - class类
+publish: true
+---
 
 - 类：es6--class
 - class: 语法、使用；

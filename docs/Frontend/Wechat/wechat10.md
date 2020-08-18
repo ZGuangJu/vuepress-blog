@@ -1,4 +1,13 @@
-##  微信中的请求
+---
+title: 小程序 微信中的请求
+date: 2019-4-21
+sidebar: 'auto'
+categories:
+ - 微信小程序
+tags:
+ - 微信小程序
+publish: true
+---
 
 ###  wx.request
 它是微信内置的请求接口的方法，具体配置和jq的ajax类似

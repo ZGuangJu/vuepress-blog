@@ -1,4 +1,13 @@
-# jQ 对象和属性
+---
+title: jQ 对象和属性
+date: 2019-1-13
+sidebar: 'auto'
+categories:
+ - jQuery
+tags:
+ - jQuery
+publish: true
+---
 
 ## jQ 对象的本质是什么
 

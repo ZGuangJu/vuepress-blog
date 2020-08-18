@@ -1,4 +1,14 @@
-## 混入
+---
+title: 小程序 混入
+date: 2019-4-21
+sidebar: 'auto'
+categories:
+ - 微信小程序
+tags:
+ - 微信小程序
+publish: true
+---
+
 用法和vue-mixis几乎一样，给component自定义组件使用
 - 语法：Behavior
 - 在 component 基础上扩展的外部实例，最后合并到 component 组件里；

@@ -1,12 +1,14 @@
 module.exports = {
     // 主页图片下第一行字、标题栏名称、左上角名称
-    title: "Guangju'S 技术分享",
+    title: "Guangju'S 笔记分享",
     // 端口配置 80是默认端口(手动部署服务器时用)
     // port: 80,
     // 主题
     theme: 'reco', //启动主题已安装的有  默认 / reco
+
     // 主页图片下第二行字
     description: '欢迎',
+    // 标题栏图标
     head: [
         // 改变title的图标，图标放在public文件夹中，herf后直接 '/图片.格式' ，不要./
         [
@@ -14,14 +16,46 @@ module.exports = {
             {
                 rel: 'icon',
                 href: '/linktolink.png',//图片放在.vuepress/public文件夹下，直接'/图片名 '
-            }
+            },
         ],
+        // 在移动端，搜索框在获得焦点时会放大，并且在失去焦点后可以左右滚动，这可以通过设置元来优化。
+        ['meta',
+            {
+                name: 'viewport',
+                content: 'width=device-width,initial-scale=1,user-scalable=no'
+            }]
     ],
-    // 主题设置（默认）
+    // 插件设置
+    // plugins: [],
+    // markdown设置
+    markdown: {
+        // 显示代码块行号
+        lineNumbers: true
+    },
+    // 主题设置
     themeConfig: {
-
+        // 主题样式
+        type: 'blog',
+        // 右侧头像
+        authorAvatar: '/headimg.jpeg',
+        // valine 评论设置
+        valineConfig: {
+            appId: 'HphnXJO6NChHtY50Di9q039D-MdYXbMMI',// your appId
+            appKey: 'eGw2p5VfR348442nSkdL3ta6', // your appKey
+        },
+        // 分类和标签导航
+        blogConfig: {
+            category: {
+                location: 2,     // 在导航栏菜单中所占的位置，默认2
+                text: '分类' // 默认文案 “分类”
+            },
+            tag: {
+                location: 3,     // 在导航栏菜单中所占的位置，默认3
+                text: '标签'      // 默认文案 “标签”
+            }
+        },
         //侧边栏自动显示当前激活页面中标题的链接?
-        sidebarDepth: 2,
+        // sidebarDepth: 2,
 
         // 允许你获取每个文件的最后一次 git 提交的 UNIX 时间戳（ms
         lastUpdated: 'Last Updated',
@@ -38,89 +72,96 @@ module.exports = {
             // 每个{}中是导航选项，link可以跳转其他路由，或者链接
             {
                 text: '首页',
-                link: '/'
+                link: '/',
+                icon: 'reco-home'
+            },
+            // timeline时间轴
+            {
+                text: 'Timeline',
+                link: '/timeline/',
+                icon: 'reco-date'
             },
             // 同上，可以设置成下拉的子选项
-            {
-                text: '前端基础',
-                items: [
-                    { text: 'HTML & H5', link: '/Frontend/HTML/HTML' },
-                    { text: 'CSS & C3', link: '/Frontend/CSS/CSS' },
-                    { text: 'JavaScript', link: '/Frontend/JavaScript/JavaScript' },
-                    { text: 'ES6新增', link: '/Frontend/ES6/ES6' },
-                    { text: 'JQuery', link: '/Frontend/JQuery/JQuery' },
-                    { text: 'Ajax', link: '/Frontend/Ajax/Ajax' },
-                    { text: 'Axios', link: '/Frontend/Axios/axios' },
-                    { text: '小程序', link: '/Frontend/Wechat/wechat' },
-                ]
-                // link: '/Frontend/'
-            },
+            // {
+            //     text: '前端基础',
+            //     items: [
+            //         { text: 'HTML & H5', link: '/Frontend/HTML/HTML' },
+            //         { text: 'CSS & C3', link: '/Frontend/CSS/CSS' },
+            //         { text: 'JavaScript', link: '/Frontend/JavaScript/JavaScript' },
+            //         { text: 'ES6新增', link: '/Frontend/ES6/ES6' },
+            //         { text: 'JQuery', link: '/Frontend/JQuery/JQuery' },
+            //         { text: 'Ajax', link: '/Frontend/Ajax/Ajax' },
+            //         { text: 'Axios', link: '/Frontend/Axios/axios' },
+            //         { text: '小程序', link: '/Frontend/Wechat/wechat' },
+            //     ]
+            //     // link: '/Frontend/'
+            // },
 
-            {
-                text: '前端框架',
-                items: [
-                    { text: 'Vue', link: '/Framework/Vue/Vue/vue0-1' },
-                    { text: 'React', link: '/Framework/React/React基础/react&vue' },
-                ]
-            },
-            {
-                text: 'Node.js',
-                items: [
-                    { text: 'nodejs 是什么', link: '/Node/node' },
-                    { text: '关于 Node 的理解', link: '/Node/node2' },
-                ],
-            },
-            {
-                text: 'Webpack',
-                items: [
-                    { text: 'Webpack4.0', link: '/Webpack/webpack初识' },
-                    { text: 'Webpack 配置文件说明', link: '/Webpack/webpackconfigjs' },
-                ],
-            },
-            {
-                text: '后端技术',
-                items: [
-                    { text: 'JAVA 的了解', link: '/Backend/JAVA' },
-                ],
+            // {
+            //     text: '前端框架',
+            //     items: [
+            //         { text: 'Vue', link: '/Framework/Vue/Vue/vue0-1' },
+            //         { text: 'React', link: '/Framework/React/React基础/react&vue' },
+            //     ]
+            // },
+            // {
+            //     text: 'Node.js',
+            //     items: [
+            //         { text: 'nodejs 是什么', link: '/Node/node' },
+            //         { text: '关于 Node 的理解', link: '/Node/node2' },
+            //     ],
+            // },
+            // {
+            //     text: 'Webpack',
+            //     items: [
+            //         { text: 'Webpack4.0', link: '/Webpack/webpack初识' },
+            //         { text: 'Webpack 配置文件说明', link: '/Webpack/webpackconfigjs' },
+            //     ],
+            // },
+            // {
+            //     text: '后端技术',
+            //     items: [
+            //         { text: 'JAVA 的了解', link: '/Backend/JAVA' },
+            //     ],
 
-            },
-            {
-                text: '工具',
-                items: [
-                    { text: 'Git 介绍和常用', link: '/Tools/git' },
-                    { text: 'Git 命令大全', link: '/Tools/git2' },
-                    { text: 'yarn 介绍和常用', link: '/Tools/yarn' },
-                    { text: 'npm 介绍和常用', link: '/Tools/npm' },
-                    { text: 'npm 发布插件', link: '/Tools/npm2' },
-                    { text: 'nrm', link: '/Tools/nrm' },
-                    { text: 'cmd 命令', link: '/Tools/cmd' },
-                    { text: 'regex 正则', link: '/Tools/regex' },
-                    { text: 'MarkDown', link: '/Tools/markdown' },
-                    { text: 'Trojan', link: '/Tools/Trojan' },
-                    { text: 'Typecho 安装建站', link: '/Tools/typecho' },
-                    { text: 'Linux 宝塔使用', link: '/Tools/宝塔' },
-                    { text: 'vuepress', link: '/Tools/vuepress' },
-                    { text: 'vuepress 部署发布', link: '/Tools/vuepress部署' },
-                    { text: 'vim 介绍', link: '/Tools/vim' },
-                    { text: 'VScode配置文件', link: '/Tools/vscode' },
-                ],
-                // link: '/Tools/'
-            },
-            {
-                text: '小知识',
-                items: [
-                    { text: '学习内容', link: '/Other/' },
-                    { text: 'token 是什么', link: '/Other/token' },
-                    { text: '网站黑白', link: '/Other/网站黑白' },
-                    { text: 'URI & URL', link: '/Other/URI&URL' },
-                    { text: 'Apache 是什么', link: '/Other/Apache' },
-                    { text: 'Nginx 是什么', link: '/Other/Nginx' },
-                ]
-                // link: '/Other/'
-            },
+            // },
+            // {
+            //     text: '工具',
+            //     items: [
+            //         { text: 'Git 介绍和常用', link: '/Tools/git' },
+            //         { text: 'Git 命令大全', link: '/Tools/git2' },
+            //         { text: 'yarn 介绍和常用', link: '/Tools/yarn' },
+            //         { text: 'npm 介绍和常用', link: '/Tools/npm' },
+            //         { text: 'npm 发布插件', link: '/Tools/npm2' },
+            //         { text: 'nrm', link: '/Tools/nrm' },
+            //         { text: 'cmd 命令', link: '/Tools/cmd' },
+            //         { text: 'regex 正则', link: '/Tools/regex' },
+            //         { text: 'MarkDown', link: '/Tools/markdown' },
+            //         { text: 'Trojan', link: '/Tools/Trojan' },
+            //         { text: 'Typecho 安装建站', link: '/Tools/typecho' },
+            //         { text: 'Linux 宝塔使用', link: '/Tools/宝塔' },
+            //         { text: 'vuepress', link: '/Tools/vuepress' },
+            //         { text: 'vuepress 部署发布', link: '/Tools/vuepress部署' },
+            //         { text: 'vim 介绍', link: '/Tools/vim' },
+            //         { text: 'VScode配置文件', link: '/Tools/vscode' },
+            //     ],
+            //     // link: '/Tools/'
+            // },
+            // {
+            //     text: '小知识',
+            //     items: [
+            //         { text: '学习内容', link: '/Other/' },
+            //         { text: 'token 是什么', link: '/Other/token' },
+            //         { text: '网站黑白', link: '/Other/网站黑白' },
+            //         { text: 'URI & URL', link: '/Other/URI&URL' },
+            //         { text: 'Apache 是什么', link: '/Other/Apache' },
+            //         { text: 'Nginx 是什么', link: '/Other/Nginx' },
+            //     ]
+            //     // link: '/Other/'
+            // },
             {
                 text: '关于',
-                link: '/About/about'
+                link: '/About/'
             },
             // {
             //     text: 'Github',
@@ -151,7 +192,7 @@ module.exports = {
                 {
                     title: 'ES6',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['ES6/ES6', 'ES6/ES02', 'ES6/ES03', 'ES6/ES04']
+                    children: ['ES6/ES05', 'ES6/ES02', 'ES6/ES03', 'ES6/ES04']
                 },
                 {
                     title: 'JQuery',
@@ -213,24 +254,27 @@ module.exports = {
                     collapsable: true, //是否折叠侧边栏
                     children: ['React基础/react&vue', 'React基础/react01', 'React基础/react02', 'React基础/react03', 'React基础/react04', 'React基础/react05']
                 },
-                {
-                    title: 'React初级',
-                    collapsable: true, //是否折叠侧边栏
-                    children: ['React初级/react01']
-                },
-
             ],
-            '/Node/': ['node', 'node2', 'node3'],
+            '/Node/': ['node', 'node2', 'package'],
             '/Webpack/': ['webpack初识', 'webpackconfigjs'],
 
             '/Backend/': ['JAVA'],
-            '/Tools/': ['git', 'git2', 'yarn', 'npm', 'npm2', 'cmd', 'nrm', 'regex', 'markdown', 'Trojan', 'typecho', '宝塔', 'vuepress', 'vuepress部署', 'vim', 'vscode'],
+            '/Tools/': ['git', 'git2', 'yarn', 'npm', 'npm2', 'upgrade', 'cmd', 'nrm', 'regex', 'markdown', 'Trojan', 'typecho', '宝塔', 'vuepress', 'vuepress部署', 'vim', 'vscode'],
 
             '/Other/': [
                 '', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx'
 
             ],
         },
+        friendLink: [
+            {
+                title: '我的博客',
+                desc: '我的另一个博客地址.',
+                email: "guangju@126.com",
+                link: 'http://www.91guangju.com'
+            }
+            // ...
+        ],
         // search: false, //禁用内置搜索框
         searchMaxSuggestions: 20,//调整搜索框显示的搜索提示数量
         // 假定 GitHub。也可以是一个完整的 GitLab URL。
@@ -251,6 +295,19 @@ module.exports = {
         // 默认为 false，设置为 true 来启用
         editLinks: true,
         // 自定义编辑链接的文本。默认是 "Edit this page"
-        editLinkText: '帮助我们改进页面！'
+        editLinkText: '帮助我们改进页面！',
+        // 备案信息
+        record: '冀ICP备19032877号',
+        recordLink: 'http://beian.miit.gov.cn/',
+        // cyberSecurityRecord: '公安部备案文案',
+        // cyberSecurityLink: '公安部备案指向链接',
+        // 项目开始时间，只填写年份
+        startYear: '2018',
+        // author
+        author: '上官大吉',
+        //导航栏左侧可以显示logo
+        // logo: '/head.png',
+        // 替换首页的 faceImage 来设置头像
+        // authorAvatar: '/avatar.png'
     }
 }

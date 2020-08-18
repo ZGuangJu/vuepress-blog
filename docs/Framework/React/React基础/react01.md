@@ -1,6 +1,15 @@
-# react基础知识
+---
+title: React
+date: 2019-3-26
+sidebar: 'auto'
+categories:
+ - 前端框架
+tags:
+ - react
+publish: true
+---
 
-## 一、react 介绍
+## 一、
 【面试的时候，可能会问到】
 1. react 是干什么的？
 前端框架

@@ -1,4 +1,13 @@
-# Trojan
+---
+title: Trojan
+date: 2019-6-8
+sidebar: 'auto'
+categories:
+ - 工具
+tags:
+ - Trojan
+publish: true
+---
 
 ::: tip Trojan是什么
 Trojan模仿了互联网上最常见的HTTPS协议，以诱骗GFW封锁认为它就是HTTPS，从而不被识别。Trojan处理来自外界的HTTPS请求，如果是合法的，那么为该请求提供服务，否则将该流量转交给web服务器Nginx，由Nginx为其提供服务。基于这个工作过程可以知道，Trojan的一切表现均与Nginx一致，不会引入额外特征，从而达到无法识别的效果。

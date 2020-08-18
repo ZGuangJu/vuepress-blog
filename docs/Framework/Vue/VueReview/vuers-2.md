@@ -1,4 +1,11 @@
-## vue路由
+---
+title: Vue 路由（总结）
+date: 2019-12-8
+sidebar: 'auto'
+tags:
+ - vue
+publish: true
+---
 
 1. 三大核心
 - 跳转

@@ -1,4 +1,13 @@
-# 关于Node的理解
+---
+title: 关于Node的理解
+date: 2019-2-6
+sidebar: 'auto'
+categories:
+ - Node.js
+tags:
+ - Node.js
+publish: true
+---
 
 一种javascript的运行环境，能够使得javascript脱离浏览器运行。
 

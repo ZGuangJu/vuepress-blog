@@ -1,4 +1,13 @@
-# Axios 实践
+---
+title: Axios 实践
+date: 2019-2-23
+sidebar: 'auto'
+categories:
+ - Axios
+tags:
+ - Axios
+publish: true
+---
 
 1. 在项目中创建一个`repuest`文件夹
 

@@ -1,4 +1,11 @@
-## vuex
+---
+title: Vue vuex（总结）
+date: 2019-12-8
+sidebar: 'auto'
+tags:
+ - vue
+publish: true
+---
 
 1. vuex是什么
 全局状态管理器

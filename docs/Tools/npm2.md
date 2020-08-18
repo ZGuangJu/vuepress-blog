@@ -1,4 +1,14 @@
-# Npm 发布插件的流程
+---
+title: Npm 发布插件的流程
+date: 2019-6-2
+sidebar: 'auto'
+categories:
+ - 工具
+tags:
+ - npm
+ - 发布插件包
+publish: true
+---
 
 :::tip 介绍:
 我们可以将自己常用的vue功能片段，封装成一个插件，托管到 npm 官网，在以后需要使用时直接安装，方便使用。

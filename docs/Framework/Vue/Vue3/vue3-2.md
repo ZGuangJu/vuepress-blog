@@ -1,4 +1,12 @@
-# Vue 动态路由
+---
+title: Vue 动态路由
+date: 2019-3-6
+sidebar: 'auto'
+tags:
+ - vue
+ - 路由
+publish: true
+---
 
 ## 动态路由匹配
 ```js

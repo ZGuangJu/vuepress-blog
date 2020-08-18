@@ -1,4 +1,15 @@
-# Typecho + Centos7 + 宝塔
+---
+title: Typecho + Centos7 + 宝塔
+date: 2019-6-13
+sidebar: 'auto'
+categories:
+ - 工具
+tags:
+ - Typecho
+ - Centos7
+ - 宝塔
+publish: true
+---
 
 :::tip 建站准备
 服务器：腾讯云服务器

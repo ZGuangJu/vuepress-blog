@@ -1,7 +1,17 @@
-# Yarn 安装和常用命令
+---
+title: Yarn 安装和常用命令
+date: 2019-6-19
+sidebar: 'auto'
+categories:
+ - 工具
+tags:
+ - yarn
+publish: true
+---
 
 :::tip 介绍
-和npm一样的依赖包管理器;
+yarn 是 facebook 发明的新一代 js 包管理器,和npm一样的依赖包管理器,支持离线使用.[这是 npm 与 yarn 的 命令对照](https://classic.yarnpkg.com/zh-Hans/docs/migrating-from-npm)
+
 :::
 
 [英文官网](https://yarnpkg.com/) [中文官网](https://classic.yarnpkg.com/zh-Hans/)
@@ -83,6 +93,44 @@ yarn install  /   yarn i
 ```js
 yarn publish [name]
 ```
+- 项目中升级依赖包
+
+1.  `yarn upgrade-interactive --latest`命令（亲测无效，不能更新package.json中的版本，可以更新yarn.lock中的版本）
+
+```js
+yarn upgrade-interactive --latest
+```
+输出结果
+```js
+info Color legend :
+ "<red>"    : Major Update backward-incompatible updates
+ "<yellow>" : Minor Update backward-compatible features
+ "<green>"  : Patch Update backward-compatible bug fixes
+? Choose which packages to update.
+ devDependencies
+   name                 range   from      to     url
+>( ) vuepress             latest  1.5.2  ❯  1.5.3  https://github.com/vuejs/vuepress#readme
+
+ dependencies
+   name                 range   from      to     url
+ ( ) vuepress-theme-reco  latest  1.4.7  ❯  1.5.5  https://vuepress-theme-reco.recoluan.com
+```
+需要手动选择升级的依赖包，按空格键选择，a 键切换所有，i 键反选选择
+
+2. 指定版本号，这种方法会在 `package.json` 文件中限定包的版本
+
+```js
+yarn upgrade [package-name]@x.x.x
+```
+
+3. 使用 `npm-check-updates` 升级（亲测无效，不能更新package.json中的版本，可以更新yarn.lock中的版本）
+
+```js
+// 先下载
+yarn global add npm-check-updates
+// 更新包（yarn.lock和package.json同步更新）
+ncu --upgrade --upgradeAll && yarn upgrade
+```
 
 ### 默认命令
 
@@ -102,7 +150,7 @@ npm install yarn@latest -g
 npm view yarn versions
 ```
 
-- 升级指定版本 （例：升级到1.22.4版本）
+- 升级指定版本的yarn （例：升级到1.22.4版本）
 
 ```js
 yarn upgrade v1.22.4

@@ -1,4 +1,13 @@
-## 路由
+---
+title: 小程序 路由
+date: 2019-4-13
+sidebar: 'auto'
+categories:
+ - 微信小程序
+tags:
+ - 微信小程序
+publish: true
+---
 
 ### 路由跳转
 

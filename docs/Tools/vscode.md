@@ -1,4 +1,13 @@
-# VScode 中的设置文档
+---
+title: VScode 中的设置文档
+date: 2020-8-12
+sidebar: 'auto'
+categories:
+ - 工具
+tags:
+ - VScode
+publish: true
+---
 
 ## 自定义代码片段
 ```js
@@ -228,7 +237,7 @@
             "})"
         ],
         "description": "props VUE组件"
-    },
+    }
 }
 ```
 

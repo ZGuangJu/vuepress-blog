@@ -1,6 +1,6 @@
 {
     "name": "blog",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -10,12 +10,12 @@
         "deploygitee": "deploy.bat"
     },
     "keywords": [],
-    "author": "",
+    "author": "zhangguangju",
     "license": "ISC",
     "devDependencies": {
-        "vuepress": "^1.2.0"
+        "vuepress": "^1.5.3"
     },
     "dependencies": {
-        "vuepress-theme-reco": "^1.4.7"
+        "vuepress-theme-reco": "^1.5.5"
     }
 }

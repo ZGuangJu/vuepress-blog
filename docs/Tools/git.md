@@ -1,4 +1,13 @@
-# Git
+---
+title: Git 介绍
+date: 2019-5-19
+sidebar: 'auto'
+categories:
+ - 工具
+tags:
+ - Git
+publish: true
+---
 
 <font size="6" color="#3eaf7c">Git 提交常用命令</font>
 

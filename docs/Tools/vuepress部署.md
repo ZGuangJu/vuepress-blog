@@ -1,4 +1,14 @@
-# VuePress博客--部署发布
+---
+title: VuePress 博客--部署发布
+date: 2019-6-16
+sidebar: 'auto'
+categories:
+ - 工具
+tags:
+ - Vuepress
+ - 部署博客
+publish: true
+---
 
 ## vuepress部署到github托管
 

@@ -1,4 +1,13 @@
-# Nrm
+---
+title: Nrm
+date: 2018-11-2
+sidebar: 'auto'
+categories:
+ - 工具
+tags:
+ - nrm
+publish: true
+---
 
 :::tip 介绍
 使用 nrm 管理 npm 的镜像源，不用每次输入大段的代码来设置源了！

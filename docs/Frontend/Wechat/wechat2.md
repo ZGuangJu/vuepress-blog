@@ -1,4 +1,13 @@
-## 小程序中npm使用
+---
+title: 小程序 npm依赖包的使用
+date: 2019-5-2
+sidebar: 'auto'
+categories:
+ - 微信小程序
+tags:
+ - 微信小程序
+publish: true
+---
 
 ### 小程序中引入npm及包的使用
 

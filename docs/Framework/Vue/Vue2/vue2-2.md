@@ -1,4 +1,12 @@
-# Vue 组件通信（6）
+---
+title: Vue 组件通信
+date: 2019-2-13
+sidebar: 'auto'
+tags:
+ - vue
+ - 组件通信
+publish: true
+---
 
 ## 1. 常用方法 props & $emit 传值
 

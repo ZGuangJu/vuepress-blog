@@ -1,5 +1,11 @@
-## Vue基础
-
+---
+title: Vue 基础（总结）
+date: 2019-12-8
+sidebar: 'auto'
+tags:
+ - vue
+publish: true
+---
 1. vue是什么
 - 单页面应用框架，数据驱动视图，特性数据的双向绑定，
 

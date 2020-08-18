@@ -1,4 +1,13 @@
-## 小程序pages间的通信
+---
+title: 小程序 pages间的通信
+date: 2019-4-13
+sidebar: 'auto'
+categories:
+ - 微信小程序
+tags:
+ - 微信小程序
+publish: true
+---
 
 #### 1 . 发送
 

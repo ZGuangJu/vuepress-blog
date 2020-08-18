@@ -1,4 +1,12 @@
-# 后台管理系统
+---
+title: Vue 后台管理系统
+date: 2019-10-5
+sidebar: 'auto'
+tags:
+ - vue
+ - 项目
+publish: true
+---
 
 ## 登陆
 

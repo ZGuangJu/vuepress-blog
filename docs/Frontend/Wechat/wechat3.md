@@ -1,4 +1,13 @@
-## 生命周期
+---
+title: 小程序 生命周期
+date: 2019-4-8
+sidebar: 'auto'
+categories:
+ - 微信小程序
+tags:
+ - 微信小程序
+publish: true
+---
 
 ### App 生命周期
 | 命令    |作用            |

@@ -1,4 +1,11 @@
-# react组件的写法
+---
+title: react组件的写法
+date: 2019-4-3
+sidebar: 'auto'
+tags:
+ - react
+publish: true
+---
 
 ## index.js文件内容
 ```js

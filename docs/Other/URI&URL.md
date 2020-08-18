@@ -1,5 +1,13 @@
-
-# URI、URL、URN的概念
+---
+title: URI、URL、URN的概念
+date: 2019-6-9
+sidebar: 'auto'
+categories:
+ - 小知识
+tags:
+ - URI、URL、URN
+publish: true
+---
 
 URI是个纯粹的句法结构，用于指定标识Web资源的字符串的各个不同部分。URL是URI的一个特例，它包含了定位Web资源的足够信息。
 

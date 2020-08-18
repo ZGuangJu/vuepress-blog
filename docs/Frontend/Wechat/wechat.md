@@ -1,4 +1,13 @@
-## 小程序学习主要内容
+---
+title: 小程序 学习主要内容
+date: 2019-4-23
+sidebar: 'auto'
+categories:
+ - 微信小程序
+tags:
+ - 微信小程序
+publish: true
+---
 
 1. 组件化
 2. 模块

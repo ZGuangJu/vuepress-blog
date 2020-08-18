@@ -1,4 +1,13 @@
-## component 组件
+---
+title: 小程序 component（组件）
+date: 2019-4-10
+sidebar: 'auto'
+categories:
+ - 微信小程序
+tags:
+ - 微信小程序
+publish: true
+---
 
 ### 组件的使用方法
 

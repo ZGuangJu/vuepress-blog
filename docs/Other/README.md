@@ -1,4 +1,13 @@
-# 学习目标
+---
+title: 目标
+date: 2018-5-4
+sidebar: 'auto'
+categories:
+ - 小知识
+tags:
+ - 目标
+publish: true
+---
 
 ## 有生之年系列（陆续添加），不需按顺序：
 ### 一，操作系统

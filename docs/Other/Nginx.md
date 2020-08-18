@@ -1,5 +1,13 @@
-# Nginx是什么
-
+---
+title: Nginx 是什么
+date: 2019-5-4
+sidebar: 'auto'
+categories:
+ - 小知识
+tags:
+ - Nginx
+publish: true
+---
 
 [Nginx英文官网](http://nginx.org/)  [Nginx中文官网](https://www.nginx.cn/)
 

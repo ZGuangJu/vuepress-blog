@@ -1,4 +1,13 @@
-# Axios
+---
+title: Axios 介绍
+date: 2019-2-20
+sidebar: 'auto'
+categories:
+ - Axios
+tags:
+ - Axios
+publish: true
+---
 
 :::tip
 - axios是基于promise对Ajax的封装

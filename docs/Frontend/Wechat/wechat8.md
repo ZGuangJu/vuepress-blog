@@ -1,4 +1,13 @@
-## 获取元素的属性和值
+---
+title: 小程序 获取元素的属性和值
+date: 2019-4-20
+sidebar: 'auto'
+categories:
+ - 微信小程序
+tags:
+ - 微信小程序
+publish: true
+---
 
 ### 获取元素上自定义的属性和值
 

@@ -1,4 +1,13 @@
-## CMD
+---
+title: 命令行Cmd
+date: 2019-5-16
+sidebar: 'auto'
+categories:
+ - 工具
+tags:
+ - CMD
+publish: true
+---
 
 :::tip 简介
 cmd是command的缩写,即 `windeows` 下的命令执行程序，类似于Linux的`shell`。
