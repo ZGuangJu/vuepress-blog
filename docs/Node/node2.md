@@ -2,8 +2,6 @@
 title: 关于Node的理解
 date: 2019-2-6
 sidebar: 'auto'
-categories:
- - Node.js
 tags:
  - Node.js
 publish: true

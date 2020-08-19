@@ -7,6 +7,7 @@ categories:
 tags:
  - Git
 publish: true
+sticky: 2
 ---
 
 <font size="6" color="#3eaf7c">Git 提交常用命令</font>

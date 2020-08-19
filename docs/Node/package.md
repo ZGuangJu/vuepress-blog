@@ -2,8 +2,6 @@
 title: package.json 文件解读
 date: 2020-5-20
 sidebar: 'auto'
-categories:
- - Node.js
 tags:
 - Node.js
 - package.json

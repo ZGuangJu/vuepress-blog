@@ -2,9 +2,8 @@
 title: jQ CSS类名和样式
 date: 2019-2-3
 sidebar: 'auto'
-categories:
- - jQuery
 tags:
+ - 前端基础
  - jQuery
 publish: true
 ---

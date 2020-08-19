@@ -3,9 +3,10 @@ title: Axios 介绍
 date: 2019-2-20
 sidebar: 'auto'
 categories:
- - Axios
+ - 前端基础
 tags:
  - Axios
+ - 前端基础
 publish: true
 ---
 

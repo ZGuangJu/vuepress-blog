@@ -2,9 +2,8 @@
 title: Axios 请求方式
 date: 2019-2-26
 sidebar: 'auto'
-categories:
- - Axios
 tags:
+ - 前端基础
  - Axios请求方式
 publish: true
 ---

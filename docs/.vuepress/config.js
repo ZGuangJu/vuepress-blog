@@ -5,7 +5,6 @@ module.exports = {
     // port: 80,
     // 主题
     theme: 'reco', //启动主题已安装的有  默认 / reco
-
     // 主页图片下第二行字
     description: '欢迎',
     // 标题栏图标
@@ -52,7 +51,8 @@ module.exports = {
             tag: {
                 location: 3,     // 在导航栏菜单中所占的位置，默认3
                 text: '标签'      // 默认文案 “标签”
-            }
+            },
+
         },
         //侧边栏自动显示当前激活页面中标题的链接?
         // sidebarDepth: 2,
@@ -80,6 +80,11 @@ module.exports = {
                 text: 'Timeline',
                 link: '/timeline/',
                 icon: 'reco-date'
+            },
+            {
+                text: '留言版',
+                link: '/messages/',
+                icon: 'reco-suggestion'
             },
             // 同上，可以设置成下拉的子选项
             // {
@@ -177,22 +182,22 @@ module.exports = {
                 {
                     title: 'HTML',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['HTML/HTML', 'HTML/HTML2', 'HTML/HTML3']
+                    children: ['HTML/HTML']
                 },
                 {
                     title: 'CSS',
                     collapsable: true,
-                    children: ['CSS/CSS', 'CSS/CSS2', 'CSS/CSS3']
+                    children: ['CSS/CSS']
                 },
                 {
                     title: 'JavaScript',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['JavaScript/JavaScript', 'JavaScript/JS2', 'JavaScript/JS3']
+                    children: ['JavaScript/JavaScript']
                 },
                 {
                     title: 'ES6',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['ES6/ES05', 'ES6/ES02', 'ES6/ES03', 'ES6/ES04']
+                    children: ['ES6/ES01', 'ES6/ES02', 'ES6/ES03', 'ES6/ES04']
                 },
                 {
                     title: 'JQuery',
@@ -202,63 +207,40 @@ module.exports = {
                 {
                     title: 'Ajax',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['Ajax/Ajax', 'Ajax/Ajax2', 'Ajax/Ajax3']
+                    children: ['Ajax/Ajax']
                 },
                 {
                     title: 'Axios',
                     collapsable: true, //是否折叠侧边栏
                     children: ['Axios/axios', 'Axios/axios2', 'Axios/axios3']
                 },
-                {
-                    title: '小程序',
-                    collapsable: true, //是否折叠侧边栏
-                    children: ['Wechat/wechat', 'Wechat/wechat2', 'Wechat/wechat3', 'Wechat/wechat4', 'Wechat/wechat5', 'Wechat/wechat6', 'Wechat/wechat7', 'Wechat/wechat8', 'Wechat/wechat9', 'Wechat/wechat10']
-                }
             ],
             '/Framework/Vue/': [
                 {
-                    title: 'Vue 介绍和使用',
+                    title: 'Vue',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['Vue/vue0-1', 'Vue/vue0-2']
-                },
-                {
-                    title: 'Vue语法和指令',
-                    collapsable: true, //是否折叠侧边栏
-                    children: ['Vue1/vue1-1', 'Vue1/vue1-2']
-                },
-                {
-                    title: 'Vue组件和通信',
-                    collapsable: true, //是否折叠侧边栏
-                    children: ['Vue2/vue2-1', 'Vue2/vue2-2']
-                },
-                {
-                    title: 'Vue路由',
-                    collapsable: true, //是否折叠侧边栏
-                    children: ['Vue3/vue3-1', 'Vue3/vue3-2', 'Vue3/vue3-3', 'Vue3/vue3-4']
-                },
-                {
-                    title: 'Vue总结复习',
-                    collapsable: true, //是否折叠侧边栏
-                    children: ['VueReview/vuers-1', 'VueReview/vuers-2', 'VueReview/vuers-3']
-                },
-
-                {
-                    title: '项目流程',
-                    collapsable: true, //是否折叠侧边栏
-                    children: ['project/shopingapp', 'project/admin', 'project/project']
-                },
+                    children: ['vue0', 'vue1', 'vue2', 'vue3', 'vue4', 'vue5', 'vue6', 'vue7', 'vuers-1', 'vuers-2', 'vuers-3']
+                }
             ],
             '/Framework/React/': [
                 {
-                    title: 'React基础',
+                    title: 'React',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['React基础/react&vue', 'React基础/react01', 'React基础/react02', 'React基础/react03', 'React基础/react04', 'React基础/react05']
+                    children: ['react01', 'react02', 'react03', 'react04', 'react05', 'react&vue']
                 },
             ],
+            '/Framework/Wechat/': [
+                {
+                    title: '小程序',
+                    collapsable: true, //是否折叠侧边栏
+                    children: ['wechat', 'wechat2', 'wechat3', 'wechat4', 'wechat5', 'wechat6', 'wechat7', 'wechat8', 'wechat9', 'wechat10']
+                }
+            ],
+            '/Project/': ['shopingapp', 'admin', 'project'],
             '/Node/': ['node', 'node2', 'package'],
             '/Webpack/': ['webpack初识', 'webpackconfigjs'],
 
-            '/Backend/': ['JAVA'],
+            '/Backend/': ['php'],
             '/Tools/': ['git', 'git2', 'yarn', 'npm', 'npm2', 'upgrade', 'cmd', 'nrm', 'regex', 'markdown', 'Trojan', 'typecho', '宝塔', 'vuepress', 'vuepress部署', 'vim', 'vscode'],
 
             '/Other/': [

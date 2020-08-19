@@ -10,6 +10,7 @@ tags:
  - npm-check
  - npm-check-updates
 publish: true
+sticky: 4
 ---
 
 :::tip 升级依赖

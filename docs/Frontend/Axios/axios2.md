@@ -2,9 +2,8 @@
 title: Axios 实践
 date: 2019-2-23
 sidebar: 'auto'
-categories:
- - Axios
 tags:
+ - 前端基础
  - Axios
 publish: true
 ---

@@ -2,9 +2,8 @@
 title: jQ 对象和属性
 date: 2019-1-13
 sidebar: 'auto'
-categories:
- - jQuery
 tags:
+ - 前端基础
  - jQuery
 publish: true
 ---

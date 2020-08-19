@@ -1,13 +1,16 @@
 ---
-title: jQ 核心函数和方法
+title: jQuery
 date: 2019-1-5
 sidebar: 'auto'
 categories:
- - jQuery
+ - 前端基础
 tags:
+ - 前端基础
  - jQuery
 publish: true
 ---
+
+## jQ 核心函数和方法
 
 :::tip 介绍
 [jQuery的官网](http://jquery.com/)

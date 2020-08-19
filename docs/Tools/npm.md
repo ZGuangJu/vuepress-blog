@@ -7,6 +7,7 @@ categories:
 tags:
  - npm
 publish: true
+sticky: 3
 ---
 
 :::tip 介绍
