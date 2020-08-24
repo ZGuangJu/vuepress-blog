@@ -8,23 +8,27 @@ tags:
  - Webpack
 publish: true
 ---
+## webpack简介
 
-:::tip
-它是模块打包机，分析项目结构
-:::
+webpack是一个 **模块打包工具**，支持所有的打包语法，比如 `ES Module`、`CommonJS`、`CMD`、`AMD`。初期的webpack是用来模块打包js的，发展到现在，已经可以打包很多种文件类型，比如 `css`、`img` 。
+
+优化打包速度最有效的方法就是保持 `nodejs` 和 `webpack` 为最新版本。
+
+<!-- more -->
+
 ### 类似的打包工具
 
 gulp//
 
-### webpack能做什么
+## webpack能做什么
 
 代码转换 【es6-es5，less-css】， 文件优化 【代码压缩】 ，代码分割 【公共模块抽离】 ，模块合并，自动刷新【热更新】代码校验，自动发布【发布到服务器】
 
-### webpack和node的关系
+## webpack和node的关系
 
  使用webpack前需要了解node的知识...
 
-#### nodejs的基础语法
+### nodejs的基础语法
 
  - module.exports 导出一个语法
  - require引入一个模块

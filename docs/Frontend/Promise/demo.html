@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // try {
+        //     let b
+        //     console.log(b.xxx);
+        // } catch (error) {
+        //     // console.log(error);
+        //     console.log(error.message);
+        //     console.log(error.stack);
+        // }
+        // console.log('错误以后继续执行');
+        function something(params) {
+            if (Date.now() % 2 === 1) {
+                console.log('当前时间为奇数，可以执行任务');
+            } else { //如果时间是偶数，则抛出异常，有调用类处理。
+                throw new Error('当前时间为偶数，无法执行')
+            }
+        }
+        try {
+            something()
+
+        } catch (error) {
+            alert(error.message)
+        }
+    </script>
+</body>
+
+</html>

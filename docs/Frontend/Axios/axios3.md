@@ -1,191 +1,101 @@
 ---
-title: Axios 请求方式
-date: 2019-2-26
+title: Axios 全局配置、新建实例和拦截器
+date: 2019-8-26
 sidebar: 'auto'
 tags:
  - 前端基础
- - Axios请求方式
+ - Axios
 publish: true
 ---
 
-:::tip
- 请求方式是一般是后端定义的
-:::
+## Axios 全局配置
 
-|方式   |  作用     |              特点  |其他 |
-|--     |--        |--                 |---   |
-|get    |  获取数据 |                    |两个参数|
-|post   |  提交数据 |（用于新建）         |三个参数|
-|put    |  更新数据  |（所有数据推送到后端）|三个参数|
-|patch  | 更新数据  |（只推送修改的数据）  |三个参数|
-|delete |  删除数据  |                    |两个参数|
+- baseURL、timeout
 
-
-## Axios 基本使用
-
+```js
+// 配置全局属性
+axios.default.baseURL ='https://localhost.com';
+axios.default.timeout ='5000';
+// 在全局配置基础上从/login请求
+axios.get('/login').then(res=>{
+    console.log(res)
+}).catch(err=>{
+    console.log(err)
+})
+axios.post('/user').then(res=>{
+    console.log(res)
+}).catch(err=>{
+    console.log(err)
+})
+```
+## Axios 实例
 ```html
-<!-- 标签引入方式引入axios -->
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<!-- npm安装 -->
-npm i axios  /  yarn add axios  /  bower i axios
+<script src="//axios"></script>
+<script>
+let NewAxios = axios.create({
+    baseURL:'http://localhost.com',
+    timeout:5000
+    });
+let NewAxios1 = axios.create({
+    baseURL:'http://localhost.com',
+    timeout:50
+    })
+NewAxios({
+    url:'/getlist'
+    }).then(res=>{
+        console.log(res)
+    })
+NewAxios1({
+    url:'/getlist'
+    }).then(res=>{
+        console.log(res)
+    })
+</script>
 ```
-## 方式介绍
+## Axios 拦截器
+axios给我们提供了两个方向的拦截器
 
-### GET
+:::tip 拦截器作用
+网络请求时，发起请求时和响应请求时对操作进行响应的效果
 
-- get(别名)
-
+- 发起请求时可以添加网页的加载动画，token认证时，强制登录等
+- 响应请求时可以进行相应的数据处理
+:::
+1. 请求拦截
+    - 成功的
+    - 失败的
+```js
+axios.interceptors.request.use(config=>{
+    console.log('进入请求拦截器');
+    console.log(config)
+    return config  //放行拦截器才能往下走
+},err=>{
+    console.log('请求方向失败')
+    console.log(err)
+})
+axios.get('/login').then(res=>{
+    console.log(res)
+})
+```
 :::warning 注
-默认是get请求方式
+use(fn1,fn2)：参数是两个函数
+
+拦截以后必须return 放行拦截才能往下
 :::
 
-请求路径是 `http://localhost:8081/data.json?id=12`
-
+2. 响应拦截
+    - 成功的
+    - 失败的
 ```js
-
-    axios.get('/data.json', {
-      // 传参
-      params: {
-        id: 12
-      }
-    }).then((res) => {
-      console.log(res);
-    })
-
+axios.interceptors.response.use(config=>{
+    console.log('进入响应拦截器');
+    // return config  //放行拦截器才能往下走
+    return config.data
+},err=>{
+    console.log('响应方向失败')
+    console.log(err)
+})
+axios.get('/login').then(res=>{
+    console.log(res)
+})
 ```
-- get（其他方式)
-
-```js
-axios({
-      //请求方式
-      method: 'get',
-      //路径
-      url: '/data.json',
-      //参数
-      params: {
-        id: 12
-      }
-    }).then((res) => {
-      console.log(res);
-    })
-```
-
-### POST
-
-- post（别名）
-
-> 1. form-data 表单提交（图片上传，文件上传）
->
-> ```js
->     // 创建一个变量
->     let data = {
->       id: 12
->     }
->     let formData = new FormData()
->     for (let key in data) {
->       formData.append(key, data[key])
->     }
->     // axios发送请求
->     axios.post('/post', formData).then(res => {
->       console.log(res);
->     })
-> ```
-> 2. applicition/josn
->
-> ```js
->     axios.post('/post', data).then(res => {
->       console.log(res);
->     }),
-> ```
-- post（其他方式)
-
-```js
-axios({
-        method: 'post',
-        url: "/post",
-        data: data
-      }).then(res => {
-        console.log(res);
-      })
-```
-
-### PUT
-
-```JS
-
-    // put
-    axios.put('/put', data).then(res => {
-      console.log(res);
-    })
-
-```
-
-### PATCH
-
-```JS
-    // patch
-    axios.patch('/patch', data).then(res => {
-      console.log(res);
-    })
-```
-
-### DELETE
-
-- delete（别名）
-
-> 1. 在请求体上用data
->
-> ```JS
->     axios.delete('/delete', {
->       // 参数在请求体上用data
->       data: {
->         id: 12
->       }
->     }).then(res => {
->       console.log(res);
->     })
-> ```
-> 2. 参数在url上用params
->
-> ```js
->  axios.delete('/delete', {
->       // 参数在url上用params
->       params: {
->         id: 12
->       }
->     }).then(res => {
->       console.log(res);
->     })
-> ```
-
-- delete（其他方式)
-
-```js
-axios({
-      method: "delete",
-      url: "/delete",
-      // 参数在请求体上用data
-      data: {
-        id: 12
-      }
-    }).then(res => {
-      console.log(res);
-    })
-```
-
-```js
-axios({
-      method: "delete",
-      url: "/delete",
-    //   参数在url上用params
-        params:{
-            id:12
-        },
-    }).then(res => {
-      console.log(res);
-    })
-```
-
-:::warning 注
- - 每个请求中console.log()，是为了调用一下，不调用会报错
-:::

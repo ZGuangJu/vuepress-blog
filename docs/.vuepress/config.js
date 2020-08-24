@@ -24,7 +24,7 @@ module.exports = {
                 content: 'width=device-width,initial-scale=1,user-scalable=no'
             }]
     ],
-    // 插件设置
+    // 主题使用的插件的设置
     // plugins: [],
     // markdown设置
     markdown: {
@@ -200,6 +200,11 @@ module.exports = {
                     children: ['ES6/ES01', 'ES6/ES02', 'ES6/ES03', 'ES6/ES04']
                 },
                 {
+                    title: 'Promise',
+                    collapsable: true, //是否折叠侧边栏
+                    children: ['Promise/promise']
+                },
+                {
                     title: 'JQuery',
                     collapsable: true, //是否折叠侧边栏
                     children: ['JQuery/JQuery', 'JQuery/JQuery2', 'JQuery/JQuery3', 'JQuery/JQuery4']
@@ -212,7 +217,7 @@ module.exports = {
                 {
                     title: 'Axios',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['Axios/axios', 'Axios/axios2', 'Axios/axios3']
+                    children: ['Axios/axios', 'Axios/axios2', 'Axios/axios3', 'Axios/axios4', 'Axios/axios5']
                 },
             ],
             '/Framework/Vue/': [
@@ -238,21 +243,22 @@ module.exports = {
             ],
             '/Project/': ['shopingapp', 'admin', 'project'],
             '/Node/': ['node', 'node2', 'package'],
-            '/Webpack/': ['webpack初识', 'webpackconfigjs'],
+            '/Webpack/': ['webpack1', 'webpack2', 'webpackconfigjs'],
 
             '/Backend/': ['php'],
             '/Tools/': ['git', 'git2', 'yarn', 'npm', 'npm2', 'upgrade', 'cmd', 'nrm', 'regex', 'markdown', 'Trojan', 'typecho', '宝塔', 'vuepress', 'vuepress部署', 'vim', 'vscode'],
 
             '/Other/': [
-                '', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx'
+                '', '问题', '知识点', '验证码', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx'
 
             ],
         },
+        // 友链
         friendLink: [
             {
                 title: '我的博客',
                 desc: '我的另一个博客地址.',
-                email: "guangju@126.com",
+                email: "guangju@126.com",//可用头像地址替换
                 link: 'http://www.91guangju.com'
             }
             // ...

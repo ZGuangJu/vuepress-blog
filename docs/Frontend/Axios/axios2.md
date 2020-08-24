@@ -1,6 +1,6 @@
 ---
-title: Axios 实践
-date: 2019-2-23
+title: Axios 请求和并发请求
+date: 2019-4-12
 sidebar: 'auto'
 tags:
  - 前端基础
@@ -8,120 +8,303 @@ tags:
 publish: true
 ---
 
-1. 在项目中创建一个`repuest`文件夹
+:::tip
+ 请求方式是一般是后端定义的
+:::
 
-这里面用来放 `axios` 封装好的文件
+|方式   |  作用     |              特点  |其他 |
+|--     |--        |--                 |---   |
+|get    |  获取数据 |                    |两个参数|
+|post   |  提交数据 |（用于新建）         |三个参数|
+|put    |  更新数据  |（所有数据推送到后端）|三个参数|
+|patch  | 更新数据  |（只推送修改的数据）  |三个参数|
+|delete |  删除数据  |                    |两个参数|
 
-2. 在`request`文件夹中创建一个`index.js`文件
 
-这里面用来放`axios`的配置公共部分，陪着好以后尽量不要更改。
+## Axios 基本使用
 
-3. `index.js`中
+- CDN 方式
 
-index.js是一个公共的封装好的请求实例
-
-```js
-// 首先引入axios
-import Axios from "axios";
-// 使用create创建一个axios的实例，从而对实例进行配置，不污染全局Axios
-const axios = Axios.create({
-    // create是Axios的方法，用来创建实例的
-    baseURL: "http://localhost:8888",
-    // 根地址，是基于axios实例对象发起的请求的时候，就可以忽略掉网址，因为axios会帮我们拼接地址
-})
-// 请求请拦截👇
-// 响应前拦截👇
-// axios.interceptors.request.use()
-// 响应后拦截👇
-axios.interceptors.response.use(function (res) {
-    // 响应拦截器，这里做对接口的处理，比如说status不是200的时候
-    console.log(res);
-    if (res.status !== 200) {
-        alert('网络错误，请稍后重试')
-        return false
-    } else {
-        // 返回到前端页面上的是我们过滤出来的可用的数据
-        return res.data
-
-    }
-}, function (err) {
-    return Promise.reject(err)
-})
-
-// 导出实例
-export default axios;
+```html
+<!-- 标签引入方式引入axios -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 ```
 
-4. 在`request`文件夹中创建一个`login.js`文件
+- 依赖安装
 
 ```js
-// 这里引入的是刚刚创建的index.js文件，就是说本页的请求都是基于index.js下的，不用全局Axios
-import axios from './index'
-// 例如：登录接口
-// 不用箭头函数，用常规函数写
-// const loginApi = function (data) {
-//     return axios.post('/login', data)
-// }
-
-// 例如：金融项目，三级联动数据
-const loginApi = (data) => axios.post('/login', data) //.then(res => {
-//这里做数据加工
-// return res
-// })
-
-// axios 里的post请求，数据作为第二个参数传入即可
-// get请求数据必须放在params中才行
-// const getData = () => axios.get('/getData', {
-//     params: { data }
-// })
-
-// 导出
-export default loginApi;
+npm i axios  /  yarn add axios  /  bower i axios
 ```
 
-5. 要在某一个组件中调用接口，引入上面导出的`loginApi`模块
+## 请求方式介绍
 
-```vue
-<template>
-  <div>
-    <form>
-      <input type="text" v-model="username" placeholder="用户名" />
-      <br />
-      <input type="password" v-model="password" placeholder="密码" />
-      <br />
-      <button type="button" @click="submit">登录</button>
-    </form>
-  </div>
-</template>
-<script>
-// 在这里引入要调用的接口
-import loginApi from '../request/login'
-export default {
-  data() {
-    return {
-      username: "",
-      password: ""
-    }
-  },
-  methods: {
-    submit() {
-      // 前端要做基础的校验
-      if (!this.username || !this.password) {
-        alert("用户名或密码不许为空")
-      } else {
-        loginApi({
-            // 获取的数据
-          username: this.username,
-          password: this.password
-        }).then(res =>
-        // 打印出响应后的数据
-          console.log(res)
-        )
+### GET
+
+:::warning 注
+默认是`get`请求方式
+:::
+
+请求路径是 `http://localhost:8081/data.json?id=12`
+
+- `get`
+
+```js
+// 用get方式发送无参请求
+axios({
+      //路径
+      url: '/data.json',
+      }).then((res) => {
+      console.log(res);
+    })
+// 用get方式发送有参请求
+    // 1. 地址栏带参
+axios({
+      // 请求方式
+      method: 'get',
+      // 路径 + 参数
+      url: '/data.json?id=12',
+    }).then((res) => {
+      console.log(res);
+    })
+    // 2. params传参
+axios({
+      //请求方式
+      method: 'get',
+      //路径
+      url: '/data.json',
+      //参数
+      params: {
+        id: 12
       }
-    }
-  },
-};
-</script>
-<style>
-</style>
+    }).then((res) => {
+      console.log(res);
+    })
+```
+- `axios.get` 简写方式 (别名写法)
+
+```js
+    // 用 get 无参请求
+    axios.get('/data.json').then((res) => {
+      console.log(res);
+    }).catch((err) => {
+        // 不成功 / 错误
+        console.log(err)
+    })
+    // 用 get 有参请求
+    axios.get('/data.json', {
+      // 传参
+      params: {
+        id: 12,
+        name:"zhangsan"
+      }
+    }).then((res) => {
+      console.log(res);
+    })
+```
+### POST
+
+- post
+
+```js
+// 用post方式发送无参请求
+    axios({
+        // 请求方式
+        method: 'post',
+        url: "/post",
+        }).then(res => {
+        console.log(res);
+      })
+// 用post方式发送有参请求
+    axios({
+        method: 'post',
+        url: "/post",
+        // 使用data 传递参数，后台返回的数据是json格式，接收的值为null （前提是没有@requestBody）
+        // 解决方式在下方
+        data: {
+            name:'张三'
+        }
+      }).then(res => {
+          console.log(res);
+      })
+```
+- axios.post 简写方式（别名写法）
+
+```js
+// 用 post 无参请求
+    axios.post('/post').then(res => {
+       console.log(res);
+    }).catch(err =>{
+    console.log(err)
+    }),
+// 用 post 有参请求(等价data方式)
+// 要想使用本方法，需在后台将 json 数据转换为java对象 用@requestBody（java后台）
+    axios.post('/post', {name:'张三'}).then(res => {
+       console.log(res);
+    }),
+// 用 post 有参请求(&连接多参传递)
+    axios.post('/post', "name=张三&age=10").then(res => {
+       console.log(res);
+    }),
+//
+```
+使用`data`传递，后台控制器接收到的`name`是`null`，`axios`使用`post`携带参数请求默认使用`application/json`。
+
+- 解决方式一：（前端） 不建议使用
+
+请求返回的数据是`json`格式，用`data`传递会接收不到，就要用`params`属性进行数据的传递。
+```js
+    axios({
+        method: 'post',
+        url: "/post",
+       //参数
+        params: {
+        name:'张三'
+      }
+      }).then(res => {
+        console.log(res);
+      })
+```
+虽然可以传递数据了，但是也是通过url拼接的方式传递到后台的，不安全，不建议使用
+
+- 解决方式二（前端）：在简写方式时,参数以这个格式传递 `"name=张三"`，多参数`"name=张三&age=10"`，推荐使用这种方式.
+
+- 解决方式三（服务器端)：服务器端给接收的参数加上 `@requestBody` ？？
+
+>- 例：
+> 1. form-data 表单提交（图片上传，文件上传）
+>
+> ```js
+>     // 创建一个变量
+>     let data = {
+>       id: 12
+>     }
+>     let formData = new FormData()
+>     for (let key in data) {
+>       formData.append(key, data[key])
+>     }
+>     // axios发送请求
+>     axios.post('/post', formData).then(res => {
+>       console.log(res);
+>     })
+> ```
+> 2. applicition/josn
+>
+> ```js
+>     axios.post('/post', data).then(res => {
+>       console.log(res);
+>     }),
+> ```
+
+
+### PUT
+
+```JS
+
+    // put
+    axios.put('/put', data).then(res => {
+      console.log(res);
+    })
+
+```
+
+### PATCH
+
+```JS
+    // patch
+    axios.patch('/patch', data).then(res => {
+      console.log(res);
+    })
+```
+
+### DELETE
+
+- delete（别名）
+
+> 1. 在请求体上用data
+>
+> ```JS
+>     axios.delete('/delete', {
+>       // 参数在请求体上用data
+>       data: {
+>         id: 12
+>       }
+>     }).then(res => {
+>       console.log(res);
+>     })
+> ```
+> 2. 参数在url上用params
+>
+> ```js
+>  axios.delete('/delete', {
+>       // 参数在url上用params
+>       params: {
+>         id: 12
+>       }
+>     }).then(res => {
+>       console.log(res);
+>     })
+> ```
+
+- delete（其他方式)
+
+```js
+axios({
+      method: "delete",
+      url: "/delete",
+      // 参数在请求体上用data
+      data: {
+        id: 12
+      }
+    }).then(res => {
+      console.log(res);
+    })
+```
+
+```js
+axios({
+      method: "delete",
+      url: "/delete",
+    //   参数在url上用params
+        params:{
+            id:12
+        },
+    }).then(res => {
+      console.log(res);
+    })
+```
+
+:::warning 注
+ - 每个请求中console.log()，是为了调用一下，不调用会报错
+:::
+
+
+## Axios 并发请求
+
+- 使用 axios.all
+
+```js
+axios.all([
+    axios.get('/login'),
+    axios.get('/user')
+]).then(res=>{
+    console.log(res[0])
+    console.log('-----')
+    console.log(res[1])
+}).catch(err => {
+    console.log(err)
+})
+```
+
+- 使用 axios.spread()处理响应结果
+
+```js
+axios.all([
+    axios.get('/login'),
+    axios.get('/user')
+]).then(axios.spread((res1,res2)=>{
+    console.log(res1);
+    console.log(res2)
+})).catch(err => {
+    console.log(err)
+})
 ```

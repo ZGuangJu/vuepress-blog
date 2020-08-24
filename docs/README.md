@@ -2,7 +2,7 @@
 # 默认主题
 home: true
 # 主页图片地址
-# heroImage: /javascript.gif
+# heroImage: /home-bg.jpg
 # 图片格式
 # heroImageStyle: {
 #     width: '80%',
