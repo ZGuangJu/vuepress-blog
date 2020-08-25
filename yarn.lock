@@ -1186,6 +1186,11 @@
   resolved "https://registry.npm.taobao.org/@vuepress-reco/vuepress-plugin-back-to-top/download/@vuepress-reco/vuepress-plugin-back-to-top-1.5.5.tgz#779e1f3ca22babe3568123760f53b0dc93869602"
   integrity sha1-d54fPKIrq+NWgSN2D1Ow3JOGlgI=
 
+"@vuepress-reco/vuepress-plugin-bgm-player@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.npm.taobao.org/@vuepress-reco/vuepress-plugin-bgm-player/download/@vuepress-reco/vuepress-plugin-bgm-player-1.1.3.tgz#47e1142908dfc7341c6507a8f1b71f14a357ab3e"
+  integrity sha1-R+EUKQjfxzQcZQeo8bcfFKNXqz4=
+
 "@vuepress-reco/vuepress-plugin-comments@^1.4.6":
   version "1.4.6"
   resolved "https://registry.npm.taobao.org/@vuepress-reco/vuepress-plugin-comments/download/@vuepress-reco/vuepress-plugin-comments-1.4.6.tgz#a89cbd372815e8995049f34f8038b22d6414195e"
@@ -1199,6 +1204,11 @@
     valine "^1.4.14"
     vssue "^1.4.6"
 
+"@vuepress-reco/vuepress-plugin-kan-ban-niang@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.npm.taobao.org/@vuepress-reco/vuepress-plugin-kan-ban-niang/download/@vuepress-reco/vuepress-plugin-kan-ban-niang-1.0.5.tgz#73b47094f1a07af05923fe9ae6c25a4c33586168"
+  integrity sha1-c7RwlPGgevBZI/6a5sJaTDNYYWg=
+
 "@vuepress-reco/vuepress-plugin-loading-page@^1.4.0":
   version "1.4.0"
   resolved "https://registry.npm.taobao.org/@vuepress-reco/vuepress-plugin-loading-page/download/@vuepress-reco/vuepress-plugin-loading-page-1.4.0.tgz#317202c9ef78825b3016c580a12791fc6e282511"
@@ -1208,6 +1218,11 @@
   version "1.4.7"
   resolved "https://registry.npm.taobao.org/@vuepress-reco/vuepress-plugin-pagation/download/@vuepress-reco/vuepress-plugin-pagation-1.4.7.tgz#59677a0abaf62b7a1095bbc0cb7bd12a88f782e9"
   integrity sha1-WWd6Crr2K3oQlbvAy3vRKoj3guk=
+
+"@vuepress-yard/vuepress-plugin-window@^1.0.10":
+  version "1.0.10"
+  resolved "https://registry.npm.taobao.org/@vuepress-yard/vuepress-plugin-window/download/@vuepress-yard/vuepress-plugin-window-1.0.10.tgz#8ae3507136855866a6c26eb20bf8334fc0f1a9b3"
+  integrity sha1-iuNQcTaFWGamwm6yC/gzT8DxqbM=
 
 "@vuepress/core@1.5.3":
   version "1.5.3"
@@ -8273,7 +8288,7 @@ vuepress-plugin-smooth-scroll@^0.0.9:
   dependencies:
     smoothscroll-polyfill "^0.4.4"
 
-vuepress-theme-reco@1.5.5:
+vuepress-theme-reco@^1.5.5:
   version "1.5.5"
   resolved "https://registry.npm.taobao.org/vuepress-theme-reco/download/vuepress-theme-reco-1.5.5.tgz#8ea5293991d0321e5f1e5e4dbbb6d94f4c8a7cc0"
   integrity sha1-jqUpOZHQMh5fHl5Nu7bZT0yKfMA=

@@ -25,7 +25,24 @@ module.exports = {
             }]
     ],
     // 主题使用的插件的设置
-    // plugins: [],
+    plugins: [
+        [
+            "@vuepress-reco/vuepress-plugin-kan-ban-niang",
+            {
+                theme: ["blackCat"],
+                clean: false,
+                messages: {
+                    welcome: '我是guangju欢迎你的关注 ',
+                    home: '心里的花，我想要带你回家。',
+                    theme: '好吧，希望你能喜欢我的其他小伙伴。',
+                    close: '再见哦'
+                }
+            }
+        ],
+        [
+            "@vuepress-yard/vuepress-plugin-window",
+        ]
+    ],
     // markdown设置
     markdown: {
         // 显示代码块行号
@@ -267,7 +284,7 @@ module.exports = {
         searchMaxSuggestions: 20,//调整搜索框显示的搜索提示数量
         // 假定 GitHub。也可以是一个完整的 GitLab URL。
 
-        // repo: 'https://github.com/ZGuangJu',
+        repo: 'https://github.com/ZGuangJu/ZGuangJu.github.io',
         // 自定义项目仓库链接文字
 
         // 默认根据 `themeConfig.repo` 中的 URL 来自动匹配是 "GitHub"/"GitLab"/"Bitbucket" 中的哪个，如果不设置时是 "Source"。
@@ -281,7 +298,7 @@ module.exports = {
         // 如果你的文档在某个特定的分支（默认是 'master' 分支）：
         docsBranch: 'master',
         // 默认为 false，设置为 true 来启用
-        editLinks: true,
+        editLinks: false,
         // 自定义编辑链接的文本。默认是 "Edit this page"
         editLinkText: '帮助我们改进页面！',
         // 备案信息
