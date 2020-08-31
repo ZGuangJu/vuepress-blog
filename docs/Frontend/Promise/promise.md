@@ -8,7 +8,7 @@ tags:
  - Promise
 publish: true
 ---
-## Promise 介绍
+## Promise 前言
 
 ## 一、区别实例对象和函数对象
 

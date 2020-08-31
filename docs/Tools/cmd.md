@@ -1,11 +1,11 @@
 ---
-title: 命令行Cmd
+title: Cmd
 date: 2019-5-16
 sidebar: 'auto'
 categories:
  - 工具
 tags:
- - CMD
+ - cmd
 publish: true
 ---
 

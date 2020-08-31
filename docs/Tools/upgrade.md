@@ -5,10 +5,7 @@ sidebar: 'auto'
 categories:
  - 工具
 tags:
- - 升级依赖包
- - ncu
- - npm-check
- - npm-check-updates
+ - 升级依赖
 publish: true
 sticky: 4
 ---
