@@ -57,9 +57,6 @@ module.exports = {
                 },
                 closeOnce: true
             }
-        ],
-        [
-            'flowchart'
         ]
     ],
     // markdown设置

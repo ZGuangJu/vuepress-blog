@@ -39,6 +39,34 @@ publish: true
 
 ## promise 基础使用
 
+```html
+<script>
+        // promise基础使用
+
+        // 1.创建一个新的promise对象
+        const p = new Promise((resolve, reject) => {//执行器函数,用来执行异步操作
+            // 2. 执行异步操作任务
+            setTimeout(() => {
+                const time = Date.now()//如果当前时间是偶数代码成功，否则失败
+                if (time % 2 == 0) {
+                    // 3.1 如果成功了，调用resolve(value)
+                    resolve('成功的数据，time=' + time);
+                } else {
+                    reject('失败的数据，time=' + time);
+                    // 3.2 如果失败了，调用reject(reason)
+                }
+            }, 1000);
+        })
+        p.then(
+            value => {//接收得到成功的value数据  OnResolved()
+                console.log('成功的回调', value);
+            },
+            reason => {//接收得到失败的reason数据 OnRejected()
+                console.log('失败的回调', reason);
+            }
+        )
+    </script>
+```
 ## 英文释义：
 
   `resolved` adj:下定决心的,解决
