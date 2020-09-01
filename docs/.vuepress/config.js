@@ -261,7 +261,7 @@ module.exports = {
             ],
 
             '/Project/': ['shopingapp', 'admin', 'project'],// 项目
-            '/Node/': ['node', 'node2', 'package'],
+            '/Node/': ['node1', 'node2', 'package'],
             '/Webpack/': ['webpack1', 'webpack2', 'webpackconfigjs'],
             '/Backend/': ['php'],//后端，暂未启用
             '/Tools/': ['git', 'git2', 'yarn', 'npm', 'npm2', 'upgrade', 'cmd', 'nrm', 'regex', 'markdown', 'Trojan', 'typecho', '宝塔', 'vuepress', 'vuepress部署', 'vim', 'vscode'],
