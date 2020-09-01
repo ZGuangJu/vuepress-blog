@@ -1,5 +1,5 @@
 ---
-title: Promise
+title: Promise 前言
 date: 2019-8-12
 sidebar: 'auto'
 categories:

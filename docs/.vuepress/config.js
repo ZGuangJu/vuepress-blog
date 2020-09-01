@@ -41,6 +41,25 @@ module.exports = {
         ],
         [
             "@vuepress-yard/vuepress-plugin-window",
+            {
+                title: "公告",
+                windowStyle: { left: '41%', top: '100px', width: '260px', },
+                contentInfo: {
+                    title: '🎉扫码加公众号或加QQ群1126566195',
+                    imgUrl: 'https://pic.downk.cc/item/5eab8845c2a9a83be5f67837.png',
+                    needImg: true,
+                    content: '公众号 比邻之地',
+                    contentStyle: {}
+                },
+                bottomInfo: {
+                    btnText: 'Blog',
+                    linkTo: 'http://www.91guangju.com'
+                },
+                closeOnce: true
+            }
+        ],
+        [
+            'flowchart'
         ]
     ],
     // markdown设置
@@ -219,7 +238,7 @@ module.exports = {
                 {
                     title: 'Promise',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['Promise/promise']
+                    children: ['Promise/promise', 'Promise/promise2']
                 },
                 {
                     title: 'JQuery',
