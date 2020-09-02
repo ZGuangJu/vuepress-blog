@@ -308,7 +308,7 @@ module.exports = {
         // 项目开始时间，只填写年份
         startYear: '2018',
         // author
-        author: '上官大吉',
+        author: 'Guangju',
         //导航栏左侧可以显示logo
         // logo: '/head.png',
         // 替换首页的 faceImage 来设置头像
