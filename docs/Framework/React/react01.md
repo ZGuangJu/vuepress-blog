@@ -15,35 +15,43 @@ publish: true
 
 1. `react` 是干什么的？
 
-前端框架
+构建用户界面的javascript库。
 
 2. `react` 能干什么？
 
 开发网站，单页面应用，手机 app
 
-`vue` 和 `react` 几乎在使用上和原理上非常的相似，`vue` 最初就是借鉴的 `react` 思想开发的
+`vue` 和 `react` 几乎在使用上和原理上非常的相似，`vue` 最初就是借鉴的
+`react` 思想开发的
 
 - react 好处：
+
 `api` 非常少，使用起来很简单，灵活。
-`react` 函数式编程思想
+
+`react` 函数式编程思想（声明式编程）
 
 ## react 原理
 vue 单向数据流 != 数据单向绑定
 
 他和 `vue` 不同的地方：数据单向绑定的
+
 - 【数据流例子说明：】
 
 父组件 变量 传递给 子组件 子组件可以修改传递过来的变量吗？不可以，为什么，因为数据流是单向的，也就是说从父级传递过来的数据，子组件只能用，不能改。
+
 - `react`【数据单向绑定】
 
 也就是说，他不能自动的监听到数据的变化，不能自动实现 `vue` 中数据双向绑定
 我们在 `react` 中要实现双向绑定，需要手动的设置 `setState`.
 
 1. 数据单向绑定
+
 2. 数据流--单向数据流
+
 3. 基于函数和类运作的【函数组件和类组件】
 
 ## 官网的阅读【自学】
+
 1.  [【官网】](https://react.docschina.org/)
 
 2. 文档 --> 核心概念【初级的基础知识】-->高级指引【中级】 -->HOOK【高级用法】
@@ -61,9 +69,9 @@ npm unistall -g create-react-app
 ```
   2. 创建项目命令
 ```js
-npx create-react-app my-app
+npx create-react-app myappname
 ```
-【my-app】:项目名称，不可以叫 `react`（关键字） 也不许有驼峰命名
+【myappname】:项目名称，不可以叫 `react`（关键字） 也不许有驼峰命名
 
 -  npx
 
@@ -74,8 +82,9 @@ npx create-react-app my-app
 - `.gitignore` ：  是一份告诉 git 提交的筛选名单,里面的`/node_modules` 就是告诉 `git` 存代码的时候把`node_modules` 目录过滤掉，并不提交到github
 
 - `package.json` ：是 `node_modules` 包依赖的清单目录，也就是说我 `npm` 安装的所有的依赖名字都会写入到 `package.json` 里去；还有它包含我们启动项目的脚本（`scitpts`里面的内容），打包项目等命令所在文件。`package.json`的作用：依赖的清单，命令的运行
+- 在scripts里，有个eject 命令，是为了讲打包配置暴露到项目里的（会在项目根目录里创建一个config文件夹），但是运行eject命令是不可逆的，慎用，我们可以用customize-cra第三方工具库
 
-- README.md 项目说明文档，不要删除，为什么？因为在 GitHub 里开启静态服务也没，如果没有这个文件，你开启是不会成功的，而且，GitHub 他也不会提示你缺这个文件，所以比较坑，一定不要删除
+- `README.md` 项目说明文档，不要删除，为什么？因为在 GitHub 里开启静态服务也没，如果没有这个文件，你开启是不会成功的，而且，GitHub 他也不会提示你缺这个文件，所以比较坑，一定不要删除
 
 - src 是我们开发的源码所在文件夹 【最重要的：`/src`】
     1. `.svg` 矢量图：不会失真，但是色彩值对比 `jpg` 少，色彩不是很丰富

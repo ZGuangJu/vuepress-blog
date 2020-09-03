@@ -26,20 +26,22 @@ module.exports = {
     ],
     // 主题使用的插件的设置
     plugins: [
+        // 看板娘
         [
             "@vuepress-reco/vuepress-plugin-kan-ban-niang",
             {
-                theme: ["blackCat"],
+                theme: ['haruto', 'blackCat', 'whiteCat', 'haru1', 'haru2', 'koharu', 'izumi', 'shizuku', 'wanko', 'miku', 'z16'],
                 clean: false,
                 messages: {
                     welcome: '我是guangju欢迎你的关注 ',
-                    home: '心里的花，我想要带你回家。',
-                    theme: '好吧，希望你能喜欢我的其他小伙伴。',
-                    close: '再见哦'
+                    home: '心里的花，我想要带你回家.',
+                    theme: '好吧，希望你能喜欢我的其他小伙伴.',
+                    close: '再见哦!'
                 }
             }
         ],
         [
+            // 公告窗
             "@vuepress-yard/vuepress-plugin-window",
             {
                 title: "公告",
@@ -107,7 +109,7 @@ module.exports = {
                 link: '/',
                 icon: 'reco-home'
             },
-            // 同上，可以设置成下拉的子选项
+            // 同上，但是还可以设置成有下拉功能的子选项
             {
                 text: '前端基础',
                 icon: "reco-category",
@@ -158,6 +160,7 @@ module.exports = {
                     { text: 'vuepress', link: '/Tools/vuepress' },
                     { text: 'vuepress 部署发布', link: '/Tools/vuepress部署' },
                     { text: 'vim 介绍', link: '/Tools/vim' },
+                    { text: 'Eslint 的使用和禁用', link: '/Tools/Eslint' },
                     { text: 'VScode配置文件', link: '/Tools/vscode' },
                 ],
             },
@@ -166,11 +169,15 @@ module.exports = {
                 items: [
                     { text: '项目总结', link: '/Project/shopingapp' },
                     { text: '学习内容', link: '/Other/' },
+                    { text: '知识点', link: '/Other/知识点' },
+                    { text: '问题', link: '/Other/问题' },
                     { text: 'token 是什么', link: '/Other/token' },
                     { text: '网站黑白', link: '/Other/网站黑白' },
                     { text: 'URI & URL', link: '/Other/URI&URL' },
                     { text: 'Apache 是什么', link: '/Other/Apache' },
                     { text: 'Nginx 是什么', link: '/Other/Nginx' },
+                    { text: 'error 的本质和处理', link: '/Other/error' },
+                    { text: '验证码 是什么', link: '/Other/验证码' },
                 ]
             },
             {
@@ -264,9 +271,9 @@ module.exports = {
             '/Node/': ['node1', 'node2', 'package'],
             '/Webpack/': ['webpack1', 'webpack2', 'webpackconfigjs'],
             '/Backend/': ['php'],//后端，暂未启用
-            '/Tools/': ['git', 'git2', 'yarn', 'npm', 'npm2', 'upgrade', 'cmd', 'nrm', 'regex', 'markdown', 'Trojan', 'typecho', '宝塔', 'vuepress', 'vuepress部署', 'vim', 'vscode'],
+            '/Tools/': ['git', 'git2', 'yarn', 'npm', 'npm2', 'upgrade', 'cmd', 'nrm', 'regex', 'markdown', 'Trojan', 'typecho', '宝塔', 'vuepress', 'vuepress部署', 'vim', 'Eslint', 'vscode'],
             '/Other/': [
-                '', '问题', '知识点', '验证码', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx'
+                '', '问题', 'error', '知识点', '验证码', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome'
             ],
         },
         // 友链

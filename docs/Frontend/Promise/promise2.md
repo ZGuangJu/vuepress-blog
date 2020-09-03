@@ -16,13 +16,28 @@ publish: true
     1. 从语法上讲，`promise`是一个构造函数
     2. 从功能上讲，`promise`对象用来封装一个异步操作，并可以获得其结果
 
+## Promise Api（语法）
+
 - 语法
+
 ```js
+// promise 构造函数
 new Promise( function(resolve, reject) {...} /* executor */  );
 ```
 - executor 构造函数Promise()的参数，又叫执行器函数。
 
-`executor`是带有 `resolve` 和 `reject` 两个参数的函数 。`Promise`构造函数执行时立即调用`executor` 函数， `resolve` 和 `reject` 两个函数作为参数传递给`executor`（`executor` 函数在Promise构造函数返回所建`promise`实例对象前被调用）。`resolve` 和 `reject` 函数被调用时，分别将`promise`的状态改为`fulfilled（完成）`或`rejected（失败）`。`executor` 内部通常会执行一些异步操作，一旦异步操作执行完毕(可能成功/失败)，要么调用`resolve`函数来将`promise`状态改成`fulfilled`，要么调用`reject` 函数将`promise`的状态改为`rejected`。如果在`executor`函数中抛出一个错误，那么该`promise` 状态为`rejected`。`executor`函数的返回值被忽略。
+    - executor函数：同步执行 （resolve,reject）=>{}
+
+    `executor`是带有 `resolve` 和 `reject` 两个参数的函数 。`Promise`构造函数执行时立即调用`executor` 函数（executor会在promise内部立即同步回调，异步操作会在执行器中执行）， `resolve` 和 `reject` 两个函数作为参数传递给`executor`（`executor` 函数在Promise构造函数返回所建`promise`实例对象前被调用）。
+
+    - resolve函数：内部定义成功时执行的函数 value => {}
+
+    - reject函数: 内部定义失败时执行的函数 reason => {}
+
+    `resolve` 和 `reject` 函数被调用时，分别将`promise`的状态改为`fulfilled（完成）`或`rejected（失败）`。
+
+`executor` 内部通常会执行一些异步操作，一旦异步操作执行完毕(可能成功/失败)，要么调用`resolve`函数来将`promise`状态改成`fulfilled`，要么调用`reject` 函数将`promise`的状态改为`rejected`。如果在`executor`函数中抛出一个错误，那么该`promise` 状态为`rejected`。`executor`函数的返回值被忽略。
+
 
 - 状态
 
@@ -49,6 +64,23 @@ new Promise( function(resolve, reject) {...} /* executor */  );
 
   Promise一旦新建就立刻执行, 此时的状态是Pending(进行中)
 :::
+
+- Promise.prototype.then方法：(onResoled,onRejected)=>{}
+
+```js
+p.then(onFulfilled[, onRejected]);
+
+p.then(value => {
+  // fulfillment
+}, reason => {
+  // rejection
+});
+```
+    onResolved函数：成功的回调函数 (value) => {}
+
+    onRejected函数：失败的回调函数 (reason) => {}
+
+    说明：指定用于得到value的成功回调和用于得到失败reason的失败回调
 
 ## promise 基础使用
 
@@ -133,7 +165,9 @@ new Promise( function(resolve, reject) {...} /* executor */  );
             promise.then(successCallback, failureCallback)
         }, 3000);
 ```
+
 回调地狱
+
 ```js
  // 2.1
         doSomething(function (result) {
@@ -146,6 +180,9 @@ new Promise( function(resolve, reject) {...} /* executor */  );
             }, failureCallback)
         }, failureCallback)
 ```
+
+解决回调地狱
+
 ```js
         // 2.2 使用promise的链式调用解决回调地狱
         doSomething().then(function (result) {
@@ -174,6 +211,7 @@ new Promise( function(resolve, reject) {...} /* executor */  );
             }
         }
 ```
+
 
 ## 英文释义：
 
