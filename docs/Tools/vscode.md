@@ -245,21 +245,94 @@ publish: true
 
 ```js
 {
-    /*﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋▼▼▼window﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋*/
+    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻windows设置开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
     // 窗口放大倍数
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 0.4,
     //标题栏上展示文件相对工作区根目录的“相对路径”。若文件不是当前工作区的，则会显示它的完整路径
-    // "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
-    /*﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋▼▼▼workbench﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋*/
-    // 隐藏最左侧的活动栏
-    "workbench.activityBar.visible": true, //true显示，false隐藏
-    // 快速打开文件时，关闭预览模式，直接打开文件
-    // "workbench.editor.enablePreviewFromQuickOpen": false,
-    // 隐藏 tab 栏文件名左侧的文件类型图标
-    // "workbench.editor.showIcons": false,
-    // VSCode图标主题
-    "workbench.iconTheme": "vscode-icons", //One Monokai
-    /*﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋颜色主题及配置﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋*/
+    // "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
+    // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺windows设置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻全局编辑器editor设置开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+    "editor.formatOnSave": true // 自动格式化
+    // "editor.minimap.showSlider": "always",// 一直显示滚动条
+    "editor.renderLineHighlight": "all", // 当前行对应的行号栏也高亮显示
+    "editor.cursorWidth": 2, // 光标宽度
+    "editor.cursorBlinking": "smooth", //??
+    // "editor.rulers": [80,100 ], // 每行输入字符长度提示线
+    //"editor.multiCursorModifier": "ctrlCmd",// 使用 ctrl | command | 多选
+    "editor.minimap.enabled": false, // 打开或关闭右侧迷你地图
+    "editor.wordWrap": "on", // ？？
+    "editor.fontWeight": "400", // 字体宽度
+    "editor.fontFamily": "Consolas", // 字体
+    "editor.fontSize": 20, // 字体大小
+    "editor.detectIndentation": false, // vscode默认启用了根据文件类型自动设置tabsize的选项
+    "editor.tabSize": 4, // 重新设定TABsize长度
+    //是否允许自定义的snippet片段提示 和 优先级
+    "editor.snippetSuggestions": "top",
+    // 平滑滚动
+    "editor.smoothScrolling": true,
+    // 禁止滚动到文件最后一行后还能继续滚动
+    "editor.scrollBeyondLastLine": false,
+    // 禁止连接文字可点击，取消下划线
+    // "editor.links": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    /*﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋编辑器颜色主题及配置﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋*/
+    // 自定义颜色
+    "editor.tokenColorCustomizations": {
+        //主题名
+        "[Panda Syntax]": {
+            "comments": {
+                // 设置字体样式 bold 加粗italic 斜体underline 下划线
+                "fontStyle": "bold",
+                // 设置字体颜色
+                "foreground": "#6EB6CF"
+            }, // 注释
+            "keywords": "#FFEB3B", // 关键字 26A69A#FFCA28
+            "variables": "#FF6F00", // 变量名
+            "strings": "#00b890", // 字符串2874A6/03A9F4/#03A9F4
+            "functions": "#14db02", // 函数名
+            "numbers": "#ff01ea", // 数字#ff01ea
+            "textMateRules": [
+                // {
+                //     "scope": "log,
+                //     "settings": {
+                //         "foreground": "#FF0000"
+                //     },
+                // }
+            ]
+        },
+        //主题名
+        "[One Dark Pro]": {
+            "comments": {
+                // 设置字体样式  bold 加粗  italic 斜体 underline 下划线
+                "fontStyle": "bold",
+                // 设置字体颜色
+                "foreground": "#6EB6CF"
+            }, // 注释
+            "keywords": "#FFEB3B", // 关键字 26A69A#FFCA28
+            "variables": "#FF6F00", // 变量名
+            "strings": "#00b890", // 字符串2874A6/03A9F4/#03A9F4
+            "functions": "#14db02", // 函数名
+            "numbers": "#ff01ea", // 数字#ff01ea
+            "textMateRules": [
+                // {
+                //     "scope": "log,
+                //     "settings": {
+                //         "foreground": "#FF0000"
+                //     },
+                // }
+            ]
+        }
+    },
+    // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺全局编辑器editor设置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻工作区workbench设置开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+    "workbench.activityBar.visible": true, // 隐藏最左侧的活动栏 true显示 | false隐藏
+    // "workbench.editor.enablePreviewFromQuickOpen": false,// 打开文件时，关闭预览模式，直接打开文件
+    // "workbench.editor.showIcons": false,// 隐藏 tab 栏文件名左侧的文件类型图标
+    "workbench.sideBar.location": "left", //导航栏位置
+    "workbench.colorTheme": "One Dark Pro", //颜色主题
+    "workbench.iconTheme": "material-icon-theme", // VSCode图标主题 | One Monokai
     "workbench.colorCustomizations": {
         //主题名
         "[Panda Syntax]": {
@@ -329,7 +402,7 @@ publish: true
             // "editorRuler.foreground": "#3f3f3f",
         },
         // 主题名
-        "[Bear Theme]": {
+        "[One Dark Pro]": {
             // ▼▼▼ 编辑区域背景﹋﹋﹋﹋﹋
             "editor.background": "#2E2E2E",
             // ▼▼▼ 侧边栏﹋﹋﹋﹋﹋
@@ -396,129 +469,46 @@ publish: true
             // "editorRuler.foreground": "#3f3f3f",
         },
     },
-    /*﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋▼▼▼"editor﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋*/
-    /*﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋颜色主题及配置结束﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋*/
-    // 自定义字体颜色
-    "editor.tokenColorCustomizations": {
-        //主题名
-        "[Bear Theme]": {
-            "comments": {
-                // 设置字体样式  bold 加粗  italic 斜体 underline 下划线
-                "fontStyle": "bold",
-                // 设置字体颜色
-                "foreground": "#6EB6CF"
-            }, // 注释
-            "keywords": "#FFEB3B", // 关键字 26A69A#FFCA28
-            "variables": "#FF6F00", // 变量名
-            "strings": "#00b890", // 字符串2874A6/03A9F4/#03A9F4
-            "functions": "#14db02", // 函数名
-            "numbers": "#ff01ea", // 数字#ff01ea
-            "textMateRules": [
-                // {
-                //     "scope": "log,
-                //     "settings": {
-                //         "foreground": "#FF0000"
-                //     },
-                // }
-            ]
-        },
-        //主题名
-        "[Panda Syntax]": {
-            "comments": {
-                // 设置字体样式 bold 加粗italic 斜体underline 下划线
-                "fontStyle": "bold",
-                // 设置字体颜色
-                "foreground": "#6EB6CF"
-            }, // 注释
-            "keywords": "#FFEB3B", // 关键字 26A69A#FFCA28
-            "variables": "#FF6F00", // 变量名
-            "strings": "#00b890", // 字符串2874A6/03A9F4/#03A9F4
-            "functions": "#14db02", // 函数名
-            "numbers": "#ff01ea", // 数字#ff01ea
-            "textMateRules": [
-                // {
-                //     "scope": "log,
-                //     "settings": {
-                //         "foreground": "#FF0000"
-                //     },
-                // }
-            ]
-        },
-        //主题名
-        "[One Dark Pro]": {
-            "comments": {
-                // 设置字体样式  bold 加粗  italic 斜体 underline 下划线
-                // "fontStyle": "bold",
-                // 设置字体颜色
-                "foreground": "#6EB6CF"
-            }, // 注释
-            "keywords": "#FFEB3B", // 关键字 26A69A#FFCA28
-            "variables": "#FF6F00", // 变量名
-            "strings": "#00b890", // 字符串2874A6/03A9F4/#03A9F4
-            "functions": "#14db02", // 函数名
-            "numbers": "#ff01ea", // 数字#ff01ea
-            "textMateRules": [
-                // {
-                //     "scope": "log,
-                //     "settings": {
-                //         "foreground": "#FF0000"
-                //     },
-                // }
-            ]
-        }
+    // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺工作区workbench设置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于eslint插件配置🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+    "eslint.enable": false, //忽略全部文件检查，即禁止eslint
+    // eslint配置文件
+    "eslint.options": {
+        "extensions": [
+            ".js",
+            ".vue",
+            ".html", //???
+        ]
     },
-    // 一直显示滚动条
-    // "editor.minimap.showSlider": "always",
-    // 当前行对应的行号栏也高亮显示
-    "editor.renderLineHighlight": "all",
-    // 光标宽度
-    "editor.cursorWidth": 2,
-    "editor.cursorBlinking": "smooth",
-    // 每行输入字符长度提示线
-    // "editor.rulers": [80,100 ],
-    // 使用 ctrl 或 command 多选
-    //"editor.multiCursorModifier": "ctrlCmd",
-    // 打开或关闭右侧迷你地图
-    "editor.minimap.enabled": false, //true|false
-    // ？
-    "editor.formatOnType": true,
-    // ？
-    "editor.wordWrap": "on",
-    // 字体宽度
-    "editor.fontWeight": "400",
-    // 字体
-    "editor.fontFamily": "Consolas",
-    // 字体大小
-    "editor.fontSize": 20,
-    // vscode默认启用了根据文件类型自动设置tabsize的选项
-    "editor.detectIndentation": false,
-    // 重新设定TABsize长度
-    "editor.tabSize": 4,
-    //**是否允许自定义的snippet片段提示*
-    // "editor.snippetSuggestions": "top",
-    // 平滑滚动
-    "editor.smoothScrolling": true,
-    // 禁止滚动到文件最后一行后还能继续滚动
-    "editor.scrollBeyondLastLine": false,
-    // 禁止连接文字可点击，取消下划线
-    // "editor.links": false,
-    // 以下几个功能未知
-    // "editor.renderWhitespace": "boundary",
-    // "editor.cursorBlinking": "smooth",
-    // "editor.minimap.enabled": true,
-    // "editor.minimap.renderCharacters": false,
-    /*﹋﹋﹋﹋﹋﹋﹋▼▼▼关于Manta's Stylus Supremacy插件的﹋﹋﹋﹋﹋﹋﹋*/
-    //格式化stylus, 需安装Manta's Stylus Supremacy插件
-    // "stylusSupremacy.insertColons": false, // 是否插入冒号
-    // "stylusSupremacy.insertSemicolons": false, // 是否插入分好
-    // "stylusSupremacy.insertBraces": false, // 是否插入大括号
-    // "stylusSupremacy.insertNewLineAroundImports": false, // import之后是否换行
-    // "stylusSupremacy.insertNewLineAroundBlocks": false,
-    /*﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋▼▼▼files﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋*/
+    //配置 ESLint 检查的文件类型  / 添加vue支持
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "html",
+        "html5",
+        "vue",
+        "vue-html",
+        {
+            "language": "vue",
+            "autoFix": true
+        },
+        {
+            "language": "html",
+            "autoFix": true
+        },
+    ],
+    //保存时eslint自动修复错误/是否根据eslint进行格式化
+    "eslint.autoFixOnSave": true,
+    // 是否开启eslint检测
+    // "eslint.enable": true,
+    // exlint 运行的时候： 保存时
+    //  "eslint.run": "onSave",
+    // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺全局编辑器eslint设置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于files配置开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
     // 保存文件时，去除行尾空格
     "files.trimTrailingWhitespace": true,
     // 自动保存的条件
-    "files.autoSave": "onFocusChange",
+    "files.autoSave": "onWindowChange",
     //根据文件后缀名定义vue文件类型 /根据文件后缀名定义vue等文件类型
     "files.associations": {
         "*.vue": "vue",
@@ -542,18 +532,24 @@ publish: true
     //     "**/bower_components": true,
     //     "**/dist": true
     // },
-    /*﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋▼▼▼terminal﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋*/
+    // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺关于files配置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于terminal配置🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
     // terminal 光标样式
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.cursorStyle": "line",
-    /*﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋▼▼▼关于prettier插件的﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋*/
+    // VSCode 中的终端使用什么的是什么shell
+    // "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7-preview\\pwsh.exe",
+    // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺关于terminal结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于prettier插件配置开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
     // 让prettier使用eslint的代码格式进行校验 
-    "prettier.eslintIntegration": true,
+    // "prettier.eslintIntegration": true,
     // 去掉代码结尾的分号 
-    "prettier.semi": false,
+    // "prettier.semi": false,
     //js使用单引号(暂时禁用了)
-    "prettier.singleQuote": true,
-    /*﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋▼▼▼关于emmet插件的﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋*/
+    // "prettier.singleQuote": true,
+    // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺关于prettier插件配置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于emmet插件配置开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
     // // 配置emmet是否启用tab展开缩写
     // "emmet.triggerExpansionOnTab": true,
     // // 配置emmet对文件类型的支持
@@ -562,8 +558,12 @@ publish: true
     //     "vue": "html",
     //     "vue-html": "html"
     // },
-    // ****************eslint 开始************************
-    /*﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋▼▼▼关于vetur插件的﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋*/
+    //?
+    "emmet.includeLanguages": {
+        "wxml": "html"
+    },
+    // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺关于emmet插件配置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于vetur插件开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
     //****vue文件template格式化支持，并使用js-beautify-html插件******
     //让vue中的js按编辑器自带的ts格式进行格式化 
     "vetur.format.defaultFormatter.js": "vscode-typescript",
@@ -577,49 +577,23 @@ publish: true
         }
     },
     //注：Vetur自带了格式化，规范就是使用prettier如果你有装prettier插件，并且在设置或setting.json里配置了prettier的话是无效的
-    /*﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋▼▼▼关于eslint插件的﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋*/
-    //******忽略全部文件检查，即禁止eslint******
-    "eslint.enable": false,
-    // eslint配置文件
-    "eslint.options": {
-        "extensions": [
-            ".js",
-            ".vue",
-            ".html", //???
-        ]
-    },
-    //配置 ESLint 检查的文件类型  /添加vue支持
-    "eslint.validate": [
-        "javascript",
-        "javascriptreact",
-        "html",
-        "html5",
-        "vue",
-        "vue-html",
-        {
-            "language": "vue",
-            "autoFix": true
-        },
-        {
-            "language": "html",
-            "autoFix": true
-        },
-    ],
-    //保存时eslint自动修复错误/是否根据eslint进行格式化
-    "eslint.autoFixOnSave": true,
-    //保存自动格式化
-    "editor.formatOnSave": true,
-    // 是否开启eslint检测
-    // "eslint.enable": true,
-    // exlint 运行的时候： 保存时
-    //  "eslint.run": "onSave",
-    /*﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋▼▼▼﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋*/
-    // 关于react的？？？？？
-    "[javascriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
+    // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺关于vetur插件结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于Easy Sass插件开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+    // "easysass.formats": [
+    //     {
+    //         "format": "compressed", // 压缩
+    //         "extension": ".css"
+    //     }
+    // ],
+    // "easysass.targetDir": "./", // 自定义css输出文件路径
+    // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺关于Easy Sass插件结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻其他🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+    // 关于react的prettier校验 ？？？？？
+    // "[javascriptreact]": {
+    // "editor.defaultFormatter": "esbenp.prettier-vscode"
+    // },
     "[javascript]": {
-        // ?
+        // 自动保存
         // "editor.formatOnSave": true,
         // 如果报错，用第二个
         "editor.defaultFormatter": "vscode.typescript-language-features",
@@ -628,52 +602,40 @@ publish: true
     "[jsonc]": {
         //需要HookyQR.beautify插件
         // "editor.defaultFormatter": "HookyQR.beautify",
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        // "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[html]": {
         "editor.defaultFormatter": "vscode.html-language-features"
     },
-    // 关于markdown的？？？？？？
-    "[markdown]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    // ****************eslint 结束************************
-    /*﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋Sass设置﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋*/
-    /** Easy Sass 插件 **/
-    "easysass.formats": [
-        {
-            "format": "compressed", // 压缩
-            "extension": ".css"
-        }
-    ],
-    // "easysass.targetDir": "./", // 自定义css输出文件路径
-    /*﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋▼▼▼其他﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋*/
+    // 关于markdown的 prettier校验
+    // "[markdown]": {
+    // "editor.defaultFormatter": "esbenp.prettier-vscode"
+    // },
     "cssrem.rootFontSize": 75,
-    //?
-    "emmet.includeLanguages": {
-        "wxml": "html"
-    },
-    //让函数名和后面的括号之间加个空格 （无效）
+    //让函数名和后面的括号之间加个空格 （无效或冲突）
     // "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
-    //？
+    //
     // "minapp-vscode.disableAutoConfig": true,
     //?
-    "vsicons.dontShowNewVersionMessage": true,
-    // VSCode 中的终端使用什么的是什么shell
-    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-    // 隐藏左侧边栏上的 OpenEditors打开的编辑器
+    // 隐藏左侧边栏上的 OpenEditors 打开的编辑器
     "explorer.openEditors.visible": 1,
-    "minapp-vscode.disableAutoConfig": true,
     "explorer.confirmDelete": false,
-    "workbench.sideBar.location": "left",
-    "workbench.colorTheme": "Panda Syntax",
     "explorer.confirmDragAndDrop": false,
-    "git.autofetch": true, //0|1
+    "git.autofetch": true,
+    "tabnine.experimentalAutoImports": true,
+    "php.validate.executablePath": "",
+    "settingsSync.ignoredExtensions": [],
+    "vsicons.dontShowNewVersionMessage": true,
+    "todo-tree.tree.showScanModeButton": false,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    // "php.validate.executablePath": "1", //0|1
     //  "guides.enabled": false,
     //  "git.confirmSync": false,
     // gitee备份命令 输入giteeID(无效果)
-    // "gitee.gist": "4qwlobruja60fcnhdv25t11",
+    // "gitee.gist": "",
     // gitee备份 输入torken值
-    // "gitee.access_token": "9d4aabc67430fd2f150f6de8ccc292c7"
+    // "gitee.access_token": ""
 }
 ```

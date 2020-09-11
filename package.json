@@ -1,7 +1,7 @@
 {
-    "name": "blog",
+    "name": "blog-vuepress",
     "version": "1.1.3",
-    "description": "简化config文件结构，reco主题+自定义样式",
+    "description": "reco主题+自定义样式",
     "main": "index.js",
     "scripts": {
         "blog": "vuepress dev docs",

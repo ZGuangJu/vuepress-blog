@@ -8,70 +8,78 @@
 </head>
 
 <body>
+    <div>
+        <div>
+            <div>
+                <div>function () {
+                    d
+                    }</div>
+                <div></div>
+            </div>
+        </div>
+    </div>
     <script>
-        // 成功的回调函数
-        function successCallback(result) {
-            console.log('创建成功' + result);
-        }
-        // 失败的回调函数
-        function failureCallback(error) {
-            console.log('创建失败' + error)
-        }
-        // 1.1 使用纯回调函数
-        createAudioAsync(audioSettings, successCallback, failureCallback)
-        // 1.2 使用promise
-        const promise = createAudioAsync(audioSettings);
-        setTimeout(() => {
-            promise.then(successCallback, failureCallback)
-        }, 3000);
 
-        // 2.1 回调地狱
-        doSomething(function (result) {
-            doSomething(result, function (newResult) {
-                doThirdThing(newResult, function (finalResult) {
-                    console.log('got the final result:' + finalResult);
-                }, failureCallback)
-            }, failureCallback)
-        }, failureCallback)
-        // 2.2 使用promise的链式调用解决回调地狱
-        doSomething().then(function (result) {
-            return doSomething(result)
-        })
-            .then(function (newResult) {
-                return doThirdThing(newResult)
-            })
-            .then(function (newResult) {
-                return doThirdThing(newResult)
-            })
-            .then(function (finalResult) {
-                console.log('got the final result:' + finalResult);
-            })
-            .catch(failureCallback)
-        // 2.3 async / await 回调地狱的终极解决方案
-        async function request() {
-            try {
-                const result = await doSomething();
-                const newResult = await doSomethingElse(result);
-                const finalResult = await doThirdThing(newResult)
-                console.log('got the final result:' + finalResult);
-            } catch (err) {
-                failureCallback(err)
-            }
-        }
-        // setTimeout(function () { console.log(1); }, 1000);
-        // setTimeout(function () { console.log(2); }, 2000);
-        // setTimeout(function () { console.log(3); }, 3000);
-        // setTimeout(() => {
-        //     console.log(1);
+        // const p = new Promise((resolve, reject) => {
+        //     throw 3
+
+
+
+
+
+
+
+        // })
+        // p.then(
+        //     value => { },
+        //     reason => { console.log('reason1' + reason); }
+        // )
+        // p.then(
+        //     value => { },
+        //     reason => { console.log('reason2' + reason); }
+        // )
+        // 常规：先指定回调，再改变状态
+        // new Promise((resolve, reject) => {
         //     setTimeout(() => {
-        //         console.log(2);
-        //         setTimeout(() => {
-        //             console.log(3);
-        //         }, 3000);
-        //     }, 2000);
-        // }, 1000);
+        //         resolve(1) // 2.后改变的状态（同时指定数据），异步执行回调函数
+        //     }, 1000);
+        // }).then( //1.先指定的函数，保存当前指定的回调函数
+        //     value => { },
+        //     reason => { console.log('reason', reason); })
+        // 先改状态，再指定回调
+        // 方法一
+        // new Promise((resolve, reject) => {
+        //     resolve(1) // 1.先改变的状态（同时指定数据），异步执行回调函数
+        // }).then( //2.后指定的函数，保存当前指定的回调函数
+        //     value => { console.log('value2', value); },
+        //     reason => { console.log('reason2', reason); })
+        // console.log('-------');
+        // 方法二
+        // const p = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         resolve(1) // 1.先改变的状态（同时指定数据），异步执行回调函数
+        //     }, 1000);
+        // })
+        // setTimeout(() => {
+        //     p.then( //2.后指定的函数，保存当前指定的回调函数
+        //         value => { console.log('value3', value); },
+        //         reason => { console.log('reason3', reason); })
+        // }, 1100);//设置的定时器比上面的异步回调时间长即可
 
 
+        new Promise((resolve, reject) => {
+            // resolve(1)
+            reject(2)
+        }).then(
+            value => { console.log('onResolved1--' + value); },
+            reason => { console.log('onRejcected1--' + reason); }
+        ).then(
+            value => { console.log('onResolved2--' + value); },
+            reason => { console.log('onRejcected2--' + reason); }
+        )
+        // 第一次.then()执行后会返回一个新的promise对象，这个新对象的结果和第一次.then()的结果是成功还是失败一样。
+        // （2）详细表述：
+                // a
     </script>
 </body>
 
