@@ -10,6 +10,7 @@ publish: true
 ---
 
 ## 自定义代码片段
+
 ```js
 {
     // Place your 全局 snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
@@ -251,23 +252,19 @@ publish: true
     //标题栏上展示文件相对工作区根目录的“相对路径”。若文件不是当前工作区的，则会显示它的完整路径
     // "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
     // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺windows设置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+    // 自动格式化
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
     // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻全局编辑器editor设置开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
-    "editor.formatOnSave": true // 自动格式化
-    // "editor.minimap.showSlider": "always",// 一直显示滚动条
+    // "editor.minimap.showSlider": "always", // 一直显示滚动条
     "editor.renderLineHighlight": "all", // 当前行对应的行号栏也高亮显示
-    "editor.cursorWidth": 2, // 光标宽度
-    "editor.cursorBlinking": "smooth", //??
-    // "editor.rulers": [80,100 ], // 每行输入字符长度提示线
-    //"editor.multiCursorModifier": "ctrlCmd",// 使用 ctrl | command | 多选
-    "editor.minimap.enabled": false, // 打开或关闭右侧迷你地图
+    "editor.cursorWidth": 3, // 光标宽
     "editor.wordWrap": "on", // ？？
     "editor.fontWeight": "400", // 字体宽度
     "editor.fontFamily": "Consolas", // 字体
     "editor.fontSize": 20, // 字体大小
     "editor.detectIndentation": false, // vscode默认启用了根据文件类型自动设置tabsize的选项
-    "editor.tabSize": 4, // 重新设定TABsize长度
-    //是否允许自定义的snippet片段提示 和 优先级
-    "editor.snippetSuggestions": "top",
+    "editor.tabSize": 4,
     // 平滑滚动
     "editor.smoothScrolling": true,
     // 禁止滚动到文件最后一行后还能继续滚动
@@ -378,7 +375,7 @@ publish: true
             // 当前编辑行
             "editor.lineHighlightBackground": "#32363d",
             // 行号栏的当前行
-            "editorActiveLineNumber.foreground": "#ffec3e",
+            "editorLineNumber.activeForeground": "#ffec3e",
             // 行号
             // "editorLineNumber.foreground": "#274c5e",
             // 单击一个词时，其它相同单词
@@ -445,7 +442,7 @@ publish: true
             // 当前编辑行
             "editor.lineHighlightBackground": "#32363d",
             // 行号栏的当前行
-            "editorActiveLineNumber.foreground": "#ffec3e",
+            "editorLineNumber.activeForeground": "#ffec3e",
             // 行号
             // "editorLineNumber.foreground": "#274c5e",
             // 单击一个词时，其它相同单词
@@ -481,24 +478,25 @@ publish: true
         ]
     },
     //配置 ESLint 检查的文件类型  / 添加vue支持
-    "eslint.validate": [
-        "javascript",
-        "javascriptreact",
-        "html",
-        "html5",
-        "vue",
-        "vue-html",
-        {
-            "language": "vue",
-            "autoFix": true
-        },
-        {
-            "language": "html",
-            "autoFix": true
-        },
-    ],
+    // "eslint.validate": [
+    //     "javascript",
+    //     "javascriptreact",
+    //     "html",
+    //     "html5",
+    //     "vue",
+    //     "vue-html",
+    //     {
+    //         "language": "vue",
+    //         "autoFix": true
+    //     },
+    //     {
+    //         "language": "html",
+    //         "autoFix": true
+    //     },
+    // ],
     //保存时eslint自动修复错误/是否根据eslint进行格式化
-    "eslint.autoFixOnSave": true,
+    // "eslint.autoFixOnSave": true,//弃用
+    "eslint.codeActionsOnSave.mode": "problems", // all | problems
     // 是否开启eslint检测
     // "eslint.enable": true,
     // exlint 运行的时候： 保存时
@@ -589,12 +587,12 @@ publish: true
     // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺关于Easy Sass插件结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
     // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻其他🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
     // 关于react的prettier校验 ？？？？？
-    // "[javascriptreact]": {
-    // "editor.defaultFormatter": "esbenp.prettier-vscode"
-    // },
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
     "[javascript]": {
         // 自动保存
-        // "editor.formatOnSave": true,
+        "editor.formatOnSave": true,
         // 如果报错，用第二个
         "editor.defaultFormatter": "vscode.typescript-language-features",
         // "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -602,14 +600,14 @@ publish: true
     "[jsonc]": {
         //需要HookyQR.beautify插件
         // "editor.defaultFormatter": "HookyQR.beautify",
-        // "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[html]": {
-        "editor.defaultFormatter": "vscode.html-language-features"
+        "editor.defaultFormatter": "vscode.html-language-features",
     },
     // 关于markdown的 prettier校验
     // "[markdown]": {
-    // "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     // },
     "cssrem.rootFontSize": 75,
     //让函数名和后面的括号之间加个空格 （无效或冲突）
@@ -625,17 +623,25 @@ publish: true
     "tabnine.experimentalAutoImports": true,
     "php.validate.executablePath": "",
     "settingsSync.ignoredExtensions": [],
-    "vsicons.dontShowNewVersionMessage": true,
-    "todo-tree.tree.showScanModeButton": false,
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "editor.formatOnType": true,
+    // "vsicons.dontShowNewVersionMessage": true,
+    // "todo-tree.tree.showScanModeButton": false,
     // "php.validate.executablePath": "1", //0|1
     //  "guides.enabled": false,
     //  "git.confirmSync": false,
     // gitee备份命令 输入giteeID(无效果)
-    // "gitee.gist": "",
+    // "gitee.gist": "4qwlobruja60fcnhdv25t11",
     // gitee备份 输入torken值
-    // "gitee.access_token": ""
+    // "gitee.access_token": "9d4aabc67430fd2f150f6de8ccc292c7"
+    "editor.cursorSmoothCaretAnimation": true,
+    "editor.cursorSurroundingLines": 3,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.minimap.size": "fill",
+    "editor.suggest.localityBonus": true,
+    "editor.suggest.maxVisibleSuggestions": 10,
+    "editor.suggest.shareSuggestSelections": true,
+    "editor.suggestFontSize": 18,
+    "editor.suggestLineHeight": 22,
+    "files.autoSaveDelay": 500,
+    "editor.cursorBlinking": "solid",
 }
 ```

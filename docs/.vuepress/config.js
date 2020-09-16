@@ -227,7 +227,7 @@ module.exports = {
                 {
                     title: 'Promise',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['Promise/promise', 'Promise/promise2']
+                    children: ['Promise/promise', 'Promise/promise2', 'Promise/promise3']
                 },
                 {
                     title: 'JQuery',

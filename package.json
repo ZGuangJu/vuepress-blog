@@ -1,7 +1,7 @@
 {
     "name": "blog-vuepress",
-    "version": "1.1.3",
-    "description": "reco主题+自定义样式",
+    "version": "1.1.4",
+    "description": "升级reco主题+自定义样式",
     "main": "index.js",
     "scripts": {
         "blog": "vuepress dev docs",
@@ -15,9 +15,9 @@
     "devDependencies": {
         "@vuepress-reco/vuepress-plugin-kan-ban-niang": "^1.0.5",
         "@vuepress-yard/vuepress-plugin-window": "^1.0.10",
-        "vuepress": "^1.5.3"
+        "vuepress": "^1.5.4"
     },
     "dependencies": {
-        "vuepress-theme-reco": "^1.5.5"
+        "vuepress-theme-reco": "^1.5.7"
     }
 }

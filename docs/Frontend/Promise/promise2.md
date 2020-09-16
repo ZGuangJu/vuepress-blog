@@ -5,7 +5,6 @@ sidebar: 'auto'
 tags:
  - Promise
 publish: true
-
 ---
 
 ## Promise 是什么
@@ -338,115 +337,6 @@ p.then(value => {
         // 结果为 2
 ```
 
-## Promise的关键问题
-
-1. 如果改变`promise`的状态？
-    - resolve(value):如果当前状态为pending 则改变为resolved
-    - reject(reason):如果当前状态为pending 则改变为rejected
-    - 抛出异常：如果当前是pending 则改变为rejected
-
-```js
-        const p = new Promise((resolve, reject) => {
-            // resolve(1); //成功 promise 改变为resolved状态
-            // reject(2); //失败 promise 改变为rejected状态
-            // throw new Error('错误'); //抛出异常 同样为失败 rejected状态 reason为抛出的 error
-        })
-        console.log(p); // 打印实例对象，看状态
-
-        // 抛出其他值
-const p = new Promise((resolve, reject) => {
-            throw 3
-        })
-        // 输出结果
-        p.then(
-            value => { },
-            reason => { console.log('reason1'+reason); }
-        )
-```
-
-2. 一个`promise`对象指定多个成功或失败回调函数，都会调用吗？
-
-当promise改变为对应状态是都会调用
-
-```js
-        // 成功和失败同理
-        const p = new Promise((resolve, reject) => {
-            throw 3
-        })
-        p.then(
-            value => { },
-            reason => { console.log('reason1' + reason); }
-        )
-        p.then(
-            value => { },
-            reason => { console.log('reason2' + reason); }
-        )
-```
-
-3. 改变`promise`状态和执行回调函数，谁先谁后？
-
-都有可能，正常情况下是先指定回调函数在改变状态，但也可以先改变状态再指定回调函数。
-
-- 如何先改状态再指定回调
-
-  - 在执行器中直接掉用`resolve()`和`reject()`方法
-
-  - 延迟更长时间再调用`then()
-
-```js
-        // 常规：先指定回调，再改变状态
-        new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(1) // 2.后改变的状态（同时指定数据），异步执行回调函数
-            }, 1000);
-        }).then( //1.先指定的函数，保存当前指定的回调函数
-            value => { },
-            reason => { console.log('reason', reason); })
-        // 先改状态，再指定回调
-        // 方法一
-        new Promise((resolve, reject) => {
-            resolve(1) // 1.先改变的状态（同时指定数据），异步执行回调函数
-        }).then( //2.后指定的函数，保存当前指定的回调函数
-            value => { console.log('value2', value); },
-            reason => { console.log('reason2', reason); })
-        // 方法二
-        const p = new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(1) // 1.先改变的状态（同时指定数据），异步执行回调函数
-            }, 1000);
-        })
-        setTimeout(() => {
-            p.then( //2.后指定的函数，保存当前指定的回调函数
-                value => { console.log('value3', value); },
-                reason => { console.log('reason3', reason); })
-        }, 1100);//设置的定时器比上面的异步回调时间长即可
-```
-
-- `.then`和它里的的回调函数是两回事`.then()`会同步执行，但它内部的`value=>{}`,`reason=>{}`是异步执行的
-
-```js
-        .then(
-            value => { console.log('value', value); },
-            reason => { console.log('reason', reason); })
-```
-
-4. `promise.then()`返回的新`promise`对象的结果状态有什么决定？
-    （1）简单表述：由`then()`指定的回调函数-执行的结果-决定。
-
-```js
-    new Promise((resolve, reject) => {
-            // resolve(1)
-            reject(2)
-        }).then(
-            value => { console.log('onResolved1--' + value); },
-            reason => { console.log('onRejcected1--' + reason); }
-        ).then(
-            value => { console.log('onResolved2--' + value); },
-            reason => { console.log('onRejcected2--' + reason); }
-        )
-        // 第一次.then()执行后会返回一个新的promise对象，这个新对象的结果和第一次.then()的结果是成功还是失败一样。
-```
-
 ## 英文释义
 
   `resolved` adj:下定决心的,解决
@@ -457,6 +347,6 @@ const p = new Promise((resolve, reject) => {
 
   `reason` adj:原因,理由
 
-  `race` adj:最快的项
+  `race` adj:**最快的项**
 
   `throw` adj:抛出

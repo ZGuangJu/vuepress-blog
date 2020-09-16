@@ -9,26 +9,12 @@
 
 <body>
     <div>
-        <div>
-            <div>
-                <div>function () {
-                    d
-                    }</div>
-                <div></div>
-            </div>
-        </div>
+        <div></div>
     </div>
     <script>
 
         // const p = new Promise((resolve, reject) => {
         //     throw 3
-
-
-
-
-
-
-
         // })
         // p.then(
         //     value => { },
@@ -67,19 +53,121 @@
         // }, 1100);//设置的定时器比上面的异步回调时间长即可
 
 
+        // new Promise((resolve, reject) => {
+        //     // resolve(1)
+        //     reject(1)
+        // }).then(
+        //     value => {
+        //         console.log('onResolved1--' + value);
+        //         // return 2 // 直接 return 一个值
+        //         // return Promise.resolve(2)//成功状态值为2的Promise对象
+        //         // return Promise.reject(2)//失败状态值为3的Promise对象
+        //         // throw 5
+        //     },
+        //     reason => {
+        //         console.log('onRejcected1--' + reason);
+        //         // return Promise.resolve(2)//成功状态值为2的Promise对象
+        //         // return Promise.reject(3)//失败状态值为3的Promise对象
+        //         // throw 5
+
+        //     }
+        // ).then(
+        //     value => {
+        //         console.log('onResolved2--' + value);
+        //     },
+        //     reason => {
+        //         console.log('onRejcected2--' + reason);
+        //     }
+        // )
+
+        // new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         console.log('执行任务1-异步');
+        //         resolve(1)
+        //     }, 1000);
+        // }).then(
+        //     value => {
+        //         console.log('任务1的结果', value);
+        //         console.log('执行任务2--同步');
+        //         return 2
+        //     }
+        // ).then(
+        //     value => {
+        //         console.log('任务2的结果', value);
+        //         return new Promise((resolve, reject) => {
+        //             setTimeout(() => {
+        //                 console.log('执行任务3--异步');
+        //                 resolve(3);
+        //             }, 1000);
+        //         })
+        //     }
+        // ).then(value => {
+        //     console.log('任务3的结果', value);
+        // })
+
+        // new Promise((resolve, reject) => {
+        //     resolve(1)
+        //     reject(2)
+        // }).then(
+        //     value => {
+        //         console.log('onResolved-成功', value);
+        //         // return Promise.resolve(3)
+        //         // return Promise.reject(3)
+        //         throw 3
+        //     },
+        //     reason => {
+        //         console.log('onRejected-失败', reason);
+        //         // return Promise.resolve(3)
+        //         // return Promise.reject(3)
+        //         // throw 3
+        //     }
+        // ).then(
+        //     value => {
+        //         console.log('onResolved-成功', value);
+        //     },
+        //     reason => {
+        //         console.log('onRejected-失败', reason);
+        //     }
+        // )
         new Promise((resolve, reject) => {
             // resolve(1)
             reject(2)
         }).then(
-            value => { console.log('onResolved1--' + value); },
-            reason => { console.log('onRejcected1--' + reason); }
+            value => {
+                console.log('onResolved', value);
+            },
+            reason => { throw reason }
         ).then(
-            value => { console.log('onResolved2--' + value); },
-            reason => { console.log('onRejcected2--' + reason); }
+            value => {
+                console.log('onResolved', value);
+            },
+            reason => { throw reason }
+        ).then(
+            value => {
+                console.log('onResolved', value);
+
+            },
+
+            reason => Promise.reject(reason)
+        ).catch(
+            reason => {
+                console.log('onRejected', reason);
+                // throw reason
+                // return Promise.reject(reason);
+                // 没有throw reason 或者 return Promise.reject(reason) 下一个.then()的值是 resolve ：undefined ，因为返回值是 undefined
+                //
+                // 中断执行链式调用
+                //返回一个新的状态为pending的promise对象即可
+                return new Promise(() => { })
+            }
+        ).then(
+            value => {
+                console.log('onResolved2', value);
+            },
+            reason => {
+                console.log('onRejected2', reason);
+            }
         )
-        // 第一次.then()执行后会返回一个新的promise对象，这个新对象的结果和第一次.then()的结果是成功还是失败一样。
-        // （2）详细表述：
-                // a
     </script>
 </body>
 
