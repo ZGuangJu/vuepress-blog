@@ -10,7 +10,7 @@ publish: true
 ---
 
 :::tip 介绍
-yarn 是 facebook 发明的新一代 js 包管理器,和npm一样的依赖包管理器,支持离线使用.[这是 npm 与 yarn 的 命令对照](https://classic.yarnpkg.com/zh-Hans/docs/migrating-from-npm)
+`yarn` 是 `facebook` 发明的新一代 `js` 包管理器,和`npm`一样的依赖包管理器,支持离线使用.[这是 npm 与 yarn 的 命令对照](https://classic.yarnpkg.com/zh-Hans/docs/migrating-from-npm)
 
 :::
 
@@ -19,7 +19,8 @@ yarn 是 facebook 发明的新一代 js 包管理器,和npm一样的依赖包管
 ## 安装
 
 ----
-- [下载](https://classic.yarnpkg.com/zh-Hans/docs/install/#windows-stable)安装包
+
+- [下载](https://classic.yarnpkg.com/zh-Hans/docs/install/#windows-stable)安装包 安装
 
 下载后运行软件，安装
 
@@ -31,24 +32,71 @@ yarn 是 facebook 发明的新一代 js 包管理器,和npm一样的依赖包管
 choco install yarn
 ```
 
-- 通过 Scoop 安装（类似Chocolatey）
+- 通过 `Scoop` 安装（类似Chocolatey）
 
 ```js
 scoop install yarn
 ```
+
+- 使用 `npm` 安装
+
+```js
+npm install -g yarn
+```
+
 ### 验证
 
 - 在命令行里运行
+
 ```js
 yarn -v   /   yarn --version
 ```
+
+- 卸载`yarn`
+
+```js
+❯ npm uninstall -g yarn
+```
+
+- 升级最新版本
+
+```js
+npm install -g yarn@latest
+```
+
+- 升级至最新的发布版本 - 大众
+
+```js
+yarn set version latest
+```
+
+- 安装 `yarn 2`
+
+```js
+npm install -g yarn@berry
+```
+
+工程中升级为Yarn 2
+
+```js
+yarn --version # A
+
+# 上面A行得到的版本如果是1.22+
+yarn set version berry # B1
+
+# 上面A行得到的版本如果低于1.22
+yarn policies set-version berry # B2
+```
+
+[yarn 2 的安装和使用](https://blog.csdn.net/u010730126/article/details/107857940)
+
 显示版本号，证明安装成功。
 
 ## Yarn 常用命令
 
 yarn的一些常见命令。
 
-- 初始化包(等价于npm init)
+- 初始化包(等价于`npm init`)
 
 ```js
 yarn init
@@ -74,7 +122,8 @@ yarn add --optional  //添加到 optionalDependencies
 yarn add [package]@[version]
 yarn add [package]@[tag]
 ```
-注：[version] 或 [tag] 会被添加到 package.json，并在安装依赖时被解析。
+
+注：[version] 或 [tag] 会被添加到 `package.json`，并在安装依赖时被解析。
 
 - 从当前包里移除包。
 
@@ -82,7 +131,7 @@ yarn add [package]@[tag]
 yarn remove [packagename]
 ```
 
-- 安装package.json 文件里定义的所有依赖包；
+- 安装`package.json` 文件里定义的所有依赖包；
 
 ```js
 yarn install  /   yarn i
@@ -93,14 +142,17 @@ yarn install  /   yarn i
 ```js
 yarn publish [name]
 ```
+
 - 项目中升级依赖包
 
-1.  `yarn upgrade-interactive --latest`命令（亲测无效，不能更新package.json中的版本，可以更新yarn.lock中的版本）
+1.  `yarn upgrade-interactive --latest`命令（亲测无效，不能更新`package.json`中的版本，可以更新yarn.lock中的版本）
 
 ```js
 yarn upgrade-interactive --latest
 ```
+
 输出结果
+
 ```js
 info Color legend :
  "<red>"    : Major Update backward-incompatible updates
@@ -115,6 +167,7 @@ info Color legend :
    name                 range   from      to     url
  ( ) vuepress-theme-reco  latest  1.4.7  ❯  1.5.5  https://vuepress-theme-reco.recoluan.com
 ```
+
 需要手动选择升级的依赖包，按空格键选择，a 键切换所有，i 键反选选择
 
 2. 指定版本号，这种方法会在 `package.json` 文件中限定包的版本
@@ -123,7 +176,7 @@ info Color legend :
 yarn upgrade [package-name]@x.x.x
 ```
 
-3. 使用 `npm-check-updates` 升级（亲测无效，不能更新package.json中的版本，可以更新yarn.lock中的版本）
+3. 使用 `npm-check-updates` 升级（亲测无效，不能更新package.json中的版本，可以更新`yarn.lock`中的版本）
 
 ```js
 // 先下载
@@ -134,15 +187,9 @@ ncu --upgrade --upgradeAll && yarn upgrade
 
 ### 默认命令
 
-执行不带任何命令的yarn，等同于执行yarn install，并透传所有参数。
+执行不带任何命令的`yarn`，等同于执行`yarn install`，并透传所有参数。
 
 ### 其他命令
-
-- 升级最新版本
-
-```js
-npm install yarn@latest -g
-```
 
 - 查看yarn历史版本
 
@@ -150,7 +197,7 @@ npm install yarn@latest -g
 npm view yarn versions
 ```
 
-- 升级指定版本的yarn （例：升级到1.22.4版本）
+- 升级指定版本的`yarn` （例：升级到1.22.4版本）
 
 ```js
 yarn upgrade v1.22.4
@@ -161,7 +208,7 @@ yarn upgrade v1.22.4
 执行`yarn <script> [<args>]`将会执行用户自定义脚本。参阅[yarn run](https://classic.yarnpkg.com/zh-Hans/docs/cli/run)。
 
 :::warning 附
+
 - package.json：包含包的所有依赖信息；
 - yarn.lock：记录每一个依赖项的确切版本信息；
 :::
-
