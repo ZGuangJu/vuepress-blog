@@ -27,8 +27,6 @@ footer:  Copyright © 2020 | guangju's blog | 91guangju.com
 
 - [沃民高科董事长齐中祥：AI的下一个春天是人心识别](https://cloud.tencent.com/developer/news/288276)
 
-- [Windows2012+Typecho 搭建博客](https://www.piscme.com/index.php/archives/3.html)
-
 - [阮一峰博客](http://www.ruanyifeng.com/home.html)
 
 - [如何成为一名黑客](https://translations.readthedocs.io/en/latest/hacker_howto.html)
@@ -36,8 +34,6 @@ footer:  Copyright © 2020 | guangju's blog | 91guangju.com
 - [全栈工程师所需要了解的知识](https://blog.dbsgw.cn/post-76.html)
 
 - [程序羊](https://www.codesheep.cn/)
-
-- [2020春react学习进程](https://gitee.com/beigongshang/winter_vacation)
 
 - [优秀个人独立博客](https://seekbetter.me/)
 
