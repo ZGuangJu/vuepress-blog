@@ -3,8 +3,7 @@ module.exports = {
     title: "Guangju'S 笔记分享",
     // 端口配置 80是默认端口(手动部署服务器时用)
     // port: 80,
-    // 主题
-    theme: 'reco', //启动主题已安装的有  默认 / reco
+    theme: 'reco', //启动主题 已安装的有  默认 / reco
     // 主页图片下第二行字
     description: '欢迎',
     // 标题栏图标
@@ -26,17 +25,17 @@ module.exports = {
     ],
     // 主题使用的插件的设置
     plugins: [
-        // 看板娘
         [
+            // 看板娘
             "@vuepress-reco/vuepress-plugin-kan-ban-niang",
             {
                 theme: ['haruto', 'blackCat', 'whiteCat', 'haru1', 'haru2', 'koharu', 'izumi', 'shizuku', 'wanko', 'miku', 'z16'],
                 clean: false,
                 messages: {
                     welcome: '我是guangju欢迎你的关注 ',
-                    home: '心里的花，我想要带你回家.',
-                    theme: '好吧，希望你能喜欢我的其他小伙伴.',
-                    close: '再见哦!'
+                    home: '心里的花，想要带你回家.',
+                    theme: '好吧，希望你能喜欢其他小伙伴！',
+                    close: '那再见了哦~'
                 }
             }
         ],
@@ -91,11 +90,11 @@ module.exports = {
         //侧边栏自动显示当前激活页面中标题的链接?
         // sidebarDepth: 2,
 
-        // 允许你获取每个文件的最后一次 git 提交的 UNIX 时间戳（ms
+        // 允许你获取每个文件的最后一次 git 提交的 UNIX 时间戳（ms）
         lastUpdated: 'Last Updated',
 
         //显示所有页面的标题链接
-        // displayAllHeaders: true // 默认值：false
+        displayAllHeaders: true,// 默认值：false
 
         //设置导航栏禁用（navbar固定写法） navbar：false
 

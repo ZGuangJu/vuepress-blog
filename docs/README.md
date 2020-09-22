@@ -3,10 +3,10 @@
 home: true
 # 主页图片地址
 # heroImage: /home-bg.jpg
-# frontmatter: /home-bg.jpg
-# 图片格式
-# heroImageStyle: {
-#     width: '80%',
+# 图片自定义和格式
+# bgImage: '/bg.png'
+# bgImageStyle: {
+#   height: '350px'
 # }
 # 主页按钮
 actionText: About Me

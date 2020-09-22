@@ -10,6 +10,7 @@ publish: true
 ---
 
 :::tip Vuepress 的优点
+
 - 界面简洁优雅（个人感觉比 HEXO 好看）
 - 容易上手（半小时能搭好整个项目）
 - 更好的兼容、扩展 Markdown 语法
@@ -18,24 +19,75 @@ publish: true
 - 支持 PWA
 :::
 
+## 创建 vuepress 项目(新版)
+
+1. 创建VuePress 项目最快的方法是使用 `create-VuePress-site generator`，帮您建立基本的 VuePress 站点结构
+
+```js
+yarn create vuepress-site [optionalDirectoryName]
+```
+
+*如果您的项目使用 webpack 3.x，您可能会注意到 npm 的一些安装问题。在这种情况下，我们建议使用yarn*
+
+然后你就可以配置你的 VuePress 网站的元数据
+
+- Project Name 项目名称
+- Description 描述
+- Maintainer Email 维护者电子邮件
+- Maintainer Name 维护人员名称
+- Repository URL 存储库 URL
+- repo 没有可留空
+
+![create-vuepress](https://s1.ax1x.com/2020/09/22/wLVf3V.png)
+
+创建完成以后，项目目录是这样的:
+
+![dir-list](https://s1.ax1x.com/2020/09/22/wLmtAJ.png)
+
+转到`/docs`文件夹下,在命令行里输入:
+
+```js
+cd docs
+```
+
+安装相关依赖包
+
+```js
+yarn
+```
+
+运行项目
+
+```js
+yarn dev
+```
+
+## 以下是旧版里新建vuepress项目的步骤
+
+::: details
+
 ## 创建项目
 
 1. 全局安装 `vuepress` 。
+
 ```js
 npm install -g vuepress
 ```
 
 2. 建立一个文件夹。
+
 ```js
 mkdir blog
 ```
 
 3. 生成 `package.json` 文件。
+
 ```js
 npm init -y
 ```
 
 4. 创建文件夹和文件 参考下面的目录。
+
 ```js
 vuepressBlogDemo
        ├─── docs
@@ -45,6 +97,7 @@ vuepressBlogDemo
        │       └── config.js
        └── package.json
 ```
+
 5. 配置 `package.json` 的 `scripts` 脚本命令。
 
 ```json
@@ -75,7 +128,6 @@ features:
     details: VuePress 为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
 footer: MIT Licensed | Copyright © 2018-present Evan You
 ---
-
 ```
 
 7. 建立静态资源目录 `public`。
@@ -119,6 +171,7 @@ sidebar: ['/', '/web/', '/js/', '/vue/'];
 ```
 
 12. 侧边栏的分组
+
 ```js
   {
      title: 'vue学习',
@@ -128,6 +181,7 @@ sidebar: ['/', '/web/', '/js/', '/vue/'];
 ```
 
 13. `config.js` 文件的大致内容，当然可以参考官网丰富内容
+
 ```js
 module.exports = {
   title: 'Chen\'s blog',
@@ -150,6 +204,7 @@ module.exports = {
   }
 };
 ```
+
 完成了基础搭建后，就可以在`docs`目录下新建 `.md` 文件写文章了,至此，可以在本地运行了。
 
 ## 发布
@@ -163,11 +218,46 @@ module.exports = {
     `username.github.io`
 
 3. 发布时候的命令
+
 ```js
 npm run deploy  //可以在 package.json 的 scripts 中自行设置关键字
 ```
 
-###  我的vuepress的config文件
+:::
+
+## 在原有项目中添加vuepress
+
+1. 在项目中安装vuepress
+
+```js
+yarn add vuepress -D
+```
+
+2. 创建你的第一个文档
+
+```js
+mkdir docs && echo '# Hello VuePress' > docs/README.md
+```
+
+3. 添加一些脚本到 package.json
+
+```js
+{
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  }
+}
+```
+
+4. 运行项目
+
+```js
+yarn docs:dev
+```
+
+## 我的vuepress的config文件
+
 ```js
 module.exports = {
     // 主页图片下第一行字
