@@ -21,39 +21,39 @@ publish: true
     // Placeholders with the same ids are connected.
     // Example:
     // "Print to console": {
-    // 	"scope": "javascript,typescript",
-    // 	"prefix": "log",
-    // 	"body": [
-    // 		"console.log('$1');",
-    // 		"$2"
-    // 	],
-    // 	"description": "Log output to console"
+    //  "scope": "javascript,typescript",
+    //  "prefix": "log",
+    //  "body": [
+    //   "console.log('$1');",
+    //   "$2"
+    //  ],
+    //  "description": "Log output to console"
     // }
     "DOCTYPE": {
         "prefix": "h",
         "body": [
             "<!DOCTYPE html>"
-			"<html lang=\"en\">"
+   "<html lang=\"en\">"
 
-			"<head>"
-				"<meta charset=\"UTF-8\">"
-				"<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">"
-				"<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">"
-				"<!-- <meta http-equiv=\"refresh\" content=\"5\"> -->"
-				"<title>$1Document</title>"
-				"\t<script src=\"$2../vue.js\"></script>"
-			"</head>"
+   "<head>"
+    "<meta charset=\"UTF-8\">"
+    "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">"
+    "<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">"
+    "<!-- <meta http-equiv=\"refresh\" content=\"5\"> -->"
+    "<title>$1Document</title>"
+    "\t<script src=\"$2../vue.js\"></script>"
+   "</head>"
 
-			"<body>"
-				"<div id=\"app\">"
-					"$3"
-				"</div>"
-				"<script>"
-					"$4"
-				"</script>"
-			"</body>"
+   "<body>"
+    "<div id=\"app\">"
+     "$3"
+    "</div>"
+    "<script>"
+     "$4"
+    "</script>"
+   "</body>"
 
-			"</html>$5"
+   "</html>$5"
         ],
         "description": "HTML常用标签模板"
     },
@@ -88,18 +88,18 @@ publish: true
         "prefix": "components",
         "body": [
             "components: {"
-			"\"${1|parent-component,child-component|}\": {"
-				"template: `"
-					"<div>"
-						"<div></div>$2"
-					"</div>`,"
-					"props: {""
-						"\"$4msg\": {"
-							"type: ${5|Number,String,[Number String]|}"
-						"}"
-					"}"
-				"}"
-			"}"
+   "\"${1|parent-component,child-component|}\": {"
+    "template: `"
+     "<div>"
+      "<div></div>$2"
+     "</div>`,"
+     "props: {""
+      "\"$4msg\": {"
+       "type: ${5|Number,String,[Number String]|}"
+      "}"
+     "}"
+    "}"
+   "}"
         ],
         "description": "vue创建子组件"
     },
@@ -152,32 +152,32 @@ publish: true
         "prefix": "vm",
         "body": [
             "var vm = new Vue({"
-				"el: \"#$1app\","
-				"data: {"
-					"$2"
+    "el: \"#$1app\","
+    "data: {"
+     "$2"
 
-				"},"
-				"props: {"
-					"$3"
+    "},"
+    "props: {"
+     "$3"
 
-				"},"
-				"methods: {"
-					"$4"
+    "},"
+    "methods: {"
+     "$4"
 
-				"},"
-				"computed: {"
-					"$5"
+    "},"
+    "computed: {"
+     "$5"
 
-				"},"
-				"watch: {"
-					"$6"
+    "},"
+    "watch: {"
+     "$6"
 
-				"},"
-				"components: {"
-					"$7"
+    "},"
+    "components: {"
+     "$7"
 
-				"}"
-			"})"
+    "}"
+   "})"
         ],
         "description": "Vue实例模板"
     },
@@ -192,8 +192,8 @@ publish: true
         "prefix": "fun",
         "body": [
             "function ($1) {"
-				" $2"
-			"}"
+    " $2"
+   "}"
         ],
         "description": "function模板01"
     },
@@ -208,16 +208,16 @@ publish: true
         "prefix": "template",
         "body": [
             "<template>"
-    			"$1"
-			"</template>"
-			"<script>"
-    			"export default {"
-    			"$2"
-    		"};"
-			"</script>"
-			"<style>"
-    			"$3"
-			"</style>"
+       "$1"
+   "</template>"
+   "<script>"
+       "export default {"
+       "$2"
+      "};"
+   "</script>"
+   "<style>"
+       "$3"
+   "</style>"
         ],
         "description": "template VUE组件"
     },
@@ -252,15 +252,15 @@ publish: true
     //标题栏上展示文件相对工作区根目录的“相对路径”。若文件不是当前工作区的，则会显示它的完整路径
     // "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
     // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺windows设置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻全局编辑器editor设置开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
     // 自动格式化
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
-    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻全局编辑器editor设置开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
     // "editor.minimap.showSlider": "always", // 一直显示滚动条
     "editor.renderLineHighlight": "all", // 当前行对应的行号栏也高亮显示
     "editor.cursorWidth": 3, // 光标宽
     "editor.wordWrap": "on", // ？？
-    "editor.fontWeight": "400", // 字体宽度
+    "editor.fontWeight": 500, // 字体宽度从1到1000的值，以及字符串值“ normal”和“ bold”。
     "editor.fontFamily": "Consolas", // 字体
     "editor.fontSize": 20, // 字体大小
     "editor.detectIndentation": false, // vscode默认启用了根据文件类型自动设置tabsize的选项
@@ -271,8 +271,10 @@ publish: true
     "editor.scrollBeyondLastLine": false,
     // 禁止连接文字可点击，取消下划线
     // "editor.links": false,
+    // "editor.renderWhitespace": "trailing",//??
     "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
+        "source.fixAll.eslint": true, //保存自动修复 eslint 格式错误
+        "source.fixAll.markdownlint": true //保存自动修复 markdownlint  格式错误
     },
     /*﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋编辑器颜色主题及配置﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋*/
     // 自定义颜色
@@ -325,13 +327,14 @@ publish: true
     // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺全局编辑器editor设置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
     // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻工作区workbench设置开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
     "workbench.activityBar.visible": true, // 隐藏最左侧的活动栏 true显示 | false隐藏
-    // "workbench.editor.enablePreviewFromQuickOpen": false,// 打开文件时，关闭预览模式，直接打开文件
+    // 打开文件时，关闭预览模式，直接打开文件
+    "workbench.editor.enablePreviewFromQuickOpen": false,
     // "workbench.editor.showIcons": false,// 隐藏 tab 栏文件名左侧的文件类型图标
     "workbench.sideBar.location": "left", //导航栏位置
     "workbench.colorTheme": "One Dark Pro", //颜色主题
     "workbench.iconTheme": "material-icon-theme", // VSCode图标主题 | One Monokai
     "workbench.colorCustomizations": {
-        //主题名
+        //颜色主题Panda Syntax设置（未启用）
         "[Panda Syntax]": {
             // ▼▼▼ 编辑区域背景﹋﹋﹋﹋﹋
             "editor.background": "#2E2E2E",
@@ -398,7 +401,7 @@ publish: true
             // //标尺
             // "editorRuler.foreground": "#3f3f3f",
         },
-        // 主题名
+        // 颜色主题One Dark Pro设置（现用）
         "[One Dark Pro]": {
             // ▼▼▼ 编辑区域背景﹋﹋﹋﹋﹋
             "editor.background": "#2E2E2E",
@@ -446,14 +449,14 @@ publish: true
             // 行号
             // "editorLineNumber.foreground": "#274c5e",
             // 单击一个词时，其它相同单词
-            "editor.selectionHighlightBackground": "#e3dede",
+            "editor.selectionHighlightBackground": "#999999", //#e3dede
             // 选中高亮的颜色
             "editor.selectionBackground": "#004e66", //"#434e61c9",
             // terminal 终端中的光标
             "terminalCursor.foreground": "#CCFF00",
-            // //侧边栏中一块区域的标题
-            // "sideBarSectionHeader.background": "#32363d",
-            // //区域获取焦点时
+            // //侧边栏资源管理器区域的标题栏颜色
+            "sideBarSectionHeader.background": "#32363d",
+            //区域获取焦点时
             // "focusBorder": "#5b99fc36"
             // "editor.selectionHighlightBorder": "#90e97259",
             // //快捷提示窗口
@@ -463,7 +466,7 @@ publish: true
             // "panelTitle.activeBorder": "#5b99fc5b",
             // "panelTitle.activeForeground": "#cfcfcf",
             // //标尺
-            // "editorRuler.foreground": "#3f3f3f",
+            // "editorRuler.foreground": "#d44949",
         },
     },
     // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺工作区workbench设置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
@@ -502,20 +505,34 @@ publish: true
     // exlint 运行的时候： 保存时
     //  "eslint.run": "onSave",
     // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺全局编辑器eslint设置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+    // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺Markdownlint设置开始🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+    "markdownlint.config": {
+        "MD003": false,
+        "MD004": false,
+        // "MD013": false,
+        "MD025": false,
+        "MD029": false,
+        "MD033": false,
+        "MD035": false,
+        "MD036": false,
+        "MD046": false,
+    },
+    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻Markdownlint设置结束🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
     // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于files配置开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
     // 保存文件时，去除行尾空格
     "files.trimTrailingWhitespace": true,
     // 自动保存的条件
-    "files.autoSave": "onWindowChange",
+    "files.autoSave": "onFocusChange",
     //根据文件后缀名定义vue文件类型 /根据文件后缀名定义vue等文件类型
     "files.associations": {
         "*.vue": "vue",
         "*.cjson": "jsonc",
         "*.wxss": "css",
         "*.wxs": "javascript",
-        "*.html": "html"
+        "*.html": "html",
+        "*.jsx": "javascript"
     },
-    // 在 vscode 中排除 node_modules 等文件夹
+    // 在 vscode 显示中排除 node_modules 等文件夹
     // "files.exclude": {
     //     "**/.git": true,
     //     "**/.svn": true,
@@ -523,7 +540,7 @@ publish: true
     //     "**/CVS": true,
     //     "**/.DS_Store": true,
     //     "**/node_modules": true,
-    //     "**/package-lock.json": true
+    //     //"**/package-lock.json": true
     // },
     // "search.exclude": {
     //     "**/node_modules": true,
@@ -534,20 +551,23 @@ publish: true
     // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于terminal配置🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
     // terminal 光标样式
     "terminal.integrated.cursorBlinking": true,
-    "terminal.integrated.cursorStyle": "line",
-    // VSCode 中的终端使用什么的是什么shell
-    // "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-    "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7-preview\\pwsh.exe",
+    // "terminal.integrated.cursorStyle": "line",
+    // VSCode 中的终端使用什么shell
+    // "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe", //cmd
+    // "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", //powershell 5.x
+    "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7-preview\\pwsh.exe", //powershell 7.1.0
     // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺关于terminal结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
     // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于prettier插件配置开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
-    // 让prettier使用eslint的代码格式进行校验 
+    // (未启用)
+    // 让prettier使用eslint的代码格式进行校验
     // "prettier.eslintIntegration": true,
-    // 去掉代码结尾的分号 
+    // 去掉代码结尾的分号
     // "prettier.semi": false,
     //js使用单引号(暂时禁用了)
     // "prettier.singleQuote": true,
     // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺关于prettier插件配置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
     // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于emmet插件配置开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+    // (未启用)
     // // 配置emmet是否启用tab展开缩写
     // "emmet.triggerExpansionOnTab": true,
     // // 配置emmet对文件类型的支持
@@ -556,14 +576,14 @@ publish: true
     //     "vue": "html",
     //     "vue-html": "html"
     // },
-    //?
-    "emmet.includeLanguages": {
-        "wxml": "html"
-    },
+    // "emmet.includeLanguages": {
+    //     "wxml": "html"
+    // },
     // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺关于emmet插件配置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
     // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于vetur插件开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+    // (vue工作区用)
     //****vue文件template格式化支持，并使用js-beautify-html插件******
-    //让vue中的js按编辑器自带的ts格式进行格式化 
+    //让vue中的js按编辑器自带的ts格式进行格式化
     "vetur.format.defaultFormatter.js": "vscode-typescript",
     //让vue中的html按prettier格式进行格式化 ??
     "vetur.format.defaultFormatter.html": "prettier",
@@ -577,6 +597,7 @@ publish: true
     //注：Vetur自带了格式化，规范就是使用prettier如果你有装prettier插件，并且在设置或setting.json里配置了prettier的话是无效的
     // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺关于vetur插件结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
     // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于Easy Sass插件开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+    // (未启用)
     // "easysass.formats": [
     //     {
     //         "format": "compressed", // 压缩
@@ -643,5 +664,8 @@ publish: true
     "editor.suggestLineHeight": 22,
     "files.autoSaveDelay": 500,
     "editor.cursorBlinking": "solid",
+    "workbench.editor.enablePreview": false,
+    "iceworks.materialSources": [],
+    "workbench.statusBar.visible": true,
 }
 ```

@@ -13,11 +13,13 @@ publish: true
 ## vuepress部署到github托管
 
 ### 登陆 Github
+
 打开 github 网站，登陆自己的 github 账号
 
 接着新建两个仓库：
 
-### 新建仓库一：
+### 新建仓库一
+
 - USERNAME.github.io （不用克隆到本地，同时这个是你输入地址栏的访问博客地址）
 
   USERNAME 必须是你 Github 的账号名称
@@ -25,24 +27,27 @@ publish: true
 <img src="https://s2.ax1x.com/2020/02/28/3DDwfx.png" alt="typecho01">
 这个仓库建好后，不用克隆到本地，内容更新修改都在下面的仓库（本地的）中进行。
 
-### 新建仓库二：
+### 新建仓库二
 
 -随便起名字，比如：Blog （这个要克隆到本地）
 
-   - 没有创建vuepress项目的，使用git，将 [vuepress-tools](https://github.com/ZGuangJu/vuepress-tools) 中的内容拷贝到 Blog 文件夹中(里面是vuepress模板)或参考[这里](https://zguangju.github.io/Tools/vuepress.html)自己创建vuepress项目
+- 没有创建vuepress项目的，使用git，将 [vuepress-tools](https://github.com/ZGuangJu/vuepress-tools) 中的内容拷贝到 Blog 文件夹中(里面是vuepress模板)或参考[这里](https://zguangju.github.io/Tools/vuepress.html)自己创建vuepress项目
 
-   - 如果自己创建的vuepress，要在项目根目录下创建.gitignore文件和deploy.sh文件
+- 如果自己创建的vuepress，要在项目根目录下创建.gitignore文件和deploy.sh文件
 
 .gitignore文件内容
-```
+
+```sh
 # git提交时筛选文件用
 node_modules
 docs/.vuepress/theme
 docs/.vuepress/dist
 
 ```
+
 deploy.sh文件内容
-```
+
+```sh
 #!/usr/bin/env sh
 
 # 确保脚本抛出遇到的错误
@@ -70,16 +75,20 @@ git push -f git@github.com:USERNAME/USERNAME.github.io.git master
 
 cd -
 ```
+
 以上配置内容是参考vuepress官网，仅供参考
 
 - 在package.json文件中添加下面的代码
-```
+
+```js
 "scripts": {
   "deploy": "bash deploy.sh"
 }
 ```
+
 - 在本地项目目录打开cmd 运行
-```
+
+```js
 npm run deploy
 ```
 
@@ -110,4 +119,3 @@ npm run deploy
 <img src="https://s2.ax1x.com/2020/02/28/3DDakR.png" alt="typecho06">
 
 - 在地址栏输入自己的域名 看一下吧
-
