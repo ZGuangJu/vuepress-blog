@@ -7,15 +7,19 @@ tags:
 publish: true
 ---
 1. vue是什么
+
 - 单页面应用框架，数据驱动视图，特性数据的双向绑定，
 
 2. vue 核心的底层封装：数据双向绑定
+
 - 2.x用object.defineProperty封装，3.x用es6里的proxy封装
 
 3. vue的数据流是什么（reach---单项数据流）
+
 - 单向数据流
 
 4. vue常用指令
+
 - v-model ：数据双向绑定
 - v-once ：只绑定一次
 - v-if,v-else-if,v-else : 控制元素的加载与销毁
@@ -28,10 +32,12 @@ publish: true
 - v-slot ：插槽 ，配合template使用
 
 5. v-for循环一个对象/数组
+
 - 对象（value,key,index）in obj ，in的前面是三个变量，分别是属性值，属性名，下标
 - 数组（value,index) in arr ，in的前面是两个变量，分别是值和下标
 
 6. v-for 里除了in还有哪种写法
+
 - of
 
 7. 事件修饰符
@@ -45,19 +51,23 @@ publish: true
 @keyUp.13===@keyUp.enter【回车键弹起】，
 
 9. 动态加载组件
+
 - 使用vue内置组件components，用is属性来动态加载组件
 实例代码：
+
 ```html
 <component :is='ishome'  />
 &
 <home/>
 ```
+
 ```js
 import home from './home'
 components:{
     home
 }
 ```
+
 10. 组件缓存
 
 使用 `<keep-alive></keep-alive>`,
@@ -76,18 +86,20 @@ destroyed
 发起请求在mounted里
 清除定时器 ？？
 
-12.  懒加载
+12. 懒加载
+
 ```js
 const Home = ()=>import('./home.vue')
 ```
 
 13. 组件通信
+
 - 父传子 用props【属性】传递
 - 子传父 用自定义事件，在父组件给子组件绑定一个自定义事件@【v-on】，子组件用@emit去调用自定义事件，并把参数传给父组件
 - $bus 是一个第三方插件，中央事件广播，不受层级的限制
 
 - **第一种方法  props父组件向子组件传递**
-    **主要传值，可以传方法，但不常用 **
+    **主要传值，可以传方法，但不常用**
     父组件使用v-bind 动态绑定数据 :自定义属性名="值"
     子组件使用props 接收数据 props：["自定义属性名"]
             或者 props：{
@@ -146,12 +158,14 @@ const Home = ()=>import('./home.vue')
 - **第九种方法  vuex**
 
 14. vue的递归组件
+
 - 一个组件接收父组件传递过来的数据，进行自我调用，需要一个结束的判断，另外该组件还必须要有name属性
 
 15. 作用域
 在style标签上加scoped，使css只对当前组件生效
 
 16. vue组件的实例组成部分
+
 - name 组件名字
 - data  数据
 - components 局部组件
@@ -171,4 +185,3 @@ const Home = ()=>import('./home.vue')
     3. computed监听一个数据还要返回一个数据，watch只是监听
 
 18. watch的深度监听 加 deep:true
-

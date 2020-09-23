@@ -20,6 +20,7 @@ export function request(config){
     })
 }
 ```
+
 ```js
 // 模块使用(调用位置)
 import {request} from 'request/request'
@@ -42,6 +43,7 @@ export function request(config,success,fail){
     })
 }
 ```
+
 ```js
 // 模块使用(调用位置)
 import {request} from 'request/request'
@@ -51,6 +53,7 @@ request('http://localhost.com',res=>{
     console.log(err)
 })
 ```
+
 ## 第二种
 
 ```js
@@ -65,6 +68,7 @@ export function request(config){
     })
 }
 ```
+
 ```js
 // 模块使用(调用位置)
 import {request} from 'request/request'
@@ -79,6 +83,7 @@ request({
 
 })
 ```
+
 ## 第三种
 
 ```js
@@ -99,6 +104,7 @@ export function request(config){
     })
 }
 ```
+
 ```js
 // 模块使用(调用位置)
 import {request} from 'request/request'
@@ -111,6 +117,7 @@ request({
 }
 )
 ```
+
 ## 第四种
 
 ```js
@@ -125,6 +132,7 @@ export function request(config){
         return NewAxios1(config)
 }
 ```
+
 ```js
 // 模块使用(调用位置) 同上
 import {request} from 'request/request'
@@ -136,4 +144,5 @@ request({
     console.log(err)
 })
 ```
+
 [教程参考](https://www.bilibili.com/video/BV1QA411b7TR?p=7)

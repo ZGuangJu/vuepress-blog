@@ -21,12 +21,12 @@ Vue 是前端开发框架;构建应用式的框架
 <font size="5" color="#3eaf7c">vue 优点</font>
 
 ----
-1.  遵循 `MVVM` 模式;
-2.  体积小，运行效率高;
-3.  关注数据的变化，不操作 `DOM` ;
-4.  组件化开发，利于开发和维护;
-5.  能实现单页面应用，`SPA` 应用 `(single page application)`.
 
+1. 遵循 `MVVM` 模式;
+2. 体积小，运行效率高;
+3. 关注数据的变化，不操作 `DOM` ;
+4. 组件化开发，利于开发和维护;
+5. 能实现单页面应用，`SPA` 应用 `(single page application)`.
 
 <font size="5" color="#3eaf7c">Vue 使用方式</font>
 
@@ -56,6 +56,7 @@ export default {
   }
 };
 ```
+
 :::warning 注意
 自己练习或者 demo 的时候，要看清楚是哪一个使用方式，如果报错，就换一下写法。
 :::
@@ -87,6 +88,7 @@ export default {
 <font size="5">准备工作</font>
 
 ----
+
 - 安装 npm
 
 `npm (node package menerger)` 是项目依赖包的管理器 [npm官网](https://www.npmjs.com/)。
@@ -131,7 +133,9 @@ npm install -g vue-cli
 ```js
 npm install -g npm@4
 ```
+
 :::warning 注意
+
 - 如果之前安装了 `2.x`，需要先卸载 `2.x` 再安装 `3.x` !!
 
 新版的 Vue CLI 的包名称由 `vue-cli` 改成了 `@vue/cli`。 如果你已经全局安装了旧版本的 `vue-cli (1.x 或 2.x)`，你需要先通过 `npm uninstall vue-cli -g` 或 `yarn global remove vue-cli` 卸载，重新安装脚手架。
@@ -176,6 +180,7 @@ npm run build
 ## Vue 新建项目
 
 :::tip 提示
+
 - 如果在创建过程中，有某个选项选择错了想更改，要退出创建，需要重新开始创建；
 - 如果到了下载依赖包的步骤，需要退出和删除已经创建的项目文件夹，再重新开始创建。
 :::
@@ -234,7 +239,6 @@ vue ui
 
 <img src="https://s1.ax1x.com/2020/06/22/NGHzP1.png" alt="vue-cli">
 
-
 注意：使用 ui 方式创建时，命令行窗口不可关闭！！（ ui 方法，底层实际还是用的命令行创建）
 
 ### 第二种
@@ -243,11 +247,13 @@ vue ui
 
 ----
 在cmd中输入命令
+
 ```js
 vue create vueapp   //vueapp 为你的项目名
 ```
+
 :::warning 注意
-项目名字要小写，不能用 `vue、vue-cli··· ` 等关键字（vue-cli 3\4.x）
+项目名字要小写，不能用 `vue、vue-cli···` 等关键字（vue-cli 3\4.x）
 :::
 
 1. 选择配置方式
@@ -289,7 +295,7 @@ vue create vueapp   //vueapp 为你的项目名
 >
 > `Linter / Formatter`: `Eslint` 用来代码格式校验的
 >
-> `Unit Testing `、`E2E Testing`:是否测试代码
+> `Unit Testing`、`E2E Testing`:是否测试代码
 
 3. 选择路由的模式
 
@@ -297,6 +303,7 @@ vue create vueapp   //vueapp 为你的项目名
  Use history mode for router?
  (Requires proper server setup for index fallbackin production) (Y/n)
 ```
+
 :::warning 注意
 历史模式：这种模式充分利用 `history.pushState API` 来完成 URL 跳转而无须重新加载页面，当你使用 `history` 模式时，URL 就像正常的 url。
 
@@ -314,6 +321,7 @@ vue create vueapp   //vueapp 为你的项目名
   ❯ Less
     Stylus
 ```
+
 > css 预处理器,可根据需要选择
 
 4. 选中一种 `eslint` 配置
@@ -326,7 +334,9 @@ vue create vueapp   //vueapp 为你的项目名
     ESLint + Standard config
     ESLint + Prettier
 ```
-`eslint `的使用规则
+
+`eslint`的使用规则
+
 ```js
   Pick additional lint features:
     Lint on save 保存的时候进行 eslint 检测
@@ -347,6 +357,7 @@ vue create vueapp   //vueapp 为你的项目名
   ❯ In dedicated config files
     In package.json
 ```
+
 > 我一般使用第二项 `package.json`
 
 6. 是否保存以上配置做为预设，方便以后使用
@@ -364,7 +375,9 @@ Please pick a preset: (Use arrow keys)
    default (babel, eslint) 默认
    Manually select features 手动
 ```
+
 :::warning /.vuerc
+
 - 被保存的 preset 将会存在计算机用户名文件夹下，一个名为 `.vuerc` 的 JSON 文件里。
 - 如果你想要修改被保存的 preset 选项，可以编辑这个文件，我试着编辑过，但是在下一次创建项目时报错，如果报错，将本文件删除即可。
 
@@ -376,6 +389,7 @@ Please pick a preset: (Use arrow keys)
 ```js
 npm run serve
 ```
+
 9. 完成。
 
 在浏览器输入，提示你的项目地址，运行项目。
@@ -386,6 +400,7 @@ npm run serve
 
 ----
 :::tip
+
 - Vue CLI >= 3 和旧版使用了相同的 vue 命令，所以 `Vue CLI 2 (vue-cli)` 被覆盖了。如果你仍然需要使用旧版本的 `vue init` 功能，你可以全局安装一个桥接工具。
 - Vue CLI 的包名称由 `vue-cli` 改成了 `@vue/cli`。 如果你已经全局安装了旧版本的 `vue-cli (1.x 或 2.x)`，你需要先通过 `npm uninstall vue-cli -g` 或 `yarn global remove vue-cli` 卸载它
 :::
@@ -400,15 +415,15 @@ vue init [template-name] [project-name]
 >
 > `[template-name]`:表示模板名称，`vue-cli` 官方为我们提供了5种模板:
 >
->   - webpack --- 一个全面的 `webpack+vue-loader` 的模板，功能包括热加载，linting ,检测和 CSS 扩展。
+> - webpack --- 一个全面的 `webpack+vue-loader` 的模板，功能包括热加载，linting ,检测和 CSS 扩展。
 >
->   - webpack-simple --- 一个简单 `webpack+vue-loader` 的模板，不包含其他功能，让你快速的搭建vue的开发环境。
+> - webpack-simple --- 一个简单 `webpack+vue-loader` 的模板，不包含其他功能，让你快速的搭建vue的开发环境。
 >
->   - browserify --- 一个全面的 `Browserify+vueify` 的模板，功能包括热加> 载，linting,单元检测。
+> - browserify --- 一个全面的 `Browserify+vueify` 的模板，功能包括热加> 载，linting,单元检测。
 >
->   - browserify-simple --- 一个简单 `Browserify+vueify` 的模板，不包含其他功能，让你快速的搭建vue的开发环境。
+> - browserify-simple --- 一个简单 `Browserify+vueify` 的模板，不包含其他功能，让你快速的搭建vue的开发环境。
 >
->   - simple-一个最简单的单页应用模板。
+> - simple-一个最简单的单页应用模板。
 >
 > `[project-name]`：标识项目名称，这个你可以根据自己的项目来起名字。
 
@@ -427,17 +442,17 @@ vue init webpack vuename
 //项目描述，默认为A Vue.js project,直接回车，不用编写
 ? Author XXXX <XXXX@XXX.com>
 //作者，如果你有配置git的作者，它会读取
-? Vue build 
-❯ Runtime + Compiler: recommended for most users 
+? Vue build
+❯ Runtime + Compiler: recommended for most users
 Runtime-only: about 6KB lighter min+gzip, but templates (or any Vue-specific HTML) are ONLY allowed in .vue files - render functions are required elsewhere
 //这里选择 Runtime + Compiler: recommended for most users 推荐给大多数用户
 ? Install vue-router? (Y/n)  
 //是否使用 vue-router
 ? Use ESLint to lint your code? (Y/n)
 //是否使用 ESLint 语法检查，我选 n，如果你是大型团队开发，最好是进行配置。
-? Pick an ESLint preset (Use arrow keys) 
-❯ Standard (https://github.com/feross/standard) 
-Airbnb (https://github.com/airbnb/javascript) none (configure it yourself) 
+? Pick an ESLint preset (Use arrow keys)
+❯ Standard (https://github.com/feross/standard)
+Airbnb (https://github.com/airbnb/javascript) none (configure it yourself)
 //这里选择 Standard (https://github.com/feross/standard)
 ? Setup unit tests  (Y/n)
 //是否需要单元测试，这里根据需求选择
@@ -449,13 +464,16 @@ Airbnb (https://github.com/airbnb/javascript) none (configure it yourself) 
   No, I will handle that myself
 //选择使用什么包管理器，如果没有安装Yarn，是不会提示这个选项的
 ```
+
 选择完成后，开始下载依赖包，等待安装完成即可
 
 用以上两种命令行的方式安装好以后，要 `cd` 进项目目录，再运行项目：
+
 ```js
 cd vuename  //进入项目目录
 npm run dev  //运行项目
 ```
+
 创建好的项目的目录结构如下（不同方式，不同 cli 版本，有所区别）
 
 <img src="https://s1.ax1x.com/2020/07/14/Ua1l6A.png" alt="目录">

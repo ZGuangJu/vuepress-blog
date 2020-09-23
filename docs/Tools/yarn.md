@@ -145,7 +145,7 @@ yarn publish [name]
 
 - 项目中升级依赖包
 
-1.  `yarn upgrade-interactive --latest`命令（亲测无效，不能更新`package.json`中的版本，可以更新yarn.lock中的版本）
+1. `yarn upgrade-interactive --latest`命令（亲测无效，不能更新`package.json`中的版本，可以更新yarn.lock中的版本）
 
 ```js
 yarn upgrade-interactive --latest

@@ -34,7 +34,9 @@ DOM对象转换成jQuery对象：【联想记忆：花钱】
 var $obj = $(domObj);
 // $(document).ready(function(){});就是典型的DOM对象转jQuery对象
 ```
+
 `jQuery` 对象转换成 `DOM` 对象：
+
 ```js
 var $li = $("li");
 //第一种方法（推荐使用）
@@ -47,44 +49,44 @@ $li.get(0)
 
 - 基本选择器
 
-| 名称 | 用法 | 描述 |
-|:-|:-|:-|
-ID选择器 | $(“#id”) | 获取指定ID的元素
-类选择器 | $(“.class”) | 获取同一类class的元素
-标签选择器 | $(“div”) | 获取同一类标签的所有元素
-并集选择器 | $(“div,p,li”) | 使用逗号分隔，只要符合条件之一就可。
-交集选择器 | $(“div.redClass”) | 获取class为redClass的div元素
-|备注：| 跟css的选择器用法一模一样|
+| 名称       | 用法                      | 描述                                 |
+| :--------- | :------------------------ | :----------------------------------- |
+| ID选择器   | $(“#id”)                  | 获取指定ID的元素                     |
+| 类选择器   | $(“.class”)               | 获取同一类class的元素                |
+| 标签选择器 | $(“div”)                  | 获取同一类标签的所有元素             |
+| 并集选择器 | $(“div,p,li”)             | 使用逗号分隔，只要符合条件之一就可。 |
+| 交集选择器 | $(“div.redClass”)         | 获取class为redClass的div元素         |
+| 备注：     | 跟css的选择器用法一模一样 |
 
 - 层级选择器
 
-名称 | 用法 | 描述
-|:-|:-|:-|
-子代选择器 | $(“ul>li”) | 使用>号，获取儿子层级的元素，注意，并不会获取孙子层级的元素
-后代选择器 | $(“ul li”) | 使用空格，代表后代选择器，获取ul下的所有li元素，包括孙子等
+| 名称       | 用法       | 描述                                                        |
+| :--------- | :--------- | :---------------------------------------------------------- |
+| 子代选择器 | $(“ul>li”) | 使用>号，获取儿子层级的元素，注意，并不会获取孙子层级的元素 |
+| 后代选择器 | $(“ul li”) | 使用空格，代表后代选择器，获取ul下的所有li元素，包括孙子等  |
 
 - 过滤选择器
 
-名称 | 用法 | 描述
-|:-|:-|:-|
-:eq（index） | $(“li:eq(2)”).css(“color”, ”red”) | 获取到的li元素中，选择索引号为2的元素，索引号index从0开始。
-:odd | $(“li:odd”).css(“color”, ”red”) | 获取到的li元素中，选择索引号为奇数的元素
-:even | $(“li:even”).css(“color”, ”red”) | 获取到的li元素中，选择索引号为偶数的元素
+| 名称         | 用法                              | 描述                                                        |
+| :----------- | :-------------------------------- | :---------------------------------------------------------- |
+| :eq（index） | $(“li:eq(2)”).css(“color”, ”red”) | 获取到的li元素中，选择索引号为2的元素，索引号index从0开始。 |
+| :odd         | $(“li:odd”).css(“color”, ”red”)   | 获取到的li元素中，选择索引号为奇数的元素                    |
+| :even        | $(“li:even”).css(“color”, ”red”)  | 获取到的li元素中，选择索引号为偶数的元素                    |
 
 - 筛选选择器(方法)
 
-名称 | 用法 | 描述
-|:-|:-|:-|
-children(selector) | $(“ul”).children(“li”) | 相当于$(“ul>li”)，子类选择器
-find(selector) | $(“ul”).find(“li”) | 相当于$(“ul li”),后代选择器
-siblings(selector) | $(“#first”).siblings(“li”) | 查找兄弟节点，不包括自己本身。
-parent() | $(“#first”).parent() | 查找父亲
-eq(index) | $(“li”).eq(2) | 相当于$(“li:eq(2)”),index从0开始
-next() | $(“li”).next() | 找下一个兄弟
-prev() | $(“li”).prev() | 找上一次兄弟
-
+| 名称               | 用法                       | 描述                             |
+| :----------------- | :------------------------- | :------------------------------- |
+| children(selector) | $(“ul”).children(“li”)     | 相当于$(“ul>li”)，子类选择器     |
+| find(selector)     | $(“ul”).find(“li”)         | 相当于$(“ul li”),后代选择器      |
+| siblings(selector) | $(“#first”).siblings(“li”) | 查找兄弟节点，不包括自己本身。   |
+| parent()           | $(“#first”).parent()       | 查找父亲                         |
+| eq(index)          | $(“li”).eq(2)              | 相当于$(“li:eq(2)”),index从0开始 |
+| next()             | $(“li”).next()             | 找下一个兄弟                     |
+| prev()             | $(“li”).prev()             | 找上一次兄弟                     |
 
 - `:empty`、`:parent`、`:contains(text)`、`:has(selector)` 详解
+
 ```html
  <script>
         $(function () {
@@ -110,6 +112,7 @@ prev() | $(“li”).prev() | 找上一次兄弟
     </script>
 </head>
 ```
+
 ```html
 <body>
     <div></div>
@@ -121,6 +124,7 @@ prev() | $(“li”).prev() | 找上一次兄弟
     </div>
 </body>
 ```
+
 ## jQ 属性
 
 属性和属性节点的方法
@@ -184,6 +188,7 @@ prev() | $(“li”).prev() | 找上一次兄弟
     <span name="it"></span>
 </body>
 ```
+
 - `attr`方法 和 `removeAttr`
 
 ```html
@@ -263,6 +268,7 @@ prev() | $(“li”).prev() | 找上一次兄弟
 ```
 
 例：点击按钮切换输入框内的图片地址
+
 ```html
 <script>
         $(function () {
@@ -287,11 +293,10 @@ prev() | $(“li”).prev() | 找上一次兄弟
     <img src="https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png" alt="">
 </body>
 ```
+
 :::warning attr 和 prop 区别
 官方推荐在操作属性节点时，具有 `true` 和 `false` 两个属性的属性节点，如 `checked` ，`selected` 或者`disabled` 使用 `prop()`，其他使用 `arrt()`
 :::
-
-
 
 - 属性里的 HTML代码/文本/值 操作
 

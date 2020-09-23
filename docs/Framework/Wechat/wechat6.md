@@ -9,7 +9,6 @@ publish: true
 
 ## 路由跳转
 
-
 - 标签式跳转路由
 
 ```html
@@ -35,6 +34,7 @@ publish: true
 - 获取值 ：pages页面里使用onload 函数接收
 
 1. 发送参数
+
 ```html
 <!-- pages/router/router.wxml 跳转前的路由页面 -->
  <navigator class="nav" url="/pages/cycle/cycle?name={{name}}">正常跳转到生命周期页面</navigator>
@@ -48,6 +48,7 @@ publish: true
 ```
 
 2.接收参数
+
 ```js
 // pages/cycle/cycle.js 在onLoad中接收参数
 Page({
@@ -69,30 +70,30 @@ Page({
     },
 })
 ```
+
 ```html
 <!-- pages/cycle/cycle.wxml 接收参数后渲染-->
   <view>{{text}}</view>
 ```
+
 ## 路由跳转方式
 
 1. 常规跳转
+
 - wx.navigate
 
 2. 重定向
+
 - wx.redirectTo
 
 3. 跳转到tabber
+
 - wx.switchTab
 
 4. 返回后退
+
 - wx.navigateBack
 
 5.任意跳转
+
 - wx.reLaunch
-
-
-
-
-
-
-

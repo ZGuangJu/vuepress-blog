@@ -9,6 +9,7 @@ publish: true
 ---
 
 ## 动态路由匹配
+
 ```js
 const router = new VueRouter({
   routes: [
@@ -17,6 +18,7 @@ const router = new VueRouter({
   ]
 });
 ```
+
 ::: warning 注意
  路由的公共地址是 `/user/` 基于它下面的所有子路由，都会被 `/:id` 匹配到，比如 `/user/app` 、 `/user/blog` 等。
 
@@ -34,8 +36,10 @@ path: '/user/:id/:age/:job'
 this.$route.params.id、this.$route.params.age、this.$route.params.job
 // 上面获取得就是咱们配置里写的字段名称，不是固定死的，如果是直接在html中，不加this
 ```
+
 路由配置
 router/index.js
+
 ```js
 {
         // 动态路由配置
@@ -52,6 +56,7 @@ router/index.js
 ## 嵌套路由
 
 ::: warning 嵌套路由和动态理由的区别
+
 - 动态路由是不用写死子路由的，实际上动态路由也是匹配子路由的一种，
 - 动态路由是一个路由模板组件匹配多个不同的路由地址，而嵌套路由是父地址不变，子路由对应各自的模板组件。
 - 嵌套路由是需要写死子路由地址的，在 `children` 里； 一般用在类似面包屑导航的路由结构里，还有一些应用的路由数据是后端给的，嵌套的时候多，就需要我们对嵌套有一个深层的了解。
@@ -60,6 +65,7 @@ router/index.js
 
 路由配置
 router/index.js
+
 ```js
 routes: [
     {
@@ -79,7 +85,7 @@ routes: [
   ]
   // index.vue
   <router-link to="/dongtai/news">新闻</router-link>
-	<router-link to="/dongtai/about">关于</router-link>
+ <router-link to="/dongtai/about">关于</router-link>
   <router-view />
   // 如果？我想页面一打开就显示其中一个子路由，比如新闻路由
   {
@@ -102,6 +108,7 @@ routes: [
       ]
     }
 ```
+
 ## 嵌套路由配合动态路由
 
 ```js
@@ -152,6 +159,7 @@ const router = new VueRouter({
 <router-link to="/dongtai/about">关于</router-link>
 <router-view />// 这里就是渲染出子路由的位置
 ```
+
 ## 监听路由变化
 
 由于动态路由复用的是同一个组件，为了优化性能，所以不会重新加载组件，那么我们需要使用监听或监听路由函数【路由守卫】来获取路由更新的参数

@@ -23,9 +23,10 @@ publish: true
 
 进入自己的linux服务器，在命令行输入以下命令安装宝塔面板具体教程[这里](https://zguangju.github.io/Tools/%E5%AE%9D%E5%A1%94.html)
 
-```
+```js
 yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_6.0.sh && bash install.sh
 ```
+
 中途会停顿一下让选择web目录的位置，一般默认即可
 
 <img src="https://s1.ax1x.com/2020/04/22/JYvW0P.png" alt="typecho00">
@@ -46,8 +47,9 @@ yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_
 <img src="https://s2.ax1x.com/2020/02/27/3dg71f.png" alt="typecho03">
 
 关于不同配置的服务器环境的设置，因为一般常用的有512M内存的，还有就是1G内存的，这两个的环境选择是不一样的
-   - 如果是512M内存，那么使用默认的配置即可，Mysql 5.5 和 PHP 5.4
-   - 如果是1G内存，推荐使用wordpress官方给的设置，Mysql 5.6 和 PHP 7.2
+
+- 如果是512M内存，那么使用默认的配置即可，Mysql 5.5 和 PHP 5.4
+- 如果是1G内存，推荐使用wordpress官方给的设置，Mysql 5.6 和 PHP 7.2
 
 等待安装完成就可以了，一般持续半小时到1个小时，根据服务器的性能决定
 
@@ -80,13 +82,11 @@ yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_
 
 <img src="https://s2.ax1x.com/2020/02/27/3dgvAs.png" alt="typecho09">
 
-
 下载完的压缩包直接在文件中上传到自己的网站下进行解压，
 
 <img src="https://s1.ax1x.com/2020/04/22/JtkJUA.png" alt="typecho10">
 
 <img src="https://s2.ax1x.com/2020/02/27/3dgzhq.png" alt="typecho11">
-
 
 解压完把压缩包删掉，把解压出来的文件展开把里面内容剪切至外部，然后删除文件
 
@@ -95,4 +95,3 @@ yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_
 接下来你试着用域名访问一下网站这时会弹出一个4步流程特别注意的地方是数据库名和密码必须和你宝塔里的保持一致，（用户名可以自己设置，密码如果你不填系统会自动生成一个密码）最后直接提交后显示安装完成下面是你的用户名和密码，一定要记住你的用户名和密码这样你才能登陆管理员页面对你的网站进行增删改查和一些操作、管理、控制和美化。
 
 <img src="https://s2.ax1x.com/2020/02/27/3d2PjU.png" alt="typecho13">
-

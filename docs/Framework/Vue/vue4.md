@@ -20,6 +20,7 @@ hash模式背后的原理是onhashchange事件,可以在window对象上监听这
     console.log(event);
   }
 ```
+
 我们在url后面随便添加一个#xx触发这个事件。可以看到：
 
 <img src="https://s1.ax1x.com/2020/07/14/UaJKEt.png" alt="路由hash模式">
@@ -70,34 +71,33 @@ https://pan.baidu.com/disk/home#list/vmode=list
 
 包括back,forward,go三个方法，对应浏览器的前进，后退，跳转操作，(谷歌)浏览器只有前进和后退，没有跳转，在前进后退上长按鼠标，会出来所有当前窗口的历史记录，从而可以跳转
 
-```
+```js
   history.go(-3);//后退3次
   history.go(2);//前进2次
   history.go(0);//刷新当前页面
   history.back(); //后退
   history.forward(); //前进
 ```
+
 > HTML5新增的API
 > A)history.pushState(data, title [, url])：往历史记录堆栈顶部添加一条记录； data会在onpopstate事件触发时作为
 > 参数传递过去；title为页面标题，当前所有浏览器都会 忽略此参数；url为页面地址，可选，缺省为当前页地址；
-> B)history.replaceState(data, title [, url]) ：更改当前的历史记录，参数同上； 
+> B)history.replaceState(data, title [, url]) ：更改当前的历史记录，参数同上；
 > C)history.state：用于存储以上方法的data数据，不同浏览器的读写权限不一样；
 > D)window.onpopstate：响应pushState或replaceState的调用；有了这几个新的API，针对支持的浏览器，
 > 我们可以构建用户体验更好的应用了。就像刚提到的Facebook相册，虽然是AJAX的方式，但用户可以直接复 制页面地址分享给好友，
-
 > 如果不想要很丑的 hash，我们可以用路由的 history 模式，这种模式充分利用 history.pushState API 来完成 URL 跳转而无须重新加载页面。
 
-```
+```js
 const router = new VueRouter({
   mode: 'history',
   routes: [...]
 })
 ```
+
 当你使用 `history` 模式时，URL 就像正常的 url，例如 `http://www.yongcun.wang/tclass`，比 `hash` 的方式好看
 
-
-
-so 这种模式要玩好，还需要后台配置支持。因为我们的应用是个单页客户端应用，如果后台没有正确的配置，当用户在浏览器直接访问http://www.xxxxx.com/tclass就会返回 404，这就不好看了。
+so 这种模式要玩好，还需要后台配置支持。因为我们的应用是个单页客户端应用，如果后台没有正确的配置，当用户在浏览器直接访问<http://www.xxxxx.com/tclass>就会返回 404，这就不好看了。
 
 所以呢，你要在服务端增加一个覆盖所有情况的候选资源：如果 URL 匹配不到任何静态资源，则应该返回同一个 index.html 页面，这个页面就是你 app 依赖的页面。
 
@@ -130,6 +130,7 @@ history.back();
 
 history.forward();
 ```
+
 通过 `pushstate` 把页面的状态保存在 state 对象中，当页面的 url 再变回这个 url 时，可以通过 `event.state` 取到这个 state 对象，从而可以对页面状态进行还原，这里的页面状态就是页面字体颜色，其实滚动条的位置，阅读进度，组件的开关的这些页面状态都可以存储到 state 的里面。
 
 :::warning history的缺点

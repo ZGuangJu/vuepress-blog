@@ -16,7 +16,7 @@ react和vue都是做组件化的，整体的功能都类似，但是他们的设
 
 ## 整体对比
 
-### 相似点：
+### 相似点
 
 - 都支持组件化,
 
@@ -24,7 +24,8 @@ react和vue都是做组件化的，整体的功能都类似，但是他们的设
 
 - 都是数据驱动视图
 
-### 不同点：
+### 不同点
+
 1. 写法：
     - react使用jsx语法（如果要在JS里写HTML，就是创造一个一个的DOM对象，用JS来写，会非常的冗余并且不能一目了然的看清楚DOM的结构。所以就扩展成了JSX，直接用HTML的写法在js中写DOM）
 
@@ -86,16 +87,16 @@ react和vue都是做组件化的，整体的功能都类似，但是他们的设
 ## 生命周期
 
 生命周期对比表
-|vue| react|
-|:-:|:-:|
-|beforeCreate||
-|created||
-|beforeMount | componentDidMount|
-|mounted | componentDidMount
-|beforeUpdate | componentWillReceiveProps, shouldComponentUpdate, componentWillUpdate|
-|updated | componentDidUpdate|
-|beforeDestroy | componentWillUnmount|
-|destroyed | componentDidUnmount|
+|      vue      |                                 react                                 |
+| :-----------: | :-------------------------------------------------------------------: |
+| beforeCreate  |                                                                       |
+|    created    |                                                                       |
+|  beforeMount  |                           componentDidMount                           |
+|    mounted    |                           componentDidMount                           |
+| beforeUpdate  | componentWillReceiveProps, shouldComponentUpdate, componentWillUpdate |
+|    updated    |                          componentDidUpdate                           |
+| beforeDestroy |                         componentWillUnmount                          |
+|   destroyed   |                          componentDidUnmount                          |
 
 vue对比react相关的生命周期，可以看出从beforeMount开始和react基本一致，只是react在视图更新前做了更细粒度的控制，componentWillReceiveProps, shouldComponentUpdate,  componentWillUpdate 这三个方法都接收nextProps和nextState两个参数，允许你在这三个方法中针对新数据决定是否渲染，以及如何渲染的控制。
 
@@ -123,6 +124,7 @@ watch一般用于观测数据变化不会触发视图更新的数据，或者是
 vue和react都是组件化、模块化思想的产出，vue推荐单文件组件，就是把template、js、css写在一个文件里，这个优点就是修改代码不用切换文件，每个组件的样式、模板、事件都在一个文件里，react虽然是JSX，但是样式控制在单独的文件里（现在也有了CSS in JavaScript的样式框架）。不过vue这样有个缺点就是组件稍微大一点，单个文件代码行数就暴多，轻而易举就上300行。
 
 ### 组件通信
+
 vue的组件通信有三种方法，下面依次讲讲：
 
 - props & $on & $emit
@@ -153,7 +155,7 @@ action和redux中的action类似，可以执行异步操作，可以分发action
 - modules
 modules将store分割成不同模块，每个模块拥有自己的state、mutation、action、getter，这个思想和redux中reducer拆分类似，不过reducer合并的时候生成了新的store tree。
 
-### vuex的store中的状态是响应式的，和vue遵循一样规则：
+### vuex的store中的状态是响应式的，和vue遵循一样规则
 
 - 初始化所有的所需属性
 当需要再对象上添加新属性是，应该用Vue.set或者用对象展开运算符
@@ -165,4 +167,3 @@ modules将store分割成不同模块，每个模块拥有自己的state、mutati
 Vue (pronounced /vju?/, like view) is a progressive framework for building user interfaces. Unlike other monolithic frameworks, Vue is designed from the ground up to be incrementally adoptable.
 
 progresive渐进式增强，我理解的另一个意思，就是一步一步将以前的项目向组件化、模块化演变提供了循序渐进的途径。
-

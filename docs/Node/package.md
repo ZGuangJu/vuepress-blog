@@ -10,7 +10,6 @@ publish: true
 
 ## package.json 详情
 
-
  ```json
  {
      "name": "mypulgin", //插件、依赖包的名字 要小写
@@ -87,6 +86,7 @@ publish: true
      //directories(较少用):CommonJS包所要求的目录结构信息，展示项目的目录结构> 信息。字段可以是：lib, bin, man, doc, example。值都是字符串
   }
  ```
+
  其他参数
 
 - man(较少用):
@@ -100,9 +100,11 @@ publish: true
 - dependencies:（生产环境）
 
  指定依赖的其它包，这些依赖是指包发布后正常执行时所需要的，也就是线上需要的包。  使用下面的命令来安装：
+
 ```js
  npm install --save packageName
 ```
+
 如果是开发中依赖的包，可以在devDependencies设置。
 
 - devDependencies:（开发环境）
@@ -112,6 +114,7 @@ publish: true
 ```js
 npm install --save-dev packageName
 ```
+
 - peerDependencies:
 
 包相关的依赖，如果你的包是插件，而用户在使用你的包时候，通常也会需要这些依赖（插件），那么可以将依赖列到这里。
@@ -119,6 +122,7 @@ npm install --save-dev packageName
 如karma, 它的package.json中有设置，依赖下面这些插件：
 
 > 示例
+>
 > ```json
 > "peerDependencies": {
 >   "karma-jasmine": "~0.1.0",
@@ -131,6 +135,7 @@ npm install --save-dev packageName
 >   "karma-script-launcher": "~0.1.0"
 > }
 > ```
+>
 - bundledDependencies:
 
 绑定的依赖包，发布的时候这些绑定包也会被一同发布。
@@ -143,6 +148,7 @@ npm install --save-dev packageName
 指定包运行的环境。
 
 > 示例
+>
 > ```json
 > "engines": {
 >   "node": ">=0.10.3 < 0.12",
@@ -155,7 +161,8 @@ npm install --save-dev packageName
 指定你的包可以在哪些系统平台下运行。
 
 > 示例
-> ```
+>
+> ```js
 > "os": [ "darwin", "linux", "!win32" ]
 > ```
 
@@ -181,6 +188,7 @@ npm install --save-dev packageName
     "body-parser": "~1.15.2"
   }
 ```
+
 当我们使用最新的Node运行`npm instal --save xxx`，的时候，会优先考虑使用插入符号（^）而不是波浪符号（~）
 
 - 波浪符号（~）：
@@ -200,6 +208,5 @@ npm install --save-dev packageName
 - PATCH：这个版本号变化了表示修复了bug，并且可以向后兼容。
 
 因为major version变化表示可能会影响之前版本的兼容性，所以无论是波浪符号还是插入符号都不会自动去修改major version，因为这可能导致程序crush，可能需要手动修改代码
-
 
 - [参考](https://javascript.ruanyifeng.com/nodejs/packagejson.html#toc1)

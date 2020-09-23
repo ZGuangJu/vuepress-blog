@@ -40,6 +40,7 @@ jQuery版本有很多，分为1.x 2.x 3.x
     jquery-1.12.4.js:未压缩版本，适用于学习与开发环境，源码清晰，易阅读。
 
 ## jQ 使用方法
+
 :::tip 使用
 使用jQuery的三个步骤：
 
@@ -58,9 +59,11 @@ jQuery版本有很多，分为1.x 2.x 3.x
 
 `script`引入标签在上面，写代码的`script`标签在下面
 :::
+
 ## jQ 入口函数
 
 :::warning 注
+
 - 入口函数的目的：是为了拿到页面中的所有元素
 - jQuery入口函数与js入口函数的对比：
 
@@ -102,6 +105,7 @@ $是一个函数
 ```
 
 1. jq写法
+
 ```js
 // 1. jq固定写法一
 jQuery(document).ready(function () {
@@ -126,6 +130,7 @@ $(function(){
             alert('hello 4')
 })
 ```
+
 2. 对比原生 `js` 的写法
 
 ```js
@@ -138,9 +143,11 @@ $(function(){
     //代码内容
 })
 ```
+
 ## jQ 和原生js的对比
 
 1. 加载模式对比
+
 ```html
     <script src="./jquery-1.12.4.js"></script>
     <script>
@@ -168,6 +175,7 @@ $(function(){
     <img src="https://aecpm.alicdn.com/simba/img/TB1XotJXQfb_uJkSnhJSuvdDVXa.jpg" alt="">
 </body>
 ```
+
 2. 多个入口函数时，是否覆盖
 
 ```html
@@ -217,6 +225,7 @@ $(function(){
 ## jQ 冲突和自定义符号
 
 `$` 符号的使用权，假设，引入两个库都用`$`符号，会用冲突，理论上是哪个后引入，哪个生效，因为后面的把前面的替换掉了
+
 ```js
     <script src="./test.js"> </script>
     <script src="./jquery-1.12.4.js"></script>
@@ -239,6 +248,7 @@ $(function(){
         })
 
 ```
+
 2. 自定义一个符号
 
 ```js
@@ -255,6 +265,7 @@ $(function(){
 ```js
   $();// 就代表调用 jQ 核心函数
 ```
+
 - `jQuery` 的核心函数可以接收什么
 可以接收：函数、字符串、字符串选择器、代码片段、`DOM`元素
 

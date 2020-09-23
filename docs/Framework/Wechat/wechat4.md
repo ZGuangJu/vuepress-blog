@@ -24,15 +24,18 @@ publish: true
 2.在 wxml 文件中编写组件模板，在 wxss 文件中加入组件样式，它们的写法与页面的写法类似
 
 **在组件wxss中不应使用ID选择器、属性选择器和标签名选择器。
+
 ```html
 <!-- component/swiper/swiper.wxml 子组件的具体内容 -->
 <view class="inner">
   这是子组件内容
 </view>
 ```
+
 ### 二、 使用组件
 
 1.使用已注册的自定义组件前，首先要在页面的 json 文件中进行引用声明。此时需要提供每个自定义组件的标签名和对应的自定义组件文件路径
+
 ```json
 //  /pages/home/home.js  引用组件的页面
 {
@@ -41,7 +44,9 @@ publish: true
     },
 }
 ```
+
 2.在页面的 wxml 中就可以像使用基础组件一样使用自定义组件。节点名即自定义组件的标签名，节点属性即传递给组件的属性值
+
 ```html
 
 <!-- pages/home/home.wxml  引用组件的页面 -->
@@ -49,7 +54,6 @@ publish: true
   <Swipe></Swipe>
 </view>
 ```
-
 
 ## 组件通信
 
@@ -69,6 +73,7 @@ publish: true
   <Swipe name="我是谁" list="{{list}}"></Swipe>
 </view>
 ```
+
 - 存放的数据
 
 ```js
@@ -86,6 +91,7 @@ Page({
     },
 });
 ```
+
 - 在页面的 json 文件中进行引用声明
 
 ```json
@@ -96,9 +102,11 @@ Page({
     },
 }
 ```
+
 ### 子组件
 
 - wxml中的标签
+
 ```js
 // component/swiper/swiper.js 子组件用来接收数据的
 Component({
@@ -115,7 +123,9 @@ Component({
     },
 });
 ```
+
 - 使用
+
 ```html
 <!-- component/swiper/swiper.js 在子组件使用传递过来的数据 -->
 <view>
@@ -126,4 +136,5 @@ Component({
   </swiper>
 </view>
 ```
+
 2. 子传父

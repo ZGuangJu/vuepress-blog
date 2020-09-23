@@ -29,4 +29,3 @@ wx.setStorageSync('logs', logs)
 - 存数据用setStorage ：异步存储
 - 读取数据getStorageSync同步取值
 - 读取数据getStorage：异步取值
-

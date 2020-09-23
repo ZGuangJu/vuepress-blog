@@ -8,19 +8,23 @@ publish: true
 ---
 
 1. 三大核心
+
 - 跳转
 - 传参
 - 拦截 【权限控制】
 
 2. 跳转方式
+
 - 常规方法 用<router-link to='path'></router-link>
 - js this.$router.push()| replace| back | go |
 
 3. $router和$route 的区别
+
 - $router 路由实例，$route当前路由信息
 
 4. 传参
-```
+
+```js
 query：在router-link标签上 to={path:"/path",query:{name:xxx}} ;to='/path?name=xxx'
 js中 this.$router.push({
     path:"./path",
@@ -37,6 +41,6 @@ js中 this.$router.push({
 ```
 
 5. 拦截：路由守卫
+
 - beforeEach 全局前置守卫，当导航跳转之前拦截
 - afterEach 全局后置守卫，导航跳转之后拦截
-

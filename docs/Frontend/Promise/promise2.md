@@ -123,7 +123,7 @@ p.then(value => {
 
 因为 Promise.prototype.then 和  Promise.prototype.catch 方法返回promise 对象， 所以它们可以被链式调用
 
-## 为啥用promise呢？
+## 为啥用promise呢
 
 1. 指定回调函数的方式更加灵活(和旧方法纯回调相比)：
 

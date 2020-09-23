@@ -9,7 +9,6 @@ publish: true
 
 一种javascript的运行环境，能够使得javascript脱离浏览器运行。
 
-
 - 如果你去年注意过技术方面的新闻，我敢说你至少看到node.js不下一两次。那么问题来了“node.js是什么？”。有些人没准会告诉你“这是一种通过JavaScript语言开发web服务端的东西”。如果这种晦涩解释还没把你搞晕，你没准会接着问：“为什么我们要用node.js？”，别人一般会告诉你：node.js有非阻塞，事件驱动I/O等特性，从而让高并发（high concurrency）在的轮询（Polling）和comet构建的应用中成为可能。
 
 - 当你看完这些解释觉得跟看天书一样的时候，你估计也懒得继续问了。不过没事。我这篇文章就是在避开高端术语的同时，帮助你你理解node.js的。
@@ -30,4 +29,4 @@ publish: true
 
 - Node.js还是处于初期阶段。如果你想开发一个基于Node.js的应用，你应该会需要写一些很底层代码。但是下一代浏览器很快就要采用WebSocket技术了，从而长轮询也会消失。在Web开发里，Node.js这种类型的技术只会变得越来越重要。
 
-#### 链接：https://www.sitepoint.com/node-js-is-the-new-black/
+#### 链接：<https://www.sitepoint.com/node-js-is-the-new-black/>

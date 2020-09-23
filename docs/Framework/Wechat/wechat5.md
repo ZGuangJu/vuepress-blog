@@ -10,6 +10,7 @@ publish: true
 ## 1 . 发送
 
 - 发送数据的页面
+
 ```html
 <!-- wxml页面 -->
     <view class="inputmax">
@@ -22,7 +23,9 @@ publish: true
         </navigator>
     </view>
 ```
+
 - 发送的数据 / 方法
+
 ```js
 // js页面
 Page({
@@ -48,6 +51,7 @@ Page({
 ## 2 . 接收及使用
 
 - 接收
+
 ```js
 Page({
     data: {
@@ -63,7 +67,9 @@ Page({
 })
 
 ```
+
 - 使用
+
 ```html
     <view>
         {{text.name}}

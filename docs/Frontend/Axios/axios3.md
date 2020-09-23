@@ -28,7 +28,9 @@ axios.post('/user').then(res=>{
     console.log(err)
 })
 ```
+
 ## Axios 实例
+
 ```html
 <script src="//axios"></script>
 <script>
@@ -52,7 +54,9 @@ NewAxios1({
     })
 </script>
 ```
+
 ## Axios 拦截器
+
 axios给我们提供了两个方向的拦截器
 
 :::tip 拦截器作用
@@ -61,9 +65,11 @@ axios给我们提供了两个方向的拦截器
 - 发起请求时可以添加网页的加载动画，token认证时，强制登录等
 - 响应请求时可以进行相应的数据处理
 :::
+
 1. 请求拦截
     - 成功的
     - 失败的
+
 ```js
 axios.interceptors.request.use(config=>{
     console.log('进入请求拦截器');
@@ -77,6 +83,7 @@ axios.get('/login').then(res=>{
     console.log(res)
 })
 ```
+
 :::warning 注
 use(fn1,fn2)：参数是两个函数
 
@@ -86,6 +93,7 @@ use(fn1,fn2)：参数是两个函数
 2. 响应拦截
     - 成功的
     - 失败的
+
 ```js
 axios.interceptors.response.use(config=>{
     console.log('进入响应拦截器');

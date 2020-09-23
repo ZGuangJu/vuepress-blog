@@ -11,39 +11,44 @@ publish: true
 ---
 
 :::tip
-- axios是基于promise对Ajax的封装
 
-- axios必须在项目里进行一个封装
+- axios 是基于 promise 对 Ajax 的封装
+- axios 必须在项目里进行一个封装
+
 1. 为了好管理
 2. 为了自测
 
-- 封装的几个点：
-1. 拦截
-2. 加验证信息token
-3. 容错，格式化数据
 :::
+
+- 封装的几个点：
+
+  1. 拦截
+  2. 加验证信息token
+  3. 容错，格式化数据
 
 [HTTP介绍](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Overview)
 
 XHR & fetch
 
 ## 一、 HTTP 请求交互的基本过程
-| 端 | 动作 | 端 |
-|:-|:-|:-|
-客户端     |       请求行 =>    |     服务端
-客户端     |       请求头 =>    |     服务端
-客户端     |       请求体 =>    |     服务端
-客户端     |    <= 响应行       |     服务端
-客户端     |    <= 响应头       |     服务端
-客户端     |    <= 响应体       |     服务端
+
+| 端     | 动作      | 端     |
+| :----- | :-------- | :----- |
+| 客户端 | 请求行 => | 服务端 |
+| 客户端 | 请求头 => | 服务端 |
+| 客户端 | 请求体 => | 服务端 |
+| 客户端 | <= 响应行 | 服务端 |
+| 客户端 | <= 响应头 | 服务端 |
+| 客户端 | <= 响应体 | 服务端 |
 
 ## 二、 HTTP 请求报文
+
 1. 请求行
 
- |name | 含义 | 例 |
-|:-|:-|:-|
-|method|请求方式|GET POST ···|
-|url| 地址 |/login /?id=123 ···|
+ | name   | 含义     | 例                  |
+ | :----- | :------- | :------------------ |
+ | method | 请求方式 | GET POST ···        |
+ | url    | 地址     | /login /?id=123 ··· |
 
 2. 多个请求头
 
@@ -65,18 +70,18 @@ XHR & fetch
 
 ## 三、 HTTP 响应报文
 
-1.  响应状态行
+1. 响应状态行
 
-`status `,` status text`
+`status`,`status text`
 
 200 \ 201···
 
-2.  多个响应头
+2. 多个响应头
 
 `Content-Type`：`text/html；``charset=utf-8` 响应体的格式
 `set-Cookie`：`BD_CK_SAM=1;path=/`
 
-3.  响应体
+3. 响应体
 
 `html` 文本/`json` 文本/`js`/`css`/图片···
 
@@ -95,13 +100,13 @@ XHR & fetch
 
 ## 五、 响应状态码
 
-| status | statustext | 含义 |
-|:-|:-|:-|
-200  |  OK  |  请求成功，一般用于GET与POST请求
-201  |  Created | 已创建。成功请求并创建了新的资源
-401  |  Unauthorized  |  未授权/请求，要求用户的身份认证
-404  | Not Found | 服务器无法根据客户端的请求找到资源
-500  |  Internal Server Error |  服务器内部错误，无法完成请求
+| status | statustext            | 含义                               |
+| :----- | :-------------------- | :--------------------------------- |
+| 200    | OK                    | 请求成功，一般用于GET与POST请求    |
+| 201    | Created               | 已创建。成功请求并创建了新的资源   |
+| 401    | Unauthorized          | 未授权/请求，要求用户的身份认证    |
+| 404    | Not Found             | 服务器无法根据客户端的请求找到资源 |
+| 500    | Internal Server Error | 服务器内部错误，无法完成请求       |
 
 ## 六、 不同类型的请求和作用
 
@@ -138,10 +143,13 @@ XHR & fetch
 [地址](https://github.com/typicode/json-server)
 
 Install JSON Server
+
 ```js
 npm install -g json-server
 ```
+
 Create a db.json file with some data
+
 ```js
 {
   "posts": [
@@ -153,11 +161,9 @@ Create a db.json file with some data
   "profile": { "name": "typicode" }
 }
 ```
+
 Start JSON Server
+
 ```js
 json-server --watch db.json
 ```
-
-
-
-

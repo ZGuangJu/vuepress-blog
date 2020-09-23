@@ -59,6 +59,7 @@ eventName(fun)\on(enentName,fun)
     <button>按钮</button>
 </body>
 ```
+
 ## jQ 事件的解绑
 
 off()
@@ -374,6 +375,7 @@ off()
     </form>
 </body>
 ```
+
 ## jQ 命名空间 面试题
 
 ```js
@@ -442,6 +444,7 @@ off()
 
 </body>
 ```
+
 ## jQ 事件委托练习
 
 ```html

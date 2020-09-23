@@ -8,7 +8,7 @@ tags:
 publish: true
 ---
 
-## nodejs 到底是什么?
+## nodejs 到底是什么
 
 - 它是【谷歌内核环境】v8 引擎。就是在我们电脑里安装了一个全局的谷歌浏览器。
 - 它可以解析 js
@@ -20,6 +20,7 @@ publish: true
 2. 我的电脑 => 属性 => 高级系统设置 => 环境变量 => 用户变量/系统变量 => path => 添加
 
 ### nodejs 和 npm 包管理器关系
+
 - node.js是让js代码能运行在后端的一个环境
 - 只要安装了 nodejs ， npm 包这个软件就会自动的被安装上，因为 npm 就是跟着 nodejs 安装包里的。
 - npx 是npm v5.4 版本后更新的
@@ -27,9 +28,11 @@ publish: true
 - 无论是 npm npx 下载依赖都是从 npmjs.com 网站下载的，如果你下载的包在 npmjs.com 网站没有，那么就下载失败(yarn 同理)
 
 ### 创建项目
-```
+
+```js
 npx create-react-app my-app
 ```
+
 ## 函数组件&基本布局
 
 函数组件：就是一个函数返回一段 dom 片段
@@ -48,5 +51,6 @@ npx create-react-app my-app
 ### react 里，样式是没有作用域控制的
 
 也就是说，你在任何地方写的样式都会影响到全局样式
+
 - 所以样式类名需要额外的注意
 - jsincss 【这是一种解决方案】 module.css 【官方配置好的一种解决方案】 scss【css 预处理器,利用嵌套的语法避免冲突】

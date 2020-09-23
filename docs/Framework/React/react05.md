@@ -26,6 +26,7 @@ class 在es6里对于class类名是有规范要求的，首先字母必须大写
  1. 在react里class组件中，dom片段必须放在一个render的函数中
 
 以下是函数组件（dom片段直接写在return（）内）
+
 ```js
 // 函数组件
 function Dome() {
@@ -36,7 +37,9 @@ function Dome() {
     )
 }
 ```
+
 以下是class组件(dom片段在render函数内部)
+
 ```js
 // class组件
 class App {
@@ -49,11 +52,12 @@ class App {
     }
 }
 ```
+
 - react 里类不能直接用，需要继承extends
 
-    - class 类名 extends 基类 {}
+  - class 类名 extends 基类 {}
 
-    - 继承的关键字 【前面是组件名】extends【继承=>】 React.Component 【基础的类/基类】
+  - 继承的关键字 【前面是组件名】extends【继承=>】 React.Component 【基础的类/基类】
 
  2. class组件里包含了所有的react特性：
 函数组件中只有一个props属性，而在class 组件里有生命周期、捕获异常、容错边界、优化渲染等
@@ -68,8 +72,11 @@ function Son(props) {
     )
 }
 ```
+
 注：类组件的props属性和函数组件里的props属性一模一样，就是在调用的时候class里props需要用this点出来
+
 - 实例：
+
 ```js
 // Son.jsx内容
 import React from 'react'
@@ -109,13 +116,13 @@ class里面所有的属性和方法都要用this.出来
 
 - state和porps的区别
 
-    - 状态state：是组件自身的数据存储，它用来控制组件自己的变化
+  - 状态state：是组件自身的数据存储，它用来控制组件自己的变化
 
-    - 属性props：是父级传过来的数据，组件自身是不能操作修改 props 的
+  - 属性props：是父级传过来的数据，组件自身是不能操作修改 props 的
 
 - state必须是一个对象，react是单项数据流，并且数据是单向监听，修改的时候我们要用react自带的setState，setState需要传入的就是一个对象
 
-### state使用有以下两种方式：
+### state使用有以下两种方式
 
    1. 直接写在类组件里(官方不建议这样用)
 可以state直接写在Component函数中
@@ -187,6 +194,7 @@ export default class App extends Component {
 ### 修改状态值：this.setState({ name: newTxt })
 
 - 下面时实例代码
+
 ```js
 // 修改状态的案例
 import React, { Component } from 'react'
@@ -248,6 +256,7 @@ export default class App extends Component {
 
 }
 ```
+
 注1：在我们绑定事件函数得时候，this 指针丢失得问题，解决方法：声明这个函数得时候用箭头函数
 
 注2：
@@ -262,5 +271,6 @@ import React, { Component } from 'react'
 注3：凡是直接写在Component {}中的方法，调用的时候都必须加this。
 
 注4：修改数据时hook和steState的区别
+
 - hook 修改状态时新旧值的替换
 - setState 在修改值的时候，实际上是将新旧对象进行合并

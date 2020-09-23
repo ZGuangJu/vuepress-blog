@@ -119,10 +119,11 @@ export default {
 }
 </script>
 ```
+
 :::warning 注意
 父组件中的函数 handleFather 是子组件上的自定义属性的值；handleSon是让子组件通过$emit 修改数据的函数名，和父组件里子组件上是自定义属性名一致。
 :::
 
-## 2.
-$bus 中央事件池
+## 2
 
+$bus 中央事件池

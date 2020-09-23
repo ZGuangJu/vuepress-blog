@@ -8,6 +8,7 @@ publish: true
 ---
 
 ## index.js文件内容
+
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -29,6 +30,7 @@ serviceWorker.unregister();
 ```
 
 ## App.js文件内容
+
 ```js
 // 在组件中，react 核心库是用来解析生成虚拟DOM的，所以必须引入
 import React from 'react'
@@ -63,7 +65,9 @@ export default App
 ```
 
 ## 组件本体
+
 Header组件（其他两个同下） components/Header-box.jsx
+
 ```jsx
 // 编写组件内容 （使用组件第一步共三步）
 // 1，写组件，第一步 引入react

@@ -33,13 +33,10 @@ Nginx 作为 Web 服务器一直为 Rambler Media 提供出色而又稳定的服
 
 - 基于以下几点：Nginx火了
 
-
-
 1. Nginx 使用基于事件驱动架构，使得其可以支持数以百万级别的 TCP 连接。
 2. 高度的模块化和自由软件许可证使得第三方模块层出不穷（这是个开源的时代啊）。
 3. Nginx 是一个跨平台服务器，可以运行在 Linux、Windows、FreeBSD、Solaris、AIX、Mac OS 等操作系统上。
 4. 这些优秀的设计带来的极大的稳定性。
-
 
 ## Nginx 的用武之地
 

@@ -10,12 +10,14 @@ tags:
 publish: true
 ---
 
-## js中[error的处理 ](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Error)
+## js中[error的处理](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Error)
 
-   - 错误的类型
+- 错误的类型
 
      Error：是所有错误的父类型
+
 > ReferenceError(引用错误)： 引用的变量不存在
+>
 > ```js
 > // 输出不存在的变量
 > console.log(a); //输出 Uncaught a is not defined
@@ -23,16 +25,20 @@ publish: true
 > ```
 >
 > TypeError(类型错误)： 数据类型不正确的错误
+>
 > ```js
 > let b = null;
 > console.log(b.xxx); // 输出 Uncaught TypeError: Cannot read property 'xxx' of null
 > ```
+>
 > ```js
 > let b= {};
 > b.xxx()  //输出 Uncaught TypeError: b.xxx is not a function
 > // 以上都是类型错误
 > ```
+>
 > RangeError： 数据值不在其所允许的范围
+>
 > ```js
 >  function Fn() {
 >        Fn()
@@ -40,12 +46,14 @@ publish: true
 >  Fn() // 递归调用，死循环
 >  // 输出 Uncaught RangeError: Maximum call stack size exceeded
 > ```
+>
 > SyntaxError： 语法错误
+>
 > ```js
 >  const a = """" //输出 Uncaught SyntaxError: Unexpected string
 > ```
 
-   - 错误处理
+- 错误处理
 
 捕获错误：`try ... catch`
 
@@ -83,4 +91,3 @@ publish: true
 message属性： 错误相关信息
 
 stach属性： 函数调用栈记录信息
-

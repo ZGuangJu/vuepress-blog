@@ -31,6 +31,7 @@ publish: true
 `react` 函数式编程思想（声明式编程）
 
 ## react 原理
+
 vue 单向数据流 != 数据单向绑定
 
 他和 `vue` 不同的地方：数据单向绑定的
@@ -52,7 +53,7 @@ vue 单向数据流 != 数据单向绑定
 
 ## 官网的阅读【自学】
 
-1.  [【官网】](https://react.docschina.org/)
+1. [【官网】](https://react.docschina.org/)
 
 2. 文档 --> 核心概念【初级的基础知识】-->高级指引【中级】 -->HOOK【高级用法】
 
@@ -67,16 +68,20 @@ vue 单向数据流 != 数据单向绑定
 ```js
 npm unistall -g create-react-app
 ```
+
   2. 创建项目命令
+
 ```js
 npx create-react-app myappname
 ```
+
 【myappname】:项目名称，不可以叫 `react`（关键字） 也不许有驼峰命名
 
--  npx
+- npx
 
 `npx` 是运行本地 `node_modules` 包里依赖的，如果没找到，就临时下载，使用完之后把下载的依赖删掉，用 `npx` 好处是保证了依赖版本的新鲜度【每次都是最新版本】，`npm` 先运行本地项目，如果没找到去本机全局里找
   3.  项目结构
+
 - `node_modules` ：它是我们项目启动时所需要运行的依赖
 - `public` ：      是我们 `html` 模板所在的公共文件夹，如果你在 `public` 里面放了一个静态资源【`css` 文件，`js` 文件,图片，字体】，那么当打包的时候，这些文件不会被编译。
 - `.gitignore` ：  是一份告诉 git 提交的筛选名单,里面的`/node_modules` 就是告诉 `git` 存代码的时候把`node_modules` 目录过滤掉，并不提交到github
@@ -94,16 +99,15 @@ npx create-react-app myappname
 为什么删？因为我们要重构自己的项目结构
 在公司里开发项目，是有一个项目结构开发规饭
 
-|目录 |功能|
-|:-|:-|
-|/src| 项目主目录 |
-|/viwe | 存放我们页面级的组件 |
-|/components  | viwe 组件里公用的一些弹窗之类的|
-|/api | 把整个项目里所有的 ajax 请求写在这|
-|/tools |转化时间，分割数组，功能性纯 js 文件|
-|/assets | 静态资源|
-|index.js | [位置不可变]入口文件|
-
+| 目录        | 功能                                 |
+| :---------- | :----------------------------------- |
+| /src        | 项目主目录                           |
+| /viwe       | 存放我们页面级的组件                 |
+| /components | viwe 组件里公用的一些弹窗之类的      |
+| /api        | 把整个项目里所有的 ajax 请求写在这   |
+| /tools      | 转化时间，分割数组，功能性纯 js 文件 |
+| /assets     | 静态资源                             |
+| index.js    | [位置不可变]入口文件                 |
 
 ## 初始组件--function
 
@@ -111,29 +115,39 @@ npx create-react-app myappname
 
 1. 首写字母必须大写：App
 2. 为什么?因为小写的表示原生 html 标签，`<app />`原生标签里没有这个 app 标签，所以报错。
+
 - 官方规定：组件名字首写字母必须大写   `英文  _ 456`
 
 ## 运行项目
 
 1. 启动本地项目开发环境
+
 ```js
 npm run start  或 yarn start
 ```
+
 2. 打包 src 源码，变成原始的 js 和 html，
+
 ```js
 npm run build
 ```
+
 还是需要使用服务端启动,如下：
+
 ```js
 npm install -g serve
 和
 serve -s build
 ```
+
 3. 释放我们项目【官方】配置文件，且该命令只能运行一次，不可恢复
+
 ```js
 npm run eject
 ```
+
 `npm run eject` 一般是用不到的，官网提供了自定义配置接口，如果想改变项目里的官方配置，需要释放配置
+
 - 【坑】  `npm run eject` 我们创建项目的时候，官方会给初始化一个 git 仓库，这时候使用的时候要先把代码提交到 `git` 里或者，把 `git` 仓库删掉,`react` 才会区分出来这个组件是原生标签还是自定义的
 
 :::warning
@@ -141,10 +155,9 @@ npm run eject
 :::
 
 - 想要运行项目需要先执行以下命令：
+
 ```js
 npm install 或者 npm i
 ```
+
 当使用 `npm` 命令的时候，`npm` 就会读取 `package.json`，然后会把你依赖清单里的名字全部下载下来。
-
-
-

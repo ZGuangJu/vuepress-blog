@@ -89,6 +89,7 @@ addClass添加、removeClass删除、toggleClass切换类
     <div></div>
 </body>
 ```
+
 ## jQ 获取和设置元素位置和尺寸
 
 ```html
@@ -188,6 +189,7 @@ addClass添加、removeClass删除、toggleClass切换类
     <button>设置</button>
 </body>
 ```
+
 ## jQ 设置scrollTop\scrollLeft
 
 ```html
@@ -247,10 +249,11 @@ addClass添加、removeClass删除、toggleClass切换类
     <br>
 </body>
 ```
+
 ## 其他
 
-
 获取元素宽度
+
 ```js
 // 常规方法
 var width =window.getComputedStyle(img).width;

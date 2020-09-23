@@ -17,11 +17,12 @@ publish: true
 
 - 这个方法会向 history 栈添加一个新的记录，所以，当用户点击浏览器后退按钮时，则回到之前的 URL,除了 push 还有 replace，go 等很多跳转方式
 
-| 声明式 | 编程式 |
-|:-:|:-:|
+|            声明式            |         编程式         |
+| :--------------------------: | :--------------------: |
 | `<router-link to='/home' />` | `router.push('/home')` |
 
 示例:
+
 ```js
 // 字符串【常规跳转】
 router.push("home");
@@ -35,6 +36,7 @@ router.push({ name: "user", params: { userId: "123" } });
 // 带查询参数，变成 /register?plan=private【好处是刷新页面参数不丢失】
 router.push({ path: "register", query: { plan: "private" } });
 ```
+
 ::: warning 注意：
 
 如果提供了 path，params 会被忽略，上述例子中的 query 并不属于这种情况。取而代之的是下面例子的做法，你需要提供路由的 name 或手写完整的带有参数的 path：
@@ -54,13 +56,14 @@ router.push({ path: "/user", params: { userId } }); // -> /user
 
 - 跟 `router.push` 很像，唯一的不同就是，它不会向 `history` 添加新记录，而是跟它的方法名一样 ---- 替换掉当前的 `history` 记录。
 
-| 声明式 | 编程式 |
-|:-:|:-:|
+|                声明式                |          编程式           |
+| :----------------------------------: | :-----------------------: |
 | `<router-link to='/home' replace />` | `router.replace('/home')` |
 
 ```js
 <router-link :to="{ path: '/abc'}" replace></router-link>
 ```
+
 ## router.go(num)前进后退
 
 - 这个方法的参数是一个整数，意思是在 `history` 记录中向前或者后退多少步，类似 `window.history.go(num)`。

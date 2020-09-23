@@ -669,3 +669,7 @@ publish: true
     "workbench.statusBar.visible": true,
 }
 ```
+
+我的插件备份2020-9-23
+
+![Vscode 插件](https://s1.ax1x.com/2020/09/23/wvY1bQ.png)

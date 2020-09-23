@@ -15,6 +15,7 @@ publish: true
 - A
 
 父路由发送
+
 ```html
         <router-link to="/About/5/6">About</router-link>
         //占位router.js中写占位符和key
@@ -30,15 +31,18 @@ publish: true
 ```html
         <h4>我是App.vue路由传参params：{{ $route.params.aaa }}{{ $route.params.bbb }}</h4>
 ```
-注：地址栏显示  http://localhost:8080/#/About/5/6   to不加冒号 ：
+
+注：地址栏显示  <http://localhost:8080/#/About/5/6>   to不加冒号 ：
 
 - B
 
 父路由发送
+
 ```html
         <router-link :to="{ name: 'xiaoming', params: { id: 123 } }" >About</router-link>
         <!-- 用params必须用name不能用path -->
 ```
+
 注：123换成data中的key，可以动态传递参数
 
 子路由接
@@ -46,8 +50,8 @@ publish: true
 ```html
         <h4>我是App.vue路由传参params：{{ $route.params.id }}</h4>
 ```
-注：地址栏中不显示， `http://localhost:8080/#/About `  只有路由名，或别名（安全）  to要加冒号：
 
+注：地址栏中不显示， `http://localhost:8080/#/About`  只有路由名，或别名（安全）  to要加冒号：
 
 <font color="red">*</font>
 
@@ -63,14 +67,17 @@ publish: true
  2. query传参
 
 A路由发
+
 ```html
         <router-link :to="{ path: '/Home', query: { ju: 'zhang',gg：'guang' } }">Home</router-link>
 ```
 
 B路由接
+
 ```html
         <h4>我是App.vue路由传参query：{{ $route.query.ju }}{{ $route.query.gg }}</h4>
 ```
+
 注：地址栏`http://localhost:8080/#/Home?ju=zhang&gu=guang`参数显示到地址栏中，参数键值对用&分开
 
 ```js
@@ -78,23 +85,28 @@ B路由接
         //拼接在url？后面，多个参数用&符连接
 ```
 
-
  3. 使用 `router-view` 组件上，动态绑定数据
 
 父路由传
+
 ```html
         <router-view :mny="mny"></router-view>
 ```
+
 子路由接
+
 ```js
          props: {
             mny: { type: [Array, Number] }
         },
 ```
+
 子路由用
+
 ```html
         <h5>我是App用props传递的数据{{ mny }}</h5>
 ```
+
 :::warning 注
 v-model 只在input表单中
 :::

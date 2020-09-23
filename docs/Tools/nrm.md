@@ -17,13 +17,13 @@ publish: true
 
 1. 安装
 
-```
+```js
 npm install nrm -g
 ```
 
 2. 查看 npm 仓库列表
 
-```
+```js
 nrm ls
 ```
 
@@ -40,13 +40,13 @@ nrm ls
 
 3. npm 仓库测速(需要等待 2-3 分钟)
 
-```
+```js
 nrm test
 ```
 
 结果如下
 
-> ```
+> ```js
 >   npm ---- 1505ms
 >   cnpm --- 474ms
 > * taobao - 745ms
@@ -57,7 +57,7 @@ nrm test
 
 4. 选择 npm 仓库
 
-```
+```js
  nrm use taobao  // 示例:比如源换成下载最快的是taobao镜像
 ```
 

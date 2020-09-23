@@ -174,10 +174,11 @@ module.exports = {
                     { text: '问题', link: '/Other/问题' },
                     { text: 'token 是什么', link: '/Other/token' },
                     { text: '网站黑白', link: '/Other/网站黑白' },
+                    { text: 'Chrome 使用', link: '/Other/Chrome' },
                     { text: 'URI & URL', link: '/Other/URI&URL' },
                     { text: 'Apache 是什么', link: '/Other/Apache' },
                     { text: 'Nginx 是什么', link: '/Other/Nginx' },
-                    { text: 'error 的本质和处理', link: '/Other/error' },
+                    { text: '报 error 的本质和处理', link: '/Other/error' },
                     { text: '验证码 是什么', link: '/Other/验证码' },
                 ]
             },

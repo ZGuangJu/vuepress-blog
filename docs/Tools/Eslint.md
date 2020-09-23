@@ -15,22 +15,26 @@ publish: true
 
 - 在 vue-cli 3.0
 
-> 1. 项目中如果有`vue.config.js `文件
+> 1. 项目中如果有`vue.config.js`文件
 >
-> 不想使用 `ESLint` 校验（不推荐取消），只要找到 `vue.config.js `文件, 修改`lintOnSave 为false`，如果没有就添加`lintOnSave: false`。
+> 不想使用 `ESLint` 校验（不推荐取消），只要找到 `vue.config.js`文件, 修改`lintOnSave 为false`，如果没有就添加`lintOnSave: false`。
 >
 > 2. 项目中如果有`Eslintrc.js`文件
 >
 > 添加`"linebreak-style":"off"`.
+>
 > ```js
 > rules:{
 >     "linebreak-style":"off",
 > }
 > ```
+>
 > 以上方法选一个即可。
+
 - 在 `vue-cli 4.0`.
 
 在`vue.config.js`中添加`lintOnSave: false`.
+
 ```js
 module.exports = {
         lintOnSave: false
@@ -81,13 +85,14 @@ module.exports = {
     // "error" 或者 2：打开规则，并且作为一个错误（exit code将会是1）。
 ```
 
-
 第二种(亲测有效)
 
 运行
+
 ```js
 yarn eject  或  npm eject
 ```
+
 在生成的config文件夹的Webpack.config.js中找到以下代码，并注释掉即可
 
 ```js
@@ -109,9 +114,11 @@ yarn eject  或  npm eject
                     include: paths.appSrc,
             },
 ```
+
 :::warning 注
 以上所有方法，在设置完成以后，都要重新启动项目才会生效！！
 :::
+
 ## 使用Eslint
 
 ### 在 React 中
@@ -516,6 +523,7 @@ module.exports = {
   }
 };
 ```
+
 在package.json中增加如下脚本指令：
 
 ```js
@@ -525,7 +533,9 @@ module.exports = {
   }
 }
 ```
+
 添加完成之后，就可以执行如下命令对指定的文件进行eslint管理：
+
 ```js
 npm run lint
 ```
