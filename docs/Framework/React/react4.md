@@ -1,5 +1,5 @@
 ---
-title: react 函数组件和基础布局
+title: React 函数组件和基础布局
 date: 2019-4-9
 sidebar: 'auto'
 tags:

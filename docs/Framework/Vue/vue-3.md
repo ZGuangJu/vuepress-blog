@@ -6,6 +6,7 @@ tags:
  - vue
 publish: true
 ---
+
 ::: tip
 vue里都是以 `v-` 开头的，也可称为自定义属性，是属性，在标签行内
 :::

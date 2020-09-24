@@ -1,5 +1,5 @@
 ---
-title: react组件的写法
+title: React 组件的写法
 date: 2019-4-3
 sidebar: 'auto'
 tags:

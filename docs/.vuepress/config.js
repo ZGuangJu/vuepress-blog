@@ -129,8 +129,8 @@ module.exports = {
                 text: '前端框架',
                 icon: "reco-document",
                 items: [
-                    { text: 'Vue', link: '/Framework/Vue/vue0' },
-                    { text: 'React', link: '/Framework/React/React01' },
+                    { text: 'Vue', link: '/Framework/Vue/vue-1' },
+                    { text: 'React', link: '/Framework/React/React1' },
                     { text: 'Wechat', link: '/Framework/Wechat/Wechat' }
                 ]
             },
@@ -251,14 +251,14 @@ module.exports = {
                 {
                     title: 'Vue',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['vue0', 'vue1', 'vue2', 'vue3', 'vue4', 'vue5', 'vue6', 'vue7', 'vuers-1', 'vuers-2', 'vuers-3']
+                    children: ['vue3-1', 'vue-1', 'vue-2', 'vue-3', 'vue-4', 'vue-5', 'vue-6', 'vue-7', 'vue-8', 'vuers-1', 'vuers-2', 'vuers-3']
                 }
             ],
             '/Framework/React/': [
                 {
                     title: 'React',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['react01', 'react02', 'react03', 'react04', 'react05', 'react&vue']
+                    children: ['react1', 'react2', 'react3', 'react4', 'react5', 'react&vue']
                 },
             ],
             '/Framework/Wechat/': [

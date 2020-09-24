@@ -1,5 +1,5 @@
 ---
-title: React 中的 class 类组件
+title: React  class 类组件
 date: 2019-4-9
 sidebar: 'auto'
 tags:

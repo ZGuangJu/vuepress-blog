@@ -14,6 +14,8 @@ sticky: 2
 
 ----
 
+## 常用设置
+
 ### 1、查看git账户邮箱
 
 ```js
@@ -130,53 +132,29 @@ git reflog
 
 结果会将你之前的操作的commit id和具体的操作类型及相关的信息打印出来，这个命令还有一个作用就是，当你过了几天，你想回退之前的某次提交，但是你不知道commit id了，通过这个你可查找出commit id,就可以轻松回退
 
-### 14、生成git密钥  sshkey
-
-为了和github建立连接。
-
-```js
-ssh-keygen -t rsa -C ‘1234@qq.com’
-```
-
-- 1. 生成新的sshkey
-
-```js
-ssh-keygen -t rsa -b 4096 -C "1234@qq.com"
-```
-
-- 2. 如果不使用密码连输按3次回车
-
-```js
-// 保存位置
-> Enter a file in which to save the key (/Users/you/.ssh/id_rsa): [Press enter]
-// 输入密码
-> Enter passphrase (empty for no passphrase): [Type a passphrase]
-// 重复密码
-> Enter same passphrase again: [Type passphrase again]
-```
-
-### 15、对 GitHub 尝试 ssh
+### 14、对 GitHub 尝试 ssh
 
 ```js
 ssh -T git@github.com
 ```
 
-### 16、本地项目直接提交到远程仓库
+### 15、本地项目直接提交到远程仓库
 
-- 1、在github上新建一个仓库，复制仓库地址，然后使用命令将本地仓库与远程仓库建立连接
+- 在github上新建一个仓库，复制仓库地址，然后使用命令将本地仓库与远程仓库建立连接
 
 ```js
 git remote add origin  xxx       //xxx是git仓库的地址
 ```
 
-- 2、将暂存区的文件推送至远程仓库
-使用强制推送'-f'是因为一般新建仓库的时候会生成read me文件，导致需要先git fetch才能推送，但这个read me文件其实是不需要的，因为在生成本地项目的时候一般也会生成一个read me文件，所以选择直接强制推送过去。
+- 将暂存区的文件推送至远程仓库
+
+使用强制推送`-f`是因为一般新建仓库的时候会生成`README.md`文件，导致需要先`git --fetch`才能推送，但这个`README.md`件其实是不需要的，因为在生成本地项目的时候一般也会生成一个`README.md`文件，所以选择直接强制推送过去。
 
 ```js
 git push origin master -f
 ```
 
-### 17、 升级git版本
+## 升级git版本
 
 版本 > 2.16.1 则使用：
 
@@ -191,6 +169,29 @@ git push origin master -f
 ```
 
 版本 <2.14.2 请重新下载安装覆盖
+
+## 生成git密钥  sshkey
+
+为了和github或gitee建立连接，要在github或gitee里添加公钥。下面的命令会在本机用户文件夹下创建一个`.ssh`文件夹，里面有`id_rsa.pub`文件（邮箱是你的github\gitee注册邮箱或者其他都行）。密钥类型可以用 -t 选项指定。如果没有指定则默认生成用于SSH-2的RSA密钥。这里使用的是rsa。
+
+1. 生成sshkey
+
+```js
+ssh-keygen -t rsa -C "v1234@gmail.com"
+```
+
+2. 输入完毕后程序同时要求输入一个密语字符串(passphrase)，空表示没有密语。接着会让输入2次口令(password)，空表示没有口令。3次回车即可完成当前步骤，此时[c盘>用户>自己的用户名>.ssh]目录下已经生成好了
+
+```js
+// 保存位置
+> Enter a file in which to save the key (/Users/you/.ssh/id_rsa): [Press enter]
+// 输入密码
+> Enter passphrase (empty for no passphrase): [Type a passphrase]
+// 重复密码
+> Enter same passphrase again: [Type passphrase again]
+```
+
+3. 登录`github`,打开`setting`->`SSH keys`，点击右上角 `New SSH key`，把生成好的公钥`id_rsa.pub`放进 `key`输入框中，再为当前的`key`起一个`title`来区分每个`key`。
 
 <font size="6" color="#3eaf7c">使用git管理学习进度</font>
 
@@ -221,4 +222,6 @@ git branch -a
 git checkout [分支的名字]
 ```
 
-### 当查看完以后，要切换到主分支
+:::warning
+当查看完以后，要切换到主分支
+:::
