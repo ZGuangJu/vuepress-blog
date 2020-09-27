@@ -7,27 +7,11 @@ tags:
 publish: true
 ---
 
-## index.js文件内容
+### 组件的文件命名
 
-```js
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App.jsx';
-// es6 模块：*代表的是一个对象，它将文件
-import * as serviceWorker from './serviceWorker';
-console.log(serviceWorker);
-/*
-上行代码的解释：（es6模块）
-  * ：代表的是serviceWorker.js 这个文件中向外暴露的所有模块
-  as ：重命名  别名
- 这句话的意思是它将文件（serviceWorker.js）中的所有需要暴露出来的模块都挂载到自身上（此时的serviceWorker是一个对象），然后可以通过serviceWorker.unregister();用点的方式把方法都拿出来
-*/
-ReactDOM.render(<App />, document.getElementById('root'));
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
-```
+给组件起名字的时候，一定不要和原生的标签名一样，不然会报错
+如果写的是一个组件，文件的后缀用 `.jsx`
+如果写的是一个 `js` 文件，文件后缀用 `.js`
 
 ## App.js文件内容
 
