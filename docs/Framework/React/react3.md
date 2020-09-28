@@ -212,6 +212,127 @@ class Counter extends React.Component {
 render(<Counter></Counter>, window.root)
 ```
 
+## 组件的传值 props
+
+组件传值 props 只能从上到下传递 继承的关系（父传子）
+
+- 类组件
+
+```jsx
+// 类组件
+import React from 'react';
+import { render } from 'react-dom';
+
+class Student extends React.Component {
+    constructor(props) {
+        super(props); //this.props=props
+    }
+    render() {
+        return (
+            <>
+                姓名 - {this.props.name},
+                年龄 - {this.props.age}岁,
+                性别 - {this.props.sex},
+            </>
+        )
+    }
+}
+let li = {
+    name: '李雷',
+    age: '8',
+    sex: '男'
+}
+class Students extends React.Component {
+    render() {
+        return (
+            <>
+                <Student {...li} ></Student>
+                <Student name='张广聚' age='9' sex='男'></Student>
+                <Student></Student>
+            </>// {...li} 常用在，传递到属性值多的时候
+        )
+    }
+}
+render(<><Students></Students></>, window.root) //渲染函数组件和类组件
+```
+
+- 函数组件
+
+```jsx
+// 函数组件
+import React from 'react';
+import { render } from 'react-dom';
+// 方式一
+function Student1(props) { //函数组件里用参数传值
+    return <>
+        <div>我是函数组件
+                姓名 - {props.name} ,
+                年龄 - {props.age}岁,
+                性别 - {props.sex},
+        </div>
+    </>
+}
+// 方式二
+function Student2({ name, age, sex }) { //函数组件里用参数传值(将参数解构出来)
+    return <>
+        <div>我是函数组件
+                姓名 - {name} ,
+                年龄 - {age}岁,
+                性别 - {sex},
+        </div>
+    </>
+}
+
+render(<><Student1></Student1><Student2 name='王子豪' age={3} sex='未知' ></Student2></>, window.root) //渲染函数组件或类组件
+```
+
+## 条件渲染 和 循环渲染
+
+- 条件渲染 通过判断来决定事件渲染(写三元表达式和if-else)
+
+```jsx
+import React from 'react';
+import { render } from 'react-dom';
+// 三元 &&
+const A = 1
+function My() {
+    // return A ? (<div>这是div</div>) : '否'
+    return A && <div>这是div</div>
+}
+// if else
+function My1() {
+    if (A) {
+        return <div>这是div</div>
+    }
+}
+render(<><My1></My1></>, window.root) //渲染函数组件和类组件
+```
+
+- 循环渲染
+
+```jsx
+import React from 'react';
+import { render } from 'react-dom';
+
+let carlist = [
+    { name: '苹果', price: '300', },
+    { name: '橘子', price: '300', },
+    { name: '芒果', price: '300', },
+    { name: '月饼', price: '300', },
+    { name: '西瓜', price: '300', },
+]
+// 一般不要使用索引作为 key ，一般用 id 作为 key，为了 domdiff
+function Car() {
+    return carlist.map((item, index) => {
+        return <div key={index}>
+            <p>名称:{item.name}</p>
+            <p>价格:{item.price}</p>
+        </div>
+    })
+}
+render(<><Car></Car></>, window.root) //渲染函数组件或类组件
+```
+
 ### 组件的文件命名
 
 给组件起名字的时候，一定不要和原生的标签名一样，不然会报错
