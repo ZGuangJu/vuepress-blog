@@ -163,6 +163,7 @@ module.exports = {
                     { text: 'VScode配置文件', link: '/Tools/vscode' },
                     { text: 'Powershell 配置文件', link: '/Tools/powershell' },
                     { text: 'Vite', link: '/Tools/vite' },
+                    { text: 'Win子系统', link: '/Tools/wsl' },
                 ],
             },
             {
@@ -273,7 +274,7 @@ module.exports = {
             '/Node/': ['node1', 'node2', 'package'],
             '/Webpack/': ['webpack1', 'webpack2', 'webpackconfigjs'],
             '/Backend/': ['php'],//后端，暂未启用
-            '/Tools/': ['git', 'git2', 'yarn', 'npm', 'npm2', 'upgrade', 'cmd', 'nrm', 'regex', 'markdown', 'Trojan', 'typecho', '宝塔', 'vuepress', 'vuepress部署', 'vim', 'Eslint', 'vscode', 'powershell', 'vite'],
+            '/Tools/': ['git', 'git2', 'yarn', 'npm', 'npm2', 'upgrade', 'cmd', 'nrm', 'regex', 'markdown', 'Trojan', 'typecho', '宝塔', 'vuepress', 'vuepress部署', 'vim', 'Eslint', 'vscode', 'powershell', 'vite', 'wsl'],
             '/Other/': [
                 '', '问题', 'error', '知识点', '验证码', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome'
             ],
