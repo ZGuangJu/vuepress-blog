@@ -130,7 +130,7 @@ module.exports = {
                 icon: "reco-document",
                 items: [
                     { text: 'Vue', link: '/Framework/Vue/vue-1' },
-                    { text: 'React', link: '/Framework/React/React1' },
+                    { text: 'React', link: '/Framework/React/React01' },
                     { text: 'Wechat', link: '/Framework/Wechat/Wechat' }
                 ]
             },
@@ -144,13 +144,11 @@ module.exports = {
             {
                 text: '工具',
                 items: [
-                    { text: 'Git 介绍和常用', link: '/Tools/git' },
-                    { text: 'Git 命令大全', link: '/Tools/git2' },
-                    { text: 'yarn 介绍和常用', link: '/Tools/yarn' },
-                    { text: 'npm 介绍和常用', link: '/Tools/npm' },
-                    { text: 'npm 发布插件', link: '/Tools/npm2' },
+                    { text: 'Git', link: '/Tools/git' },
+                    { text: 'yarn', link: '/Tools/yarn' },
+                    { text: 'npm', link: '/Tools/npm' },
                     { text: 'nrm', link: '/Tools/nrm' },
-                    { text: 'cmd 命令', link: '/Tools/cmd' },
+                    { text: 'cmd', link: '/Tools/cmd' },
                     { text: 'regex 正则', link: '/Tools/regex' },
                     { text: 'MarkDown', link: '/Tools/markdown' },
                     { text: 'Trojan', link: '/Tools/Trojan' },
@@ -259,12 +257,12 @@ module.exports = {
                 {
                     title: 'React',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['react1', 'react2', 'react3', 'react4', 'react5', 'react&vue']
+                    children: ['react01', 'react02', 'react03', 'react04', 'react05', 'react06', 'react07', 'react', 'react&vue']
                 },
             ],
             '/Framework/Wechat/': [
                 {
-                    title: '小程序',
+                    title: '微信小程序',
                     collapsable: true, //是否折叠侧边栏
                     children: ['wechat', 'wechat2', 'wechat3', 'wechat4', 'wechat5', 'wechat6', 'wechat7', 'wechat8', 'wechat9', 'wechat10']
                 }
@@ -274,7 +272,7 @@ module.exports = {
             '/Node/': ['node1', 'node2', 'package'],
             '/Webpack/': ['webpack1', 'webpack2', 'webpackconfigjs'],
             '/Backend/': ['php'],//后端，暂未启用
-            '/Tools/': ['git', 'git2', 'yarn', 'npm', 'npm2', 'upgrade', 'cmd', 'nrm', 'regex', 'markdown', 'Trojan', 'typecho', '宝塔', 'vuepress', 'vuepress部署', 'vim', 'Eslint', 'vscode', 'powershell', 'vite', 'wsl'],
+            '/Tools/': ['git', 'yarn', 'npm', 'upgrade', 'cmd', 'nrm', 'regex', 'markdown', 'Trojan', 'typecho', '宝塔', 'vuepress', 'vuepress部署', 'vim', 'Eslint', 'vscode', 'powershell', 'vite', 'wsl'],
             '/Other/': [
                 '', '问题', 'error', '知识点', '验证码', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome'
             ],

@@ -1,5 +1,5 @@
 ---
-title: React jsx文件介绍
+title: React jsx介绍
 date: 2019-3-29
 sidebar: 'auto'
 tags:
@@ -14,7 +14,8 @@ jsx就是 js + xml(html) ,虚拟DOM ,其实就是一个Object,就是描述 react
 ## jsx 是怎样创建 DOM 的
 
 ```js
-let dom = <div className='a' c='1'>jsx<span>是什么</span></div> // 保存jsx的变量就是一个 React element
+let dom = <div className='a' c='1'>jsx<span>是什么</span></div>
+// 保存jsx的变量就是一个 React element
 // 这一步内部是调用了React.createElement()方法,so 要在开头引入 React
 ```
 

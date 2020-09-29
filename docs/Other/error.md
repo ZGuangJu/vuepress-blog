@@ -10,7 +10,9 @@ tags:
 publish: true
 ---
 
-## js中[error的处理](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Error)
+:::tip 说明
+js中[error的处理](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Error)
+:::
 
 - 错误的类型
 

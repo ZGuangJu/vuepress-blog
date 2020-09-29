@@ -64,13 +64,13 @@ yarn dev
 
 ## 以下是旧版里新建vuepress项目的步骤
 
-::: details
+::: details 旧版里新建vuepress项目
 
 ## 创建项目
 
 1. 全局安装 `vuepress` 。
 
-```js
+```s
 npm install -g vuepress
 ```
 
