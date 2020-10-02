@@ -115,7 +115,7 @@ module.exports = {
                 items: [
                     { text: 'HTML & H5', link: '/Frontend/HTML/HTML' },
                     { text: 'CSS & C3', link: '/Frontend/CSS/CSS' },
-                    { text: 'JavaScript', link: '/Frontend/JavaScript/JavaScript' },
+                    { text: 'JavaScript', link: '/Frontend/JS/JavaScript' },
                     { text: 'ES6新增', link: '/Frontend/ES6/ES01' },
                     { text: 'Promise', link: '/Frontend/Promise/promise' },
                     { text: 'JQuery', link: '/Frontend/JQuery/JQuery' },
@@ -218,7 +218,7 @@ module.exports = {
                 {
                     title: 'JavaScript',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['JavaScript/JavaScript']
+                    children: ['JS/JavaScript', 'JS/Array']
                 },
                 {
                     title: 'ES6',

@@ -12,3 +12,5 @@ publish: true
 [javascript详解](https://wangdoc.com/javascript/)
 
 [阮一峰javascript](https://javascript.ruanyifeng.com/)
+
+关注公众号，送新版JavaScrit高级程序设计（第四版）

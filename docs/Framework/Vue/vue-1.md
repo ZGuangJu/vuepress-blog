@@ -141,10 +141,13 @@ npm install -g npm@4
 新版的 Vue CLI 的包名称由 `vue-cli` 改成了 `@vue/cli`。 如果你已经全局安装了旧版本的 `vue-cli (1.x 或 2.x)`，你需要先通过 `npm uninstall vue-cli -g` 或 `yarn global remove vue-cli` 卸载，重新安装脚手架。
 :::
 
-- cnpm 淘宝镜像
+- npm 切换镜像源
 
 ```js
-npm install -g cnpm --registry=https://registry.npm.taobao.org
+//淘宝
+npm config set registry https://registry.npm.taobao.org
+//官方
+npm config set registry https://registry.npmjs.org
 ```
 
 安装报错后 清除缓存的方法 (运行清除后再次安装)
