@@ -1,5 +1,5 @@
 ---
-title: Git
+title: git
 date: 2019-5-19
 sidebar: 'auto'
 categories:

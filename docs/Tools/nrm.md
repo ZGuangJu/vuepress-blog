@@ -1,5 +1,5 @@
 ---
-title: Nrm
+title: nrm
 date: 2018-11-2
 sidebar: 'auto'
 categories:

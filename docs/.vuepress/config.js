@@ -144,7 +144,7 @@ module.exports = {
             {
                 text: '工具',
                 items: [
-                    { text: 'Git', link: '/Tools/git' },
+                    { text: 'git', link: '/Tools/git' },
                     { text: 'yarn', link: '/Tools/yarn' },
                     { text: 'npm', link: '/Tools/npm' },
                     { text: 'nrm', link: '/Tools/nrm' },
@@ -160,7 +160,7 @@ module.exports = {
                     { text: 'Eslint 的使用和禁用', link: '/Tools/Eslint' },
                     { text: 'VScode配置文件', link: '/Tools/vscode' },
                     { text: 'Powershell 配置文件', link: '/Tools/powershell' },
-                    { text: 'Vite', link: '/Tools/vite' },
+                    { text: 'vite', link: '/Tools/vite' },
                     { text: 'Win子系统', link: '/Tools/wsl' },
                 ],
             },

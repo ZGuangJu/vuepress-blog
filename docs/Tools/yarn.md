@@ -1,5 +1,5 @@
 ---
-title: Yarn 安装和常用命令
+title: yarn
 date: 2019-6-19
 sidebar: 'auto'
 categories:
