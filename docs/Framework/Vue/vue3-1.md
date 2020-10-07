@@ -58,7 +58,7 @@ setup
   },
 ```
 
-无论是值还是函数都需要通过return 暴露给外部使用
+无论是值还是函数都需要通过`return` 暴露给外部使用
 
 ```js
 export default {

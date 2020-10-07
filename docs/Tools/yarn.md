@@ -22,17 +22,17 @@ publish: true
 
 - [下载](https://classic.yarnpkg.com/zh-Hans/docs/install/#windows-stable)安装包 安装
 
-下载后运行软件，安装
+下载后运行软件，安装(用安装包安装有个弊端，当你用命令行升级yarn时，版本会固定到你安装软件时的那个版本)
 
 - 通过 [Chocolatey](http://www.91guangju.com/index.php/archives/35/) 安装
 
-(安装 Chocolatey 之后，你就可以在控制台执行如下命令安装 Yarn 了)
+(安装 `Chocolatey` 之后，你就可以在控制台执行如下命令安装 `Yarn` 了)
 
 ```js
 choco install yarn
 ```
 
-- 通过 `Scoop` 安装（类似Chocolatey）
+- 通过 `Scoop` 安装（类似`Chocolatey`）
 
 ```js
 scoop install yarn
@@ -55,7 +55,7 @@ yarn -v   /   yarn --version
 - 卸载`yarn`
 
 ```js
-❯ npm uninstall -g yarn
+npm uninstall -g yarn
 ```
 
 - 升级最新版本
@@ -76,7 +76,11 @@ yarn set version latest
 npm install -g yarn@berry
 ```
 
-工程中升级为Yarn 2
+:::danger
+`yarn 2` 不时`yarn 1.x`的升级版，它们是两个不同的东西，[了解`yarn2`](https://blog.csdn.net/u010730126/article/details/107857940)
+:::
+
+- 工程中升级为`Yarn 2`
 
 ```js
 yarn --version # A
@@ -134,7 +138,7 @@ yarn remove [packagename]
 - 安装`package.json` 文件里定义的所有依赖包；
 
 ```js
-yarn install  /   yarn i
+yarn
 ```
 
 - 发布一个包到包管理器；
@@ -209,6 +213,6 @@ yarn upgrade v1.22.4
 
 :::warning 附
 
-- package.json：包含包的所有依赖信息；
-- yarn.lock：记录每一个依赖项的确切版本信息；
+- `package.json`：包含包的所有依赖信息；
+- `yarn.lock`：记录每一个依赖项的确切版本信息；
 :::

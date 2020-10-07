@@ -38,7 +38,7 @@ this.$route.params.id、this.$route.params.age、this.$route.params.job
 ```
 
 路由配置
-router/index.js
+`router/index.js`
 
 ```js
 {
@@ -64,7 +64,7 @@ router/index.js
 :::
 
 路由配置
-router/index.js
+`router/index.js`
 
 ```js
 routes: [

@@ -1,5 +1,5 @@
 ---
-title: 创建 Vuepress 项目
+title: Vuepress
 date: 2019-6-15
 sidebar: 'auto'
 categories:
@@ -19,24 +19,24 @@ publish: true
 - 支持 PWA
 :::
 
-## 创建 vuepress 项目(新版)
+## 一、 创建 vuepress 项目(新版)
 
-1. 创建VuePress 项目最快的方法是使用 `create-VuePress-site generator`，帮您建立基本的 VuePress 站点结构
+1. 创建VuePress 项目最快的方法是使用 `create-VuePress-site [Name]`，帮您建立基本的 VuePress 站点结构，运行：
 
 ```js
-yarn create vuepress-site [optionalDirectoryName]
+yarn create vuepress-site [Name]
 ```
 
 *如果您的项目使用 webpack 3.x，您可能会注意到 npm 的一些安装问题。在这种情况下，我们建议使用yarn*
 
 然后你就可以配置你的 VuePress 网站的元数据
 
-- Project Name 项目名称
-- Description 描述
-- Maintainer Email 维护者电子邮件
-- Maintainer Name 维护人员名称
-- Repository URL 存储库 URL
-- repo 没有可留空
+- `Project Name` 项目名称
+- `Description` 描述
+- `Maintainer Email` 维护者电子邮件
+- `Maintainer Name` 维护人员名称
+- `Repository URL` 存储库 URL(或者没有该项)
+- `repo` 没有可留空
 
 ![create-vuepress](https://s1.ax1x.com/2020/09/22/wLVf3V.png)
 
@@ -62,11 +62,11 @@ yarn
 yarn dev
 ```
 
-## 以下是旧版里新建vuepress项目的步骤
+### 以下是旧版里新建vuepress项目的步骤
 
 ::: details 旧版里新建vuepress项目
 
-## 创建项目
+### 创建项目
 
 1. 全局安装 `vuepress` 。
 
@@ -98,16 +98,34 @@ vuepressBlogDemo
        └── package.json
 ```
 
-5. 配置 `package.json` 的 `scripts` 脚本命令。
+### 发布
+
+部署到`github`上托管，具体本页的步骤二
+
+1. 项目根目录，建立文件 `deploy.sh`
+
+2. 创建`github`仓库 : `username.github.io` （`username`就是你的账号用户名，注意要和用户名一致）；gitee仓库：`username` (`username`就是你的账户用户名，也就是用用户名创建仓库)
+
+3. 发布时候的命令
+
+```js
+npm run deploy | yarn deploy  //可以在 package.json 的 scripts 中自行设置关键字
+```
+
+:::
+
+2. 配置 `package.json` 的 `scripts` 脚本命令。
 
 ```json
 "dev": "vuepress dev docs",
 "build": "vuepress build docs"
 ```
 
-6. 配置默认主题 `docs/README.md`。
+3. 首页配置： `docs/README.md`文件，新版框架里式`index.md`.
 
-```yaml
+初始版本
+
+```md
 ---
 # 默认主题
 home: true
@@ -130,11 +148,41 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 ---
 ```
 
-7. 建立静态资源目录 `public`。
+现在使用
+
+```md
+---
+# 默认主题
+home: true
+# 主页图片地址
+# heroImage: /home-bg.jpg
+# 图片自定义和格式
+# bgImage: '/bg.png'
+# bgImageStyle: {
+#   height: '350px'
+# }
+# 主页按钮
+actionText: About Me
+# 主页按钮链接地址
+actionLink: /About/
+features:
+# 主页小标题及内容
+
+footer:  Copyright © 2020 | guangju's blog | 91guangju.com
+
+---
+
+# 文章链接
+
+- [我的博客地址](http://www.91guangju.com/)
+
+```
+
+4. 建立静态资源目录 `public`。(没有需要，可以不创建)
 
    `.vuepress/public` 用来存放图片视频等公共文件。
 
-8. 创建配置文件 `config.js`。
+5. 配置文件 `config.js`。
 
    在 `docs/.vuepress/config.js` 文件中配置网站标题、描述、主题等信息
 
@@ -145,7 +193,7 @@ module.exports = {
 };
 ```
 
-9. 配置导航 在 `.vuepress/config.js` ,可以下拉的导航使用的 `items`。
+6. 配置导航 在 `.vuepress/config.js` ,可以下拉的导航使用的 `items`。
 
 ```js
 themeConfig: {
@@ -160,17 +208,17 @@ themeConfig: {
 }
 ```
 
-10. 让导航可以使用
+7. 让导航可以使用
 
-   `docs/web/README.md`
+   文件位置`docs/web/README.md`对应的就是web分类下的默认文档（默认就是`README.md`），也就是用这个配置`{ text: 'web', link: '/web/' },`让页面生效。
 
-11. 一级的侧边栏配置, 对应的路径就是 `docs` 下面的文件夹
+8. 一级的侧边栏配置, 对应的路径就是 `docs` 下面的文件夹
 
 ```js
 sidebar: ['/', '/web/', '/js/', '/vue/'];
 ```
 
-12. 侧边栏的分组
+9. 侧边栏的分组
 
 ```js
   {
@@ -180,11 +228,11 @@ sidebar: ['/', '/web/', '/js/', '/vue/'];
   }
 ```
 
-13. `config.js` 文件的大致内容，当然可以参考官网丰富内容
+10. `config.js` 文件的大致内容，当然可以参考官网丰富内容
 
 ```js
 module.exports = {
-  title: 'Chen\'s blog',
+  title: 'guangju\'s blog', // \'是为了转译引号，title可以自己取名
   description: '我的个人网站',
   head: [ // 注入到当前页面的 HTML <head> 中的标签
     ['link', { rel: 'icon', href: '/logo.jpg' }], // 增加一个自定义的 favicon(网页标签的图标)
@@ -207,27 +255,343 @@ module.exports = {
 
 完成了基础搭建后，就可以在`docs`目录下新建 `.md` 文件写文章了,至此，可以在本地运行了。
 
-## 发布
+### 我的 vuepress 的 config.js 文件
 
-部署到github上托管，具体步骤，参考[这里](https://zguangju.gitee.io/Tools/vuepress%E9%83%A8%E7%BD%B2.html)哦。
-
-1. 项目根目录，建立文件 `deploy.sh`
-
-2. git 仓库起名:
-
-    `username.github.io`
-
-3. 发布时候的命令
+:::details config.js
 
 ```js
-npm run deploy  //可以在 package.json 的 scripts 中自行设置关键字
+module.exports = {
+    // 主页图片下第一行字、标题栏名称、左上角名称
+    title: "Guangju'S 笔记分享",
+    // 端口配置 80是默认端口(手动部署服务器时用)
+    // port: 80,
+    theme: 'reco', //启动主题 已安装的有  默认 / reco
+    // 主页图片下第二行字
+    description: '欢迎',
+    // 标题栏图标
+    head: [
+        // 改变title的图标，图标放在public文件夹中，herf后直接 '/图片.格式' ，不要./
+        [
+            'link',
+            {
+                rel: 'icon',
+                href: '/linktolink.png',//图片放在.vuepress/public文件夹下，直接'/图片名 '
+            },
+        ],
+        // 在移动端，搜索框在获得焦点时会放大，并且在失去焦点后可以左右滚动，这可以通过设置元来优化。
+        ['meta',
+            {
+                name: 'viewport',
+                content: 'width=device-width,initial-scale=1,user-scalable=no'
+            }]
+    ],
+    // 主题使用的插件的设置
+    plugins: [
+        [
+            // 看板娘
+            "@vuepress-reco/vuepress-plugin-kan-ban-niang",
+            {
+                theme: ['haruto', 'blackCat', 'whiteCat', 'haru1', 'haru2', 'koharu', 'izumi', 'shizuku', 'wanko', 'miku', 'z16'],
+                clean: false,
+                messages: {
+                    welcome: '我是guangju欢迎你的关注 ',
+                    home: '心里的花，想要带你回家.',
+                    theme: '好吧，希望你能喜欢其他小伙伴！',
+                    close: '那再见了哦~'
+                }
+            }
+        ],
+        [
+            // 公告窗
+            "@vuepress-yard/vuepress-plugin-window",
+            {
+                title: "公告",
+                windowStyle: { left: '41%', top: '100px', width: '260px', },
+                contentInfo: {
+                    title: '🎉扫码加公众号或加QQ群1126566195',
+                    imgUrl: 'https://pic.downk.cc/item/5eab8845c2a9a83be5f67837.png',
+                    needImg: true,
+                    content: '公众号 比邻之地',
+                    contentStyle: {}
+                },
+                bottomInfo: {
+                    btnText: 'Blog',
+                    linkTo: 'http://www.91guangju.com'
+                },
+                closeOnce: true
+            }
+        ]
+    ],
+    // markdown设置
+    markdown: {
+        // 显示代码块行号
+        lineNumbers: true
+    },
+    // 主题设置
+    themeConfig: {
+        // 主题样式
+        type: 'blog',
+        // 右侧头像
+        authorAvatar: '/headimg.jpeg',
+        // valine 评论设置
+        valineConfig: {
+            appId: 'HphnXJO6NChHtY50Di9q039D-MdYXbMMI',// your appId
+            appKey: 'eGw2p5VfR348442nSkdL3ta6', // your appKey
+        },
+        // 分类和标签导航
+        blogConfig: {
+            // category: {
+            //     location: 2,     // 在导航栏菜单中所占的位置，默认2
+            //     text: '分类' // 默认文案 “分类”
+            // },
+            tag: {
+                location: 2,     // 在导航栏菜单中所占的位置，默认3
+                text: '标签'      // 默认文案 “标签”
+            },
+        },
+        //侧边栏自动显示当前激活页面中标题的链接?
+        // sidebarDepth: 2,
+
+        // 允许你获取每个文件的最后一次 git 提交的 UNIX 时间戳（ms）
+        lastUpdated: 'Last Updated',
+
+        //显示所有页面的标题链接
+        displayAllHeaders: true,// 默认值：false
+
+        //设置导航栏禁用（navbar固定写法） navbar：false
+
+        // navbar: false,
+
+        // nav导航栏设置
+        nav: [
+            // 每个{}中是导航选项，link可以跳转其他路由，或者链接
+            {
+                text: '首页',
+                link: '/',
+                icon: 'reco-home'
+            },
+            // 同上，但是还可以设置成有下拉功能的子选项
+            {
+                text: '前端基础',
+                icon: "reco-category",
+                items: [
+                    { text: 'HTML & H5', link: '/Frontend/HTML/HTML' },
+                    { text: 'CSS & C3', link: '/Frontend/CSS/CSS' },
+                    { text: 'JavaScript', link: '/Frontend/JS/JavaScript' },
+                    { text: 'ES6新增', link: '/Frontend/ES6/ES01' },
+                    { text: 'Promise', link: '/Frontend/Promise/promise' },
+                    { text: 'JQuery', link: '/Frontend/JQuery/JQuery' },
+                    { text: 'Ajax', link: '/Frontend/Ajax/Ajax' },
+                    { text: 'Axios', link: '/Frontend/Axios/axios' },
+                    { text: 'Webpack4.0', link: '/Webpack/webpack1' },
+                    { text: 'node.js', link: '/Node/node1' },
+                ]
+            },
+            {
+                text: '前端框架',
+                icon: "reco-document",
+                items: [
+                    { text: 'Vue', link: '/Framework/Vue/vue-1' },
+                    { text: 'React', link: '/Framework/React/React01' },
+                    { text: 'Wechat', link: '/Framework/Wechat/Wechat' }
+                ]
+            },
+            //后端，暂未启用
+            // {
+            //     text: '后端技术',
+            //     items: [
+            //         { text: 'JAVA 的了解', link: '/Backend/JAVA' },
+            //     ],
+            // },
+            {
+                text: '工具',
+                items: [
+                    { text: 'git', link: '/Tools/git' },
+                    { text: 'yarn', link: '/Tools/yarn' },
+                    { text: 'npm', link: '/Tools/npm' },
+                    { text: 'nrm', link: '/Tools/nrm' },
+                    { text: 'cmd', link: '/Tools/cmd' },
+                    { text: 'regex 正则', link: '/Tools/regex' },
+                    { text: 'MarkDown', link: '/Tools/markdown' },
+                    { text: 'Trojan', link: '/Tools/Trojan' },
+                    { text: 'Typecho 安装建站', link: '/Tools/typecho' },
+                    { text: 'Linux 宝塔使用', link: '/Tools/宝塔' },
+                    { text: 'vuepress', link: '/Tools/vuepress' },
+                    { text: 'vuepress 部署发布', link: '/Tools/vuepress部署' },
+                    { text: 'vim 介绍', link: '/Tools/vim' },
+                    { text: 'Eslint 的使用和禁用', link: '/Tools/Eslint' },
+                    { text: 'VScode配置文件', link: '/Tools/vscode' },
+                    { text: 'Powershell 配置文件', link: '/Tools/powershell' },
+                    { text: 'vite', link: '/Tools/vite' },
+                    { text: 'Win子系统', link: '/Tools/wsl' },
+                ],
+            },
+            {
+                text: '小知识',
+                items: [
+                    { text: '项目总结', link: '/Project/shopingapp' },
+                    { text: '学习内容', link: '/Other/' },
+                    { text: '知识点', link: '/Other/知识点' },
+                    { text: '问题', link: '/Other/问题' },
+                    { text: 'token 是什么', link: '/Other/token' },
+                    { text: '网站黑白', link: '/Other/网站黑白' },
+                    { text: 'Chrome 使用', link: '/Other/Chrome' },
+                    { text: 'URI & URL', link: '/Other/URI&URL' },
+                    { text: 'Apache 是什么', link: '/Other/Apache' },
+                    { text: 'Nginx 是什么', link: '/Other/Nginx' },
+                    { text: '报 error 的本质和处理', link: '/Other/error' },
+                    { text: '验证码 是什么', link: '/Other/验证码' },
+                ]
+            },
+            {
+                text: 'Timeline',
+                link: '/timeline/',
+                icon: 'reco-date'
+            },
+            {
+                text: '留言版',
+                link: '/messages/',
+                icon: 'reco-suggestion'
+            },
+            {
+                text: '关于',
+                link: '/About/'
+            },
+            // {
+            //     text: 'Github',
+            //     link: 'https://github.com/ZGuangJu'
+            // },
+        ],
+        // 侧边导航设置
+        // sidebar: auto,// 自动生成侧栏 /运行项目报错？？？
+        sidebar: {
+            // 侧边导航栏内容
+            '/Frontend/': [
+                {
+                    title: 'HTML',
+                    collapsable: true, //是否折叠侧边栏
+                    children: ['HTML/HTML']
+                },
+                {
+                    title: 'CSS',
+                    collapsable: true,
+                    children: ['CSS/CSS']
+                },
+                {
+                    title: 'JavaScript',
+                    collapsable: true, //是否折叠侧边栏
+                    children: ['JS/JavaScript', 'JS/Array']
+                },
+                {
+                    title: 'ES6',
+                    collapsable: true, //是否折叠侧边栏
+                    children: ['ES6/ES01', 'ES6/ES02', 'ES6/ES03', 'ES6/ES04']
+                },
+                {
+                    title: 'Promise',
+                    collapsable: true, //是否折叠侧边栏
+                    children: ['Promise/promise', 'Promise/promise2', 'Promise/promise3']
+                },
+                {
+                    title: 'JQuery',
+                    collapsable: true, //是否折叠侧边栏
+                    children: ['JQuery/JQuery', 'JQuery/JQuery2', 'JQuery/JQuery3', 'JQuery/JQuery4']
+                },
+                {
+                    title: 'Ajax',
+                    collapsable: true, //是否折叠侧边栏
+                    children: ['Ajax/Ajax']
+                },
+                {
+                    title: 'Axios',
+                    collapsable: true, //是否折叠侧边栏
+                    children: ['Axios/axios', 'Axios/axios2', 'Axios/axios3', 'Axios/axios4', 'Axios/axios5']
+                },
+            ],
+            '/Framework/Vue/': [
+                {
+                    title: 'Vue',
+                    collapsable: true, //是否折叠侧边栏
+                    children: ['vue3-1', 'vue-1', 'vue-2', 'vue-3', 'vue-4', 'vue-5', 'vue-6', 'vue-7', 'vue-8', 'vuers-1', 'vuers-2', 'vuers-3']
+                }
+            ],
+            '/Framework/React/': [
+                {
+                    title: 'React',
+                    collapsable: true, //是否折叠侧边栏
+                    children: ['react01', 'react02', 'react03', 'react04', 'react05', 'react06', 'react07', 'react', 'react&vue']
+                },
+            ],
+            '/Framework/Wechat/': [
+                {
+                    title: '微信小程序',
+                    collapsable: true, //是否折叠侧边栏
+                    children: ['wechat', 'wechat2', 'wechat3', 'wechat4', 'wechat5', 'wechat6', 'wechat7', 'wechat8', 'wechat9', 'wechat10']
+                }
+            ],
+
+            '/Project/': ['shopingapp', 'admin', 'project'],// 项目
+            '/Node/': ['node1', 'node2', 'package'],
+            '/Webpack/': ['webpack1', 'webpack2', 'webpackconfigjs'],
+            '/Backend/': ['php'],//后端，暂未启用
+            '/Tools/': ['git', 'yarn', 'npm', 'upgrade', 'cmd', 'nrm', 'regex', 'markdown', 'Trojan', 'typecho', '宝塔', 'vuepress', 'vuepress部署', 'vim', 'Eslint', 'vscode', 'powershell', 'vite', 'wsl'],
+            '/Other/': [
+                '', '问题', 'error', '知识点', '验证码', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome'
+            ],
+        },
+        // 友链
+        friendLink: [
+            {
+                title: '我的博客',
+                desc: '我的另一个博客地址.',
+                email: "guangju@126.com",//可用头像地址替换
+                link: 'http://www.91guangju.com'
+            }
+            // ...
+        ],
+        // search: false, //禁用内置搜索框
+        searchMaxSuggestions: 20,//调整搜索框显示的搜索提示数量
+        // 假定 GitHub。也可以是一个完整的 GitLab URL。
+
+        // repo: 'https://github.com/ZGuangJu/ZGuangJu.github.io',
+        // 自定义项目仓库链接文字
+
+        // 默认根据 `themeConfig.repo` 中的 URL 来自动匹配是 "GitHub"/"GitLab"/"Bitbucket" 中的哪个，如果不设置时是 "Source"。
+        // repoLabel: '贡献代码！',
+
+        // 以下为可选的 "Edit this page" 链接选项
+        // 如果你的文档和项目位于不同仓库：
+        docsRepo: 'vuejs/vuepress',
+        // 如果你的文档不在仓库的根目录下：
+        docsDir: 'docs',
+        // 如果你的文档在某个特定的分支（默认是 'master' 分支）：
+        docsBranch: 'master',
+        // 默认为 false，设置为 true 来启用
+        editLinks: false,
+        // 自定义编辑链接的文本。默认是 "Edit this page"
+        editLinkText: '帮助我们改进页面！',
+        // 备案信息
+        record: '冀ICP备19032877号',
+        recordLink: 'http://beian.miit.gov.cn/',
+        // cyberSecurityRecord: '公安部备案文案',
+        // cyberSecurityLink: '公安部备案指向链接',
+        // 项目开始时间，只填写年份
+        startYear: '2018',
+        // author
+        author: 'Guangju',
+        //导航栏左侧可以显示logo
+        // logo: '/head.png',
+        // 替换首页的 faceImage 来设置头像
+        // authorAvatar: '/avatar.png'
+    }
+}
 ```
 
 :::
 
-## 在原有项目中添加vuepress
+### 在原有项目中添加vuepress
 
-1. 在项目中安装vuepress
+1. 在项目中安装`vuepress`
 
 ```js
 yarn add vuepress -D
@@ -239,7 +603,7 @@ yarn add vuepress -D
 mkdir docs && echo '# Hello VuePress' > docs/README.md
 ```
 
-3. 添加一些脚本到 package.json
+3. 添加一些脚本到 `package.json`
 
 ```js
 {
@@ -256,238 +620,146 @@ mkdir docs && echo '# Hello VuePress' > docs/README.md
 yarn docs:dev
 ```
 
-## 我的vuepress的config文件
+## 二、 vuepress部署到github托管或者gitee
+
+部署到`github`或`gitee`只在创建仓库名时有区别，其他基本一样的。
+
+### 部署到 Github
+
+打开 github 网站，登陆自己的 github 账号
+
+接着新建两个仓库：
+
+### 新建仓库一
+
+- `USERNAME.github.io` （不用克隆到本地，同时这个是你输入地址栏的访问博客地址）
+
+  `USERNAME` 必须是你 `Github` 的账号用户名
+
+- 注意：新建`github`仓库时，创建的分支必须的时`master`，用`main`会失败。
+
+<img src="https://s2.ax1x.com/2020/02/28/3DDwfx.png" alt="typecho01">
+这个仓库建好后，不用克隆到本地，内容更新修改都在下面的仓库（本地的）中进行。
+
+### 新建仓库二
+
+-随便起名字，比如：Blog （这个要克隆到本地或者从本地直接远程提交代码，用来保存源代码）
+
+- 没有创建`vuepress`项目的，使用git，将 [vuepress-tools](https://github.com/ZGuangJu/vuepress-tools) 中的内容拷贝到 Blog 文件夹中(里面是vuepress模板)或参考[这里](https://zguangju.github.io/Tools/vuepress.html)自己创建vuepress项目
+
+- 如果自己创建的`vuepress`，要在项目根目录下创建`.gitignore`文件和`deploy.sh`文件
+
+`.gitignore`文件内容
+
+```sh
+# git提交时筛选文件用
+node_modules
+docs/.vuepress/theme
+docs/.vuepress/dist
+
+```
+
+`deploy.sh`文件内容
+
+```sh
+#!/usr/bin/env sh
+
+# 确保脚本抛出遇到的错误
+set -e
+
+# 生成静态文件
+npm run build
+
+# 进入生成的文件夹（新版的vuepress注意打包的文件路径）
+cd docs/.vuepress/dist
+
+# 如果是发布到自定义域名
+# echo 'www.yourwebsite.com' > CNAME
+
+git init
+git add -A
+git commit -m 'deploy'
+
+# 如果你想要部署到 https://USERNAME.github.io
+git push -f [你要部署的github仓库地址] master
+
+git push -f [你要部署的gitee仓库地址] master
+# 两个地址，也就是你可以同时部署到github和gitee上
+
+# 如果你的部署地址不是xxxxx.github.io,可以参考下方
+
+# 如果发布到 https://USERNAME.github.io/<REPO>  REPO=github上的仓库
+# git push -f git@github.com:USERNAME/<REPO>.git master:gh-pages
+
+cd -
+```
+
+说明：
 
 ```js
-module.exports = {
-    // 主页图片下第一行字
-    title: "张广聚'S 技术分享",
-    // 端口配置
-    port: 80,
-    // 主页图片下第二行字
-    description: '欢迎',
-    // 这是部署到github相关的配置
-    base: '/',
-    // 增加一个自定义的 favicon(网页标签的图标)
-    head: [
-        [
-            'link',
-            {
-                rel: 'icon',
-                href: '/ju.jpg'
-            }
-        ],
-    ],
-    markdown: {
-    lineNumbers: false // 代码块显示行号
-  },
-    // 主题设置（默认）
-    themeConfig: {
+git push -f [你要部署的github仓库地址] master
+git push -f [你要部署的gitee仓库地址] master
+```
 
-        //侧边栏自动显示当前激活页面中标题的链接?
-        sidebarDepth: 2,
+同时部署到`github`和`gitee`上时，因为要调用`git`提交，而使用`git`又要设置`username`和`email`所以`github`和`gitee`最好用同样的用户名和邮箱`git`提交就不会提示输入用户名和邮箱了，设置一次`git`可以通用两个网站。
 
-        // 允许你获取每个文件的最后一次 git 提交的 UNIX 时间戳（ms
-        lastUpdated: 'Last Updated',
+以上配置内容是参考`vuepress`官网，仅供参考
 
-        //显示所有页面的标题链接
-        // displayAllHeaders: true // 默认值：false
+- 在`package.json`文件的`scripts`中添加下面的代码
 
-        //设置导航栏禁用（navbar固定写法） navbar：false
-
-        // navbar: false,
-
-        // nav导航栏设置
-        nav: [
-            // 每个{}中是导航选项，link可以跳转其他路由，或者链接
-            {
-                text: '首页',
-                link: '/'
-            },
-            // 同上，可以设置成下拉的子选项
-            {
-                text: '前端技术',
-                items: [
-                    { text: 'HTML & H5', link: '/Frontend/HTML/HTML' },
-                    { text: 'CSS & C3', link: '/Frontend/CSS/CSS' },
-                    { text: 'JavaScript', link: '/Frontend/JavaScript/JavaScript' },
-                    { text: 'ES6新增', link: '/Frontend/ES6/ES6' },
-                    { text: 'JQuery', link: '/Frontend/JQuery/JQuery' },
-                    { text: 'Ajax', link: '/Frontend/Ajax/Ajax' },
-                    { text: 'Node', link: '/Frontend/Node/Node' },
-                    { text: '接口', link: '/Frontend/Prot/prot' },
-                    { text: '小程序', link: '/Frontend/Wechat/wechat' },
-                    { text: 'Webpack使用', link: '/Frontend/webpack/webpack初识' }
-
-                ]
-                // link: '/Frontend/'
-            },
-            {
-                text: 'VUE框架',
-                items: [
-                    { text: 'VUE基本了解', link: '/Vue/Vue/vue1-1' },
-                    { text: 'Vue语法和指令', link: '/Vue/Vue2/vue2-1' },
-                    { text: 'VUE属性', link: '/Vue/Vue3/vue3-1' },
-                    { text: '项目流程', link: '/Vue/project/shopingapp' },
-                ],
-                // link: '/Framework/'
-            },
-            {
-
-                text: '后端技术',
-                items: [
-                    { text: 'JAVA的了解', link: '/Backend/JAVA' },
-
-
-                ],
-                // link: '/Backend/'
-            },
-            {
-                text: '工具',
-                items: [
-                    { text: 'git', link: '/Tools/git' },
-                    { text: 'git大全', link: '/Tools/git2' },
-                    { text: 'git常用', link: '/Tools/git3' },
-                    { text: 'git管理', link: '/Tools/git4' },
-                    { text: 'npm', link: '/Tools/npm' },
-                    { text: 'cmd命令', link: '/Tools/cmd' },
-                    { text: 'nrm', link: '/Tools/nrm' },
-                    { text: 'regex正则', link: '/Tools/regex' },
-                    { text: 'markdown', link: '/Tools/markdown' },
-                    { text: 'vuepress', link: '/Tools/vuepress' },
-
-                ],
-                // link: '/Tools/'
-            },
-            {
-                text: '其他',
-                link: '/Other/'
-            },
-            {
-                text: 'MyGithub',
-                link: 'https://github.com/ZGuangJu'
-
-            },
-        ],
-        // 侧边导航设置
-        // sidebar: auto,// 自动生成侧栏 /运行项目报错？？？
-        sidebar: {
-            // 侧边导航栏内容
-            '/Frontend/': [
-
-                {
-                    title: 'HTML',
-                    collapsable: true, //是否折叠侧边栏
-                    children: ['HTML/HTML', 'HTML/HTML2', 'HTML/HTML3']
-                },
-                {
-                    title: 'CSS',
-                    collapsable: true,
-                    children: ['CSS/CSS', 'CSS/CSS2', 'CSS/CSS3']
-                },
-                {
-                    title: 'JavaScript',
-                    collapsable: true, //是否折叠侧边栏
-                    children: ['JavaScript/JavaScript', 'JavaScript/JS2', 'JavaScript/JS3']
-                },
-                {
-                    title: 'ES6',
-                    collapsable: true, //是否折叠侧边栏
-                    children: ['ES6/ES6', 'ES6/ES02', 'ES6/ES03', 'ES6/ES04']
-                },
-                {
-                    title: 'JQuery',
-                    collapsable: true, //是否折叠侧边栏
-                    children: ['JQuery/JQuery', 'JQuery/JQuery2', 'JQuery/JQuery3']
-                },
-                {
-                    title: 'Ajax',
-                    collapsable: true, //是否折叠侧边栏
-                    children: ['Ajax/Ajax', 'Ajax/Ajax2', 'Ajax/Ajax3']
-                },
-                {
-                    title: 'Node',
-                    collapsable: true, //是否折叠侧边栏
-                    children: ['Node/Node', 'Node/Node2', 'Node/Node3']
-                },
-                {
-                    title: '接口',
-                    collapsable: true, //是否折叠侧边栏
-                    children: ['Prot/prot']
-                },
-                {
-                    title: '小程序',
-                    collapsable: true, //是否折叠侧边栏
-                    children: ['Wechat/wechat', 'Wechat/wechat2', 'Wechat/wechat3', 'Wechat/wechat4', 'Wechat/wechat5', 'Wechat/wechat6', 'Wechat/wechat7', 'Wechat/wechat8', 'Wechat/wechat9', 'Wechat/wechat10']
-                },
-                {
-                    title: 'Webpack使用',
-                    collapsable: true, //是否折叠侧边栏
-                    children: ['webpack/webpack初识', 'webpack/webpackconfigjs']
-                }
-            ],
-            '/Vue/': [
-                {
-                    title: 'Vue基本了解',
-                    collapsable: true, //是否折叠侧边栏
-                    children: ['Vue/vue1-1', 'Vue/vue1-2']
-                }, {
-                    title: 'Vue语法和指令',
-                    collapsable: true, //是否折叠侧边栏
-                    children: ['Vue2/vue2-1', 'Vue2/vue2-2']
-                }, {
-                    title: 'Vue属性',
-                    collapsable: true, //是否折叠侧边栏
-                    children: ['Vue3/vue3-1']
-                }, {
-                    title: '项目流程',
-                    collapsable: true, //是否折叠侧边栏
-                    children: ['project/shopingapp', 'project/admin']
-                },
-            ],
-            '/Backend/': ['JAVA'],
-            '/Tools/': ['git', 'git2', 'git3', 'git4', 'npm', 'cmd', 'nrm', 'regex', 'markdown', 'vuepress'],
-            '/Other/': [
-                '', //README.md文件的内容v
-                {
-                    title: 'vue1',
-                    collapsable: true, //是否折叠侧边栏
-                    children: ['vue1/vue1', 'vue1/vue2']
-                },
-                {
-                    title: 'vue2',
-                    collapsable: true, //是否折叠侧边栏
-                    children: ['vue2/vue3', 'vue2/vue3']
-                },
-                {
-                    title: 'vue3',
-                    collapsable: true, //是否折叠侧边栏
-                    children: ['vue3/vue5', 'vue3/vue6']
-                }
-            ],
-        },
-        // search: false, //禁用内置搜索框
-        searchMaxSuggestions: 10,//调整搜索框显示的搜索提示数量
-        // 假定 GitHub。也可以是一个完整的 GitLab URL。
-
-        // repo: 'https://github.com/ZGuangJu',
-        // 自定义项目仓库链接文字
-
-        // 默认根据 `themeConfig.repo` 中的 URL 来自动匹配是 "GitHub"/"GitLab"/"Bitbucket" 中的哪个，如果不设置时是 "Source"。
-        // repoLabel: '贡献代码！',
-
-        // 以下为可选的 "Edit this page" 链接选项
-        // 如果你的文档和项目位于不同仓库：
-        docsRepo: 'vuejs/vuepress',
-        // 如果你的文档不在仓库的根目录下：
-        docsDir: 'docs',
-        // 如果你的文档在某个特定的分支（默认是 'master' 分支）：
-        docsBranch: 'master',
-        // 默认为 false，设置为 true 来启用
-        editLinks: true,
-        // 自定义编辑链接的文本。默认是 "Edit this page"
-        editLinkText: '帮助我们改进页面！'
-
-    }
+```js
+"scripts": {
+  "deploy": "bash deploy.sh"
 }
 ```
+
+- 在本地项目目录打开`cmd`或`powershell`终端中运行
+
+```js
+npm run deploy
+```
+
+:::warning 注
+`npm run deploy`这一步，报错`bash`不是内部或外部命令，导致一直不成功把`bash`改为`start`试试或者把`bash`添加环境变量。
+
+不使用`bash` 也可以使用`.bat`文件运行脚本，脚本命令是不同的。如果有不懂的可以评论或者联系我！
+:::
+
+出现以下内容代表运行OK
+
+<img src="https://s2.ax1x.com/2020/02/28/3DD51f.png" alt="typecho02">
+<img src="https://s2.ax1x.com/2020/02/28/3DDr6O.png" alt="typecho03">
+
+- 开启仓库项目中的`github Pages` 服务
+
+- 在浏览器输入 `https://你用户名.github.io/` 即可看到自己的主页
+
+### 部署到gitee上
+
+- 部署`gitee`上时，新建的gitee仓库名：`username` (`username`就是你的账户用户名，也就是用用户名创建仓库)，
+- 和`github`一样，提交项目后，仓库也要开启`gitee Pages`，从项目页找`服务`=>`gitee Pages`，点击部署。
+- 和`github`不同的是，`github`上更新内容时，不用任何操作，网址会自动更新成新的内容（通常提交后等几分钟即可），`gietee`每次都要手动，在`gitee Pages`中点击更新按钮，才会更新到最新内容。
+
+## 部署到自己的域名上（要有自己的域名啊）
+
+- 找到购买域名的网站，进入管理后台，点击 `解析` 按钮，添加下面两条内容：
+
+<img src="https://s2.ax1x.com/2020/02/28/3DDWtI.png" alt="typecho04">
+
+- 在 万网 购买域名的同学请注意，第二条记录中的 请用 @ 代替，万网不支持
+
+<img src="https://s2.ax1x.com/2020/02/28/3DDc0H.png" alt="typecho05">
+
+- IP 可以通过 `ping` 自己的域名得到：
+
+- 添加 `CNAME` 文件
+
+在仓库 `USERNAME.github.io` 中找到 `Settings` > `Custom domain` 把 `www.91guangju.com` (你的域名) 添加进去即可。
+
+<img src="https://s2.ax1x.com/2020/02/28/3DDakR.png" alt="typecho06">
+
+### 其他方式
+
+- 手动或者用`ftp`工具传到你的服务器上
+
+- 完成后，在地址栏输入自己的域名 看一下吧

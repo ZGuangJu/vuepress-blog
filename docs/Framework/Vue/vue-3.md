@@ -6,8 +6,7 @@ tags:
  - vue
 publish: true
 ---
-
-::: tip
+::: tip 什么是指令
 vue里都是以 `v-` 开头的，也可称为自定义属性，是属性，在标签行内
 :::
 
@@ -53,9 +52,9 @@ v-text="value"
 
 :::danger 警告
 
-- 在网站上动态渲染任意 HTML 是非常危险的，因为容易导致 XSS 攻击。只在可信内容上使用 v-html，永不用在用户提交的内容上。
+- 在网站上动态渲染任意 `HTML` 是非常危险的，因为容易导致 `XSS` 攻击。只在可信内容上使用 `v-html`，永不用在用户提交的内容上。
 
-- 在单文件组件里，scoped 的样式不会应用在 v-html 内部，因为那部分 HTML 没有被 Vue 的模板编译器处理。如果你希望针对 v-html 的内容设置带作用域的 CSS，你可以替换为 CSS Modules 或用一个额外的全局 `<style>` 元素手动设置类似 BEM 的作用域策略。
+- 在单文件组件里，`scoped` 的样式不会应用在 `v-html` 内部，因为那部分 `HTML` 没有被 `Vue` 的模板编译器处理。如果你希望针对 `v-html` 的内容设置带作用域的 `CSS`，你可以替换为 `CSS Modules` 或用一个额外的全局 `<style>` 元素手动设置类似 `BEM` 的作用域策略。
 :::
 
 - 语法：
@@ -64,15 +63,15 @@ v-text="value"
 v-html = "name"
 ```
 
-name 为属性值也是变量，可以自由命名 name ，要在 data 中声明，更新元素的 innerHTML，作用类似{{}}
+`name` 为属性值也是变量，可以自由命名 `name` ，要在 `data` 中声明，更新元素的 `innerHTML`，作用类似`{{}}`
 
 - 作用：
-解析DOM元素（标签）和文本
+解析`DOM`元素（标签）和文本
 
 :::tip v-html与v-text的区别
-类似innerHTML & innerTEXT
+类似`innerHTML` & `innerTEXT`
 
-v-html可以解析标签元素，v-text不能解析元素，会把元素当作文本。
+`v-html`可以解析标签元素，`v-text`不能解析元素，会把元素当作文本。
 :::
 
 ## 3、v-show
@@ -88,9 +87,9 @@ v-show="ture/false/表达式" //布尔值
 ```
 
 - 用法：
-根据表达式的真假值控制元素的显示和隐藏,切换元素的 display CSS property。
+根据表达式的真假值控制元素的显示和隐藏,切换元素的 `display CSS property`。
 
-当 v-show 的值为false会给元素添加一个 `display：none` 的属性（控制的CSS样式显示和隐藏）
+当 `v-show` 的值为`false`会给元素添加一个 `display：none` 的属性（控制的`CSS`样式显示和隐藏）
 
 当条件变化时该指令触发过渡效果。
 
@@ -111,14 +110,14 @@ v-if="ture/false/表达式" //布尔值
 根据表达式的值的 `truthiness` 来有条件地渲染元素。在切换时元素及它的数据绑定 / 组件被销毁并重建。如果元素是 `<template>` ，将提出它的内容作为条件块。
 
 - 作用：根据表达式的真假值来控制是否显示
-v-if的值为false时，DOM元素不存在（控制DOM元素的创建和移除）
+v-if的值为`false`时，`DOM`元素不存在（控制`DOM`元素的创建和移除）
 
 :::tip v-show与v-if的区别
 
-v-show控制的是CSS的display属性，v-if控制的是元素的添加与删除（DOM）
+v-show控制的是`CSS`的`display`属性，`v-if`控制的是元素的添加与删除（`DOM`）
 
 - 频繁切换使用谁？
-v-if频繁操作DOM，太消耗性能所以多使用v-show就删除一次用v-if
+`v-if`频繁操作`DOM`，太消耗性能所以多使用`v-show`就删除一次用`v-if`
 :::
 
 ## 5、v-else
@@ -126,7 +125,7 @@ v-if频繁操作DOM，太消耗性能所以多使用v-show就删除一次用v-if
 <font size="15" color=#0099ff >v-else</font>
 
 - 不需要表达式
-- 限制：前一兄弟元素必须有 v-if 或 v-else-if。
+- 限制：前一兄弟元素必须有 `v-if` 或 `v-else-if`。
 - 语法：
 
 ```js
@@ -134,9 +133,9 @@ v-else 没有值
 ```
 
 - 用法：
-为 v-if 或者 v-else-if 添加“else 块”，v-else必须跟在v-if|v-else-if后面使用，不能单独使用
+为 `v-if` 或者 `v-else-if`添加`else`块，`v-else`必须跟在`v-if`|`v-else-if`后面使用，不能单独使用
 :::warning 注意
-v-else 没有值和表达式，是最后一种判断情况，
+`v-else` 没有值和表达式，是最后一种判断情况，
 :::
 - 示例
 
@@ -155,13 +154,13 @@ v-else 没有值和表达式，是最后一种判断情况，
 
 - 类型：`any`
 
-- 限制：前一兄弟元素必须有 v-if 或 v-else-if
+- 限制：前一兄弟元素必须有 `v-if` 或 `v-else-if`
 
-不能单独使用，必须和v-if|v-else-if后面
+不能单独使用，必须和`v-if`|`v-else-if`后面
 
 - 用法：
 
-表示 v-if 的“else if 块”。可以链式调用
+表示 `v-if` 的`else if` 块。可以链式调用
 
 - 示例
 
@@ -186,7 +185,7 @@ v-else 没有值和表达式，是最后一种判断情况，
 
 - 预期：`Array | Object | number | string | Iterable (2.6 新增)`
 - 用法
-基于源数据多次渲染元素或模板块。此指令之值，必须使用特定语法 alias in expression，为当前遍历的元素提供别名：
+基于源数据多次渲染元素或模板块。此指令之值，必须使用特定语法 `alias in expression`，为当前遍历的元素提供别名：
 
 ```html
 <div v-for="item in items">
@@ -195,7 +194,7 @@ v-else 没有值和表达式，是最后一种判断情况，
 ```
 
 - 语法：
-变量 in 对象       写法：（变量1,变量2）in 对象
+变量 `in` 对象       写法：（变量1,变量2）in 对象
 
 语法1：(数组)
 
@@ -203,26 +202,26 @@ v-else 没有值和表达式，是最后一种判断情况，
 v-for="（item,index) in arr"
 ```
 
- item 数组每一项 ，index 索引下标
+ `item` 数组每一项 ，`index` 索引下标
 语法2：(对象)
 
 ```js
 v-for="（val,key,index) in obj"
 ```
 
- val 对象的值，key对象的键 ，index 索引下标
+ `val` 对象的值，`key`对象的键 ，`index` 索引下标
 
 - 作用：列表渲染指令，主要用来遍历数组或者对象并渲染(数组两个值，对象三个值)
 
 :::warning 注意
 
-- 需要几个谁，就往谁身上写v-for
+- 需要几个谁，就往谁身上写`v-for`
 - 遍历出来的元素个数由对象的长度决定。
 - 当有一个变量时，变量是每一项，
 
 当有两个变量时，第一个变量还是每一项，第二个变量是索引。
 
-当和 v-if 一起使用时，v-for 的优先级比 v-if 更高，详见[官方列表渲染教程](https://cn.vuejs.org/v2/guide/list.html#v-for-with-v-if)
+当和 `v-if` 一起使用时，`v-for` 的优先级比 `v-if` 更高，详见[官方列表渲染教程](https://cn.vuejs.org/v2/guide/list.html#v-for-with-v-if)
 :::
 
 ## 8、v-on
@@ -238,8 +237,8 @@ v-for="（val,key,index) in obj"
 v-on：click="函数名"
 ```
 
-click是事件名称（不加on）
-v-on:事件类型 = "函数名" ,事件类型不加on，
+`click`是事件名称（不加on）
+`v-on`:事件类型 = "函数名" ,事件类型不加on，
 
 - 作用：用来绑定事件
   如： 绑定点击事件
@@ -305,11 +304,11 @@ v-on：click="show"
 
 绑定事件监听器。事件类型由参数指定。表达式可以是一个方法的名字或一个内联语句，如果没有修饰符也可以省略。
 
-用在普通元素上时，只能监听原生 DOM 事件。用在自定义元素组件上时，也可以监听子组件触发的自定义事件。
+用在普通元素上时，只能监听原生 `DOM` 事件。用在自定义元素组件上时，也可以监听子组件触发的自定义事件。
 
 在监听原生 DOM 事件时，方法以事件为唯一的参数。如果使用内联语句，语句可以访问一个 `$event` property：`v-on:click="handle('ok', $event)"`。
 
-从 2.4.0 开始，`v-on` 同样支持不带参数绑定一个事件/监听器键值对的对象。注意当使用对象语法时，是不支持任何修饰器的。
+从 `2.4.0` 开始，`v-on` 同样支持不带参数绑定一个事件/监听器键值对的对象。注意当使用对象语法时，是不支持任何修饰器的。
 
 - 示例：
 

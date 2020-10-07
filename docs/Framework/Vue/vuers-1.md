@@ -10,49 +10,49 @@ publish: true
 
 - 单页面应用框架，数据驱动视图，特性数据的双向绑定，
 
-2. vue 核心的底层封装：数据双向绑定
+2. `vue` 核心的底层封装：数据双向绑定
 
-- 2.x用object.defineProperty封装，3.x用es6里的proxy封装
+- `2.x`用`object.defineProperty`封装，`3.x`用`es6`里的`proxy`封装
 
-3. vue的数据流是什么（reach---单项数据流）
+3. `vue`的数据流是什么（`reach`---单项数据流）
 
 - 单向数据流
 
 4. vue常用指令
 
-- v-model ：数据双向绑定
-- v-once ：只绑定一次
-- v-if,v-else-if,v-else : 控制元素的加载与销毁
-- v-show ：控制元素的显示和隐藏，控制display：none
-- v-html ：解析DOM元素标签
-- v-text ：解析文本，
-- v-for ：使用v-for必须加key，
-- v-bind：绑定属性，传入变量，简写':'
-- v-on ：绑定事件，简写' @'
-- v-slot ：插槽 ，配合template使用
+- `v-model` ：数据双向绑定
+- `v-once`：只绑定一次
+- `v-if,v-else-if,v-else` : 控制元素的加载与销毁
+- `v-show`：控制元素的显示和隐藏，控制display：none
+- `v-html` ：解析`DOM`元素标签
+- `v-text` ：解析文本，
+- `v-for` ：使用`v-for`必须加`key`，
+- `v-bind`：绑定属性，传入变量，简写`:`
+- `v-on` ：绑定事件，简写 `@`
+- `v-slot` ：插槽 ，配合`template`使用
 
 5. v-for循环一个对象/数组
 
-- 对象（value,key,index）in obj ，in的前面是三个变量，分别是属性值，属性名，下标
-- 数组（value,index) in arr ，in的前面是两个变量，分别是值和下标
+- 对象`（value,key,index）in obj`，`in`的前面是三个变量，分别是属性值，属性名，下标
+- 数组`（value,index) in arr` ，`in`的前面是两个变量，分别是值和下标
 
-6. v-for 里除了in还有哪种写法
+6. `v-for` 里除了`in`还有哪种写法
 
 - of
 
 7. 事件修饰符
-@click.stop 【阻止冒泡】，
-@click.prevent【阻止默认事件】
-@click.once【只执行一次】，
-@click.left【点击鼠标左键时触发】
-@click.right【点击鼠标右键时触发】
+`@click.stop`:【阻止冒泡】，
+`@click.prevent`:【阻止默认事件】
+`@click.once`:【只执行一次】，
+`@click.left`:【点击鼠标左键时触发】
+`@click.right`:【点击鼠标右键时触发】
 
 8. 按键修饰符
-@keyUp.13===@keyUp.enter【回车键弹起】，
+`@keyUp.13`===`@keyUp.enter`【回车键弹起】，
 
 9. 动态加载组件
 
-- 使用vue内置组件components，用is属性来动态加载组件
+- 使用`vue`内置组件`components`，用`is`属性来动态加载组件
 实例代码：
 
 ```html
@@ -71,18 +71,18 @@ components:{
 10. 组件缓存
 
 使用 `<keep-alive></keep-alive>`,
-在keep-alive上使用 include，来缓存匹配到的组件
-在keep-alive上使用 exclude，来不缓存匹配到的组件
+在`keep-alive`上使用 `include`，来缓存匹配到的组件
+在`keep-alive`上使用 `exclude`，来不缓存匹配到的组件
 
 11. 生命周期
-beforeCreate
-Created
-beforeMount
-mounted
-beforeupdate
-updated
-beforeDestroy
-destroyed
+`beforeCreate`
+`Created`
+`beforeMount`
+`mounted`
+`beforeupdate`
+`updated`
+`beforeDestroy`
+`destroyed`
 发起请求在mounted里
 清除定时器 ？？
 
@@ -94,14 +94,14 @@ const Home = ()=>import('./home.vue')
 
 13. 组件通信
 
-- 父传子 用props【属性】传递
-- 子传父 用自定义事件，在父组件给子组件绑定一个自定义事件@【v-on】，子组件用@emit去调用自定义事件，并把参数传给父组件
-- $bus 是一个第三方插件，中央事件广播，不受层级的限制
+- 父传子 用`props`【属性】传递
+- 子传父 用自定义事件，在父组件给子组件绑定一个自定义事件`@【v-on】`，子组件用`@emit`去调用自定义事件，并把参数传给父组件
+- `$bus` 是一个第三方插件，中央事件广播，不受层级的限制
 
 - **第一种方法  props父组件向子组件传递**
     **主要传值，可以传方法，但不常用**
-    父组件使用v-bind 动态绑定数据 :自定义属性名="值"
-    子组件使用props 接收数据 props：["自定义属性名"]
+    父组件使用`v-bind` 动态绑定数据 :自定义属性名="值"
+    子组件使用`props` 接收数据 `props`：["自定义属性名"]
             或者 props：{
                 "自定义属性名"：{
                     type：Array，
@@ -166,22 +166,22 @@ const Home = ()=>import('./home.vue')
 
 16. vue组件的实例组成部分
 
-- name 组件名字
-- data  数据
-- components 局部组件
-- computed  计算
-- watch 监听
-- methods 方法的集合
-- filter 自定义过滤函数
-- directives 自定义指令
-- minxins 混入 将公共的一些实例上的配置做成一个单独的mixins文件，引进来之后，和我们实例上的配置做一个合并，说白了，就是给组件功能的扩展
+- `name`:组件名字
+- `data`:数据
+- `components`:局部组件
+- `computed`:计算
+- `watch`:监听
+- `methods`:方法的集合
+- `filter`:自定义过滤函数
+- `directives`:自定义指令
+- `minxins` :混入 将公共的一些实例上的配置做成一个单独的`mixins`文件，引进来之后，和我们实例上的配置做一个合并，说白了，就是给组件功能的扩展
 - 自定义指令
 - 生命周期
 
-17. computed 【计算】watch 【监听】的区别
-    1. computed计算属性有缓存，watch没有缓存，
-    因为computed 有缓存，当computed监听的数据发生改变时，会对比缓存值，如果新值和旧值一样，则不会触发更新
-    2. watch执行是只要被监听的数据发生了改变，就会执行
-    3. computed监听一个数据还要返回一个数据，watch只是监听
+17. `computed` 【计算】`watch` 【监听】的区别
+    1. `computed`计算属性有缓存，`watch`没有缓存，
+    因为`computed` 有缓存，当`computed`监听的数据发生改变时，会对比缓存值，如果新值和旧值一样，则不会触发更新
+    2. `watch`执行是只要被监听的数据发生了改变，就会执行
+    3. `computed`监听一个数据还要返回一个数据，`watch`只是监听
 
-18. watch的深度监听 加 deep:true
+18. `watch`的深度监听 加 `deep:true`

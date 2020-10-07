@@ -1,7 +1,7 @@
 ---
 # 默认主题
 home: true
-# 主页图片地址
+# 主页图片地址 直接放在项目的public目录下
 # heroImage: /home-bg.jpg
 # 图片自定义和格式
 # bgImage: '/bg.png'
@@ -15,7 +15,7 @@ actionLink: /About/
 features:
 # 主页小标题及内容
 
-footer:  Copyright © 2020 | guangju's blog | 91guangju.com
+# footer:  Copyright © 2020 | guangju's blog | 91guangju.com
 
 ---
 

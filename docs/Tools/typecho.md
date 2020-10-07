@@ -16,7 +16,7 @@ publish: true
 
 域名：阿里云的域名
 
-远程连接工具：用于连接Linux服务器 或者 在腾讯云服务器管理处点击登录 比如 Xshell MX等
+远程连接工具：用于连接`Linux`服务器 或者 在腾讯云服务器管理处点击登录 比如 `Xshell MX`等
 :::
 
 ## 一、安装宝塔面板
@@ -27,7 +27,7 @@ publish: true
 yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_6.0.sh && bash install.sh
 ```
 
-中途会停顿一下让选择web目录的位置，一般默认即可
+中途会停顿一下让选择`web`目录的位置，一般默认即可
 
 <img src="https://s1.ax1x.com/2020/04/22/JYvW0P.png" alt="typecho00">
 
@@ -35,7 +35,7 @@ yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_
 
 ## 二、安装网站环境
 
-登录后台页面，使用刚刚记录的后台地址登录，（如果你是使用的阿里云或者腾讯云的话，可能会登录不上，这时候你需要在服务器运营商的后台开启安全组8888端口，阿里云ECS开放安全组端口) 以腾讯云为列：
+登录后台页面，使用刚刚记录的后台地址登录，（如果你是使用的阿里云或者腾讯云的话，可能会登录不上，这时候你需要在服务器运营商的后台开启安全组`8888`端口，阿里云`ECS`开放安全组端口) 以腾讯云为列：
 
 <img src="https://s2.ax1x.com/2020/02/27/3d2FuF.png" alt="typecho01">
 
@@ -48,14 +48,14 @@ yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_
 
 关于不同配置的服务器环境的设置，因为一般常用的有512M内存的，还有就是1G内存的，这两个的环境选择是不一样的
 
-- 如果是512M内存，那么使用默认的配置即可，Mysql 5.5 和 PHP 5.4
-- 如果是1G内存，推荐使用wordpress官方给的设置，Mysql 5.6 和 PHP 7.2
+- 如果是`512`M内存，那么使用默认的配置即可，`Mysql 5.5` 和 `PHP 5.4`
+- 如果是`1G`内存，推荐使用`wordpress`官方给的设置，`Mysql 5.6` 和 `PHP 7.2`
 
 等待安装完成就可以了，一般持续半小时到1个小时，根据服务器的性能决定
 
 ## 三、服务器新建站点
 
-需要输入自己的网站域名，把带www和不带www的域名全部填写上，比如www.xxxx.com和*.xxxx.com,该步骤就是绑定域名，第一行不能放泛解析域名*.xxx.com
+需要输入自己的网站域名，把带`www`和不带`www`的域名全部填写上，比如`www.xxxx.com`和`*.xxxx.com`,该步骤就是绑定域名，第一行不能放泛解析域名`*.xxx.com`
 
 <img src="https://s2.ax1x.com/2020/02/27/3dgHc8.png" alt="typecho05">
 <img src="https://s1.ax1x.com/2020/04/22/JtkAHJ.png" alt="typecho04">

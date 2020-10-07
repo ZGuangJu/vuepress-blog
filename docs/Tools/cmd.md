@@ -1,5 +1,5 @@
 ---
-title: ccmd
+title: cmd
 date: 2019-5-16
 sidebar: 'auto'
 categories:

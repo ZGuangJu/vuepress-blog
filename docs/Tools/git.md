@@ -160,7 +160,31 @@ git remote add origin  xxx       //xxx是git仓库的地址
 使用强制推送`-f`是因为一般新建仓库的时候会生成`README.md`文件，导致需要先`git --fetch`才能推送，但这个`README.md`件其实是不需要的，因为在生成本地项目的时候一般也会生成一个`README.md`文件，所以选择直接强制推送过去。
 
 ```js
-git push origin master -f
+git push -f origin master
+```
+
+或者
+
+```js
+git push -u origin master -f 或者 git push origin master
+```
+
+执行以上代码出错的话执行以下命令
+
+```js
+git pull --rebase origin master
+```
+
+强拉失败 执行如下命令
+
+```js
+git pull origin master --allow-unrelated-histories
+```
+
+- 本地git仓库与远程仓库关联（git@xx.xx.xx.xx:repos/xxx/xxx/xxx.git 是远程仓库地址）
+
+```s
+git remote add origin git@xx.xx.xx.xx:repos/xxx/xxx/xxx.git
 ```
 
 ## 升级git版本

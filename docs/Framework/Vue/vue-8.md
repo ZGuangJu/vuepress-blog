@@ -8,14 +8,14 @@ publish: true
 ---
 
 ::: tip
-在路由中除了 router-link 标签跳转外很多情况下我们用 js 跳转的情形多，比如登陆成功后跳到首页，不可能 js 模拟点击 router-link 标签。 在 Vue 实例内部，你可以通过 $router 访问路由实例。因此你可以调用 this.$router.push
+在路由中除了 `router-link` 标签跳转外很多情况下我们用 `js`跳转的情形多，比如登陆成功后跳到首页，不可能 `js` 模拟点击 `router-link` 标签。 在 Vue 实例内部，你可以通过 `$router` 访问路由实例。因此你可以调用 `this.$router.push`
 :::
 
 - 通过以下三个方法实现编程式导航
 
 ## 1. 使用 router.push 方法跳转
 
-- 这个方法会向 history 栈添加一个新的记录，所以，当用户点击浏览器后退按钮时，则回到之前的 URL,除了 push 还有 replace，go 等很多跳转方式
+- 这个方法会向 `history` 栈添加一个新的记录，所以，当用户点击浏览器后退按钮时，则回到之前的 `URL`,除了 `push` 还有 `replace`，`go` 等很多跳转方式
 
 |            声明式            |         编程式         |
 | :--------------------------: | :--------------------: |
@@ -39,9 +39,9 @@ router.push({ path: "register", query: { plan: "private" } });
 
 ::: warning 注意：
 
-如果提供了 path，params 会被忽略，上述例子中的 query 并不属于这种情况。取而代之的是下面例子的做法，你需要提供路由的 name 或手写完整的带有参数的 path：
+如果提供了 `path`，`params` 会被忽略，上述例子中的 `query` 并不属于这种情况。取而代之的是下面例子的做法，你需要提供路由的 `name` 或手写完整的带有参数的 `path`：
 
-name 和 params 可以，path 和 params 不可以！
+name 和 `params` 可以，`path` 和 `params` 不可以！
 :::
 
 ```js

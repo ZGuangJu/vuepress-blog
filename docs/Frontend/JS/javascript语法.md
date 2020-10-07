@@ -12,7 +12,7 @@ publish: true
 
 ## 引用数据类型
 
-## 转数组的方法
+## 转数字的方法
 
 1. Number()
 
@@ -46,7 +46,15 @@ publish: true
     console.log(num);
 ```
 
-## 转字符的方法
+and
+
+```js
+    let age = '12'
+    let atherage = +age
+    console.log(atherage);
+```
+
+## 转字符串的方法
 
 1. String()
 
@@ -62,6 +70,24 @@ publish: true
     let num = 12
     let num2 = num.toString()
     console.log(typeof num2);
+```
+
+## 转布尔值
+
+1. Boolean()
+
+```js
+    let age = 1
+    let atherage = Boolean(age)
+    console.log(atherage);
+```
+
+2. !!
+
+```js
+    let age = 1
+    let atherage = !!age
+    console.log(atherage);
 ```
 
 ## 模板字面量
@@ -87,3 +113,5 @@ second line `;
     let sym2 = Symbol();
     console.log(sym1 == sym2); //false  符号实例是唯一、不可变的
 ```
+
+## 逻辑与 逻辑或

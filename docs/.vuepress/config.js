@@ -38,27 +38,27 @@ module.exports = {
                     close: '那再见了哦~'
                 }
             }
-        ],
-        [
-            // 公告窗
-            "@vuepress-yard/vuepress-plugin-window",
-            {
-                title: "公告",
-                windowStyle: { left: '41%', top: '100px', width: '260px', },
-                contentInfo: {
-                    title: '🎉扫码加公众号或加QQ群1126566195',
-                    imgUrl: 'https://pic.downk.cc/item/5eab8845c2a9a83be5f67837.png',
-                    needImg: true,
-                    content: '公众号 比邻之地',
-                    contentStyle: {}
-                },
-                bottomInfo: {
-                    btnText: 'Blog',
-                    linkTo: 'http://www.91guangju.com'
-                },
-                closeOnce: true
-            }
         ]
+        // [
+        //     // 公告窗
+        //     "@vuepress-yard/vuepress-plugin-window",
+        //     {
+        //         title: "公告",
+        //         windowStyle: { left: '41%', top: '100px', width: '260px', },
+        //         contentInfo: {
+        //             title: '🎉扫码加公众号或加QQ群1126566195',
+        //             imgUrl: 'https://pic.downk.cc/item/5eab8845c2a9a83be5f67837.png',
+        //             needImg: true,
+        //             content: '公众号 比邻之地',
+        //             contentStyle: {}
+        //         },
+        //         bottomInfo: {
+        //             btnText: 'Blog',
+        //             linkTo: 'http://www.91guangju.com'
+        //         },
+        //         closeOnce: true
+        //     }
+        // ]
     ],
     // markdown设置
     markdown: {
@@ -147,20 +147,21 @@ module.exports = {
                     { text: 'git', link: '/Tools/git' },
                     { text: 'yarn', link: '/Tools/yarn' },
                     { text: 'npm', link: '/Tools/npm' },
-                    { text: 'nrm', link: '/Tools/nrm' },
                     { text: 'cmd', link: '/Tools/cmd' },
-                    { text: 'regex 正则', link: '/Tools/regex' },
+                    { text: 'nrm', link: '/Tools/nrm' },
                     { text: 'MarkDown', link: '/Tools/markdown' },
+                    { text: 'vim', link: '/Tools/vim' },
                     { text: 'Trojan', link: '/Tools/Trojan' },
-                    { text: 'Typecho 安装建站', link: '/Tools/typecho' },
-                    { text: 'Linux 宝塔使用', link: '/Tools/宝塔' },
+                    { text: 'vite', link: '/Tools/vite' },
                     { text: 'vuepress', link: '/Tools/vuepress' },
-                    { text: 'vuepress 部署发布', link: '/Tools/vuepress部署' },
-                    { text: 'vim 介绍', link: '/Tools/vim' },
+                    { text: '升级依赖包', link: '/Tools/upgrade' },
+                    { text: 'regex 正则', link: '/Tools/regex' },
+                    { text: 'Typecho 安装建站', link: '/Tools/typecho' },
+                    { text: 'Centos', link: '/Tools/centos' },
+                    { text: '宝塔', link: '/Tools/宝塔' },
                     { text: 'Eslint 的使用和禁用', link: '/Tools/Eslint' },
                     { text: 'VScode配置文件', link: '/Tools/vscode' },
                     { text: 'Powershell 配置文件', link: '/Tools/powershell' },
-                    { text: 'vite', link: '/Tools/vite' },
                     { text: 'Win子系统', link: '/Tools/wsl' },
                 ],
             },
@@ -257,7 +258,7 @@ module.exports = {
                 {
                     title: 'React',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['react01', 'react02', 'react03', 'react04', 'react05', 'react06', 'react07', 'react', 'react&vue']
+                    children: ['react01', 'react02', 'react03', 'react04', 'react05', 'react06', 'react07', 'react08', 'react09', 'react', 'react&vue']
                 },
             ],
             '/Framework/Wechat/': [
@@ -272,7 +273,7 @@ module.exports = {
             '/Node/': ['node1', 'node2', 'package'],
             '/Webpack/': ['webpack1', 'webpack2', 'webpackconfigjs'],
             '/Backend/': ['php'],//后端，暂未启用
-            '/Tools/': ['git', 'yarn', 'npm', 'upgrade', 'cmd', 'nrm', 'regex', 'markdown', 'Trojan', 'typecho', '宝塔', 'vuepress', 'vuepress部署', 'vim', 'Eslint', 'vscode', 'powershell', 'vite', 'wsl'],
+            '/Tools/': ['git', 'yarn', 'npm', 'cmd', 'nrm', 'markdown', 'vim', 'Trojan', 'vite', 'vuepress', 'upgrade', 'regex', 'typecho', 'centos', '宝塔', 'Eslint', 'vscode', 'powershell', 'wsl'],
             '/Other/': [
                 '', '问题', 'error', '知识点', '验证码', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome'
             ],

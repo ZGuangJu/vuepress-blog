@@ -10,7 +10,7 @@ publish: true
 ---
 
 :::tip 介绍
-使用 nrm 管理 npm 的镜像源，不用每次输入大段的代码来设置源了！
+使用 `nrm` 管理 `npm` 的镜像源，不用每次输入大段的代码来设置源了！
 :::
 
 ## 安装和使用
@@ -21,7 +21,7 @@ publish: true
 npm install nrm -g
 ```
 
-2. 查看 npm 仓库列表
+2. 查看 `npm` 仓库列表
 
 ```js
 nrm ls
@@ -38,7 +38,7 @@ nrm ls
   edunpm - http://registry.enpmjs.org/
 ```
 
-3. npm 仓库测速(需要等待 2-3 分钟)
+3. `npm` 仓库测速(需要等待 2-3 分钟)
 
 ```js
 nrm test
@@ -55,10 +55,10 @@ nrm test
 >   edunpm - Fetch Error
 > ```
 
-4. 选择 npm 仓库
+4. 选择 `npm` 仓库
 
 ```js
- nrm use taobao  // 示例:比如源换成下载最快的是taobao镜像
+ nrm use taobao  // 示例:比如源换成国内较快的taobao镜像
 ```
 
-注：最好不要用cnpm的源，会有不可预知的报错！
+注：最好不要用`cnpm`的源，会有不可预知的安装报错！！

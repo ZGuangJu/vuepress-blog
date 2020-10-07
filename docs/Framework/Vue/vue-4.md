@@ -55,7 +55,7 @@ export default {
 </style>
 ```
 
-注意： 在父组件的属性名 data_Father 和子组件中用来接收的变量要保持一致！data_one在父组件一致即可，与子组件无关。
+注意： 在父组件的属性名 `data_Father` 和子组件中用来接收的变量要保持一致！`data_one`在父组件一致即可，与子组件无关。
 
 <font size="5">B、$emit 子传父</font>
 
@@ -121,7 +121,7 @@ export default {
 ```
 
 :::warning 注意
-父组件中的函数 handleFather 是子组件上的自定义属性的值；handleSon是让子组件通过$emit 修改数据的函数名，和父组件里子组件上是自定义属性名一致。
+父组件中的函数 `handleFather` 是子组件上的自定义属性的值；`handleSon`是让子组件通过`$emit` 修改数据的函数名，和父组件里子组件上是自定义属性名一致。
 :::
 
 ## 2

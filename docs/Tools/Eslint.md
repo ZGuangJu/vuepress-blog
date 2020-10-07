@@ -53,9 +53,9 @@ module.exports = {
 
 ### 在 React 中
 
-- 第一种 修改package.json (在新版react中尝试无效)
+- 第一种 修改`package.json` (在新版`react`中尝试无效)
 
-在项目中的package.json文件中的`"eslintConfig"`里添加
+在项目中的`package.json`文件中的`"eslintConfig"`里添加
 
 ```js
 "rules": {
@@ -93,7 +93,7 @@ module.exports = {
 yarn eject  或  npm eject
 ```
 
-在生成的config文件夹的Webpack.config.js中找到以下代码，并注释掉即可
+在生成的`config`文件夹的`Webpack.config.js`中找到以下代码，并注释掉即可
 
 ```js
             {
@@ -129,19 +129,19 @@ yarn eject  或  npm eject
 npm install eslint --save-dev
 ```
 
-- 创建ESlint配置文件.eslintrc.js：
+- 创建`ESlint`配置文件`.eslintrc.js`：
 
 ```js
 eslint --init
 ```
 
-- 安装 eslint-plugin-react 等相关依赖：
+- 安装 `eslint-plugin-react` 等相关依赖：
 
 ```js
 npm install babel-eslint eslint-plugin-react eslint-plugin-import  --save-dev
 ```
 
-- 创建 .eslintrc.js文件
+- 创建 `.eslintrc.js`文件
 
 ```js
 // .eslintrc.js文件介绍
@@ -524,7 +524,7 @@ module.exports = {
 };
 ```
 
-在package.json中增加如下脚本指令：
+在`package.json`中增加如下脚本指令：
 
 ```js
 {
@@ -534,7 +534,7 @@ module.exports = {
 }
 ```
 
-添加完成之后，就可以执行如下命令对指定的文件进行eslint管理：
+添加完成之后，就可以执行如下命令对指定的文件进行`eslint`管理：
 
 ```js
 npm run lint
