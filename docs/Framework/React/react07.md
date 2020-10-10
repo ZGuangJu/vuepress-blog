@@ -4,14 +4,15 @@ date: 2019-4-9
 sidebar: 'auto'
 tags:
  - react
- - class类
+ - 受控组件
+ - 非受控组件
 publish: true
 ---
 
-## 受控组件 非受控组件 ref
+## 受控组件 非受控组件
 
-受控组件：指DOM 元素是值受react的状态控制
-非受控组件：指DOM 元素是值不受react的状态控制
+- 受控组件：指`DOM` 元素的值受`react`的状态控制
+- 非受控组件：指`DOM` 元素的值不受`react`的状态控制
 
 ### 受控组件
 
@@ -29,7 +30,7 @@ publish: true
  <input value={this.state.text} onChange={this.handler} />
 ```
 
-解决报错三种的方式
+而解决报错有以下三种方式：
 
 1. 使用 `defaultValue`
 
@@ -55,7 +56,6 @@ import { render } from 'react-dom';
 /*
  Failed prop type: You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`.
   */
-
 class TextInput extends React.Component {
     constructor(prpos) {
         super(prpos);
@@ -72,16 +72,16 @@ class TextInput extends React.Component {
         </>
     }
 }
-
 render(<TextInput></TextInput>, window.root);
 ```
 
 ### 非受控组件
 
 ::: details ref老版方式
-ref 老版方式一：
+`ref` 老版方式一：
 
 ```jsx
+// refs已弃用
 import React from 'react';
 import { render } from 'react-dom';
 //非受控组件 ref 老版方式一：
@@ -111,7 +111,7 @@ class Sum extends React.Component {
 render(<Sum></Sum>, window.root);
 ```
 
-ref 老版方式二：
+`ref` 老版方式二：
 
 ```jsx
 import React from 'react';
@@ -144,10 +144,16 @@ render(<Sum></Sum>, window.root);
 
 :::
 
-非受控组件 `createRef` (新版)
-ref 可以是dom元素的引用也可以是组件的引用
+- 非受控组件 `createRef` (新版方式)
 
-1. 引入 `import React, { createRef } from 'react'`
+`ref` 可以是`DOM`元素的引用也可以是组件的引用.
+
+1. 引入
+
+```jsx
+import React, { createRef } from 'react'
+```
+
 2. 初始化
 
 ```jsx
@@ -155,19 +161,19 @@ ref 可以是dom元素的引用也可以是组件的引用
         super()
         //初始化 ref createRef()
         this.refA = createRef()
+        // 组件里面使用 refA '定义的ref'
     }
 ```
 
-3. 使用 reactDOM 中写： `ref={this.refA}`
+3. 使用
+
+`reactDOM` 元素中写： `ref={this.refA}`
 
 ```jsx
-add = () => {
-    console.log(this.refA);
-        let A = this.refA.current.value
-        let B = this.refB.current.value
-        this.refC.current.value = parseFloat(A) + parseFloat(B)
-    }
+  <input ref={this.refA} />+<input ref={this.refB} />
 ```
+
+取值和赋值  属性会放在`current`上面
 
 - 案例
 
@@ -175,7 +181,6 @@ add = () => {
 import React, { createRef } from 'react';
 import { render } from 'react-dom';
 //非受控组件 createRef
-
 class Sum extends React.Component {
     constructor() {
         super()
@@ -198,12 +203,12 @@ class Sum extends React.Component {
         </>
     }
 }
-
 render(<Sum a="4"></Sum>, window.root);
 ```
 
 - 类组件 和 props 配合使用
-:::details 子组件修改父组件 案例
+
+:::details 案例 子组件修改父组件数据
 
 ```jsx
 import React, { createRef } from 'react';
@@ -278,6 +283,83 @@ render(<Parent />, window.root);
 
 :::
 
+- useRef （函数组件）
+useref性能更好，因为useref是复用的老的对象。createRef 每次都会创建一个新的的对象。
+
+```jsx
+function Parent() {
+    function getFoucs() {
+        childRef.current.focus()
+    }
+    let childRef = useRef()
+    return <>
+        <ForwardChild ref={childRef} />
+        <button onClick={getFoucs}>点击获取焦点</button>
+    </>
+}
+```
+
+- 函数组件作为子组件，需要使用ref的时候需要外面包裹`forwardRef(Child)`
+
+例1
+
+```jsx
+import React, { forwardRef, useRef } from 'react';
+import { render } from 'react-dom';
+function Parent() {
+    function getFoucs() {
+        childRef.current.focus()
+    }
+    let childRef = useRef()
+    return <>
+        <ForwardChild ref={childRef} />
+        <button onClick={getFoucs}>点击获取焦点</button>
+    </>
+}
+// forwardChild 的ref 会通过forwardRef传递给child
+function Child(props, Pref) {
+    // let refA = React.createRef();
+    return <>
+        <input ref={Pref} />
+    </>;
+}
+let ForwardChild = forwardRef(Child)
+render(<Parent />, window.root);
+```
+
+例2
+
+```jsx
+import React, { forwardRef } from 'react';
+import { render } from 'react-dom';
+export default class Parent extends React.Component {
+    constructor() {
+        super();
+        this.childref = React.createRef()
+    }
+    getFocus = () => {
+        this.childref.current.focus();
+        console.log(this.childref);
+    }
+    render() {
+        return (<div>
+            <ForwardChild ref={this.childref} />
+            <button onClick={this.getFocus}>点击获取焦点</button>
+        </div>)
+    }
+}
+// forwardChild 的ref 会通过forwardRef传递给child
+function Child(props, Pref) {
+    // let refA = React.createRef();
+    return <>
+        <input ref={Pref} />
+    </>;
+}
+let ForwardChild = forwardRef(Child)
+render(<Parent />, window.root);
+```
+
 ## 英文释义
 
 - `ref ：reference` adj: 引用
+- `createRef`类组件用 `useRef`函数组件用？？

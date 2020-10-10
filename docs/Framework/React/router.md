@@ -4,7 +4,8 @@ date: 2019-4-9
 sidebar: 'auto'
 tags:
  - react
- - class类
+ - React-router-dom
+ - React-router
 publish: true
 ---
 ## `React-router`与`React-router-dom`的区别

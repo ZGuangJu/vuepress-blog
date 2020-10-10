@@ -1,5 +1,5 @@
 ---
-title: React Router 文档
+title: React Router翻译文档
 date: 2020-10-8
 sidebar: 'auto'
 tags:
@@ -8,7 +8,7 @@ tags:
  - Router v5
 publish: true
 ---
-本文档是关于 `React Router v5` 的使用方法介绍
+本文档是关于 `React Router v5` 的`API`使用方法介绍
 
 翻译自[这里](https://reactrouter.com/web/api/Hooks)
 
@@ -1470,6 +1470,6 @@ class Container extends React.Component {
 
 (完)
 
-本文档是关于 `React Router v5` 的使用方法介绍
+本文档是关于 `React Router v5` 的`API`使用方法介绍
 
 翻译自[这里](https://reactrouter.com/web/api/Hooks)
