@@ -1,5 +1,5 @@
 ---
-title: react 和 vue 对比总结
+title: React 和 Vue 对比总结
 date: 2019-3-15
 sidebar: 'auto'
 categories:

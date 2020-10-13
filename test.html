@@ -13,11 +13,9 @@
 <body>
     <div class="demo"></div>
     <script>
-        let a = function () {
-            return 0
-        }
-        console.log(a());
-        console.log();
+        const myFunction = new Function('use', 'a', 'b', 'return')
+        console.log(myFunction);
+
     </script>
 
 </body>

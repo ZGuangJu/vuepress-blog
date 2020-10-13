@@ -70,6 +70,52 @@ npm install -g yarn@latest
 yarn set version latest
 ```
 
+### 管理源
+
+- 查看当前镜像
+
+```s
+yarn config get registry
+```
+
+- 设置为淘宝镜像
+
+```s
+yarn config set registry http://registry.npm.taobao.org/
+```
+
+- 设置默认为镜像
+
+```s
+yarn config set registry https://registry.yarnpkg.com
+```
+
+- 其他镜像地址
+
+```s
+npm --- https://registry.npmjs.org/
+
+npm --- https://registry.npm.taobao.org/
+
+yarn --- https://registry.yarnpkg.com/
+
+yarn --- https://registry.npm.taobao.org/
+
+cnpm --- https://r.cnpmjs.org/
+
+taobao --- https://registry.npm.taobao.org/
+
+nj --- https://registry.nodejitsu.com/
+
+rednpm --- https://registry.mirror.cqupt.edu.cn/
+
+npmMirror --- https://skimdb.npmjs.com/registry/
+
+deunpm --- http://registry.enpmjs.org/
+```
+
+### yarn 2
+
 - 安装 `yarn 2`
 
 ```js

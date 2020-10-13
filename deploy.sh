@@ -32,4 +32,10 @@ git push -f git@gitee.com:zguangju/ZGuangJu.git master
 
 cd -
 
+# 提交到仓库
+
+cd E:/github/blog-vuepress
+git add .
+git commit -m 'update'
+git push origin master
 # 结束

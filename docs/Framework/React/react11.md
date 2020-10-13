@@ -467,7 +467,7 @@ class Child2 extends PureComponent {
 ReactDOM.render(<App />, document.getElementById('root'))
 ```
 
-## 6. useCallback
+## 6. useCallback()
 
 使用`useCallback()` 阻止子组件无效更新
 

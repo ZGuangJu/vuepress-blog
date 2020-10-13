@@ -9,7 +9,7 @@ publish: true
 ---
 
 :::tip jsx是什么
-jsx就是 js + xml(html) ,虚拟DOM ,其实就是一个Object,就是描述 react的dom 长什么样
+jsx就是 js + xml(html) ,虚拟DOM ,把真实DOM抽象成一个Object。
 :::
 
 ## jsx 是怎样创建 DOM 的

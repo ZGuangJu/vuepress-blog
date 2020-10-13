@@ -67,6 +67,30 @@ or
 npm info express
 ```
 
+其他镜像地址
+
+```s
+npm --- https://registry.npmjs.org/
+
+npm --- https://registry.npm.taobao.org/
+
+yarn --- https://registry.yarnpkg.com/
+
+yarn --- https://registry.npm.taobao.org/
+
+cnpm --- https://r.cnpmjs.org/
+
+taobao --- https://registry.npm.taobao.org/
+
+nj --- https://registry.nodejitsu.com/
+
+rednpm --- https://registry.mirror.cqupt.edu.cn/
+
+npmMirror --- https://skimdb.npmjs.com/registry/
+
+deunpm --- http://registry.enpmjs.org/
+```
+
 显示进度条
 
 ```js

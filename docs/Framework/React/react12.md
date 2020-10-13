@@ -8,7 +8,8 @@ tags:
 publish: true
 ---
 
- `React-Router-dom` 的使用介绍，详情请看[英文官网](https://reactrouter.com/web/api/Hooks>),[中文翻译](https://zguangju.gitee.io/Framework/React/router_doc.html)
+- `React-Router-dom` 的使用介绍，详情请看[英文官网](https://reactrouter.com/web/api/Hooks>),[中文翻译](https://zguangju.gitee.io/Framework/React/router_doc.html)
+- [React React-router与React-router-dom的区别](http://zguangju.gitee.io/Framework/React/router.html#react-router%E4%B8%8Ereact-router-dom%E7%9A%84%E5%8C%BA%E5%88%AB)
 
 ## 安装
 
@@ -215,9 +216,17 @@ to={{ pathname: '/home'}}
 作用:重定向
 属性
 `to`:和`<Link>` 和 `<NavLink>`的`to`属性相同。只是代表输入除已经定义以外的路由时，同义跳转到某一位置。
+to属性
 
 ```jsx
  <Redirect to='/user'></Redirect>
+```
+
+传state属性
+
+```jsx
+ <Redirect to={{ pathname: '/login', state: { from: location.pathname } }
+    }></Redirect >
 ```
 
 ## 路由Hooks
@@ -291,6 +300,18 @@ export default Home;
 ```
 
 4. `useRouteMatch()` 获取路由匹配信息
+用来匹配路由，
+
+参数(和匹配的path的props参数相同):
+
+```jsx
+let match = useRouteMatch({
+    path:'/home/:id',
+    strict:true
+    ...
+})
+
+```
 
 需要获取路由信息，但是不用渲染出路由的时候，使用这个方法。
 
@@ -352,4 +373,18 @@ function About() {
 function Users() {
  return <h2>Users</h2>;
 }
+```
+
+## 过渡动画
+
+安装
+
+```jsx
+yarn add react-transition-group
+```
+
+引入
+
+```jsx
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 ```

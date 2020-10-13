@@ -44,19 +44,19 @@ yarn create vuepress-site [Name]
 
 ![dir-list](https://s1.ax1x.com/2020/09/22/wLmtAJ.png)
 
-转到`/docs`文件夹下,在命令行里输入:
+- 转到`/docs`文件夹下,在命令行里输入:
 
 ```js
 cd docs
 ```
 
-安装相关依赖包
+- 安装相关依赖包
 
 ```js
 yarn
 ```
 
-运行项目
+- 运行项目
 
 ```js
 yarn dev

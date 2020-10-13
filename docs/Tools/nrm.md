@@ -61,4 +61,28 @@ nrm test
  nrm use taobao  // 示例:比如源换成国内较快的taobao镜像
 ```
 
+- 其他镜像地址
+
+```s
+npm --- https://registry.npmjs.org/
+
+npm --- https://registry.npm.taobao.org/
+
+yarn --- https://registry.yarnpkg.com/
+
+yarn --- https://registry.npm.taobao.org/
+
+cnpm --- https://r.cnpmjs.org/
+
+taobao --- https://registry.npm.taobao.org/
+
+nj --- https://registry.nodejitsu.com/
+
+rednpm --- https://registry.mirror.cqupt.edu.cn/
+
+npmMirror --- https://skimdb.npmjs.com/registry/
+
+deunpm --- http://registry.enpmjs.org/
+```
+
 注：最好不要用`cnpm`的源，会有不可预知的安装报错！！
