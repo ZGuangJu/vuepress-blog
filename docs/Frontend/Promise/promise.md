@@ -7,6 +7,7 @@ categories:
 tags:
  - Promise
 publish: true
+sticky: 7
 ---
 ## Promise 前言
 

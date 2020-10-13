@@ -7,6 +7,7 @@ categories:
 tags:
  - Webpack
 publish: true
+sticky: 8
 ---
 ## webpack简介
 
@@ -30,35 +31,45 @@ gulp//
 
 ### nodejs的基础语法
 
- - module.exports 导出一个语法
- - require引入一个模块
- - path：nodejs内置的路径模块
- - __dirname:文件夹的绝对路径
+- module.exports 导出一个语法
+- require引入一个模块
+- path：nodejs内置的路径模块
+- __dirname:文件夹的绝对路径
 
 ### 1.初始化环境
 
 初始化npm包文件，配置package.json文件 & -y表示所有配置都是yes
+
 ```
  npm init -y
 ```
+
 ### 2.webpack安装
 
 1. 全局安装
+
 ```
 npm i -g webpack webpack-cli
 ```
+
 卸载
+
 ```
 npm uninstall -g webpack  webpack-cli
 ```
+
 2. 局部安装
+
 ```
 npm i -D webpack webpack-cli
 ```
+
 卸载
+
 ```
 npm uninstall -D/-S webpack  webpack-cli
 ```
+
 - 优先使用局部，优点是：便于管理版本
 【webpack-cli只在v4x版以后可用】
 
@@ -67,7 +78,6 @@ npm uninstall -D/-S webpack  webpack-cli
 --save      /  -S    //生产环境 （生产环境和开发环境都要用的依赖）
 --global    /  -g    //全局安装
 ```
-
 
 ### 3.webpack 的0配置(就是从0开始一点点自己配置)
 
@@ -91,7 +101,6 @@ npm uninstall -D/-S webpack  webpack-cli
 
 webpack默认就是打包js的，默认只能是编译es6的模块【export import】，【class】不能编译
 
-
 - 当默认使用webpack命令的时候，它会自动执行node_modules包里 的默认配置文件，webpack.config.js
 - 当我们在项目里创建了webpack.config.js后，在使用npx webpacck的话，它会优先执行我们创建的这个配置文件
 - 我们可以用命令指定webpack加载别名的配置文件
@@ -101,19 +110,12 @@ webpack默认就是打包js的，默认只能是编译es6的模块【export impo
 ```
 
 ### webpack-dev-server
+
 - 它是wxpress封装的
 - 使用它来启动webpack服务，它会执行编译，编译的文件main.js不会产生物理文件(默认在项目根目录中)，会将编译存到内存条中
 - 一般使用它需要使用html-webpack-plugin配合开发
 
-
 ### html-webpack-plugin
+
 - 是一个插件，写在webpack配置中的plugins数组中
 - 它是将html模板进行编译，并把webpack编译好的脚本注入到html页面里
-
-
-
-
-
-
-
-

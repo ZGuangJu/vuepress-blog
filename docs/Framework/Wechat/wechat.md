@@ -8,6 +8,7 @@ tags:
  - 前端框架
  - 微信小程序
 publish: true
+sticky: 6
 ---
 ## 学习主要内容
 
