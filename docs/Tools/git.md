@@ -17,6 +17,8 @@ sticky: 2
 - Repository：仓库区（或本地仓库）
 - Remote：远程仓库
 
+想进一步了解`git`可以看看这个[git图解](https://www.bootcss.com/p/git-guide/)。
+
 <font size="6" color="#3eaf7c">Git 提交常用命令</font>
 
 ----

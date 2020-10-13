@@ -703,6 +703,56 @@ git push -f [你要部署的gitee仓库地址] master
 
 同时部署到`github`和`gitee`上时，因为要调用`git`提交，而使用`git`又要设置`username`和`email`所以`github`和`gitee`最好用同样的用户名和邮箱`git`提交就不会提示输入用户名和邮箱了，设置一次`git`可以通用两个网站。
 
+:::details 我的deploy.sh文件
+
+```sh
+#!/usr/bin/env sh
+
+# 确保脚本抛出遇到的错误
+set -e
+
+# 1、生成静态文件
+npm run build
+
+# 2、进入生成的文件夹
+cd docs/.vuepress/dist
+
+# 如果是发布到自定义域名
+# echo 'www.yourwebsite.com' > CNAME
+
+# 3、提交
+git init
+git add -A
+git commit -m 'deploy-updata'
+
+# 3-1、提交到github和gitee仓库仓库中
+
+# 如果想用username.gitee.io或者username.github.io访问你的网站，必须让新建的仓库地址和你的用户名一致！！
+
+# A 执行提交到github仓库的master中（USERNAME是你的仓库名）
+# 如果你想要部署到 https://USERNAME.github.io
+# B 如果发布到 https://USERNAME.github.io/<REPO>  REPO=github上的项目
+
+# 提交到github和gitee
+git push -f git@github.com:ZGuangJu/ZGuangJu.github.io.git master
+
+git push -f git@gitee.com:zguangju/ZGuangJu.git master
+
+# 提交到仓库
+
+cd E:/github/blog-vuepress
+git add .
+git commit -m 'update'
+git push origin master
+
+# 结束
+
+```
+
+我的配置是可以一键部署到`gitee`和`github`两个网站， 并把项目源代码提交到`github`仓库上了。
+
+用`http://zguangju.gitee.io/`和`https://zguangju.github.io/`都能登录我的博客。
+:::
 以上配置内容是参考`vuepress`官网，仅供参考
 
 - 在`package.json`文件的`scripts`中添加下面的代码
@@ -738,7 +788,7 @@ npm run deploy
 
 - 部署`gitee`上时，新建的gitee仓库名：`username` (`username`就是你的账户用户名，也就是用用户名创建仓库)，
 - 和`github`一样，提交项目后，仓库也要开启`gitee Pages`，从项目页找`服务`=>`gitee Pages`，点击部署。
-- 和`github`不同的是，`github`上更新内容时，不用任何操作，网址会自动更新成新的内容（通常提交后等几分钟即可），`gietee`每次都要手动，在`gitee Pages`中点击更新按钮，才会更新到最新内容。
+- `gitee`和`github`不同的是，你在`github`上更新内容时，不用任何操作，网址会自动更新成新的内容（通常提交后等几分钟即可）；`gietee`每次都要手动，在`gitee Pages`中点击更新按钮，才会更新到最新内容。
 
 ## 部署到自己的域名上（要有自己的域名啊）
 
