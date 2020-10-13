@@ -30,7 +30,7 @@ git push -f git@github.com:ZGuangJu/ZGuangJu.github.io.git master
 
 git push -f git@gitee.com:zguangju/ZGuangJu.git master
 
-cd -
+# cd -
 
 # 提交到仓库
 
