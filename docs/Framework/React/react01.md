@@ -7,6 +7,7 @@ categories:
 tags:
  - react
 publish: true
+sticky: 6
 ---
 
 ## React 介绍
