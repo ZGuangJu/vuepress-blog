@@ -1,21 +1,25 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Administrator\.yarn\releases\yarn-1.22.5.js set version berry
+  C:\Program Files\nodejs\node.exe C:\Users\Administrator\.yarn\releases\yarn-1.22.5.js deploy2
 
 PATH: 
-  C:\Program Files\PowerShell\7-preview;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;D:\Developer\Xshell 6\;D:\Program Files D\SecureCRT\;D:\Program Files D\Hardwipe\;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Java\jdk-12.0.2\bin;C:\Program Files\Java\jdk-12.0.2\jre\bin;D:\Developer\SVN\bin;D:\Developer\TortoiseGit\bin;C:\Program Files\cmder\Cmder.exe;D:\Program Files D\PuTTY\;C:\Program Files\nodejs\;D:\Developer\TortoiseSVN\bin;D:\Developer\Flutter\flutter\bin;C:\Program Files\Git\cmd;D:\Developer\MongoDB\Server\4.2\bin;D:\Developer\Ruby26-x64\bin;D:\Program Files D\WinSCP\;C:\Program Files\Git\bin;C:\ProgramData\chocolatey\bin;D:\Program Files D\APP-Green-Software\geek\;D:\Program Files D\APP-Green-Software\trojan-cli\;D:\Developer\ffmpeg-20200324-e5d25d1-win64-static\bin;C:\Batch\;D:\Developer\Vim\vim82;C:\Program Files\dotnet\;D:\Program Files D\Clash for Windows\;C:\Program Files\PowerShell\7-preview\preview;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\Developer\IntelliJ IDEA 2018.3.3\bin;D:\Developer\Microsoft VS Code\bin;C:\Users\Administrator\AppData\Roaming\npm;D:\Program Files D\QQ\Bin;D:\Program Files D\Bandizip7\
+  C:\Program Files\PowerShell\7-preview;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;D:\Developer\Xshell 6\;D:\Program Files D\SecureCRT\;D:\Program Files D\Hardwipe\;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Java\jdk-12.0.2\bin;C:\Program Files\Java\jdk-12.0.2\jre\bin;D:\Developer\SVN\bin;D:\Developer\TortoiseGit\bin;C:\Program Files\cmder\Cmder.exe;D:\Program Files D\PuTTY\;D:\Developer\TortoiseSVN\bin;D:\Developer\Flutter\flutter\bin;D:\Developer\MongoDB\Server\4.2\bin;D:\Developer\Ruby26-x64\bin;D:\Program Files D\WinSCP\;C:\ProgramData\chocolatey\bin;D:\Program Files D\APP-Green-Software\geek\;D:\Program Files D\APP-Green-Software\trojan-cli\;D:\Developer\ffmpeg-20200324-e5d25d1-win64-static\bin;C:\Batch\;D:\Developer\Vim\vim82;C:\Program Files\dotnet\;D:\Program Files D\Clash for Windows\;C:\Program Files\PowerShell\7-preview\preview;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\Git\bin;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\Developer\IntelliJ IDEA 2018.3.3\bin;D:\Developer\Microsoft VS Code\bin;D:\Program Files D\QQ\Bin;D:\Program Files D\Bandizip7\;C:\Users\Administrator\AppData\Roaming\npm
 
 Yarn version: 
   1.22.5
 
 Node version: 
-  12.13.0
+  12.18.4
 
 Platform: 
   win32 x64
 
 Trace: 
-  Error: getaddrinfo ENOENT raw.githubusercontent.com
-      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:60:26)
+  SyntaxError: E:\github\blog-vuepress\package.json: Unexpected token } in JSON at position 288
+      at JSON.parse (<anonymous>)
+      at C:\Users\Administrator\.yarn\releases\yarn-1.22.5.js:1098:57
+      at Generator.next (<anonymous>)
+      at step (C:\Users\Administrator\.yarn\releases\yarn-1.22.5.js:310:30)
+      at C:\Users\Administrator\.yarn\releases\yarn-1.22.5.js:321:13
 
 npm manifest: 
   {
@@ -27,7 +31,7 @@ npm manifest:
           "blog": "vuepress dev docs",
           "build": "vuepress build docs",
           "deploy": "bash deploy.sh",
-          "deploygitee": "deploy.bat"
+          "deploy2": "bash deploy2.sh",
       },
       "keywords": [],
       "author": "zhangguangju",
