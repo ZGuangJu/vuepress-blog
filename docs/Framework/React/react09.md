@@ -31,7 +31,7 @@ const ThemContext = React.createContext() //初始化上下文对象
 class App extends React.Component {
     render() {
         return <ThemContext.Provider value={{ money: this.state.money, consumMoney: this.consumMoney }} >
-            上下文
+            上下文,需要传递给谁，就写谁
         </ThemContext.Provider>
     }
 }
@@ -39,7 +39,7 @@ class App extends React.Component {
 
 - 2.2 接收(并使用)
 `static contextType = ThemContext`
-接收数据的组件 通过定义 `static contextType` = 定义的上下文对象 传递的属性会挂载到`this.context`上面
+接收数据的组件 通过定义 `static contextType` = [定义的上下文对象] 本组就会接收传递的数据和方法，传递的属性方法会挂载到`this.context`上面，通过`this.context`使用数据和方法。
 
 ```jsx
 class Crondson extends React.Component {
@@ -111,11 +111,10 @@ render(<App />, document.getElementById('root'))
 :::details 案例 上下文传递数据
 
 ```jsx
+// 跨层级通信
 import React from 'react'
-
 import { render } from 'react-dom'
-//  跨层级通信
-// 定义上下文对象
+// 定义上下文对象 theme
 let theme = React.createContext()
 //这个方法里有两个参数 { Provider ,Consumer }
 // 一个父组件 三个孙组件

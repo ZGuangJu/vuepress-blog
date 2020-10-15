@@ -258,7 +258,7 @@ module.exports = {
                 {
                     title: 'React',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['react01', 'react02', 'react03', 'react04', 'react05', 'react06', 'react07', 'react08', 'react09', 'react10', 'react11', 'react12', 'react13', 'react&vue', 'react', 'router_doc']
+                    children: ['react01', 'react02', 'react03', 'react04', 'react05', 'react06', 'react07', 'react08', 'react09', 'react10', 'react11', 'react12', 'react13', 'react14', 'react&vue', 'react', 'router_doc']
                 },
             ],
             '/Framework/Wechat/': [
