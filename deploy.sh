@@ -26,7 +26,7 @@ git commit -m 'deploy-updata'
 # B 如果发布到 https://USERNAME.github.io/<REPO>  REPO=github上的项目
 
 # 提交到github和gitee
-git push -f git@github.com:ZGuangJu/ZGuangJu.github.io.git master
+# git push -f git@github.com:ZGuangJu/ZGuangJu.github.io.git master
 
 git push -f git@gitee.com:zguangju/ZGuangJu.git master
 

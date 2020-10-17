@@ -13,16 +13,27 @@
 <body>
     <div class="demo"></div>
     <script>
-        let name1 = 'sfd'
-        let name2 = new String('56')
-        name1.age = 2
-        name2.age = 3
-        console.log(name1);
-        console.log(name2);
-        console.log(name1.age);
-        console.log(name2.age);
-        console.log(typeof name1);
-        console.log(typeof name2);
+        function AddTen(num) {
+            num += 10
+            console.log(arguments);
+            return num
+        }
+        let count = 20
+        let re = AddTen(count)
+
+
+        var color = 'blue'
+        function getColor() {
+            let color = 'red'
+            {
+                let color = 'green'
+                return window.color
+            }
+        }
+        console.log(getColor());
+        // 在浏览器中，全局上下文就是我们常说的window对象
+        // 因此所有通过var 定义的全局变量和函数都会成为window 对象的属性和方法。
+
     </script>
 
 </body>

@@ -2,7 +2,7 @@ module.exports = {
     // 主页图片下第一行字、标题栏名称、左上角名称
     title: "Guangju'S 笔记分享",
     // 端口配置 80是默认端口(手动部署服务器时用)
-    // port: 80,
+    port: 80,
     theme: 'reco', //启动主题 已安装的有  默认 / reco
     // 主页图片下第二行字
     description: '欢迎',
@@ -175,6 +175,7 @@ module.exports = {
                     { text: 'token 是什么', link: '/Other/token' },
                     { text: '网站黑白', link: '/Other/网站黑白' },
                     { text: 'Chrome 使用', link: '/Other/Chrome' },
+                    { text: '浏览器和内核', link: '/Other/浏览器内核' },
                     { text: 'URI & URL', link: '/Other/URI&URL' },
                     { text: 'Apache 是什么', link: '/Other/Apache' },
                     { text: 'Nginx 是什么', link: '/Other/Nginx' },
