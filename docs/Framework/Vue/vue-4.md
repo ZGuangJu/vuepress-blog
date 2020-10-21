@@ -8,9 +8,35 @@ tags:
 publish: true
 ---
 
-## 1.  props & $emit 传值(常用方法)
+## 1.  `props` & `$emit` 传值(常用方法)
 
-  <font size="5">A、 props 父传子</font>
+- A、 `props` 父传子
+
+主要传值，可以传方法，但不常用
+
+语法：
+
+父组件使用`v-bind`动态绑定数据 `:自定义属性名="值"`
+
+子组件使用`props` 接收数据
+
+```js
+props：["自定义属性名"]
+```
+
+或者
+
+```js
+props：{
+                "自定义属性名"：{
+                    type：Array，
+                    default：默认值，
+                    required：是否必填
+                }
+            }
+```
+
+例子：
 
 ```html
 <!-- 父组件 -->
@@ -55,9 +81,26 @@ export default {
 </style>
 ```
 
-注意： 在父组件的属性名 `data_Father` 和子组件中用来接收的变量要保持一致！`data_one`在父组件一致即可，与子组件无关。
+:::warning 注意：
+在父组件的属性名 `data_Father` 和子组件中用来接收的变量要保持一致！`data_one`在父组件一致即可，与子组件无关。
+你不应该在子组件内部直接改变 `prop`，具体原因可以直接看官网介绍
+:::
 
-<font size="5">B、$emit 子传父</font>
+- B、`$emit` 子传父
+
+可以传方法或值
+
+语法：
+
+子组件调用`@emit()`方法，这个方法接收两个参数
+
+```js
+$emit("自定义事件名称"（必写）,传递的值（可选）)
+```
+
+父组件使用`v-on` 简写 `@自定义事件名=""`
+
+例子：
 
 ```html
 <!-- 子组件 -->
@@ -65,7 +108,7 @@ export default {
   <div class="son">
     <h3>我是子组件组件--通信练习</h3>
     <button @click="SonClick">修改父组件数据</button>
-    <!-- 子组件用 v-on 绑定一个用来修改父组件数据的函数 -->
+    <!-- 子组件用 v-on 绑定一个用来修改父组件数据的函数(函数在父组件里) -->
   </div>
 </template>
 <script>
@@ -73,10 +116,14 @@ export default {
   name: "son",
   methods: {
     SonClick() {
-      // 调用父组件提供的函数，从而实现父子通信
-      // $emit 又两个参数 ，a 父组件提供的函数名(字符串的形式)，b 新是数据
+      /*
+      调用父组件提供的函数，从而实现父子通信
+      $emit有两个参数 ，
+      a 父组件提供的函数名(字符串的形式)，
+      b 新是数据(传递给父组件里用于修改数据的函数的参数)
+      */
+     this.$emit('handleSon', '子组件修改了数据')
       // handSon是父组件函数名
-      this.$emit('handleSon', '子组件修改了数据')
     }
   }
 };
@@ -124,6 +171,16 @@ export default {
 父组件中的函数 `handleFather` 是子组件上的自定义属性的值；`handleSon`是让子组件通过`$emit` 修改数据的函数名，和父组件里子组件上是自定义属性名一致。
 :::
 
-## 2
+## 2. `$attrs` & `$listeners`
 
+`Vue_2.4`中新增的 `$attrs/$listeners` 可以进行跨级的组件通信。`$attrs` 包含了父级作用域中不作为 `prop` 的属性绑定（`class` 和 `style` 除外）
+
+- `$attrs`
+`attributes`:`属性`的缩写;可以批量向下传递数据 / 只传属性
+`$attrs` 是组件（`vue`实例上）固有的用来描述该组件身上的所有属性集合的对象;如果继续向下传递，在中间组件中 `v-bind = "$attrs"`
+
+- `$listeners`
+批量向下传递方法 / 只传方法
+
+`$listeners` 是组件上的属性，用来保存组件身上的方法;如果继续向下传递，使用 `v-on="$listeners"`,
 $bus 中央事件池

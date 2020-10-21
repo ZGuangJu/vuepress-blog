@@ -626,7 +626,7 @@ yarn docs:dev
 
 ### 部署到 Github
 
-打开 github 网站，登陆自己的 github 账号
+打开 `github` 网站，登陆自己的 `github` 账号
 
 接着新建两个仓库：
 
@@ -636,7 +636,7 @@ yarn docs:dev
 
   `USERNAME` 必须是你 `Github` 的账号用户名
 
-- 注意：新建`github`仓库时，创建的分支必须的时`master`，用`main`会失败。
+- 注意：新建`github`仓库时，创建的分支必须是`master`，用`main`会失败（或者下面`deploy.sh`文档中的仓库分支由`master`为`main`，总之要统一,至于`github`为什么改变默认的分支名称，这就是另一个故事了，请自行百度）。
 
 <img src="https://s2.ax1x.com/2020/02/28/3DDwfx.png" alt="typecho01">
 这个仓库建好后，不用克隆到本地，内容更新修改都在下面的仓库（本地的）中进行。
@@ -700,6 +700,8 @@ cd -
 git push -f [你要部署的github仓库地址] master
 git push -f [你要部署的gitee仓库地址] master
 ```
+
+`master`: 是你的分支名，以前`github`默认都是`master`但是现在更改为`main`了，请注意。
 
 同时部署到`github`和`gitee`上时，因为要调用`git`提交，而使用`git`又要设置`username`和`email`所以`github`和`gitee`最好用同样的用户名和邮箱`git`提交就不会提示输入用户名和邮箱了，设置一次`git`可以通用两个网站。
 
