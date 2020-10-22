@@ -114,7 +114,8 @@ module.exports = {
                 icon: "reco-category",
                 items: [
                     { text: 'HTML & H5', link: '/Frontend/HTML/HTML' },
-                    { text: 'CSS & C3', link: '/Frontend/CSS/CSS' },
+                    { text: 'CSS & C3', link: '/Frontend/CSS/css1' },
+                    { text: 'CSS 教程', link: '/Frontend/CSS2/css1' },
                     { text: 'JavaScript', link: '/Frontend/JS/JavaScript' },
                     { text: 'ES6新增', link: '/Frontend/ES6/ES01' },
                     { text: 'Promise', link: '/Frontend/Promise/promise' },
@@ -215,7 +216,12 @@ module.exports = {
                 {
                     title: 'CSS',
                     collapsable: true,
-                    children: ['CSS/CSS']
+                    children: ['CSS/css1', 'CSS/css2', 'CSS/css3', 'CSS/css4', 'CSS/css5', 'CSS/css6', 'CSS/css7', 'CSS/css8', 'CSS/css9', 'CSS/css10', 'CSS/css11']
+                },
+                {
+                    title: 'CSS教程',
+                    collapsable: true,
+                    children: ['CSS2/css0', 'CSS2/css1', 'CSS2/css3', 'CSS2/css4', 'CSS2/css5', 'CSS2/css6', 'CSS2/css7', 'CSS2/css8', 'CSS2/css9', 'CSS2/css10', 'CSS2/css11', 'CSS2/css12']
                 },
                 {
                     title: 'JavaScript',

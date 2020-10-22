@@ -25,3 +25,9 @@ publish: true
 ## const
 
 1. 和let基本相同，但是声明时必须同时赋值
+
+## 方法
+
+typeof
+
+instanceof

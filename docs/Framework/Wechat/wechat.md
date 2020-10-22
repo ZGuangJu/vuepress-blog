@@ -86,18 +86,18 @@ sticky: 6
     },
 ```
 
-获取组件传过来的参数，需要点detail才能拿到具体的值
+获取组件传过来的参数，需要点`detail`才能拿到具体的值
 
 ## 组件
 
-- component方法构造组件
+- `component`方法构造组件
 
 ### 组件通信
 
-- 接收父组件传过来的值用 properties
-- 传递给父组件数据使用 this.triggerEvent('事件名','数据')
+- 接收父组件传过来的值用 `properties`
+- 传递给父组件数据使用 `this.triggerEvent('事件名','数据')`
 
-- 声明组件必须在组件的json文件中配置：
+- 声明组件必须在组件的`json`文件中配置：
 
 ```js
   "component": true,"
@@ -105,24 +105,24 @@ sticky: 6
 
 ### 内置的指令
 
-1. wx:for
+1. `wx:for`
 遍历渲染
 
-- 默认在当前作用域里产生index和item
+- 默认在当前作用域里产生`index`和`item`
 
 ```js
- wx:for-index="" //给index别名
- wx:for-item="" //给item别名
+ wx:for-index = ""  //给index别名
+ wx:for-item = ""   //给item别名
 ```
 
-2. wx:if
+2. `wx:if`
  渲染与销毁（v-if）
 
-- wx:elif
-- wx:else
+- `wx:elif`
+- `wx:else`
 
-4. wx:hidden
-显示与隐藏（v-show）
+4. `wx:hidden`
+显示与隐藏（`v-show`）
 
 ## 事件系统
 

@@ -643,7 +643,7 @@ yarn docs:dev
 
 ### 新建仓库二
 
-- 随便起名字，比如：Blog （这个要克隆到本地或者从本地直接远程提交代码，用来保存源代码）
+- 随便起名字，比如：`Blog` （这个要克隆到本地或者从本地直接远程提交代码，用来保存源代码）
 
 - 没有创建`vuepress`项目的，使用git，将 [vuepress-tools](https://github.com/ZGuangJu/vuepress-tools) 中的内容拷贝到 Blog 文件夹中(里面是vuepress模板)或参考[这里](https://zguangju.github.io/Tools/vuepress.html)自己创建vuepress项目
 

@@ -8,7 +8,7 @@ tags:
 publish: true
 ---
 
-## 1.  `props` & `$emit` 传值(常用方法)
+## 1.  `props` & `$emit` 父子传值(常用方法)
 
 - A、 `props` 父传子
 
@@ -28,12 +28,12 @@ props：["自定义属性名"]
 
 ```js
 props：{
-                "自定义属性名"：{
-                    type：Array，
-                    default：默认值，
-                    required：是否必填
-                }
-            }
+       "自定义属性名"：{
+       type：Array，
+       default：默认值，
+       required：是否必填
+      }
+  }
 ```
 
 例子：
@@ -173,14 +173,16 @@ export default {
 
 ## 2. `$attrs` & `$listeners`
 
-`Vue_2.4`中新增的 `$attrs/$listeners` 可以进行跨级的组件通信。`$attrs` 包含了父级作用域中不作为 `prop` 的属性绑定（`class` 和 `style` 除外）
+`Vue_2.4` 中新增的 `$attrs/$listeners` 可以进行跨级的组件通信。`$attrs` 包含了父级作用域中不作为 `prop` 的属性绑定（`class` 和 `style` 除外）
 
 - `$attrs`
+
 `attributes`:`属性`的缩写;可以批量向下传递数据 / 只传属性
 `$attrs` 是组件（`vue`实例上）固有的用来描述该组件身上的所有属性集合的对象;如果继续向下传递，在中间组件中 `v-bind = "$attrs"`
 
 - `$listeners`
+
 批量向下传递方法 / 只传方法
 
 `$listeners` 是组件上的属性，用来保存组件身上的方法;如果继续向下传递，使用 `v-on="$listeners"`,
-$bus 中央事件池
+`$bus` 中央事件池
