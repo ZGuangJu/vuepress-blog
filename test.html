@@ -7,48 +7,29 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- <meta http-equiv="refresh" content="5"> -->
     <title>Document</title>
-    <link rel="stylesheet" href="./css.css">
 </head>
 
 <body>
     <div class="demo"></div>
     <script>
-        /*
-        1. class 是什么
-        类是模具
-        2. 模式
-        没有class的时候，程序员使用对象封装类
-        工厂函数  === new之后，叫构造函数
+        // console.log(Number(null)); //12
+        // console.log(Number(undefined));//NaN
+        // console.log(Number(false));//124564.4545
+        // console.log(Number(true));//NaN
+        // var a = { 1: 12 }
+        // console.log(Number({ 1: 12 }));//NaN;
+        // new Number(value);
 
-
-
-         */
-        // 类的声明方式
-        class My {
-            // 构造函数 constructor
-            constructor() {
-                // 当一个类被实例化的时候，第一个被执行的就是constructor
-                this.name = "zhang"
-            }
-            // 不在构造函数里的属性就不要加this
-            age = 15
-        }
-
-        const name = new My()
-        console.log(name);
-        // 工厂模式
-        var func = function () {
-            var obj = {
-                name="zhang"
-            }
-            return obj
-        }
-        /*
-        数组，函数，对象的原型都是对象，so 三者可以相互继承，当实例化一个函数得到实例化对象的时候，那么改函数的原型对象上的所有属性和方法都会继承给实例化对象
-        函数找归属（谁调用）
-        箭头函数找空间
-
-        */
+        console.log(parseInt('-12')); //-12
+        console.log(parseInt('+12')); //12
+        console.log(parseInt('0.12'));// 0
+        console.log(parseInt('f12')); //NaN
+        console.log(parseInt('1k2')); //1
+        console.log(parseInt(null));// NaN
+        console.log(parseInt(undefined)); //NaN
+        console.log(parseInt({ 1: 123 })); //NaN
+        console.log(parseInt(true));// NaN
+        console.log(parseInt(false));// NaN
     </script>
 
 </body>

@@ -263,14 +263,14 @@ module.exports = {
 module.exports = {
     // 主页图片下第一行字、标题栏名称、左上角名称
     title: "Guangju'S 笔记分享",
+    // 主页图片下第二行字
+    description: '欢迎',
     // 端口配置 80是默认端口(手动部署服务器时用)
     // port: 80,
     theme: 'reco', //启动主题 已安装的有  默认 / reco
-    // 主页图片下第二行字
-    description: '欢迎',
     // 标题栏图标
     head: [
-        // 改变title的图标，图标放在public文件夹中，herf后直接 '/图片.格式' ，不要./
+        // 改变title的图标，图标放在public文件夹中，herf后直接 '/图片.格式' ，不要 ./
         [
             'link',
             {
@@ -300,33 +300,29 @@ module.exports = {
                     close: '那再见了哦~'
                 }
             }
-        ],
-        [
-            // 公告窗
-            "@vuepress-yard/vuepress-plugin-window",
-            {
-                title: "公告",
-                windowStyle: { left: '41%', top: '100px', width: '260px', },
-                contentInfo: {
-                    title: '🎉扫码加公众号或加QQ群1126566195',
-                    imgUrl: 'https://pic.downk.cc/item/5eab8845c2a9a83be5f67837.png',
-                    needImg: true,
-                    content: '公众号 比邻之地',
-                    contentStyle: {}
-                },
-                bottomInfo: {
-                    btnText: 'Blog',
-                    linkTo: 'http://www.91guangju.com'
-                },
-                closeOnce: true
-            }
         ]
+        // 未启用
+        // [
+        //     // 公告窗
+        //     "@vuepress-yard/vuepress-plugin-window",
+        //     {
+        //         title: "公告",
+        //         windowStyle: { left: '41%', top: '100px', width: '260px', },
+        //         contentInfo: {
+        //             title: '🎉扫码加公众号或加QQ群1126566195',
+        //             imgUrl: 'https://pic.downk.cc/item/5eab8845c2a9a83be5f67837.png',
+        //             needImg: true,
+        //             content: '公众号 比邻之地',
+        //             contentStyle: {}
+        //         },
+        //         bottomInfo: {
+        //             btnText: 'Blog',
+        //             linkTo: 'http://www.91guangju.com'
+        //         },
+        //         closeOnce: true
+        //     }
+        // ]
     ],
-    // markdown设置
-    markdown: {
-        // 显示代码块行号
-        lineNumbers: true
-    },
     // 主题设置
     themeConfig: {
         // 主题样式
@@ -376,9 +372,10 @@ module.exports = {
                 icon: "reco-category",
                 items: [
                     { text: 'HTML & H5', link: '/Frontend/HTML/HTML' },
-                    { text: 'CSS & C3', link: '/Frontend/CSS/CSS' },
+                    { text: 'CSS & C3', link: '/Frontend/CSS/css1', },
+                    { text: 'CSS 教程', link: '/Frontend/CSS2/css1' },
                     { text: 'JavaScript', link: '/Frontend/JS/JavaScript' },
-                    { text: 'ES6新增', link: '/Frontend/ES6/ES01' },
+                    { text: 'ES6', link: '/Frontend/ES6/ES01' },
                     { text: 'Promise', link: '/Frontend/Promise/promise' },
                     { text: 'JQuery', link: '/Frontend/JQuery/JQuery' },
                     { text: 'Ajax', link: '/Frontend/Ajax/Ajax' },
@@ -409,20 +406,21 @@ module.exports = {
                     { text: 'git', link: '/Tools/git' },
                     { text: 'yarn', link: '/Tools/yarn' },
                     { text: 'npm', link: '/Tools/npm' },
-                    { text: 'nrm', link: '/Tools/nrm' },
                     { text: 'cmd', link: '/Tools/cmd' },
-                    { text: 'regex 正则', link: '/Tools/regex' },
+                    { text: 'nrm', link: '/Tools/nrm' },
                     { text: 'MarkDown', link: '/Tools/markdown' },
+                    { text: 'vim', link: '/Tools/vim' },
                     { text: 'Trojan', link: '/Tools/Trojan' },
-                    { text: 'Typecho 安装建站', link: '/Tools/typecho' },
-                    { text: 'Linux 宝塔使用', link: '/Tools/宝塔' },
+                    { text: 'vite', link: '/Tools/vite' },
                     { text: 'vuepress', link: '/Tools/vuepress' },
-                    { text: 'vuepress 部署发布', link: '/Tools/vuepress部署' },
-                    { text: 'vim 介绍', link: '/Tools/vim' },
+                    { text: '升级依赖包', link: '/Tools/upgrade' },
+                    { text: 'regex 正则', link: '/Tools/regex' },
+                    { text: 'Typecho 安装建站', link: '/Tools/typecho' },
+                    { text: 'Centos', link: '/Tools/centos' },
+                    { text: '宝塔', link: '/Tools/宝塔' },
                     { text: 'Eslint 的使用和禁用', link: '/Tools/Eslint' },
                     { text: 'VScode配置文件', link: '/Tools/vscode' },
                     { text: 'Powershell 配置文件', link: '/Tools/powershell' },
-                    { text: 'vite', link: '/Tools/vite' },
                     { text: 'Win子系统', link: '/Tools/wsl' },
                 ],
             },
@@ -436,6 +434,7 @@ module.exports = {
                     { text: 'token 是什么', link: '/Other/token' },
                     { text: '网站黑白', link: '/Other/网站黑白' },
                     { text: 'Chrome 使用', link: '/Other/Chrome' },
+                    { text: '浏览器和内核', link: '/Other/浏览器内核' },
                     { text: 'URI & URL', link: '/Other/URI&URL' },
                     { text: 'Apache 是什么', link: '/Other/Apache' },
                     { text: 'Nginx 是什么', link: '/Other/Nginx' },
@@ -475,7 +474,12 @@ module.exports = {
                 {
                     title: 'CSS',
                     collapsable: true,
-                    children: ['CSS/CSS']
+                    children: ['CSS/css1', 'CSS/css2', 'CSS/css3', 'CSS/css4', 'CSS/css5', 'CSS/css6', 'CSS/css7', 'CSS/css8', 'CSS/css9', 'CSS/css10', 'CSS/css11']
+                },
+                {
+                    title: 'CSS教程',
+                    collapsable: true,
+                    children: ['CSS2/css0', 'CSS2/css1', 'CSS2/css3', 'CSS2/css4', 'CSS2/css5', 'CSS2/css6', 'CSS2/css7', 'CSS2/css8', 'CSS2/css9', 'CSS2/css10', 'CSS2/css11', 'CSS2/css12']
                 },
                 {
                     title: 'JavaScript',
@@ -485,7 +489,7 @@ module.exports = {
                 {
                     title: 'ES6',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['ES6/ES01', 'ES6/ES02', 'ES6/ES03', 'ES6/ES04']
+                    children: ['ES6/ES01', 'ES6/ES02', 'ES6/ES03', 'ES6/ES04', 'ES6/ES05']
                 },
                 {
                     title: 'Promise',
@@ -519,7 +523,7 @@ module.exports = {
                 {
                     title: 'React',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['react01', 'react02', 'react03', 'react04', 'react05', 'react06', 'react07', 'react', 'react&vue']
+                    children: ['react01', 'react02', 'react03', 'react04', 'react05', 'react06', 'react07', 'react08', 'react09', 'react10', 'react11', 'react12', 'react13', 'react14', 'react&vue', 'react', 'router_doc']
                 },
             ],
             '/Framework/Wechat/': [
@@ -533,8 +537,8 @@ module.exports = {
             '/Project/': ['shopingapp', 'admin', 'project'],// 项目
             '/Node/': ['node1', 'node2', 'package'],
             '/Webpack/': ['webpack1', 'webpack2', 'webpackconfigjs'],
-            '/Backend/': ['php'],//后端，暂未启用
-            '/Tools/': ['git', 'yarn', 'npm', 'upgrade', 'cmd', 'nrm', 'regex', 'markdown', 'Trojan', 'typecho', '宝塔', 'vuepress', 'vuepress部署', 'vim', 'Eslint', 'vscode', 'powershell', 'vite', 'wsl'],
+            // '/Backend/': ['php'],//后端，暂未启用
+            '/Tools/': ['git', 'yarn', 'npm', 'cmd', 'nrm', 'markdown', 'vim', 'Trojan', 'vite', 'vuepress', 'upgrade', 'regex', 'typecho', 'centos', '宝塔', 'Eslint', 'vscode', 'powershell', 'wsl'],
             '/Other/': [
                 '', '问题', 'error', '知识点', '验证码', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome'
             ],
@@ -549,6 +553,11 @@ module.exports = {
             }
             // ...
         ],
+        // markdown设置
+        markdown: {
+            // 显示代码块行号
+            lineNumbers: true
+        },
         // search: false, //禁用内置搜索框
         searchMaxSuggestions: 20,//调整搜索框显示的搜索提示数量
         // 假定 GitHub。也可以是一个完整的 GitLab URL。

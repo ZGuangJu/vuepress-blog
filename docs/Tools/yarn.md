@@ -92,7 +92,7 @@ yarn config set registry https://registry.yarnpkg.com
 
 - 其他镜像地址
 
-```s
+```js
 npm --- https://registry.npmjs.org/
 
 npm --- https://registry.npm.taobao.org/
@@ -195,7 +195,7 @@ yarn publish [name]
 
 - 项目中升级依赖包
 
-1. `yarn upgrade-interactive --latest`命令（亲测无效，不能更新`package.json`中的版本，可以更新yarn.lock中的版本）
+1. `yarn upgrade-interactive --latest`命令（亲测无效，不能更新`package.json`中的版本，可以更改`yarn.lock`中包的版本号）
 
 ```js
 yarn upgrade-interactive --latest
@@ -218,7 +218,7 @@ info Color legend :
  ( ) vuepress-theme-reco  latest  1.4.7  ❯  1.5.5  https://vuepress-theme-reco.recoluan.com
 ```
 
-需要手动选择升级的依赖包，按空格键选择，a 键切换所有，i 键反选选择
+需要手动选择升级的依赖包，按空格键选择，`a` 键切换所有，`i` 键反选选择
 
 2. 指定版本号，这种方法会在 `package.json` 文件中限定包的版本
 
@@ -226,7 +226,7 @@ info Color legend :
 yarn upgrade [package-name]@x.x.x
 ```
 
-3. 使用 `npm-check-updates` 升级（亲测无效，不能更新package.json中的版本，可以更新`yarn.lock`中的版本）
+3. 使用 `npm-check-updates` 升级（亲测无效，不能更新`package.json`中的版本，可以更改`yarn.lock`中包的版本号）
 
 ```js
 // 先下载

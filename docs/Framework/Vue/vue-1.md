@@ -28,6 +28,15 @@ Vue 是前端开发框架;构建应用式的框架
 4. 组件化开发，利于开发和维护;
 5. 能实现单页面应用，`SPA` 应用 `(single page application)`.
 
+MVVM
+
+- Model:负责数据存储
+- View:负责页面展示
+- View Model:负责业务逻辑处理（比如Ajax请求），对数据
+
+:::tip
+MVC:是
+:::
 <font size="5" color="#3eaf7c">Vue 使用方式</font>
 
 ----

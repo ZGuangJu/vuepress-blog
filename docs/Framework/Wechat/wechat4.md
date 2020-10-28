@@ -61,9 +61,9 @@ publish: true
 - 事件：用于子组件向父组件传递数据，可以传递任意数据。
 - **如果以上两种方式不足以满足需要，父组件还可以通过 this.selectComponent 方法获取子组件实例对象，这样就可以直接访问组件的任意数据和方法。
 
-1. 父传子
+### 父传子
 
-### 父页面
+1. 父页面
 
 - wxml中标签
 
@@ -103,7 +103,7 @@ Page({
 }
 ```
 
-### 子组件
+2. 子组件
 
 - wxml中的标签
 
@@ -137,4 +137,83 @@ Component({
 </view>
 ```
 
-2. 子传父
+### 子传父
+
+...
+
+### behaviors 传值（公共数据和方法）
+
+`behaviors` 是用于组件间代码共享的特性，类似于一些编程语言中的 `“mixins”` 或 `“traits”`。
+
+每个 `behavior` 可以包含一组属性、数据、生命周期函数和方法。组件引用它时，它的属性、数据和方法会被合并到组件中，生命周期函数也会在对应时机被调用。 每个组件可以引用多个 `behavior` ，`behavior` 也可以引用其它 `behavior`
+
+1. 创建公共库
+
+```js
+// my-behavior.js
+module.exports = Behavior({
+  behaviors: [], //behavior中还可以引入其他 behavior ---套娃
+  properties: {
+    myBehaviorProperty: {
+      type: String
+    }
+  },
+  data: {
+    myBehaviorData: {}
+  },
+  attached: function(){},
+  methods: {
+    myBehaviorMethod: function(){}
+  }
+})
+```
+
+2. 使用
+
+```js
+// 引入
+var myBehavior = require('my-behavior')
+```
+
+```js
+// 注册
+ behaviors: [myBehavior],
+```
+
+```js
+// my-component.js
+var myBehavior = require('my-behavior')
+Component({
+  behaviors: [myBehavior],
+  properties: {
+    myProperty: {
+      type: String
+    }
+  },
+  data: {
+    myData: 'my-component-data'
+  },
+  created: function () {
+    console.log('[my-component] created')
+  },
+  attached: function () {
+    console.log('[my-component] attached')
+  },
+  ready: function () {
+    console.log('[my-component] ready')
+  },
+  methods: {
+    myMethod: function () {
+      console.log('[my-component] log by myMethod')
+    },
+  }
+})
+```
+
+## 其他
+
+`focus="false"` 这样使用是不对的，实际是`true`，正确的写法是 `focus="{{false}}"`
+
+## 事件
+
+`bind:tap="tapName"`等价于 `bindtap="tapName"`

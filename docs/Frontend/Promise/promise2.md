@@ -31,9 +31,9 @@ new Promise( function(resolve, reject) {...} /* executor */  );
 
     `executor`是带有 `resolve` 和 `reject` 两个参数的函数 。`Promise`构造函数执行时立即调用`executor` 函数（executor会在promise内部立即同步回调，异步操作会在执行器中执行）， `resolve` 和 `reject` 两个函数作为参数传递给`executor`（`executor` 函数在Promise构造函数返回所建`promise`实例对象前被调用）。
 
-  - resolve函数：内部定义成功时执行的函数 value => {}
+  - `resolve`函数：内部定义成功时执行的函数 `value => {}`
 
-  - reject函数: 内部定义失败时执行的函数 reason => {}
+  - `reject`函数: 内部定义失败时执行的函数 `reason => {}`
 
     `resolve` 和 `reject` 函数被调用时，分别将`promise`的状态改为`fulfilled（完成）`或`rejected（失败）`。
 
@@ -62,10 +62,10 @@ new Promise( function(resolve, reject) {...} /* executor */  );
 
   成功的结果数据一般称为`value`,失败的结果数据一般称为`reason`
 
-  Promise一旦新建就立刻执行, 此时的状态是Pending(进行中)
+  `Promise`一旦新建就立刻执行, 此时的状态是`Pending`(进行中)
 :::
 
-- .then方法：(onResoled,onRejected)=>{}
+- `.then`方法：`(onResoled,onRejected)=>{}`
 
 ```js
 p.then(onFulfilled[, onRejected]);
@@ -77,7 +77,7 @@ p.then(value => {
 });
 ```
 
-说明：指定用于得到value的成功回调和用于得到失败reason的失败回调
+说明：指定用于得到`value`的成功回调和用于得到失败`reason`的失败回调
 
 ## promise 基础使用
 
@@ -121,7 +121,7 @@ p.then(value => {
 
 <img src="https://s1.ax1x.com/2020/09/02/dzxvB8.png" alt="官方图">
 
-因为 Promise.prototype.then 和  Promise.prototype.catch 方法返回promise 对象， 所以它们可以被链式调用
+因为 `Promise.prototype.then` 和  `Promise.prototype.catch` 方法返回`promise` 对象， 所以它们可以被链式调用
 
 ## 为啥用promise呢
 
@@ -242,7 +242,7 @@ p.then(value => {
    - `reason`:失败的原因
    - 说明：返回一个失败的`promise`对象
 
-7. `Promise.all()`方法：`([promise]) => {}`（promise函数对象的方法）
+7. `Promise.all()`方法：`([promise]) => {}`（`promise`函数对象的方法）
    - `promise`：包含n个`promise`对象的数组
    - 说明：返回一个新的`promise`，当所有的`promise`都成功了才成功，只要有一个失败，就直接失败。
 
@@ -269,7 +269,7 @@ p.then(value => {
         })
 ```
 
-- Promise 语法糖
+- `Promise` 语法糖
 
 语法糖：就是用简短的代码替换冗余的代码，但功能实现是一样的，使用更方便。
 

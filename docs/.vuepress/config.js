@@ -1,11 +1,11 @@
 module.exports = {
     // 主页图片下第一行字、标题栏名称、左上角名称
     title: "Guangju'S 笔记分享",
+    // 主页图片下第二行字
+    description: '欢迎',
     // 端口配置 80是默认端口(手动部署服务器时用)
     // port: 80,
     theme: 'reco', //启动主题 已安装的有  默认 / reco
-    // 主页图片下第二行字
-    description: '欢迎',
     // 标题栏图标
     head: [
         // 改变title的图标，图标放在public文件夹中，herf后直接 '/图片.格式' ，不要./
@@ -39,6 +39,7 @@ module.exports = {
                 }
             }
         ]
+        // 未启用
         // [
         //     // 公告窗
         //     "@vuepress-yard/vuepress-plugin-window",
@@ -60,11 +61,6 @@ module.exports = {
         //     }
         // ]
     ],
-    // markdown设置
-    markdown: {
-        // 显示代码块行号
-        lineNumbers: true
-    },
     // 主题设置
     themeConfig: {
         // 主题样式
@@ -272,7 +268,7 @@ module.exports = {
                 {
                     title: '微信小程序',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['wechat', 'wechat2', 'wechat3', 'wechat4', 'wechat5', 'wechat6', 'wechat7', 'wechat8', 'wechat9', 'wechat10']
+                    children: ['wechat', 'wechat2', 'wechat3', 'wechat4', 'wechat5', 'wechat6', 'wechat7', 'wechat8', 'wechat9', 'wechat10', 'wechat11']
                 }
             ],
 
@@ -295,6 +291,11 @@ module.exports = {
             }
             // ...
         ],
+        // markdown设置
+        markdown: {
+            // 显示代码块行号
+            lineNumbers: true
+        },
         // search: false, //禁用内置搜索框
         searchMaxSuggestions: 20,//调整搜索框显示的搜索提示数量
         // 假定 GitHub。也可以是一个完整的 GitLab URL。
