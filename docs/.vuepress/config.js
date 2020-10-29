@@ -157,8 +157,7 @@ module.exports = {
                     { text: 'Centos', link: '/Tools/centos' },
                     { text: '宝塔', link: '/Tools/宝塔' },
                     { text: 'Eslint 的使用和禁用', link: '/Tools/Eslint' },
-                    { text: 'VScode配置文件', link: '/Tools/vscode' },
-                    { text: 'Powershell 配置文件', link: '/Tools/powershell' },
+                    { text: 'VScode等配置文件', link: '/Tools/vscode' },
                     { text: 'Win子系统', link: '/Tools/wsl' },
                 ],
             },
@@ -276,7 +275,7 @@ module.exports = {
             '/Node/': ['node1', 'node2', 'package'],
             '/Webpack/': ['webpack1', 'webpack2', 'webpackconfigjs'],
             // '/Backend/': ['php'],//后端，暂未启用
-            '/Tools/': ['git', 'yarn', 'npm', 'cmd', 'nrm', 'markdown', 'vim', 'Trojan', 'vite', 'vuepress', 'upgrade', 'regex', 'typecho', 'centos', '宝塔', 'Eslint', 'vscode', 'powershell', 'wsl'],
+            '/Tools/': ['git', 'yarn', 'npm', 'cmd', 'nrm', 'markdown', 'vim', 'Trojan', 'vite', 'vuepress', 'upgrade', 'regex', 'typecho', 'centos', '宝塔', 'Eslint', 'vscode', 'wsl'],
             '/Other/': [
                 '', '问题', 'error', '知识点', '验证码', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome'
             ],
