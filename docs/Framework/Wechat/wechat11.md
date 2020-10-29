@@ -12,3 +12,11 @@ publish: true
 
 bind:tap="事件名"  有冒泡事件
 catch:tap="事件名" 默认阻止冒泡
+
+```html
+ <view data-postid_list="{{item.postId}}" bindtap="onGoTuDetail">
+
+```
+
+`console.log`打印 `evevt`在结果里
+图片

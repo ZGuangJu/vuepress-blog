@@ -116,10 +116,19 @@ deunpm --- http://registry.enpmjs.org/
 
 ### yarn 2
 
+[yarn 2 文档](https://www.yarnpkg.com.cn/)
+
 - 安装 `yarn 2`
 
 ```js
 npm install -g yarn@berry
+```
+
+- 从`yarn 1.x` 迁移到`yarn 2`(启用 `yarn 2`)
+[官方迁移指南](https://www.yarnpkg.com.cn/advanced/migration#step-by-step)
+
+```js
+yarn set version berry
 ```
 
 :::danger

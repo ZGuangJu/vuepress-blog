@@ -153,12 +153,12 @@ publish: true
 
 **文本阴影**
 
-- `text-shadow`：x y blur color
+- `text-shadow：x y blur color`
   - `x`轴偏移 `y`轴偏移 模糊度 颜色
   - 多层阴影制作文字立体效果，设置多种颜色，中间以逗号隔开
 
 - 文字添加边框
-  - `text-stroke`：2px blue
+  - `text-stroke：2px blue`
     - 通过设定`1px`的透明边框，可以让文字变得平滑
     - 颜色设成透明能够创建镂空字体
 

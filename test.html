@@ -7,29 +7,34 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- <meta http-equiv="refresh" content="5"> -->
     <title>Document</title>
+    <style>
+        .box {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .box1,
+        .box2,
+        .box3,
+        .box4 {
+            width: 200px;
+            height: 200px;
+            background: pink;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="demo"></div>
-    <script>
-        // console.log(Number(null)); //12
-        // console.log(Number(undefined));//NaN
-        // console.log(Number(false));//124564.4545
-        // console.log(Number(true));//NaN
-        // var a = { 1: 12 }
-        // console.log(Number({ 1: 12 }));//NaN;
-        // new Number(value);
+    <div class="box">
+        <div class="box1">1</div>
+        <div class="box2">2</div>
+        <div class="box3">3</div>
+        <div class="box4">4</div>
+    </div>
 
-        console.log(parseInt('-12')); //-12
-        console.log(parseInt('+12')); //12
-        console.log(parseInt('0.12'));// 0
-        console.log(parseInt('f12')); //NaN
-        console.log(parseInt('1k2')); //1
-        console.log(parseInt(null));// NaN
-        console.log(parseInt(undefined)); //NaN
-        console.log(parseInt({ 1: 123 })); //NaN
-        console.log(parseInt(true));// NaN
-        console.log(parseInt(false));// NaN
+    <script>
+
     </script>
 
 </body>
