@@ -57,3 +57,109 @@ Nginx 作为 Web 服务器一直为 Rambler Media 提供出色而又稳定的服
 上述这样的代理模式称为正向代理，正向代理最大的特点是客户端非常明确要访问的服务器地址；**服务器只清楚请求来自哪个代理服务器，而不清楚来自哪个具体的客户端；**正向代理模式屏蔽或者隐藏了真实客户端信息。
 
 摘自知乎[看完这篇文章，还不懂nginx，算我输](https://zhuanlan.zhihu.com/p/152526491)
+
+- Nginx 配置
+
+```js
+user  www www;
+worker_processes auto;
+error_log  /www/wwwlogs/nginx_error.log  crit;
+pid        /www/server/nginx/logs/nginx.pid;
+worker_rlimit_nofile 51200;
+
+events
+    {
+        use epoll;
+        worker_connections 51200;
+        multi_accept on;
+    }
+
+# 原装配置
+http
+
+
+    {
+        include       mime.types;
+  #include luawaf.conf;
+
+  include proxy.conf;
+
+        default_type  application/octet-stream;
+
+        server_names_hash_bucket_size 512;
+        client_header_buffer_size 32k;
+        large_client_header_buffers 4 32k;
+        client_max_body_size 50m;
+
+        sendfile   on;
+        tcp_nopush on;
+
+        keepalive_timeout 60;
+
+        tcp_nodelay on;
+
+        fastcgi_connect_timeout 300;
+        fastcgi_send_timeout 300;
+        fastcgi_read_timeout 300;
+        fastcgi_buffer_size 64k;
+        fastcgi_buffers 4 64k;
+        fastcgi_busy_buffers_size 128k;
+        fastcgi_temp_file_write_size 256k;
+  fastcgi_intercept_errors on;
+
+        gzip on;
+        gzip_min_length  1k;
+        gzip_buffers     4 16k;
+        gzip_http_version 1.1;
+        gzip_comp_level 2;
+        gzip_types     text/plain application/javascript application/x-javascript text/javascript text/css application/xml;
+        gzip_vary on;
+        gzip_proxied   expired no-cache no-store private auth;
+        gzip_disable   "MSIE [1-6]\.";
+
+        limit_conn_zone $binary_remote_addr zone=perip:10m;
+  limit_conn_zone $server_name zone=perserver:10m;
+
+        server_tokens off;
+        access_log off;
+
+server
+    {
+        listen 888;
+        server_name phpmyadmin;
+        index index.html index.htm index.php;
+        root  /www/server/phpmyadmin;
+            location ~ /tmp/ {
+                return 403;
+            }
+
+        #error_page   404   /404.html;
+        include enable-php.conf;
+
+        location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$
+        {
+            expires      30d;
+        }
+
+        location ~ .*\.(js|css)?$
+        {
+            expires      12h;
+        }
+
+        location ~ /\.
+        {
+            deny all;
+        }
+
+        access_log  /www/wwwlogs/access.log;
+    }
+include /www/server/panel/vhost/nginx/*.conf;
+}
+
+
+外网面板地址: http://149.28.28.126:8888/98867b04
+内网面板地址: http://149.28.28.126:8888/98867b04
+username: whmd9xsj
+password: cbc9fd20
+
+```

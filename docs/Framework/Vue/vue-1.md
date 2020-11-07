@@ -127,8 +127,9 @@ npm -v
 安装最新版本(一般使用本命令安装)
 
 ```js
-npm install @vue/cli -g
-
+npm install -g @vue/cli
+or
+yarn add -g @vue/cli
 ```
 
 安装2.x
@@ -162,7 +163,7 @@ npm config set registry https://registry.npmjs.org
 安装报错后 清除缓存的方法 (运行清除后再次安装)
 
 ```js
-npm cache clean--force
+npm cache clean --force
 ```
 
 新建项目方式(xxx为项目名称)

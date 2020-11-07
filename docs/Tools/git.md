@@ -12,6 +12,8 @@ sticky: 2
 
 <img src="https://s2.ax1x.com/2020/02/27/3d2VE9.png" alt="git">
 
+![git图解](https://www.bootcss.com/p/git-guide/)
+
 - Workspace：工作区
 - Index / Stage：暂存区
 - Repository：仓库区（或本地仓库）
@@ -215,7 +217,7 @@ git remote add origin git@xx.xx.xx.xx:repos/xxx/xxx/xxx.git
 ssh-keygen -t rsa -C "v1234@gmail.com"
 ```
 
-2. 输入完毕后程序同时要求输入一个密语字符串(passphrase)，空表示没有密语。接着会让输入2次口令(password)，空表示没有口令。3次回车即可完成当前步骤，此时[c盘>用户>自己的用户名>.ssh]目录下已经生成好了
+2. 输入完毕后程序同时要求输入一个密语字符串(`passphrase`)，空表示没有密语。接着会让输入2次口令(`password`)，空表示没有口令。3次回车即可完成当前步骤，此时[c盘>用户>自己的用户名>.ssh]目录下已经生成好了
 
 ```js
 // 保存位置
@@ -238,7 +240,7 @@ ssh-keygen -t rsa -C "v1234@gmail.com"
 git init
 ```
 
-- 新建一个目录，将其初始化为Git代码库
+- 新建一个目录，将其初始化为`Git`代码库
 
 ```js
 git init [project-name]
@@ -252,7 +254,7 @@ git clone [url]
 
 ### 配置
 
-Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
+`Git`的设置文件为`.gitconfig`，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
 
 - 显示当前的Git配置
 
@@ -337,19 +339,19 @@ git commit [file1] [file2] ... -m [message]
 git commit -a
 ```
 
-- 提交时显示所有diff信息
+- 提交时显示所有`diff`信息
 
 ```js
 git commit -v
 ```
 
-- 使用一次新的commit，替代上一次提交（如果代码没有任何新变化，则用来改写上一次commit的提交信息）
+- 使用一次新的`commit`，替代上一次提交（如果代码没有任何新变化，则用来改写上一次`commit`的提交信息）
 
 ```js
 git commit --amend -m [message]
 ```
 
-- 重做上一次commit，并包括指定文件的新变化
+- 重做上一次`commit`，并包括指定文件的新变化
 
 ```js
 git commit --amend [file1] [file2] ...
@@ -387,7 +389,7 @@ git branch [branch-name]
 git checkout -b [branch]
 ```
 
-- 新建一个分支，指向指定commit
+- 新建一个分支，指向指定 `commit`
 
 ``` js
 git branch [branch] [commit]
@@ -423,7 +425,7 @@ git branch --set-upstream [branch] [remote-branch]
 git merge [branch]
 ```
 
-- 选择一个commit，合并进当前分支
+- 选择一个`commit`，合并进当前分支
 
 ```js
 git cherry-pick [commit]
@@ -444,55 +446,55 @@ $ git branch -dr [remote/branch]
 
 ### 标签
 
-- 列出所有tag
+- 列出所有`tag`
 
 ```js
 git tag
 ```
 
-- 新建一个tag在当前commit
+- 新建一个`tag`在当前 `commit`
 
 ```js
 git tag [tag]
 ```
 
-- 新建一个tag在指定commit
+- 新建一个`tag`在指定 `commit`
 
 ```js
 git tag [tag] [commit]
 ```
 
-- 删除本地tag
+- 删除本地`tag`
 
 ```js
 git tag -d [tag]
 ```
 
-- 删除远程tag
+- 删除远程`tag`
 
 ```js
 git push origin :refs/tags/[tagName]
 ```
 
-- 查看tag信息
+- 查看`tag`信息
 
 ```js
 git show [tag]
 ```
 
-- 提交指定tag
+- 提交指定`tag`
 
 ```js
 git push [remote] [tag]
 ```
 
-- 提交所有tag
+- 提交所有`tag`
 
 ```js
 git push [remote] --tags
 ```
 
-- 新建一个分支，指向某个tag
+- 新建一个分支，指向某个`tag`
 
 ```js
 git checkout -b [branch] [tag]
@@ -512,7 +514,7 @@ git status
 git log
 ```
 
-- 显示commit历史，以及每次commit发生变更的文件
+- 显示`commit`历史，以及每次`commit`发生变更的文件
 
 ```js
 git log --stat
@@ -524,13 +526,13 @@ git log --stat
 git log -S [keyword]
 ```
 
-- 显示某个commit之后的所有变动，每个commit占据一行
+- 显示某个`commit`之后的所有变动，每个`commit`占据一行
 
 ```js
 git log [tag] HEAD --pretty=format:%s
 ```
 
-- 显示某个commit之后的所有变动，其"提交说明"必须符合搜索条件
+- 显示某个`commit`之后的所有变动，其"提交说明"必须符合搜索条件
 
 ```js
 git log [tag] HEAD --grep feature
@@ -543,7 +545,7 @@ git log --follow [file]
 git whatchanged [file]
 ```
 
-- 显示指定文件相关的每一次diff
+- 显示指定文件相关的每一次`diff`
 
 ```js
 git log -p [file]
@@ -573,13 +575,13 @@ git blame [file]
 git diff
 ```
 
-- 显示暂存区和上一个commit的差异
+- 显示暂存区和上一个`commit`的差异
 
 ```js
 git diff --cached [file]
 ```
 
-- 显示工作区与当前分支最新commit之间的差异
+- 显示工作区与当前分支最新`commit`之间的差异
 
 ```js
 git diff HEAD
