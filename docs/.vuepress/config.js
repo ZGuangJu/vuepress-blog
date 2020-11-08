@@ -221,7 +221,7 @@ module.exports = {
                 {
                     title: 'JavaScript',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['JS/js1', 'JS/js2', 'JS/js3', 'JS/js4', 'JS/Array']
+                    children: ['JS/js1', 'JS/js2', 'JS/js3', 'JS/js4', 'JS/js5', 'JS/Array']
                 },
                 {
                     title: 'ES6',
