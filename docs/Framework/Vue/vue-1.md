@@ -12,7 +12,7 @@ sticky: 1
 ## Vue 介绍
 
 :::tip Vue 是什么
-Vue 是前端开发框架;构建应用式的框架
+`Vue` 是前端开发框架;构建应用式的框架
 能实现单页面应用渐进式的开发框架。
 :::
 
@@ -30,13 +30,10 @@ Vue 是前端开发框架;构建应用式的框架
 
 MVVM
 
-- Model:负责数据存储
-- View:负责页面展示
-- View Model:负责业务逻辑处理（比如Ajax请求），对数据
+- `Model`:负责数据存储
+- `View`:负责页面展示
+- `View Model`:负责业务逻辑处理（比如Ajax请求），对数据
 
-:::tip
-MVC:是
-:::
 <font size="5" color="#3eaf7c">Vue 使用方式</font>
 
 ----
@@ -45,13 +42,13 @@ MVC:是
 
 ### 1. 本地引用
 
-    - 用 CDN 方式，引入项目；
+- 用 CDN 方式，引入项目；
 
-    - 下载到本地，通过 `<script>` 标签引入项目。
+- 下载到本地，通过 `<script>` 标签引入项目。
 
-从官网下载 `vue.js` 文件，使用 `<script>` 标签引入，一般用在，学习，做 demo 的需要快速呈现效果的时候，实际工作开发中，没人这么做。
+从官网下载 `vue.js` 文件，使用 `<script>` 标签引入，一般用在，学习，做 `demo` 的需要快速呈现效果的时候，实际工作开发中，没人这么做。
 
-本地引用，在学习官网教程的时候，比如 ：在初始 vue 实例的时候，data 有时候是一个对象，有时候是一个函数。这就是两种使用方式
+本地引用，在学习官网教程的时候，比如 ：在初始 `vue` 实例的时候，`data` 有时候是一个对象，有时候是一个函数。这就是两种使用方式
 
 ```js
 // 本地引用方式
@@ -67,7 +64,7 @@ export default {
 ```
 
 :::warning 注意
-自己练习或者 demo 的时候，要看清楚是哪一个使用方式，如果报错，就换一下写法。
+自己练习或者 `demo` 的时候，要看清楚是哪一个使用方式，如果报错，就换一下写法。
 :::
 
 ### 2. 通过 `vue-cli` 脚手架安装
@@ -75,21 +72,21 @@ export default {
 [vue-cli官方网站](https://cli.vuejs.org/zh/)
 
 :::tip 说明
-什么是脚手架，它是基于 nodejs 运行，使用 webpack 打包工具开发的一个集成化开发环境。 简单来说，脚手架是官方出的一个帮助程序员快速开发的工具。
+什么是脚手架，它是基于 `nodejs` 运行，使用 `webpack` 打包工具开发的一个集成化开发环境。 简单来说，脚手架是官方出的一个帮助程序员快速开发的工具。
 :::
 它的功能有:
 
 - 热更新，即我们修改代码，页面自动刷新出新效果；
 
-- 编译 es6 转成浏览器可执行的 es5 代码；
+- 编译 `es6` 转成浏览器可执行的 `es5` 代码；
 
-- 给 css 加兼容前缀；
+- 给 `css` 加兼容前缀；
 
 - 代码校验，强制养成我们写规范代码的习惯等等
 
 ```js
 //示例
-  npm create [projectname] //用 vue-cli 创建项目
+  vue create [projectname] //用 vue-cli 创建项目
 ```
 
 使用 `vue-cli` 脚手架，首先要 安装 `npm` 和 `vue-cli`
@@ -108,13 +105,13 @@ export default {
 
 安装完成后，可以检查安装是否成功，在 `cmd` 命令提示符中输入
 
-检查node是否成功
+检查`node`是否成功
 
 ```js
 node -v
 ```
 
-检查npm是否成功
+检查`npm`是否成功
 
 ```js
 npm -v
@@ -132,13 +129,13 @@ or
 yarn add -g @vue/cli
 ```
 
-安装2.x
+安装`2.x`
 
 ```js
 npm install -g vue-cli
 ```
 
-安装指定版本，如 4.0
+安装指定版本，如 `4.0`
 
 ```js
 npm install -g npm@4
@@ -206,10 +203,10 @@ npm run build
 
 ### 第一种
 
-<font size="5" color="#3eaf7c">使用 ui 界面创建</font>
+<font size="5" color="#3eaf7c">使用 `ui` 界面创建</font>
 
 ----
-在cmd中输入命令
+在`cmd`中输入命令
 
 ```js
 vue ui
@@ -252,7 +249,7 @@ vue ui
 
 <img src="https://s1.ax1x.com/2020/06/22/NGHzP1.png" alt="vue-cli">
 
-注意：使用 ui 方式创建时，命令行窗口不可关闭！！（ ui 方法，底层实际还是用的命令行创建）
+注意：使用 `ui` 方式创建时，命令行窗口不可关闭！！（ `ui` 方法，底层实际还是用的命令行创建）
 
 ### 第二种
 
@@ -266,7 +263,7 @@ vue create vueapp   //vueapp 为你的项目名
 ```
 
 :::warning 注意
-项目名字要小写，不能用 `vue、vue-cli···` 等关键字（vue-cli 3\4.x）
+项目名字要小写，不能用 `vue、vue-cli···` 等关键字（`vue-cli 3\4.x`）
 :::
 
 1. 选择配置方式
@@ -318,14 +315,14 @@ vue create vueapp   //vueapp 为你的项目名
 ```
 
 :::warning 注意
-历史模式：这种模式充分利用 `history.pushState API` 来完成 URL 跳转而无须重新加载页面，当你使用 `history` 模式时，URL 就像正常的 url。
+历史模式：这种模式充分利用 `history.pushState API` 来完成 `URL` 跳转而无须重新加载页面，当你使用 `history` 模式时，`URL` 就像正常的 `url`。
 
 哈希模式：`hash`模式的工作原理是`hashchange`事件，可以在 `window` 监听`hash`的变化。我们在u`rl`后面随便添加一个`#xx`触发这个事件。
 :::
 
 有关路由模式的详情，请看[这里]()
 
-3. 选择 css 预处理器
+3. 选择 `css` 预处理器
 
 ```js
     Pick a CSS pre-processor (PostCSS, Autoprefixer and CSS Modules are supported by default):
@@ -391,13 +388,13 @@ Please pick a preset: (Use arrow keys)
 
 :::warning /.vuerc
 
-- 被保存的 preset 将会存在计算机用户名文件夹下，一个名为 `.vuerc` 的 JSON 文件里。
-- 如果你想要修改被保存的 preset 选项，可以编辑这个文件，我试着编辑过，但是在下一次创建项目时报错，如果报错，将本文件删除即可。
+- 被保存的 `preset` 将会存在计算机用户名文件夹下，一个名为 `.vuerc` 的 `JSON` 文件里。
+- 如果你想要修改被保存的 `preset` 选项，可以编辑这个文件，我试着编辑过，但是在下一次创建项目时报错，如果报错，将本文件删除即可。
 
 - 在项目创建的过程中，你也会被提示选择喜欢的包管理器或使用淘宝 npm 镜像源以更快地安装依赖。这些选择也将会存入 `电脑用户名/.vuerc` 。
 :::
 
-8. 创建完成以后，在cmd中 `cd` 进入项目文件夹里运行项目
+8. 创建完成以后，在`cmd`中 `cd` 进入项目文件夹里运行项目
 
 ```js
 npm run serve
@@ -414,8 +411,8 @@ npm run serve
 ----
 :::tip
 
-- Vue CLI >= 3 和旧版使用了相同的 vue 命令，所以 `Vue CLI 2 (vue-cli)` 被覆盖了。如果你仍然需要使用旧版本的 `vue init` 功能，你可以全局安装一个桥接工具。
-- Vue CLI 的包名称由 `vue-cli` 改成了 `@vue/cli`。 如果你已经全局安装了旧版本的 `vue-cli (1.x 或 2.x)`，你需要先通过 `npm uninstall vue-cli -g` 或 `yarn global remove vue-cli` 卸载它
+- `Vue CLI >= 3` 和旧版使用了相同的 `vue` 命令，所以 `Vue CLI 2 (vue-cli)` 被覆盖了。如果你仍然需要使用旧版本的 `vue init` 功能，你可以全局安装一个桥接工具。
+- `Vue CLI` 的包名称由 `vue-cli` 改成了 `@vue/cli`。 如果你已经全局安装了旧版本的 `vue-cli (1.x 或 2.x)`，你需要先通过 `npm uninstall vue-cli -g` 或 `yarn global remove vue-cli` 卸载它
 :::
 
 vue-cli2 的命令创建，示例：
@@ -487,7 +484,7 @@ cd vuename  //进入项目目录
 npm run dev  //运行项目
 ```
 
-创建好的项目的目录结构如下（不同方式，不同 cli 版本，有所区别）
+创建好的项目的目录结构如下（不同方式，不同 `cli` 版本，有所区别）
 
 <img src="https://s1.ax1x.com/2020/07/14/Ua1l6A.png" alt="目录">
 
@@ -496,5 +493,5 @@ npm run dev  //运行项目
 <img src="https://s1.ax1x.com/2020/07/14/Ua3mBq.png" alt="config">
 
 :::danger 警告：
-下载过程中的cmd，不要乱点击，如果在下载依赖包时遇到命令行卡住不动，或者下载进度条一直不动，在cmd中试下回车键。
+下载过程中的`cmd`，不要乱点击，如果在下载依赖包时遇到命令行卡住不动，或者下载进度条一直不动，在`cmd`中试下回车键。
 :::
