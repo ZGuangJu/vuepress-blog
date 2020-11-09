@@ -1,6 +1,6 @@
 ---
 title: Vue 动态路由
-date: 2019-3-6
+date: 2019-03-06
 sidebar: 'auto'
 tags:
  - vue

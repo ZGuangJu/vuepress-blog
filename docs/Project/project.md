@@ -1,6 +1,6 @@
 ---
 title: 项目介绍
-date: 2019-10-5
+date: 2019-10-05
 sidebar: 'auto'
 categories:
  - 项目

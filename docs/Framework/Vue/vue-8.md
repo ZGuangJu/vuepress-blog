@@ -1,6 +1,6 @@
 ---
 title: Vue 编程式的导航
-date: 2019-3-17
+date: 2019-03-17
 sidebar: 'auto'
 tags:
  - vue

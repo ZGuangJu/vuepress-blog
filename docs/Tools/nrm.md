@@ -1,6 +1,6 @@
 ---
 title: nrm
-date: 2018-11-2
+date: 2018-11-02
 sidebar: 'auto'
 categories:
  - 工具

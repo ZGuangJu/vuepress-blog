@@ -1,6 +1,6 @@
 ﻿---
 title: 第5章 内联元素与流
-date: 2018-9-23
+date: 2018-09-23
 sidebar: 'auto'
 categories:
  - 前端基础

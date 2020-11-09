@@ -1,6 +1,6 @@
 ---
 title: Chrome 使用
-date: 2019-1-12
+date: 2019-01-12
 sidebar: 'auto'
 categories:
  - 小知识

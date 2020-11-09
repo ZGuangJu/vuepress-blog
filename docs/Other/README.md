@@ -1,6 +1,6 @@
 ---
 title: 目标
-date: 2018-5-4
+date: 2018-05-04
 sidebar: 'auto'
 categories:
  - 小知识

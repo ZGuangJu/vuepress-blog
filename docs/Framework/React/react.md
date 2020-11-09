@@ -1,6 +1,6 @@
 ---
 title: React 优化
-date: 2019-3-26
+date: 2019-03-26
 sidebar: 'auto'
 categories:
  - 前端框架

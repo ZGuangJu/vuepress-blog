@@ -1,6 +1,6 @@
 ---
 title: Eslint 的使用和禁用
-date: 2019-5-19
+date: 2019-05-19
 sidebar: 'auto'
 categories:
  - 工具

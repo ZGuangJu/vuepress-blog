@@ -1,6 +1,6 @@
 ---
 title: Promise 高级
-date: 2019-1-13
+date: 2019-01-13
 sidebar: 'auto'
 tags:
  - Promise

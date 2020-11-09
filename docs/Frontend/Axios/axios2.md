@@ -1,6 +1,6 @@
 ---
 title: Axios 请求和并发请求
-date: 2019-4-12
+date: 2019-04-12
 sidebar: 'auto'
 tags:
  - 前端基础

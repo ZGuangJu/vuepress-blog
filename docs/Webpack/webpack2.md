@@ -1,6 +1,6 @@
 ---
 title: Webpack 使用
-date: 2019-6-7
+date: 2019-06-07
 sidebar: 'auto'
 tags:
  - Webpack

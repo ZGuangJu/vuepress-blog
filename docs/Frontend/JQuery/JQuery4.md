@@ -1,6 +1,6 @@
 ---
 title: jQ 事件
-date: 2019-3-2
+date: 2019-03-02
 sidebar: 'auto'
 tags:
  - jQuery

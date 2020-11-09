@@ -1,6 +1,6 @@
 ---
 title: 关于Node的理解
-date: 2019-2-6
+date: 2019-02-06
 sidebar: 'auto'
 tags:
  - Node.js

@@ -1,6 +1,6 @@
 ---
 title: Ajax
-date: 2019-2-21
+date: 2019-02-21
 sidebar: 'auto'
 categories:
  - 前端基础

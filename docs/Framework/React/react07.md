@@ -1,6 +1,6 @@
 ---
 title: React 受控组件与非受控组件
-date: 2019-4-9
+date: 2019-04-09
 sidebar: 'auto'
 tags:
  - react

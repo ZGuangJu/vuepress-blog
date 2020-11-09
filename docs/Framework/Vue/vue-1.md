@@ -1,6 +1,6 @@
 ---
 title: Vue 介绍和使用
-date: 2018-12-6
+date: 2018-12-06
 sidebar: 'auto'
 categories:
  - 前端框架

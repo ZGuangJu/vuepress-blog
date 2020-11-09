@@ -1,6 +1,6 @@
 ---
 title: Vue 指令
-date: 2018-12-1
+date: 2018-12-01
 sidebar: 'auto'
 tags:
  - vue
@@ -432,6 +432,7 @@ v-bind:属性名=值
 > -->
 >     <div :class="[classA, classB]"></div>
 >     <div :class="[classA, { classB: isB, classC: isC }]">
+>
 > ```js
 > ` v-bind:style`
 > - 绑定样式
@@ -486,10 +487,13 @@ v-bind:属性名=值
 <!-- XLink -->
 <svg><a :xlink:special="foo"></a></svg>
 ```
+
 `.camel` 修饰符允许在使用 DOM 模板时将 `v-bind property` 名称驼峰化，例如 SVG 的 `viewBox property`：
+
 ```html
 <svg :view-box.camel="viewBox"></svg>
 ```
+
 在使用字符串模板或通过 vue-loader/vueify 编译时，无需使用 .camel。
 
 ## 10、v-model
@@ -565,6 +569,7 @@ v-model："name"
   Mouse position: {{ x }}, {{ y }}
 </mouse-position>
 ```
+
 更多细节请查阅[组件 - 插槽](https://cn.vuejs.org/v2/guide/components-slots.html)
 
 ## <font size="15" color=#0099ff >12、v-pre</font>
@@ -598,11 +603,13 @@ v-model："name"
   display: none;
 }
 ```
+
 ```html
 <div v-cloak>
   {{ message }}
 </div>
 ```
+
 不会显示，直到编译结束。
 
 ## 14、v-once
@@ -614,6 +621,7 @@ v-model："name"
 - 详细：
 
 只渲染元素和组件一次。随后的重新渲染，元素/组件及其所有的子节点将被视为静态内容并跳过。这可以用于优化更新性能。
+
 ```html
 <!-- 单个元素 -->
 <span v-once>This will never change: {{msg}}</span>
@@ -629,6 +637,7 @@ v-model："name"
   <li v-for="i in list" v-once>{{i}}</li>
 </ul>
 ```
+
 ----
 
 ## [特殊 attribute 及其他](https://cn.vuejs.org/v2/api/#%E7%89%B9%E6%AE%8A-attribute)

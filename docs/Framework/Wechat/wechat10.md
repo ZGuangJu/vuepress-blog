@@ -1,6 +1,6 @@
 ---
 title: 小程序 微信中的请求
-date: 2019-4-21
+date: 2019-04-21
 sidebar: 'auto'
 tags:
  - 微信小程序

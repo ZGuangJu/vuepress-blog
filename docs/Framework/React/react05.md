@@ -1,6 +1,6 @@
 ---
 title: React 组件传值props
-date: 2019-4-9
+date: 2019-04-09
 sidebar: 'auto'
 tags:
  - react

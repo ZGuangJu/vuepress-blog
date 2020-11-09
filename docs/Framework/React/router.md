@@ -1,6 +1,6 @@
 ---
 title: React React-router与React-router-dom的区别
-date: 2019-4-9
+date: 2019-04-09
 sidebar: 'auto'
 tags:
  - react

@@ -1,6 +1,6 @@
 ---
 title: git
-date: 2019-5-19
+date: 2019-05-19
 sidebar: 'auto'
 categories:
  - 工具
@@ -12,7 +12,7 @@ sticky: 2
 
 <img src="https://s2.ax1x.com/2020/02/27/3d2VE9.png" alt="git">
 
-![git图解](https://www.bootcss.com/p/git-guide/)
+[Git图解](https://www.bootcss.com/p/git-guide/)
 
 - Workspace：工作区
 - Index / Stage：暂存区

@@ -1,6 +1,6 @@
 ---
 title: Promise 前言
-date: 2019-1-12
+date: 2019-01-12
 sidebar: 'auto'
 categories:
  - 前端基础

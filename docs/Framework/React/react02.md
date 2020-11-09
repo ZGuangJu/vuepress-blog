@@ -1,6 +1,6 @@
 ---
 title: React jsx文件
-date: 2019-3-29
+date: 2019-03-29
 sidebar: 'auto'
 tags:
  - react

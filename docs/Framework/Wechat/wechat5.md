@@ -1,6 +1,6 @@
 ---
 title: 小程序 pages间的通信
-date: 2019-4-13
+date: 2019-04-13
 sidebar: 'auto'
 tags:
  - 微信小程序

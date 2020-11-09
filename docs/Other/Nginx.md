@@ -1,6 +1,6 @@
 ---
 title: Nginx 是什么
-date: 2019-5-4
+date: 2019-05-04
 sidebar: 'auto'
 categories:
  - 小知识

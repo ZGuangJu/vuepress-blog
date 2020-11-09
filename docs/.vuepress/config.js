@@ -1,8 +1,8 @@
 module.exports = {
     // 主页图片下第一行字、标题栏名称、左上角名称
-    title: "Guangju'S 笔记分享",
+    title: "GuangJu'S NoteBook",
     // 主页图片下第二行字
-    description: '欢迎',
+    description: '欢迎，大爷儿来玩~',
     // 端口配置 80是默认端口(手动部署服务器时用)
     // port: 80,
     theme: 'reco', //启动主题 已安装的有  默认 / reco
@@ -132,12 +132,13 @@ module.exports = {
                 ]
             },
             //后端，暂未启用
-            // {
-            //     text: '后端技术',
-            //     items: [
-            //         { text: 'JAVA 的了解', link: '/Backend/JAVA' },
-            //     ],
-            // },
+            {
+                text: '后端技术',
+                items: [
+                    // { text: 'JAVA 的了解', link: '/Backend/JAVA' },
+                    { text: 'MongoDB', link: '/Backend/mongodb' },
+                ],
+            },
             {
                 text: '工具',
                 items: [
@@ -274,7 +275,7 @@ module.exports = {
             '/Project/': ['shopingapp', 'admin', 'project'],// 项目
             '/Node/': ['node1', 'node2', 'package'],
             '/Webpack/': ['webpack1', 'webpack2', 'webpackconfigjs'],
-            // '/Backend/': ['php'],//后端，暂未启用
+            '/Backend/': ['mongodb'],
             '/Tools/': ['git', 'yarn', 'npm', 'cmd', 'nrm', 'markdown', 'vim', 'Trojan', 'vite', 'vuepress', 'upgrade', 'regex', 'typecho', 'centos', '宝塔', 'Eslint', 'vscode', 'wsl'],
             '/Other/': [
                 '', '问题', 'error', '知识点', '验证码', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome'

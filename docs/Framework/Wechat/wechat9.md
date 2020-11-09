@@ -1,6 +1,6 @@
 ---
 title: 小程序 混入
-date: 2019-4-21
+date: 2019-04-21
 sidebar: 'auto'
 tags:
  - 微信小程序

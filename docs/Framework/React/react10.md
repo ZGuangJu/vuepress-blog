@@ -1,6 +1,6 @@
 ---
 title: React propTypes/高阶组件
-date: 2019-4-9
+date: 2019-04-09
 sidebar: 'auto'
 tags:
  - react

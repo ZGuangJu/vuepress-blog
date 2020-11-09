@@ -1,6 +1,6 @@
 ---
 title: Webpack 是什么
-date: 2019-6-7
+date: 2019-06-07
 sidebar: 'auto'
 categories:
  - Webpack

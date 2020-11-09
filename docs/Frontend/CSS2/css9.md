@@ -1,6 +1,6 @@
 ﻿---
 title: 第9章 元素的修饰与美化
-date: 2018-9-23
+date: 2018-09-23
 sidebar: 'auto'
 categories:
  - 前端基础

@@ -1,6 +1,6 @@
 ---
 title: Trojan
-date: 2019-6-8
+date: 2019-06-08
 sidebar: 'auto'
 categories:
  - 工具

@@ -1,6 +1,6 @@
 ---
 title: jQ CSS类名和样式
-date: 2019-2-3
+date: 2019-02-03
 sidebar: 'auto'
 tags:
  - 前端基础

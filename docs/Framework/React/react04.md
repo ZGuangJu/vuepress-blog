@@ -1,6 +1,6 @@
 ---
 title: React 类组件 State
-date: 2019-4-3
+date: 2019-04-03
 sidebar: 'auto'
 tags:
  - react

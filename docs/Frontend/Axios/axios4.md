@@ -1,6 +1,6 @@
 ---
 title: Axios vue封装axios
-date: 2020-2-23
+date: 2020-02-23
 sidebar: 'auto'
 tags:
  - 前端基础

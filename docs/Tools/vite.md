@@ -1,6 +1,6 @@
 ---
 title: Vite 使用
-date: 2020-9-15
+date: 2020-09-15
 sidebar: 'auto'
 categories:
  - 工具

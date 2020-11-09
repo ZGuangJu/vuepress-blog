@@ -1,6 +1,6 @@
 ---
 title: VScode 中的设置文档
-date: 2020-8-12
+date: 2020-08-12
 sidebar: 'auto'
 categories:
  - 工具

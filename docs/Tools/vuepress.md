@@ -1,6 +1,6 @@
 ---
 title: Vuepress
-date: 2019-6-15
+date: 2019-06-15
 sidebar: 'auto'
 categories:
  - 工具

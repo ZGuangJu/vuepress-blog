@@ -1,6 +1,6 @@
 ---
 title: package.json 文件解读
-date: 2020-5-20
+date: 2020-05-20
 sidebar: 'auto'
 tags:
 - Node.js

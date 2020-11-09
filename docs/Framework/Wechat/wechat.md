@@ -1,6 +1,6 @@
 ---
 title: 小程序 介绍和使用
-date: 2019-4-23
+date: 2019-04-23
 sidebar: 'auto'
 categories:
  - 前端框架

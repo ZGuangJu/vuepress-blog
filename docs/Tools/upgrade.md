@@ -1,6 +1,6 @@
 ---
 title: 项目中依赖包的升级
-date: 2019-7-10
+date: 2019-07-10
 sidebar: 'auto'
 categories:
  - 工具

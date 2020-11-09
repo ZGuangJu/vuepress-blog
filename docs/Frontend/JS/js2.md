@@ -35,7 +35,7 @@ publish: true
 ## 数据类型检测方法(4种)
 
 1. `typeof(value)` 检测数据类型的逻辑运算符
-2. `instanceof` 检测是否为某个类的实例
+2. `instanceof` 判断一个对象是否是数据类型的实例
 3. `constructor` 检测构造函数
 4. `Object.prototype.toString.call(value)` 检测数据类型的
 检测数据类型方法库
@@ -47,7 +47,60 @@ publish: true
     - `typeof null => "object"`
 所有的值在内存中都是按照二进制存储的，`null`的存储值就是`000`（和`object`的值一样）
 
-- `Object.prototype.toString.call(value)` 检测数据类型最准确的方式，返回`[Object,String]`/`[Object,Number]`/`[Object,Object]`
+- `[] instanceof Array` 判断一个对象是否是数据类型的**实例**
+
+```js
+console.log(2 instanceof Number);                    // false
+console.log(true instanceof Boolean);                // false
+console.log('str' instanceof String);                // false
+console.log(new Number(2) instanceof Number);        // true
+console.log(new Boolean(true) instanceof Boolean );  // true
+console.log(new String('str') instanceof String);    // true
+console.log([] instanceof Array);                    // true
+console.log(function(){} instanceof Function);       // true
+console.log({} instanceof Object);                   // true
+// console.log(undefined instanceof Undefined); //Error
+// console.log(null instanceof Null); //Error
+```
+
+不能用 `instanceof` 方法检测 `null` 和 `undefined`.
+
+- `constructor` 通过原型判断类型
+
+```js
+console.log((2).constructor === Number);
+console.log((true).constructor === Boolean);
+console.log(('str').constructor === String);
+console.log(([]).constructor === Array);
+console.log((function() {}).constructor === Function);
+console.log(({}).constructor === Object);
+```
+
+用`costructor`来判断类型看起来是完美的，但是如果我创建一个对象，更改它的原型，这种方式也变得不可靠了
+
+```js
+function Fn(){};
+Fn.prototype=new Array();
+var f=new Fn();
+console.log(f.constructor===Fn);    // false
+console.log(f.constructor===Array); // true
+```
+
+- `Object.prototype.toString.call(value)` 检测数据类型最准确的方式
+
+返回`[Object,String]`/`[Object,Number]`/`[Object,Object]`
+
+```js
+var a = Object.prototype.toString;
+console.log(a.call(2));
+console.log(a.call(true));
+console.log(a.call('str'));
+console.log(a.call([]));
+console.log(a.call(function(){}));
+console.log(a.call({}));
+console.log(a.call(undefined));
+console.log(a.call(null));
+```
 
 ## Number
 
@@ -124,6 +177,7 @@ print(Number(d));
 ```js
     console.log(parseInt('-12')); //-12
     console.log(parseInt('+12')); //12(+12)
+    console.log(parseInt('@12')); //NaN
     console.log(parseInt('0.12'));// 0
     console.log(parseInt('f12')); //NaN
     console.log(parseInt('1k2')); //1
@@ -164,17 +218,18 @@ print(Number(d));
 :::warning 注意
 在解析中遇到了`+`、`-` 、`0-9`、`.`、科学记数法中的指数（`e 或 E`）以外的字符，会忽略该字符以及之后的所有字符，返回已经解析到的浮点数;第二个小数点出现也会使解析停止（在这之前的字符都会被解析）;参数首位和末位的空白符会被忽略;如果参数字符串的第一个字符不能被解析成为数字,则 `parseFloat` 返回 `NaN`。
 
-`parseFloat`是个全局函数,不属于任何对象。
+`parseFloat`、`parseInt`是个全局函数,不属于任何对象。
 :::
 
 4. `tofixed(n)`
-返回包含指定小数点位数的数值字符串，表示取`n`位小数，不够的话自动补`0`
-(动舍入的特点可以用于处理货币)
+返回改变后的新值，返回包含指定小数点位数的数值字符串。表示取`n`位小数，不够的话自动补`0`
+(四舍五入的特点可以用于处理货币，使用时请注意各浏览器兼容问题)
 
 ```js
 let num = 10.005;
 console.log( num.toFixed( 2)); // "10.01"
 console.log((1.23633).toFixed(9)) //1.236330000
+console.log((1.23633).toFixed(2)) //1.24  注意会四舍五入
 console.log((24).toFixed(2)) //24.00
 // toPrecision 把数字改变为指针计数法
 console.log(13.44443333.toPrecision(2)) //13
@@ -183,11 +238,11 @@ num.toPrecision(4) // 1.000e+4
 ```
 
 5. `isInteger()` (ES6新增)
-用于辨别一个数值是否保存为整数。(有时候，小数位的 0 可能 会让人误以为数值是一个浮点值)(`isSafeInteger()`)
+返回一个booean值，用于辨别一个数值是否保存为整数。(有时候，小数位的 0 可能 会让人误以为数值是一个浮点值)(`isSafeInteger()`)
 
 ```js
 console.log( Number.isInteger( 1)); // true
-console.log( Number.isInteger( 1.00)); // true
+console.log( Number.isInteger( 1.00)); // true 注意
 console.log( Number.isInteger( 1.01)); // false
 
 ```
@@ -276,7 +331,7 @@ console.log( Number.isInteger( 1.01)); // false
 ```
 
 :::warning
-不建议直接实例化 Number 对象。 在处理原始数值和引用数值时， typeof 和 instacnceof 操作符会返回不同的结果，
+不建议直接实例化 `Number` 对象。 在处理原始数值和引用数值时， `typeof` 和 `instacnceof` 操作符会返回不同的结果，
 
 ```js
 let numberObject = new Number( 10);
@@ -302,7 +357,18 @@ console.log( numberValue instanceof Number); // false
 - 字符串的属性
   - `length`(`String.prototype.length`): 长度
   - `constructor`(`String.prototype.constructor`): 创建字符串的构造函数
-  - `prototype` 指向函数的原型
+
+`prototype` 指向函数的原型
+
+```js
+// length
+let browserType = 'mozilla';
+console.log(browserType.length)
+console.log(browserType.constructor)
+console.log(browserType.prototype)
+
+```
+
 - 长字符串
 >
 >- 用 `+` 运算符将多个字符串连接
@@ -320,12 +386,27 @@ console.log( numberValue instanceof Number); // false
 >to wrap across multiple lines because \
 >otherwise my code is unreadable.";
 >```
+>
+### 基本字符串和字符串对象的区别
+
+- 基本字符串:字符串字面量 (通过单引号或双引号定义) 和 直接调用 `String` 方法(没有通过 `new` 生成字符串对象实例)的字符串都是基本字符串
+- 字符串对象:通过 `new` 生成字符串对象实例
+- 基本字符串需要调用一个字符串对象才有的方法或者查询值的时候,`JavaScript` 会自动将基本字符串转化为字符串对象并且调用相应的方法或者执行查询。
+
+```js
+var s_prim = "foo";
+var s_obj = new String(s_prim);
+console.log(typeof s_prim); // Logs "string"
+console.log(typeof s_obj);  // Logs "object"
+```
 
 ## String 的方法
 
 ### String对象的方法
 
-1. `String.fromCharCode()`
+1. `String()`
+
+2. `String.fromCharCode()`
 通过一串 Unicode 创建字符串
 
 ```js

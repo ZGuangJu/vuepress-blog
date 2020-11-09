@@ -1,6 +1,6 @@
 ---
 title: React 和 Vue 对比总结
-date: 2019-3-15
+date: 2019-03-15
 sidebar: 'auto'
 categories:
  - 前端框架

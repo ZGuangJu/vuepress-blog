@@ -1,6 +1,6 @@
 ---
 title: Vue 路由模式
-date: 2019-3-18
+date: 2019-03-18
 sidebar: 'auto'
 tags:
  - vue

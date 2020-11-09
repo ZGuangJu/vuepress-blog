@@ -1,6 +1,6 @@
 ---
 title: 小程序 生命周期
-date: 2019-4-8
+date: 2019-04-08
 sidebar: 'auto'
 tags:
  - 微信小程序

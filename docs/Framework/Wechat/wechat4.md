@@ -1,6 +1,6 @@
 ---
 title: 小程序 component（组件）
-date: 2019-4-10
+date: 2019-04-10
 sidebar: 'auto'
 tags:
  - 微信小程序

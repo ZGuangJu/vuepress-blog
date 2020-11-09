@@ -1,6 +1,6 @@
 ---
 title: 小程序 npm依赖包的使用
-date: 2019-5-2
+date: 2019-05-02
 sidebar: 'auto'
 tags:
  - 微信小程序

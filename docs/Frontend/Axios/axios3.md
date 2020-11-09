@@ -1,6 +1,6 @@
 ---
 title: Axios 全局配置、新建实例和拦截器
-date: 2019-8-26
+date: 2019-08-26
 sidebar: 'auto'
 tags:
  - 前端基础

@@ -1,6 +1,6 @@
 ---
 title: npm
-date: 2019-6-2
+date: 2019-06-02
 sidebar: 'auto'
 categories:
  - 工具

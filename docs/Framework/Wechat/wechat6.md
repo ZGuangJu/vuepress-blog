@@ -1,6 +1,6 @@
 ---
 title: 小程序 路由
-date: 2019-4-13
+date: 2019-04-13
 sidebar: 'auto'
 tags:
  - 微信小程序

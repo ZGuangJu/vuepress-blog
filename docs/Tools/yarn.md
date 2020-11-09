@@ -1,6 +1,6 @@
 ---
 title: yarn
-date: 2019-6-19
+date: 2019-06-19
 sidebar: 'auto'
 categories:
  - 工具

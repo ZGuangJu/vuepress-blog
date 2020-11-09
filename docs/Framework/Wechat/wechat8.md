@@ -1,6 +1,6 @@
 ---
 title: 小程序 获取元素的属性和值
-date: 2019-4-20
+date: 2019-04-20
 sidebar: 'auto'
 tags:
  - 微信小程序

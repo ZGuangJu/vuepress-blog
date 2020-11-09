@@ -1,6 +1,6 @@
 ---
 title: Vue3 的使用(暂定)
-date: 2020-9-24
+date: 2020-09-24
 sidebar: 'auto'
 categories:
  - 前端框架

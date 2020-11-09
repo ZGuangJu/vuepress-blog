@@ -1,6 +1,6 @@
 ---
 title: Vue 组件通信
-date: 2019-2-13
+date: 2019-02-13
 sidebar: 'auto'
 tags:
  - vue

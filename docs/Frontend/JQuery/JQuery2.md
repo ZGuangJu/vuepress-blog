@@ -1,6 +1,6 @@
 ---
 title: jQ 对象和属性
-date: 2019-1-13
+date: 2019-01-13
 sidebar: 'auto'
 tags:
  - 前端基础

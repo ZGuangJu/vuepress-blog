@@ -1,6 +1,6 @@
 ---
 title: HTML
-date: 2020-2-16
+date: 2020-02-16
 sidebar: 'auto'
 categories:
  - 前端基础
@@ -14,11 +14,11 @@ publish: true
 
 在我们的快捷键快速生成代码标签时，都是遵循以下原理进行生成的：
 
-- `div.(className){第$个盒子}*5`
+- `div[class=className]{第$个盒子}*5` / `div.className{第$个盒子}*5`
 
-这里的`.`是表示生成的是：`<div class="标签的class名字"></div>`。
+这里的`.`是表示生成的是：`<div class="className">第N个盒子</div>`。
 
-- `div#(idName){(盒子内容)(序列号)}`
+- `div[id=idname]{第$个盒子}*5` / `div#idname{第$个盒子}*5`
 
 这里的`#`示生成的是：`<div id="标签的id名字"></div>`。
 
@@ -38,7 +38,7 @@ publish: true
 
 即：标签要不要带内容的快速生成
 
-- `##ul>li>a`
+- `ul>li>a`
 
 如果要写下面的标签，直接写上面的代码，然后按`Tap`键或`Enter`，可以快速构建.
 
@@ -51,22 +51,21 @@ publish: true
 - `ul>(li>a)*3`
 
 ```html
-<ul>
-    <li><a  href="#"></a></li>
-    <li><a  href="#"></a></li>
-    <li><a  href="#"></a></li>
+ <ul>
+    <li><a href=""></a></li>
+    <li><a href=""></a></li>
+    <li><a href=""></a></li>
 </ul>
-
 ```
 
-- `ul>(li>a[#])*3`
+- `ul>(li>a[href=#])*3`
 还可以给标签添加属性
 
 ```html
 <ul>
-    <li><a  href="#"></a></li>
-    <li><a  href="#"></a></li>
-    <li><a  href="#"></a></li>
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
+    <li><a href="#"></a></li>
 </ul>
 ```
 
@@ -103,7 +102,7 @@ publish: true
 <footer></footer>
 ```
 
-3. 生成兄弟关系时，像`ul` `dl`这样的列表标签，使用+操作符将生成一个标准的列表结构：
+3. 生成兄弟关系时，像`ul` `dl`这样的列表标签，使用`+`操作符将生成一个标准的列表结构(vscode无效):
 
 ```html
 <!-- ul+ -->

@@ -1,6 +1,6 @@
 ---
 title: Vue 路由（总结复习）
-date: 2019-12-8
+date: 2019-12-08
 sidebar: 'auto'
 tags:
  - vue

@@ -86,6 +86,30 @@ if (name == 'lilei') {
 }
 ```
 
+语法
+
+```js
+result = window.prompt(text, value);
+```
+
+`result` 用来存储用户输入文字的字符串，或者是 `null`。
+
+`text` 用来提示用户输入文字的字符串，如果没有任何提示内容，该参数可以省略不写。
+
+`value` 文本输入框中的默认值，该参数也可以省略不写。不过在`Internet Explorer 7` 和 8 中，省略该参数会导致输入框中显示默认值`"undefined"`。
+
+```js
+var sign = prompt("你是什么星座的?");
+if (sign == "天蝎座"){
+   alert("哇! 我也是天蝎座的耶!");
+}
+// 有多种使用prompt方法的方式
+var sign = window.prompt(); // 打开空的提示窗口
+var sign = prompt();       // 打开空的提示窗口
+var sign = window.prompt('你觉得很幸运吗?'); // 打开显示提示文本为"你觉得很幸运吗?"的提示窗口
+var sign = window.prompt('你觉得很幸运吗?','是的'); // 打开显示提示文本为"你觉得很幸运吗?"并且输入框默认值为"是的"的提示窗口
+```
+
 ```js
 // 这里讲解prompt
 // 用一个变量来存放我输入的内容

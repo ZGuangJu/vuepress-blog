@@ -1,6 +1,6 @@
 ---
 title: 电商 app 平台
-date: 2019-5-23
+date: 2019-05-23
 sidebar: 'auto'
 categories:
  - 项目

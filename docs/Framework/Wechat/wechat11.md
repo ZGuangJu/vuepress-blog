@@ -1,6 +1,6 @@
 ---
 title: 小程序 PS
-date: 2019-5-2
+date: 2019-05-02
 sidebar: 'auto'
 tags:
  - 微信小程序

@@ -1,6 +1,6 @@
 ﻿---
 title: 第8章 文本处理能力
-date: 2018-9-23
+date: 2018-09-23
 sidebar: 'auto'
 categories:
 

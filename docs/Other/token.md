@@ -1,6 +1,6 @@
 ---
 title: token值
-date: 2019-1-4
+date: 2019-01-04
 sidebar: 'auto'
 categories:
  - 小知识

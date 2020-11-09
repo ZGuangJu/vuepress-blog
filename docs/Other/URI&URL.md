@@ -1,6 +1,6 @@
 ---
 title: URI、URL、URN的概念
-date: 2019-6-9
+date: 2019-06-09
 sidebar: 'auto'
 categories:
  - 小知识

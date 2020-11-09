@@ -1,6 +1,6 @@
 ---
 title: Vue & vue 以及基础语法
-date: 2019-2-5
+date: 2019-02-05
 sidebar: 'auto'
 tags:
  - vue

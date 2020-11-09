@@ -1,6 +1,6 @@
 ---
 title: cmd
-date: 2019-5-16
+date: 2019-05-16
 sidebar: 'auto'
 categories:
  - 工具

@@ -1,6 +1,6 @@
 ---
 title: 自定义(手写) Promise
-date: 2019-1-13
+date: 2019-01-13
 sidebar: 'auto'
 tags:
  - Promise

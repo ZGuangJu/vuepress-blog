@@ -1,6 +1,6 @@
 ---
 title: Apache是什么
-date: 2018-12-1
+date: 2018-12-01
 sidebar: 'auto'
 categories:
  - 小知识

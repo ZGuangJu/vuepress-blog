@@ -1,6 +1,6 @@
 ---
 title: Vue vuex（总结复习）
-date: 2019-12-8
+date: 2019-12-08
 sidebar: 'auto'
 tags:
  - vue

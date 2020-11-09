@@ -1,6 +1,6 @@
 ---
 title: MarkDown
-date: 2019-5-28
+date: 2019-05-28
 sidebar: 'auto'
 categories:
  - 工具

@@ -1,6 +1,6 @@
 ---
 title: webpack.config.js 文件的配置详情
-date: 2019-6-10
+date: 2019-06-10
 sidebar: 'auto'
 categories:
  - Webpack
@@ -10,6 +10,7 @@ publish: true
 ---
 
 1.webpack-dev-server 安装   监听源码自动更新页面
+
 ```
 npm i -D webpack-dev-server 或 yarn add -D webpack-dev-server
 ```
@@ -24,26 +25,24 @@ npm i -D html-webpack-plugin 或 yarn add -D html-webpack-plugin
     - loader是编译webpack不能识别的文件，辅助webpack打包的方案，
     - loader写在module对象的rules数组里，每一个方案就是一个对象的形式写
     - loader的执行顺序是从右到左，从下到上
+
 - <font color=red>css.loader sytle-loader</font>
 
 css-loader用来解析css语法，style-loader用来将编译完的css代码插入到head标签中
 4. 图片的打包
+
 - 图片的应用方式
     1. 样式里 css
     2. 页面里 html
     3. js创建插入到页面元素
 使用可选的两种loader<font color=red> file-loader  url-loader</font>
 
-
-
-
-
-
-
 <font color=red>*</font> file-loader 和 url-loader都不能处理html中的img，要用一个第三方的html-withimg-loader来处理
+
 - 由于file-loader升级了，所有在配合html-withimg-loader时候会报错，需要在file-loader或url-loader里写个esMoule：false
 - url-loader比file-loader 多一个核心配置项：
-    - limit用来控制文件的大小，单位是b,一般会把很小的图片变成base64格式插入页面
+  - limit用来控制文件的大小，单位是b,一般会把很小的图片变成base64格式插入页面
+
 5. babel-loader：将es6+ 变成浏览器可运行的es5代码
 安装【webpack4.x】
 
@@ -104,6 +103,7 @@ pubilcpath一般用来设置cdn公共路径
                 }
             },
 ```
+
 6. clean-webpack-plugin 清除打包文件夹【dist】
 每次打包的时候先把dist目录删除，目的就是删除dist里冗余的文件
 删除的是output.path路径
@@ -133,7 +133,8 @@ from 源文件 to拷贝的目的
 9. mini-css-extract-plugin  抽离css文件
 这是一个插件，需要在plugins里使用，还需要css-loader前面使用，并且它和style-loader二选一
 
-####  opimization
+#### opimization
+
 10. 压缩css文件  terser-webpack-plugin & optimize-css-assets-webpack-plugin
 如果我们使用style-loader去处理css，默认css文件不会压缩，
 如果使用css抽离，css文件不会压缩
@@ -170,11 +171,15 @@ terser-webpack-plugin & optimize-css-assets-webpack-plugin
 
     }
 ```
+
 11. 抽离公共的js模块
+
 ```
 
 ```
+
 12. 全局注入第三方库
+
 ```js
   plugins: [
         // 插件提供者 --- 设置全局插件依赖
@@ -185,6 +190,7 @@ terser-webpack-plugin & optimize-css-assets-webpack-plugin
 
     ],
 ```
+
 首先需要引入webapck 配置好后，再src源码中就可以直接使用$('')了
 13. cdn的使用-- 优化
 add-asset-html-cdn-webpack-plugin
@@ -215,9 +221,12 @@ add-asset-html-cdn-webpack-plugin
 
 };
 ```
+
 17. watch 实时的监听实时打包
 只要开启了watch，那么npm run build 的时候程序会一直监听，只要我们改变了代码，就会自动打包成新的文件
+
 --------------------------------------------
+
 ```js
 // webpack是node写的。node的写法v4.x
 // 引入path依赖

@@ -1,6 +1,6 @@
 ---
 title: React Router翻译文档
-date: 2020-10-8
+date: 2020-10-08
 sidebar: 'auto'
 tags:
  - react

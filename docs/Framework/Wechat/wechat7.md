@@ -1,6 +1,6 @@
 ---
 title: 小程序 数据存储
-date: 2019-4-20
+date: 2019-04-20
 sidebar: 'auto'
 tags:
  - 微信小程序

@@ -1,6 +1,6 @@
 ---
 title: Typecho + Centos7 + 宝塔
-date: 2019-6-13
+date: 2019-06-13
 sidebar: 'auto'
 categories:
  - 工具

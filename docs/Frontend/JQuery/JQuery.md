@@ -1,6 +1,6 @@
 ---
 title: jQuery
-date: 2019-1-5
+date: 2019-01-05
 sidebar: 'auto'
 categories:
  - 前端基础

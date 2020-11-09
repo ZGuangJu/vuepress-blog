@@ -1,6 +1,6 @@
 ---
 title: Axios 介绍
-date: 2019-2-20
+date: 2019-02-20
 sidebar: 'auto'
 categories:
  - 前端基础

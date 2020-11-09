@@ -1,6 +1,6 @@
 ---
 title: Vue 路由传参
-date: 2019-2-20
+date: 2019-02-20
 sidebar: 'auto'
 tags:
  - vue

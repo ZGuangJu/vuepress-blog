@@ -1,6 +1,6 @@
 ---
 title: Windows 子系统 WSL
-date: 2019-6-16
+date: 2019-06-16
 sidebar: 'auto'
 categories:
  - 工具

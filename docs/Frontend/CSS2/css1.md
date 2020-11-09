@@ -1,6 +1,6 @@
 ﻿---
 title: 第1章 概述
-date: 2018-9-23
+date: 2018-09-23
 sidebar: 'auto'
 categories:
  - 前端基础
