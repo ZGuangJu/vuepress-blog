@@ -59,7 +59,7 @@ publish: true
 
 1. **<font color="red">MSDOS</font>**
 2. **<font color="red">linux Bash</font>**
-3. WSL/WSL2
+3. **<font color="red">WSL/WSL2</font>**
 4. iTerm2
 5. putty
 6. Hyper
@@ -160,7 +160,7 @@ publish: true
 
 ### 十二，内容管理系统/建站
 
-1. **<font color="blue">Wordpress</font>**
+1. **<font color="red">Wordpress</font>**
 2. Drupal
 3. Joomla
 4. **<font color="red">VuePress</font>**

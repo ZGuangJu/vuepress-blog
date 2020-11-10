@@ -136,7 +136,7 @@ module.exports = {
                 text: '后端技术',
                 items: [
                     // { text: 'JAVA 的了解', link: '/Backend/JAVA' },
-                    { text: 'MongoDB', link: '/Backend/mongodb' },
+                    { text: 'MongoDB', link: '/Backend/mongodb1' },
                 ],
             },
             {
@@ -211,12 +211,12 @@ module.exports = {
                 },
                 {
                     title: 'CSS',
-                    collapsable: true,
+                    collapsable: true,//是否折叠侧边栏
                     children: ['CSS/css1', 'CSS/css2', 'CSS/css3', 'CSS/css4', 'CSS/css5', 'CSS/css6', 'CSS/css7', 'CSS/css8', 'CSS/css9', 'CSS/css10', 'CSS/css11']
                 },
                 {
                     title: 'CSS教程',
-                    collapsable: true,
+                    collapsable: true,//是否折叠侧边栏
                     children: ['CSS2/css0', 'CSS2/css1', 'CSS2/css3', 'CSS2/css4', 'CSS2/css5', 'CSS2/css6', 'CSS2/css7', 'CSS2/css8', 'CSS2/css9', 'CSS2/css10', 'CSS2/css11', 'CSS2/css12']
                 },
                 {
@@ -271,12 +271,15 @@ module.exports = {
                     children: ['wechat', 'wechat2', 'wechat3', 'wechat4', 'wechat5', 'wechat6', 'wechat7', 'wechat8', 'wechat9', 'wechat10', 'wechat11']
                 }
             ],
-
-            '/Project/': ['shopingapp', 'admin', 'project'],// 项目
+            // 项目
+            '/Project/': ['shopingapp', 'admin', 'project'],
             '/Node/': ['node1', 'node2', 'package'],
             '/Webpack/': ['webpack1', 'webpack2', 'webpackconfigjs'],
-            '/Backend/': ['mongodb'],
+            // 后端
+            '/Backend/': ['mongodb1', 'mongodb2'],
+            // 工具
             '/Tools/': ['git', 'yarn', 'npm', 'cmd', 'nrm', 'markdown', 'vim', 'Trojan', 'vite', 'vuepress', 'upgrade', 'regex', 'typecho', 'centos', '宝塔', 'Eslint', 'vscode', 'wsl'],
+            //小知识
             '/Other/': [
                 '', '问题', 'error', '知识点', '验证码', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome'
             ],

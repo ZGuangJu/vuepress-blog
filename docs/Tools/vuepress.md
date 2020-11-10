@@ -262,15 +262,15 @@ module.exports = {
 ```js
 module.exports = {
     // 主页图片下第一行字、标题栏名称、左上角名称
-    title: "Guangju'S 笔记分享",
+    title: "GuangJu'S NoteBook",
     // 主页图片下第二行字
-    description: '欢迎',
+    description: '欢迎，大爷儿来玩~',
     // 端口配置 80是默认端口(手动部署服务器时用)
     // port: 80,
     theme: 'reco', //启动主题 已安装的有  默认 / reco
     // 标题栏图标
     head: [
-        // 改变title的图标，图标放在public文件夹中，herf后直接 '/图片.格式' ，不要 ./
+        // 改变title的图标，图标放在public文件夹中，herf后直接 '/图片.格式' ，不要./
         [
             'link',
             {
@@ -374,7 +374,7 @@ module.exports = {
                     { text: 'HTML & H5', link: '/Frontend/HTML/HTML' },
                     { text: 'CSS & C3', link: '/Frontend/CSS/css1', },
                     { text: 'CSS 教程', link: '/Frontend/CSS2/css1' },
-                    { text: 'JavaScript', link: '/Frontend/JS/JavaScript' },
+                    { text: 'JavaScript', link: '/Frontend/JS/js1' },
                     { text: 'ES6', link: '/Frontend/ES6/ES01' },
                     { text: 'Promise', link: '/Frontend/Promise/promise' },
                     { text: 'JQuery', link: '/Frontend/JQuery/JQuery' },
@@ -394,12 +394,13 @@ module.exports = {
                 ]
             },
             //后端，暂未启用
-            // {
-            //     text: '后端技术',
-            //     items: [
-            //         { text: 'JAVA 的了解', link: '/Backend/JAVA' },
-            //     ],
-            // },
+            {
+                text: '后端技术',
+                items: [
+                    // { text: 'JAVA 的了解', link: '/Backend/JAVA' },
+                    { text: 'MongoDB', link: '/Backend/mongodb1' },
+                ],
+            },
             {
                 text: '工具',
                 items: [
@@ -419,8 +420,7 @@ module.exports = {
                     { text: 'Centos', link: '/Tools/centos' },
                     { text: '宝塔', link: '/Tools/宝塔' },
                     { text: 'Eslint 的使用和禁用', link: '/Tools/Eslint' },
-                    { text: 'VScode配置文件', link: '/Tools/vscode' },
-                    { text: 'Powershell 配置文件', link: '/Tools/powershell' },
+                    { text: 'VScode等配置文件', link: '/Tools/vscode' },
                     { text: 'Win子系统', link: '/Tools/wsl' },
                 ],
             },
@@ -473,18 +473,18 @@ module.exports = {
                 },
                 {
                     title: 'CSS',
-                    collapsable: true,
+                    collapsable: true,//是否折叠侧边栏
                     children: ['CSS/css1', 'CSS/css2', 'CSS/css3', 'CSS/css4', 'CSS/css5', 'CSS/css6', 'CSS/css7', 'CSS/css8', 'CSS/css9', 'CSS/css10', 'CSS/css11']
                 },
                 {
                     title: 'CSS教程',
-                    collapsable: true,
+                    collapsable: true,//是否折叠侧边栏
                     children: ['CSS2/css0', 'CSS2/css1', 'CSS2/css3', 'CSS2/css4', 'CSS2/css5', 'CSS2/css6', 'CSS2/css7', 'CSS2/css8', 'CSS2/css9', 'CSS2/css10', 'CSS2/css11', 'CSS2/css12']
                 },
                 {
                     title: 'JavaScript',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['JS/JavaScript', 'JS/Array']
+                    children: ['JS/js1', 'JS/js2', 'JS/js3', 'JS/js4', 'JS/js5', 'JS/Array']
                 },
                 {
                     title: 'ES6',
@@ -530,15 +530,18 @@ module.exports = {
                 {
                     title: '微信小程序',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['wechat', 'wechat2', 'wechat3', 'wechat4', 'wechat5', 'wechat6', 'wechat7', 'wechat8', 'wechat9', 'wechat10']
+                    children: ['wechat', 'wechat2', 'wechat3', 'wechat4', 'wechat5', 'wechat6', 'wechat7', 'wechat8', 'wechat9', 'wechat10', 'wechat11']
                 }
             ],
-
-            '/Project/': ['shopingapp', 'admin', 'project'],// 项目
+            // 项目
+            '/Project/': ['shopingapp', 'admin', 'project'],
             '/Node/': ['node1', 'node2', 'package'],
             '/Webpack/': ['webpack1', 'webpack2', 'webpackconfigjs'],
-            // '/Backend/': ['php'],//后端，暂未启用
-            '/Tools/': ['git', 'yarn', 'npm', 'cmd', 'nrm', 'markdown', 'vim', 'Trojan', 'vite', 'vuepress', 'upgrade', 'regex', 'typecho', 'centos', '宝塔', 'Eslint', 'vscode', 'powershell', 'wsl'],
+            // 后端
+            '/Backend/': ['mongodb1', 'mongodb2'],
+            // 工具
+            '/Tools/': ['git', 'yarn', 'npm', 'cmd', 'nrm', 'markdown', 'vim', 'Trojan', 'vite', 'vuepress', 'upgrade', 'regex', 'typecho', 'centos', '宝塔', 'Eslint', 'vscode', 'wsl'],
+            //小知识
             '/Other/': [
                 '', '问题', 'error', '知识点', '验证码', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome'
             ],

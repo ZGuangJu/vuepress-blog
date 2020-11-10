@@ -14,7 +14,7 @@ publish: true
 :::tip
 Apache是世界使用排名第一的Web服务器软件。它可以运行在几乎所有广泛使用的计算机平台上，由于其跨平台和安全性被广泛使用，是最流行的Web服务器端软件之一。它快速、可靠并且可通过简单的API扩充，将Perl/Python等解释器编译到服务器中。
 :::
-
+<!-- more -->
 - Apache是web服务器（静态解析，如HTML），tomcat是java应用服务器（动态解析，如JSP）
 
 - Tomcat只是一个servlet(jsp也翻译成servlet)容器，可以认为是apache的扩展，但是可以独立于apache运行
