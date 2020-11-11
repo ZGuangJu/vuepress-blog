@@ -499,4 +499,79 @@ import "../../wxss/common.wxss";
 ## 多媒体
 
 - `wx.createInnerAudioContext` (音乐)
+  - `play()`
+  - `stop()`
+  - ···
 - `wx.getBackgroundAudioManager` (背景音乐)
+  - `play()`
+  - `stop()`
+  - ···
+
+## wx.stopPullDownRefresh()
+
+- 下拉刷新数据
+    1. 在页面`json`文件中添加`"enablePullDownRefresh":true`
+    2. `onPullDownRefresh`钩子中定义`wx.stopPullDownRefresh()`方法
+- 页面标题静态
+在页面的`json`中添加 `"navigationBarTitleText": "光与影",`
+
+## wx.setNavigationBarTitle()
+
+- 页面标题 动态加载
+在需要加载的页面的`onReady` 钩子中定义`wx.setNavigationBarTitle({title:"new title"})`
+
+## `wx.showNavigationBarLoading()`
+
+- 上拉触底时更新数据的动态效果(显示)
+
+## `wx.hideNavigationBarLoading()`
+
+- 上拉触底时更新数据的动态效果(停止)
+
+## 组件的自定义事件
+
+(通过子组件调用父组件中的事件)
+
+1. 组件定义自定义事件
+
+```js
+<view data-id="{{detail.postId}}" bind:tap= "onTap" class="post_container">
+```
+
+```js
+methods: {
+    onTap(event) {
+        var postid = event.currentTarget.dataset.id //获取数据（id），并传递给父页面
+        this.triggerEvent('posttap', postid) //传递id给父页面
+    },
+}
+```
+
+2. 在引用组件的页面中使用自定义事件名绑定
+
+```js
+  <post bind:posttap="onGoToDetail" detail="{{item}}"></post>
+```
+
+```js
+ onGoToDetail(event) {
+    //  接收event中的 detail （id）
+    var postid = event.detail
+    wx.navigateTo({
+      url: '/pages/post-detail/post-detail?postid=' + postid
+    })
+  },
+```
+
+## 组件自定义属性 并传值
+
+```js
+data: {
+    movieList: [], //电影列表数据
+  },
+```
+
+```js
+   <movieone  class="movie-bottom" moviecell="{{item}}"></movieone>
+
+```
