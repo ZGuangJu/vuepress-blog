@@ -59,8 +59,8 @@ sticky: 6
 
 ## 入口 app
 
-- App方法构造入口全局的组件
-- 在整个小程序里只能有一个App实例
+- `App`方法构造入口全局的组件
+- 在整个小程序里只能有一个`App`实例
 - 配置全局数据
 - 路由拦截
 
@@ -200,47 +200,37 @@ Page({
 
 - 默认在当前作用域里产生`index`和`item`
 
-```js
+```wxml
  wx:for-index = ""  //给index别名
  wx:for-item = ""   //给item别名
 ```
 
 2. `wx:if`
- 渲染与销毁（v-if）
+ 渲染与销毁（类似`vue`的`v-if`）
 
 - `wx:elif`
 - `wx:else`
 
 4. `wx:hidden`
-显示与隐藏（`v-show`）
+显示与隐藏（类似`v-show`）
 
 ## 事件系统
 
-### 绑定事件（bind）
+- 绑定事件`bind`
 
--
+- 绑定自定义事件`bind:eventName`
 
-### 绑定自定义事件（bind:eventName）
+- 触发自定义事件`triggerEvent('eventName',params）`
 
--
+- 禁止冒泡：`catch:eventName`
 
-### 触发自定义事件triggerEvent('eventName',params）
-
--
-
-### 禁止冒泡：catch:eventName
-
--
-
-### 互斥绑定：mut-bind:eventName
-
--
+- 互斥绑定：`mut-bind:eventName`
 
 ## 模板和引入方式
 
 ### template & inculode
 
-1. template 加name 取名
-2. template 必须加is 我们要使用哪个模板，data属性用来传参
-3. import 标签，用来加载外部 wxml 文件的 template
-4. include标签 加载外部的wxml文件，除了template标签里面的内容，其他内容会全部引入进来
+1. `template` 加`name` 取名
+2. `template` 必须加`is` 我们要使用哪个模板，`data`属性用来传参
+3. `import` 标签，用来加载外部 `wxml` 文件的 `template`
+4. `include`标签 加载外部的`wxml`文件，除了`template`标签里面的内容，其他内容会全部引入进来

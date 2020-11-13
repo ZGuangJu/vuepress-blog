@@ -268,7 +268,7 @@ module.exports = {
                 {
                     title: '微信小程序',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['wechat', 'wechat2', 'wechat3', 'wechat4', 'wechat5', 'wechat6', 'wechat7', 'wechat8', 'wechat9', 'wechat10', 'wechat11']
+                    children: ['wechat', 'wechat2', 'wechat3', 'wechat4', 'wechat5', 'wechat6', 'wechat7', 'wechat8', 'wechat9', 'wechat10', 'wechat11', 'wechat12']
                 }
             ],
             // 项目

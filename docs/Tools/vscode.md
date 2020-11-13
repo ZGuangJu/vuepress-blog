@@ -638,10 +638,10 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
 
 :::
 
-## 我的插件备份2020-9-23
+## 我的插件备份2020-11-12
 
 :::details
-![Vscode 插件](https://s1.ax1x.com/2020/09/23/wvY1bQ.png)
+![Vscode 插件](https://s1.ax1x.com/2020/11/11/BjVXtO.png)
 :::
 
 ## Terminal 设置

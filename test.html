@@ -22,6 +22,8 @@
             height: 200px;
             background: pink;
         }
+
+        .box {}
     </style>
 </head>
 
@@ -32,22 +34,10 @@
         <div class="box3"></div>
         <div class="box4"></div>
     </div>
-    <script>
-        var twoSum = function (nums, target) {
-            const map = {}
-            for (let i = 0; i < nums.length; i++) {
-                if (map[target - nums[i]] >= 0) {
-                    let a = target - nums[i]
-                    console.log(map);
-                    let b = map[a]
-                    console.log();
-                    return b
-                }
-                map[nums[i]] = i;
-            }
 
-        }
-        twoSum([1, 2, 3, 4], 5)
+
+    <script>
+
     </script>
 
 </body>

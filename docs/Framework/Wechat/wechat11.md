@@ -1,280 +1,14 @@
 ---
-title: 小程序 PS
-date: 2019-05-02
+title: 小程序 标签和选择器
+date: 2020-11-11
 sidebar: 'auto'
 tags:
  - 微信小程序
 publish: true
 ---
+## `WXSS`
 
-## 绑定事件的两种方法
-
-- `bind:tap="事件名"`  会有冒泡事件
-- `catch:tap="事件名"` 默认阻止冒泡
-
-## 自定义属性 `data-xxx`
-
-```html
- <view data-postid_list="{{item.postId}}" bindtap="onGoTuDetail">
-
-```
-
-![console.log](https://s1.ax1x.com/2020/10/29/BG83dK.png)
-
-`console.log`打印 `evevt`在结果里
-
-![结果](https://s1.ax1x.com/2020/10/29/BG81Z6.png)
-
-## 全局数据 `globalData`
-
-```js
-// App.js
-App({
-  onLaunch (options) {
-    console.log('App onLaunch')
-    // Do something initial when launch.
-  },
-  onShow (options) {
-    // Do something when show.
-  },
-  onHide () {
-    // Do something when hide.
-  },
-  onError (msg) {
-    console.log(msg)
-  },
-  globalData: 1, //设置全局数据
-// globalData: {a:1}
-})
-```
-
-```js
-// pages/post/post.js
-// 在页面中获取全局数据
-    const text =getApp()
-    console.log(text.globalData)
-    let a =text.globalData
-```
-
-## 本地数据增删改查 `Storage`
-
-- 设置数据
-  - `wx.setStorage(Object object)`
-    - `key`:本地缓存中指定的 `key`;
-    - `data`:需要存储的内容。只支持原生类型、`Date`、及能够通过`JSON.stringify`序列化的对象.
-  - 同步 `wx.setStorageSync(string key, any data)`
-    - `string key`:本地缓存中指定的 `key`;
-    - `any data`:需要存储的内容。只支持原生类型、`Date`、及能够通过`JSON.stringify`序列化的对象.
-
-```js
-    wx.setStorage({
-        key:"key",
-        data:"value"
-    })
-    // 同步版本
-    wx.setStorageSync('key', 1)
-```
-
-- 修改数据：给相同的`key`再设置一个值
-
-```js
-    wx.setStorage({
-        key:"key",
-        data:1
-    })
-    wx.setStorage({
-        key:"key",
-        data:2
-    })
-    // 同步版本
-    wx.setStorageSync('key', 1)
-    wx.setStorageSync('key', 2)
-```
-
-- 获取数据
-  - `wx.getStorage(key,callback)`
-    - `key`:本地缓存中指定的 `key`
-    - `callback`:接口调用成功的回调函数
-  - 同步 `any wx.getStorageSync(string key)`
-    - `string key`:本地缓存中指定的 `key`
-    - `any data` `:key`对应的内容
-
-```js
-    wx.getStorage({
-    key: 'key',
-    success (res) {
-        console.log(res.data)
-    }
-})
-   //同步版本
-    wx.getStorageSync('key')
-```
-
-- 清除一条数据
-  - `wx.removeStorage({key:'key'})`
-    - `key`:本地缓存中指定的 `key`
-  - 同步 `wx.removeStorageSync( key)`
-    - `key`:本地缓存中指定的 `key`
-
-```js
-wx.removeStorage({key: 'key'})
-wx.removeStorage({
-  key: 'key',
-  success (res) {
-    console.log(res)
-  }
-})
-// 同步
-wx.removeStorageSync('key')
-```
-
-- 清除所有数据
-  - `wx.clearStorage()`
-  - 同步 `wx.clearStorageSync()`
-
-```js
-    wx.clearStorage()
-    // 同步版本
-    wx.clearStorageSync()
-```
-
-## 外部样式类
-
-1. 在组件的`js`文件中定义
-
-```js
-//components/index.js
-Component({
-  //1.定义外部样式类
-  externalClasses: ['my-class','you-class'],
-  // 组件的属性列表
-  properties: {
-    title:String
-  },
-})
-```
-
-2. 在组件`wxml`文件中给最外层的标签里定义`class = 'my-class you-class'`
-
-```html
-<!--components/index.wxml-->
-<view class="container my-class you-class" >
-    <!-- 组件内容 -->
-    <view class="title">
-        {{title}}
-    </view>
-</view>
-```
-
-3. 在引用组件的页面里定义`you-class="plana"`、`my-class="planb"`
-
-```html
-<!-- pages/index.wxml -->
-    <Index you-class="plana" title="123"/>
-    <Index my-class="planb" title="abc"/>
-<!-- Index为组件名 -->
-```
-
-```css
-/* pages/index.wxml */
-.planb{
-  border: solid blue 1rpx;
-}
-.plana{
-  border: solid red 1rpx;
-}
-```
-
-## 组件自定义属性
-
-1. 在引用组件的页面里定义`title="123"`，`title`属性名，`"123"`属性值
-
-```html
-<!-- pages/index.wxml -->
-    <Index  title="123"/>
-    <Index  title="abc"/>
-<!-- Index为组件名 -->
-```
-
-2. 在组件的`js`文件中定义`properties`，和属性类型
-
-```js
-//components/index.js
-Component({
- // 组件的属性列表
-  properties: {
-    title:String
-  },
-})
-```
-
-3. 在组件`wxml`文件中使用`{{title}}`
-
-```html
-<!--components/index.wxml-->
-<view class="container my-class you-class" >
-    <!-- 组件内容 -->
-    <view class="title">
-        {{title}}
-    </view>
-</view>
-```
-
-## WXML 标签
-
-::: details
-`view`（视图容器）
-`rich-text`（富文本）
-`swiper`（滑块视图容器）
-`icon`（图标）
-`text`（文字）
-`progress`（进度条）
-`button`（按钮）
-`form`（表单）
-`input`（输入框）
-`checkbox`（多项选择器）
-`radio`（单项选择器）
-`picker`（列表选择器）
-`slider`（滚动选择器）
-`switch`（开关选择器）
-`textarea`（多行输入框）
-`label`（标签）
-`navigator`（应用链接）
-`audio`（音频）
-`image`（图片）
-`video`（视频）
-`camera`（系统相机）
-`map`（地图）
-`scroll-view`（可滚动视图容器）
-`picker-view`（内嵌列表选择器）
-`canvas`（画布）
-`movable-area`（可移动区域）
-`movable-view`（可移动的视图容器）
-`cover-view`（覆盖视图）
-`cover-image`（覆盖图片）
-`functional-page-navigator`（跳转到插件功能页）
-`live-player`（实时音视频播放）
-`live-pusher`（实时音视频录制）
-:::
-
-- 小程序里有自己的一套标签，下面和`html`标签对比：
-
-|                        `html`                         |                             微信小程序                             |
-| :---------------------------------------------------: | :----------------------------------------------------------------: |
-|                     `<div></div>`                     |                          `<view></view>`                           |
-| `<h1></h1>`...`<h6></h6>`、`<p></p>`、`<span></span>` |                          `<text></text>`                           |
-|                `<input type="text"/>`                 |                            `<input />`                             |
-|              `<input type="checkbox"/>`               |                           `<checkbox />`                           |
-|                `<input type="radio"/>`                |                            `<radio />`                             |
-|                 `<input type="file">`                 |               `<view bindtap="changeImage"></view>`                |
-| `<select><option></option><option></option></select>` | `<picker range="{{area}}"><view>\{{area[index]}\}</view></picker>` |
-|                  `<a href="#"></a>`                   |             `<navigator url="#" redirect></navigator>`             |
-|                    `<img src="">`                     |                 `<image mode="aspectFill" src="">`                 |
-|                `<i class="icon"></i>`                 |                          `<icon></icon>`                           |
-
-\* 双大括号`{{` `}}`不能识别，表中`\`只为禁止解析
-
-- `wxss`选择器
+### `wxss` 选择器
 
 |              html               |                            微信小程序                             |
 | :-----------------------------: | :---------------------------------------------------------------: |
@@ -316,11 +50,86 @@ input::-webkit-input-placeholder {
 input:focus::-webkit-input-placeholder { color: transparent; }
 ```
 
-`<view></view>`
+### 尺寸单位
 
-- 属性
-  - `hover-class`
-  - `hover-stop-propagation`
+`WXSS`支持的单位有`px`、`rem`和`rpx`，其中`rem`和`rpx`可以针对屏幕容器进行适配，`px`则为固定尺寸。 其中`1rpx=0.5px`，在`WXSS`和`WXML`中定义的`rpx`单位最终会转换为在手机端可以识别的`rem`单位。
+
+建议：开发微信小程序时设计师可以用 `iPhone6` 作为视觉稿的标准。
+所以工程师拿到`750`的设计稿，在`PS`中量取的容器大小，可以直接定义为`rpx`，不需要进行`2`倍尺寸的换算。
+
+- 样式引入
+
+```js
+import "../../wxss/common.wxss";
+```
+
+## `WXML` 标签
+
+::: details
+|                        标签 | 说明             |
+| --------------------------: | :--------------- |
+|                      `view` | 视图容器         |
+|                 `rich-text` | 富文本           |
+|                    `swiper` | 滑块视图容器     |
+|                      `icon` | 图标             |
+|                      `text` | 文字             |
+|                  `progress` | 进度条           |
+|                    `button` | 按钮             |
+|                      `form` | 表单             |
+|                     `input` | 输入框           |
+|                  `checkbox` | 多项选择器       |
+|                     `radio` | 单项选择器       |
+|                    `picker` | 列表选择器       |
+|                    `slider` | 滚动选择器       |
+|                    `switch` | 开关选择器       |
+|                  `textarea` | 多行输入框       |
+|                     `label` | 标签             |
+|                 `navigator` | 应用链接         |
+|                     `audio` | 音频             |
+|                     `image` | 图片             |
+|                     `video` | 视频             |
+|                    `camera` | 系统相机         |
+|                       `map` | 地图             |
+|               `scroll-view` | 可滚动视图容器   |
+|               `picker-view` | 内嵌列表选择器   |
+|                    `canvas` | 画布             |
+|              `movable-area` | 可移动区域       |
+|              `movable-view` | 可移动的视图容器 |
+|                `cover-view` | 覆盖视图         |
+|               `cover-image` | 覆盖图片         |
+| `functional-page-navigator` | 跳转到插件功能页 |
+|               `live-player` | 实时音视频播放   |
+|               `live-pusher` | 实时音视频录制   |
+
+:::
+
+- 小程序里有自己的一套标签，下面和`html`标签对比：
+
+|                        `HTML`                         |                              `Wechat`                              |
+| :---------------------------------------------------: | :----------------------------------------------------------------: |
+|                     `<div></div>`                     |                          `<view></view>`                           |
+| `<h1></h1>`...`<h6></h6>`、`<p></p>`、`<span></span>` |                          `<text></text>`                           |
+|                `<input type="text"/>`                 |                            `<input />`                             |
+|              `<input type="checkbox"/>`               |                           `<checkbox />`                           |
+|                `<input type="radio"/>`                |                            `<radio />`                             |
+|                 `<input type="file">`                 |               `<view bindtap="changeImage"></view>`                |
+| `<select><option></option><option></option></select>` | `<picker range="{{area}}"><view>\{{area[index]}\}</view></picker>` |
+|                  `<a href="#"></a>`                   |             `<navigator url="#" redirect></navigator>`             |
+|                    `<img src="">`                     |                 `<image mode="aspectFill" src="">`                 |
+|                `<i class="icon"></i>`                 |                          `<icon></icon>`                           |
+
+\* 双大括号`{{` `}}`不能识别，表中`\`只为禁止解析
+
+### 常用标签介绍
+
+:::warning 注意
+标签中的属性只介绍了重点或常用的，了解所有属性请访问[小程序官网](https://developers.weixin.qq.com/miniprogram/dev/component/cover-image.html)
+:::
+
+1. `<view></view>`(视图,相当于`div`)
+   - 属性
+     - `hover-class`
+     - `hover-stop-propagation`
 
 相当于`HTML`的`div`标签，小程序里的`view`可以用`hover-class`(相当于`html`伪类`:hover`)
 
@@ -332,11 +141,10 @@ input:focus::-webkit-input-placeholder { color: transparent; }
 `div`和`view`都是盒模型，默认`display:block`。
 盒模型在布局过程中，一般推荐`display:flex`的写法，配合`justify-content:center`;`align-items:center`;的定义实现盒模型在横向和纵向的居中。
 
-`<text></text>`
-
-- 属性
-  - `user-select`
-  - `space`
+2. `<text></text>`(文本,相当于`p`或`span`)
+   - 属性
+     - `user-select`
+     - `space`
 
 相当于`<span>`
 
@@ -359,13 +167,116 @@ input:focus::-webkit-input-placeholder { color: transparent; }
 <!--不支持text嵌套其他标签-->
 ```
 
-`<icon></icon>`
+3. `<icon></icon>`(图标)
 
 `icon`可以直接用微信组件默认的图标，默认是`iconfont`格式的，从`WeUI`那边沿袭过来的一种做法。
 自定义的`icon`推荐`svg` `sprite`格式或者`iconfont`。
 目前来看，市面上还没有很好的自动合并单个`svg`为`svg` `sprite`的工具，需要手动拼图。
 
-1. `input`
+4. `<image></image>`(图片,同`img`)
+
+小程序的`image`与`HTML5`的`img`最大的区别在于：小程序的`image`是按照`background-image`来实现的。
+默认`image`的高宽是`320*240`。必须通过样式定义去覆盖这个默认高宽，`auto`在这里不生效。
+**(开发者说这样设置的原因是：如果设置 `auto` ，页面布局会因为图片加载的过程有一个闪的现象(例如高度从 `0` 到 `height` )，所以要求一定要设置一个宽度和高度。)**
+最新的`api`支持获取图片的高宽。不过这里返回的高宽是px单位，不支持屏幕自适应;
+图片包括三种缩放模式`scaleToFill`、`aspectFit`、`aspectFill`和`9`种裁剪模式，三种缩放模式的实现原理对应如下：
+
+```css
+scaleToFill{
+    background-size:100% 100%;//不保持纵横比缩放图片，使图片的宽高完全拉伸至填满 image 元素
+}
+aspectFit{
+    background-size:contain;//保持纵横比缩放图片，使图片的长边能完全显示出来。也就是说，可以完整地将图片显示出来。
+}
+aspectFill{
+    background-size:cover;//保持纵横比缩放图片，只保证图片的短边能完全显示出来。也就是说，图片通常只在水平或垂直方向是完整的，另一个方向将会发生截取。
+}
+```
+
+5. `<navigator></navigator>`(块元素，和`<a></a>`标签类似)
+    - 属性
+      - `url` :跳转的路径（可以跳转到其他页或者其他小程序，不能跳转到网页）
+      - `open-type`:跳转方式:
+        - 值(默认):`navigate`,跳转独立页面，保留之前页面,不能跳转 `tabBar` 页面(可以带参);
+        - 值:`redirect`,跳转到独立页面，销毁之前页面(所以没有返回按钮),不能跳转 `tabBar` 页面(可以带参);
+        - 值:`switchTap`,只能跳转到 `tabBar` 页面，并关闭其他所有非 `tabBar` 页面(不能携带参数);
+        - 值:`reLaunch`,可以跳转到`tabBar`页面和普通页面，关闭所有页面(包括`tabBar`)，打开到应用内的某个页面(可以携带参数).(万能跳转方法:能带参、跳`tabBar`、销毁其他页)
+`navigator`支持相对路径和绝对路径的跳转，默认是打开新页面，当前页面打开需要加`redirect`;
+`navigator`仅支持5级页面的跳转;
+`navigator`不可跳转到小程序外的链接地址;
+
+```js
+<navigator class="navigator" redirect  url="../logs/index" >登录页</navigator>
+// 跳转重定向到 logs
+```
+
+在小程序开发工具里，默认打开新页面，工具左上角有返回按钮。加上`redirect`，当前页打开，不出现返回按钮。
+
+6. `<scroll-view></scroll-view>`(可滚动视图区域)
+    - 属性
+      - `scroll-x`:允许横向滚动
+      - `scroll-y`:允许纵向滚动
+      - `scroll-left='50'`:设置横向滚动条位置(进入页面时滚动视图初始的位置)
+      - `scroll-top='50'`:同上
+      - ...
+
+```html
+<scroll-view scroll-x scroll-left="150">
+    <view class="scrOut">
+        <view class="box">111</view>
+        <view class="box">222</view>
+        <view class="box">333</view>
+        <view class="box">444</view>
+        <view class="box">555</view>
+        <view class="box">666</view>
+    </view>
+</scroll-view>
+```
+
+```css
+/* 上例中的样式 */
+.scrOut {
+  border: 1px solid red;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background: yellow;
+  margin-left: 10px;
+  flex: 0 0 100px;
+}
+```
+
+```html
+<scroll-view scroll-y scroll-top="150" class="scr2">
+    <view class="scrOut2">
+        <view class="box2">111</view>
+        <view class="box2">222</view>
+        <view class="box2">333</view>
+        <view class="box2">444</view>
+        <view class="box2">555</view>
+        <view class="box2">666</view>
+    </view>
+</scroll-view>
+```
+
+```css
+/* 上例中的样式 */
+.box2{
+  width: 100%;
+  height: 100px;
+  background: pink;
+  margin-top: 5px;
+}
+.scr2{
+  height: 250px;
+}
+```
+
+0. `<input></input>`(表单)
 `input` 的类型，有效值：`text`, `number`, `idcard`, `digit`, `time`, `date` 。
 `input`不需要设置`line-height`或`padding`来纵向居中，默认`placeholder`的文字是居中的。
 小程序把`checkbox`和`radio`都单独做成了组件，默认的`input`只支持输入文本。
@@ -399,62 +310,33 @@ input:focus::-webkit-input-placeholder { color: transparent; }
 <!--小程序里通过placeholder-style和placeholder-class修改样式，不过并不能修改点击时候input的边框颜色-->
 ```
 
-5. `picker`
+0. `<picker></picker>`(下拉标签)
 `picker`默认支持普通、日期和时间三种选择器。
 `picker`通过`bindchange`事件来调取`range`中自定义的数据数据，并展示到页面中，调用的是系统原生的`select`。
 这里小程序废弃了`select`组件，考虑到的是这个组件的交互不适合移动场景，最终用`picker`代替了。
 
 ```html
+    <!--HTML5的下拉框-->
 <select class="select-block">
     <option value="0">选择</option>
     <option value="1">北京</option>
     <option value="2">上海</option>
 </select>
-<!--HTML5的下拉框-->
+    <!--picker下拉框-->
 <picker bindchange="bindPickerChange" value="{{index}}" range="{{area}}">
    <view class="picker">
       {{area[index]}}
     </view>
 </picker>
+    <!--js里的area数组-->
 Page({
   data: {
     area: ['中国', '美国', '巴西', '日本'],
   }
 })
-<!--js里的area数组-->
-<!--picker下拉框-->
 ```
 
-1. `navigator`
-`navigator`支持相对路径和绝对路径的跳转，默认是打开新页面，当前页面打开需要加`redirect`;
-`navigator`仅支持5级页面的跳转;
-`navigator`不可跳转到小程序外的链接地址;
-
-```js
-<navigator class="navigator" redirect  url="../login/index" >登录页</navigator>
-```
-
-在小程序开发工具里，默认打开新页面，工具左上角有返回按钮。加上`redirect`，当前页打开，不出现返回按钮。
-7. `image`
-小程序的`image`与`HTML5`的`img`最大的区别在于：小程序的`image`是按照`background-image`来实现的。
-默认`image`的高宽是`320*240`。必须通过样式定义去覆盖这个默认高宽，`auto`在这里不生效。
-**(开发者说这样设置的原因是：如果设置 `auto` ，页面布局会因为图片加载的过程有一个闪的现象(例如高度从 `0` 到 `height` )，所以要求一定要设置一个宽度和高度。)**
-最新的`api`支持获取图片的高宽。不过这里返回的高宽是px单位，不支持屏幕自适应;
-图片包括三种缩放模式`scaleToFill`、`aspectFit`、`aspectFill`和`9`种裁剪模式，三种缩放模式的实现原理对应如下：
-
-```css
-scaleToFill{
-    background-size:100% 100%;//不保持纵横比缩放图片，使图片的宽高完全拉伸至填满 image 元素
-}
-aspectFit{
-    background-size:contain;//保持纵横比缩放图片，使图片的长边能完全显示出来。也就是说，可以完整地将图片显示出来。
-}
-aspectFill{
-    background-size:cover;//保持纵横比缩放图片，只保证图片的短边能完全显示出来。也就是说，图片通常只在水平或垂直方向是完整的，另一个方向将会发生截取。
-}
-```
-
-1. `button`
+0. `<button></button>`
 额外补充下`button`的实现方式，`button`的边框是用`:after`方式实现的，用户如果在`button`上定义边框会出现两条线，需用`:after`的方式去覆盖默认值。不过这个应该会在最近的开发者工具中修复。
 
 ```css
@@ -467,7 +349,8 @@ border:1px solid rgba(0, 0, 0, 0.2);
 ```
 
 小程序不支持`button:active`这种样式的写法，`button`的点击态通过`.button-hover{}`的样式覆盖，也可修改`hover-class`为自定义的样式名。
-9. `css3`动画
+
+- `css3`动画
 最新版的开发工具已经支持`transition`和`keyframes`动画，不用`js`苦哈哈的写动画队列了。
 除了官方公布的小程序的组件之外，有一些标签比如，`span`、`em`、`strong`、`b`也是支持的，只是官方并不推荐使用。
 
@@ -480,98 +363,3 @@ border:1px solid rgba(0, 0, 0, 0.2);
 - 在小程序的开发工具上，小程序的`JavaScript`是运行在`chrome`内核（`nwjs`）中。
 
 [参考](https://zhuanlan.zhihu.com/p/23536784)
-
-## WXSS
-
-- 尺寸单位
-
-`WXSS`支持的单位有`px`、`rem`和`rpx`，其中`rem`和`rpx`可以针对屏幕容器进行适配，px则为固定尺寸。 其中`1rpx=0.5px`，在`WXSS`和`WXML`中定义的`rpx`单位最终会转换为在手机端可以识别的`rem`单位。
-
-建议：开发微信小程序时设计师可以用 `iPhone6` 作为视觉稿的标准。
-所以工程师拿到`750`的设计稿，在`PS`中量取的容器大小，可以直接定义为`rpx`，不需要进行`2`倍尺寸的换算。
-
-- 样式引入
-
-```js
-import "../../wxss/common.wxss";
-```
-
-## 多媒体
-
-- `wx.createInnerAudioContext` (音乐)
-  - `play()`
-  - `stop()`
-  - ···
-- `wx.getBackgroundAudioManager` (背景音乐)
-  - `play()`
-  - `stop()`
-  - ···
-
-## wx.stopPullDownRefresh()
-
-- 下拉刷新数据
-    1. 在页面`json`文件中添加`"enablePullDownRefresh":true`
-    2. `onPullDownRefresh`钩子中定义`wx.stopPullDownRefresh()`方法
-- 页面标题静态
-在页面的`json`中添加 `"navigationBarTitleText": "光与影",`
-
-## wx.setNavigationBarTitle()
-
-- 页面标题 动态加载
-在需要加载的页面的`onReady` 钩子中定义`wx.setNavigationBarTitle({title:"new title"})`
-
-## `wx.showNavigationBarLoading()`
-
-- 上拉触底时更新数据的动态效果(显示)
-
-## `wx.hideNavigationBarLoading()`
-
-- 上拉触底时更新数据的动态效果(停止)
-
-## 组件的自定义事件
-
-(通过子组件调用父组件中的事件)
-
-1. 组件定义自定义事件
-
-```js
-<view data-id="{{detail.postId}}" bind:tap= "onTap" class="post_container">
-```
-
-```js
-methods: {
-    onTap(event) {
-        var postid = event.currentTarget.dataset.id //获取数据（id），并传递给父页面
-        this.triggerEvent('posttap', postid) //传递id给父页面
-    },
-}
-```
-
-2. 在引用组件的页面中使用自定义事件名绑定
-
-```js
-  <post bind:posttap="onGoToDetail" detail="{{item}}"></post>
-```
-
-```js
- onGoToDetail(event) {
-    //  接收event中的 detail （id）
-    var postid = event.detail
-    wx.navigateTo({
-      url: '/pages/post-detail/post-detail?postid=' + postid
-    })
-  },
-```
-
-## 组件自定义属性 并传值
-
-```js
-data: {
-    movieList: [], //电影列表数据
-  },
-```
-
-```js
-   <movieone  class="movie-bottom" moviecell="{{item}}"></movieone>
-
-```
