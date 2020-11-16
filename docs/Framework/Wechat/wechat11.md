@@ -127,9 +127,6 @@ import "../../wxss/common.wxss";
 :::
 
 1. `<view></view>`(视图,相当于`div`)
-   - 属性
-     - `hover-class`
-     - `hover-stop-propagation`
 
 相当于`HTML`的`div`标签，小程序里的`view`可以用`hover-class`(相当于`html`伪类`:hover`)
 
@@ -142,11 +139,8 @@ import "../../wxss/common.wxss";
 盒模型在布局过程中，一般推荐`display:flex`的写法，配合`justify-content:center`;`align-items:center`;的定义实现盒模型在横向和纵向的居中。
 
 2. `<text></text>`(文本,相当于`p`或`span`)
-   - 属性
-     - `user-select`
-     - `space`
 
-相当于`<span>`
+相当于`<span>`、`<h1></h1>`...`<h6></h6>`、`<p></p>`
 
 |     属性      |   类型    | 默认值  | 必填  |                         说明                          |
 | :-----------: | :-------: | :-----: | :---: | :---------------------------------------------------: |
@@ -169,15 +163,40 @@ import "../../wxss/common.wxss";
 
 3. `<icon></icon>`(图标)
 
+|  属性   |      类型       | 默认值 | 必填  |                                 说明                                 |
+| :-----: | :-------------: | :----: | :---: | :------------------------------------------------------------------: |
+| `type`  |    `string`     |        |  是   | icon的类型，有效值：`success`, `info`, `warn`, `waiting`, `cancel`等 |
+| `size`  | `number/string` |  `23`  |  否   |                             `icon`的大小                             |
+| `color` |    `string`     |        |  否   |                    `icon`的颜色，同`css`的`color`                    |
+
 `icon`可以直接用微信组件默认的图标，默认是`iconfont`格式的，从`WeUI`那边沿袭过来的一种做法。
 自定义的`icon`推荐`svg` `sprite`格式或者`iconfont`。
 目前来看，市面上还没有很好的自动合并单个`svg`为`svg` `sprite`的工具，需要手动拼图。
 
 4. `<image></image>`(图片,同`img`)
 
+|    属性     |     类型      |    默认值     | 必填  |                          说明                          |
+| :---------: | :-----------: | :-----------: | :---: | :----------------------------------------------------: |
+|    `src`    |   `string`    |               |  否   |                      图片资源地址                      |
+|   `mode`    |   `string`    | `scaleToFill` |  否   |                  图片裁剪、缩放的模式                  |
+| `azy-load`  |   `boolean`   |    `false`    |  否   | 图片懒加载，在即将进入一定范围（上下三屏）时才开始加载 |
+| `binderror` | `eventhandle` |               |  否   |      当错误发生时触发，`event.detail = {errMsg}`       |
+| `bindload`  | `eventhandle` |               |  否   | 当图片载入完毕时触发，`event.detail = {height, width}` |
+
+mode 的合法值
+
+| 值          | 说明                                                 |
+| :---------- | :--------------------------------------------------- |
+| `widthFix`  | 缩放模式，宽度不变，高度自动变化，保持原图宽高比不变 |
+| `heightFix` | 缩放模式，高度不变，宽度自动变化，保持原图宽高比不变 |
+| `top`       | 裁剪模式，不缩放图片，只显示图片的顶部区域           |
+| `bottom`    | 裁剪模式，不缩放图片，只显示图片的底部区域           |
+| ...         |                                                      |
 小程序的`image`与`HTML5`的`img`最大的区别在于：小程序的`image`是按照`background-image`来实现的。
 默认`image`的高宽是`320*240`。必须通过样式定义去覆盖这个默认高宽，`auto`在这里不生效。
+
 **(开发者说这样设置的原因是：如果设置 `auto` ，页面布局会因为图片加载的过程有一个闪的现象(例如高度从 `0` 到 `height` )，所以要求一定要设置一个宽度和高度。)**
+
 最新的`api`支持获取图片的高宽。不过这里返回的高宽是px单位，不支持屏幕自适应;
 图片包括三种缩放模式`scaleToFill`、`aspectFit`、`aspectFill`和`9`种裁剪模式，三种缩放模式的实现原理对应如下：
 
@@ -185,27 +204,42 @@ import "../../wxss/common.wxss";
 scaleToFill{
     background-size:100% 100%;//不保持纵横比缩放图片，使图片的宽高完全拉伸至填满 image 元素
 }
+
 aspectFit{
     background-size:contain;//保持纵横比缩放图片，使图片的长边能完全显示出来。也就是说，可以完整地将图片显示出来。
 }
+
 aspectFill{
     background-size:cover;//保持纵横比缩放图片，只保证图片的短边能完全显示出来。也就是说，图片通常只在水平或垂直方向是完整的，另一个方向将会发生截取。
 }
 ```
 
 5. `<navigator></navigator>`(块元素，和`<a></a>`标签类似)
-    - 属性
-      - `url` :跳转的路径（可以跳转到其他页或者其他小程序，不能跳转到网页）
-      - `open-type`:跳转方式:
-        - 值(默认):`navigate`,跳转独立页面，保留之前页面,不能跳转 `tabBar` 页面(可以带参);
-        - 值:`redirect`,跳转到独立页面，销毁之前页面(所以没有返回按钮),不能跳转 `tabBar` 页面(可以带参);
-        - 值:`switchTap`,只能跳转到 `tabBar` 页面，并关闭其他所有非 `tabBar` 页面(不能携带参数);
-        - 值:`reLaunch`,可以跳转到`tabBar`页面和普通页面，关闭所有页面(包括`tabBar`)，打开到应用内的某个页面(可以携带参数).(万能跳转方法:能带参、跳`tabBar`、销毁其他页)
+
+| 属性        | 类型     | 默认值     | 必填 | 说明                                                                   |
+| :---------- | :------- | :--------- | :--- | :--------------------------------------------------------------------- |
+| `url`       | `string` |            | 否   | 当前小程序内的跳转链接(可以跳转到其他页或者其他小程序，不能跳转到网页) |
+| `open-type` | `string` | `navigate` | 否   | 跳转方式                                                               |
+| `delta`     | `number` | `1`        | 否   | 当 `open-type` 为 `'navigateBack'` 时有效，表示回退的层数              |
+| `app-id`    | `string` |            | 否   | 当`target="miniProgram"`时有效，要打开的小程序 `appId`                 |
+| `path`      | `string` |            | 否   | 当`target="miniProgram"`时有效，打开的页面路径，如果为空则打开首页     |
+
+open-type 的合法值
+
+| 值               | 说明                                                                                                                                             |
+| :--------------- | :----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `navigate`(默认) | 跳转独立页面，保留之前页面,不能跳转 `tabBar` 页面(可以带参)                                                                                      |
+| `redirect`       | 跳转到独立页面，销毁之前页面(所以没有返回按钮),不能跳转 `tabBar` 页面(可以带参)                                                                  |
+| `switchTap`      | 只能跳转到 `tabBar` 页面，并关闭其他所有非 `tabBar` 页面(不能携带参数)                                                                           |
+| `reLaunch`       | 可以跳转到`tabBar`页面和普通页面，关闭所有页面(包括`tabBar`)，打开到应用内的某个页面(可以携带参数).(万能跳转方法:能带参、跳`tabBar`、销毁其他页) |
+
 `navigator`支持相对路径和绝对路径的跳转，默认是打开新页面，当前页面打开需要加`redirect`;
+
 `navigator`仅支持5级页面的跳转;
+
 `navigator`不可跳转到小程序外的链接地址;
 
-```js
+```html
 <navigator class="navigator" redirect  url="../logs/index" >登录页</navigator>
 // 跳转重定向到 logs
 ```
@@ -213,12 +247,13 @@ aspectFill{
 在小程序开发工具里，默认打开新页面，工具左上角有返回按钮。加上`redirect`，当前页打开，不出现返回按钮。
 
 6. `<scroll-view></scroll-view>`(可滚动视图区域)
-    - 属性
-      - `scroll-x`:允许横向滚动
-      - `scroll-y`:允许纵向滚动
-      - `scroll-left='50'`:设置横向滚动条位置(进入页面时滚动视图初始的位置)
-      - `scroll-top='50'`:同上
-      - ...
+
+| 属性               | 类型            | 默认值  | 必填 | 说明                                             |
+| :----------------- | :-------------- | :------ | :--- | :----------------------------------------------- |
+| `scroll-x`         | `boolean`       | `false` | 否   | 允许横向滚动                                     |
+| `scroll-y`         | `boolean`       | `false` | 否   | 允许纵向滚动                                     |
+| `scroll-top='50'`  | `number/string` |         | 否   | 设置横向滚动条位置(进入页面时滚动视图初始的位置) |
+| `scroll-left='50'` | `number/string` |         | 否   | 设置横向滚动条位置                               |
 
 ```html
 <scroll-view scroll-x scroll-left="150">
@@ -276,7 +311,16 @@ aspectFill{
 }
 ```
 
-0. `<input></input>`(表单)
+7. `<swiper></swiper>`
+轮播图组件
+
+| 属性              | 类型      | 默认值              | 必填 | 说明               |
+| :---------------- | :-------- | :------------------ | :--- | :----------------- |
+| `indicator-dots`  | `boolean` | `false`             | 否   | 是否显示面板指示点 |
+| `indicator-color` | `color`   | `rgba(0, 0, 0, .3)` | 否   | 指示点颜色         |
+| `autoplay`        | `boolean` | `false`             | 否   | 是否自动切换       |
+
+8. `<input></input>`(表单)
 `input` 的类型，有效值：`text`, `number`, `idcard`, `digit`, `time`, `date` 。
 `input`不需要设置`line-height`或`padding`来纵向居中，默认`placeholder`的文字是居中的。
 小程序把`checkbox`和`radio`都单独做成了组件，默认的`input`只支持输入文本。

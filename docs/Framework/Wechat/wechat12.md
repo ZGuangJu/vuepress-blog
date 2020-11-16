@@ -252,6 +252,18 @@ Component({
 
 - 上拉触底时更新数据的动态效果(停止)
 
+## 组件传值
+
+组件的js文件中的定义
+
+```js
+ properties: {
+    detail: {
+      type: Object
+    }
+  },
+```
+
 ## 组件的自定义事件
 
 (通过子组件调用父组件中的事件)
@@ -297,9 +309,8 @@ data: {
 
 ```js
    <movieone  class="movie-bottom" moviecell="{{item}}"></movieone>
-
 ```
 
 ## 网络请求
 
-- wx.request
+- `wx.request`

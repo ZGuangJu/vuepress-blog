@@ -13,8 +13,10 @@ publish: true
 ## CSS选择器
 
 [CSS 可视化文档](http://cssreference.parryqiu.com/)
+[CSS 中的颜色名](https://www.w3school.com.cn/cssref/css_colornames.asp)
+[阮一峰Flex文档](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
 
-- id:给元素添加类属性`<div id="name">`
+- `id`:给元素添加类属性 `<div id="name">`
 
 ```css
 #name{
@@ -22,7 +24,7 @@ publish: true
 }
 ```
 
-- 类:给元素添加类属性`<div class="box">`
+- `class`:给元素添加类属性 `<div class="box">`
 
 ```css
 .box{
