@@ -36,7 +36,42 @@ export ...
 
 `Node`应用由模块组成，采用`CommonJS`模块规范。
 
-根据这个规范，每个文件就是一个模块，有自己的作用域。在一个文件里面定义的变量、函数、类，都是私有的，对其他文件不可见。
+这个规范其实就是对模块的一个定义:
+
+CommonJS定义的模块分为: 模块标识(module)、模块定义(exports) 、模块引用(require)
+
+在一个node执行一个文件时，会给这个文件内生成一个 exports和module对象，而module又有一个exports属性。他们之间的关系如下图，都指向一块{}内存区域。
+>
+>```js
+>exports = module.exports = {};
+>```
+>
+>![exports]()
+>代码：
+>
+>```js
+>//utils.js
+>let a = 100;
+>console.log(module.exports); //能打印出结果为：{}
+>console.log(exports); //能打印出结果为：{}
+>
+>exports.a = 200; //这里辛苦劳作帮 module.exports 的内容给改成 {a : 200}
+>exports = '指向其他内存区'; //这里把exports的指向指走
+>
+>//test.js
+>var a = require('/utils');
+>console.log(a) // 打印为 {a : 200}
+>```
+>
+>从上面可以看出，其实require导出的内容是`module.exports`的指向的内存块内容，并不是`exports`的。
+>
+>简而言之，区分他们之间的区别就是 `exports` 只是 `module.exports`的引用，辅助后者添加内容用的。
+>
+>根据这个规范，每个文件就是一个模块，有自己的作用域。在一个文件里面定义的变量、函数、类，都是私有的，对其他文件不可见。
+
+`exports`只辅助`module.exports`操作内存中的数据，辛辛苦苦各种操作数据完，累得要死，结果到最后真正被`require`出去的内容还是`module.exports`的，其实大家用内存块的概念去理解，就会很清楚了。
+
+为了避免糊涂，尽量都用`module.exports` 导出，然后用`require`导入。
 
 `CommonJS`规范规定，每个模块内部，`module`变量代表当前模块。这个变量是一个对象，它的`exports`属性（即`module.exports`）是对外的接口。加载某个模块，其实是加载该模块的`module.exports`属性。
 
@@ -159,6 +194,7 @@ import str from 'demo1' //导入的时候没有花括号
 2. 你可以在其它文件或模块中通过`import` `+` (常量 | 函数 | 文件 | 模块)名的方式，将其导入，以便能够对其进行使用
 3. 在一个文件或模块中，`export`、`import`可以有多个，`export default`仅有一个
 4. 通过`export`方式导出，在导入时要加`{ }`，`export default`则不需要
+5. `export`能直接导出变量表达式，`export default`不行。
 
 ```js
 // 1. export
@@ -197,4 +233,53 @@ export default sex（sex不能加大括号）
 import any from "./a.js"
 import any12 from "./a.js"
 console.log(any,any12)   // boy,boy
+```
+
+例子:
+testEs6Export.js
+
+```js
+'use strict'
+//导出变量
+export const a = '100';
+
+ //导出方法
+export const dogSay = function(){
+    console.log('wang wang');
+}
+
+ //导出方法第二种
+function catSay(){
+   console.log('miao miao');
+}
+export { catSay };
+
+//export default导出
+const m = 100;
+export default m;
+//export defult const m = 100;// 这里不能写这种格式。
+```
+
+index.js
+
+```js
+//index.js
+'use strict'
+var express = require('express');
+var router = express.Router();
+import { dogSay, catSay } from './testEs6Export'; //导出了 export 方法
+import m from './testEs6Export';  //导出了 export default
+import * as testModule from './testEs6Export'; //as 集合成对象导出
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  dogSay();
+  catSay();
+  console.log(m);
+  testModule.dogSay();
+  console.log(testModule.m); // undefined , 因为  as 导出是 把 零散的 export 聚集在一起作为一个对象，而export default 是导出为 default属性。
+  console.log(testModule.default); // 100
+  res.send('恭喜你，成功验证');
+});
+module.exports = router;
 ```

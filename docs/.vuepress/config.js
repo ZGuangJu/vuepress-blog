@@ -214,7 +214,7 @@ module.exports = {
                 {
                     title: 'CSS',
                     collapsable: true,//是否折叠侧边栏
-                    children: ['CSS/css1', 'CSS/css2', 'CSS/css3', 'CSS/css4', 'CSS/css5', 'CSS/css6', 'CSS/css7', 'CSS/css8', 'CSS/css9', 'CSS/css10', 'CSS/css11']
+                    children: ['CSS/css1', 'CSS/css2', 'CSS/css3', 'CSS/css4', 'CSS/css5', 'CSS/css6', 'CSS/css7', 'CSS/css8', 'CSS/css9', 'CSS/css10', 'CSS/css11', 'CSS/css12']
                 },
                 {
                     title: 'CSS教程',
