@@ -10,27 +10,28 @@ publish: true
 ---
 ## js 数据类型
 
-- 基本数据类型(原始数据类型/值类型)
-  - `Number` :字符串
-  - `String` :数字
-  - `Boolean` :布尔
-  - `Symbol` :符号
-  - `BigInt` :任意大的整数(ES2015)
-
-- 引用数据类型
-  - `Object`
-    - `Object`:普通对象(`{}`、`new Object`)
-    - `Array`:数组对象(`[]`、`new Array`)
-    - `RegExp`:正则对象
-    - `Date`:日期对象
-    - `Math`:数学函数对象
-    - `Error`:错误（特殊对象）
-    - ...(细分)
-  - `Function` :方法(严格讲也是`Object`)
-
-- 特殊类型
-  - `Undefined` :未定义
-  - `Null` :空
+ | 分类                         | 类型                | 类型细分     | 说明                          |
+ | :--------------------------- | :------------------ | :----------- | :---------------------------- |
+ | 基本(原始)数据类型/值类型    |                     |              |                               |
+ |                              | [`Number`](#number) |              | 数字                          |
+ |                              | [`String`](#string) |              | 字符串                        |
+ |                              | `Boolean`           |              | 布尔                          |
+ |                              | `Symbol`            |              | 符号                          |
+ |                              | `BigInt`            |              | 任意大的整数(ES2015)          |
+ |                              | `···`               |              |                               |
+ | 引用数据类型                 |                     |              |                               |
+ |                              | `Object`            | `Object`     | 普通对象 (`{}`、`new Object`) |
+ |                              | --                  | `Array`      | 数组对象 (`[]`、`new Array`)  |
+ |                              | --                  | `RegExp`     | 正则对象                      |
+ |                              | --                  | `Date`       | 日期对象                      |
+ |                              | --                  | `Math`       | 数学函数对象                  |
+ |                              | --                  | `Error`      | 错误（特殊对象）              |
+ |                              | --                  | `···` (细分) |                               |
+ |                              | `Function`          |              | 方法 (严格讲也是`Object`)     |
+ | 特殊类型(有时也算作基本类型) |                     |              |                               |
+ |                              | `Undefined`         |              | 未定义                        |
+ |                              | `Null`              |              | 空                            |
+\* `Null`被`typeof`检测时会被当做`Object`，这是历史遗留问题.
 
 ## 数据类型检测方法(4种)
 
@@ -627,6 +628,11 @@ String()在转为字符串是一种更加安全的做法，底层使用的是 `t
 
 ## Object
 
+- 所有对象都有的方法
+  - `toLocaleString()`
+  - `toString()`
+  - `valueOf()`
+
 ### 普通对象
 
 `Object` 是以大括号`{}`表示 对象里面放的是键值对（key:value ）每一项还是以逗号分割 `key`(键名)和`value`(键值)以：分割
@@ -662,14 +668,19 @@ var ary2 = new Array(0, 'zhangsan', true);
 ```js
 var arry = [];
 var arry = [1, 2, 3];
+arry.length=7;
+console.log(arry)
+
 ```
 
 - 数组的访问 取值和赋值(通过索引)
 
 ```js
+
 //取值
 var ary = [1, 2, 3];
 console.log(ary[1]);
+console.log(arr[arr.length - 1])
 //赋值
 ary[1] = 4;
 ```
@@ -683,25 +694,167 @@ for (var i = 0; i < ary.length; i++) {
 }
 ```
 
-数组的长度 length 数组长度的添加 默认值 undefind
+数组的长度 `length` 数组长度的添加 (默认值 `undefind`)
 数组长度的减少 会删除多余的元素
 
 #### 方法
 
-1. `join(符号)` 数组转字符串，字符串会以 join 里面的字符串进行连接 如果不传值会以，号进行连接 不改变原数组
-2. `push` 把数组里面添加元素 位置是数组的后面
-3. `pop()` 删除数组最后一项
-4. `shift()` 删除数组的第一项
+- `Array` 方法总览
+  - 创建数组的方法
+    - `from()` --(es6)
+    - `of()`  --(es6)
+  - 检索数组的方法
+    - `isArray()`
+  - 检索数组内容的方法
+    - `keys()` --(es6)
+    - `values()` --(es6)
+    - `entries()` --(es6)
+  - 批量复制方法
+    - `copyWithin()` --(es6)
+  - 填充数组方法
+    - `fill()` --(es6)
+  - 栈方法(后进先出)
+    - `push()`
+    - `pop()`
+  - 队列方法
+    - `unshift()`
+    - `shift()`
+  - 排序方法
+    - `reverse()`
+    - `sort()`
+
+##### 对象上方法
+
+1. `Array.from()` 伪数组转真数组
+    - `Array.from()`从一个类似数组或可迭代对象创建一个新的，浅拷贝的数组实例。 可以通过以下方式来创建数组对象：
+      - 伪数组对象（拥有一个 `length` 属性和若干索引属性的任意对象）
+      - 可迭代对象（可以获取对象中的元素,如`Map`和 `Set` 等）
+
+```js
+// 语法： Array.from(arrayLike[, mapFn[, thisArg]])
+
+// 从 String 生成数组
+Array.from('foo');  // [ "f", "o", "o" ]
+
+// 从 Set 生成数组
+const set = new Set(['foo', 'bar', 'baz', 'foo']);
+Array.from(set);  // [ "foo", "bar", "baz" ]
+
+// 从类数组对象（arguments）生成数组
+function f() {
+  return Array.from(arguments);
+}
+f(1, 2, 3);  // [ 1, 2, 3 ]
+```
+
+2. `Array.isArray()`
+
+用于确定传递的值是否是一个 `Array`
+
+```js
+// 语法： Array.isArray(obj)
+Array.isArray([1, 2, 3]);
+// true
+Array.isArray({foo: 123});
+// false
+Array.isArray("foobar");
+// false
+Array.isArray(undefined);
+// false
+```
+
+3. `Array.of()`
+根据一组参数来创建新的数组实例，支持任意的参数数量和类型。
+用来判断某个变量是否是一个数组对象。
+
+##### 原型上方法
+
+1. `forEach()` 遍历数组
+
+```js
+fruits.forEach(function (item, index, array) {
+    console.log(item, index);
+});
+```
+
+2. `map()`
+
+3. `push` 添加元素到数组的末尾
+
+```js
+var newLength = fruits.push('Orange');
+// newLength:3; fruits: ["Apple", "Banana", "Orange"]
+```
+
+4. `pop()` 删除数组的最后一项元素
+
+```js
+var last = fruits.pop(); // remove Orange (from the end)
+// last: "Orange"; fruits: ["Apple", "Banana"];
+```
+
 5. `unshift` 往数组的最前面添加元素
-6. `reverse()` 数组倒序
-7. `concat` 合并数组 会把两个数组合并 不修改原数组
-8. `slice(start,end)` 截取数组 从 `start` 位置截取到 `end` 位置（不包含结束位置） 如果 `start` 是负数 表示从后往前截取
-9. `splice(index,howmany,item1,item2...)` 替换 如果不进行删除操作 `howmamy` 参数给 `0`.
-     `index` 开始位置
-     `howmany` 替换多少项
-     `item1...` 替换成什么
-10. `indexOf(查找第一次出现的索引)` 、`lastIndexOf(查找最后一次出现的索引)` 查找元素在数组中的位置 如果数组中不存在该元素返回-1
-11. `sort` 排序
+
+```js
+var newLength = fruits.unshift('Strawberry') // add to the front
+// ["Strawberry", "Banana"];
+```
+
+6. `shift()` 删除数组的第一项
+
+```js
+var first = fruits.shift(); // remove Apple from the front
+// first: "Apple"; fruits: ["Banana"];
+```
+
+7. `indexOf(查找第一次出现的索引)` 、`lastIndexOf(查找最后一次出现的索引)` 查找元素在数组中的位置 如果数组中不存在该元素返回-1
+
+```js
+fruits.push('Mango');
+// ["Strawberry", "Banana", "Mango"]
+
+var pos = fruits.indexOf('Banana');
+// 1
+```
+
+8. `splice(index,howmany,item1,item2...)` 替换 如果不进行删除操作 `howmamy` 参数给 `0`.
+     - `index` 开始位置
+     - `howmany` 替换多少项
+     - `item1...` 替换成什么
+
+```js
+// 删除一个元素
+var fruits = ["Strawberry", "Banana", "Mango"]
+var removedItem = fruits.splice(pos, 1); // this is how to remove an item
+// ["Strawberry", "Mango"]
+```
+
+```js
+// 删除多个元素
+var vegetables = ['Cabbage', 'Turnip', 'Radish', 'Carrot'];
+console.log(vegetables); // ["Cabbage", "Turnip", "Radish", "Carrot"]
+
+var pos = 1, n = 2;
+var removedItems = vegetables.splice(pos, n);
+// 这是删除项目的方法，n定义要删除的项目数
+// 从下标为（pos）的位置，向前到数组的末尾。
+
+console.log(vegetables); // ["Cabbage", "Carrot"] 原始数组已更改
+console.log(removedItems); // ["Turnip", "Radish"]
+```
+
+```js
+// 替换一个元素
+var fruits = ["Strawberry", "Banana", "Mango"]
+var removedItem = fruits.splice(pos, );
+// ["Strawberry", "Mango"]
+```
+
+2. `join(符号)` 数组转字符串，字符串会以 join 里面的字符串进行连接 如果不传值会以，号进行连接 不改变原数组
+3. `reverse()` 数组倒序
+4. `concat` 合并数组 会把两个数组合并 不修改原数组
+5. `slice(start,end)` 截取数组 从 `start` 位置截取到 `end` 位置（不包含结束位置） 如果 `start` 是负数 表示从后往前截取
+6. `sort` 排序
 
 ```js
 var b = [12, 3, 25, 20, 17];
@@ -742,7 +895,7 @@ b.sort(function (a, b) {
  funname(1,2,3)  //实参(实际传递的参数)
  ```
 
-- 函数需要接受这些参数 来进行一些js逻辑处理 函数接受的参数和传递的参数要一一对应 (形参)
+- 函数需要接受这些参数 来进行一些`js`逻辑处理 函数接受的参数和传递的参数要一一对应 (形参)
 
  ```js
  funciton funname(a,b){ //形参 用来接受实际参数
@@ -757,3 +910,10 @@ funciton a(){
   }
 a() // a执行的结果就是1
 ```
+
+## 总结
+
+- 字符串和Array都有的方法
+  - `toString()`转字符
+  - `concat()`拼接
+  - `splice()`替换 删除

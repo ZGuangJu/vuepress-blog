@@ -36,7 +36,11 @@
         <div class="boxitem">1</div>
     </div>
     <script>
-
+        var renderer = [1, 2, 3, 4, 5, 6];
+        console.log(renderer[1]);
+        renderer[1] = 'name';
+        // renderer['1'] != renderer[1]
+        console.log(renderer['1']);
     </script>
 
 </body>

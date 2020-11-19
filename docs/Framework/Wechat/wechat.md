@@ -112,6 +112,7 @@ console.log(appInstance.globalData) // I am global data
 ```js
 //index.js
 Page({
+    // 数据
   data: {
     text: "This is page data."
   },
@@ -170,6 +171,8 @@ Page({
 
 未指定 `entryPagePath` 时，数组的第一项代表小程序的初始页面（首页）。
 
+## 组件
+
 ```js
  "usingComponents": {
         "组件名": "../../components/swiper/swiper"
@@ -178,20 +181,7 @@ Page({
 
 获取组件传过来的参数，需要点`detail`才能拿到具体的值
 
-## 组件
-
 - `component`方法构造组件
-
-### 组件通信
-
-- 接收父组件传过来的值用 `properties`
-- 传递给父组件数据使用 `this.triggerEvent('事件名','数据')`
-
-- 声明组件必须在组件的`json`文件中配置：
-
-```js
-  "component": true,"
-```
 
 ### 内置的指令
 

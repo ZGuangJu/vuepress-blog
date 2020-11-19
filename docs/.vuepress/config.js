@@ -168,6 +168,7 @@ module.exports = {
                     { text: '项目总结', link: '/Project/shopingapp' },
                     { text: '学习内容', link: '/Other/' },
                     { text: '知识点', link: '/Other/知识点' },
+                    { text: '面试题', link: '/Other/面试题' },
                     { text: 'export区别', link: '/Other/export' },
                     { text: '变量常用名', link: '/Other/name' },
                     { text: '问题', link: '/Other/问题' },
@@ -283,7 +284,7 @@ module.exports = {
             '/Tools/': ['git', 'yarn', 'npm', 'cmd', 'nrm', 'markdown', 'vim', 'Trojan', 'vite', 'vuepress', 'upgrade', 'regex', 'typecho', 'centos', '宝塔', 'Eslint', 'vscode', 'wsl'],
             //小知识
             '/Other/': [
-                '', '问题', 'error', '知识点', 'export', 'name', '验证码', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome'
+                '', '问题', 'error', '知识点', '面试题', 'export', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome', '验证码'
             ],
         },
         // 友链

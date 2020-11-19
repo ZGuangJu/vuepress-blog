@@ -188,3 +188,18 @@ npm install 或者 yarn
 ```
 
 当使用 `npm` 命令的时候，`npm` 就会读取 `package.json`，然后会把你依赖清单里的名字全部下载下来。
+
+## 其他
+
+react引入的库
+
+```js
+// render
+react-dom
+//  路由
+react-route-dom
+react-route
+// redux
+react-Redux
+redux
+```
