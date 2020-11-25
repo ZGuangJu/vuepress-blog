@@ -159,6 +159,9 @@ or
 npm i [package-name] -S
 ```
 
+:::tip
+npm高版本 默认使加S的
+:::
 - `-D / --save-dev` 指定的包安装,信息自动更新到 `package.json` 的 `devDependencies`（开发阶段的依赖）下
 
 ```js

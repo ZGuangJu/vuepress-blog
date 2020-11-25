@@ -9,7 +9,7 @@ publish: true
 ---
 
 :::tip jsx是什么
-jsx就是 js + xml(html) ,虚拟DOM ,把真实DOM抽象成一个Object。
+`jsx`就是 `js` `+` `xml(html)` ,虚拟`DOM` ,把真实`DOM`抽象成一个`Object`。
 :::
 
 ## jsx 是怎样创建 DOM 的
@@ -20,7 +20,7 @@ let dom = <div className='a' c='1'>jsx<span>是什么</span></div>
 // 这一步内部是调用了React.createElement()方法,so 要在开头引入 React
 ```
 
-React内部实际操作
+`React`内部实际操作
 
 ```js
  let dom = /*#__PURE__*/React.createElement("div", {
@@ -128,7 +128,7 @@ let dom = <div><button onClick={() => alert('open')}>打开</button></div>
 </>
 ```
 
-11. `boolean``、Null` 以及 `Undefined` 渲染时将会忽略(但是是合法的)
+11. `boolean`、`Null` 以及 `Undefined` 渲染时将会忽略(但是是合法的)
 
 - 在组件⾥⾯我们通过`{}`在`JSX`⾥⾯渲染变量
 
@@ -136,6 +136,6 @@ let dom = <div><button onClick={() => alert('open')}>打开</button></div>
 
 - `Invalid` adj: 无效的
 
-- `reslove` adj: 解决的
+- `resolve` adj: 解决的
 
 - `reject` adj: 未解决的

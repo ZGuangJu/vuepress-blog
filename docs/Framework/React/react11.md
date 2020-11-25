@@ -9,6 +9,8 @@ publish: true
 ---
 ## Hooks
 
+让函数组件最大化拥有react全部特性，使开发维护更加健全。
+
 :::tip 提示
 
 - `React Hook`是在`v16.8.0`以后支持的

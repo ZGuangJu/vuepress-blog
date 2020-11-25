@@ -18,12 +18,13 @@ publish: true
 
 ```jsx
 const ThemContext = React.createContext() //初始化上下文对象
-//ThemContext 是自定义名称
+// ThemContext 定义上下文的对象(自定义名称)
 ```
 
 2. 使用
 
 - 2.1 发送
+
 祖先级组件用`<ThemContext.Rrovide></ThemContext.Rrovide>`(`XXX.Provider`)包裹，通过`value`属性进行数据传递。要传递的数据和方法都用`value={}`中的`{}`包起来。
 
 ```jsx
@@ -31,15 +32,18 @@ const ThemContext = React.createContext() //初始化上下文对象
 class App extends React.Component {
     render() {
         return <ThemContext.Provider value={{ money: this.state.money, consumMoney: this.consumMoney }} >
-            上下文,需要传递给谁，就写谁
+        {/* 用 XXX.Provider 包裹 组件名进行传递 ：需要传递给谁，就写谁 */}
+            <Crondson/>  {/* 组件名 */}
         </ThemContext.Provider>
     }
 }
 ```
 
 - 2.2 接收(并使用)
+
 `static contextType = ThemContext`
-接收数据的组件 通过定义 `static contextType` = [定义的上下文对象] 本组就会接收传递的数据和方法，传递的属性方法会挂载到`this.context`上面，通过`this.context`使用数据和方法。
+
+接收数据的组件 通过定义 `static contextType` = `定义的上下文对象` 本组就会接收传递的数据和方法，传递的属性方法会挂载到`this.context`上面，通过`this.context`使用数据和方法。
 
 ```jsx
 class Crondson extends React.Component {
@@ -90,6 +94,7 @@ class Children extends React.Component {
         </div>
     }
 }
+//  第一种方法 static contextType = ThemContext
 class Crondson extends React.Component {
     // 接收上下文对象
     static contextType = ThemContext
@@ -101,6 +106,16 @@ class Crondson extends React.Component {
             孙子组件
             <button onClick={() => this.context.consumMoney(10)}>花钱</button>
         </div>
+    }
+}
+//  第二种方法 子组件接收时也可用<theme.Consumer></theme.Consumer>
+class Crondson extends React.Component {
+    render() {
+        return(<theme.Consumer>
+            {(value) => {
+                return <>二孙子{value.money}<button onClick={() => value.consumMoney(10)}>花钱</button></>
+            }}
+        </theme.Consumer>)
     }
 }
 render(<App />, document.getElementById('root'))
@@ -155,7 +170,7 @@ class Children extends React.Component {
         </>
     }
 }
-// 下级组件通过 static contextType = [上下文对象] ，这样就能让this.context 拿到 上下文对象传递过来的值
+// 下级组件通过 static contextType = [上下文对象] ，这样就能让 this.context 拿到 上下文对象传递过来的值
 class Grandson1 extends React.Component {
     static contextType = theme
     render() {
