@@ -15,7 +15,7 @@ cd docs/.vuepress/dist
 # 3、提交
 git init
 git add -A
-git commit -m 'deploy-updata'
+git commit -m 'deploy-updata！'
 
 # 3-1、提交到github和gitee仓库仓库中
 
@@ -32,9 +32,9 @@ git push -f git@gitee.com:zguangju/ZGuangJu.git master
 
 # 提交到仓库
 
-cd E:/github/blog-vuepress
+cd D:/github/blog-vuepress
 git add .
-git commit -m 'update'
+git commit -m '又提交了！'
 git push origin master
 
 # 结束

@@ -32,6 +32,52 @@ sudo apt install wget
 wget [options] [url]
 ```
 
+## 查看端口占用和解除占用
+
+### netstat查看
+
+- 查看`8081`端口是否被占用
+
+```s
+netstat -anp | grep 8081
+```
+
+- 查看占用`8081`端口的进程
+
+```s
+fuser -v -n tcp 8081
+```
+
+- 杀死占用`8081`端口的进程
+
+```s
+kill -s 9 1154(自己的进程号).
+```
+
+`9`参数表示告诉操作系统直接杀死进程, 无论进程的状态是否可杀死;
+
+### `lsof`
+
+- `lsof`查看端口的占用情况
+
+```s
+lsof -i
+```
+
+注意: 若提示无此命令, 则需要安装, 命令`yum install -y lsof`
+
+- 查看某一端口的占用情况
+
+```s
+lsof -i:8081
+```
+
+- 杀死某个端口的所有进程
+
+```s
+killall sshd[就是端口的COMMAND]
+```
+
 ## Visual Studio Code
 
 在 `CentOS 8` 系统安装`Visual Studio Code` 最简单和最推荐的方式就是启用 `VS Code` 源，并且通过命令行安装 `VS Code` 软件包。

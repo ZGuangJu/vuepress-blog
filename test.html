@@ -9,18 +9,18 @@
     <title>Document</title>
     <style>
         .box {
-            height: 300px;
-            background: sandybrown;
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
             flex-wrap: wrap;
+            justify-content: space-between;
+            height: 300px;
+            background: sandybrown;
         }
 
         .boxitem {
-            border: 1px solid #000;
             width: 200px;
             height: 200px;
+            border: 1px solid #000;
             background: pink;
         }
     </style>
@@ -40,6 +40,11 @@
         <div class="boxitem">10</div>
     </div>
     <script>
+        console.log(eval([1, 2, 3, 4])); // expected output: 4
+
+        console.log(eval(new String('2 + 2')));// 2 + 2
+
+        console.log(eval('2 + 2') === eval('4'));//  true
 
     </script>
 

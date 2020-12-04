@@ -67,6 +67,8 @@ module.exports = {
         type: 'blog',
         // 右侧头像
         authorAvatar: '/headimg.jpeg',
+        // 代码显示样式
+        codeTheme: 'solarizedlight', // 'funky' \ 'okaidia' \ 'solarizedlight' \ 'tomorrow'
         // valine 评论设置
         valineConfig: {
             appId: 'HphnXJO6NChHtY50Di9q039D-MdYXbMMI',// your appId
@@ -275,7 +277,7 @@ module.exports = {
                 }
             ],
             // 项目
-            '/Project/': ['shopingapp', 'admin', 'project'],
+            '/Project/': ['shopingapp', 'admin', 'project', 'todolist'],
             '/Node/': ['node1', 'node2', 'package'],
             '/Webpack/': ['webpack1', 'webpack2', 'webpackconfigjs'],
             // 后端

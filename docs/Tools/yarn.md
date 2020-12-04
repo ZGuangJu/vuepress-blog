@@ -52,10 +52,28 @@ npm install -g yarn
 yarn -v   /   yarn --version
 ```
 
+:::warning
+
+运行`yarn`报错`此系统上禁止运行脚本`，可使用以下方法，试一下：
+
+1. 搜索`powershell`，右键以管理员身份运行
+
+2. 若要在本地计算机上运行您编写的未签名脚本和来自其他用户的签名脚本，请使用以下命令将计算机上的 执行策略更改为 `RemoteSigned`
+执行：`set-ExecutionPolicy RemoteSigned`
+
+3. 查看执行策略：`get-ExecutionPolicy`
+:::
+
 - 卸载`yarn`
 
 ```js
 npm uninstall -g yarn
+```
+
+- 清楚yarn的缓存
+
+```js
+yarn cache clean
 ```
 
 - 升级最新版本

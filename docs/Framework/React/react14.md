@@ -21,7 +21,7 @@ yarn add redux
 yarn add react-redux
 ```
 
-初始化
+## 初始化(`class`)
 
 ```js
 let store = createStore(reducer, state)
@@ -169,4 +169,82 @@ export default connect(
 )(App);
 // export default connect(mapStateToProps,mapDispatchToProps)(App)
 
+```
+
+## 函数组件
+
+- 页面 `App.jsx`
+
+```js
+// App.jsx
+import React, { useState } from 'react'
+// 引入仓库
+import Store from './store.js'
+export default function App() {
+    // 1. 初始 获取store数据
+    const [user, setUser] = useState(Store.getState())
+    console.log(user);
+    // 2. 发起修改动作
+    const changeUser = (type, value) => {
+        // 派发和指定修改数据的类型和值
+        Store.dispatch({
+            type,
+            value
+        })
+    }
+    // 3. 监听修改
+    Store.subscribe(() => {
+        // 重新获取修改后的数据  并通过Hooks 修改页面数据状态
+        setUser(Store.getState())
+    })
+    return (
+        <div>
+            {/* reducer */}
+            <h3>{user.name + user.age + user.job}</h3>
+            <button onClick={() => changeUser('ChangeName', '小王')}>修改</button>
+            <button onClick={() => changeUser('ChangeAge', 30)}>修改</button>
+        </div>
+    )
+}
+```
+
+- 仓库 `store`
+
+```js
+import { createStore } from 'redux'
+import Reducer from './reducer'
+// 1. 创建仓库
+// 2. 将纯函数 reducer 给新仓库
+const Store = createStore(Reducer)
+// 3. 仓库暴露出去
+export default Store
+```
+
+- 纯函数  `reducer.js`
+
+```js
+// reducer.js 一个纯函数 等价于vuex的state
+// 数据
+const initState = {
+    name: "小张",
+    age: 22,
+    job: "web"
+}
+const Reducer = (state = initState, action) => {
+    // 深拷贝数据，为修改数据后新旧值合并
+    let data = JSON.parse(JSON.stringify(state))
+    // 判断语句，根据 dispatch 传递进来的修改数据的类型返回对应（处理好）的数据
+    switch (action.type) {
+        case 'ChangeName':
+            data.name = action.value
+            return data
+        case 'ChangeAge':
+
+            data.age = action.value
+            return data
+        default:
+            return state
+    }
+}
+export default Reducer
 ```

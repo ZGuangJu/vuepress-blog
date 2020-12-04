@@ -646,6 +646,14 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
 
 ## Terminal 设置
 
+- 配置文件位置
+
+`Windows Terminal`的配置文件储存在:
+
+```js
+~\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\RoamingState\profiles.json
+```
+
 - 现用配置
 :::details
 
