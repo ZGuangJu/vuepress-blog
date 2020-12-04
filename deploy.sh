@@ -9,10 +9,10 @@ npm run build
 # 2、进入生成的文件夹
 cd docs/.vuepress/dist
 
+# 3、提交
 # 如果是发布到自定义域名
 # echo 'www.yourwebsite.com' > CNAME
 
-# 3、提交
 git init
 git add -A
 git commit -m 'deploy-updata！'
@@ -25,16 +25,18 @@ git commit -m 'deploy-updata！'
 # 如果你想要部署到 https://USERNAME.github.io
 # B 如果发布到 https://USERNAME.github.io/<REPO>  REPO=github上的项目
 
-# 提交到github和gitee
+# 提交到github
 git push -f git@github.com:ZGuangJu/ZGuangJu.github.io.git master
-
+# 提交到gitee
 git push -f git@gitee.com:zguangju/ZGuangJu.git master
 
-# 提交到仓库
-
+# 提交静态文件到部署的仓库结束
+# 开始提交源码
 cd D:/github/blog-vuepress
 git add .
 git commit -m '又提交了！'
 git push origin master
-
+# 提交源码到github结束
+git push -f git@gitee.com:zguangju/vuepress-blog.git master
+# 提交源码掉gitee结束
 # 结束
