@@ -1,53 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <!-- <meta http-equiv="refresh" content="5"> -->
+        <title>Document</title>
+        <style>
+            span {
+                display: block;
+                border: 1px solid rebeccapurple;
+                outline: salmon;
+            }
+            button {
+                outline: solid 5px red;
+            }
+            button:hover {
+                outline: solid 5px greenyellow;
+            }
+            button:active {
+                outline: solid 5px blue;
+            }
+            a:link {
+                color: slategray;
+            }
+            p {
+                /* display: inline; */
+                border: 1px solid rebeccapurple;
+            }
+            .exciting-text::before {
+                content: "<- 让人兴兴兴奋!";
+                color: green;
+            }
+            .boring-text::after {
+                content: "<- 无聊!";
+                color: red;
+            }
+        </style>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <meta http-equiv="refresh" content="5"> -->
-    <title>Document</title>
-    <style>
-        .box {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            height: 300px;
-            background: sandybrown;
-        }
-
-        .boxitem {
-            width: 200px;
-            height: 200px;
-            border: 1px solid #000;
-            background: pink;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="box">
-        <div class="boxitem">1</div>
-        <div class="boxitem">2</div>
-        <div class="boxitem">3</div>
-        <div class="boxitem">4</div>
-        <div class="boxitem">5</div>
-        <div class="boxitem">6</div>
-        <div class="boxitem">7</div>
-        <div class="boxitem">8</div>
-        <div class="boxitem">9</div>
-        <div class="boxitem">10</div>
-    </div>
-    <script>
-        console.log(eval([1, 2, 3, 4])); // expected output: 4
-
-        console.log(eval(new String('2 + 2')));// 2 + 2
-
-        console.log(eval('2 + 2') === eval('4'));//  true
-
-    </script>
-
-</body>
-
+    <body>
+        <p class="boring-text">这是些无聊的文字</p>
+        <p>这是不无聊也不有趣的文字</p>
+        <p class="exciting-text">
+            在MDN上做贡献简单又轻松。 按右上角的编辑按钮添加新示例或改进旧示例！
+        </p>
+        <script>
+            var x = new String("Hello world");
+            // 以上是实例化为字符串对象了
+            console.log(x); //String {"Hello world"}0: "H"1: "e"2: "l"3: "l"4: "o"5: " "6: "w"7: "o"8: "r"9: "l"10: "d"length: 11__proto__: String[[PrimitiveValue]]: "Hello world"
+            console.log(x.toString()); // test.html:53 Hello world
+        </script>
+    </body>
 </html>

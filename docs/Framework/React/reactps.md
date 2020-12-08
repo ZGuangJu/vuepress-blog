@@ -150,3 +150,46 @@ DAY 6
 
 react路由的匹配模式是贪婪模式。
 当地址栏发生改变BrowserRouter里的所有导航和route都会被匹配。
+DAY 7
+
+Redux 和 react-Redux
+redux 是一个独立的，单向数据流的全局状态管理器 ---状态机 （mobx）
+
+## 组成部分
+
+1. creactStore 创建仓库
+2. getState 获取状态
+3. dispatch 派发动作
+4. subscribe 订阅状态
+5. reducer 不是API，是用于创建仓库的核心，里面是state
+6. action 也不是API ，纯函数
+
+### 安装中间件
+
+- applyMiddleware
+
+### 第三方插件
+
+- 在派发中执行异步代码 redux-thunk
+
+### 核心概念
+
+1. `reducer`：是一个纯函数，只对`state`业务操作，不做和`state`无关的事，都要是同步代码，不能有异步。
+2. `reducer`中的`state`：一个只读的对象数据，不可以直接修改，因为被`redux`监听保护，每次都是在`reducer`里返回一个新的对象数据，由`redux`进行新旧数据处理。
+3. 数据流：自上而下，单项数据流。
+
+## react-redux
+
+`react-redux`就是用来配合`redux`进行优雅，方便，快速的开发。
+
+### Provider 组件
+
+在项目的根节点，使用`Provider`包裹，还组件接受一个必须的属性`store` ，使用`store`属性接受自定义的`redux`仓库对象
+
+`Provider`里封装了`subscribe`订阅函数，极大的方便了我们使用`redux`
+
+### connect 函数
+
+高阶函数
+语法：`connect(mapStateToProps,mapDispatchToProps)`
+作用：将`store`里的状态和派发动作映射到组件的属性`props`上。

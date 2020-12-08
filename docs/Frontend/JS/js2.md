@@ -329,7 +329,7 @@ console.log(num);           // 10
 console.log(typeof num);    // number
 ```
 
-\* 该方法通常是由 JavaScript 引擎在内部隐式调用的，而不是由用户在代码中显式调用的。
+\* 该方法通常是由 `JavaScript` 引擎在内部隐式调用的，而不是由用户在代码中显式调用的。
 
 ### 转数字的方法
 
@@ -351,7 +351,7 @@ console.log(typeof num);    // number
 
 2. `parseFloat(value)`(内置函数):用以解析浮点数字符串，与`parseInt()`不同的地方是，`parseFloat()` 只应用于解析十进制数字
 
-3. `Number` 直接调用浏览器最底层的数据类型检测机制来完成
+3. `Number(value)` 直接调用浏览器最底层的数据类型检测机制来完成
 
 > 1. 字符串转数字 一旦字符串出现非有效数字 结果是`NaN` 只有都是有效数字结果才能转换为具体的数字，空字符串转换为`0`
 >
@@ -488,6 +488,7 @@ console.log(typeof s_obj);  // Logs "object"
 ### String 的对象方法
 
 1. `String(value)`
+
 将`value`转换为字符串
 
 ```js
@@ -505,7 +506,8 @@ console.log(typeof s_obj);  // Logs "object"
 ```
 
 2. `String.fromCharCode()` (静态)
-通过一串 Unicode 创建字符串,该方法返回一个字符串，而不是一个  String 对象。
+
+通过一串 `Unicode` 创建字符串,该方法返回一个字符串，而不是一个  `String` 对象。
 
 ```js
 String.fromCharCode(65, 66, 67);   // 返回 "ABC"
@@ -515,7 +517,8 @@ String.fromCharCode(8212);         // 也是返回 "—"; 8212 是 0x2014 的十
 ```
 
 3. `String.fromCodePoint()` (实验性)
-通过一串 码点 创建字符串
+
+通过一串 “码点” 创建字符串
 
 ```js
 String.fromCodePoint(42);       // "*"
@@ -530,21 +533,31 @@ String.fromCodePoint(0x1D306, 0x61, 0x1D307) // "\uD834\uDF06a\uD834\uDF07"
 console.log(String.fromCodePoint(0x2F804)); // or 194564 in decimal
 ```
 
-4. `String.raw()`(实验性)
+4. `String.raw(callSite, ...substitutions)`(实验性)
+
+```js
+String.raw(callSite, ...substitutions)
+//或
+String.raw `templateString`
+```
+
 是一个模板字符串的标签函数
-   - `String.raw(callSite, ...substitutions)`
-     - `callSite`:一个模板字符串的`调用点对象`。类似`{ raw: ['foo', 'bar', 'baz'] }`。
-     - `...substitutions`:任意个可选的参数，表示任意个内插表达式对应的值。
-     - `templateString`:模板字符串，可包含占位符`${...}`。
+
+- 参数
+  - `callSite`:一个模板字符串的`调用点对象`。类似`{ raw: ['foo', 'bar', 'baz'] }`。
+  - `...substitutions`:任意个可选的参数，表示任意个内插表达式对应的值。
+  - `templateString`:模板字符串，可包含占位符`${...}`。
 
 ### String 的原型方法
 
-都是基于原型的方法`String.prototype.charAt()`
+都是基于原型的方法,如:`String.prototype.charAt()`
 
-1. `charAt()`
-获取字符串的某个字符(截取字符串)
+1. `String.prototype.charAt(index)` 不改变原字符串，返回一个新字符串
 
-语法：`charAt(index)`:`index`表示截取字符串中的哪个索引;字符串中的每个字符对应字符串的索引(`index`)
+从一个字符串中返回指定的字符。就是获取字符串的某个字符(截取字符串)
+
+- 参数
+  - `index`:索引,字符串中的每个字符对应字符串的索引(`index`),一个介于`0`和字符串长度减`1`之间的整数。 (`0~length-1`)。如果没有提供索引，`charAt()` 将使用`0`,如果`index`超出原字符串索引值，将返回一个空字符串。
 
 ```js
 var str  = 'hello'
@@ -552,19 +565,629 @@ str.charAt(0)
 str[0]
 return 'cat'.charAt(1); // returns "a"
 return 'cat'[1]; // returns "a"
+var anyString = "Brave new world";
+var end = anyString.charAt(0)
+var end2 = anyString.charAt(20)
+console.log(anyString); //"Brave new world"
+console.log(end); // 'B'
+console.log(end2); //''
 ```
 
-1. `charCodeAt()`
+2. `String.prototype.concat(str1,str2, [...strN])` 有返回值,不改变原字符串，返回一个新字符串
 
-2. `concat()` 拼接 把两个字符串拼在一起
+拼接,把两个字符串拼在一起，返回一个新的字符串，包含参数所提供的连接字符串。
+
+- 参数
+  - `str1,str2 ,[...strN]`:需要连接到 `str` 的字符串。
 
 ```js
- var str  = 'hello'
- var str2= 'world'
- var str3  = str.concat(str2)
+var str = 'hello'
+var str1 = 'world'
+var str2 = '!'
+var str3 = str.concat(str1, str2)
+console.log(str) //'hello'
+console.log(str1) //'world'
+console.log(str2) //'!'
+console.log(str3) //'helloworld!'
+let greetList = ['Hello', ' ', 'Venkat', '!']
+"".concat(...greetList)  // "Hello Venkat!"
+"".concat({})    // [object Object]
+"".concat([])    // ""
+"".concat(null)  // "null"
+"".concat(true)  // "true"
+"".concat(4, 5)  // "45"
 ```
 
-5. `slice/substr/substring(index,value)` 截取字符串的多个
+强烈建议使用赋值操作符（`+`, `+=`）代替 `concat()` 方法。
+
+3. `String.prototype.includes(searchString[, position])`(ES6)不改变原字符，返回`boolean`值
+
+用于判断一个字符串是否包含在另一个字符串中，根据情况返回 `true` 或 `false`。
+
+- 参数
+  - `searchString`:要在此字符串中搜索的字符串。
+  - `position`(可选):从当前字符串的哪个索引位置开始搜寻子字符串，默认值为 `0`。
+
+```js
+'Blue Whale'.includes('blue'); //  false 区分大小写
+ var str = 'To be, or not to be, that is the question.';
+console.log(str.includes('To be'));       // true
+console.log(str.includes('Tobe'));       // false 注意空格
+console.log(str.includes('question'));    // true
+console.log(str.includes('nonexistent')); // false
+console.log(str.includes('To be', 1));    // false
+console.log(str.includes('to be', 1));    // true
+console.log(str.includes('TO BE'));       // false
+```
+
+兼容补丁
+
+```js
+if (!String.prototype.includes) {
+  String.prototype.includes = function(search, start) {
+    'use strict';
+    if (typeof start !== 'number') {
+      start = 0;
+    }
+
+    if (start + search.length > this.length) {
+      return false;
+    } else {
+      return this.indexOf(search, start) !== -1;
+    }
+  };
+}
+```
+
+:::warning 注
+`includes()` 方法是区分大小写的
+:::
+
+4. `String.prototype.endsWith(searchString[, length])`(ES6)不改变原字符，返回`boolean`值
+
+用来判断当前字符串是否是以另外一个给定的子字符串“结尾”的，根据判断结果返回 `true` 或 `false`。
+
+- 参数
+  - `searchString`:要搜索的子字符串。
+  - `length`(可选):作为 `String` 的长度。默认值为 `String.length`。(不理解，要测试)
+
+```js
+const str1 = 'Cats are the best!';
+
+console.log(str1.endsWith('best', 17));
+// expected output: true
+
+const str2 = 'Is this a question';
+
+console.log(str2.endsWith('?'));
+// expected output: false
+
+var str = "To be, or not to be, that is the question.";
+
+alert( str.endsWith("question.") );  // true
+alert( str.endsWith("to be") );      // false
+alert( str.endsWith("to be", 19) );  // true
+```
+
+兼容补丁
+
+```js
+if (!String.prototype.endsWith) {
+ String.prototype.endsWith = function(search, this_len) {
+  if (this_len === undefined || this_len > this.length) {
+   this_len = this.length;
+  }
+  return this.substring(this_len - search.length, this_len) === search;
+ };
+}
+```
+
+:::warning 注
+`endsWith()` 方法是区分大小写的,大小写敏感
+:::
+
+5. `String.prototype.indexOf(searchValue [, fromIndex])` 不改原字符，有返回值--索引值
+
+返回值是调用它的 `String` 对象中**第一次**出现的指定值的索引，从 `fromIndex`处进行搜索。如果未找到该值，则返回 `-1`。(字符串中的字符被从左向右索引。第一个字符的索引（`index`）是 `0`，变量名为 `stringName` 的字符串的最后一个字符的索引是 `stringName.length - 1` )。
+
+- 参数
+  - `searchValue`:要被查找的字符串值。
+  - `fromIndex` (可选):数字表示开始查找的位置。可以是任意整数，默认值为`0`。
+
+:::details 参数详情
+
+- `searchValue`:要被查找的字符串值。
+
+如果没有提供确切地提供字符串，`searchValue` 会被强制设置为 `"undefined"`， 然后在当前字符串中查找这个值。
+举个例子：`'undefined'.indexOf()` 将会返回`0`，因为 `undefined` 在位置0处被找到，但是 `'undefine'.indexOf()` 将会返回 `-1` ，因为字符串 `'undefined'` 未被找到。
+
+- `fromIndex` (可选):数字表示开始查找的位置。可以是任意整数，默认值为`0`。
+
+如果 `fromIndex` 的值小于 `0`，或者大于 `str.length`，那么查找分别从 `0` 和`str.length` 开始。（译者注：  `fromIndex` 的值小于 `0`，等同于为空情况； `fromIndex` 的值大于或等于 `str.length` ，那么结果会直接返回 `-1` 。）
+:::
+
+:::details 返回值
+查找的字符串 `searchValue` 的第一次出现的索引，如果没有找到，则返回 -1。
+
+若被查找的字符串 `searchValue` 是一个空字符串，将会产生“奇怪”的结果。如果 `fromIndex` 值为空，或者 `fromIndex` 值小于被查找的字符串的长度，返回值和以下的 `fromIndex` 值一样：
+
+```js
+'hello world'.indexOf('') // 返回 0
+'hello world'.indexOf('', 0) // 返回 0
+'hello world'.indexOf('', 3) // 返回 3
+'hello world'.indexOf('', 8) // 返回 8
+```
+
+另外，如果 fromIndex 值大于等于字符串的长度，将会直接返回字符串的长度（str.length）：
+
+```js
+'hello world'.indexOf('', 11) // 返回 11
+'hello world'.indexOf('', 13) // 返回 11
+'hello world'.indexOf('', 22) // 返回 11
+```
+
+:::
+
+```js
+"Blue Whale".indexOf("Blue")       // 返回 0
+"Blue Whale".indexOf("Blute")      // 返回 -1
+"Blue Whale".indexOf("Whale", 0)   // 返回 5
+"Blue Whale".indexOf("Whale", 5)   // 返回 5
+"Blue Whale".indexOf("", -1)       // 返回 0
+"Blue Whale".indexOf("", 9)        // 返回 9
+"Blue Whale".indexOf("", 10)       // 返回 10
+"Blue Whale".indexOf("", 11)       // 返回 10
+//使用indexOf() 和 lastIndexOf()
+var anyString = "Brave new world";
+console.log("The index of the first w from the beginning is " + anyString.indexOf("w"));// logs 8
+console.log("The index of the first w from the end is " + anyString.lastIndexOf("w"));// logs 10
+console.log("The index of 'new' from the beginning is " + anyString.indexOf("new")); // logs 6
+console.log("The index of 'new' from the end is " + anyString.lastIndexOf("new"));// logs 6
+```
+
+:::warning 注
+`indexOf` 方法是区分大小写的。例如，下面的表达式将返回 `-1`：
+
+```js
+"Blue Whale".indexOf("blue")      // 返回 -1
+```
+
+- 注意 `0` 并不会被当成 `true` ，`-1` 不会被当成 `false` 。所以当检测某个字符串是否存在于另一个字符串中时，可使用下面的方法：
+
+```js
+'Blue Whale'.indexOf('Blue') !== -1    // true
+'Blue Whale'.indexOf('Bloe') !== -1    // false
+~('Blue Whale'.indexOf('Bloe'))        // 0, 这是一种错误用法
+```
+
+[(MDN详情](<https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf>)
+:::
+
+6. `String.prototype.lastIndexOf(searchValue[, fromIndex])`不改原字符，有返回值--索引值
+
+返回调用`String`对象的指定值最后一次出现的索引，在一个字符串中的指定位置 `fromIndex`处从后向前搜索。如果没找到这个特定值则返回`-1` 。
+
+- 参数
+  - `searchValue`:一个字符串，表示被查找的值。如果searchValue是空字符串，则返回`fromIndex`。
+  - `fromIndex`(可选):待匹配字符串`searchValue`的开头一位字符从 `String`的第`fromIndex`位开始向左回向查找。`fromIndex`默认值是 `+Infinity`。如果 `fromIndex >= str.length` ，则会搜索整个字符串。如果 `fromIndex < 0` ，则等同于 `fromIndex == 0`。
+
+```js
+'canal'.lastIndexOf('a');     // returns 3 （没有指明fromIndex则从末尾l处开始反向检索到的第一个a出现在l的后面，即index为3的位置）
+'canal'.lastIndexOf('a', 2);  // returns 1（指明fromIndex为2则从n处反向向回检索到其后面就是a，即index为1的位置）
+'canal'.lastIndexOf('a', 0);  // returns -1(指明fromIndex为0则从c处向左回向检索a发现没有，故返回-1)
+'canal'.lastIndexOf('x');     // returns -1
+'canal'.lastIndexOf('c', -5); // returns 0（指明fromIndex为-5则视同0，从c处向左回向查找发现自己就是，故返回0）
+'canal'.lastIndexOf('c', 0);  // returns 0（指明fromIndex为0则从c处向左回向查找c发现自己就是，故返回自己的索引0）
+'canal'.lastIndexOf('');      // returns 5
+'canal'.lastIndexOf('', 2);   // returns 2
+```
+
+:::warning
+`lastIndexOf` 方法区分大小写。例如，下面的表达式返回 `-1`：
+
+```js
+"Blue Whale, Killer Whale".lastIndexOf("blue"); // returns -1
+```
+
+:::
+7. `String.prototype.match(regexp)` 有返回值
+
+检索返回一个字符串匹配正则表达式的结果。
+
+- 参数
+  - `regexp`:一个正则表达式对象。如果传入一个非正则表达式对象，则会隐式地使用 `new RegExp(obj)` 将其转换为一个 `RegExp`,如果你没有给出任何参数并直接使用`match()` 方法 ，你将会得到一 个包含空字符串的 `Array ：[""]` 。
+
+```js
+const paragraph = 'The quick brown fox jumps over the lazy dog. It barked.';
+const regex = /[A-Z]/g;
+const found = paragraph.match(regex);
+console.log(found);
+// expected output: Array ["T", "I"]
+```
+
+8. `String.prototype.padEnd(targetLength [, padString])` 有返回值
+
+用一个字符串填充当前字符串（如果需要的话则重复填充），返回填充后达到指定长度的字符串。从当前字符串的末尾（右侧）开始填充
+
+- 参数
+  - `targetLength`:当前字符串需要填充到的目标长度。如果这个数值小于当前字符串的长度，则返回当前字符串本身。
+  - `padString`(可选):填充字符串。如果字符串太长，使填充后的字符串长度超过了目标长度，则只保留最左侧的部分，其他部分会被截断。此参数的缺省值为 `" "`（`U+0020`）。
+
+- 返回值:在原字符串末尾填充指定的填充字符串直到目标长度所形成的新字符串
+
+```js
+'abc'.padEnd(10);          // "abc       "
+'abc'.padEnd(10, "foo");   // "abcfoofoof"
+'abc'.padEnd(6, "123456"); // "abc123"
+'abc'.padEnd(1);           // "abc"
+```
+
+9. `String.prototype.padStart(targetLength [, padString])` 有返回值
+
+用另一个字符串填充当前字符串(如果需要的话，会重复多次)，以便产生的字符串达到给定的长度。从当前字符串的左侧开始填充。(正和padEnd相反)
+
+- 参数
+  - `targetLength`:当前字符串需要填充到的目标长度。如果这个数值小于当前字符串的长度，则返回当前字符串本身。
+  - `padString`(可选):填充字符串。如果字符串太长，使填充后的字符串长度超过了目标长度，则只保留最左侧的部分，其他部分会被截断。此参数的默认值为 `" "`（`U+0020`）。
+
+- 返回值:在原字符串开头填充指定的填充字符串直到目标长度所形成的新字符串。
+
+```js
+'abc'.padStart(10);         // "       abc"
+'abc'.padStart(10, "foo");  // "foofoofabc"
+'abc'.padStart(6,"123465"); // "123abc"
+'abc'.padStart(8, "0");     // "00000abc"
+'abc'.padStart(1);          // "abc"
+```
+
+10. `String.prototype.repeat(count)`
+
+返回指定重复次数的由元素组成的字符串对象。
+
+- 参数
+  - `count`:介于 `0` 和 `+Infinity` 之间的整数。表示在新构造的字符串中重复了多少遍原字符串。
+
+- 返回值: 包含指定字符串的指定数量副本的新字符串。
+
+```js
+"abc".repeat(-1)     // RangeError: repeat count must be positive and less than inifinity
+"abc".repeat(0)      // ""
+"abc".repeat(1)      // "abc"
+"abc".repeat(2)      // "abcabc"
+"abc".repeat(3.5)    // "abcabcabc" 参数count将会被自动转换成整数.
+"abc".repeat(1/0)    // RangeError: repeat count must be positive and less than inifinity --重复计数必须为正且小于无穷大
+({toString : () => "abc", repeat : String.prototype.repeat}).repeat(2)
+//"abcabc",repeat是一个通用方法,也就是它的调用者可以不是一个字符串对象.
+```
+
+11. `String.prototype.replace(regexp|substr, newSubStr|function)`
+
+返回一个由替换值（`replacement`）替换部分或所有的模式（`pattern`）匹配项后的新字符串。模式可以是一个字符串或者一个正则表达式，替换值可以是一个字符串或者一个每次匹配都要调用的回调函数。如果`pattern`是字符串，则仅替换第一个匹配项。
+
+**原字符串不会改变。**
+
+- 参数
+  - `regexp (pattern)`:一个`RegExp` 对象或者其字面量。该正则所匹配的内容会被第二个参数的返回值替换掉。
+  - `substr (pattern)`:一个将被 `newSubStr` 替换的 字符串。其被视为一整个字符串，而不是一个正则表达式。仅第一个匹配项会被替换。
+  - `newSubStr (replacement)`:用于替换掉第一个参数在原字符串中的匹配部分的字符串。该字符串中可以内插一些特殊的变量名。参考下面的使用字符串作为参数。
+  - `function (replacement)`:一个用来创建新子字符串的函数，该函数的返回值将替换掉第一个参数匹配到的结果。参考下面的指定一个函数作为参数。
+
+- 返回值:一个部分或全部匹配由替代模式所取代的新的字符串。
+
+替换字符串可以插入特殊变量名：[MDN详情](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace)
+
+12. `String.prototype.search(regexp)`
+
+`search()` 方法执行正则表达式和 `String` 对象之间的一个搜索匹配。
+
+- 参数
+  - `regexp`:一个正则表达式（`regular expression`）对象; 如果传入一个非正则表达式对象 `regexp`，则会使用 `new RegExp(regexp)` 隐式地将其转换为正则表达式对象。
+
+- 返回值:如果匹配成功，则 `search()` 返回正则表达式在字符串中首次匹配项的索引;否则，返回 `-1`。
+
+```js
+var str = "hey JudE";
+var re = /[A-Z]/g;
+var re2 = /[.]/g;
+console.log(str.search(re)); // returns 4, which is the index of the first capital letter "J"
+console.log(str.search(re2)); // returns -1 cannot find '.' dot punctuation
+```
+
+13. `String.prototype.slice(beginIndex[, endIndex])`
+
+`slice()` 方法提取某个字符串的一部分，并返回一个新的字符串，且不会改动原字符串。
+
+- 参数
+  - `beginIndex`:从该索引（以 `0` 为基数）处开始提取原字符串中的字符。如果值为负数，会被当做 `strLength + beginIndex` 看待，这里的`strLength` 是字符串的长度（例如， 如果 `beginIndex` 是 `-3` 则看作是：`strLength - 3`）
+  - `endIndex`(可选):在该索引（以 `0` 为基数）处结束提取字符串。如果省略该参数，`slice()` 会一直提取到字符串末尾。如果该参数为负数，则被看作是 `strLength + endIndex`，这里的 `strLength` 就是字符串的长度(例如，如果 `endIndex` 是 `-3`，则是, `strLength - 3`)。
+
+- 返回值: 返回一个从原字符串中提取出来的新字符串
+
+- `slice()` 提取的新字符串包括`beginIndex`但不包括 `endIndex`(包前不包后)
+
+下面例子使用 `slice()` 创建了一个新字符串。
+
+```js
+var str1 = 'The morning is upon us.', // str1 的长度 length 是 23。
+    str2 = str1.slice(1, 8),
+    str3 = str1.slice(4, -2),
+    str4 = str1.slice(12),
+    str5 = str1.slice(30);
+console.log(str2); // 输出：he morn
+console.log(str3); // 输出：morning is upon u
+console.log(str4); // 输出：is upon us.
+console.log(str5); // 输出：""
+```
+
+下面的例子在使用`slice()` 时传入了负值作为索引。
+
+```js
+var str = 'The morning is upon us.';
+str.slice(-3);     // 返回 'us.'
+str.slice(-3, -1); // 返回 'us'
+str.slice(0, -1);  // 返回 'The morning is upon us'
+```
+
+14. `String.prototype.split([separator[, limit]])`
+
+`split()` 方法使用指定的分隔符字符串将一个`String`对象分割成子字符串数组，以一个指定的分割字串来决定每个拆分的位置。
+
+- 参数
+  - `separator`指定表示每个拆分应发生的点的字符串。`separator` 可以是一个字符串或正则表达式。 如果纯文本分隔符包含多个字符，则必须找到整个字符串来表示分割点。如果在str中省略或不出现分隔符，则返回的数组包含一个由整个字符串组成的元素。如果分隔符为空字符串，则将str原字符串中每个字符的数组形式返回。
+  - `limit`一个整数，限定返回的分割片段数量。当提供此参数时，`split` 方法会在指定分隔符的每次出现时分割该字符串，但在限制条目已放入数组时停止。如果在达到指定限制之前达到字符串的末尾，它可能仍然包含少于限制的条目。新数组中不返回剩下的文本。
+
+- 返回值:返回源字符串以分隔符出现位置分隔而成的一个`Array`
+
+例
+
+```js
+function splitString(stringToSplit, separator) {
+  var arrayOfStrings = stringToSplit.split(separator);
+
+  console.log('The original string is: "' + stringToSplit + '"');
+  console.log('The separator is: "' + separator + '"');
+  console.log("The array has " + arrayOfStrings.length + " elements: ");
+
+  for (var i=0; i < arrayOfStrings.length; i++)
+    console.log(arrayOfStrings[i] + " / ");
+}
+
+var tempestString = "Oh brave new world that has such people in it.";
+var monthString = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec";
+
+var space = " ";
+var comma = ",";
+
+splitString(tempestString, space);
+splitString(tempestString);
+splitString(monthString, comma);
+//输出
+//The original string is: "Oh brave new world that has such people in it."
+//The separator is: " "
+//The array has 10 elements: Oh / brave / new / world / that / has / such / people / in / it. /
+
+//The original string is: "Oh brave new world that has such people in it."
+//The separator is: "undefined"
+//The array has 1 elements: Oh brave new world that has such people in it. /
+
+//The original string is: "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
+//The separator is: ","
+//The array has 12 elements: Jan / Feb / Mar / Apr / May / Jun / Jul / Aug / Sep / Oct / Nov / Dec /
+```
+
+:::details 更多
+
+- 移出字符串中的空格
+
+下例中，`split()` 方法会查找`0` 或多个空白符接着的分号，再接着 `0` 或多个空白符”模式的字符串，找到后，就将空白符从字符串中移除，`nameList` 是 `split` 的返回数组。
+
+```js
+var names = "Harry Trump ;Fred Barney; Helen Rigby ; Bill Abel ;Chris Hand ";
+
+console.log(names);
+
+var re = /\s*(?:;|$)\s*/;
+var nameList = names.split(re);
+
+console.log(nameList);
+```
+
+上例输出两行，第一行输出原始字符串，第二行输出结果数组。
+
+```js
+Harry Trump ;Fred Barney; Helen Rigby ; Bill Abel ;Chris Hand
+[ "Harry Trump", "Fred Barney", "Helen Rigby", "Bill Abel", "Chris Hand", "" ]
+```
+
+- 限制返回值中分割元素数量
+
+下例中，`split`查找字符串中的 `0` 或多个空格，并返回找到的前 `3` 个分割元素（`splits`）。
+
+```js
+var myString = "Hello World. How are you doing?";
+var splits = myString.split(" ", 3);
+
+console.log(splits); //["Hello", "World.", "How"]
+```
+
+- 使用一个数组来作为分隔符
+
+```js
+const myString = 'this|is|a|Test';
+const splits = myString.split(['|']);
+
+console.log(splits); //["this", "is", "a", "Test"]
+
+const myString = 'ca,bc,a,bca,bca,bc';
+
+const splits = myString.split(['a','b']);
+// myString.split(['a','b']) is same as myString.split(String(['a','b']))
+
+console.log(splits);  //["c", "c,", "c", "c", "c"]
+```
+
+- 用split()来颠倒字符串顺序
+
+```js
+const str = 'asdfghjkl';
+const strReverse = str.split('').reverse().join(''); // 'lkjhgfdsa'
+// split()返回一个数组，可以在该数组上应用reverse()和join()
+```
+
+:::
+15. `String.prototype.startsWith(searchString[, position])` 有返回值
+
+`startsWith()` 方法用来判断当前字符串是否以另外一个给定的子字符串开头，并根据判断结果返回 `true` 或 `false`。
+
+- 参数
+  - `searchString`:要搜索的子字符串。
+  - `position` (可选):在 `str` 中搜索 `searchString` 的开始位置，默认值为 `0`。
+
+- 返回值:如果在字符串的开头找到了给定的字符则返回`true`；否则返回`false`。
+
+```js
+var str = "To be, or not to be, that is the question.";
+
+alert(str.startsWith("To be"));         // true
+alert(str.startsWith("not to be"));     // false
+alert(str.startsWith("not to be", 10)); // true
+```
+
+16. `String.prototype.substring(indexStart,[indexEnd])`
+`substring()` 方法返回一个字符串在开始索引到结束索引之间的一个子集, 或从开始索引直到字符串的末尾的一个子集。`substring` 提取从 `indexStart` 到 `indexEnd`（不包括）之间的字符。
+
+- 参数
+  - `indexStart`:需要截取的第一个字符的索引，该索引位置的字符作为返回的字符串的首字母。
+  - `indexEnd`:可选。一个 0 到字符串长度之间的整数，以该数字为索引的字符不包含在截取的字符串内。
+
+:::details 参数详解
+`substring` 提取从 `indexStart` 到 `indexEnd`（不包括）之间的字符。特别地：
+
+- 如果 `indexStart` 等于 `indexEnd`，`substring` 返回一个空字符串。
+- 如果省略 `indexEnd`，`substring` 提取字符一直到字符串末尾。
+- 如果任一参数小于 `0` 或为 `NaN`，则被当作 `0`。
+- 如果任一参数大于`stringName.length`，则被当作 `stringName.length`。
+- 如果 `indexStart` 大于 `indexEnd`，则 `substring` 的执行效果就像两个参数调换了一样。见下面的例子。
+:::
+
+- 返回值:包含给定字符串的指定部分的新字符串。
+
+```js
+var anyString = "Mozilla";
+// 输出 "Moz"
+console.log(anyString.substring(0,3));
+console.log(anyString.substring(3,0));
+console.log(anyString.substring(3,-3));
+console.log(anyString.substring(3,NaN));
+console.log(anyString.substring(-2,3));
+console.log(anyString.substring(NaN,3));
+// 输出 "lla"
+console.log(anyString.substring(4,7));
+console.log(anyString.substring(7,4));
+// 输出 ""
+console.log(anyString.substring(4,4));
+// 输出 "Mozill"
+console.log(anyString.substring(0,6));
+// 输出 "Mozilla"
+console.log(anyString.substring(0,7));
+console.log(anyString.substring(0,10));
+```
+
+17. `String.prototype.toLocaleLowerCase()`
+`toLocaleLowerCase()`方法根据任何指定区域语言环境设置的大小写映射，返回调用字符串被转换为小写的格式。
+
+```js
+str.toLocaleLowerCase()
+str.toLocaleLowerCase(locale)
+str.toLocaleLowerCase([locale, locale, ...])
+```
+
+- 参数
+  - `locale` (可选):参数 `locale` 指明要转换成小写格式的特定语言区域。 如果以一个数组 `Array`形式给出多个`locales`,  最合适的地区将被选出来应用（参见`best available locale`）。默认的`locale`是主机环境的当前区域(`locale`)设置。(一般不用参数)
+- 返回值:根据任何特定于语言环境的案例映射规则将被调用字串转换成小写格式的一个新字符串。
+
+:::details 详解
+`toLocaleLowerCase()` 方法返回根据任意区域语言大小写映射集而转换成小写格式的字符串。`toLocaleLowerCase()` 并不会影响字符串原本的值。在大多数情况下，该方法和调用 `toLowerCase()`的结果相同，但是在某些区域环境中，比如土耳其语，它的大小写映射并不遵循在`Unicode`中的默认的大小写映射，因此会有一个不同的结果。
+:::
+
+```js
+'ALPHABET'.toLocaleLowerCase(); // 'alphabet'
+
+'\u0130'.toLocaleLowerCase('tr') === 'i';    // true
+'\u0130'.toLocaleLowerCase('en-US') === 'i'; // false
+
+let locales = ['tr', 'TR', 'tr-TR', 'tr-u-co-search', 'tr-x-turkish'];
+'\u0130'.toLocaleLowerCase(locales) === 'i'; // true
+```
+
+18. `String.prototype.toLocaleUpperCase()` 转大写
+`toLocaleUpperCase()` 方法根据本地主机语言环境把字符串转换为大写格式，并返回转换后的字符串。
+
+```js
+str.toLocaleUpperCase()
+str.toLocaleUpperCase(locale)
+str.toLocaleUpperCase([locale, locale, ...])
+```
+
+- 参数
+  - `locale` (可选):参数 `locale` 指明要转换成大写格式的特定语言区域。 如果以一个数组 `Array`形式给出多个`locales`,  最合适的地区将被选出来应用（参见`best available locale`）。默认的`locale`是主机环境的当前区域(`locale`)设置。(一般不用参数)
+- 返回值:根据任何特定于语言环境的案例映射规则将被调用字串转换成大写格式的一个新字符串。
+
+19. `String.prototype.toLowerCase()`
+
+`toLowerCase` 会将调用该方法的字符串值转为小写形式，并返回。`toLowerCase` 不会影响字符串本身的值。
+
+- 参数
+  - 无参数
+
+- 返回值:一个新的字符串，表示转换为小写的调用字符串。
+
+```js
+console.log('中文简体 zh-CN || zh-Hans'.toLowerCase());
+// 中文简体 zh-cn || zh-hans
+
+​console.log( "ALPHABET".toLowerCase() );
+// "alphabet"
+```
+
+20. `String.prototype.toString()`
+
+`toString()` 方法返回指定对象的字符串形式。字符串实例化为字符串对象后，用本方法转为基本字符串。
+
+- 参数
+  - 无参数
+- 返回值:一个表示调用对象的字符串。
+
+`String` 对象覆盖了`Object` 对象的 `toString`方法；并没有继承 `Object.toString()`。对于 `String` 对象，`toString` 方法返回该对象的字符串形式，和 `String.prototype.valueOf()` 方法返回值一样。
+
+```js
+    var x = new String("Hello world");
+    // 以上是实例化为字符串对象了
+    console.log(x); //String {"Hello world"}0: "H"1: "e"2: "l"3: "l"4: "o"5: " "6: "w"7: "o"8: "r"9: "l"10: "d"length: 11__proto__: String[[PrimitiveValue]]: "Hello world"
+    console.log(x.toString()); // test.html:53 Hello world
+```
+
+(明天继续·······)
+
+1. `String.prototype.trimStart()` 有返回值
+
+从字符串的开头(左侧)删除空格。`trimLeft()` 是此方法的别名。
+
+返回值是一个新字符串，表示从其开头（左端）除去空格的调用字符串。`trimStart()` / `trimLeft()` 方法移除原字符串左端的连续空白符并返回一个新字符串，并不会直接修改原字符串本身。
+
+- 别名
+`trimLeft()`
+为了与 `String.prototype.padStart` 等函数保持一致，标准方法名称为`trimStart`。 但是，出于 `Web` 兼容性原因，`trimLeft` 仍然是 `trimStart` 的别名
+
+```js
+var str = "   foo  ";
+console.log(str.length); // 8
+str = str.trimStart()    // 等同于 str = str.trimLeft();
+console.log(str.length); // 5
+console.log(str);        // "foo  "
+```
+
+1. `slice/substr/substring(index,value)` 截取字符串的多个
 两个参数 第一个参数表示从哪截取 第二个参数表示截取到哪个索引 (包前不包后)
 如果只传一个参数 表示从当前索引截取到末尾
 

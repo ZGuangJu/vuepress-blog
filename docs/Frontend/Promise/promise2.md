@@ -25,9 +25,9 @@ publish: true
 new Promise( function(resolve, reject) {...} /* executor */  );
 ```
 
-- executor 构造函数Promise()的参数，又叫执行器函数。
+- `executor` 构造函数`Promise()`的参数，又叫执行器函数。
 
-  - executor函数：同步执行 （resolve,reject）=>{}
+  - `executor`函数：同步执行 `（resolve,reject）=>{}`
 
     `executor`是带有 `resolve` 和 `reject` 两个参数的函数 。`Promise`构造函数执行时立即调用`executor` 函数（executor会在promise内部立即同步回调，异步操作会在执行器中执行）， `resolve` 和 `reject` 两个函数作为参数传递给`executor`（`executor` 函数在Promise构造函数返回所建`promise`实例对象前被调用）。
 
@@ -43,7 +43,7 @@ new Promise( function(resolve, reject) {...} /* executor */  );
 
   - `pending`: 初始状态，既不是成功，也不是失败状态。
 
-  - `fulfilled`: 意味着操作成功完成。
+  - `fulfilled(resolved)`: 意味着操作成功完成。
 
   - `rejected`: 意味着操作失败。
 
@@ -111,7 +111,7 @@ p.then(value => {
 ```
 
 - `then()`
-    then方法包含两个参数：`onfulfilled` 和 `onrejected`，它们都是 `Function` 类型。当`Promise`状态为`fulfilled`时，调用 `then` 的 `onfulfilled`方法，当`Promise`状态为`rejected`时，调用 `then` 的 `onrejected` 方法， 所以在异步操作的完成和绑定处理方法之间不存在竞争
+    `then()`方法包含两个参数：`onfulfilled` 和 `onrejected`，它们都是 `Function` 类型。当`Promise`状态为`fulfilled`时，调用 `then` 的 `onfulfilled`方法，当`Promise`状态为`rejected`时，调用 `then` 的 `onrejected` 方法， 所以在异步操作的完成和绑定处理方法之间不存在竞争
 
 ## promise 流程图
 
@@ -347,6 +347,6 @@ p.then(value => {
 
   `reason` adj:原因,理由
 
-  `race` adj:**最快的项**
+  `race` adj:竞赛,这里表示**最快的项**
 
   `throw` adj:抛出
