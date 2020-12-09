@@ -138,6 +138,7 @@ module.exports = {
                 text: '后端技术',
                 items: [
                     // { text: 'JAVA 的了解', link: '/Backend/JAVA' },
+                    { text: 'Linux', link: '/Linux/centos' },
                     { text: 'MongoDB', link: '/Backend/mongodb1' },
                 ],
             },
@@ -150,15 +151,12 @@ module.exports = {
                     { text: 'cmd', link: '/Tools/cmd' },
                     { text: 'nrm', link: '/Tools/nrm' },
                     { text: 'MarkDown', link: '/Tools/markdown' },
-                    { text: 'vim', link: '/Tools/vim' },
                     { text: 'Trojan', link: '/Tools/Trojan' },
                     { text: 'vite', link: '/Tools/vite' },
                     { text: 'vuepress', link: '/Tools/vuepress' },
                     { text: '升级依赖包', link: '/Tools/upgrade' },
                     { text: 'regex 正则', link: '/Tools/regex' },
                     { text: 'Typecho 安装建站', link: '/Tools/typecho' },
-                    { text: 'Centos', link: '/Tools/centos' },
-                    { text: '宝塔', link: '/Tools/宝塔' },
                     { text: 'Eslint 的使用和禁用', link: '/Tools/Eslint' },
                     { text: 'VScode等配置文件', link: '/Tools/vscode' },
                     { text: 'Win子系统', link: '/Tools/wsl' },
@@ -281,9 +279,10 @@ module.exports = {
             '/Node/': ['node1', 'node2', 'package'],
             '/Webpack/': ['webpack1', 'webpack2', 'webpackconfigjs'],
             // 后端
-            '/Backend/': ['mongodb1', 'mongodb2'],
+            '/Backend/': ['mongodb1', 'mongodb2', 'mongodb3'],
+            '/Linux/': ['centos', 'screen', '宝塔', 'vim'],
             // 工具
-            '/Tools/': ['git', 'yarn', 'npm', 'cmd', 'nrm', 'markdown', 'vim', 'Trojan', 'vite', 'vuepress', 'upgrade', 'regex', 'typecho', 'centos', '宝塔', 'Eslint', 'vscode', 'wsl'],
+            '/Tools/': ['git', 'yarn', 'npm', 'cmd', 'nrm', 'markdown', 'Trojan', 'vite', 'vuepress', 'upgrade', 'regex', 'typecho', 'Eslint', 'vscode', 'wsl'],
             //小知识
             '/Other/': [
                 '', '问题', 'error', '知识点', '面试题', 'export', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome', '验证码'
