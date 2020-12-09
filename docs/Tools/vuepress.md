@@ -679,31 +679,44 @@ docs/.vuepress/dist
 # 确保脚本抛出遇到的错误
 set -e
 
-# 生成静态文件
+# 1、生成静态文件
 npm run build
 
-# 进入生成的文件夹（新版的vuepress注意打包的文件路径）
+# 2、进入生成的文件夹
 cd docs/.vuepress/dist
 
+# 3、提交
 # 如果是发布到自定义域名
 # echo 'www.yourwebsite.com' > CNAME
 
 git init
 git add -A
-git commit -m 'deploy'
+git commit -m 'deploy-updata！'
 
+# 3-1、提交到github和gitee仓库仓库中
+
+# 如果想用username.gitee.io或者username.github.io访问你的网站，必须让新建的仓库地址和你的用户名一致！！
+
+# A 执行提交到github仓库的master中（USERNAME是你的仓库名）
 # 如果你想要部署到 https://USERNAME.github.io
-git push -f [你要部署的github仓库地址] master
+# B 如果发布到 https://USERNAME.github.io/<REPO>  REPO=github上的项目
 
-git push -f [你要部署的gitee仓库地址] master
-# 两个地址，也就是你可以同时部署到github和gitee上
+# 提交到github
+git push -f git@github.com:ZGuangJu/ZGuangJu.github.io.git master
+# 提交到gitee
+git push -f git@gitee.com:zguangju/ZGuangJu.git master
 
-# 如果你的部署地址不是xxxxx.github.io,可以参考下方
+# 提交静态文件到部署的仓库结束
+# 开始提交源码
+cd D:/github/blog-vuepress
+git add .
+git commit -m '又提交了！'
+git push origin master
+# 提交源码到github结束
+git push -f git@gitee.com:zguangju/vuepress-blog.git master
+# 提交源码到gitee结束
+# 结束
 
-# 如果发布到 https://USERNAME.github.io/<REPO>  REPO=github上的仓库
-# git push -f git@github.com:USERNAME/<REPO>.git master:gh-pages
-
-cd -
 ```
 
 说明：

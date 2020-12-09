@@ -38,5 +38,5 @@ git commit -m '又提交了！'
 git push origin master
 # 提交源码到github结束
 git push -f git@gitee.com:zguangju/vuepress-blog.git master
-# 提交源码掉gitee结束
+# 提交源码到gitee结束
 # 结束
