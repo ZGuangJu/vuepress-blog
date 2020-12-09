@@ -29,7 +29,7 @@ module.exports = {
             // 看板娘
             "@vuepress-reco/vuepress-plugin-kan-ban-niang",
             {
-                theme: ['haruto', 'blackCat', 'whiteCat', 'haru1', 'haru2', 'koharu', 'izumi', 'shizuku', 'wanko', 'miku', 'z16'],
+                theme: ['shizuku', 'wanko', 'haruto', 'blackCat', 'whiteCat', 'haru1', 'haru2', 'koharu', 'izumi', 'shizuku', 'miku', 'z16'],
                 clean: false,
                 messages: {
                     welcome: '我是guangju欢迎你的关注 ',
@@ -191,7 +191,7 @@ module.exports = {
                 icon: 'reco-date'
             },
             {
-                text: '留言版',
+                text: '留言',
                 link: '/messages/',
                 icon: 'reco-suggestion'
             },
@@ -326,8 +326,8 @@ module.exports = {
         // 自定义编辑链接的文本。默认是 "Edit this page"
         editLinkText: '帮助我们改进页面！',
         // 备案信息
-        record: '冀ICP备19032877号',
-        recordLink: 'http://beian.miit.gov.cn/',
+        // record: '冀ICP备19032877号',
+        // recordLink: 'http://beian.miit.gov.cn/',
         // cyberSecurityRecord: '公安部备案文案',
         // cyberSecurityLink: '公安部备案指向链接',
         // 项目开始时间，只填写年份

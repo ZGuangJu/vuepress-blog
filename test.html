@@ -46,10 +46,18 @@
             在MDN上做贡献简单又轻松。 按右上角的编辑按钮添加新示例或改进旧示例！
         </p>
         <script>
-            var x = new String("Hello world");
-            // 以上是实例化为字符串对象了
-            console.log(x); //String {"Hello world"}0: "H"1: "e"2: "l"3: "l"4: "o"5: " "6: "w"7: "o"8: "r"9: "l"10: "d"length: 11__proto__: String[[PrimitiveValue]]: "Hello world"
-            console.log(x.toString()); // test.html:53 Hello world
+            console.log(!!false); //false
+            console.log(!!true); //true
+            console.log(!!"blue"); // true
+            console.log(!!0); //false
+            console.log(!!NaN); //false
+            console.log(!!undefined); //false
+            console.log(!!" "); // true
+            console.log(!!123); // true
+            console.log(!!function() {}); // true
+            console.log(!!{}); // true
+            console.log(!!{ a: 1 }); // true
+            console.log(!![1, 2]); // true
         </script>
     </body>
 </html>

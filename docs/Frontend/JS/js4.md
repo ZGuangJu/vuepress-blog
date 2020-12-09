@@ -10,14 +10,215 @@ publish: true
 ---
 ## 运算符
 
-### 逻辑与 逻辑或
+### 布尔操作符 (与 或 非)
+
+```js
+//会被转换为 false 的表达式有：
+null
+undefined
+NaN
+0
+"" or '' or `` // 空字符串
+```
 
 - 与 `&&`
+
+全真为真，有假即假 (全真教)
+
+```js
+let result = true && false
+```
+
+值
+| 第一个参数 | 第二个参数 |  结果   |
+| :--------: | :--------: | :-----: |
+|   `ture`   |   `true`   | `true`  |
+|  `false`   |   `true`   | `false` |
+|   `true`   |  `false`   | `false` |
+|  `false`   |  `false`   | `false` |
+
+>- 如果第一个操作数是对象，则返回第二个操作数。
+>- 如果第二个操作数是对象，则只有第一个操作数求值为true才会返回该对象。
+>- 如果两个操作数都是对象，则返回第二个操作数。
+>- 如果有一个操作数是null，则返回null。
+>- 如果有一个操作数是NaN，则返回NaN。
+>- 如果有一个操作数是undefined，则返回undefined。
+
+- 使用单个 `&` 判断奇偶性
+偶数 `& 1 = 0`
+
+奇数 `& 1 = 1`
+
+```js
+console.log(7 & 1); // 1
+console.log(8 & 1) ; // 0
+```
+
 - 或 `||`
+
+有真即真，全假为假
+
+```js
+let result = true || false;
+```
+
+值
+| 第一个参数 | 第二个参数 |  结果   |
+| :--------: | :--------: | :-----: |
+|   `ture`   |   `true`   | `true`  |
+|  `false`   |   `true`   | `true`  |
+|   `true`   |  `false`   | `true`  |
+|  `false`   |  `false`   | `false` |
+
+>- 如果第一个操作数是对象，则返回第一个操作数。
+>- 如果第一个操作数求值为false，则返回第二个操作数。
+>- 如果两个操作数都是对象，则返回第一个操作数。
+>- 如果两个操作数都是null，则返回null。
+>- 如果两个操作数都是NaN，则返回NaN。
+>- 如果两个操作数都是undefined，则返回undefined。
+
+`&&`和`||`都是短路计算
+
+```js
+( false ) && (expr) //短路计算的结果为假。
+( true ) || (expr) //短路计算的结果为真。
+```
+
+短路意味着上述表达式中的`expr`部分不会被执行，
+
+- 非 `!`
+
+值
+| 取反 `!`         | 结果    | 转布尔 `!!`       | 结果    |
+| :--------------- | :------ | :---------------- | :------ |
+| `!false`         | `true`  | `!!false`         | `false` |
+| `!true`          | `false` | `!!true`          | `true`  |
+| `!"blue"`        | `false` | `!!"blue"`        | `true`  |
+| `!0`             | `true`  | `!!0`             | `false` |
+| `!NaN`           | `true`  | `!!NaN`           | `false` |
+| `!undefined`     | `true`  | `!!undefined`     | `false` |
+| `!" "`           | `false` | `!!" "`           | `true`  |
+| `!123`           | `false` | `!!123`           | `true`  |
+| `!function() {}` | `false` | `!!function() {}` | `true`  |
+| `!{}`            | `false` | `!!{}`            | `true`  |
+| `!{ a: 1 }`      | `false` | `!!{ a: 1 }`      | `true`  |
+| `![1, 2]`        | `false` | `!![1, 2]`        | `true`  |
+
+>- 如果操作数是对象，则返回false。
+>- 如果操作数是空字符串，则返回true。
+>- 如果操作数是非空字符串，则返回false。
+>- 如果操作数是数值0，则返回true。
+>- 如果操作数是非0数值（包括Infinity），则返回false。
+>- 如果操作数是null，则返回true。
+>- 如果操作数是NaN，则返回true。
+>- 如果操作数是undefined，则返回true。
+
+取反操作
+
+```js
+    console.log(!false); //true
+    console.log(!true); //false
+    console.log(!"blue"); // false
+    console.log(!0); //true
+    console.log(!NaN); //true
+    console.log(!undefined); //true
+    console.log(!" "); // false
+    console.log(!123); // false
+    console.log(!function() {}); // false
+    console.log(!{}); // false
+    console.log(!{ a: 1 }); // false
+    console.log(![1, 2]); // false
+```
+
+转布尔值(等价于`Boolean()`)
+
+```js
+    console.log(!!false); //false
+    console.log(!!true); //true
+    console.log(!!"blue"); // true
+    console.log(!!0); //false
+    console.log(!!NaN); //false
+    console.log(!!undefined); //false
+    console.log(!!" "); // true
+    console.log(!!123); // true
+    console.log(!!function() {}); // true
+    console.log(!!{}); // true
+    console.log(!!{ a: 1 }); // true
+    console.log(!![1, 2]); // true
+```
+
+所有非`0`的值都是`true`，包括负数、浮点数：
+
+```js
+console.log(!!7); // true
+console.log(!!0); // false
+console.log(!!-1); // true
+console.log(!!0.71); // true
+```
+
+### = 、 == 和 === 的区别
+
+```js
+// 一个等号表示赋值
+// 两个等号表示比较等号左右两边的值是否相等
+// 三个等号表示两个值全等（包括数据类型也相同）
+```
+
+### 位运算
+
+- 使用 `^` 切换变量 `0` 或 `1`
+
+```js
+// --- before ---
+    // if 判断
+    if (toggle) {
+        toggle = 0;
+    } else {
+        toggle = 1;
+    }
+    // 三目运算符
+    togle = toggle ? 0 : 1;
+
+    // --- after ---
+    toggle ^= 1;
+```
+
+- 使用`~`、`>>`、`<<`、`>>>`、`|`来取整
+相当于使用了 `Math.floor()`
+
+```js
+console.log(~~11.71) // 11
+console.log(11.71 >> 0) // 11
+console.log(11.71 << 0) // 11
+console.log(11.71 | 0) // 11
+console.log(11.71 >>> 0) // 11
+```
+
+注意 `>>>` 不可对负数取整
+
+- 使用`^`来检查数字是否不相等
+
+```js
+// --- before ---
+    if (a !== 1171) {...};
+
+    // --- after ---
+    if (a ^ 1171) {...};
+```
+
+- 使用 `Array.length = 0` 来清空数组
+- 使用 `Array.slice(0)` 实现数组浅拷贝
+
+```js
+let arr = [0,1,2,3]
+let b = arr.slice(0) //不就相当于 let b = arr;吗，不知道这个方法有什么用
+console.log(b)
+```
 
 ## 语句
 
 - 条件语句
+
 条件语句 `if` `else if` 后面括号跟的值返回的是一定是 `true` 或者 `false` `if` 可以独立使用 `if` `else if` 只要有一个条件成立就不在继续往下走了
 
 ```js
@@ -108,87 +309,6 @@ console.log(sum);
 
     // --- after ---
     for(let i = arr.length; i--;) {...} // 注意 i-- 后面的分号别漏了
-```
-
-## = 、 == 和 === 的区别
-
-```js
-// 一个等号表示赋值
-// 两个等号表示比较等号左右两边的值是否相等
-// 三个等号表示两个值全等（包括数据类型也相同）
-```
-
-## 其他
-
-### 位运算
-
-- 使用 `&` 判断奇偶性
-偶数 `& 1 = 0`
-
-奇数 `& 1 = 1`
-
-```js
-console.log(7 & 1); // 1
-console.log(8 & 1) ; // 0
-```
-
-- 使用 `^` 切换变量 `0` 或 `1`
-
-```js
-// --- before ---
-    // if 判断
-    if (toggle) {
-        toggle = 0;
-    } else {
-        toggle = 1;
-    }
-    // 三目运算符
-    togle = toggle ? 0 : 1;
-
-    // --- after ---
-    toggle ^= 1;
-```
-
-- 使用 `!!` 将数字转为布尔值
-所有非`0`的值都是`true`，包括负数、浮点数：
-
-```js
-console.log(!!7); // true
-console.log(!!0); // false
-console.log(!!-1); // true
-console.log(!!0.71); // true
-```
-
-- 使用`~`、`>>`、`<<`、`>>>`、|来取整
-相当于使用了 `Math.floor()`
-
-```js
-console.log(~~11.71) // 11
-console.log(11.71 >> 0) // 11
-console.log(11.71 << 0) // 11
-console.log(11.71 | 0) // 11
-console.log(11.71 >>> 0) // 11
-```
-
-注意 `>>>` 不可对负数取整
-
-- 使用^来检查数字是否不相等
-
-```js
-// --- before ---
-    if (a !== 1171) {...};
-
-    // --- after ---
-    if (a ^ 1171) {...};
-```
-
-- 使用 Array.length = 0 来清空数组
-- 使用 Array.slice(0) 实现数组浅拷贝
-
-```js
-let arr = [0,1,2,3]
-let b = arr.slice(0)
-console.log(b)
 ```
 
 ::: warning 危险

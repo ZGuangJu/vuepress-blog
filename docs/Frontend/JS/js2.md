@@ -8,6 +8,10 @@ tags:
  - JavaScript
 publish: true
 ---
+::: tip
+本文档是我自己理解及参考各官方文档和书籍整理，如有错误之处，欢迎评论指出。
+:::
+
 目录:
 
 [[toc]]
@@ -42,8 +46,9 @@ publish: true
 1. `typeof(value)` 检测数据类型的逻辑运算符
 2. `instanceof` 判断一个对象是否是数据类型的实例
 3. `constructor` 检测构造函数
-4. `Object.prototype.toString.call(value)` 检测数据类型的
-检测数据类型方法库
+4. `Object.prototype.toString.call(value)` 检测数据类型的方法库
+
+:::details 检测方法详解
 
 - `typeof value`或`typeof(value)` 返回当前值的数据类型 `String`/ `"number"` / `"boolean"`...
   - 返回的结果都是字符串
@@ -121,6 +126,8 @@ console.log(a.call({}));
 console.log(a.call(undefined));
 console.log(a.call(null));
 ```
+
+:::
 
 ## Number
 
@@ -225,7 +232,7 @@ console.log( Number.isInteger( 1.01)); // false
 
 ```
 
-:::warning
+:::warning 注意
 `parseInt`和`parseFloat` 、`isNaN()`也是js的全局内置对象
 
 `JavaScript`能够准确表示的整数范围在`-2^53`到`2^53`之间（不含两个端点），超过这个范围，无法精确表示这个整数
@@ -342,7 +349,7 @@ console.log(typeof num);    // number
     - `字符串==数字`: 两个等于号比较也会把其他值转换为数字 。`'12px'==12`
 - 弱转换（基于额外的方法转换）`parseInt([value])` / `parseFloat([value])`
 
-:::warning
+:::warning 注意
 `isNaN(值)` 只是检测这个值是否为有效数字 不是有效数字返回`true` 是返回`false`
 :::
 
@@ -414,7 +421,7 @@ console.log(typeof num);    // number
     console.log(atherage);
 ```
 
-:::warning
+:::warning 注意
 不建议直接实例化 `Number` 对象。 在处理原始数值和引用数值时， `typeof` 和 `instacnceof` 操作符会返回不同的结果，
 
 ```js
@@ -438,10 +445,16 @@ console.log( numberValue instanceof Number); // false
   var str = new String('hello')
 ```
 
+字符串类型 `String` 字符串可以是引号中的任意文本 单引号或者双引号
+
+```js
+ 'hello world' "hello world"
+```
+
 - 字符串的属性
   - `length`(`String.prototype.length`): 返回了字符串的长度。
   - `constructor`(`String.prototype.constructor`): 创建字符串的构造函数
-  - `prototype` 指向函数的原型
+  - `prototype` 指向对象的原型
 
 ```js
 // length
@@ -554,7 +567,7 @@ String.raw `templateString`
 
 1. `String.prototype.charAt(index)` 不改变原字符串，返回一个新字符串
 
-从一个字符串中返回指定的字符。就是获取字符串的某个字符(截取字符串)
+根据索引值获取字符串的某个字符(截取字符串)
 
 - 参数
   - `index`:索引,字符串中的每个字符对应字符串的索引(`index`),一个介于`0`和字符串长度减`1`之间的整数。 (`0~length-1`)。如果没有提供索引，`charAt()` 将使用`0`,如果`index`超出原字符串索引值，将返回一个空字符串。
@@ -639,7 +652,7 @@ if (!String.prototype.includes) {
 }
 ```
 
-:::warning 注
+:::warning 注意
 `includes()` 方法是区分大小写的
 :::
 
@@ -682,7 +695,7 @@ if (!String.prototype.endsWith) {
 }
 ```
 
-:::warning 注
+:::warning 注意
 `endsWith()` 方法是区分大小写的,大小写敏感
 :::
 
@@ -745,7 +758,7 @@ console.log("The index of 'new' from the beginning is " + anyString.indexOf("new
 console.log("The index of 'new' from the end is " + anyString.lastIndexOf("new"));// logs 6
 ```
 
-:::warning 注
+:::warning 注意
 `indexOf` 方法是区分大小写的。例如，下面的表达式将返回 `-1`：
 
 ```js
@@ -782,7 +795,7 @@ console.log("The index of 'new' from the end is " + anyString.lastIndexOf("new")
 'canal'.lastIndexOf('', 2);   // returns 2
 ```
 
-:::warning
+:::warning 注意
 `lastIndexOf` 方法区分大小写。例如，下面的表达式返回 `-1`：
 
 ```js
@@ -1137,8 +1150,7 @@ str.toLocaleUpperCase([locale, locale, ...])
 
 `toLowerCase` 会将调用该方法的字符串值转为小写形式，并返回。`toLowerCase` 不会影响字符串本身的值。
 
-- 参数
-  - 无参数
+- 无参数
 
 - 返回值:一个新的字符串，表示转换为小写的调用字符串。
 
@@ -1152,10 +1164,10 @@ console.log('中文简体 zh-CN || zh-Hans'.toLowerCase());
 
 20. `String.prototype.toString()`
 
-`toString()` 方法返回指定对象的字符串形式。字符串实例化为字符串对象后，用本方法转为基本字符串。
+`toString()` 方法返回指定对象的字符串形式。(字符串实例化为字符串对象后，用本方法转为基本字符串。)
 
-- 参数
-  - 无参数
+- 无参数
+
 - 返回值:一个表示调用对象的字符串。
 
 `String` 对象覆盖了`Object` 对象的 `toString`方法；并没有继承 `Object.toString()`。对于 `String` 对象，`toString` 方法返回该对象的字符串形式，和 `String.prototype.valueOf()` 方法返回值一样。
@@ -1164,20 +1176,57 @@ console.log('中文简体 zh-CN || zh-Hans'.toLowerCase());
     var x = new String("Hello world");
     // 以上是实例化为字符串对象了
     console.log(x); //String {"Hello world"}0: "H"1: "e"2: "l"3: "l"4: "o"5: " "6: "w"7: "o"8: "r"9: "l"10: "d"length: 11__proto__: String[[PrimitiveValue]]: "Hello world"
-    console.log(x.toString()); // test.html:53 Hello world
+    console.log(x.toString()); // 'Hello world'
 ```
 
-(明天继续·······)
+21. `String.prototype.trim()`
 
-1. `String.prototype.trimStart()` 有返回值
+`trim()` 方法会从一个字符串的两端删除空白字符。在这个上下文中的空白字符是所有的空白字符 (`space`, `tab`, `no-break space`等) 以及所有行终止符字符（如 LF，CR等）
 
-从字符串的开头(左侧)删除空格。`trimLeft()` 是此方法的别名。
+- 无参数
 
-返回值是一个新字符串，表示从其开头（左端）除去空格的调用字符串。`trimStart()` / `trimLeft()` 方法移除原字符串左端的连续空白符并返回一个新字符串，并不会直接修改原字符串本身。
+- 返回值:一个代表调用字符串两端去掉空白的新字符串。
+
+```js
+var orig = '   foo  ';
+console.log(orig.trim()); // 'foo'
+
+// 另一个 .trim() 例子，只从一边删除
+
+var orig = 'foo    ';
+console.log(orig.trim()); // 'foo'
+```
+
+兼容补丁
+
+```js
+if (!String.prototype.trim) {
+  String.prototype.trim = function () {
+    return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+  };
+}
+```
+
+22. `String.prototype.trimStart()` 有返回值--去除空格的新字符串
+
+```js
+str.trimStart();
+str.trimLeft(); //别名
+```
+
+`trimStart()` / `trimLeft()`方法移除原字符串左端的连续空白符并返回一个新字符串，并不会直接修改原字符串本身。
+
+- 无参数
 
 - 别名
 `trimLeft()`
-为了与 `String.prototype.padStart` 等函数保持一致，标准方法名称为`trimStart`。 但是，出于 `Web` 兼容性原因，`trimLeft` 仍然是 `trimStart` 的别名
+为了与 `String.prototype.padStart` 等函数保持一致，标准方法名称为`trimStart`。 但是，出于 `Web` 兼容性原因，`trimLeft` 仍然是 `trimStart` 的别名，在某些引擎中，这意味着：
+
+```js
+String.prototype.trimLeft.name === "trimStart";
+```
+
+- 返回值:是一个新字符串，表示从其开头（左端）除去空格的调用字符串。`trimStart()` / `trimLeft()` 方法移除原字符串左端的连续空白符并返回一个新字符串，并不会直接修改原字符串本身。
 
 ```js
 var str = "   foo  ";
@@ -1187,62 +1236,106 @@ console.log(str.length); // 5
 console.log(str);        // "foo  "
 ```
 
-1. `slice/substr/substring(index,value)` 截取字符串的多个
-两个参数 第一个参数表示从哪截取 第二个参数表示截取到哪个索引 (包前不包后)
-如果只传一个参数 表示从当前索引截取到末尾
+23. `String.prototype.trimRight()`
 
 ```js
- var  str = 'hello'
- var  str1  = str.slice(0,2) //he
- var  str1  = str.slice(2) //llo
- var str2  = str.substr(0,2)
+str.trimEnd();
+str.trimRight(); //别名
 ```
 
-6. `indexOf` 和 `lastIndexOf` 或者字符串的索引
-  `indexof`   该字符第一次出现的索引
-  `lastIndexOf` 该字符最后一次出现的索引
-  如果检测不到索引 则返回-1 (该字符串没有此字符)
+`trimEnd()` / `trimRight()`方法移除原字符串右端的连续空白符并返回，`trimEnd()` / `trimRight()`方法并不会直接修改原字符串本身。`trimRight()` 是这个方法的别名。
+
+- 无参数
+
+- 别名
+`trimRight()`
+为了与 `String.prototype.padEnd` 等函数保持一致，标准方法名称为`trimEnd`。 但是，出于Web兼容性原因，`trimRight`仍然是`trimEnd`的别名。 在某些引擎中，这意味着：
 
 ```js
-var str = 'hello'
-console.log(str.indexOf('l')) //2
-console.log(str.lastIndexOf('l')) //3
-var n= '李先生'
-console.log(n.indexOf('王'))
+String.prototype.trimRight.name === "trimEnd";
 ```
 
-7. `trim()` 字符串去除前后的空格
+- 返回值:是一个新字符串，表示从其开头（左端）除去空格的调用字符串。`trimStart()` / `trimLeft()` 方法移除原字符串左端的连续空白符并返回一个新字符串，并不会直接修改原字符串本身。
 
 ```js
-var n = '李小姐 '
-var res = n.trim()
-console.log(res)
+var str = "   foo  ";
+alert(str.length); // 8
+str = str.trimRight();  // 或写成str = str.trimEnd();
+console.log(str.length); // 6
+console.log(str);       // '   foo'
 ```
 
-8. 字符转换大小写 `toUpperCase` 转大写  `toLowerCase` 转小写
+24. `String.prototype.valueOf()`
+
+`valueOf()` 方法返回  `String`  对象的原始值(同`toString()`)
+
+\* 此方法通常由`JavaScript`在内部调用，而不是在代码中显式调用。
 
 ```js
-var a = 'english'
-var l = a.toUpperCase() // 'ENGLISH'
-var m = l.toLowerCase() //'english'
-console.log(l,m)
+var x = new String('Hello world');
+console.log(x.valueOf()); // Displays 'Hello world'
 ```
 
-字符串类型 `String` 字符串可以是引号中的任意文本 单引号或者双引号
+### 字符串的方法分类
+
+- 截取字符串 返回子串
+  - `slice/substr/substring(index,value)`: 截取字符串,`substr`最好用`substring`替代
+
+- 根据字符获取字符串索引
+  - `indexof` :  该字符第一次出现的索引
+  - `lastIndexOf`: 该字符最后一次出现的索引
+如果检测不到索引 则返回-1 (该字符串没有此字符)
+
+- 根据索引获取子字符串
+  - `charAt()`: 根据索引值获取字符串的某子串
+
+- 分割成子字符串数组
+  - `split()`: 将字符串分割成子字符串数组
+
+- 搜索字符串
+  - `includes()`: 搜索字符串是否包含另一个字符串
+  - `endsWith()`: 字符串是否是另一个字符串结尾
+  - `startsWith()`: 字符串是否是另一个字符串开始
+  - `search(regexp)`:搜索字符串是否匹配正则，有返回匹配的下标
+
+- 拼接字符串
+  - `concat()`: 拼接多个字符串
+  - `+`: 拼接多个字符串(常用)
+  - `padEnd()`: 用字符串从末尾填充字符串
+  - `padStart()`: 用字符串从开头填充字符串
+  - `repeat()`: 复制本身字符串并填充到本身
+
+- 去除空格
+  - `trim()`: 去除字符串前后(两端)的空格
+  - `trimStart()`(别名 `trimLeft()`): 去掉字符串左侧(开头)的空格
+  - `trimEnd()`(别名`trimRight()`): 去掉字符串右侧(末尾)的空格
+
+- 字符转换大小写
+  - `toUpperCase`: 转大写
+  - `toLocaleUpperCase()`: 转大写
+  - `toLowerCase`: 转小写
+  - `toLocaleLowerCase()`: 转小写
+
+- 转为字符串
+  - `toString()`: 字符串对象转为基本字符串
+  - `valueOf()`: 字符串对象转为基本字符串(通常不用，只做底层调用)
+  - `String()`: 其他类型的数据转为字符串
+
+:::details String()详解
+`String()`在转为字符串是一种更加安全的做法，底层使用的是 `toString()` 方法，但针对 `null/undefined/symbols`，有特殊的处理：
 
 ```js
- 'hello world' "hello world"
+    String(thing)
+    new String(thing)
+    // thing 任何可以被转换成字符串的值。
+    console.log(String(12));
+    console.log(String(true));
+    console.log(String(null));
 ```
 
-1. `toString()` 转为字符串
+:::
 
-```js
-    let num = 12
-    let num2 = num.toString()
-    console.log(typeof num2);
-```
-
-- 比较操作符(`>/</>=/<=`)
+- 比较操作符(`>` 、 `<` 、 `>=` 、 `<=`)
 
 ```js
 var a = "a";
@@ -1255,27 +1348,7 @@ else
   print(a + " and " + b + " are equal.");
 ```
 
-### 转字符串的方法
-
-- `String()`
-String()在转为字符串是一种更加安全的做法，底层使用的是 `toString()` 方法，但针对 `null/undefined/symbols`，有特殊的处理：
-
-```js
-    String(thing)
-    new String(thing)
-    // thing 任何可以被转换成字符串的值。
-    console.log(String(12));
-    console.log(String(true));
-    console.log(String(null));
-```
-
-- `toString()`
-
-```js
-    let num = 12
-    let num2 = num.toString()
-    console.log(typeof num2);
-```
+(明天继续·······)
 
 ## Boolean
 
@@ -1305,7 +1378,7 @@ String()在转为字符串是一种更加安全的做法，底层使用的是 `t
     console.log(atherage);
 ```
 
-:::warning
+:::warning 注意
 只有 `undefind`,`null`,`0`,`NaN`,`''` 在转化成布尔值的时候会被转化成 `false`.
 :::
 
