@@ -90,6 +90,8 @@ console.log({} instanceof Object);                   // true
 
 不能用 `instanceof` 方法检测 `null` 和 `undefined`.
 
+当检测`Array`实例时, `Array.isArray` 优于 `instanceof`,因为`Array.isArray`能检测`iframes`。
+
 - `constructor` 通过原型判断类型
 
 ```js
@@ -497,6 +499,78 @@ console.log(typeof s_obj);  // Logs "object"
 ```
 
 ## String 方法
+
+### String 方法分类
+
+- 截取字符串 返回子串
+  - `slice/substr/substring(index,value)`: 截取字符串,`substr`最好用`substring`替代
+
+- 根据字符获取字符串索引
+  - `indexof` :  该字符第一次出现的索引
+  - `lastIndexOf`: 该字符最后一次出现的索引
+如果检测不到索引 则返回`-1`(该字符串没有此字符)
+
+- 根据索引获取子字符串
+  - `charAt()`: 根据索引值获取字符串的某子串
+
+- 分割成子字符串数组
+  - `split()`: 将字符串分割成子字符串数组
+
+- 搜索字符串
+  - `includes()`: 搜索字符串是否包含另一个字符串
+  - `endsWith()`: 字符串是否是另一个字符串结尾
+  - `startsWith()`: 字符串是否是另一个字符串开始
+  - `search(regexp)`:搜索字符串是否匹配正则，有返回匹配的下标
+
+- 拼接字符串
+  - `concat()`: 拼接多个字符串
+  - `+`: 拼接多个字符串(常用)
+  - `padEnd()`: 用字符串从末尾填充字符串
+  - `padStart()`: 用字符串从开头填充字符串
+  - `repeat()`: 复制本身字符串并填充到本身
+
+- 去除空格
+  - `trim()`: 去除字符串前后(两端)的空格
+  - `trimStart()`(别名 `trimLeft()`): 去掉字符串左侧(开头)的空格
+  - `trimEnd()`(别名`trimRight()`): 去掉字符串右侧(末尾)的空格
+
+- 字符转换大小写
+  - `toUpperCase`: 转大写
+  - `toLocaleUpperCase()`: 转大写
+  - `toLowerCase`: 转小写
+  - `toLocaleLowerCase()`: 转小写
+
+- 转为字符串
+  - `toString()`: 字符串对象转为基本字符串
+  - `valueOf()`: 字符串对象转为基本字符串(通常不用，只做底层调用)
+  - `String()`: 其他类型的数据转为字符串
+
+:::details String()详解
+`String()`在转为字符串是一种更加安全的做法，底层使用的是 `toString()` 方法，但针对 `null/undefined/symbols`，有特殊的处理：
+
+```js
+    String(thing)
+    new String(thing)
+    // thing 任何可以被转换成字符串的值。
+    console.log(String(12));
+    console.log(String(true));
+    console.log(String(null));
+```
+
+:::
+
+- 比较操作符(`>` 、 `<` 、 `>=` 、 `<=`)
+
+```js
+var a = "a";
+var b = "b";
+if (a < b) // true
+  print(a + " is less than " + b);
+else if (a > b)
+  print(a + " is greater than " + b);
+else
+  print(a + " and " + b + " are equal.");
+```
 
 ### String 的对象方法
 
@@ -1276,80 +1350,6 @@ var x = new String('Hello world');
 console.log(x.valueOf()); // Displays 'Hello world'
 ```
 
-### 字符串的方法分类
-
-- 截取字符串 返回子串
-  - `slice/substr/substring(index,value)`: 截取字符串,`substr`最好用`substring`替代
-
-- 根据字符获取字符串索引
-  - `indexof` :  该字符第一次出现的索引
-  - `lastIndexOf`: 该字符最后一次出现的索引
-如果检测不到索引 则返回-1 (该字符串没有此字符)
-
-- 根据索引获取子字符串
-  - `charAt()`: 根据索引值获取字符串的某子串
-
-- 分割成子字符串数组
-  - `split()`: 将字符串分割成子字符串数组
-
-- 搜索字符串
-  - `includes()`: 搜索字符串是否包含另一个字符串
-  - `endsWith()`: 字符串是否是另一个字符串结尾
-  - `startsWith()`: 字符串是否是另一个字符串开始
-  - `search(regexp)`:搜索字符串是否匹配正则，有返回匹配的下标
-
-- 拼接字符串
-  - `concat()`: 拼接多个字符串
-  - `+`: 拼接多个字符串(常用)
-  - `padEnd()`: 用字符串从末尾填充字符串
-  - `padStart()`: 用字符串从开头填充字符串
-  - `repeat()`: 复制本身字符串并填充到本身
-
-- 去除空格
-  - `trim()`: 去除字符串前后(两端)的空格
-  - `trimStart()`(别名 `trimLeft()`): 去掉字符串左侧(开头)的空格
-  - `trimEnd()`(别名`trimRight()`): 去掉字符串右侧(末尾)的空格
-
-- 字符转换大小写
-  - `toUpperCase`: 转大写
-  - `toLocaleUpperCase()`: 转大写
-  - `toLowerCase`: 转小写
-  - `toLocaleLowerCase()`: 转小写
-
-- 转为字符串
-  - `toString()`: 字符串对象转为基本字符串
-  - `valueOf()`: 字符串对象转为基本字符串(通常不用，只做底层调用)
-  - `String()`: 其他类型的数据转为字符串
-
-:::details String()详解
-`String()`在转为字符串是一种更加安全的做法，底层使用的是 `toString()` 方法，但针对 `null/undefined/symbols`，有特殊的处理：
-
-```js
-    String(thing)
-    new String(thing)
-    // thing 任何可以被转换成字符串的值。
-    console.log(String(12));
-    console.log(String(true));
-    console.log(String(null));
-```
-
-:::
-
-- 比较操作符(`>` 、 `<` 、 `>=` 、 `<=`)
-
-```js
-var a = "a";
-var b = "b";
-if (a < b) // true
-  print(a + " is less than " + b);
-else if (a > b)
-  print(a + " is greater than " + b);
-else
-  print(a + " and " + b + " are equal.");
-```
-
-(明天继续·······)
-
 ## Boolean
 
 布尔类型 `Boolean` 只有两个值 `true` `false`
@@ -1430,16 +1430,28 @@ else
 
 `Object` 是以大括号`{}`表示 对象里面放的是键值对（key:value ）每一项还是以逗号分割 `key`(键名)和`value`(键值)以：分割
 
-### 数组对象
+### Array
 
 `Array` 内置对象，存储多个不同类型的数据的集合; 数组的定义 `[]`中括号表示数组，每一项以逗号分割
 
 ```js
-   // 字面量定义
+    [element0, element1, ..., elementN]
+    new Array(element0, element1[, ...[, elementN]])
+    new Array(arrayLength)
+// 字面量定义
    [] 空数组
-   var students = ['学生1','学生2','学生3' ]
+    var students = ['学生1','学生2','学生3' ]
     var goods =['牙膏'，'牙刷'，'苹果','洗衣机']
 ```
+
+- `Array`构造函数属性
+  - `Array.length`:构造函数的 `length` 属性，其值为`1`（注意该属性为静态属性，不是数组实例的 `length` 属性）。
+  - `Array.prototype`:通过数组的原型对象可以为所有数组对象添加属性。
+  - `get Array[@@species]`:返回 `Array` 构造函数。
+
+- `Array`实例属性
+  - `Array.prototype.constructor`:所有的数组实例都继承了这个属性，它的值就是 `Array`，表明了所有的数组都是由 `Array` 构造出来的。
+  - `Array.prototype.length`:数组长度
 
 ```js
     //数组[数字] 表示数组的第几项  js的计数是从0开始算的
@@ -1490,48 +1502,69 @@ for (var i = 0; i < ary.length; i++) {
 数组的长度 `length` 数组长度的添加 (默认值 `undefind`)
 数组长度的减少 会删除多余的元素
 
-#### 方法
+### Array 方法分类
 
-- `Array` 方法总览
-  - 创建数组的方法
-    - `from()` --(es6)
-    - `of()`  --(es6)
-  - 检索数组的方法
-    - `isArray()`
-  - 检索数组内容的方法
-    - `keys()` --(es6)
-    - `values()` --(es6)
-    - `entries()` --(es6)
-  - 批量复制方法
-    - `copyWithin()` --(es6)
-  - 填充数组方法
-    - `fill()` --(es6)
-  - 栈方法(后进先出)
-    - `push()`
-    - `pop()`
-  - 队列方法
-    - `unshift()`
-    - `shift()`
-  - 排序方法
-    - `reverse()`
-    - `sort()`
+- 创建数组的方法
+  - `from()`(es6):伪数组转数组
+  - `of()`  (es6):
 
-##### 对象上方法
+- 检索数组的方法
+  - `isArray()`:
 
-1. `Array.from()` 伪数组转真数组
-    - `Array.from()`从一个类似数组或可迭代对象创建一个新的，浅拷贝的数组实例。 可以通过以下方式来创建数组对象：
-      - 伪数组对象（拥有一个 `length` 属性和若干索引属性的任意对象）
-      - 可迭代对象（可以获取对象中的元素,如`Map`和 `Set` 等）
+- 检索数组内容的方法
+  - `keys()` (es6):
+  - `values()` (es6):
+  - `entries()` (es6):
+
+- 批量复制方法
+  - `copyWithin()` (es6):
+
+- 填充数组方法
+  - `fill()` (es6):
+
+- 栈方法(后进先出)
+  - `push()`:
+  - `pop()`:
+
+- 队列方法
+  - `unshift()`:
+  - `shift()`:
+
+- 排序方法
+  - `reverse()`:
+  - `sort()`:
+
+### Array 的对象方法
+
+数组的对象方法或者说`Array`构造函数上的方法。
+
+1. `Array.from(arrayLike[, mapFn[, thisArg]])` 伪数组转真数组 返回新数组，不改变原数组
+    - 伪数组对象（拥有一个 `length` 属性和若干索引属性的任意对象）
+    - 可迭代对象（可以获取对象中的元素,如`Map`和 `Set` 等）
+
+`Array.from()`从一个类似数组或可迭代对象创建一个新的，浅拷贝的数组实例。 可以通过以下方式来创建数组对象：
+
+- 参数
+  - `arrayLike`:想要转换成数组的伪数组对象或可迭代对象。
+  - `mapFn`(可选):让你可以在生成的新数组上再执行一次 `map` 方法后再返回。也就是说`Array.from(obj, mapFn, thisArg)` 就相当于 `Array.from(obj).map(mapFn, thisArg)`
+  - `thisArg`(可选):可选参数，执行回调函数 `mapFn` 时 `this` 对象。
+
+- 返回值:一个新的数组实例。
 
 ```js
-// 语法： Array.from(arrayLike[, mapFn[, thisArg]])
-
 // 从 String 生成数组
 Array.from('foo');  // [ "f", "o", "o" ]
 
 // 从 Set 生成数组
 const set = new Set(['foo', 'bar', 'baz', 'foo']);
 Array.from(set);  // [ "foo", "bar", "baz" ]
+
+// 从 Map 生成数组
+const map = new Map([[1, 2], [2, 4], [4, 8]]);
+Array.from(map);// [[1, 2], [2, 4], [4, 8]]
+const mapper = new Map([['1', 'a'], ['2', 'b']]);
+Array.from(mapper.values());// ['a', 'b'];
+Array.from(mapper.keys());// ['1', '2'];
 
 // 从类数组对象（arguments）生成数组
 function f() {
@@ -1540,27 +1573,181 @@ function f() {
 f(1, 2, 3);  // [ 1, 2, 3 ]
 ```
 
-2. `Array.isArray()`
+2. `Array.isArray(obj)` 返回`boolean`值
 
-用于确定传递的值是否是一个 `Array`
+用于确定传递的值是否是一个 `Array`,如果对象是 `Array` ，则返回`true`，否则为`false`。
+
+- 参数
+  - `obj`:需要检测的值。
+- 返回值:如果值是 `Array`，则为`true`; 否则为`false`。
 
 ```js
-// 语法： Array.isArray(obj)
-Array.isArray([1, 2, 3]);
-// true
-Array.isArray({foo: 123});
-// false
-Array.isArray("foobar");
-// false
+Array.isArray([1, 2, 3]);// true
+Array.isArray({foo: 123});// false
+Array.isArray("foobar");// false
+Array.isArray(undefined);// false
+// 下面的函数调用都返回 true
+Array.isArray([]);
+Array.isArray([1]);
+Array.isArray(new Array());
+Array.isArray(new Array('a', 'b', 'c', 'd'))
+// 鲜为人知的事实：其实 Array.prototype 也是一个数组。
+Array.isArray(Array.prototype);
+// 下面的函数调用都返回 false
+Array.isArray();
+Array.isArray({});
+Array.isArray(null);
 Array.isArray(undefined);
-// false
+Array.isArray(17);
+Array.isArray('Array');
+Array.isArray(true);
+Array.isArray(false);
+Array.isArray(new Uint8Array(32))
+Array.isArray({ __proto__: Array.prototype });
 ```
 
-3. `Array.of()`
-根据一组参数来创建新的数组实例，支持任意的参数数量和类型。
-用来判断某个变量是否是一个数组对象。
+3. `Array.of(element0[, element1[, ...[, elementN]]])`(`ES6-2015`) 返回新建的数组
 
-##### 原型上方法
+根据一组参数来创建新的数组实例，支持任意的参数数量和类型。
+
+- 参数
+  - `elementN`:任意个参数，将按顺序成为返回数组中的元素。
+
+- 返回值:新的 `Array` 实例。
+
+```js
+Array.of(1);         // [1]
+Array.of(1, 2, 3);   // [1, 2, 3]
+Array.of(undefined); // [undefined]
+```
+
+兼容补丁
+
+```js
+if (!Array.of) {
+  Array.of = function() {
+    return Array.prototype.slice.call(arguments);
+  };
+}
+```
+
+### Array 的原型方法
+
+1. `Array.prototype.fill(value[, start[, end]])` (实验性) 改变原数组
+
+用一个固定值填充一个数组中从起始索引到终止索引内的全部元素。不包括终止索引。
+
+- 参数
+  - `value`:用来填充数组元素的值。
+  - `start`(可选):起始索引，默认值为`0`。
+  - `end`(可选):终止索引，默认值为 `this.length`。
+- 返回值:修改后的数组。
+
+```js
+[1, 2, 3].fill(4);               // [4, 4, 4]
+[1, 2, 3].fill(4, 1);            // [1, 4, 4]
+[1, 2, 3].fill(4, 1, 2);         // [1, 4, 3]
+[1, 2, 3].fill(4, 1, 1);         // [1, 2, 3]
+[1, 2, 3].fill(4, 3, 3);         // [1, 2, 3]
+[1, 2, 3].fill(4, -3, -2);       // [4, 2, 3]
+[1, 2, 3].fill(4, NaN, NaN);     // [1, 2, 3]
+[1, 2, 3].fill(4, 3, 5);         // [1, 2, 3]
+Array(3).fill(4);                // [4, 4, 4]
+[].fill.call({ length: 3 }, 4);  // {0: 4, 1: 4, 2: 4, length: 3}
+
+// Objects by reference.
+var arr = Array(3).fill({}) // [{}, {}, {}];
+// 需要注意如果fill的参数为引用类型，会导致都执行都一个引用类型
+// 如 arr[0] === arr[1] 为true
+arr[0].hi = "hi"; // [{ hi: "hi" }, { hi: "hi" }, { hi: "hi" }]
+```
+
+2. `Array.prototype.copyWithin(target[, start[, end]])` 改变原数组
+
+- 参数
+  - `target`:`0` 为基底的索引，复制序列到该位置。
+  - `start`:`0` 为基底的索引，开始复制元素的起始位置。
+  - `end`:0 为基底的索引，开始复制元素的结束位置。
+
+:::details 参数详解
+
+- `target`:`0` 为基底的索引，复制序列到该位置。如果是负数，`target` 将从末尾开始计算。
+如果 `target` 大于等于 `arr.length`，将会不发生拷贝。如果 `target` 在 `start` 之后，复制的序列将被修改以符合 `arr.length`。
+
+- `start`:`0` 为基底的索引，开始复制元素的起始位置。如果是负数，`start` 将从末尾开始计算。
+如果 `start` 被忽略，`copyWithin` 将会从`0`开始复制。
+- `end`:0 为基底的索引，开始复制元素的结束位置。`copyWithin` 将会拷贝到该位置，但不包括 `end` 这个位置的元素。如果是负数， `end` 将从末尾开始计算。
+如果 `end` 被忽略，`copyWithin` 方法将会一直复制至数组结尾（默认为 `arr.length`）。
+
+参数 `target`、`start` 和 `end` 必须为整数。
+
+如果 `start` 为负，则其指定的索引位置等同于 `length+start`，`length` 为数组的长度。end 也是如此。
+
+`copyWithin` 方法不要求其 `this` 值必须是一个数组对象；除此之外，`copyWithin` 是一个可变方法，它可以改变 `this` 对象本身，并且返回它，而不仅仅是它的拷贝。
+
+`copyWithin` 就像 `C` 和 `C++` 的 `memcpy` 函数一样，且它是用来移动 `Array` 或者 `TypedArray` 数据的一个高性能的方法。复制以及粘贴序列这两者是为一体的操作;即使复制和粘贴区域重叠，粘贴的序列也会有拷贝来的值。
+
+`copyWithin`函数被设计为通用式的，其不要求其 `this` 值必须是一个数组对象。
+
+`copyWithin` 是一个可变方法，它不会改变 `this` 的长度 `length`，但是会改变 `this` 本身的内容，且需要时会创建新的属性。
+:::
+
+- 返回值：改变后的数组。
+
+```js
+[1, 2, 3, 4, 5].copyWithin(-2)// [1, 2, 3, 1, 2]
+[1, 2, 3, 4, 5].copyWithin(0, 3)// [4, 5, 3, 4, 5]
+[1, 2, 3, 4, 5].copyWithin(0, 3, 4)// [4, 2, 3, 4, 5]
+[1, 2, 3, 4, 5].copyWithin(-2, -3, -1)// [1, 2, 3, 3, 4]
+
+[].copyWithin.call({length: 5, 3: 1}, 0, 3);// {0: 1, 3: 1, length: 5}
+
+//ES2015类型数组是Array的子类
+var i32a = new Int32Array([1, 2, 3, 4, 5]);
+i32a.copyWithin(0, 2);// Int32Array [3, 4, 5, 4, 5]
+// 在还不兼容ES2015的平台上:
+[].copyWithin.call(new Int32Array([1, 2, 3, 4, 5]), 0, 3, 4);// Int32Array [4, 2, 3, 4, 5]
+```
+
+3. `Array.prototype.pop()` 删除数组的最后一项元素 改变原数组
+
+从数组中删除最后一个元素，并返回被删除的元素的值。此方法更改数组的长度。
+
+- 无参数
+
+- 返回值:从数组中删除的元素(当数组为空时返回`undefined`)。
+
+`pop` 方法有意具有通用性。该方法和 `call()` 或 `apply()` 一起使用时，可应用在类似数组的对象上。`pop`方法根据 `length`属性来确定最后一个元素的位置。如果不包含`length`属性或`length`属性不能被转成一个数值，会将`length`置为`0`，并返回`undefined`。
+
+如果你在一个空数组上调用 `pop()`，它返回 `undefined`。
+
+```js
+let myFish = ["angel", "clown", "mandarin", "surgeon"];
+let popped = myFish.pop();
+console.log(myFish);// ["angel", "clown", "mandarin"]
+console.log(popped);//  surgeon (返回值 )
+```
+
+4. `Array.prototype.push(element1, ..., elementN)` 改变原数组
+
+将一个或多个元素添加到数组的末尾，并返回该数组的新长度。
+
+- 参数
+  - `elementN`:被添加到数组末尾的元素。
+- 返回值:`length` ;当调用该方法时，新的 `length` 属性值将被返回。
+
+`push` 方法具有通用性。该方法和 `call()` 或 `apply()` 一起使用时，可应用在类似数组的对象上。`push`方法根据 `length` 属性来决定从哪里开始插入给定的值。如果 `length` 不能被转成一个数值，则插入的元素索引为 `0`，包括 `length` 不存在时。当 `length` 不存在时，将会创建它。
+
+唯一的原生类数组（`array-like`）对象是 `Strings`，尽管如此，它们并不适用该方法，因为字符串是不可改变的。
+
+```js
+var sports = ["soccer", "baseball"];
+var total = sports.push("football", "swimming");
+console.log(sports);// ["soccer", "baseball", "football", "swimming"]
+console.log(total);// 4
+```
+
+(明天继续·······)
 
 1. `forEach()` 遍历数组
 
@@ -1577,13 +1764,6 @@ fruits.forEach(function (item, index, array) {
 ```js
 var newLength = fruits.push('Orange');
 // newLength:3; fruits: ["Apple", "Banana", "Orange"]
-```
-
-4. `pop()` 删除数组的最后一项元素
-
-```js
-var last = fruits.pop(); // remove Orange (from the end)
-// last: "Orange"; fruits: ["Apple", "Banana"];
 ```
 
 5. `unshift` 往数组的最前面添加元素

@@ -151,6 +151,7 @@ module.exports = {
                     { text: 'cmd', link: '/Tools/cmd' },
                     { text: 'nrm', link: '/Tools/nrm' },
                     { text: 'MarkDown', link: '/Tools/markdown' },
+                    { text: 'Terminal', link: '/Tools/terminal' },
                     { text: 'Trojan', link: '/Tools/Trojan' },
                     { text: 'vite', link: '/Tools/vite' },
                     { text: 'vuepress', link: '/Tools/vuepress' },
@@ -225,7 +226,7 @@ module.exports = {
                 {
                     title: 'JavaScript',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['JS/js1', 'JS/js2', 'JS/js3', 'JS/js4', 'JS/js5', 'JS/Array']
+                    children: ['JS/js1', 'JS/js2', 'JS/js3', 'JS/js4', 'JS/js5', 'JS/js6', 'JS/js7', 'JS/Array']
                 },
                 {
                     title: 'ES6',
@@ -282,7 +283,7 @@ module.exports = {
             '/Backend/': ['mongodb1', 'mongodb2', 'mongodb3'],
             '/Linux/': ['centos', 'screen', '宝塔', 'vim'],
             // 工具
-            '/Tools/': ['git', 'yarn', 'npm', 'cmd', 'nrm', 'markdown', 'Trojan', 'vite', 'vuepress', 'upgrade', 'regex', 'typecho', 'Eslint', 'vscode', 'wsl'],
+            '/Tools/': ['git', 'yarn', 'npm', 'cmd', 'nrm', 'markdown', 'terminal', 'Trojan', 'vite', 'vuepress', 'upgrade', 'regex', 'typecho', 'Eslint', 'vscode', 'wsl'],
             //小知识
             '/Other/': [
                 '', '问题', 'error', '知识点', '面试题', 'export', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome', '验证码'

@@ -1,5 +1,5 @@
 ---
-title: JS 作用域和声明
+title: JS 常用数据操作方法
 date: 2019-12-21
 sidebar: 'auto'
 categories:
@@ -7,48 +7,62 @@ categories:
 tags:
 - JavaScript
 publish: true
-
 ---
+## 数字
 
-## 作用域
+## 字符串
 
-全局变量(班费) 都可以访问
-局部变量(自己的钱) 只在函数内部可以访问 在函数内部使用 var 声明的是局部变量
-
-## let const
-
-- var
+- 反转字符串
 
 ```js
-// 局部变量和全局变量
-var  c = 1  //全部变量
-function a(){
-    var money = 100  //局部变量  外部无法访问
-    console.log(money,'局部变量')
-    dd = 1 // 全局变量
-}
-a()
-console.log('变量',c,dd)
+
 ```
 
-- var let 的区别
+## 数组
 
-1. 局部作用域里，`var` 是函数作用域，`let`是块作用域
-2. `var` 可以多次声明一个变量名，`let`不可以重复声明
-3. `let`不会再作用域里被提升，`var`会提升
-4. 再全局作用域中，`let`声明的变量不会成为`window`的属性，`var`声明的是`window`的属性
-
-- const
-
-和`let`基本相同，但是声明时必须同时赋值
-
-## 模板字面量
+- 数组去重合并
 
 ```js
-//保持格式一模一样
-    let myMultiLineString = 'first line\nsecond line';
-    let myMultiLineTemplateLiteral = ` first line
-second line `;// 换行也不影响
-    console.log(myMultiLineString); // first line // second line"
-    console.log(myMultiLineTemplateLiteral); // first line // second line
+function combine(){
+    let arr = [].concat.apply([], arguments);  //没有去重复的新数组
+    return Array.from(new Set(arr));
+}
+var m = [1, 2, 2], n = [2,3,3];
+console.log(combine(m,n));
+```
+
+- 合并合并两个数组
+
+```js
+var vegetables = ['parsnip', 'potato'];
+var moreVegs = ['celery', 'beetroot'];
+
+// 将第二个数组融合进第一个数组
+// 相当于 vegetables.push('celery', 'beetroot');
+Array.prototype.push.apply(vegetables, moreVegs);
+
+console.log(vegetables);
+// ['parsnip', 'potato', 'celery', 'beetroot']
+```
+
+## 对象
+
+- 像数组一样使用对象
+
+```js
+var obj = {
+    length: 0,
+
+    addElem: function addElem (elem) {
+        // obj.length is automatically incremented
+        // every time an element is added.
+        [].push.call(this, elem);
+    }
+};
+
+// Let's add some empty objects just to illustrate.
+obj.addElem({});
+obj.addElem({});
+console.log(obj.length);
+// → 2
 ```

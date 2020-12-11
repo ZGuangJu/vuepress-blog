@@ -1,5 +1,5 @@
 ---
-title: JS window对象
+title: JS 获取DOM
 date: 2019-12-21
 sidebar: 'auto'
 categories:
@@ -8,7 +8,6 @@ tags:
 - JavaScript
 publish: true
 ---
-- `window.innerHeight`
-获取当前窗口的高
-- `window.innerWidth`
-获取当前窗口的宽
+## 获取DOM元素的方法
+
+`document.querySelector`

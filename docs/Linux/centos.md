@@ -16,19 +16,19 @@ centos
 
 - 在`CentOS`和`Fedora`上安装`Wget`
 
-```s
+```js
 sudo yum install wget
 ```
 
 - 在`Ubuntu`和`Debian`上安装`Wget`
 
-```s
+```js
 sudo apt install wget
 ```
 
 - `wget`实用程序表达式采用以下形式：
 
-```s
+```js
 wget [options] [url]
 ```
 

@@ -12,7 +12,8 @@ publish: true
 ## 在Linux系统中多窗口运行的模块 -- screen
 
 - 安装
-Centos
+
+`Centos - 8`
 
 ```s
 yum install screen
@@ -52,4 +53,4 @@ exit
 
 - 保存并退出
 
-`ctrl + a + d`
+<kbd>ctrl</kbd> + <kbd>a</kbd> + <kbd>d</kbd>

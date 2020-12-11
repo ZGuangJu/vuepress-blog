@@ -195,7 +195,7 @@ ___
 
 ### 6. 代码块（三种方法）
 
-一是，利用英文  \`  符号；
+一是，利用英文  \` 或 `~~~`  符号；
 
 二是，使用 `<pre></pre>` 元素同样可以形成代码块，[示例如下](#_13-高级技巧)；
 
@@ -237,7 +237,23 @@ b. 段落式(代码块)语法高亮
 >   </html>
 > ```
 
-c. 段落式(代码块)语法高亮，重点突出代码块中的行-高亮
+c. `<pre></pre>`标签
+
+代码展示
+
+```html
+<pre style="color:greenyellow">
+使用元素标签同样可以形成代码块 ···
+</pre>
+```
+
+显示效果：
+
+<pre style="color:greenyellow">
+使用元素标签同样可以形成代码块 ···
+</pre>
+
+d. 段落式(代码块)语法高亮，重点突出代码块中的行-高亮
 
 代码展示：
 
@@ -261,7 +277,7 @@ c. 段落式(代码块)语法高亮，重点突出代码块中的行-高亮
 >   </html>
 > ```
 
-d. 禁用语法高亮
+e. 禁用语法高亮
 
 代码展示：
 
@@ -295,7 +311,7 @@ f. 在整个代码片段前加四个以上的 `tab` or `空格` 形成代码块
 
 - 支持的语言包括但不限于：
 `
-1c, abnf, accesslog, actionscript, ada, apache, applescript, arduino, armasm, asciidoc, aspectj, autohotkey, autoit, avrasm, awk, axapta, bash, basic, bnf, brainfuck, cal, capnproto, ceylon, clean, clojure, clojure-repl, cmake, coffeescript, coq, cos, cpp, crmsh, crystal, cs, csp, css, d, dart, delphi, diff, django, dns, dockerfile, dos, dsconfig, dts, dust, ebnf, elixir, elm, erb, erlang, erlang-repl, excel, fix, flix, fortran, fsharp, gams, gauss, gcode, gherkin, glsl, go, golo, gradle, groovy, haml, handlebars, haskell, haxe, hsp, htmlbars, http, hy, inform7, ini, irpf90, java, javascript, json, julia, kotlin, lasso, ldif, leaf, less, lisp, livecodeserver, livescript, llvm, lsl, lua, makefile, markdown, mathematica, matlab, maxima, mel, mercury, mipsasm, mizar, mojolicious, monkey, moonscript, n1ql, nginx, nimrod, nix, nsis, objectivec, ocaml, openscad, oxygene, parser3, perl, pf, php, pony, powershell, processing, profile, prolog, protobuf, puppet, purebasic, python, q, qml, r, rib, roboconf, rsl, ruby, ruleslanguage, rust, scala, scheme, scilab, scss, smali, smalltalk, sml, sqf, sql, stan, stata, step21, stylus, subunit, swift, taggerscript, tap, tcl, tex, thrift, tp, twig, typescript, vala, vbnet, vbscript, vbscript-html, verilog, vhdl, vim, x86asm, xl, xml, xquery, yaml, zephir ···
+1c, abnf, accesslog, actionscript, ada, apache, applescript, arduino, armasm, asciidoc, aspectj, autohotkey, autoit, avrasm, awk, axapta, bash, basic, bnf, brainfuck, cal, capnproto, ceylon, clean, clojure, clojure-repl, cmake, coffeescript, coq, cos, cpp, crmsh, crystal, cs, csp, css, d, dart, delphi, diff, django, dns, dockerfile, dos, dsconfig, dts, dust, ebnf, elixir, elm, erb, erlang, erlang-repl, excel, fix, flix, fortran, fsharp, gams, gauss, gcode, gherkin, glsl, go, golo, gradle, groovy, haml, handlebars, haskell, haxe, hsp, htmlbars, http, hy, inform7, ini, irpf90, java, javascript,js, json, julia, kotlin, lasso, ldif, leaf, less, lisp, livecodeserver, livescript, llvm, lsl, lua, makefile, markdown, mathematica, matlab, maxima, mel, mercury, mipsasm, mizar, mojolicious, monkey, moonscript, n1ql, nginx, nimrod, nix, nsis, objectivec, ocaml, openscad, oxygene, parser3, perl, pf, php, pony, powershell, processing, profile, prolog, protobuf, puppet, purebasic, python, q, qml, r, rib, roboconf, rsl, ruby, ruleslanguage, rust, scala, scheme, scilab, scss, smali, smalltalk, sml, sqf, sql, stan, stata, step21, stylus, subunit, swift, taggerscript, tap, tcl, tex, thrift, tp, twig, typescript, vala, vbnet, vbscript, vbscript-html, verilog, vhdl, vim, x86asm, xl, xml, xquery, yaml, zephir ···
 `
 
 `VuePress`用的是`prism`代码高亮，在 `Prism` 的网站上查看 [合法的语言列表](https://prismjs.com/#languages-list)
