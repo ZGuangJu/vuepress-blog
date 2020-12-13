@@ -49,7 +49,7 @@ mongo
 db.version()
 ```
 
-6. 卸载MongoDB
+6. 卸载`MongoDB`
 
 ```js
 sudo yum erase $(rpm -qa | grep mongodb-org)    // 卸载 MongoDB
@@ -65,7 +65,7 @@ sudo rm -r /var/lib/mongo    // 删除数据文件
 vi /etc/mongod.conf
 ```
 
-修改绑定 `ip`， 默认 `bindIp:127.0.0.1` 只允许本地连接，所以修改为 `bindIp:0.0.0.0`, 退出保存。
+修改绑定 `ip`， 默认 `bindIp:127.0.0.1` 只允许本地连接，所以修改为 `bindIp:0.0.0.0`, 让数据库可以被任何位置访问,退出保存。
 
 ```js
 # network interfaces
@@ -155,15 +155,15 @@ mongo 192.168.1.132:27017/database -u username -p password
 
 用户权限角色说明:
 
-| 规则                 | 说明                                                                               |
-| :------------------- | :--------------------------------------------------------------------------------- |
-| root                 | 只在admin数据库中可用。超级账号，超级权限                                          |
-| Read                 | 允许用户读取指定数据库                                                             |
-| readWrite            | 允许用户读写指定数据库                                                             |
-| dbAdmin              | 允许用户在指定数据库中执行管理函数，如索引创建、删除，查看统计或访问system.profile |
-| userAdmin            | 允许用户向system.users集合写入，可以找指定数据库里创建、删除和管理用户             |
-| clusterAdmin         | 只在admin数据库中可用，赋予用户所有分片和复制集相关函数的管理权限                  |
-| readAnyDatabase      | 只在admin数据库中可用，赋予用户所有数据库的读权限                                  |
-| readWriteAnyDatabase | 只在admin数据库中可用，赋予用户所有数据库的读写权限                                |
-| userAdminAnyDatabase | 只在admin数据库中可用，赋予用户所有数据库的userAdmin权限                           |
-| dbAdminAnyDatabase   | 只在admin数据库中可用，赋予用户所有数据库的dbAdmin权限                             |
+| 规则                   | 说明                                                                                 |
+| :--------------------- | :----------------------------------------------------------------------------------- |
+| `root`                 | 只在`admin`数据库中可用。超级账号，超级权限                                          |
+| `Read`                 | 允许用户读取指定数据库                                                               |
+| `readWrite`            | 允许用户读写指定数据库                                                               |
+| `dbAdmin`              | 允许用户在指定数据库中执行管理函数，如索引创建、删除，查看统计或访问`system.profile` |
+| `userAdmin`            | 允许用户向`system.users`集合写入，可以找指定数据库里创建、删除和管理用户             |
+| `clusterAdmin`         | 只在`admin`数据库中可用，赋予用户所有分片和复制集相关函数的管理权限                  |
+| `readAnyDatabase`      | 只在`admin`数据库中可用，赋予用户所有数据库的读权限                                  |
+| `readWriteAnyDatabase` | 只在`admin`数据库中可用，赋予用户所有数据库的读写权限                                |
+| `userAdminAnyDatabase` | 只在`admin`数据库中可用，赋予用户所有数据库的`userAdmin`权限                         |
+| `dbAdminAnyDatabase`   | 只在`admin`数据库中可用，赋予用户所有数据库的`dbAdmin`权限                           |

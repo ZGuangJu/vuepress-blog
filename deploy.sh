@@ -15,7 +15,7 @@ cd docs/.vuepress/dist
 
 git init
 git add -A
-git commit -m 'deploy-updata！'
+git commit -m 'deploy-updata!'
 
 # 3-1、提交到github和gitee仓库仓库中
 
