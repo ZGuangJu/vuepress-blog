@@ -34,7 +34,7 @@ git push -f git@gitee.com:zguangju/ZGuangJu.git master
 # 开始提交源码
 cd D:/github/blog-vuepress
 git add .
-git commit -m '又提交了！'
+git commit -m '提交了源码'
 git push origin master
 # 提交源码到github结束
 git push -f git@gitee.com:zguangju/vuepress-blog.git master
