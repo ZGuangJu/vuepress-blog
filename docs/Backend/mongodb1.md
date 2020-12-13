@@ -1,6 +1,6 @@
 ---
-title: MongoDB 初识
-date: 2020-10-20
+title: MongoDB 安装(Centos 7)
+date: 2020-11-08
 sidebar: 'auto'
 categories:
  - 后端技术
@@ -8,104 +8,162 @@ tags:
  - MongoDB
 publish: true
 ---
-## MongoDB 安装
+## MongoDB 使用(Centos 7)
 
-### 下载msi
+### 启动 MongoDB
 
-[官网下载](https://www.mongodb.com/try/download/community)
-
-### 安装软件
-
-![安装1](https://s1.ax1x.com/2020/11/09/BH9mkV.png)
-
-### 配置
-
-- 新建 `data` 目录(用来存储你的数据库和日志等文件)
-- 在 `data` 目录下添加 `db` 文件夹和 `log` 文件夹
-![配置1](https://s1.ax1x.com/2020/11/09/BH9l6J.png)
-- 配置环境变量:将你的安装目录添加到环境变量中(例：`D:\Developer\MongoDB\Server\4.4\bin`)
-
-1. 启动`mongodb`
-
-使用管理员模式的 `cmd` 进入安装目录(`D:\Developer\MongoDB\Server\4.4\bin`)
+1. 启动 `MongoDB` 服务
 
 ```js
-mongod --dbpath "D:\Developer\MongoDB\data\db"
+sudo service mongod start  //开启 MongoDB
+//或者
+systemctl start mongod.service  // 开启 MongoDB
+sudo chkconfig mongod on  // 加入开机启动
+sudo service mongod restart // 重启 MongoDB
 ```
 
-`"D:\Developer\MongoDB\data\db"`是存储数据的目录，可以自定义,输入本命令后服务就启动了，可以在浏览器中访问`127.0.0.1:27017`
-![启动](https://s1.ax1x.com/2020/11/09/BH9G01.png)
-打开这个页面说明成功。
-![启动2](https://s1.ax1x.com/2020/11/09/BHAEm4.png)
-
-1. 配置本地`windows mongodb`服务
-
-暂停`cmd`的进程,在安装目录下(比如在`D:\Developer\MongoDB`中)，新建一个`mongd.cfg`文件,文件内容如下:
+2. 关闭 `MongoDB`
 
 ```js
-#数据库数据存储路径，注意改成你自己的存储路径
-dbpath=D:\Developer\MongoDB\data\db
-#日志输出文件路径
-logpath=D:\Developer\MongoDB\data\log\mongo.log
-#错误日志采用追加模式
-logappend=true
-#启用日志文件，默认启用
-journal=true
-#这个选项可以过滤掉一些无用的日志信息，若需要调试使用请设置为false
-quiet=true
-#端口号 默认为27017
-port=27017
+sudo service mongod stop
 ```
 
-![配置2](https://s1.ax1x.com/2020/11/09/BH91X9.png)
-在`cmd`中输入以下命令:
+3. 查看端口是否开启
+
+`MongoDB` 默认端口是 `27017`，使用命令查看是否开启端口
 
 ```js
-mongod.exe --config "D:\Developer\MongoDB\mongod.cfg" --install --serviceName "MongoDB"
+netstat -natp | grep 27017
 ```
 
-![配置3](https://s1.ax1x.com/2020/11/09/BH98mR.png)
-`"D:\Developer\MongoDB\mongod.cfg"`是`mongod.cfg`文件的路径
-
-- `--config`：依据的配置文件。
-- `--install`：创建
-- `--serviceName`：服务名称。
-- `--prot`:是端口号
-更改端口号输入
+4. 检查数据库进程是否存在
 
 ```js
-mongod --dbpath "D:\Developer\MongoDB\data\db" --port 9526
-// 本次启动端口是9526 重启后恢复27017
+ps -aux | grep mongod
 ```
 
-## 启动
-
-- 启动命令，执行`net start mongodb`
-
-![start](https://s1.ax1x.com/2020/11/09/BH9Ql4.png)
-
-- 关闭服务，执行`net stop mongodb`
-
-![stop](https://s1.ax1x.com/2020/11/09/BH9nYT.png)
-
-- 测试`mongodb`
+5. 验证服务是否开启
 
 ```js
 mongo
+db.version()
 ```
 
-![mongo](https://s1.ax1x.com/2020/11/09/BH9ufU.png)
-![mongo2](https://s1.ax1x.com/2020/11/09/BH9MpF.png)
-
-`exit` 退出
-
-- `mongodb`服务相关命令：
+6. 卸载MongoDB
 
 ```js
-启动MongoDB服务
-net start MongoDB
-关闭MongoDB服务
-net stop MongoDB
-移除 MongoDB 服务
-D:\Developer\MongoDB\Server\4.4\bin\mongod.exe --remove
+sudo yum erase $(rpm -qa | grep mongodb-org)    // 卸载 MongoDB
+sudo rm -r /var/log/mongodb  // 删除日志文件
+sudo rm -r /var/lib/mongo    // 删除数据文件
 ```
+
+### 配置远程连接 MongoDB
+
+1. 修改配置文件 `mongodb.conf`
+
+```js
+vi /etc/mongod.conf
+```
+
+修改绑定 `ip`， 默认 `bindIp:127.0.0.1` 只允许本地连接，所以修改为 `bindIp:0.0.0.0`, 退出保存。
+
+```js
+# network interfaces
+net:
+  port: 27017
+  bindIp: 0.0.0.0  # Enter 0.0.0.0,:: to bind to all IPv4 and IPv6 addresses or, alternatively, use the net.bindIpAll setting.
+```
+
+2. 重启 `MongoDB` 服务
+
+```js
+sudo service mongod restart
+```
+
+3. 开放对外端口
+
+在防火墙中放行指定的端口：
+
+```js
+systemctl status firewalld
+// 查看防火墙状态
+firewall-cmd --zone=public --add-port=27017/tcp --permanent
+// mongodb默认端口号
+firewall-cmd --reload
+// 重新加载防火墙
+firewall-cmd --zone=public --query-port=27017/tcp
+// 查看端口号是否开放成功，输出yes开放成功，no则失败
+```
+
+4. 测试远程连接
+
+```js
+mongo 192.168.1.132:27017
+db.version()
+```
+
+### 添加用户名和密码
+
+1. 为 `admin` 数据库创建用户，设置用户名、密码和权限
+
+```js
+show dbs # 显示所有的数据库
+use admin # 切换到 admin 数据库
+db.createUser({user:'root',pwd:'999888',roles:['root']})
+db.auth('root','999888')
+# 其他常用命令
+# db.changeUserPassword("test", "test")     # 修改密码
+# db.updateUser("test",{roles:[ {role:"read",db:"testDB"} ]}) # 更新用户权限
+# db.dropUser('test') # 删除用户
+# db.createUser({user:'cjx',pwd:'999888',roles:['userAdminAnyDatabase']}) # 赋予用户所有数据库的userAdmin权限
+```
+
+2. 为其他数据库创建用户，设置用户名、密码和权限
+
+```js
+use test
+db.createUser({ user:"cjx", pwd:"999888", roles:["readWrite", "dbAdmin"] })
+db.auth('cjx','999888')
+```
+
+3. 修改 `mongodb.conf` 文件，启用身份验证
+
+```js
+vi /etc/mongod.conf
+```
+
+添加如下内容：
+
+```js
+security:
+  authorization: enabled   # disable or enabled
+```
+
+4. 重启 `MongoDB` 服务
+
+```js
+sudo service mongod restart
+```
+
+5. 测试远程连接
+
+```js
+mongo 192.168.1.132:27017/database -u username -p password
+```
+
+\* 注意这里的`ip`地址不用`http://`,直接加`ip`.
+
+用户权限角色说明:
+
+| 规则                 | 说明                                                                               |
+| :------------------- | :--------------------------------------------------------------------------------- |
+| root                 | 只在admin数据库中可用。超级账号，超级权限                                          |
+| Read                 | 允许用户读取指定数据库                                                             |
+| readWrite            | 允许用户读写指定数据库                                                             |
+| dbAdmin              | 允许用户在指定数据库中执行管理函数，如索引创建、删除，查看统计或访问system.profile |
+| userAdmin            | 允许用户向system.users集合写入，可以找指定数据库里创建、删除和管理用户             |
+| clusterAdmin         | 只在admin数据库中可用，赋予用户所有分片和复制集相关函数的管理权限                  |
+| readAnyDatabase      | 只在admin数据库中可用，赋予用户所有数据库的读权限                                  |
+| readWriteAnyDatabase | 只在admin数据库中可用，赋予用户所有数据库的读写权限                                |
+| userAdminAnyDatabase | 只在admin数据库中可用，赋予用户所有数据库的userAdmin权限                           |
+| dbAdminAnyDatabase   | 只在admin数据库中可用，赋予用户所有数据库的dbAdmin权限                             |

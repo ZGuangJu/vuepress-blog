@@ -280,7 +280,7 @@ module.exports = {
             '/Node/': ['node1', 'node2', 'package'],
             '/Webpack/': ['webpack1', 'webpack2', 'webpackconfigjs'],
             // 后端
-            '/Backend/': ['mongodb1', 'mongodb2', 'mongodb3'],
+            '/Backend/': ['mongodb1', 'mongodb2', 'mongodb3', 'mongodb4', 'mongodb5'],
             '/Linux/': ['centos', 'screen', '宝塔', 'vim'],
             // 工具
             '/Tools/': ['git', 'yarn', 'npm', 'cmd', 'nrm', 'markdown', 'terminal', 'Trojan', 'vite', 'vuepress', 'upgrade', 'regex', 'typecho', 'Eslint', 'vscode', 'wsl'],

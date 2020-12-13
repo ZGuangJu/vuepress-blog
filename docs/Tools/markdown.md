@@ -450,16 +450,17 @@ f. 在整个代码片段前加四个以上的 `tab` or `空格` 形成代码块
 代码展示：
 
 ```md
-![图片名称](http://图片网址)
+![图片名称](https://s3.ax1x.com/2020/12/11/rk2KXR.jpg)
 有些可以用html插入
-<img scr="http://img.com/123.png" alt="图片">
+<img src="https://s3.ax1x.com/2020/12/11/rk2KXR.jpg" alt="图片">
 ```
 
 显示效果：
 
-![图片名称](http://图片网址)
-
-<img scr="http://img.com/123.png" alt="图片">
+`[]()`
+![图片名称](https://s3.ax1x.com/2020/12/11/rk2KXR.jpg)
+`<img/>`
+<img src="https://s3.ax1x.com/2020/12/11/rk2KXR.jpg" alt="图片">
 
 也可以像网址那样对图片网址使用变量
 
