@@ -16,8 +16,10 @@ publish: true
 const mongoose = require('mongoose')
 
 // 1. 连接数据库
-
+ //createConnection 是node语法
 const app = mongoose.createConnection("mongodb://123.56.171.43:27017/guangju", { useNewUrlParser: true, useUnifiedTopology: true })  // guangju是数据库名
+// 连接远程数据库 + 用户名密码
+// const app = mongoose.createConnection('mongodb://username:password@123.56.171.43:27017/databasename', { useNewUrlParser: true, useUnifiedTopology: true });
 
 //  2. 开启监听
 

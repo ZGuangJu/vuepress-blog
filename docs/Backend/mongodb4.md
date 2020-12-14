@@ -1,5 +1,5 @@
 ---
-title: MongoDB 命令参数
+title: MongoDB 操作和方法
 date: 2020-11-08
 sidebar: 'auto'
 categories:
@@ -8,7 +8,106 @@ tags:
  - MongoDB
 publish: true
 ---
+## MongoDB 方法
+
+- 查看所有数据库
+
+```js
+show dbs
+```
+
+- 进入(使用|切换到)某个数据库
+
+```js
+use databasename
+```
+
+- 查看数据库中的所有集合
+
+```js
+show tables
+```
+
+- 查看数据库中的用户
+
+```js
+show users
+```
+
+- 新建`admin`数据库的用户
+
+```js
+db.createUser({user:"username",pwd:"mypwd", roles:["root"]})
+db.auth('username','mypwd')
+```
+
+- 对账号授权
+
+```js
+db.auth(“账号”,”密码”)
+```
+
+- 修改密码
+
+```js
+db.changeUserPassword("test", "mynewpwd")
+```
+
+- 更新用户权限
+
+```js
+db.updateUser("test",{roles:[ {role:"read",db:"testDB"} ]})
+```
+
+- 赋予用户所有数据库的`userAdmin`权限
+
+```js
+db.createUser({user:'cjx',pwd:'999888',roles:['userAdminAnyDatabase']})
+```
+
+- 删除用户
+
+```js
+db.dropUser('test')
+```
+
+- 为其他数据库创建用户，设置用户名、密码和权限
+
+```js
+use test
+db.createUser({ user:"zguangju", pwd:"8888", roles:["readWrite", "dbAdmin"] })
+db.auth('zguangju','8888')
+```
+
+## 数据库 方法
+
+- 插入
+
+```js
+db.collection.insert({value:"value"})
+```
+
+- 查找
+
+```js
+db.collection.find({value:"value"})
+```
+
+- 删
+
+```js
+db.collection.remove({value:"value"})
+```
+
+- 改
+
+```js
+db.collection.update({value:"newvalue"})
+```
+
 ## Mongod 权限设置
+
+:::details
 
 `mongodb` --用户名、密码、端口
 
@@ -112,3 +211,4 @@ mongod --port 50107 --dbpath  d:\work\data\mongodb\db  --auth
 ```
 
 这样访问`MongoDB`就是以`50107`的端口访问了
+:::

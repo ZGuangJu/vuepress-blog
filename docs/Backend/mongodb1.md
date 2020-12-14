@@ -126,7 +126,7 @@ db.createUser({ user:"cjx", pwd:"999888", roles:["readWrite", "dbAdmin"] })
 db.auth('cjx','999888')
 ```
 
-3. 修改 `mongodb.conf` 文件，启用身份验证
+3. 修改 `mongodb.conf`(`MongoDB`主配置文件) 文件，启用身份验证
 
 ```js
 vi /etc/mongod.conf
@@ -145,10 +145,16 @@ security:
 sudo service mongod restart
 ```
 
-5. 测试远程连接
+5. 测试远程或本地连接使用账号密码登录打开`mongo`
 
 ```js
-mongo 192.168.1.132:27017/database -u username -p password
+mongo 192.168.1.132:27017/database -u username -p password --port 27017
+```
+
+```js
+-u username  //用户名
+-p password  //密码
+--port 27017 //端口
 ```
 
 \* 注意这里的`ip`地址不用`http://`,直接加`ip`.
