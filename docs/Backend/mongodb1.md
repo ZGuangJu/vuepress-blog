@@ -7,8 +7,108 @@ categories:
 tags:
  - MongoDB
 publish: true
+# 打赏
+showSponsor: true
 ---
 ## MongoDB 使用(Centos 7)
+
+### 安装 MongoDB 4.4
+
+1. 配置程序包管理系统(`yum`)
+
+```js
+vi /etc/yum.repos.d/mongodb-org-4.4.repo
+```
+
+将以下内容粘贴进去
+
+```js
+[mongodb-org-4.4]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.4/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-4.4.asc
+```
+
+```js
+name         # 名称
+baseurl      # 获得下载的路径
+gpkcheck=1   # 表示对从这个源下载的rpm包进行校验；
+enable=1     # 表示启用这个源。
+gpgkey       # gpg验证
+```
+
+<kbd>ESC</kbd> 输入 `:wq` 保存并退出
+
+2. 用`yum`安装`mongoDB`最新稳定版
+
+```js
+sudo yum install -y mongodb-org
+```
+
+:::details 另外
+另外，要安装特定版本的`MongoDB`，请分别指定每个组件包，并将版本号附加到包名中，如以下示例所示：
+
+```js
+sudo yum install -y mongodb-org-4.4.2 mongodb-org-server-4.4.2 mongodb-org-shell-4.4.2 mongodb-org-mongos-4.4.2 mongodb-org-tools-4.4.2
+```
+
+您可以指定任何可用的`MongoDB`版本。但是`yum` ，当有新版本可用时，将升级软件包。为防止意外升级，请固定包装。要固定包，`exclude`请在`/etc/yum.conf`文件中添加以下指令：
+
+```js
+exclude=mongodb-org,mongodb-org-server,mongodb-org-shell,mongodb-org-mongos,mongodb-org-tools
+```
+
+:::
+
+ \* 下载过程可能有点慢，出现`Complete！`才是下载完成了
+
+3. 验证安装结果
+
+```js
+rpm -qa | grep mongodb
+```
+
+输出结果如下:
+
+```js
+[root@alcloud ~]# rpm -qa | grep mongodb
+mongodb-org-tools-4.4.2-1.el7.x86_64
+mongodb-org-server-4.4.2-1.el7.x86_64
+mongodb-org-database-tools-extra-4.4.2-1.el7.x86_64
+mongodb-org-shell-4.4.2-1.el7.x86_64
+mongodb-org-4.4.2-1.el7.x86_64
+mongodb-database-tools-100.2.1-1.x86_64
+mongodb-org-mongos-4.4.2-1.el7.x86_64
+[root@alcloud ~]#
+```
+
+查看`mongoDB`安装和位置
+
+```js
+rpm -ql mongodb-org-server
+```
+
+输出结果如下:
+
+```js
+[root@alcloud ~]# rpm -ql mongodb-org-server
+/etc/mongod.conf
+/lib/systemd/system/mongod.service
+/usr/bin/mongod
+/usr/share/doc/mongodb-org-server-4.4.2
+/usr/share/doc/mongodb-org-server-4.4.2/LICENSE-Community.txt
+/usr/share/doc/mongodb-org-server-4.4.2/MPL-2
+/usr/share/doc/mongodb-org-server-4.4.2/README
+/usr/share/doc/mongodb-org-server-4.4.2/THIRD-PARTY-NOTICES
+/usr/share/man/man1/mongod.1
+/var/lib/mongo
+/var/log/mongodb
+/var/log/mongodb/mongod.log
+/var/run/mongodb
+[root@alcloud ~]#
+```
 
 ### 启动 MongoDB
 

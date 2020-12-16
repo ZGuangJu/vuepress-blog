@@ -7,6 +7,8 @@ categories:
 tags:
  - MongoDB
 publish: true
+# 打赏
+showSponsor: true
 ---
 ## MongoDB 方法
 

@@ -8,6 +8,8 @@ tags:
  - Axios
  - 前端基础
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 :::tip

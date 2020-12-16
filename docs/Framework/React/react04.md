@@ -6,6 +6,8 @@ tags:
  - react
  - Class-State
 publish: true
+# 打赏
+showSponsor: true
 ---
 ## 类组件里的 State
 

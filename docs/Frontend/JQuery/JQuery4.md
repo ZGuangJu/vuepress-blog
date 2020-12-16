@@ -5,6 +5,8 @@ sidebar: 'auto'
 tags:
  - jQuery
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 ## jQ 事件的绑定

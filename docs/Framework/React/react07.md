@@ -7,6 +7,8 @@ tags:
  - 受控组件
  - 非受控组件
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 ## 受控组件 非受控组件

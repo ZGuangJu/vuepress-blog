@@ -8,6 +8,8 @@ tags:
  - 前端基础
  - jQuery
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 ## jQ 核心函数和方法

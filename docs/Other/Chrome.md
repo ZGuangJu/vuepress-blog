@@ -7,6 +7,8 @@ categories:
 tags:
  - Chrome
 publish: true
+# 打赏
+showSponsor: true
 ---
 ## Chrome 学习
 

@@ -7,6 +7,8 @@ categories:
 tags:
  - JavaScript
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 [javascript详解](https://wangdoc.com/javascript/)

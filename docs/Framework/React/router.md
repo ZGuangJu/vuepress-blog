@@ -7,6 +7,8 @@ tags:
  - React-router-dom
  - React-router
 publish: true
+# 打赏
+showSponsor: true
 ---
 ## `React-router`与`React-router-dom`的区别
 

@@ -5,6 +5,8 @@ sidebar: 'auto'
 tags:
  - 微信小程序
 publish: true
+# 打赏
+showSponsor: true
 ---
 ## `WXSS`
 

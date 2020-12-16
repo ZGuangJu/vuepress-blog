@@ -5,6 +5,8 @@ sidebar: 'auto'
 tags:
  - vue
 publish: true
+# 打赏
+showSponsor: true
 ---
 1. vue是什么
 

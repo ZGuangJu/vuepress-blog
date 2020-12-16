@@ -7,6 +7,8 @@ categories:
 tags:
  - Trojan
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 ::: tip Trojan是什么

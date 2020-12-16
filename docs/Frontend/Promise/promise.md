@@ -8,6 +8,8 @@ tags:
  - Promise
 publish: true
 sticky: 7
+# 打赏
+showSponsor: true
 ---
 ## Promise 前言
 

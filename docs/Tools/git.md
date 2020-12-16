@@ -8,6 +8,8 @@ tags:
  - Git
 publish: true
 sticky: 2
+# 打赏
+showSponsor: true
 ---
 
 <img src="https://s2.ax1x.com/2020/02/27/3d2VE9.png" alt="git">

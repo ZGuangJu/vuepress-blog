@@ -7,6 +7,8 @@ categories:
 tags:
  - 目标
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 ## 有生之年系列（陆续添加），不需按顺序

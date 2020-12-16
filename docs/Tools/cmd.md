@@ -7,6 +7,8 @@ categories:
 tags:
  - cmd
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 :::tip 简介

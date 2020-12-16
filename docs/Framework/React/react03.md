@@ -7,6 +7,8 @@ tags:
  - class组件
  - 函数组件
 publish: true
+# 打赏
+showSponsor: true
 ---
 ## 组件
 

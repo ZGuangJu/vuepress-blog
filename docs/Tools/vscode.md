@@ -7,6 +7,8 @@ categories:
 tags:
  - VScode
 publish: true
+# 打赏
+showSponsor: true
 ---
 ## 设置字体
 

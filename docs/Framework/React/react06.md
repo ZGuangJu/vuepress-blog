@@ -7,6 +7,8 @@ tags:
  - React条件渲染
  - React循环渲染
 publish: true
+# 打赏
+showSponsor: true
 ---
 ## 条件渲染 和 循环渲染
 

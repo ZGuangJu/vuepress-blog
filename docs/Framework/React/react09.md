@@ -6,6 +6,8 @@ tags:
  - react
  - createContext
 publish: true
+# 打赏
+showSponsor: true
 ---
 ## createContext 上下文传值
 

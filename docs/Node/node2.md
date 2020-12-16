@@ -5,6 +5,8 @@ sidebar: 'auto'
 tags:
  - Node.js
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 ## 创建一个后台

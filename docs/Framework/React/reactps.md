@@ -7,6 +7,8 @@ categories:
 tags:
  - react
 publish: true
+# 打赏
+showSponsor: true
 ---
 DAY 1
 

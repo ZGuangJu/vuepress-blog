@@ -7,6 +7,8 @@ categories:
 tags:
  - Eslint
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 ## 禁用Eslint

@@ -25,6 +25,7 @@ module.exports = {
     ],
     // 主题使用的插件的设置
     plugins: [
+
         [
             // 看板娘
             "@vuepress-reco/vuepress-plugin-kan-ban-niang",
@@ -38,7 +39,28 @@ module.exports = {
                     close: '那再见了哦~'
                 }
             }
-        ]
+        ],
+        [
+            // 彩带
+            "ribbon",
+            {
+                size: 60,     // width of the ribbon, default: 90
+                opacity: 0.4, // opacity of the ribbon, default: 0.3
+                zIndex: -1    // z-index property of the background, default: -1
+            }
+        ],
+        [
+            // 打赏
+            'vuepress-plugin-sponsor',
+            {
+                theme: 'simple', // Drinks  \ simple
+                alipay: 'https://pic.downk.cc/item/5e8c52cf504f4bcb0412ad6f.png',
+                wechat: 'https://pic.downk.cc/item/5e9fa35fc2a9a83be5281f0e.png',
+                // qq: '',
+                // paypal: '',
+                duration: 2000
+            }
+        ],
         // 未启用
         // [
         //     // 公告窗
@@ -140,6 +162,7 @@ module.exports = {
                     // { text: 'JAVA 的了解', link: '/Backend/JAVA' },
                     { text: 'Linux', link: '/Linux/centos' },
                     { text: 'MongoDB', link: '/Backend/mongodb1' },
+                    { text: 'Api', link: '/Backend/api' },
                 ],
             },
             {
@@ -280,7 +303,7 @@ module.exports = {
             '/Node/': ['node1', 'node2', 'package'],
             '/Webpack/': ['webpack1', 'webpack2', 'webpackconfigjs'],
             // 后端
-            '/Backend/': ['mongodb1', 'mongodb2', 'mongodb3', 'mongodb4', 'mongodb5'],
+            '/Backend/': ['mongodb1', 'mongodb2', 'mongodb3', 'mongodb4', 'mongodb5', 'api'],
             '/Linux/': ['centos', 'screen', '宝塔', 'vim'],
             // 工具
             '/Tools/': ['git', 'yarn', 'npm', 'cmd', 'nrm', 'markdown', 'terminal', 'Trojan', 'vite', 'vuepress', 'upgrade', 'regex', 'typecho', 'Eslint', 'vscode', 'wsl'],
@@ -293,7 +316,7 @@ module.exports = {
         friendLink: [
             {
                 title: '我的博客',
-                desc: '我的另一个博客地址.',
+                desc: '我的博客地址.',
                 email: "guangju@126.com",//可用头像地址替换
                 link: 'http://www.91guangju.com'
             }
@@ -326,14 +349,14 @@ module.exports = {
         // 自定义编辑链接的文本。默认是 "Edit this page"
         editLinkText: '帮助我们改进页面！',
         // 备案信息
-        // record: '冀ICP备19032877号',
-        // recordLink: 'http://beian.miit.gov.cn/',
+        record: '京ICP备2020044651号-1',
+        recordLink: 'http://beian.miit.gov.cn/',
         // cyberSecurityRecord: '公安部备案文案',
         // cyberSecurityLink: '公安部备案指向链接',
         // 项目开始时间，只填写年份
-        startYear: '2018',
+        startYear: '2017',
         // author
-        author: 'Guangju',
+        author: 'GuangJu',
         //导航栏左侧可以显示logo
         // logo: '/head.png',
         // 替换首页的 faceImage 来设置头像

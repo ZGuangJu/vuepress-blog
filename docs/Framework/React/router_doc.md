@@ -7,6 +7,8 @@ tags:
  - Router文档
  - Router v5
 publish: true
+# 打赏
+showSponsor: true
 ---
 本文档是关于 `React Router v5` 的`API`使用方法介绍
 

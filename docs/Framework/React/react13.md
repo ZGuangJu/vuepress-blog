@@ -8,6 +8,8 @@ tags:
  - react
  - Sass
 publish: true
+# 打赏
+showSponsor: true
 ---
 ### scss 书写 css 样式【文件后缀是 .scss 】
 

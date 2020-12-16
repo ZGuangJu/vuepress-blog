@@ -8,6 +8,8 @@ tags:
  - win子系统
  - WSL
 publish: true
+# 打赏
+showSponsor: true
 ---
 ## WSL
 

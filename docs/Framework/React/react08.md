@@ -6,6 +6,8 @@ tags:
  - react
  - class生命周期
 publish: true
+# 打赏
+showSponsor: true
 ---
 [类组件的state生命周期图](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
 

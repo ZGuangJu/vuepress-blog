@@ -6,6 +6,8 @@ tags:
  - 前端基础
  - jQuery
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 ## jQ CSS 类名的操作

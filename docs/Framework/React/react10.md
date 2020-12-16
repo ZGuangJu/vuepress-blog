@@ -7,6 +7,8 @@ tags:
  - propTypes
  - 高阶组件
 publish: true
+# 打赏
+showSponsor: true
 ---
 ## propTypes
 

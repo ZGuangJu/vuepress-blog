@@ -6,6 +6,8 @@ tags:
  - vue
  - 路由
 publish: true
+# 打赏
+showSponsor: true
 ---
 
   路由传参的方式（三种）

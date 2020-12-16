@@ -8,6 +8,8 @@ tags:
  - Linux
  - screen
 publish: true
+# 打赏
+showSponsor: true
 ---
 ## 在Linux系统中多窗口运行的模块 -- screen
 

@@ -5,6 +5,8 @@ sidebar: 'auto'
 tags:
  - 微信小程序
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 ## 小程序中引入 npm 及包的使用

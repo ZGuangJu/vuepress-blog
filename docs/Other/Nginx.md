@@ -7,6 +7,8 @@ categories:
 tags:
  - Nginx
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 [Nginx英文官网](http://nginx.org/)  [Nginx中文官网](https://www.nginx.cn/)

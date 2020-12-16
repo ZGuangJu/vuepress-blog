@@ -6,6 +6,8 @@ tags:
  - react
  - Router
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 - `React-Router-dom` 的使用介绍，详情请看[英文官网](https://reactrouter.com/web/api/Hooks>),[中文翻译](https://zguangju.gitee.io/Framework/React/router_doc.html)

@@ -7,6 +7,8 @@ categories:
 tags:
 - JavaScript
 publish: true
+# 打赏
+showSponsor: true
 ---
 ## 获取DOM元素的方法
 

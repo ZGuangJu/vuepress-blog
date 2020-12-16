@@ -7,6 +7,8 @@ categories:
 tags:
  - URI、URL、URN
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 URI是个纯粹的句法结构，用于指定标识Web资源的字符串的各个不同部分。URL是URI的一个特例，它包含了定位Web资源的足够信息。

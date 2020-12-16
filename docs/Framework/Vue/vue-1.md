@@ -8,6 +8,8 @@ tags:
  - vue
 publish: true
 sticky: 1
+# 打赏
+showSponsor: true
 ---
 ## Vue 介绍
 

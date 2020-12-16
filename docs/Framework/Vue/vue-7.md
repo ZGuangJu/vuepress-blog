@@ -6,6 +6,8 @@ tags:
  - vue
  - 路由
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 ## 动态路由匹配

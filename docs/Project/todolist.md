@@ -8,6 +8,8 @@ tags:
  - react
  - TodoList
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 ## react + redux 实现todolist

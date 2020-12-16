@@ -8,6 +8,8 @@ tags:
  - react
  - React优化
 publish: true
+# 打赏
+showSponsor: true
 ---
 ## React 优化
 

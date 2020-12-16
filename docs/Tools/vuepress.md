@@ -7,6 +7,8 @@ categories:
 tags:
  - Vuepress
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 :::tip Vuepress 的优点

@@ -8,6 +8,8 @@ tags:
  - npm
 publish: true
 sticky: 3
+# 打赏
+showSponsor: true
 ---
 
 :::tip 介绍

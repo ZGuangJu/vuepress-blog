@@ -6,6 +6,8 @@ tags:
  - react
  - React Hooks
 publish: true
+# 打赏
+showSponsor: true
 ---
 ## Hooks
 

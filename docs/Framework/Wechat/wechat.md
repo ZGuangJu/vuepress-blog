@@ -9,6 +9,8 @@ tags:
  - 微信小程序
 publish: true
 sticky: 6
+# 打赏
+showSponsor: true
 ---
 ## 学习主要内容
 

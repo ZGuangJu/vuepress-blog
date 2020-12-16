@@ -8,6 +8,8 @@ tags:
  - react
  - vue
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 :::tip

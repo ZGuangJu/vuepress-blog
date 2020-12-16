@@ -5,6 +5,8 @@ sidebar: 'auto'
 tags:
  - 微信小程序
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 用法和vue-mixis几乎一样，给component自定义组件使用

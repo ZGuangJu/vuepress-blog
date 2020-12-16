@@ -6,6 +6,8 @@ tags:
  - react
  - jsx
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 :::tip jsx是什么

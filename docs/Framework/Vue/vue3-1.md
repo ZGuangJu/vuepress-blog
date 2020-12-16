@@ -7,6 +7,8 @@ categories:
 tags:
  - vue3
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 ## 创建

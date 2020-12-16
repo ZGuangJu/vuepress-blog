@@ -7,6 +7,8 @@ categories:
 tags:
  - webpack.config.js
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 1.webpack-dev-server 安装   监听源码自动更新页面

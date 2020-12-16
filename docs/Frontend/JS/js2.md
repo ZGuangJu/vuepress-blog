@@ -7,6 +7,8 @@ categories:
 tags:
  - JavaScript
 publish: true
+# 打赏
+showSponsor: true
 ---
 ::: tip
 本文档是我自己理解及参考各官方文档和书籍整理，如有错误之处，欢迎评论指出。

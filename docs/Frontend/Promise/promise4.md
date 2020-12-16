@@ -5,6 +5,8 @@ sidebar: 'auto'
 tags:
  - Promise
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 ## 自定义 Promise

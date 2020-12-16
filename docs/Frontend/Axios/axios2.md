@@ -6,6 +6,8 @@ tags:
  - 前端基础
  - Axios
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 :::tip

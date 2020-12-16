@@ -7,6 +7,8 @@ categories:
 tags:
  - Node.js
 publish: true
+# 打赏
+showSponsor: true
 ---
 ## nodejs 到底是什么
 

@@ -8,6 +8,8 @@ tags:
  - Webpack
 publish: true
 sticky: 8
+# 打赏
+showSponsor: true
 ---
 ## webpack简介
 

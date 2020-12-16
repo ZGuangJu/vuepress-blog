@@ -6,6 +6,8 @@ tags:
  - 前端基础
  - Axios
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 1. 在项目中创建一个`repuest`文件夹

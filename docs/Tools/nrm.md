@@ -7,6 +7,8 @@ categories:
 tags:
  - nrm
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 :::tip 介绍

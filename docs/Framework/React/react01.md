@@ -8,6 +8,8 @@ tags:
  - react
 publish: true
 sticky: 5
+# 打赏
+showSponsor: true
 ---
 
 ## React 介绍

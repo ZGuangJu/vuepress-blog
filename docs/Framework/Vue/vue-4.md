@@ -6,6 +6,8 @@ tags:
  - vue
  - 组件通信
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 ## 1.  `props` & `$emit` 父子传值(常用方法)

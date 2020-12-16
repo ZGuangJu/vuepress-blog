@@ -6,6 +6,8 @@ tags:
 - Node.js
 - package.json
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 ## package.json 详情

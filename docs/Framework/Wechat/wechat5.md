@@ -5,6 +5,8 @@ sidebar: 'auto'
 tags:
  - 微信小程序
 publish: true
+# 打赏
+showSponsor: true
 ---
 ## 页面传值(三种)
 

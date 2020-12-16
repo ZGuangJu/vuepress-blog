@@ -8,6 +8,8 @@ tags:
  - vue
  - 项目
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 1. 我做的是个什么项目，叫什么名，主要是面向消费者销售电子，生活用品，母婴...

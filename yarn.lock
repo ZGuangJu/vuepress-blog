@@ -8300,6 +8300,11 @@ vuepress-plugin-mailchimp@^1.4.1:
     jsonp "^0.2.1"
     query-string "^6.9.0"
 
+vuepress-plugin-ribbon@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npm.taobao.org/vuepress-plugin-ribbon/download/vuepress-plugin-ribbon-1.0.2.tgz#2845674049939e1b2a4d285abc685abb8b5490ed"
+  integrity sha1-KEVnQEmTnhsqTShavGhau4tUkO0=
+
 vuepress-plugin-sitemap@^2.3.1:
   version "2.3.1"
   resolved "https://registry.npm.taobao.org/vuepress-plugin-sitemap/download/vuepress-plugin-sitemap-2.3.1.tgz#51298aca77a5de96396fdbd1103e1637dd61ae6a"
@@ -8320,6 +8325,11 @@ vuepress-plugin-smooth-scroll@^0.0.9:
   integrity sha1-bF0B22De89e5drU0BOVrl9qejzk=
   dependencies:
     smoothscroll-polyfill "^0.4.4"
+
+vuepress-plugin-sponsor@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npm.taobao.org/vuepress-plugin-sponsor/download/vuepress-plugin-sponsor-1.0.0.tgz#376e21efc98d6ae271db4aaaa04cf5206b2c74f0"
+  integrity sha1-N24h78mNauJx20qqoEz1IGssdPA=
 
 vuepress-theme-reco@^1.5.7:
   version "1.5.7"

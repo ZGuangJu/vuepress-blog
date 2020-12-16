@@ -7,6 +7,8 @@ categories:
 tags:
 - JavaScript
 publish: true
+# 打赏
+showSponsor: true
 ---
 - `window.innerHeight`
 获取当前窗口的高

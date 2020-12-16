@@ -7,6 +7,8 @@ categories:
 tags:
  - export区别
 publish: true
+# 打赏
+showSponsor: true
 ---
 ## module.exports与exports，export与export default之间的关系和区别
 

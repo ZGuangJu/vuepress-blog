@@ -7,6 +7,8 @@ categories:
 tags:
  - 变量常用名
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 [Codelf:变量命名](https://unbug.github.io/codelf/)

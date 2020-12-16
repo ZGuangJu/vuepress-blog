@@ -7,6 +7,8 @@ categories:
 tags:
  - node
 publish: true
+# 打赏
+showSponsor: true
 ---
 ## node升级版本
 

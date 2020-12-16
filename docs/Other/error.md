@@ -8,6 +8,8 @@ tags:
  - error
  - 同步异步回调
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 :::tip 说明

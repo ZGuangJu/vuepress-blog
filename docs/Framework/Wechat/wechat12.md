@@ -5,6 +5,8 @@ sidebar: 'auto'
 tags:
  - 微信小程序
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 ## 绑定事件的两种方法

@@ -7,6 +7,8 @@ categories:
 tags:
  - Centos8
 publish: true
+# 打赏
+showSponsor: true
 ---
 centos
 

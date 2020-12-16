@@ -6,6 +6,8 @@ tags:
  - react
  - 组件传值props
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 ## 父传子(`props`)

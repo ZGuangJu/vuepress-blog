@@ -9,6 +9,8 @@ tags:
  - Centos7
  - 宝塔
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 :::tip 建站准备

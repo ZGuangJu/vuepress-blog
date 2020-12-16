@@ -16,11 +16,13 @@ publish: true
 
 `li`元素默认的`display`值是`list-item`，和`table`都是块级元素，在一个水平流上只能单独显示一个元素，多个则换行显示。可以配合`clear`属性来清除浮动带来的影响。
 
+```css
     .clear:after {
         content: '';
         display: table; /*也可以是block，或是list-item*/
         clear: both;
     }
+```
 
 实际开发中，不推荐使用`list-item`，一是会出现项目符号，而是IE不支持伪元素`:after`。
 

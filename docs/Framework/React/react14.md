@@ -8,6 +8,8 @@ tags:
  - react
  - Redux
 publish: true
+# 打赏
+showSponsor: true
 ---
 Redux 状态管理
 

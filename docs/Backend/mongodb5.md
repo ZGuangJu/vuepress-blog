@@ -7,6 +7,8 @@ categories:
 tags:
  - MongoDB
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 - 在项目中远程操作数据库

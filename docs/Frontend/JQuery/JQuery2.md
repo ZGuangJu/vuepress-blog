@@ -6,6 +6,8 @@ tags:
  - 前端基础
  - jQuery
 publish: true
+# 打赏
+showSponsor: true
 ---
 
 ## jQ 对象的本质是什么
