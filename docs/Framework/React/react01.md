@@ -100,7 +100,7 @@ npx create-react-app myappname
 
 ## 项目结构
 
-```s
+```js
     Project
        ├─── node_modules
        ├─── public
