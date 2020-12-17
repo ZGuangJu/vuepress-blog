@@ -574,7 +574,9 @@ v-model："name"
 
 更多细节请查阅[组件 - 插槽](https://cn.vuejs.org/v2/guide/components-slots.html)
 
-## <font size="15" color=#0099ff >12、v-pre</font>
+## 12、v-pre
+
+<font size="15" color=#0099ff >12、v-pre</font>
 
 - 不需要表达式
 

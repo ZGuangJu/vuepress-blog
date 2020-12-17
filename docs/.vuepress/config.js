@@ -320,6 +320,12 @@ module.exports = {
                 desc: '我的博客地址.',
                 email: "guangju@126.com",//可用头像地址替换
                 link: 'http://www.91guangju.com'
+            },
+            {
+                title: '陈旭博客',
+                desc: '陈旭博客',
+                email: "",//可用头像地址替换
+                link: 'http://webchenxu.gitee.io'
             }
             // ...
         ],
