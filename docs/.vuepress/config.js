@@ -150,7 +150,7 @@ module.exports = {
                 text: '前端框架',
                 icon: "reco-document",
                 items: [
-                    { text: 'Vue', link: '/Framework/Vue/vue-1' },
+                    { text: 'Vue', link: '/Framework/Vue/vue01' },
                     { text: 'React', link: '/Framework/React/React01' },
                     { text: 'Wechat', link: '/Framework/Wechat/Wechat' }
                 ]
@@ -173,6 +173,7 @@ module.exports = {
                     { text: 'npm', link: '/Tools/npm' },
                     { text: 'cmd', link: '/Tools/cmd' },
                     { text: 'nrm', link: '/Tools/nrm' },
+                    { text: 'serve', link: '/Tools/serve' },
                     { text: 'MarkDown', link: '/Tools/markdown' },
                     { text: 'Terminal', link: '/Tools/terminal' },
                     { text: 'Trojan', link: '/Tools/Trojan' },
@@ -281,7 +282,7 @@ module.exports = {
                 {
                     title: 'Vue',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['vue3-1', 'vue-1', 'vue-2', 'vue-3', 'vue-4', 'vue-5', 'vue-6', 'vue-7', 'vue-8', 'vuers-1', 'vuers-2', 'vuers-3']
+                    children: ['vue3-1', 'vue01', 'vue02', 'vue03', 'vue04', 'vue05', 'vue06', 'vue07', 'vue08', 'vue09', 'vue10', 'vue11', 'vuers-1', 'vuers-2', 'vuers-3']
                 }
             ],
             '/Framework/React/': [
@@ -306,7 +307,7 @@ module.exports = {
             '/Backend/': ['mongodb1', 'mongodb2', 'mongodb3', 'mongodb4', 'mongodb5', 'api'],
             '/Linux/': ['centos', 'screen', '宝塔', 'vim'],
             // 工具
-            '/Tools/': ['git', 'yarn', 'npm', 'cmd', 'nrm', 'markdown', 'terminal', 'Trojan', 'vite', 'vuepress', 'upgrade', 'regex', 'typecho', 'Eslint', 'vscode', 'wsl'],
+            '/Tools/': ['git', 'yarn', 'npm', 'cmd', 'nrm', 'serve', 'markdown', 'terminal', 'Trojan', 'vite', 'vuepress', 'upgrade', 'regex', 'typecho', 'Eslint', 'vscode', 'wsl'],
             //小知识
             '/Other/': [
                 '', '问题', 'error', '知识点', '面试题', 'export', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome', '验证码'

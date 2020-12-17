@@ -48,19 +48,19 @@
         </p>
         <script>
             window.name = "byteDance";
+            let d = {
+                f: 5,
+            };
             function A() {
                 this.name = 123;
+                this.B = function() {
+                    this.c = 456;
+                    console.log(this);
+                };
+                B();
             }
 
-            A.prototype.getA = function() {
-                console.log(this);
-                return this.name + 1;
-            };
-            let a = () => {};
-            let a = new A();
-            let funcA = a.getA;
-            console.log(123);
-            funcA();
+            A();
         </script>
     </body>
 </html>

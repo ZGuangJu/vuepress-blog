@@ -11,9 +11,11 @@ publish: true
 showSponsor: true
 ---
 
-## 创建
+## 创建 `Vue3.0`
 
-1. `Vue3.0`的安装`vite`方式(暂定 )
+1. `vite`方式(暂定 )
+
+本方法是用vite构建工具创建项目。
 
 ```s
 npm init vite-app [projectname]
@@ -21,14 +23,15 @@ npm init vite-app [projectname]
 yarn create vite-app [projectname]
 ```
 
-2. 用`vue create`方式
-注意`vue/cli` 要`v4.5`以上,使用`npm i -g @vue/cli`升级到新版
+2. 用`vue-cli`方式
+
+注意`vue/cli` 要`v4.5`以上,可使用`npm i -g @vue/cli`升级到新版
 
 ```s
-vue create
+vue create projectname
 ```
 
-本方法的步骤和创建`vue2.x`是一样的，只是有了一个`vue`版本的选项
+本方法的步骤和创建`vue2.x`是一样的，只是有了一个`vue2.0 / vue3.0`版本的选项
 
 ## 安装路由
 
@@ -42,6 +45,18 @@ npm i vue-router@next
 | mode:history （哈希模式一般都是开发模式    ） | 路由模式history :createWebHistory（和history的区别是：地址栏无变化） |
 |                只能一个根元素                 |                         组件里支持多个根元素                         |
 |                                               |                         路由跳转 useRouter()                         |
+
+vue2.0挂载
+
+```js
+
+new Vue({
+    router,
+    store,
+    render: h => h(App)
+}).$mount('#app')
+```
+
 vue3.0挂载
 
 ```js
@@ -50,11 +65,10 @@ app.mount('#app') //挂载到根节点
 app.use(router)
 ```
 
-setup
+`setup`
 
 ```js
   setup() {
-
     // 没有this
     // 默认只执行一次，相当于 beforeCreate+ created
   },
