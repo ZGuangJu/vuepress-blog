@@ -206,7 +206,7 @@ console.log("--------------------");
 
 7. `beforeDestroy`: 卸载实例之前执行，`Vue`实例进入销毁阶段，但所有的 `data` 和 `methods` ，指令， 过滤器等都处于可用状态
 
-在`Vue`实例被销毁之前`beforeDestroy`钩子便会被调用，在此时实例仍然完全可用。
+在`Vue`实例被销毁之前`beforeDestroy`钩子便会被调用，在此时实例仍然完全可用，定时器在这里清除
 
 ```js
 // this.$destroy();

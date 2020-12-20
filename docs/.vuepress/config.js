@@ -250,7 +250,7 @@ module.exports = {
                 {
                     title: 'JavaScript',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['JS/js1', 'JS/js2', 'JS/js3', 'JS/js4', 'JS/js5', 'JS/js6', 'JS/js7', 'JS/Array']
+                    children: ['JS/js1', 'JS/js2', 'JS/js3', 'JS/js4', 'JS/js5', 'JS/js6', 'JS/js7', 'JS/js8', 'JS/Array']
                 },
                 {
                     title: 'ES6',
@@ -322,10 +322,16 @@ module.exports = {
                 link: 'http://www.91guangju.com'
             },
             {
-                title: '陈旭博客',
-                desc: '陈旭博客',
+                title: '陈旭笔记',
+                desc: '陈旭笔记',
                 email: "",//可用头像地址替换
                 link: 'http://webchenxu.gitee.io'
+            },
+            {
+                title: '宋宇笔记',
+                desc: '宋宇笔记',
+                email: "",//可用头像地址替换
+                link: 'http://websong.wang/'
             }
             // ...
         ],
