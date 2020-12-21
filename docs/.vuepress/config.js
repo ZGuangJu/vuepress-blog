@@ -67,17 +67,17 @@ module.exports = {
         //     "@vuepress-yard/vuepress-plugin-window",
         //     {
         //         title: "公告",
-        //         windowStyle: { left: '41%', top: '100px', width: '260px', },
+        //         windowStyle: { left: '41%', top: '200px', width: '260px', },
         //         contentInfo: {
-        //             title: '🎉扫码加公众号或加QQ群1126566195',
-        //             imgUrl: 'https://pic.downk.cc/item/5eab8845c2a9a83be5f67837.png',
-        //             needImg: true,
-        //             content: '公众号 比邻之地',
+        //             title: '本站声明',
+        //             // imgUrl: '',
+        //             needImg: false,
+        //             content: '🎉关于页面扫码加公众号，本站最新地址请点击按钮访问 www.zguangju.com 👇',
         //             contentStyle: {}
         //         },
         //         bottomInfo: {
-        //             btnText: 'Blog',
-        //             linkTo: 'http://www.91guangju.com'
+        //             btnText: '最新',
+        //             linkTo: 'http://www.zguangju.com'
         //         },
         //         closeOnce: true
         //     }
@@ -362,8 +362,7 @@ module.exports = {
         // 自定义编辑链接的文本。默认是 "Edit this page"
         editLinkText: '帮助我们改进页面！',
         // 备案信息
-        record: '京ICP备2020044651号-1', //zguangju.gitee.io
-        // record: '京ICP备2020044651号-2', //zguangju.com
+        record: '京ICP备2020044651号-2', //www.zguangju.com
         recordLink: 'http://beian.miit.gov.cn/',
         // cyberSecurityRecord: '公安部备案文案',
         // cyberSecurityLink: '公安部备案指向链接',

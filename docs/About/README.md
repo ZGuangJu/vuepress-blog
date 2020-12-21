@@ -11,7 +11,7 @@ publish: true
 
 - 我的[博客地址](http://www.91guangju.com/)
 
-- 我的公众号 👇
+- 我的公众号 👇 我的QQ群 `1126566195`
 
 <img src="https://pic.downk.cc/item/5eab8845c2a9a83be5f67837.png" alt="公众号">
 
