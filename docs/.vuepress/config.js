@@ -54,8 +54,8 @@ module.exports = {
             'vuepress-plugin-sponsor',
             {
                 theme: 'simple', // Drinks  \ simple
-                alipay: 'https://pic.downk.cc/item/5e8c52cf504f4bcb0412ad6f.png',
-                wechat: 'https://pic.downk.cc/item/5e9fa35fc2a9a83be5281f0e.png',
+                alipay: '/img/alipay.png',
+                wechat: '/img/wechat.png',
                 // qq: '',
                 // paypal: '',
                 duration: 2000
