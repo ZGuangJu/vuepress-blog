@@ -362,7 +362,8 @@ module.exports = {
         // 自定义编辑链接的文本。默认是 "Edit this page"
         editLinkText: '帮助我们改进页面！',
         // 备案信息
-        record: '京ICP备2020044651号-1',
+        record: '京ICP备2020044651号-1', //zguangju.gitee.io
+        // record: '京ICP备2020044651号-2', //zguangju.com
         recordLink: 'http://beian.miit.gov.cn/',
         // cyberSecurityRecord: '公安部备案文案',
         // cyberSecurityLink: '公安部备案指向链接',

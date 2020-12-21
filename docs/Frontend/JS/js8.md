@@ -18,7 +18,7 @@ showSponsor: true
 
 :::details
 
-1. js
+1. `js`
 
 ```js
 var arr=['12','32','89','12','12','78','12','32'];
@@ -34,12 +34,27 @@ var arr=['12','32','89','12','12','78','12','32'];
     arr=unique1(arr);
 ```
 
-2. 扩展运算符，set类型
+2. 扩展运算符，`Set`类型
+
+```js
+    // 数组去重1
+    var a = ["1", "2", "3", "4", "5", "1", "2", "3", "4", "5"];
+    let b = Array.from(new Set(a));
+    console.log([...b]);
+
+    // 数组去重2
+    var a = ["1", "2", "3", "4", "5", "1", "2", "3", "4", "5"];
+    let b = new Set(a);
+    console.log(b);
+```
+
 :::
 
 #### 排序
 
 :::details
+
+1. sort
 
 ```js
 /*
@@ -51,6 +66,24 @@ var arr=['12','32','89','12','12','78','12','32'];
        return a.sort - b.sort == 0 ? a.id - b.id : a.sort - b.sort
   };
  arr.sort(sortFun)   //从小到大排序
+```
+
+2. 数组对象排序
+
+```js
+var arr = [{name: "zlw", age: 24}, {name: "wlz", age: 25}];
+var compare = function (obj1, obj2) {
+    var val1 = obj1.name;
+    var val2 = obj2.name;
+    if (val1 < val2) {
+        return -1;
+    } else if (val1 > val2) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+console.log(arr.sort(compare));
 ```
 
 :::
