@@ -13,7 +13,7 @@ module.exports = {
             'link',
             {
                 rel: 'icon',
-                href: '/linktolink.png',//图片放在.vuepress/public文件夹下，直接'/图片名 '
+                href: '/img/linktolink.png',//图片放在.vuepress/public文件夹下，直接'/图片名 '
             },
         ],
         // 在移动端，搜索框在获得焦点时会放大，并且在失去焦点后可以左右滚动，这可以通过设置元来优化。
@@ -88,7 +88,7 @@ module.exports = {
         // 主题样式
         type: 'blog',
         // 右侧头像
-        authorAvatar: '/headimg.jpeg',
+        authorAvatar: '/img/headimg.jpeg',
         // 代码显示样式
         codeTheme: 'solarizedlight', // 'funky' \ 'okaidia' \ 'solarizedlight' \ 'tomorrow'
         // valine 评论设置
