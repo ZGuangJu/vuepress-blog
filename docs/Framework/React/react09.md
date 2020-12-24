@@ -110,6 +110,7 @@ class Crondson extends React.Component {
         </div>
     }
 }
+
 //  第二种方法 子组件接收时也可用<theme.Consumer></theme.Consumer>
 class Crondson extends React.Component {
     render() {
@@ -160,6 +161,7 @@ class App extends React.Component {
         </>
     }
 }
+
 class Children extends React.Component {
     render() {
         return <>儿子
@@ -172,6 +174,7 @@ class Children extends React.Component {
         </>
     }
 }
+
 // 下级组件通过 static contextType = [上下文对象] ，这样就能让 this.context 拿到 上下文对象传递过来的值
 class Grandson1 extends React.Component {
     static contextType = theme

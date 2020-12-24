@@ -10,7 +10,9 @@ publish: true
 # 打赏
 showSponsor: true
 ---
-## 安装
+## serve
+
+### 安装serve
 
 本地运行打包后的项目
 
@@ -28,7 +30,7 @@ yarn add -g serve
 serve -v
 ```
 
-## 使用
+### 使用
 
 1. 单独使用
 
@@ -57,3 +59,50 @@ npm run runing
 ```
 
 即可在本地运行打包后的项目，`http://localhost:5000`
+
+## live-server
+
+### 安装live-server
+
+- 安装`live-server`
+
+```js
+npm i -g live-server
+```
+
+### 使用
+
+- 启动打包好的项目
+
+```js
+live-server dist
+```
+
+或者
+
+```js
+live-server 目录名
+```
+
+- 启动`npm`项目
+
+```js
+// 修改package.json
+ "scripts": {
+      "server": "live-server 某个目录"
+    }
+```
+
+或者
+
+```js
+"scripts": {
+      "server": "live-server ./ --port=8081"
+    }
+```
+
+启动项目
+
+```js
+npm run server
+```

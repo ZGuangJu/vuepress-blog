@@ -78,8 +78,6 @@ npm --- https://registry.npm.taobao.org/
 
 yarn --- https://registry.yarnpkg.com/
 
-yarn --- https://registry.npm.taobao.org/
-
 cnpm --- https://r.cnpmjs.org/
 
 taobao --- https://registry.npm.taobao.org/
@@ -574,7 +572,29 @@ npm cache clear --force
 npm config get cache
 ```
 
-## 10. npm 更新和设置其他命令
+## 10. npm 设置全局安装目录
+
+- 设置`npm`包的全局安装路径
+
+先在相应位置创建文件夹
+
+```js
+npm config set prefix "C:\Program Files\npm_global"
+```
+
+以及全局缓存位置
+
+```js
+npm config set cache "C:\Program Files\npm_cache"
+```
+
+查看是否修改成功
+
+```js
+npm config ls
+```
+
+## 11. npm 更新和其他设置命令
 
 - 安装指定版本
 
@@ -595,7 +615,7 @@ npm root
 npm root -g
 ```
 
-- 查看npm安装的版
+- 查看`npm`安装的版
 
 ```js
 npm -v
@@ -646,7 +666,7 @@ npm set <key> <value> [-g|--global]
 > npm install -g cnpm --registry=https://registry.npm.taobao.org
 > ```
 
-## 11. 帮助命令
+## 12. 帮助命令
 
 - 查看帮助命令
 

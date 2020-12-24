@@ -417,3 +417,17 @@ mongo
 ```
 
 能进入`mongo` 就表示安装成功！
+
+## 安装yarn
+
+1. 在 CentOS, Fedora 和 RHEL 操作系统上，通过 RPM 包仓库来安装 Yarn。
+
+```js
+sudo wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo
+```
+
+2. 安装运行
+
+```js
+sudo yum install yarn
+```

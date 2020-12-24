@@ -16,10 +16,10 @@ showSponsor: true
 
 [Git图解](https://www.bootcss.com/p/git-guide/)
 
-- Workspace：工作区
-- Index / Stage：暂存区
-- Repository：仓库区（或本地仓库）
-- Remote：远程仓库
+- `Workspace`：工作区
+- `Index / Stage`：暂存区
+- `Repository`：仓库区（或本地仓库）
+- `Remote`：远程仓库
 
 想进一步了解`git`可以看看这个[git图解](https://www.bootcss.com/p/git-guide/)。
 
@@ -49,20 +49,20 @@ git config user.email
 git config --list
 ```
 
-### 3、更改账户邮箱全局/非全局
+### 3、更改账户邮箱全局(计算机)/非全局(本用户)
 
 ```js
-// 用户名
-git config --global user.name "myname"
-git config  user.name "myname"  ?
-// 邮箱
+// 全局
+git config --global user.name "myusername"
 git config --global user.email  "test@gmail.com"
-git config  user.email  "test@gmail.com"  ?
+// 非全局
+git config  user.name "myusername"
+git config  user.email "test@gmail.com"
 ```
 
 ### 4、创建本地仓库/进入项目文件夹
 
-通过命令git init将项目初始化成git本地仓库
+通过命令`git init`将项目初始化成`git`本地仓库
 
 ```js
 git init
@@ -100,7 +100,7 @@ git status
 
 ```js
  git diff <file>
- git diff    //所有文件
+ git diff    //表示所有文件
 ```
 
 ### 10、提交代码到远程仓库（主分支）最终的提交
@@ -123,21 +123,21 @@ git log --pretty=oneline
 
 ### 12、退回版本
 
-在Git中，用HEAD表示当前版本，上一个版本就是HEAD^，上上一个版本就是HEAD^^，以此类推，如果需要回退几十个版本，写几十个^容易数不过来，所以可以写，例如回退30个版本为：HEAD~30
+在`Git`中，用`HEAD`表示当前版本，上一个版本就是`HEAD^`，上上一个版本就是`HEAD^^`，以此类推，如果需要回退几十个版本，写几十个^容易数不过来，所以可以写，例如回退`30`个版本为：`HEAD~30`
 
 ```js
 git reset --hard HEAD^
 ```
 
-如果你回退完版本又后悔了，想回来，一般情况下是回不来的，但是如果你可以找到你之前的commit id的话，也是可以的，使用如下即可：
+如果你回退完版本又后悔了，想回来，一般情况下是回不来的，但是如果你可以找到你之前的`commit id`的话，也是可以的，使用如下即可：
 
 ```js
 git reset --hard + commit id
 ```
 
-commit id不需要写全，Git会自动查找
+`commit id`不需要写全，`Git`会自动查找
 
-补充说明：Git中，commit id是一个使用SHA1计算出来的一个非常大的数字，用十六进制表示，你提交时看到的一大串类似3628164...882e1e0的就是commit id（版本号）
+补充说明：`Git`中，`commit id`是一个使用`SHA1`计算出来的一个非常大的数字，用十六进制表示，你提交时看到的一大串类似`3628164...882e1e0`的就是`commit id`（版本号）
 
 ### 13、查看操作的历史命令记录
 
@@ -145,7 +145,7 @@ commit id不需要写全，Git会自动查找
 git reflog
 ```
 
-结果会将你之前的操作的commit id和具体的操作类型及相关的信息打印出来，这个命令还有一个作用就是，当你过了几天，你想回退之前的某次提交，但是你不知道commit id了，通过这个你可查找出commit id,就可以轻松回退
+结果会将你之前的操作的`commit id`和具体的操作类型及相关的信息打印出来，这个命令还有一个作用就是，当你过了几天，你想回退之前的某次提交，但是你不知道`commit id`了，通过这个你可查找出`commit id`,就可以轻松回退
 
 ### 14、对 GitHub 尝试 ssh
 
@@ -155,7 +155,7 @@ ssh -T git@github.com
 
 ### 15、本地项目直接提交到远程仓库
 
-- 在github上新建一个仓库，复制仓库地址，然后使用命令将本地仓库与远程仓库建立连接
+- 在`github`上新建一个仓库，复制仓库地址，然后使用命令将本地仓库与远程仓库建立连接
 
 ```js
 git remote add origin  xxx       //xxx是git仓库的地址
@@ -187,7 +187,9 @@ git pull --rebase origin master
 git pull origin master --allow-unrelated-histories
 ```
 
-- 本地git仓库与远程仓库关联（git@xx.xx.xx.xx:repos/xxx/xxx/xxx.git 是远程仓库地址）
+- 本地`git`仓库与远程仓库关联（`git@xx.xx.xx.xx:repos/xxx/xxx/xxx.git` 是远程仓库地址）
+
+将本地创建的`git`仓库连接到远程`github`仓库
 
 ```s
 git remote add origin git@xx.xx.xx.xx:repos/xxx/xxx/xxx.git
@@ -195,31 +197,31 @@ git remote add origin git@xx.xx.xx.xx:repos/xxx/xxx/xxx.git
 
 ## 升级git版本
 
-版本 > 2.16.1 则使用：
+版本 > `2.16.1` 则使用：
 
 ```js
  git update-git-for-windows
 ```
 
-版本 2.14.2-2.16.1 则使用：
+版本 `2.14.2-2.16.1` 则使用：
 
 ```js
  git update
 ```
 
-版本 <2.14.2 请重新下载安装覆盖
+版本 < `2.14.2` 请重新下载安装覆盖
 
 ## 生成git密钥  sshkey
 
-为了和github或gitee建立连接，要在github或gitee里添加公钥。下面的命令会在本机用户文件夹下创建一个`.ssh`文件夹，里面有`id_rsa.pub`文件（邮箱是你的github\gitee注册邮箱或者其他都行）。密钥类型可以用 -t 选项指定。如果没有指定则默认生成用于SSH-2的RSA密钥。这里使用的是rsa。
+为了和`github`或`gitee`建立连接，要在`github`或`gitee`里添加公钥。下面的命令会在本机用户文件夹下创建一个`.ssh`文件夹，里面有`id_rsa.pub`文件（邮箱是你的`github\gitee`注册邮箱）。密钥类型可以用 `-t` 选项指定。如果没有指定则默认生成用于`SSH-2`的`RSA`密钥。这里使用的是`rsa`。
 
-1. 生成sshkey
+1. 生成`sshkey`
 
 ```js
 ssh-keygen -t rsa -C "v1234@gmail.com"
 ```
 
-2. 输入完毕后程序同时要求输入一个密语字符串(`passphrase`)，空表示没有密语。接着会让输入2次口令(`password`)，空表示没有口令。3次回车即可完成当前步骤，此时[c盘>用户>自己的用户名>.ssh]目录下已经生成好了
+2. 输入完毕后程序同时要求输入一个密语字符串(`passphrase`)，空表示没有密语。接着会让输入`2`次口令(`password`)，空表示没有口令。`3`次回车即可完成当前步骤，此时`c盘>用户>自己的用户名>.ssh`目录下已经生成好了
 
 ```js
 // 保存位置
@@ -236,7 +238,7 @@ ssh-keygen -t rsa -C "v1234@gmail.com"
 
 ### 新建代码库
 
-- 在当前目录新建一个Git代码库
+- 在当前目录新建一个`Git`代码库
 
 ```js
 git init
@@ -258,13 +260,13 @@ git clone [url]
 
 `Git`的设置文件为`.gitconfig`，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
 
-- 显示当前的Git配置
+- 显示当前的`Git`配置
 
 ```js
 git config --list
 ```
 
-- 编辑Git配置文件
+- 编辑`Git`配置文件
 
 ```js
 git config -e [--global]
@@ -335,7 +337,7 @@ git commit -m [message]
 git commit [file1] [file2] ... -m [message]
 ```
 
-- 提交工作区自上次commit之后的变化，直接到仓库区
+- 提交工作区自上次`commit`之后的变化，直接到仓库区
 
 ```js
 git commit -a
@@ -695,31 +697,31 @@ git checkout [commit] [file]
 git checkout .
 ```
 
-- 重置暂存区的指定文件，与上一次commit保持一致，但工作区不变
+- 重置暂存区的指定文件，与上一次`commit`保持一致，但工作区不变
 
 ```js
 git reset --hard
 ```
 
-- 重置暂存区与工作区，与上一次commit保持一致
+- 重置暂存区与工作区，与上一次`commit`保持一致
 
 ```js
 git reset [commit]
 ```
 
-- 重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变
+- 重置当前分支的指针为指定`commit`，同时重置暂存区，但工作区不变
 
 ```js
 git reset --hard [commit]
 ```
 
-- 重置当前HEAD为指定commit，但保持暂存区和工作区不变
+- 重置当前`HEAD`为指定`commit`，但保持暂存区和工作区不变
 
 ```js
 git reset --keep [commit]
 ```
 
-- 新建一个commit，用来撤销指定commit（后者的所有变化都将被前者抵消，并且应用到当前分支)
+- 新建一个`commit`，用来撤销指定`commit`（后者的所有变化都将被前者抵消，并且应用到当前分支)
 
 ```js
 git revert [commit]
@@ -749,7 +751,7 @@ git remote rm origin
 git remote add origin [url]
 ```
 
-3.直接修改config文件
+3.直接修改`config`文件
 
 ### 其他
 
@@ -773,10 +775,10 @@ git reset --merge HEAD
 
 ### 概念
 
-- 每天学的内容都在master主分支上
-- 每次master里的内容提交到本地之后，如果需要做小总结，那就创建一个新分支来保存学习的进度
+- 每天学的内容都在`master`主分支上
+- 每次`master`里的内容提交到本地之后，如果需要做小总结，那就创建一个新分支来保存学习的进度
 
-master命令
+`master`命令
 
 ```js
 git add
@@ -797,7 +799,7 @@ git checkout [分支的名字]
 ```
 
 :::warning
-当查看完以后，要切换到主分支
+当查看完文件以后，要切换到主分支
 :::
 
 （完）

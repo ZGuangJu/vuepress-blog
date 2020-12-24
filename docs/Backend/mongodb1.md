@@ -165,6 +165,7 @@ sudo rm -r /var/lib/mongo    // 删除数据文件
 vi /etc/mongod.conf
 ```
 
+:::warning
 修改绑定 `ip`， 默认 `bindIp:127.0.0.1` 只允许本地连接，所以修改为 `bindIp:0.0.0.0`, 让数据库可以被任何位置访问,退出保存。
 
 ```js
@@ -173,6 +174,8 @@ net:
   port: 27017
   bindIp: 0.0.0.0  # Enter 0.0.0.0,:: to bind to all IPv4 and IPv6 addresses or, alternatively, use the net.bindIpAll setting.
 ```
+
+:::
 
 2. 重启 `MongoDB` 服务
 

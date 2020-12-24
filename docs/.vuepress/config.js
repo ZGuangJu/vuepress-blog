@@ -25,7 +25,6 @@ module.exports = {
     ],
     // 主题使用的插件的设置
     plugins: [
-
         [
             // 看板娘
             "@vuepress-reco/vuepress-plugin-kan-ban-niang",
@@ -44,7 +43,7 @@ module.exports = {
             // 彩带
             "ribbon",
             {
-                size: 60,     // width of the ribbon, default: 90
+                size: 70,     // width of the ribbon, default: 90
                 opacity: 0.4, // opacity of the ribbon, default: 0.3
                 zIndex: -1    // z-index property of the background, default: -1
             }
@@ -99,7 +98,7 @@ module.exports = {
         // 分类和标签导航
         blogConfig: {
             // category: {
-            //     location: 2,     // 在导航栏菜单中所占的位置，默认2
+            //     location: 2,     // 在导航栏菜单中在第几个位置，默认2
             //     text: '分类' // 默认文案 “分类”
             // },
             tag: {
@@ -160,7 +159,7 @@ module.exports = {
                 text: '后端技术',
                 items: [
                     // { text: 'JAVA 的了解', link: '/Backend/JAVA' },
-                    { text: 'Linux', link: '/Linux/centos' },
+                    { text: 'Linux', link: '/Linux/debian' },
                     { text: 'MongoDB', link: '/Backend/mongodb1' },
                     { text: 'Api', link: '/Backend/api' },
                 ],
@@ -173,11 +172,14 @@ module.exports = {
                     { text: 'npm', link: '/Tools/npm' },
                     { text: 'cmd', link: '/Tools/cmd' },
                     { text: 'nrm', link: '/Tools/nrm' },
+                    { text: 'nvm', link: '/Tools/nvm' },
+                    { text: 'pm2', link: '/Tools/pm2' },
                     { text: 'serve', link: '/Tools/serve' },
                     { text: 'MarkDown', link: '/Tools/markdown' },
                     { text: 'Terminal', link: '/Tools/terminal' },
                     { text: 'Trojan', link: '/Tools/Trojan' },
                     { text: 'vite', link: '/Tools/vite' },
+                    { text: 'Eslint', link: '/Tools/eslint' },
                     { text: 'vuepress', link: '/Tools/vuepress' },
                     { text: '升级依赖包', link: '/Tools/upgrade' },
                     { text: 'regex 正则', link: '/Tools/regex' },
@@ -305,9 +307,9 @@ module.exports = {
             '/Webpack/': ['webpack1', 'webpack2', 'webpackconfigjs'],
             // 后端
             '/Backend/': ['mongodb1', 'mongodb2', 'mongodb3', 'mongodb4', 'mongodb5', 'api'],
-            '/Linux/': ['centos', 'screen', '宝塔', 'vim'],
+            '/Linux/': ['debian', 'centos', 'screen', '宝塔', 'vim'],
             // 工具
-            '/Tools/': ['git', 'yarn', 'npm', 'cmd', 'nrm', 'serve', 'markdown', 'terminal', 'Trojan', 'vite', 'vuepress', 'upgrade', 'regex', 'typecho', 'Eslint', 'vscode', 'wsl'],
+            '/Tools/': ['git', 'yarn', 'npm', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'upgrade', 'regex', 'typecho', 'vscode', 'wsl'],
             //小知识
             '/Other/': [
                 '', '问题', 'error', '知识点', '面试题', 'export', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome', '验证码'

@@ -45,6 +45,12 @@ screen -ls
 
 在出现的列表里找到你要用的窗口，输入前面的`id`就可以进入窗口。
 
+4. 结束当前`session`并回到`yourname`这个`session`
+
+```js
+screen -d -r yourname
+```
+
 ## 退出
 
 - 关闭并退出
