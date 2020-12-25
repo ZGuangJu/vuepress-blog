@@ -61,26 +61,26 @@ module.exports = {
             }
         ],
         // gitee时启用
-        // [
-        //     // 公告窗
-        //     "@vuepress-yard/vuepress-plugin-window",
-        //     {
-        //         title: "公告",
-        //         windowStyle: { left: '41%', top: '200px', width: '260px', },
-        //         contentInfo: {
-        //             title: '本站声明',
-        //             // imgUrl: '',
-        //             needImg: false,
-        //             content: '🎉关于页面扫码加公众号，本站最新地址请点击按钮访问 www.zguangju.com 👇',
-        //             contentStyle: {}
-        //         },
-        //         bottomInfo: {
-        //             btnText: '最新',
-        //             linkTo: 'http://www.zguangju.com'
-        //         },
-        //         closeOnce: true
-        //     }
-        // ]
+        [
+            // 公告窗
+            "@vuepress-yard/vuepress-plugin-window",
+            {
+                title: "公告",
+                windowStyle: { left: '41%', top: '200px', width: '260px', },
+                contentInfo: {
+                    title: '本站声明',
+                    // imgUrl: '',
+                    needImg: false,
+                    content: '🎉本站最新地址请点击按钮访问 www.zguangju.com 👇 另，可在关于页面扫码加公众号，感谢关注',
+                    contentStyle: {}
+                },
+                bottomInfo: {
+                    btnText: '最新',
+                    linkTo: 'http://www.zguangju.com'
+                },
+                closeOnce: true
+            }
+        ]
     ],
     // 主题设置
     themeConfig: {
