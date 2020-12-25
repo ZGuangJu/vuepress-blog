@@ -7,6 +7,8 @@ categories:
 tags:
  - pm2
 publish: true
+# 置顶
+sticky: 10
 # 打赏
 showSponsor: true
 ---

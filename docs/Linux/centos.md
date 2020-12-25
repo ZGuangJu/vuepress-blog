@@ -1,5 +1,5 @@
 ---
-title: Centos8 使用
+title: Centos8
 date: 2019-05-16
 sidebar: 'auto'
 categories:

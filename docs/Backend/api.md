@@ -15,3 +15,9 @@ showSponsor: true
 ```js
 https://v1.alapi.cn/api/qinghua
 ```
+
+- 音乐
+
+```js
+https://binaryify.github.io/NeteaseCloudMusicApi/#/?id=neteasecloudmusicapi
+```

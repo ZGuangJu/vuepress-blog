@@ -60,27 +60,27 @@ module.exports = {
                 duration: 2000
             }
         ],
-        // 未启用
-        // [
-        //     // 公告窗
-        //     "@vuepress-yard/vuepress-plugin-window",
-        //     {
-        //         title: "公告",
-        //         windowStyle: { left: '41%', top: '200px', width: '260px', },
-        //         contentInfo: {
-        //             title: '本站声明',
-        //             // imgUrl: '',
-        //             needImg: false,
-        //             content: '🎉关于页面扫码加公众号，本站最新地址请点击按钮访问 www.zguangju.com 👇',
-        //             contentStyle: {}
-        //         },
-        //         bottomInfo: {
-        //             btnText: '最新',
-        //             linkTo: 'http://www.zguangju.com'
-        //         },
-        //         closeOnce: true
-        //     }
-        // ]
+        // gitee时启用
+        [
+            // 公告窗
+            "@vuepress-yard/vuepress-plugin-window",
+            {
+                title: "公告",
+                windowStyle: { left: '41%', top: '200px', width: '260px', },
+                contentInfo: {
+                    title: '本站声明',
+                    // imgUrl: '',
+                    needImg: false,
+                    content: '🎉关于页面扫码加公众号，本站最新地址请点击按钮访问 www.zguangju.com 👇',
+                    contentStyle: {}
+                },
+                bottomInfo: {
+                    btnText: '最新',
+                    linkTo: 'http://www.zguangju.com'
+                },
+                closeOnce: true
+            }
+        ]
     ],
     // 主题设置
     themeConfig: {
@@ -141,8 +141,7 @@ module.exports = {
                     { text: 'JQuery', link: '/Frontend/JQuery/JQuery' },
                     { text: 'Ajax', link: '/Frontend/Ajax/Ajax' },
                     { text: 'Axios', link: '/Frontend/Axios/axios' },
-                    { text: 'Webpack4.0', link: '/Webpack/webpack1' },
-                    { text: 'node.js', link: '/Node/node1' },
+                    { text: 'Webpack4.0', link: '/Webpack/webpack1' }
                 ]
             },
             {
@@ -160,8 +159,9 @@ module.exports = {
                 items: [
                     // { text: 'JAVA 的了解', link: '/Backend/JAVA' },
                     { text: 'Linux', link: '/Linux/debian' },
-                    { text: 'MongoDB', link: '/Backend/mongodb1' },
-                    { text: 'Api', link: '/Backend/api' },
+                    { text: 'MongoDB', link: '/Backend/Mongodb/mongodb1' },
+                    { text: 'Node.js', link: '/Backend/Node/node2' },
+                    { text: 'Api', link: '/Backend/api' }
                 ],
             },
             {
@@ -233,6 +233,7 @@ module.exports = {
         // sidebar: auto,// 自动生成侧栏 /运行项目报错？？？
         sidebar: {
             // 侧边导航栏内容
+            // 前端基础
             '/Frontend/': [
                 {
                     title: 'HTML',
@@ -301,12 +302,14 @@ module.exports = {
                     children: ['wechat', 'wechat2', 'wechat3', 'wechat4', 'wechat5', 'wechat6', 'wechat7', 'wechat8', 'wechat9', 'wechat10', 'wechat11', 'wechat12']
                 }
             ],
+            // 后端
+            '/Backend/Node/': ['node1', 'node2', 'package'],
+            '/Backend/Mongodb/': ['mongodb1', 'mongodb2', 'mongodb3', 'mongodb4', 'mongodb5'],
+            '/Backend/': ['api'],
             // 项目
             '/Project/': ['shopingapp', 'admin', 'project', 'todolist'],
-            '/Node/': ['node1', 'node2', 'package'],
             '/Webpack/': ['webpack1', 'webpack2', 'webpackconfigjs'],
-            // 后端
-            '/Backend/': ['mongodb1', 'mongodb2', 'mongodb3', 'mongodb4', 'mongodb5', 'api'],
+            // linux系统
             '/Linux/': ['debian', 'centos', 'screen', '宝塔', 'vim'],
             // 工具
             '/Tools/': ['git', 'yarn', 'npm', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'upgrade', 'regex', 'typecho', 'vscode', 'wsl'],

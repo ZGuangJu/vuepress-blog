@@ -1,12 +1,14 @@
 ---
 title: Debian
-date: 2019-05-16
+date: 2020-05-16
 sidebar: 'auto'
 categories:
  - 工具
 tags:
  - Debian
 publish: true
+# 置顶
+sticky: 9
 # 打赏
 showSponsor: true
 ---
