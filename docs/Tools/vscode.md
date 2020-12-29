@@ -261,14 +261,21 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
 {
     // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻windows设置开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
     // 窗口放大倍数
-    "window.zoomLevel": 0.4,
-    "editor.formatOnPaste": true,
+    "window.zoomLevel": 0,
+    // "activityBar.activeBorder": "",
+    // 建议控件--底部显示它自己的状态栏
+    "editor.suggest.showStatusBar": true,
+    "editor.suggest.insertMode": "replace", // insert 插入 replace 替换
+    "editor.formatOnPaste": true, //自动格式化
     // "editor.minimap.showSlider": "always", // 一直显示滚动条
     "editor.renderLineHighlight": "all", // 当前行对应的行号栏也高亮显示
     "editor.cursorWidth": 3, // 光标宽
     "editor.wordWrap": "on", // 控制折行的方式
     "editor.fontWeight": 500, // 字体宽度从1到1000的值，以及字符串值“ normal”和“ bold”。
-    "editor.fontFamily": "Consolas,'Source Code Pro', monospace,'Sarasa Term SC'", // 字体
+    // 已安装字体 Source Code Pro \ DejaVu Sans Code \Sarasa Term SC \Hasklig \JetBrains Mono \ Fira Code \ Victor Mono \ Monoid \ Cascadia Code \ Iosevka
+    // "editor.fontFamily": "Consolas,'Source Code Pro', monospace,'Sarasa Term SC'", // 原字体
+    "editor.fontFamily": "DejaVu Sans Code, monospace,'Sarasa Term SC'", // 字体 Fira Code \ Victor Mono \ Cascadia Code \ DejaVu Sans Code
+    "editor.fontLigatures": true, // 启用连体字
     "editor.fontSize": 20, // 字体大小
     "editor.detectIndentation": false, // vscode默认启用了根据文件类型自动设置tabsize的选项
     "editor.tabSize": 4,
@@ -281,8 +288,11 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
     // "editor.renderWhitespace": "trailing",//??
     // 编辑器保存时要执行的动作
     "editor.codeActionsOnSave": {
+        // "source.fixAll": true, //打开 ESLint 的所有支持的自动修复：
         "source.fixAll.eslint": true, //保存自动修复 eslint 格式错误
-        "source.fixAll.markdownlint": true //保存自动修复 markdownlint  格式错误
+        "source.fixAll.markdownlint": true, //保存自动修复 markdownlint  格式错误
+        // "source.fixAll.stylelint": true, //保存自动修复 stylelint 格式错误
+        "source.fixAll.prettier": true //保存自动修复 stylelint 格式错误
     },
     /*﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋编辑器颜色主题及配置﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋*/
     // 自定义颜色
@@ -333,6 +343,68 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
         }
     },
     // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺全局编辑器editor设置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于eslint插件配置🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+    //保存时eslint自动修复错误/是否根据eslint进行格式化
+    "eslint.codeActionsOnSave.mode": "problems", // all | problems
+    // eslint配置文件
+    "eslint.options": {
+        "extensions": [
+            ".js",
+            ".vue",
+            ".html" //???
+        ]
+        // 外部的 eslint 配置文件位置 （未启用）
+        // "configFile": "C:/.eslintrc.json"
+    },
+    //配置 ESLint 检查的文件类型  / 添加vue支持
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "html",
+        "html5",
+        "css",
+        "css3",
+        "vue",
+        "vue-html",
+        "jsx",
+        "json"
+    ],
+    // 是否开启eslint检测
+    // "eslint.enable": false,
+    // exlint 运行的时候： 保存时
+    //   "eslint.run": "onSave",
+    // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺全局编辑器eslint设置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻stylelint和prettier设置开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+    "prettier.jsxSingleQuote": true, // 在JSX中使用单引号而不是双引号
+    "prettier.semi": true, //是否在每行末尾添加分号
+    "prettier.tabWidth": 4, // 缩进字节数
+    // "prettier.bracketSpacing": true, // 在对象，数组括号与文字之间加空格 "{ foo: bar }"
+    // (未启用)
+    // 让prettier使用eslint的代码格式进行校验
+    // "prettier.eslintIntegration": true,
+    //js使用单引号(暂时禁用了)
+    // "prettier.singleQuote": true,
+    "css.validate": true,
+    "less.validate": false,
+    "scss.validate": false,
+    "[scss]": {
+        "editor.formatOnSave": true
+    },
+    // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺stylelint和prettier设置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻Markdownlint设置开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+    "markdownlint.config": {
+        "MD003": false,
+        "MD004": false,
+        // "MD013": false,
+        "MD024": false,
+        "MD025": false,
+        "MD029": false,
+        "MD033": false,
+        "MD035": false,
+        "MD036": false,
+        "MD046": false
+    },
+    // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺Markdownlint设置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
     // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻工作区workbench设置开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
     "workbench.activityBar.visible": true, // 隐藏最左侧的活动栏 true显示 | false隐藏
     // 打开文件时，关闭预览模式，直接打开文件
@@ -396,7 +468,7 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
             // terminal 终端中的光标
             "terminalCursor.foreground": "#CCFF00",
             // //侧边栏资源管理器区域的标题栏颜色
-            "sideBarSectionHeader.background": "#32363d",
+            "sideBarSectionHeader.background": "#32363d"
             //区域获取焦点时
             // "focusBorder": "#5b99fc36"
             // "editor.selectionHighlightBorder": "#90e97259",
@@ -408,7 +480,7 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
             // "panelTitle.activeForeground": "#cfcfcf",
             // //标尺
             // "editorRuler.foreground": "#d44949",
-        },
+        }
     },
     // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺工作区workbench设置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
     // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻code-runner插件配置🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
@@ -422,54 +494,10 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
     "code-runner.showExecutionMessage": true,
     // 运行语言的路径或环境变量
     "code-runner.executorMap": {
-        "javascript": "node",
+        "javascript": "node"
     },
     // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺code-runner设置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
-    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于eslint插件配置🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
-    //忽略全部文件检查，即禁止eslint
-    "eslint.enable": false,
-    // eslint配置文件
-    "eslint.options": {
-        "extensions": [
-            ".js",
-            ".vue",
-            ".html", //???
-        ],
-        // 外部的 eslint 配置文件位置 （未启用）
-        // "configFile": "C:/.eslintrc.json"
-    },
-    //配置 ESLint 检查的文件类型  / 添加vue支持
-    "eslint.validate": [
-        "javascript",
-        "javascriptreact",
-        "html",
-        "html5",
-        "vue",
-        "vue-html",
-        "jsx",
-    ],
-    //保存时eslint自动修复错误/是否根据eslint进行格式化
-    // "eslint.autoFixOnSave": true,//弃用
-    "eslint.codeActionsOnSave.mode": "problems", // all | problems
-    // 是否开启eslint检测
-    // "eslint.enable": false,
-    // exlint 运行的时候： 保存时
-    //  "eslint.run": "onSave",
-    // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺全局编辑器eslint设置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
-    // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺Markdownlint设置开始🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
-    "markdownlint.config": {
-        "MD003": false,
-        "MD004": false,
-        // "MD013": false,
-        "MD024": false,
-        "MD025": false,
-        "MD029": false,
-        "MD033": false,
-        "MD035": false,
-        "MD036": false,
-        "MD046": false,
-    },
-    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻Markdownlint设置结束🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+
     // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于files配置开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
     // 保存文件时，去除行尾空格
     "files.trimTrailingWhitespace": true,
@@ -507,40 +535,32 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
     // VSCode 中的终端使用什么shell
     // "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe", //cmd
     // "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", //powershell 5.x
-    "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7-preview\\pwsh.exe", //powershell 7.1.0
-    // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺关于terminal结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
-    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于prettier插件配置开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
-    // (未启用)
-    // 让prettier使用eslint的代码格式进行校验
-    // "prettier.eslintIntegration": true,
-    // 去掉代码结尾的分号
-    // "prettier.semi": false,
-    //js使用单引号(暂时禁用了)
-    // "prettier.singleQuote": true,
-    // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺关于prettier插件配置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+    "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe", //powershell 7.1.0
+    // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺关于terminal结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
     // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于emmet配置开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
     "emmet.includeLanguages": {
         "javascript": "javascriptreact",
         "wxml": "html"
     },
+
     // (未启用)
     // // 配置emmet是否启用tab展开缩写
     // "emmet.triggerExpansionOnTab": true,
-    // // 配置emmet对文件类型的支持
-    // "emmet.syntaxProfiles": {
-    //     "javascript": "jsx",
-    //     "vue": "html",
-    //     "vue-html": "html"
-    // },
+    // 在vue文件里设置html关联配置 -- emmet对文件类型的支持
+    "emmet.syntaxProfiles": {
+        "javascript": "jsx",
+        "vue": "html",
+        "vue-html": "html"
+    },
     // "emmet.includeLanguages": {
     //     "wxml": "html"
     // },
-    // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺关于emmet插件配置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
-    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于vetur插件开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+    // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺关于emmet插件配置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于vetur插件开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
     // (vue工作区用)
     //****vue文件template格式化支持，并使用js-beautify-html插件******
     //让vue中的js按编辑器自带的ts格式进行格式化
-    "vetur.format.defaultFormatter.js": "vscode-typescript",
+    "vetur.format.defaultFormatter.js": "prettier", //prettier  \  vscode-typescript
     //让vue中的html按prettier格式进行格式化 ??
     "vetur.format.defaultFormatter.html": "prettier",
     //js-beautify-html格式化配置，属性强制换行
@@ -562,30 +582,43 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
     // ],
     // "easysass.targetDir": "./", // 自定义css输出文件路径
     // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺关于Easy Sass插件结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
-    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻对各类型文档的配置🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于file-size插件开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+    "file-size.position": "right", //right/left 位置
+    "file-size.priority": 10,
+    // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺关于file-size插件结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻对各类型文档的配置🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
     // 关于react的prettier校验 ？？
     "[javascriptreact]": {
         // "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[javascript]": {
+        // 字体连字设置
+        "editor.fontLigatures": "'ss02', 'ss19'",
         // 自动保存
-        "editor.formatOnSave": true,
+        // "editor.formatOnSave": true,
         // 如果报错，用第二个
-        "editor.defaultFormatter": "vscode.typescript-language-features",
+        "editor.defaultFormatter": "vscode.typescript-language-features"
         // "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
         //需要HookyQR.beautify插件
         // "editor.defaultFormatter": "HookyQR.beautify",
         // "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[html]": {
-        "editor.defaultFormatter": "vscode.html-language-features",
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]": {
+        // 自动保存
+        // "editor.formatOnSave": true,
     },
     // 关于markdown的 prettier校验
     // "[markdown]": {
     // "editor.defaultFormatter": "esbenp.prettier-vscode",
     // },
+    // 配置选项控制空格是否插入空括号 默认值为 true
+    // "javascript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
     // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺对各类型文档的配置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
     // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻其他🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
     "cssrem.rootFontSize": 75,
@@ -598,7 +631,6 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
     "explorer.confirmDragAndDrop": false,
     "git.autofetch": true,
     "tabnine.experimentalAutoImports": true,
-    "php.validate.executablePath": "",
     "settingsSync.ignoredExtensions": [],
     // "vsicons.dontShowNewVersionMessage": true,
     // "todo-tree.tree.showScanModeButton": false,
@@ -613,10 +645,13 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
     "editor.cursorSmoothCaretAnimation": true,
     "editor.cursorSurroundingLines": 3,
     "diffEditor.ignoreTrimWhitespace": false,
+    // 迷你地图
     "editor.minimap.size": "fill",
+    // 代码建议提示
     "editor.suggest.localityBonus": true,
-    "editor.suggest.maxVisibleSuggestions": 10,
-    "editor.suggest.shareSuggestSelections": true,
+    // 弃用 -建议最大显示数
+    // "editor.suggest.maxVisibleSuggestions": 10,
+    "editor.suggest.shareSuggestSelections": true, //建议
     "editor.suggestFontSize": 18,
     "editor.suggestLineHeight": 22,
     "files.autoSaveDelay": 500,
@@ -633,9 +668,18 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
         "jsx",
         "vue"
     ],
+    // 保存自动格式化
     "editor.formatOnSave": true,
-    "minapp-vscode.disableAutoConfig": true
+    "minapp-vscode.disableAutoConfig": true,
+    "[markdown]": {
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    },
+    "[vue]": {
+        "editor.defaultFormatter": "octref.vetur"
+    },
+    "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImxhbmd1YWdlXCI6XCJcIixcImN1c3RvbUZvbnRzXCI6W10sXCJsaWJyYXJpZXNcIjpcImdlbmVyYWxcIixcImN1c3RvbUxpYnJhcmllc1wiOltcIkwuc2NyYXRjaHBhZFwiXSxcInBsdWdpbnNcIjpbXSxcInJlY2VudENvbG9yc1wiOltdLFwiZm9ybWF0V2lkdGhcIjpcIjI0MFwiLFwiY3JlYXRlVGFyZ2V0XCI6ZmFsc2UsXCJwYWdlRm9ybWF0XCI6e1wieFwiOjAsXCJ5XCI6MCxcIndpZHRoXCI6ODI3LFwiaGVpZ2h0XCI6MTE2OX0sXCJzZWFyY2hcIjp0cnVlLFwic2hvd1N0YXJ0U2NyZWVuXCI6dHJ1ZSxcImdyaWRDb2xvclwiOlwiI2QwZDBkMFwiLFwiZGFya0dyaWRDb2xvclwiOlwiIzZlNmU2ZVwiLFwiYXV0b3NhdmVcIjp0cnVlLFwicmVzaXplSW1hZ2VzXCI6bnVsbCxcIm9wZW5Db3VudGVyXCI6MCxcInZlcnNpb25cIjoxOCxcInVuaXRcIjoxLFwiaXNSdWxlck9uXCI6ZmFsc2UsXCJ1aVwiOlwiXCJ9In0="
 }
+
 ```
 
 :::

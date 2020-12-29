@@ -579,15 +579,18 @@ npm config get cache
 先在相应位置创建文件夹
 
 ```js
-npm config set prefix "C:\Program Files\npm_global"
+npm config set prefix "C:\node\npm_global"
 ```
 
 以及全局缓存位置
 
 ```js
-npm config set cache "C:\Program Files\npm_cache"
+npm config set cache "C:\node\npm_cache"
 ```
 
+:::warning
+路径`"C:\node\npm_cache"`中不要有带空格的地方，比如`"C:\Program Files\npm_cache"`就不行，在使用`npx`的时会报错!
+:::
 查看是否修改成功
 
 ```js

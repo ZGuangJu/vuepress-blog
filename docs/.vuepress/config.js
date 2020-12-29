@@ -198,7 +198,7 @@ module.exports = {
                     { text: '面试题', link: '/Other/面试题' },
                     { text: 'export区别', link: '/Other/export' },
                     { text: '变量常用名', link: '/Other/name' },
-                    { text: '问题', link: '/Other/问题' },
+                    { text: '问题和报错', link: '/Other/问题' },
                     { text: 'token 是什么', link: '/Other/token' },
                     { text: '网站黑白', link: '/Other/网站黑白' },
                     { text: 'Chrome 使用', link: '/Other/Chrome' },

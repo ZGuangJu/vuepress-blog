@@ -55,14 +55,12 @@ mock.js 写虚拟接口
         <p>这是不无聊也不有趣的文字</p>
         <div class="ab"></div>
         <script>
-            var msgArray = [];
-            msgArray[0] = "Hello";
-            msgArray[99] = "world";
-
-            if (msgArray.length === 100) {
-                console.log("The length is 100.");
+            function some(a, b) {
+                let c = b - a + 1;
+                return Math.floor(Math.random() * c + a);
             }
-            console.log(msgArray.length);
+            let d = some(0, 10);
+            console.log(d);
         </script>
     </body>
 </html>
