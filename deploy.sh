@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#.sh
 
 # 确保脚本抛出遇到的错误
 set -e
@@ -15,11 +15,11 @@ cd docs/.vuepress/dist
 
 git init
 git add -A
-git commit -m 'deploy-updata!'
+git commit -m 'deploy-update!'
 
-# 3-1、提交到github和gitee仓库仓库中
+# 3-1. 提交到github和gitee仓库仓库中
 
-# 如果想用username.gitee.io或者username.github.io访问你的网站，必须让新建的仓库地址和你的用户名一致！！
+# 如果想用username.gitee.io或者username.github.io访问你的网站，必须让新建的仓库名和你的用户名一致！！
 
 # A 执行提交到github仓库的master中（USERNAME是你的仓库名）
 # 如果你想要部署到 https://USERNAME.github.io
@@ -32,11 +32,13 @@ git push -f git@gitee.com:zguangju/ZGuangJu.git master
 
 # 提交静态文件到部署的仓库结束
 # 开始提交源码
+
 cd D:/github/blog-vuepress
 git add .
 git commit -m '提交了源码'
 git push origin master
 # 提交源码到github结束
+
 git push -f git@gitee.com:zguangju/vuepress-blog.git master
 # 提交源码到gitee结束
 # 结束

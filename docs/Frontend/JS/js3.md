@@ -22,7 +22,36 @@ showSponsor: true
 
 ## 数组
 
-- 数组去重合并
+### 扁平化数组
+
+1. `forEach()`
+
+```js
+function flatten(arr) {
+  const result = [];
+  arr.forEach((i) => {
+    if (Array.isArray(i))
+      result.push(...flatten(i));
+    else
+      result.push(i);
+  })
+  return result;
+}
+
+// Usage
+const problem = [1, 2, 3, [4, 5, [6, 7], 8, 9]];
+
+flatten(problem); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+2. `arr.flat(2)`, `2`是深度，就是套了几层
+
+```js
+ var arr = [1, 2, 3, [4, 5, [6, 7], 8, 9]].flat(2);
+ console.log(arr); //[1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+### 数组去重合并
 
 ```js
 function combine(){
@@ -33,7 +62,7 @@ var m = [1, 2, 2], n = [2,3,3];
 console.log(combine(m,n));
 ```
 
-- 合并合并两个数组
+### 合并两个数组
 
 ```js
 var vegetables = ['parsnip', 'potato'];
@@ -139,7 +168,9 @@ console.log(arr.sort(compare));
      var sum =add(1,2)
 ```
 
-2. 数组求和 方法 `reducer()` ？
+2. 数组求和 方法 `reducer()`
+
+？
 :::
 
 ### 计算数组各项的重复次数

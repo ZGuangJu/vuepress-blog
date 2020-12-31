@@ -1532,6 +1532,8 @@ for (var i = 0; i < ary.length; i++) {
 ### Array 方法分类
 
 - 创建数组的方法
+  - 字面量
+  - `new Array`
   - `from()`(es6):伪数组转数组
   - `of()`  (es6):根据一组参数，创建数组对象
 
@@ -1561,6 +1563,19 @@ for (var i = 0; i < ary.length; i++) {
   - `reverse()`:
   - `sort()`:
 
+- 类数组转数组的方法
+  - `from()`
+  - `Array.prototype.slice.call(arguments)`
+
+- 数组转字符串的方法
+  - `join()`
+  - `toString()`
+  - `toSource()` 非标准
+  - `toLocaleString()` 不常用
+- 数组扁平化的方法
+  - `forEach()` 通过遍历每一项，判断并`push`新数组里
+  - `flat()`
+
 ### Array 的对象方法
 
 数组的对象方法或者说`Array`构造函数上的方法。
@@ -1580,6 +1595,8 @@ for (var i = 0; i < ary.length; i++) {
   - `thisArg`(可选):可选参数，执行回调函数 `mapFn` 时 `this` 对象。
 
 - 返回值:一个新的数组实例。
+
+- 示例
 
 ```js
 // 从 String 生成数组
@@ -1614,6 +1631,8 @@ f(1, 2, 3);  // [ 1, 2, 3 ]
 - 参数
   - `obj`:需要检测的值。
 - 返回值:如果值是 `Array`，则为`true`; 否则为`false`。
+
+- 示例
 
 ```js
 Array.isArray([1, 2, 3]);// true
@@ -1653,6 +1672,8 @@ Array.isArray({ __proto__: Array.prototype });
 
 - 返回值:新的 `Array` 实例。
 
+- 示例
+
 ```js
 Array.of(1);         // [1]
 Array.of(1, 2, 3);   // [1, 2, 3]
@@ -1686,6 +1707,8 @@ if (!Array.of) {
   - `start`(可选):起始索引，默认值为`0`。
   - `end`(可选):终止索引，默认值为 `this.length`。
 - 返回值:修改后的数组。
+
+- 示例
 
 ```js
 [1, 2, 3].fill(4);               // [4, 4, 4]
@@ -1741,6 +1764,8 @@ arr[0].hi = "hi"; // [{ hi: "hi" }, { hi: "hi" }, { hi: "hi" }]
 
 - 返回值：改变后的数组。
 
+- 示例
+
 ```js
 [1, 2, 3, 4, 5].copyWithin(-2)// [1, 2, 3, 1, 2]
 [1, 2, 3, 4, 5].copyWithin(0, 3)// [4, 5, 3, 4, 5]
@@ -1771,7 +1796,7 @@ i32a.copyWithin(0, 2);// Int32Array [3, 4, 5, 4, 5]
 
 - 如果你在一个空数组上调用 `pop()`，它返回 `undefined`。
 
-实例：
+- 示例：
 
 ```js
 let myFish = ["angel", "clown", "mandarin", "surgeon"];
@@ -1785,6 +1810,7 @@ console.log(popped);//  surgeon (返回值 )
 4. `Array.prototype.push(element1, ..., elementN)`在最后添加一项，改变原数组
 
 :::details
+
 将一个或多个元素添加到数组的末尾，并返回该数组的新长度。
 
 - 参数
@@ -1794,6 +1820,8 @@ console.log(popped);//  surgeon (返回值 )
 `push` 方法具有通用性。该方法和 `call()` 或 `apply()` 一起使用时，可应用在类似数组的对象上。`push`方法根据 `length` 属性来决定从哪里开始插入给定的值。如果 `length` 不能被转成一个数值，则插入的元素索引为 `0`，包括 `length` 不存在时。当 `length` 不存在时，将会创建它。
 
 唯一的原生类数组（`array-like`）对象是 `Strings`，尽管如此，它们并不适用该方法，因为字符串是不可改变的。
+
+- 示例
 
 ```js
 var sports = ["soccer", "baseball"];
@@ -1841,13 +1869,13 @@ arr.unshift([-7, -6], [-5]); // the new array length is 8
 - 无参数
 - 返回值:从数组中删除的元素; 如果数组为空则返回`undefined` 。
 
-:::details 描述
+- 描述
 
 - `shift` 方法移除索引为 `0` 的元素(即第一个元素)，并返回被移除的元素，其他元素的索引值随之减 `1`。如果 `length` 属性的值为 `0` (长度为 `0`)，则返回 `undefined`。
 
 - `shift` 方法并不局限于数组：这个方法能够通过 `call` 或 `apply` 方法作用于类似数组的对象上。但是对于没有 `length` 属性（从`0`开始的一系列连续的数字属性的最后一个）的对象，调用该方法可能没有任何意义。
 
-实例：
+- 示例：
 
 ```js
 let myFish = ['angel', 'clown', 'mandarin', 'surgeon'];
@@ -1902,7 +1930,7 @@ while( (i = names.shift()) !== undefined ) {
 - 描述
 如果添加进数组的元素个数不等于被删除的元素个数，数组的长度会发生相应的改变。
 
-实例:
+- 示例:
 
 从第 2 位开始删除 0 个元素，插入“drum”
 
@@ -1914,9 +1942,9 @@ var removed = myFish.splice(2, 0, "drum");
 // 被删除的元素: [], 没有元素被删除
 ```
 
-其他案例
+- 其他案例
 
-从第 2 位开始删除 0 个元素，插入“drum” 和 "guitar"
+从第 `2` 位开始删除 `0` 个元素，插入`“drum”` 和 `"guitar"`
 
 ```js
 var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
@@ -1926,7 +1954,7 @@ var removed = myFish.splice(2, 0, 'drum', 'guitar');
 // 被删除的元素: [], 没有元素被删除
 ```
 
-从第 3 位开始删除 1 个元素
+从第 `3` 位开始删除 `1` 个元素
 
 ```js
 var myFish = ['angel', 'clown', 'drum', 'mandarin', 'sturgeon'];
@@ -1936,7 +1964,7 @@ var removed = myFish.splice(3, 1);
 // 被删除的元素: ["mandarin"]
 ```
 
-从第 2 位开始删除 1 个元素，插入“trumpet”
+从第 `2` 位开始删除 `1` 个元素，插入`“trumpet”`
 
 ```js
 var myFish = ['angel', 'clown', 'drum', 'sturgeon'];
@@ -1946,7 +1974,7 @@ var removed = myFish.splice(2, 1, "trumpet");
 // 被删除的元素: ["drum"]
 ```
 
-从第 0 位开始删除 2 个元素，插入"parrot"、"anemone"和"blue"
+从第 `0` 位开始删除 `2` 个元素，插入`"parrot"`、`"anemone"`和`"blue"`
 
 ```js
 var myFish = ['angel', 'clown', 'trumpet', 'sturgeon'];
@@ -1956,7 +1984,7 @@ var removed = myFish.splice(0, 2, 'parrot', 'anemone', 'blue');
 // 被删除的元素: ["angel", "clown"]
 ```
 
-从第 2 位开始删除 2 个元素
+从第 `2` 位开始删除 `2` 个元素
 
 ```js
 var myFish = ['parrot', 'anemone', 'blue', 'trumpet', 'sturgeon'];
@@ -1966,7 +1994,7 @@ var removed = myFish.splice(myFish.length - 3, 2);
 // 被删除的元素: ["blue", "trumpet"]
 ```
 
-从倒数第 2 位开始删除 1 个元素;
+从倒数第 `2` 位开始删除 `1` 个元素;
 
 ```js
 var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
@@ -1976,7 +2004,7 @@ var removed = myFish.splice(-2, 1);
 // 被删除的元素: ["mandarin"]
 ```
 
-从第 2 位开始删除所有元素
+从第 `2` 位开始删除所有元素
 
 ```js
 var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
@@ -1994,12 +2022,13 @@ var removed = myFish.splice(2);
 
 `sort()` 方法用原地算法对数组的元素进行排序，并返回数组。默认排序顺序是在将元素转换为字符串，然后比较它们的`UTF-16`代码单元值序列时构建的。无法保证排序的时间和空间复杂性
 
-- `compareFunction` (可选):用来指定按某种顺序进行排列的函数。如果省略，元素按照转换为的字符串的各个字符的`Unicode`位点进行排序。
+- 参数
+  - `compareFunction` (可选):用来指定按某种顺序进行排列的函数。如果省略，元素按照转换为的字符串的各个字符的`Unicode`位点进行排序。
   - `firstEl`:第一个用于比较的元素。
   - `secondEl`:第二个用于比较的元素。
 - 返回值：排序后的数组。请注意，数组已原地排序，并且不进行复制。
 
-compareFunction 参数实例
+- `compareFunction`参数实例
 
 ```js
 function compare(a, b) {
@@ -2073,7 +2102,7 @@ items.sort(function(a, b) {
 });
 ```
 
-实例：
+- 示例：
 
 下述示例创建了四个数组，并展示原数组。之后对数组进行排序。对比了数字数组分别指定与不指定比较函数的结果。
 
@@ -2171,6 +2200,8 @@ var result = mapped.map(function(el){
   - `reverse`方法颠倒数组中元素的位置，改变了数组，并返回该数组的引用。
   - `reverse`方法是特意类化的；此方法可被 `called` 或 `applied`于类似数组对象。对象如果不包含反映一系列连续的、基于零的数值属性中的最后一个长度的属性，则该对象可能不会以任何有意义的方式运行。
 
+- 示例
+
 ```js
 const a = [1, 2, 3];
 
@@ -2185,11 +2216,560 @@ console.log(a); // [3, 2, 1]
 
 <font size="5" color="red">访问方法:</font><font size="5" color="green">下面的这些方法绝对不会改变调用它们的对象的值，只会返回一个新的数组或者返回一个其它的期望值。</font>
 
-(明天继续·······)
+1. `Array.prototype.concat(val,val2 ...)` 合并数组,合并两个或多个数组,不修改原数组返回一个新数组
 
-1. `concat` 合并数组 会把两个数组合并 不修改原数组
+:::details
 
-2. `forEach()` 遍历数组
+- 参数
+  - `valueN`(可选):数组和/或值，将被合并到一个新的数组中。若不传参，则 `concat` 会返回调用此方法的现存数组的一个浅拷贝。
+- 返回值
+  - 新的 `Array` 实例
+- 描述
+
+  - `concat`方法创建一个新的数组，它由被调用的对象中的元素组成，每个参数的顺序依次是该参数的元素（如果参数是数组）或参数本身（如果参数不是数组）。它不会递归到嵌套数组参数中。
+
+  - `concat`方法不会改变`this`或任何作为参数提供的数组，而是返回一个浅拷贝，它包含与原始数组相结合的相同元素的副本。
+
+- 示例
+
+连接两个数组
+
+```js
+var alpha = ['a', 'b', 'c'];
+var numeric = [1, 2, 3];
+
+alpha.concat(numeric);
+// result in ['a', 'b', 'c', 1, 2, 3]
+```
+
+连接三个数组
+
+```js
+var num1 = [1, 2, 3],
+    num2 = [4, 5, 6],
+    num3 = [7, 8, 9];
+var nums = num1.concat(num2, num3);
+console.log(nums);
+// results in [1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+将值连接到数组
+
+```js
+// 以下代码将三个值连接到数组：
+var alpha = ['a', 'b', 'c'];x
+var alphaNumeric = alpha.concat(1, [2, 3]);
+console.log(alphaNumeric);
+// results in ['a', 'b', 'c', 1, 2, 3]
+```
+
+合并嵌套数组
+
+```js
+// 以下代码合并数组并保留引用：
+var num1 = [[1]];
+var num2 = [2, [3]];
+var num3=[5,[6]];
+var nums = num1.concat(num2);
+console.log(nums);// results is [[1], 2, [3]]
+
+var nums2=num1.concat(4,num3);
+console.log(nums2)// results is [[1], 4, 5,[6]]
+
+// 修改num1的第一个元素
+num1[0].push(4);
+console.log(nums);// results is [[1, 4], 2, [3]]
+```
+
+:::
+
+2. `Array.prototype.includes(valueToFind[, fromIndex])` 用来判断一个数组是否包含一个指定的值，根据情况，如果包含则返回 `true`，否则返回`false`
+
+:::details
+
+- 参数
+  - `valueToFind`:需要查找的元素值。
+  - `fromIndex`(可选):从`fromIndex` 索引处开始查找 `valueToFind`。如果为负值，则按升序从 `array.length + fromIndex` 的索引开始搜 （即从末尾开始往前跳 `fromIndex` 的绝对值个索引，然后往后搜寻）。默认为 `0`。
+
+\*  使用 `includes()`比较字符串和字符时是区分大小写。
+
+- 返回值
+  - 布尔值`Boolean`
+
+- 示例
+
+```js
+[1, 2, 3].includes(2);     // true
+[1, 2, 3].includes(4);     // false
+[1, 2, 3].includes(3, 3);  // false
+[1, 2, 3].includes(3, -1); // true
+[1, 2, NaN].includes(NaN); // true
+```
+
+如果 `fromIndex` 大于等于数组的长度，则会返回 `false`，且该数组不会被搜索。
+
+```js
+var arr = ['a', 'b', 'c'];
+arr.includes('c', 3);   // false
+arr.includes('c', 100); // false
+```
+
+计算出的索引小于 `0`
+
+如果 `fromIndex` 为负值，计算出的索引将作为开始搜索`searchElement`的位置。如果计算出的索引小于 `0`，则整个数组都会被搜索。
+
+```js
+// array length is 3
+// fromIndex is -100
+// computed index is 3 + (-100) = -97
+
+var arr = ['a', 'b', 'c'];
+
+arr.includes('a', -100); // true
+arr.includes('b', -100); // true
+arr.includes('c', -100); // true
+arr.includes('a', -2); // false
+```
+
+作为通用方法的 `includes()`
+
+`includes()`方法有意设计为通用方法。它不要求`this`值是数组对象，所以它可以被用于其他类型的对象 (比如类数组对象)。下面的例子展示了 在函数的 `arguments` 对象上调用的 `includes()`方法。
+
+```js
+(function() {
+  console.log([].includes.call(arguments, 'a')); // true
+  console.log([].includes.call(arguments, 'd')); // false
+})('a','b','c');
+```
+
+:::
+
+3. `Array.prototype.join([separator])` 数组转字符串,返回这个字符串, 不改变原数组
+
+:::details
+
+将一个数组（或一个类数组对象）的所有元素连接成一个字符串并返回这个字符串。如果数组只有一个项目，将返回该项目而不使用分隔符;如果不传值会以`,`号进行连接 不改变原数组
+
+- 参数
+  - `separator`(可选):指定一个字符串来分隔数组的每个元素。如果需要，将分隔符转换为字符串。如果缺省该值，数组元素用逗号`,`分隔。如果`separator`是空字符串`""`，则所有元素之间都没有任何字符。
+- 返回值
+  - 一个所有数组元素连接的字符串。如果 `arr.length` 为`0`，则返回空字符串。
+
+- 示例
+
+使用四种不同的分隔符连接数组元素
+
+```js
+var a = ['Wind', 'Rain', 'Fire'];
+var myVar1 = a.join();      // myVar1的值变为"Wind,Rain,Fire"
+var myVar2 = a.join(', ');  // myVar2的值变为"Wind, Rain, Fire"
+var myVar3 = a.join(' + '); // myVar3的值变为"Wind + Rain + Fire"
+var myVar4 = a.join('');    // myVar4的值变为"WindRainFire"
+```
+
+连接`类数组对象`
+
+下面的示例将连接类数组对象（`arguments`），通过在`Array.prototype.join`上调用`Function.prototype.call`。
+
+```js
+function f(a, b, c) {
+  var s = Array.prototype.join.call(arguments);
+  console.log(s); // '1,a,true'
+}
+f(1, 'a', true);
+```
+
+:::
+
+4. `Array.prototype.indexOf(searchElement[, fromIndex])` 根据数组某项找第一次出现的索引，找到第一个即返回，返回值是对应`index`，不存在返回`-1`
+
+:::details
+
+返回在数组中可以找到一个给定元素的第一个索引，如果不存在，则返回·
+
+- 参数
+  - `searchElement`:要查找的元素
+  - `fromIndex`(可选):开始查找的位置。如果该索引值大于或等于数组长度，意味着不会在数组里查找，返回`-1`。如果是一个负值，则将其作为数组末尾的一个抵消，即`-1`表示从最后一个元素开始查找，`-2`表示从倒数第二个元素开始查找 ，以此类推。 注意：如果参数中提供的索引值是一个负值，并不改变其查找顺序，查找顺序仍然是从前向后查询数组。如果抵消后的索引值仍小于`0`，则整个数组都将会被查询。其默认值为`0`.
+- 返回值
+  - 首个被找到的元素在数组中的索引位置; 若没有找到则返回 `-1`
+- 描述
+  - `indexOf` 使用`strict equality` (无论是 `===`, 还是 `triple-equals`操作符都基于同样的方法)进行判断 `searchElement`与数组中包含的元素之间的关系。
+
+- 示例
+
+以下例子使用indexOf方法确定多个值在数组中的位置。
+
+```js
+var array = [2, 5, 9];
+array.indexOf(2);     // 0
+array.indexOf(7);     // -1
+array.indexOf(9, 2);  // 2
+array.indexOf(2, -1); // -1
+array.indexOf(2, -3); // 0
+```
+
+找出指定元素出现的所有位置
+
+```js
+var indices = [];
+var array = ['a', 'b', 'a', 'c', 'a', 'd'];
+var element = 'a';
+var idx = array.indexOf(element);
+while (idx != -1) {
+  indices.push(idx);
+  idx = array.indexOf(element, idx + 1);
+}
+console.log(indices);
+// [0, 2, 4]
+```
+
+判断一个元素是否在数组里，不在则更新数组
+
+```js
+function updateVegetablesCollection (veggies, veggie) {
+    if (veggies.indexOf(veggie) === -1) {
+        veggies.push(veggie);
+        console.log('New veggies collection is : ' + veggies);
+    } else if (veggies.indexOf(veggie) > -1) {
+        console.log(veggie + ' already exists in the veggies collection.');
+    }
+}
+var veggies = ['potato', 'tomato', 'chillies', 'green-pepper'];
+
+// 新集合是: potato,tomato,chillies,green-papper,spinach
+updateVegetablesCollection(veggies, 'spinach');
+// spinach 在集合中
+updateVegetablesCollection(veggies, 'spinach');
+```
+
+:::
+
+5. `Array.prototype.lastIndexOf(searchElement[, fromIndex])`根据数组某项找最后出现的索引，返回值是对应`index`，不存在返回`-1` ,从后往前
+
+:::details
+返回指定元素（即有效的 `JavaScript` 值或变量）在数组中的最后一个的索引，如果不存在则返回 `-1`。从数组的后面向前查找，从 `fromIndex` 处开始。
+
+- 参数
+  - `searchElement`:被查找的元素。
+  - fromIndex(可选):从此位置开始逆向查找。默认为数组的长度减 `1`(`arr.length - 1`)，即整个数组都被查找。如果该值大于或等于数组的长度，则整个数组会被查找。如果为负值，将其视为从数组末尾向前的偏移。即使该值为负，数组仍然会被从后向前查找。如果该值为负时，其绝对值大于数组长度，则方法返回 `-1`，即数组不会被查找。
+- 返回值
+  - 数组中该元素最后一次出现的索引，如未找到返回-1。
+
+- 描述
+  - `lastIndexOf` 使用严格相等（`strict equality`，即 `===`）比较 `searchElement` 和数组中的元素。
+
+- 示例
+
+下例使用 `lastIndexOf` 定位数组中的值。
+
+```JS
+var array = [2, 5, 9, 2];
+var index = array.lastIndexOf(2);// index is 3
+index = array.lastIndexOf(7);// index is -1
+index = array.lastIndexOf(2, 3);// index is 3
+index = array.lastIndexOf(2, 2);// index is 0
+index = array.lastIndexOf(2, -2);// index is 0
+index = array.lastIndexOf(2, -1);// index is 3
+```
+
+查找所有元素
+
+下例使用 `lastIndexOf` 查找到一个元素在数组中所有的索引（下标），并使用 `push` 将所有添加到另一个数组中。
+
+```js
+var indices = [];
+var array = ['a', 'b', 'a', 'c', 'a', 'd'];
+var element = 'a';
+var idx = array.lastIndexOf(element);
+while (idx != -1) {
+  indices.push(idx);
+  idx = (idx > 0 ? array.lastIndexOf(element, idx - 1) : -1);
+}
+console.log(indices);
+// [4, 2, 0];
+```
+
+注意，我们要单独处理`idx==0`时的情况，因为如果是第一个元素，忽略了`fromIndex`参数则第一个元素总会被查找。这不同于`indexOf`方法
+
+注：原英文是针对使用三元操作符语句的作用进行说明的：
+`idx = (idx > 0 ? array.lastIndexOf(element, idx - 1) : -1)`;
+`idx > 0`时，才进入`lastIndexOf`由后往前移一位进行倒查找；如果`idx == 0`则直接设置`idx = -1`，循环`while (idx != -1)`就结束了。
+:::
+
+6. `Array.prototype.slice(start,end)` 截取数组 从 `start` 位置截取到 `end` 位置（不包含结束位置） 如果 `start` 是负数 表示从后往前截取
+
+:::details
+返回一个新的数组对象，这一对象是一个由 `begin` 和 `end` 决定的原数组的浅拷贝（包括 `begin`，不包括`end`）。原始数组不会被改变。
+
+- 参数
+  - `begin`(可选):提取起始处的索引（从 `0` 开始），从该索引开始提取原数组元素。
+        如果该参数为负数，则表示从原数组中的倒数第几个元素开始提取，`slice(-2)` 表示提取原数组中的倒数第二个元素到最后一个元素（包含最后一个元素）。
+        如果省略 `begin`，则 `slice` 从索引 `0` 开始。
+        如果 `begin` 超出原数组的索引范围，则会返回空数组。
+  - `end`(可选):提取终止处的索引（从 `0` 开始），在该索引处结束提取原数组元素。`slice` 会提取原数组中索引从 `begin` 到 `end` 的所有元素（包含 `begin`，但不包含 `end`）。
+        `slice(1,4)` 会提取原数组中从第二个元素开始一直到第四个元素的所有元素 （索引为 `1`, `2`, `3`的元素）。
+        如果该参数为负数， 则它表示在原数组中的倒数第几个元素结束抽取。 `slice(-2,-1)` 表示抽取了原数组中的倒数第二个元素到最后一个元素（不包含最后一个元素，也就是只有倒数第二个元素）。
+        如果 `end` 被省略，则 `slice` 会一直提取到原数组末尾。
+        如果 `end` 大于数组的长度，`slice` 也会一直提取到原数组末尾。
+- 返回值:一个含有被提取元素的新数组。
+- 描述:`slice` 不会修改原数组，只会返回一个浅复制了原数组中的元素的一个新数组。原数组的元素会按照下述规则拷贝：
+
+  - 如果该元素是个对象引用 （不是实际的对象），`slice` 会拷贝这个对象引用到新的数组里。两个对象引用都引用了同一个对象。如果被引用的对象发生改变，则新的和原来的数组中的这个元素也会发生改变。
+  - 对于字符串、数字及布尔值来说（不是 `String`、`Number` 或者 `Boolean` 对象），`slice` 会拷贝这些值到新的数组里。在别的数组里修改这些字符串或数字或是布尔值，将不会影响另一个数组。
+
+如果向两个数组任一中添加了新元素，则另一个不会受到影响。
+
+- 示例
+
+返回现有数组的一部分
+
+```js
+var fruits = ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango'];
+var citrus = fruits.slice(1, 3);
+
+// fruits contains ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango']
+// citrus contains ['Orange','Lemon']
+```
+
+在下例中, slice 从 myCar 中创建了一个新数组newCar。两个数组都包含了一个 myHonda 对象的引用。当 myHonda 的 color 属性改变为 purple，则两个数组中的对应元素都会随之改变。
+
+```js
+// 使用 slice 方法从 myCar 中创建一个 newCar。
+var myHonda = { color: 'red', wheels: 4, engine: { cylinders: 4, size: 2.2 } };
+var myCar = [myHonda, 2, "cherry condition", "purchased 1997"];
+var newCar = myCar.slice(0, 2);
+
+// 输出 myCar、newCar 以及各自的 myHonda 对象引用的 color 属性。
+console.log(' myCar = ' + JSON.stringify(myCar));
+console.log('newCar = ' + JSON.stringify(newCar));
+console.log(' myCar[0].color = ' + JSON.stringify(myCar[0].color));
+console.log('newCar[0].color = ' + JSON.stringify(newCar[0].color));
+
+// 改变 myHonda 对象的 color 属性.
+myHonda.color = 'purple';
+console.log('The new color of my Honda is ' + myHonda.color);
+
+//输出 myCar、newCar 中各自的 myHonda 对象引用的 color 属性。
+console.log(' myCar[0].color = ' + myCar[0].color);
+console.log('newCar[0].color = ' + newCar[0].color);
+
+//上述代码输出
+myCar = [{color: 'red', wheels: 4, engine: {cylinders: 4, size: 2.2}}, 2,
+       'cherry condition', 'purchased 1997']
+newCar = [{color: 'red', wheels: 4, engine: {cylinders: 4, size: 2.2}}, 2]
+ myCar[0].color = red
+newCar[0].color = red
+The new color of my Honda is purple
+ myCar[0].color = purple
+newCar[0].color = purple
+```
+
+类数组（`Array-like`）对象
+`slice` 方法可以用来将一个类数组（`Array-like`）对象/集合转换成一个新数组。你只需将该方法绑定到这个对象上。 一个函数中的  `arguments` 就是一个类数组对象的例子。
+
+```js
+function list() {
+  return Array.prototype.slice.call(arguments);
+}
+
+var list1 = list(1, 2, 3); // [1, 2, 3]
+```
+
+除了使用`Array.prototype.slice.call(arguments)`，你也可以简单的使用 `[].slice.call(arguments)` 来代替。另外，你可以使用 `bind` 来简化该过程。
+
+```js
+var unboundSlice = Array.prototype.slice;
+var slice = Function.prototype.call.bind(unboundSlice);
+
+function list() {
+  return slice(arguments);
+}
+
+var list1 = list(1, 2, 3); // [1, 2, 3]
+```
+
+:::
+
+7. `Array.prototype.toString()` 返回一个字符串，表示指定的数组及其元素。不改变原数组
+
+:::details
+
+- 无参数
+- 返回值
+  - 一个表示指定的数组及其元素的字符串。
+
+- 描述
+  - `Array`对象覆盖了`Object`的 `toString` 方法。对于数组对象，`toString` 方法连接数组并返回一个字符串，其中包含用逗号分隔的每个数组元素。
+
+- 示例
+
+```js
+const array1 = [1, 2, 'a', '1a'];
+console.log(array1.toString());// "1,2,a,1a"
+```
+
+:::
+
+8. `Array.prototype.toSource()`(非标准,暂只兼容火狐) 返回一个字符串,代表该数组的源代码.
+:::details
+
+- 无参数
+
+- 描述
+在调试时,你可以使用`toSource`方法来查看一个数组的内容.
+- 示例
+
+```js
+
+var alpha = new Array("a", "b", "c");
+alpha.toSource();   //返回["a", "b", "c"]
+```
+
+:::
+
+9. `Array.prototype.toLocaleString([locales[,options]])`返回一个字符串表示数组中的元素。
+
+:::details
+
+返回一个字符串表示数组中的元素。数组中的元素将使用各自的 `toLocaleString` 方法转成字符串，这些字符串将使用一个特定语言环境的字符串（例如一个逗号 ","）隔开。;
+
+- 参数
+  - `locales`(可选):带有`BCP 47`语言标记的字符串或字符串数组，关于`locales`参数的形式与解释，请看`Intl`页面。
+  - `options`(可选):一个可配置属性的对象，对于数字 `Number.prototype.toLocaleString()`，对于日期`Date.prototype.toLocaleString()`.
+- 返回值:表示数组元素的字符串。
+
+- 示例
+使用`locales`和`options`
+数组中的元素将会使用各自的 `toLocaleString` 方法：
+
+`Object: Object.prototype.toLocaleString()`
+
+`Number: Number.prototype.toLocaleString()`
+
+`Date: Date.prototype.toLocaleString()`
+总是在`prices`数组中显示字符串和数字的货币符号：
+
+```js
+var prices = ['￥7', 500, 8123, 12];
+prices.toLocaleString('ja-JP', { style: 'currency', currency: 'JPY' });
+
+// "￥7,￥500,￥8,123,￥12"
+```
+
+:::
+
+<font size="5" color="red">迭代方法:</font><font size="5" color="green">在下面的众多遍历方法中，有很多方法都需要指定一个回调函数作为参数。</font>
+
+在每一个数组元素都分别执行完回调函数之前，数组的`length`属性会被缓存在某个地方，所以，如果你在回调函数中为当前数组添加了新的元素，那么那些新添加的元素是不会被遍历到的。此外，如果在回调函数中对当前数组进行了其它修改，比如改变某个元素的值或者删掉某个元素，那么随后的遍历操作可能会受到未预期的影响。总之，不要尝试在遍历过程中对原数组进行任何修改，虽然规范对这样的操作进行了详细的定义，但为了可读性和可维护性，请不要这样做。
+
+1. `Array.prototype.forEach(callback(currentValue [, index [, array]])[, thisArg])` 遍历数组,数组每一项都执行一次回调，返回`undefined`
+
+:::details
+`forEach()` 方法对数组的每个元素执行一次给定的函数。
+
+- 参数
+  - `callback`:为数组中每个元素执行的函数，该函数接收一至三个参数：
+  - `currentValue`:数组中正在处理的当前元素。
+  - `index`(可选):数组中正在处理的当前元素的索引。
+  - `array`(可选):`forEach()` 方法正在操作的数组。
+  - `thisArg`(可选):可选参数。当执行回调函数 `callback` 时，用作 `this` 的值。
+- 返回值:`undefined`
+- 描述
+`forEach()` 方法按升序为数组中含有效值的每一项执行一次 `callback` 函数，那些已删除或者未初始化的项将被跳过（例如在稀疏数组上）。
+
+>可依次向 `callback` 函数传入三个参数：
+>
+>1. 数组当前项的值
+>2. 数组当前项的索引
+>3. 数组对象本身
+>
+>如果 `thisArg` 参数有值，则每次 `callback` 函数被调用时，`this`都会指向 `thisArg` 参数。如果省略了 `thisArg` 参数，或者其值为 `null` 或 `undefined`，`this` 则指向全局对象。按照函数观察到 `this` 的常用规则，`callback`函数最终可观察到 `this` 值。
+>
+>`forEach()` 遍历的范围在第一次调用 `callback` 前就会确定。调用 `forEach` 后添加到数组中的项不会被 `callback` 访问到。如果已经存在的值被改变，则传递给 `callback` 的值是 `forEach()` 遍历到他们那一刻的值。已删除的项不会被遍历到。如果已访问的元素在迭代时被删除了（例如使用 `shift()`），之后的元素将被跳过——参见下面的示例。
+>
+>`forEach()` 为每个数组元素执行一次 `callback` 函数；与 `map()` 或者 `reduce()` 不同的是，它总是返回 `undefined` 值，并且不可链式调用。其典型用例是在一个调用链的最后执行副作用（`side effects`，函数式编程上，指函数进行 返回结果值 以外的操作）。
+>
+>`forEach()` 被调用时，不会改变原数组，也就是调用它的数组（尽管 `callback` 函数在被调用时可能会改变原数组）。（译注：此处说法可能不够明确，具体可参考`EMCA`语言规范：`'forEach does not directly mutate the object on which it is called but the object may be mutated by the calls to callbackfn.'`，即 `forEach` 不会直接改变调用它的对象，但是那个对象可能会被 `callback` 函数改变。）
+
+- 示例
+
+不对未初始化的值进行任何操作（稀疏数组）
+
+```js
+// 如你所见，3 和 7 之间空缺的数组单元未被 forEach() 调用 callback 函数，或进行任何其他操作。
+const arraySparse = [1,3,,7];
+let numCallbackRuns = 0;
+arraySparse.forEach(function(element){
+  console.log(element);
+  numCallbackRuns++;
+});
+console.log("numCallbackRuns: ", numCallbackRuns);
+// 1
+// 3
+// 7
+// numCallbackRuns: 3
+```
+
+将 for 循环转换为 forEach
+
+```js
+const items = ['item1', 'item2', 'item3'];
+const copy = [];
+// before
+for (let i=0; i<items.length; i++) {
+  copy.push(items[i]);
+}
+// after
+items.forEach(function(item){
+  copy.push(item);
+});
+```
+
+打印出数组的内容
+
+注意：为了在控制台中显示数组的内容，你可以使用 `console.table()` 来展示经过格式化的数组。下面的例子则是另一种使用 `forEach()` 的格式化的方法。
+
+下面的代码会为每一个数组元素输出一行记录：
+
+```js
+function logArrayElements(element, index, array) {
+  console.log('a[' + index + '] = ' + element);
+}
+// 注意索引 2 被跳过了，因为在数组的这个位置没有项
+[2, 5, , 9].forEach(logArrayElements);
+// logs:
+// a[0] = 2
+// a[1] = 5
+// a[3] = 9
+```
+
+使用 thisArg
+举个勉强的例子，按照每个数组中的元素值，更新一个对象的属性：
+
+```js
+function Counter() {
+  this.sum = 0;
+  this.count = 0;
+}
+Counter.prototype.add = function(array) {
+  array.forEach(function(entry) {
+    this.sum += entry;
+    ++this.count;
+  }, this);
+  // ^---- Note
+};
+
+const obj = new Counter();
+obj.add([2, 5, 9]);
+obj.count;
+// 3 === (1 + 1 + 1)
+obj.sum;
+// 16 === (2 + 5 + 9)
+```
+
+因为 `thisArg` 参数（`this`）传给了 `forEach()`，每次调用时，它都被传给 `callback` 函数，作为它的 `this` 值。
+
+注意：如果使用箭头函数表达式来传入函数参数， `thisArg` 参数会被忽略，因为箭头函数在词法上绑定了 `this` 值。
 
 ```js
 fruits.forEach(function (item, index, array) {
@@ -2197,27 +2777,77 @@ fruits.forEach(function (item, index, array) {
 });
 ```
 
-2. `map()`
+- 针对 `promise` 或 `async` 函数的使用备注
 
-3. `indexOf(查找第一次出现的索引)` 、`lastIndexOf(查找最后一次出现的索引)` 查找元素在数组中的位置 如果数组中不存在该元素返回-1
+-
+如果使用 `promise` 或 `async` 函数作为 `forEach()` 等类似方法的 `callback` 参数，最好对造成的执行顺序影响多加考虑，否则容易出现错误。
 
 ```js
-fruits.push('Mango');
-// ["Strawberry", "Banana", "Mango"]
+let ratings = [5, 4, 5];
+let sum = 0;
+let sumFunction = async function (a, b) {
+    return a + b;
+}
 
-var pos = fruits.indexOf('Banana');
-// 1
+ratings.forEach(async function(rating) {
+    sum = await sumFunction(sum, rating);
+})
+console.log(sum);
+// Expected output: 14
+// Actual output: 0
 ```
 
-1. `join(符号)` 数组转字符串，字符串会以 join 里面的字符串进行连接 如果不传值会以，号进行连接 不改变原数组
+:::
 
-3. `slice(start,end)` 截取数组 从 `start` 位置截取到 `end` 位置（不包含结束位置） 如果 `start` 是负数 表示从后往前截取
+:::warning 警告
+注意： 除了抛出异常以外，没有办法中止或跳出 `forEach()` 循环。如果你需要中止或跳出循环，`forEach()` 方法不是应当使用的工具。
 
-4. `filter` 过滤 返回一个符合条件的新数组 不改变原数组 `splice`作删除和filter做删除的区别是`splice`会改变原数组
-5. `map` 映射 映射出一个新数组
-6. `every` 返回是一个布尔值，只要有一项条件不成立，就返回false
-7. `some` 返回也是一个布尔值 只要有一项条件成立则返回true 否则返回`false`
-8. `reduce` 收敛 `reduceRight`
+若你需要提前终止循环，你可以使用：
+
+一个简单的 `for` 循环\
+
+`for...of` / `for...in` 循环
+
+`Array.prototype.every()`
+
+`Array.prototype.some()`
+
+`Array.prototype.find()`
+
+`Array.prototype.findIndex()`
+
+这些数组方法则可以对数组元素判断，以便确定是否需要继续遍历：
+
+`every()`
+
+`some()`
+
+`find()`
+
+`findIndex()`
+
+译者注：只要条件允许，也可以使用 `filter()` 提前过滤出需要遍历的部分，再用 `forEach(`) 处理。
+
+:::
+
+(明天继续·······)
+
+2. `Array.prototype.map()` 映射 映射出一个新数组s
+
+3. `Array.prototype.every()` 返回是一个布尔值，只要有一项条件不成立，就返回`false`
+4. `Array.prototype.some()` 返回也是一个布尔值 只要有一项条件成立则返回`true` 否则返回`false`
+5. `Array.prototype.filter()` 过滤 返回一个符合条件的新数组 不改变原数组 `splice`作删除和filter做删除的区别是`splice`会改变原数组
+6. `Array.prototype.find()`
+7. `Array.prototype.findIndex()`
+8. `Array.prototype.reduce()` 收敛 `reduceRight`
+9. `Array.prototype.reduceRight()`
+10. `Array.prototype.entries()`
+11. `Array.prototype.keys()`
+12. `Array.prototype.values()`
+
+### 新增方法
+
+`Array.prototype.flat()`
 
 ## Function
 
