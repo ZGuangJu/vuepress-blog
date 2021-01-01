@@ -7,7 +7,7 @@
         "blog": "vuepress dev docs",
         "build": "vuepress build docs",
         "deploy": "bash deploy.sh",
-        "deploy2": "bash deploy2.sh"
+        "up": "bash update.sh"
     },
     "keywords": [],
     "author": "zhangguangju",
