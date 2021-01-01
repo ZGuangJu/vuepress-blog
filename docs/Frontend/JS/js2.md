@@ -2710,7 +2710,7 @@ console.log("numCallbackRuns: ", numCallbackRuns);
 // numCallbackRuns: 3
 ```
 
-将 for 循环转换为 forEach
+将 `for` 循环转换为 `forEach`
 
 ```js
 const items = ['item1', 'item2', 'item3'];
@@ -2743,7 +2743,7 @@ function logArrayElements(element, index, array) {
 // a[3] = 9
 ```
 
-使用 thisArg
+使用 `thisArg`
 举个勉强的例子，按照每个数组中的元素值，更新一个对象的属性：
 
 ```js
@@ -2830,24 +2830,379 @@ console.log(sum);
 
 :::
 
+2. `Array.prototype.map()` 遍历数组，返回每项遍历后的结果组成的新数组
+
+```js
+var new_array = arr.map(function callback(currentValue[, index[, array]]) {
+ // Return element for new_array
+}[, thisArg])
+```
+
+:::details
+创建一个新数组，其结果是该数组中的每个元素是调用一次提供的函数后的返回值。
+
+- 参数
+  - `callback`:生成新数组元素的函数，使用三个参数：
+        - `currentValue`:`callback` 数组中正在处理的当前元素。
+        - `index`(可选):`callback` 数组中正在处理的当前元素的索引。
+        - `array`(可选):`map` 方法调用的数组。
+  - `thisArg`(可选):执行 `callback` 函数时值被用作`this`。
+- 返回值
+一个由原数组每个元素执行回调函数的结果组成的新数组。
+
+- 描述
+`map` 方法会给原数组中的每个元素都按顺序调用一次  `callback` 函数。`callback` 每次执行后的返回值（包括 `undefined`）组合起来形成一个新数组。 `callback` 函数只会在有值的索引上被调用；
+
+因为`map`生成一个新数组，当你不打算使用返回的新数组却使用map是违背设计初衷的，请用`forEach`或者`for-of`替代。你不该使用`map: A`)你不打算使用返回的新数组，或`/`且 `B`) 你没有从回调函数中返回值。
+`callback` 函数会被自动传入三个参数：数组元素，元素索引，原数组本身。
+
+如果 `thisArg` 参数提供给`map`，则会被用作回调函数的`this`值。否则`undefined`会被用作回调函数的`this`值。`this`的值最终相对于`callback`函数的可观察性是依据`the usual rules for determining the this seen by a function`决定的
+
+`map` 不修改调用它的原数组本身（当然可以在 callback 执行时改变原数组）
+
+`map` 方法处理数组元素的范围是在 `callback` 方法第一次调用之前就已经确定了。调用`map`方法之后追加的数组元素不会被`callback`访问。如果存在的数组元素改变了，那么传给`callback`的值是`map`访问该元素时的值。在`map`函数调用后但在访问该元素前，该元素被删除的话，则无法被访问到。
+
+根据规范中定义的算法，如果被`map`调用的数组是离散的，新数组将也是离散的保持相同的索引为空。
+
+- 示例
+
+求数组中每个元素的平方根
+
+```js
+//下面的代码创建了一个新数组，值为原数组中对应数字的平方根。
+var numbers = [1, 4, 9];
+var roots = numbers.map(Math.sqrt);
+// roots的值为[1, 2, 3], numbers的值仍为[1, 4, 9]
+```
+
+使用 map 重新格式化数组中的对象
+
+```js
+// 以下代码使用一个包含对象的数组来重新创建一个格式化后的数组。
+var kvArray = [{key: 1, value: 10},
+               {key: 2, value: 20},
+               {key: 3, value: 30}];
+
+var reformattedArray = kvArray.map(function(obj) {
+   var rObj = {};
+   rObj[obj.key] = obj.value;
+   return rObj;
+});
+
+// reformattedArray 数组为： [{1: 10}, {2: 20}, {3: 30}],
+
+// kvArray 数组未被修改:
+// [{key: 1, value: 10},
+//  {key: 2, value: 20},
+//  {key: 3, value: 30}]
+```
+
+下面的例子演示如何在一个 String  上使用 map 方法获取字符串中每个字符所对应的 ASCII 码组成的数组：
+
+```js
+var map = Array.prototype.map
+var a = map.call("Hello World", function(x) {
+  return x.charCodeAt(0);
+})
+// a的值为[72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100]
+```
+
+下面代码展示了如何去遍历用 querySelectorAll 得到的动态对象集合。在这里，我们获得了文档里所有选中的选项，并将其打印：
+
+```js
+var elems = document.querySelectorAll('select option:checked');
+var values = Array.prototype.map.call(elems, function(obj) {
+  return obj.value;
+});
+```
+
+:::
+
+2. `Array.prototype.every(callback(element[, index[, array]])[, thisArg])` 返回是一个布尔值，只要有一项条件不成立，就返回`false`
+:::details
+`every()` 方法测试一个数组内的所有元素是否都能通过某个指定函数的测试。它返回一个布尔值。
+
+\* 注意：若收到一个空数组，此方法在一切情况下都会返回 `true`。
+
+- 参数
+  - `callbac`:用来测试每个元素的函数，它可以接收三个参数：
+    - `element`:用于测试的当前值。
+    - `index`(可选):用于测试的当前值的索引。
+    - `array`(可选):调用 `every` 的当前数组。
+  - `hisArg`:执行 `callback` 时使用的 `this` 值。
+- 返回值
+如果回调函数的每一次返回都为 `truthy` 值，返回 `true` ，否则返回 `false`。
+
+- 描述
+every 方法为数组中的每个元素执行一次 callback 函数，直到它找到一个会使 callback 返回 falsy 的元素。如果发现了一个这样的元素，every 方法将会立即返回 false。否则，callback 为每一个元素返回 true，every 就会返回 true。callback 只会为那些已经被赋值的索引调用。不会为那些被删除或从未被赋值的索引调用。
+
+callback 在被调用时可传入三个参数：元素值，元素的索引，原数组。
+
+如果为 every 提供一个 thisArg 参数，则该参数为调用 callback 时的 this 值。如果省略该参数，则 callback 被调用时的 this 值，在非严格模式下为全局对象，在严格模式下传入 undefined。详见 this 条目。
+
+every 不会改变原数组。
+
+every 遍历的元素范围在第一次调用 callback 之前就已确定了。在调用 every 之后添加到数组中的元素不会被 callback 访问到。如果数组中存在的元素被更改，则他们传入 callback 的值是 every 访问到他们那一刻的值。那些被删除的元素或从来未被赋值的元素将不会被访问到。
+
+every 和数学中的"所有"类似，当所有的元素都符合条件才会返回true。正因如此，若传入一个空数组，无论如何都会返回 true。（这种情况属于无条件正确：正因为一个空集合没有元素，所以它其中的所有元素都符合给定的条件。)
+
+- 示例
+
+检测所有数组元素的大小 ;下例检测数组中的所有元素是否都大于 10。
+
+```js
+function isBigEnough(element, index, array) {
+  return element >= 10;
+}
+[12, 5, 8, 130, 44].every(isBigEnough);   // false
+[12, 54, 18, 130, 44].every(isBigEnough); // true
+```
+
+使用箭头函数
+箭头函数为上面的检测过程提供了更简短的语法。
+
+```js
+[12, 5, 8, 130, 44].every(x => x >= 10); // false
+[12, 54, 18, 130, 44].every(x => x >= 10); // true
+```
+
+:::
+
+1. `Array.prototype.some(callback(element[, index[, array]])[, thisArg])` 返回布尔值 只要有一项条件成立则返回`true` 否则返回`false`
+
+:::details
+测试数组中是不是至少有1个元素通过了被提供的函数测试。它返回的是一个`Boolean`类型的值。
+
+- 参数
+  - `callback`:用来测试每个元素的函数，接受三个参数：
+    - `element`:数组中正在处理的元素。
+    - `index`:(可选):数组中正在处理的元素的索引值。
+    - `array`(可选):`some()`被调用的数组。
+  - `thisArg`(可选):执行 `callback` 时使用的 `this` 值。
+返回值
+数组中有至少一个元素通过回调函数的测试就会返回`true`；所有元素都没有通过回调函数的测试返回值才会为`false`。
+
+- 描述
+
+some() 为数组中的每一个元素执行一次 callback 函数，直到找到一个使得 callback 返回一个“真值”（即可转换为布尔值 true 的值）。如果找到了这样一个值，some() 将会立即返回 true。否则，some() 返回 false。callback 只会在那些”有值“的索引上被调用，不会在那些被删除或从来未被赋值的索引上调用。
+
+callback 被调用时传入三个参数：元素的值，元素的索引，被遍历的数组。
+
+如果一个thisArg参数提供给some()，它将被用作调用的 callback的 this 值。否则， 它的 this value将是 undefined。this的值最终通过callback来观察，根据 the usual rules for determining the this seen by a function的this判定规则来确定。
+
+some() 被调用时不会改变数组。
+
+some() 遍历的元素的范围在第一次调用 callback. 前就已经确定了。在调用 some() 后被添加到数组中的值不会被 callback 访问到。如果数组中存在且还未被访问到的元素被 callback 改变了，则其传递给 callback 的值是 some() 访问到它那一刻的值。已经被删除的元素不会被访问到。
+
+- 示例
+
+- 测试数组元素的值
+
+下面的例子检测在数组中是否有元素大于 10。
+
+```js
+function isBiggerThan10(element, index, array) {
+  return element > 10;
+}
+[2, 5, 8, 1, 4].some(isBiggerThan10);  // false
+[12, 5, 8, 1, 4].some(isBiggerThan10); // true
+```
+
+- 使用箭头函数测试数组元素的值
+
+箭头函数 可以通过更简洁的语法实现相同的用例.
+
+```js
+[2, 5, 8, 1, 4].some(x => x > 10);  // false
+[12, 5, 8, 1, 4].some(x => x > 10); // true
+```
+
+- 判断数组元素中是否存在某个值
+
+此例中为模仿 includes()  方法, 若元素在数组中存在, 则回调函数返回值为 true :
+
+```js
+var fruits = ['apple', 'banana', 'mango', 'guava'];
+
+function checkAvailability(arr, val) {
+  return arr.some(function(arrVal) {
+    return val === arrVal;
+  });
+}
+
+checkAvailability(fruits, 'kela');   // false
+checkAvailability(fruits, 'banana'); // true
+```
+
+使用箭头函数判断数组元素中是否存在某个值
+
+```js
+var fruits = ['apple', 'banana', 'mango', 'guava'];
+
+function checkAvailability(arr, val) {
+  return arr.some(arrVal => val === arrVal);
+}
+
+checkAvailability(fruits, 'kela');   // false
+checkAvailability(fruits, 'banana'); // true
+```
+
+将任意值转换为布尔类型
+
+```js
+var TRUTHY_VALUES = [true, 'true', 1];
+
+function getBoolean(value) {
+  'use strict';
+
+  if (typeof value === 'string') {
+    value = value.toLowerCase().trim();
+  }
+
+  return TRUTHY_VALUES.some(function(t) {
+    return t === value;
+  });
+}
+
+getBoolean(false);   // false
+getBoolean('false'); // false
+getBoolean(1);       // true
+getBoolean('true');  // true
+```
+
+:::
+
 (明天继续·······)
 
-2. `Array.prototype.map()` 映射 映射出一个新数组s
-
-3. `Array.prototype.every()` 返回是一个布尔值，只要有一项条件不成立，就返回`false`
-4. `Array.prototype.some()` 返回也是一个布尔值 只要有一项条件成立则返回`true` 否则返回`false`
-5. `Array.prototype.filter()` 过滤 返回一个符合条件的新数组 不改变原数组 `splice`作删除和filter做删除的区别是`splice`会改变原数组
-6. `Array.prototype.find()`
-7. `Array.prototype.findIndex()`
-8. `Array.prototype.reduce()` 收敛 `reduceRight`
-9. `Array.prototype.reduceRight()`
-10. `Array.prototype.entries()`
-11. `Array.prototype.keys()`
-12. `Array.prototype.values()`
+1. `Array.prototype.filter()` 过滤 返回一个符合条件的新数组 不改变原数组 `splice`作删除和filter做删除的区别是`splice`会改变原数组
+2. `Array.prototype.find()`
+3. `Array.prototype.findIndex()`
+4. `Array.prototype.reduce()` 收敛 `reduceRight`
+5. `Array.prototype.reduceRight()`
+6. `Array.prototype.entries()`
+7. `Array.prototype.keys()`
+8. `Array.prototype.values()`
 
 ### 新增方法
 
-`Array.prototype.flat()`
+`Array.prototype.flat()` 数组扁平化
+
+:::details
+
+```js
+var newArray = arr.flat([depth])
+```
+
+`flat()`方法会按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回。
+
+- 参数
+  - `depth`(可选):指定要提取嵌套数组的结构深度，默认值为 1。
+- 返回值
+一个包含将数组与子数组中所有元素的新数组。
+
+- 示例
+
+扁平化嵌套数组
+
+```js
+var arr1 = [1, 2, [3, 4]];
+arr1.flat();
+// [1, 2, 3, 4]
+
+var arr2 = [1, 2, [3, 4, [5, 6]]];
+arr2.flat();
+// [1, 2, 3, 4, [5, 6]]
+
+var arr3 = [1, 2, [3, 4, [5, 6]]];
+arr3.flat(2);
+// [1, 2, 3, 4, 5, 6]
+
+//使用 Infinity，可展开任意深度的嵌套数组
+var arr4 = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
+arr4.flat(Infinity);
+// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+```
+
+扁平化与数组空项
+`flat()` 方法会移除数组中的空项:
+
+```js
+var arr4 = [1, 2, , 4, 5];
+arr4.flat();
+// [1, 2, 4, 5]`
+```
+
+使用 `reduce` 与 `concat`
+
+```js
+var arr = [1, 2, [3, 4]];
+// 展开一层数组
+arr.flat();
+// 等效于
+arr.reduce((acc, val) => acc.concat(val), []);
+// [1, 2, 3, 4]
+
+// 使用扩展运算符 ...
+const flattened = arr => [].concat(...arr);
+```
+
+`reduce + concat + isArray + recursivity`
+
+```js
+// 使用 reduce、concat 和递归展开无限多层嵌套的数组
+var arr1 = [1,2,3,[1,2,3,4, [2,3,4]]];
+
+function flatDeep(arr, d = 1) {
+   return d > 0 ? arr.reduce((acc, val) => acc.concat(Array.isArray(val) ? flatDeep(val, d - 1) : val), [])
+                : arr.slice();
+};
+
+flatDeep(arr1, Infinity);
+// [1, 2, 3, 1, 2, 3, 4, 2, 3, 4]
+```
+
+`forEach + isArray + push + recursivity`
+
+```js
+// forEach 遍历数组会自动跳过空元素
+const eachFlat = (arr = [], depth = 1) => {
+  const result = []; // 缓存递归结果
+  // 开始递归
+  (function flat(arr, depth) {
+    // forEach 会自动去除数组空位
+    arr.forEach((item) => {
+      // 控制递归深度
+      if (Array.isArray(item) && depth > 0) {
+        // 递归数组
+        flat(item, depth - 1)
+      } else {
+        // 缓存元素
+        result.push(item)
+      }
+    })
+  })(arr, depth)
+  // 返回递归结果
+  return result;
+}
+
+// for of 循环不能去除数组空位，需要手动去除
+const forFlat = (arr = [], depth = 1) => {
+  const result = [];
+  (function flat(arr, depth) {
+    for (let item of arr) {
+      if (Array.isArray(item) && depth > 0) {
+        flat(item, depth - 1)
+      } else {
+        // 去除空元素，添加非undefined元素
+        item !== void 0 && result.push(item);
+      }
+    }
+  })(arr, depth)
+  return result;
+}
+```
+
+:::
 
 ## Function
 

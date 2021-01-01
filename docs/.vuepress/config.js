@@ -263,7 +263,7 @@ module.exports = {
                 {
                     title: 'Promise',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['Promise/promise', 'Promise/promise2', 'Promise/promise3']
+                    children: ['Promise/promise', 'Promise/promise2', 'Promise/promise3', 'Promise/promise4']
                 },
                 {
                     title: 'JQuery',
@@ -337,6 +337,12 @@ module.exports = {
                 desc: '宋宇笔记',
                 email: "",//可用头像地址替换
                 link: 'http://websong.wang/'
+            },
+            {
+                title: '王杰笔记',
+                desc: '王杰笔记',
+                email: "",//可用头像地址替换
+                link: 'http://wj199624.gitee.io/wangjie/'
             }
             // ...
         ],
