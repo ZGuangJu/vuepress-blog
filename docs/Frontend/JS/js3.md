@@ -22,6 +22,46 @@ showSponsor: true
 
 ## 数组
 
+### 伪数组转真数组
+
+1. `let arr =Array.from()`
+
+```js
+function fn(a, ...b) {
+                let arr = Array.from(arguments);
+                console.log(arr);
+            }
+fn(1, 2, 3, 4, 5);
+```
+
+2. `Array.prototype.slice.call(arguments, 2)`
+
+`slice` 方法可以用来将一个类数组（`Array-like`）对象/集合转换成一个新数组。你只需将该方法绑定到这个对象上。 一个函数中的  `arguments` 就是一个类数组对象的例子。
+
+```js
+function list() {
+  return Array.prototype.slice.call(arguments);
+}
+var lists1 = list(1, 2, 3); // [1, 2, 3]
+function list2() {
+  return Array.prototype.slice.call(arguments,1);//第二个参数，从哪个下标开始转为真数组
+}
+var lists2 = list2(1, 2, 3); // [2, 3]
+```
+
+除了使用`Array.prototype.slice.call(arguments)`，你也可以简单的使用 `[].slice.call(arguments)` 来代替。另外，你可以使用 `bind` 来简化该过程。
+
+```js
+var unboundSlice = Array.prototype.slice;
+var slice = Function.prototype.call.bind(unboundSlice);
+
+function list() {
+  return slice(arguments);
+}
+
+var list1 = list(1, 2, 3); // [1, 2, 3]
+```
+
 ### 扁平化数组
 
 1. `forEach()`
@@ -64,16 +104,59 @@ console.log(combine(m,n));
 
 ### 合并两个数组
 
+- 合并到原数组（改变原数组）
+
+1
+
 ```js
 var vegetables = ['parsnip', 'potato'];
 var moreVegs = ['celery', 'beetroot'];
-
 // 将第二个数组融合进第一个数组
 // 相当于 vegetables.push('celery', 'beetroot');
 Array.prototype.push.apply(vegetables, moreVegs);
+// 或者另一个写法
+// vegetables.push.apply(vegetables, moreVegs);
 
 console.log(vegetables);
 // ['parsnip', 'potato', 'celery', 'beetroot']
+```
+
+2
+
+```js
+var vegetables = ["parsnip", "potato"];
+var moreVegs = ["celery", "beetroot"];
+vegetables.push(...moreVegs);
+console.log(vegetables);
+```
+
+- 合并,并返回新数组
+
+```js
+var vegetables = ['parsnip', 'potato'];
+var moreVegs = ['celery', 'beetroot'];
+var newarr = vegetables.concat(moreVegs)
+console.log(newarr);
+```
+
+### 获取数组中最大的一项
+
+```js
+var array = [1, 2, 3];
+var max = Math.max.apply(null, array);
+console.log(max);//3
+// 或
+var array = [1, 2, 3];
+var max = Math.max.apply(this, array);
+console.log(max);//3
+```
+
+### 获取数组中最小的一项
+
+```js
+var array = [1, 2, 3];
+var max = Math.min.apply(null, array);
+console.log(max); //3
 ```
 
 ### 数组去重

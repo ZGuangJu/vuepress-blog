@@ -108,3 +108,29 @@ render(<><Student1></Student1><Student2 name='王子豪' age={3} sex='未知' ><
 ```
 
 ## 子传父
+
+```js
+子组件向父组件通信：: props+回调的方式。
+
+// 子组件: Child
+const Child = props =>{
+  const cb = msg =>{
+      return ()=>{
+          props.callback(msg)
+      }
+  }
+  return (
+      <button onClick={cb("京程一灯欢迎你!")}>京程一灯欢迎你</button>
+  )
+}
+
+// 父组件 Parent
+class Parent extends Component {
+    callback(msg){
+        console.log(msg)
+    }
+    render(){
+        return <Child callback={this.callback.bind(this)}></Child>
+    }
+}
+```

@@ -1,6 +1,6 @@
 ---
-title: Vue 动态路由
-date: 2019-03-06
+title: Vue 路由传参
+date: 2019-02-20
 sidebar: 'auto'
 tags:
  - vue
@@ -10,177 +10,105 @@ publish: true
 showSponsor: true
 ---
 
-## 动态路由匹配
+  路由传参的方式（三种）
 
-```js
-const router = new VueRouter({
-  routes: [
-      { path: "/user/:id", component: User }
-    // 动态路径参数 以冒号开头   例 /:id
-  ]
-});
+1. params 传参
+
+- A
+
+父路由发送
+
+```html
+    <router-link to="/About/5/6">About</router-link>
+    <!--占位router.js中写占位符和key-->
+
 ```
 
-::: warning 注意
- 路由的公共地址是 `/user/` 基于它下面的所有子路由，都会被 `/:id` 匹配到，比如 `/user/app` 、 `/user/blog` 等。
+```js
+    path:"/About/:aaa:bbb"
+```
 
- 这是一种匹配策略，一个路由匹配多个地址，呈现同一个页面，页面根据地址关键参数不同，展示不同的数据内容。
+子路由接
+
+```js
+    <h4>我是App.vue路由传参params：{{ $route.params.aaa }}{{ $route.params.bbb }}</h4>
+```
+
+注：地址栏显示  <http://localhost:8080/#/About/5/6>   to不加冒号 ：
+
+- B
+
+父路由发送
+
+```html
+    <router-link :to="{ name: 'xiaoming', params: { id: 123 } }" >About</router-link>
+    <!-- 用params必须用name不能用path -->
+```
+
+注：`123`换成`data`中的`key`，可以动态传递参数
+
+子路由接
+
+```html
+        <h4>我是App.vue路由传参params：{{ $route.params.id }}</h4>
+```
+
+注：地址栏中不显示， `http://localhost:8080/#/About`  只有路由名，或别名（安全）  to要加冒号：
+
+<font color="red">*</font>
+
+```js
+    //params 有两种方式，
+    to="/About/参数1/参数2"
+    //通过上面的写法，路由配置中要用占位符
+    :to="{name:'About',params:{参数1，参数2}}"
+    //第一种参数暴露在地址栏中，第二中，不暴露参数更安全
+    //必须用name不用path
+```
+
+ 2. `query`传参
+
+A路由发
+
+```html
+        <router-link :to="{ path: '/Home', query: { ju: 'zhang',gg：'guang' } }">Home</router-link>
+```
+
+B路由接
+
+```html
+        <h4>我是App.vue路由传参query：{{ $route.query.ju }}{{ $route.query.gg }}</h4>
+```
+
+注：地址栏`http://localhost:8080/#/Home?ju=zhang&gu=guang`参数显示到地址栏中，参数键值对用`&`分开
+
+```js
+        :to="{name:'About',query:{参数1，参数2}}"
+        //拼接在url？后面，多个参数用&符连接
+```
+
+ 3. 使用 `router-view` 组件上，动态绑定数据
+
+父路由传
+
+```html
+        <router-view :mny="mny"></router-view>
+```
+
+子路由接
+
+```js
+         props: {
+            mny: { type: [Array, Number] }
+        },
+```
+
+子路由用
+
+```html
+        <h5>我是App用props传递的数据{{ mny }}</h5>
+```
+
+:::warning 注
+`v-model` 只在`input`表单中
 :::
-
-这里介绍的是简单的动态路由，动态地址部分`/:id`这个值怎么获取到呢
-
-```js
-// 在路由组件里使用
-this.$route.params.id
-// 这里需要注意的是id名称不是死的，是根据配置路由时命名的变量名，动态路由可以匹配很多个，如:
-path: '/user/:id/:age/:job'
-// 那获取得时候就得这样写
-this.$route.params.id、this.$route.params.age、this.$route.params.job
-// 上面获取得就是咱们配置里写的字段名称，不是固定死的，如果是直接在html中，不加this
-```
-
-路由配置
-`router/index.js`
-
-```js
-{
-        // 动态路由配置
-        path: '/dongtai',
-        compoonent: () => import('../views/Dong')
-    }, {
-        path: '/dongtai/:page_id',
-        compoonent: () => import('../components/dongtai.vue')
-    }
-    // *是通配符，表示匹配所有，/表示根目录，* 通配符优先匹配所有路由规则，如果在规则里没有匹配到符合的规则，会匹配到通配符
-    // *通配符通常做容错，用户访问不存在的页面时，跳到404页面
-```
-
-## 嵌套路由
-
-::: warning 嵌套路由和动态理由的区别
-
-- 动态路由是不用写死子路由的，实际上动态路由也是匹配子路由的一种，
-- 动态路由是一个路由模板组件匹配多个不同的路由地址，而嵌套路由是父地址不变，子路由对应各自的模板组件。
-- 嵌套路由是需要写死子路由地址的，在 `children` 里； 一般用在类似面包屑导航的路由结构里，还有一些应用的路由数据是后端给的，嵌套的时候多，就需要我们对嵌套有一个深层的了解。
-- 嵌套路由不会丢失父页面的内容，动态路由只显示匹配到的子路由内容
-:::
-
-路由配置
-`router/index.js`
-
-```js
-routes: [
-    {
-      path: "/dongtai",
-      component: DongTai
-      children: [
-        {
-          path: "news",
-          component: DongTaiNew
-        },
-        {
-          path: "about",
-          component: DongTaiObout
-        }
-      ]
-    }
-  ]
-  // index.vue
-  <router-link to="/dongtai/news">新闻</router-link>
- <router-link to="/dongtai/about">关于</router-link>
-  <router-view />
-  // 如果？我想页面一打开就显示其中一个子路由，比如新闻路由
-  {
-      path: "/dongtai",
-      // component: DongTai
-      component: DongTai,
-      children: [
-        {
-          path: "",// 这里表示的就是当前父级路由
-          component: DongTaiNew
-        },
-        {
-          path: "news",
-          component: DongTaiNew
-        },
-        {
-          path: "about",
-          component: DongTaiObout
-        }
-      ]
-    }
-```
-
-## 嵌套路由配合动态路由
-
-```js
-// 这里需要注意 children 里的地址一定要写全。
-const router = new VueRouter({
-  routes: [
-    {
-      path: "/dongtai/:id",
-      component: DongTai,
-      children: [
-        {
-          path: "/dongtai/news",
-          component: DongTaiNew
-        },
-        {
-          path: "/dongtai/about",
-          component: DongTaiObout
-        }
-      ]
-    }
-  ]
-});
-// 你会发现页面跳转到/dongtai里的时候空白页了,因为这还是动态路由，它需要/dongtai/xx 的形式，所以匹配不上，需要在它的上面写一个普通匹配
-const router = new VueRouter({
-  routes: [
-    {
-      path: "/dongtai",
-      component: DongTai
-    },
-    {
-      path: "/user/:id",
-      component: User,
-      children: [
-        {
-          path: "/dongtai/news",
-          component: DongTaiNew
-        },
-        {
-          path: "/dongtai/about",
-          component: DongTaiObout
-        }
-      ]
-    }
-  ]
-});
-// 小坑
-<router-link to="/dongtai/news">新闻</router-link>
-<router-link to="/dongtai/about">关于</router-link>
-<router-view />// 这里就是渲染出子路由的位置
-```
-
-## 监听路由变化
-
-由于动态路由复用的是同一个组件，为了优化性能，所以不会重新加载组件，那么我们需要使用监听或监听路由函数【路由守卫】来获取路由更新的参数
-
-```js
-watch: {
-    '$route' (to, from) {
-      // 对路由变化作出响应...
-    }
-  }
-  // or 使用计算属性也可以
-computed: {
-  id: function(){
-    return this.$route.params.id
-  }
-}
-//  使用v2.2 中引入的 beforeRouteUpdate 导航守卫
-  beforeRouteUpdate (to, from, next) {
-    // react to route changes...
-    // don't forget to call next()
-  }
-```

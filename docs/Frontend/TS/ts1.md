@@ -1,12 +1,14 @@
 ---
-title: Node
-date: 2020-12-25
+title: TypeScript
+date: 2020-12-31
 sidebar: 'auto'
 categories:
- - 后端技术
+ - 前端基础
 tags:
- - node
+ - TypeScript
 publish: true
 # 打赏
 showSponsor: true
 ---
+
+## TS

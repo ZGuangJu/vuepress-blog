@@ -61,26 +61,26 @@ module.exports = {
             }
         ],
         // gitee时启用
-        [
-            // 公告窗
-            "@vuepress-yard/vuepress-plugin-window",
-            {
-                title: "公告",
-                windowStyle: { left: '41%', top: '200px', width: '260px', },
-                contentInfo: {
-                    title: '本站声明',
-                    // imgUrl: '',
-                    needImg: false,
-                    content: '🎉本站最新地址请点击按钮访问 www.zguangju.com 👇 另，可在关于页面扫码加公众号，感谢关注',
-                    contentStyle: {}
-                },
-                bottomInfo: {
-                    btnText: '最新',
-                    linkTo: 'http://www.zguangju.com'
-                },
-                closeOnce: true
-            }
-        ]
+        // [
+        //     // 公告窗
+        //     "@vuepress-yard/vuepress-plugin-window",
+        //     {
+        //         title: "公告",
+        //         windowStyle: { left: '41%', top: '200px', width: '260px', },
+        //         contentInfo: {
+        //             title: '本站声明',
+        //             // imgUrl: '',
+        //             needImg: false,
+        //             content: '🎉本站最新地址请点击按钮访问 www.zguangju.com 👇 另，可在关于页面扫码加公众号，感谢关注',
+        //             contentStyle: {}
+        //         },
+        //         bottomInfo: {
+        //             btnText: '最新',
+        //             linkTo: 'http://www.zguangju.com'
+        //         },
+        //         closeOnce: true
+        //     }
+        // ]
     ],
     // 主题设置
     themeConfig: {
@@ -141,6 +141,7 @@ module.exports = {
                     { text: 'JQuery', link: '/Frontend/JQuery/JQuery' },
                     { text: 'Ajax', link: '/Frontend/Ajax/Ajax' },
                     { text: 'Axios', link: '/Frontend/Axios/axios' },
+                    { text: 'TypeScript', link: '/Frontend/TS/ts1' },
                     { text: 'Webpack4.0', link: '/Webpack/webpack1' }
                 ]
             },
@@ -253,7 +254,7 @@ module.exports = {
                 {
                     title: 'JavaScript',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['JS/js1', 'JS/js2', 'JS/js3', 'JS/js4', 'JS/js5', 'JS/js6', 'JS/js7', 'JS/js8', 'JS/Array']
+                    children: ['JS/js1', 'JS/js2', 'JS/js3', 'JS/js4', 'JS/js5', 'JS/js6', 'JS/js7', 'JS/js8', 'JS/js9', 'JS/Array']
                 },
                 {
                     title: 'ES6',
@@ -280,12 +281,17 @@ module.exports = {
                     collapsable: true, //是否折叠侧边栏
                     children: ['Axios/axios', 'Axios/axios2', 'Axios/axios3', 'Axios/axios4', 'Axios/axios5']
                 },
+                {
+                    title: 'TypeScript',
+                    collapsable: true, //是否折叠侧边栏
+                    children: ['TS/ts1']
+                },
             ],
             '/Framework/Vue/': [
                 {
                     title: 'Vue',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['vue3-1', 'vue01', 'vue02', 'vue03', 'vue04', 'vue05', 'vue06', 'vue07', 'vue08', 'vue09', 'vue10', 'vue11', 'vuers-1', 'vuers-2', 'vuers-3']
+                    children: ['vue3-1', 'vue01', 'vue02', 'vue03', 'vue04', 'vue05', 'vue06', 'vue07', 'vue08', 'vue09', 'vue10', 'vue11', 'vue12', 'vuers-1', 'vuers-2', 'vuers-3']
                 }
             ],
             '/Framework/React/': [

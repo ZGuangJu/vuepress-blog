@@ -1453,9 +1453,28 @@ console.log(x.valueOf()); // Displays 'Hello world'
   - `toString()`
   - `valueOf()`
 
-### 普通对象
+### Object
 
-`Object` 是以大括号`{}`表示 对象里面放的是键值对（key:value ）每一项还是以逗号分割 `key`(键名)和`value`(键值)以：分割
+`Object` 构造函数创建一个对象包装器。
+
+```js
+// 对象初始化器（Object initialiser）或对象字面量（literal）
+{ key:value,key1:value2,key3:value3,... }
+
+// 以构造函数形式来调用
+new Object([value])
+```
+
+- 参数
+  - `key:value, key2:value2, ... keyN:valueN`:成对的名称（字符串）与值（任何值），其中名称通过冒号与值分隔。
+  - `value`:任何值。
+
+- 描述
+在`JavaScript`中，几乎所有的对象都是`Object`类型的实例，它们都会从`Object.prototype`继承属性和方法。`Object` 构造函数为给定值创建一个对象包装器。`Object`构造函数，会根据给定的参数创建对象，具体有以下情况：
+- 字面量创建对象
+`Object` 是以大括号`{}`表示 对象里面放的是键值对（`key:value` ）每一项还是以逗号分割 `key`(键名)和`value`(键值)以：分割
+
+### Object 方法分类
 
 ### Array
 
@@ -1564,7 +1583,7 @@ for (var i = 0; i < ary.length; i++) {
   - `sort()`:
 
 - 类数组转数组的方法
-  - `from()`
+  - `Array.from()`
   - `Array.prototype.slice.call(arguments)`
 
 - 数组转字符串的方法
@@ -1694,7 +1713,7 @@ if (!Array.of) {
 
 ### Array 的原型方法
 
-<font size="5" color="red">修改器方法：</font><font size="5" color="green">下面的这些方法会改变调用它们的对象自身的值</font>
+<font size="5" color="red">修改器方法：</font><font size="5" color="green">会改变原数组</font>
 
 1. `Array.prototype.fill(value[, start[, end]])` (实验性)填充数组，改变原数组
 
@@ -2214,7 +2233,7 @@ console.log(a); // [3, 2, 1]
 
 :::
 
-<font size="5" color="red">访问方法:</font><font size="5" color="green">下面的这些方法绝对不会改变调用它们的对象的值，只会返回一个新的数组或者返回一个其它的期望值。</font>
+<font size="5" color="red">访问方法:</font><font size="5" color="green">不改变原数组，会返回新的数组或者返回其它的期望值。</font>
 
 1. `Array.prototype.concat(val,val2 ...)` 合并数组,合并两个或多个数组,不修改原数组返回一个新数组
 
@@ -2564,7 +2583,8 @@ The new color of my Honda is purple
 newCar[0].color = purple
 ```
 
-类数组（`Array-like`）对象
+- 类数组（`Array-like`）对象
+
 `slice` 方法可以用来将一个类数组（`Array-like`）对象/集合转换成一个新数组。你只需将该方法绑定到这个对象上。 一个函数中的  `arguments` 就是一个类数组对象的例子。
 
 ```js
@@ -2590,7 +2610,7 @@ var list1 = list(1, 2, 3); // [1, 2, 3]
 
 :::
 
-7. `Array.prototype.toString()` 返回一个字符串，表示指定的数组及其元素。不改变原数组
+1. `Array.prototype.toString()` 返回一个字符串，表示指定的数组及其元素。不改变原数组
 
 :::details
 
@@ -2918,7 +2938,7 @@ var values = Array.prototype.map.call(elems, function(obj) {
 
 :::
 
-2. `Array.prototype.every(callback(element[, index[, array]])[, thisArg])` 返回是一个布尔值，只要有一项条件不成立，就返回`false`
+3. `Array.prototype.every(callback(element[, index[, array]])[, thisArg])` 返回是一个布尔值，只要有一项条件不成立，就返回`false`
 :::details
 `every()` 方法测试一个数组内的所有元素是否都能通过某个指定函数的测试。它返回一个布尔值。
 
@@ -2968,7 +2988,7 @@ function isBigEnough(element, index, array) {
 
 :::
 
-1. `Array.prototype.some(callback(element[, index[, array]])[, thisArg])` 返回布尔值 只要有一项条件成立则返回`true` 否则返回`false`
+4. `Array.prototype.some(callback(element[, index[, array]])[, thisArg])` 返回布尔值 只要有一项条件成立则返回`true` 否则返回`false`
 
 :::details
 测试数组中是不是至少有1个元素通过了被提供的函数测试。它返回的是一个`Boolean`类型的值。
@@ -3072,143 +3092,887 @@ getBoolean('true');  // true
 
 :::
 
-(明天继续·······)
-
-1. `Array.prototype.filter()` 过滤 返回一个符合条件的新数组 不改变原数组 `splice`作删除和filter做删除的区别是`splice`会改变原数组
-2. `Array.prototype.find()`
-3. `Array.prototype.findIndex()`
-4. `Array.prototype.reduce()` 收敛 `reduceRight`
-5. `Array.prototype.reduceRight()`
-6. `Array.prototype.entries()`
-7. `Array.prototype.keys()`
-8. `Array.prototype.values()`
-
-### 新增方法
-
-`Array.prototype.flat()` 数组扁平化
-
-:::details
+5. `Array.prototype.filter()` 过滤 返回一个符合条件的新数组 不改变原数组
 
 ```js
-var newArray = arr.flat([depth])
+var newArray = arr.filter(callback(element[, index[, array]])[, thisArg])
 ```
 
-`flat()`方法会按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回。
+\* `splice`作删除和`filter`做删除的区别是`splice`会改变原数组;
+:::details
+`filter()` 方法创建一个新数组, 其包含通过所提供函数实现的测试的所有元素。
 
 - 参数
-  - `depth`(可选):指定要提取嵌套数组的结构深度，默认值为 1。
+  - `callback`:用来测试数组的每个元素的函数。返回 `true` 表示该元素通过测试，保留该元素，`false` 则不保留。它接受以下三个参数：
+    - `element`:数组中当前正在处理的元素。
+    - `index`(可选)：正在处理的元素在数组中的索引。
+    - `array`(可选):调用了 `filter` 的数组本身。
+- `thisArg`(可选):执行 `callback` 时，用于 `this` 的值。
+
 - 返回值
-一个包含将数组与子数组中所有元素的新数组。
+
+一个新的、由通过测试的元素组成的数组，如果没有任何数组元素通过测试，则返回空数组。
+
+- 描述
+
+filter 为数组中的每个元素调用一次 callback 函数，并利用所有使得 callback 返回 true 或等价于 true 的值的元素创建一个新数组。callback 只会在已经赋值的索引上被调用，对于那些已经被删除或者从未被赋值的索引不会被调用。那些没有通过 callback 测试的元素会被跳过，不会被包含在新数组中。
+
+`callback` 被调用时传入三个参数：
+
+   1. 元素的值
+   2. 元素的索引
+   3. 被遍历的数组本身
+
+如果为 filter 提供一个 thisArg 参数，则它会被作为 callback 被调用时的 this 值。否则，callback 的 this 值在非严格模式下将是全局对象，严格模式下为 undefined。callback 函数最终观察到的 this 值是根据通常函数所看到的 "this"的规则确定的。
+
+filter 不会改变原数组，它返回过滤后的新数组。
+
+filter 遍历的元素范围在第一次调用 callback 之前就已经确定了。在调用 filter 之后被添加到数组中的元素不会被 filter 遍历到。如果已经存在的元素被改变了，则他们传入 callback 的值是 filter 遍历到它们那一刻的值。被删除或从来未被赋值的元素不会被遍历到。
 
 - 示例
 
-扁平化嵌套数组
+筛选排除所有较小的值
+
+下例使用 filter 创建了一个新数组，该数组的元素由原数组中值大于 10 的元素组成。
 
 ```js
-var arr1 = [1, 2, [3, 4]];
-arr1.flat();
-// [1, 2, 3, 4]
-
-var arr2 = [1, 2, [3, 4, [5, 6]]];
-arr2.flat();
-// [1, 2, 3, 4, [5, 6]]
-
-var arr3 = [1, 2, [3, 4, [5, 6]]];
-arr3.flat(2);
-// [1, 2, 3, 4, 5, 6]
-
-//使用 Infinity，可展开任意深度的嵌套数组
-var arr4 = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
-arr4.flat(Infinity);
-// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+function isBigEnough(element) {
+  return element >= 10;
+}
+var filtered = [12, 5, 8, 130, 44].filter(isBigEnough);
+// filtered is [12, 130, 44]
 ```
 
-扁平化与数组空项
-`flat()` 方法会移除数组中的空项:
+过滤 JSON 中的无效条目
+
+以下示例使用 filter() 创建具有非零 id 的元素的 json。
 
 ```js
-var arr4 = [1, 2, , 4, 5];
-arr4.flat();
-// [1, 2, 4, 5]`
-```
+var arr = [
+  { id: 15 },
+  { id: -1 },
+  { id: 0 },
+  { id: 3 },
+  { id: 12.2 },
+  { },
+  { id: null },
+  { id: NaN },
+  { id: 'undefined' }
+];
 
-使用 `reduce` 与 `concat`
+var invalidEntries = 0;
 
-```js
-var arr = [1, 2, [3, 4]];
-// 展开一层数组
-arr.flat();
-// 等效于
-arr.reduce((acc, val) => acc.concat(val), []);
-// [1, 2, 3, 4]
-
-// 使用扩展运算符 ...
-const flattened = arr => [].concat(...arr);
-```
-
-`reduce + concat + isArray + recursivity`
-
-```js
-// 使用 reduce、concat 和递归展开无限多层嵌套的数组
-var arr1 = [1,2,3,[1,2,3,4, [2,3,4]]];
-
-function flatDeep(arr, d = 1) {
-   return d > 0 ? arr.reduce((acc, val) => acc.concat(Array.isArray(val) ? flatDeep(val, d - 1) : val), [])
-                : arr.slice();
-};
-
-flatDeep(arr1, Infinity);
-// [1, 2, 3, 1, 2, 3, 4, 2, 3, 4]
-```
-
-`forEach + isArray + push + recursivity`
-
-```js
-// forEach 遍历数组会自动跳过空元素
-const eachFlat = (arr = [], depth = 1) => {
-  const result = []; // 缓存递归结果
-  // 开始递归
-  (function flat(arr, depth) {
-    // forEach 会自动去除数组空位
-    arr.forEach((item) => {
-      // 控制递归深度
-      if (Array.isArray(item) && depth > 0) {
-        // 递归数组
-        flat(item, depth - 1)
-      } else {
-        // 缓存元素
-        result.push(item)
-      }
-    })
-  })(arr, depth)
-  // 返回递归结果
-  return result;
+function isNumber(obj) {
+  return obj !== undefined && typeof(obj) === 'number' && !isNaN(obj);
 }
 
-// for of 循环不能去除数组空位，需要手动去除
-const forFlat = (arr = [], depth = 1) => {
-  const result = [];
-  (function flat(arr, depth) {
-    for (let item of arr) {
-      if (Array.isArray(item) && depth > 0) {
-        flat(item, depth - 1)
-      } else {
-        // 去除空元素，添加非undefined元素
-        item !== void 0 && result.push(item);
-      }
-    }
-  })(arr, depth)
-  return result;
+function filterByID(item) {
+  if (isNumber(item.id) && item.id !== 0) {
+    return true;
+  }
+  invalidEntries++;
+  return false;
 }
+
+var arrByID = arr.filter(filterByID);
+
+console.log('Filtered Array\n', arrByID);
+// Filtered Array
+// [{ id: 15 }, { id: -1 }, { id: 3 }, { id: 12.2 }]
+
+console.log('Number of Invalid Entries = ', invalidEntries);
+// Number of Invalid Entries = 5
+```
+
+在数组中搜索
+下例使用 `filter()` 根据搜索条件来过滤数组内容。
+
+```js
+var fruits = ['apple', 'banana', 'grapes', 'mango', 'orange'];
+
+/**
+ * Array filters items based on search criteria (query)
+ */
+function filterItems(query) {
+  return fruits.filter(function(el) {
+      return el.toLowerCase().indexOf(query.toLowerCase()) > -1;
+  })
+}
+
+console.log(filterItems('ap')); // ['apple', 'grapes']
+console.log(filterItems('an')); // ['banana', 'mango', 'orange']
+```
+
+`ES2015` 实现
+
+```js
+const fruits = ['apple', 'banana', 'grapes', 'mango', 'orange'];
+
+/**
+
+* Array filters items based on search criteria (query)
+ */
+const filterItems = (query) => {
+  return fruits.filter((el) =>
+    el.toLowerCase().indexOf(query.toLowerCase()) > -1
+  );
+}
+
+console.log(filterItems('ap')); // ['apple', 'grapes']
+console.log(filterItems('an')); // ['banana', 'mango', 'orange']
 ```
 
 :::
 
+6. `Array.prototype.find(callback[, thisArg])`
+
+:::details
+`find()` 方法返回数组中满足提供的测试函数的第一个元素的值。否则返回 `undefined`。
+
+- 参数
+  - `callback`:在数组每一项上执行的函数，接收 `3` 个参数：
+    - `element`:当前遍历到的元素。
+    - `index`(可选):当前遍历到的索引。
+    - `array`(可选):数组本身。
+  - `thisArg`(可选):执行回调时用作`this` 的对象。
+- 返回值
+数组中第一个满足所提供测试函数的元素的值，否则返回 `undefined`。
+
+- 描述
+
+find方法对数组中的每一项元素执行一次 callback 函数，直至有一个 callback 返回 true。当找到了这样一个元素后，该方法会立即返回这个元素的值，否则返回 undefined。注意 callback 函数会为数组中的每个索引调用即从 0 到 length - 1，而不仅仅是那些被赋值的索引，这意味着对于稀疏数组来说，该方法的效率要低于那些只遍历有值的索引的方法。
+
+callback函数带有3个参数：当前元素的值、当前元素的索引，以及数组本身。
+
+如果提供了 thisArg参数，那么它将作为每次 callback函数执行时的this ，如果未提供，则使用 undefined。
+
+find方法不会改变数组。
+
+在第一次调用 callback函数时会确定元素的索引范围，因此在 find方法开始执行之后添加到数组的新元素将不会被 callback函数访问到。如果数组中一个尚未被callback函数访问到的元素的值被callback函数所改变，那么当callback函数访问到它时，它的值是将是根据它在数组中的索引所访问到的当前值。被删除的元素仍旧会被访问到，但是其值已经是undefined了。
+
+- 示例
+
+用对象的属性查找数组里的对象
+
+```js
+var inventory = [
+    {name: 'apples', quantity: 2},
+    {name: 'bananas', quantity: 0},
+    {name: 'cherries', quantity: 5}
+];
+
+function findCherries(fruit) {
+    return fruit.name === 'cherries';
+}
+
+console.log(inventory.find(findCherries)); // { name: 'cherries', quantity: 5 }
+```
+
+寻找数组中的质数
+
+下面的例子展示了如何从一个数组中寻找质数（如果找不到质数则返回undefined）
+
+```js
+function isPrime(element, index, array) {
+  var start = 2;
+  while (start <= Math.sqrt(element)) {
+    if (element % start++ < 1) {
+      return false;
+    }
+  }
+  return element > 1;
+}
+
+console.log([4, 6, 8, 12].find(isPrime)); // undefined, not found
+console.log([4, 5, 8, 12].find(isPrime)); // 5
+```
+
+当在回调中删除数组中的一个值时，当访问到这个位置时，其传入的值是 undefined：
+
+```js
+// Declare array with no element at index 2, 3 and 4
+var a = [0,1,,,,5,6];
+
+// Shows all indexes, not just those that have been assigned values
+a.find(function(value, index) {
+  console.log('Visited index ' + index + ' with value ' + value);
+});
+
+// Shows all indexes, including deleted
+a.find(function(value, index) {
+
+  // Delete element 5 on first iteration
+  if (index == 0) {
+    console.log('Deleting a[5] with value ' + a[5]);
+    delete a[5];  // 注：这里只是将a[5]设置为undefined，可以试试用a.pop()删除最后一项，依然会遍历到被删的那一项
+  }
+  // Element 5 is still visited even though deleted
+  console.log('Visited index ' + index + ' with value ' + value);
+});
+```
+
+:::
+
+7. `Array.prototype.findIndex()`
+
+`findIndex()`方法返回数组中满足提供的测试函数的第一个元素的索引。若没有找到对应元素则返回-1。
+
+8. `Array.prototype.reduce(callback(accumulator, currentValue[, index[, array]])[, initialValue])` 数组的累加器
+
+:::details
+
+- 参数
+  - `callback`:执行数组中每个值 (如果没有提供 `initialValue`则第一个值除外)的函数，包含四个参数：
+    - `accumulator`:累计器累计回调的返回值; 它是上一次调用回调时返回的累积值，或`initialValue`（见于下方）。
+    - `currentValue`:数组中正在处理的元素。
+    - `index`(可选):数组中正在处理的当前元素的索引。 如果提供了`initialValue`，则起始索引号为0，否则从索引1起始。
+    - `array`(可选):调用reduce()的数组
+  - `initialValue`(可选):作为第一次调用 `callback`函数时的第一个参数的值。 如果没有提供初始值，则将使用数组中的第一个元素。 在没有初始值的空数组上调用 `reduce` 将报错。
+- 返回值
+函数累计处理的结果
+
+- 描述
+`reduce`为数组中的每一个元素依次执行callback函数，不包括数组中被删除或从未被赋值的元素，接受四个参数：
+
+  1. accumulator 累计器
+  2. currentValue 当前值
+  3. currentIndex 当前索引
+  4. array 数组
+
+回调函数第一次执行时，accumulator 和currentValue的取值有两种情况：如果调用reduce()时提供了initialValue，accumulator取值为initialValue，currentValue取数组中的第一个值；如果没有提供 initialValue，那么accumulator取数组中的第一个值，currentValue取数组中的第二个值。
+
+回调函数第一次执行时，accumulator 和currentValue的取值有两种情况：如果调用reduce()时提供了initialValue，accumulator取值为initialValue，currentValue取数组中的第一个值；如果没有提供 initialValue，那么accumulator取数组中的第一个值，currentValue取数组中的第二个值。
+
+注意：如果没有提供initialValue，reduce 会从索引1的地方开始执行 callback 方法，跳过第一个索引。如果提供initialValue，从索引0开始。
+
+如果数组为空且没有提供initialValue，会抛出TypeError 。如果数组仅有一个元素（无论位置如何）并且没有提供initialValue， 或者有提供initialValue但是数组为空，那么此唯一值将被返回并且callback不会被执行。
+
+提供初始值通常更安全，正如下面的例子，如果没有提供initialValue，则可能有四种输出：
+
+```js
+var maxCallback = ( acc, cur ) => Math.max( acc.x, cur.x );
+var maxCallback2 = ( max, cur ) => Math.max( max, cur );
+
+// reduce() 没有初始值
+[ { x: 2 }, { x: 22 }, { x: 42 } ].reduce( maxCallback ); // NaN
+[ { x: 2 }, { x: 22 }            ].reduce( maxCallback ); // 22
+[ { x: 2 }                       ].reduce( maxCallback ); // { x: 2 }
+[                                ].reduce( maxCallback ); // TypeError
+
+// map/reduce; 这是更好的方案，即使传入空数组或更大数组也可正常执行
+[ { x: 22 }, { x: 42 } ].map( el => el.x )
+                        .reduce( maxCallback2, -Infinity );
+```
+
+`reduce()` 如何运行
+假如运行下段`reduce()`代码：
+
+```js
+[0, 1, 2, 3, 4].reduce(function(accumulator, currentValue, currentIndex, array){
+  return accumulator + currentValue;
+});
+```
+
+`callback` 被调用四次，每次调用的参数和返回值如下表：
+
+| callback    | accumulator | currentValue | currentIndex | array           | return value |
+| ----------- | ----------- | ------------ | ------------ | --------------- | ------------ |
+| first call  | 0           | 1            | 1            | [0, 1, 2, 3, 4] | 1            |
+| second call | 1           | 2            | 2            | [0, 1, 2, 3, 4] | 3            |
+| third call  | 3           | 3            | 3            | [0, 1, 2, 3, 4] | 6            |
+| fourth call | 6           | 4            | 4            | [0, 1, 2, 3, 4] | 10           |
+
+由`reduce`返回的值将是最后一次回调返回值（10）。
+
+你还可以使用箭头函数来代替完整的函数。 下面的代码将产生与上面的代码相同的输出：
+
+```js
+[0, 1, 2, 3, 4].reduce((prev, curr) => prev + curr );
+```
+
+如果你打算提供一个初始值作为reduce()方法的第二个参数，以下是运行过程及结果：
+
+```js
+[0, 1, 2, 3, 4].reduce((accumulator, currentValue, currentIndex, array) => {
+    return accumulator + currentValue
+}, 10)
+```
+
+| callback    | accumulator | currentValue | currentIndex | array           | return value |
+| ----------- | ----------- | ------------ | ------------ | --------------- | ------------ |
+| first call  | 10          | 0            | 0            | [0, 1, 2, 3, 4] | 10           |
+| second call | 10          | 1            | 1            | [0, 1, 2, 3, 4] | 11           |
+| third call  | 11          | 2            | 2            | [0, 1, 2, 3, 4] | 13           |
+| fourth call | 13          | 3            | 3            | [0, 1, 2, 3, 4] | 16           |
+| fifth call  | 16          | 4            | 4            | [0, 1, 2, 3, 4] | 20           |
+这种情况下reduce()返回的值是20。
+
+- 示例
+
+数组里所有值的和
+
+```js
+var sum = [0, 1, 2, 3].reduce(function (accumulator, currentValue) {
+  return accumulator + currentValue;
+}, 0);
+// 和为 6'
+```
+
+你也可以写成箭头函数的形式：
+
+```js
+var total = [ 0, 1, 2, 3 ].reduce(
+  ( acc, cur ) => acc + cur,
+  0
+);
+```
+
+累加对象数组里的值
+要累加对象数组中包含的值，必须提供初始值，以便各个item正确通过你的函数。
+
+```js
+var initialValue = 0;
+var sum = [{x: 1}, {x:2}, {x:3}].reduce(function (accumulator, currentValue) {
+    return accumulator + currentValue.x;
+},initialValue)
+
+console.log(sum) // logs 6
+```
+
+你也可以写成箭头函数的形式：
+
+```js
+var initialValue = 0;
+var sum = [{x: 1}, {x:2}, {x:3}].reduce(
+    (accumulator, currentValue) => accumulator + currentValue.x
+    ,initialValue
+);
+
+console.log(sum) // logs 6
+```
+
+将二维数组转化为一维
+
+```js
+var flattened = [[0, 1], [2, 3], [4, 5]].reduce(
+  function(a, b) {
+    return a.concat(b);
+  },
+  []
+);
+// flattened is [0, 1, 2, 3, 4, 5]
+```
+
+你也可以写成箭头函数的形式：
+
+```js
+var flattened = [[0, 1], [2, 3], [4, 5]].reduce(
+ ( acc, cur ) => acc.concat(cur),
+ []
+);
+```
+
+计算数组中每个元素出现的次数
+
+```js
+var names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice'];
+
+var countedNames = names.reduce(function (allNames, name) {
+  if (name in allNames) {
+    allNames[name]++;
+  }
+  else {
+    allNames[name] = 1;
+  }
+  return allNames;
+}, {});
+// countedNames is:
+// { 'Alice': 2, 'Bob': 1, 'Tiff': 1, 'Bruce': 1 }
+```
+
+按属性对object分类
+
+```js
+var people = [
+  { name: 'Alice', age: 21 },
+  { name: 'Max', age: 20 },
+  { name: 'Jane', age: 20 }
+];
+
+function groupBy(objectArray, property) {
+  return objectArray.reduce(function (acc, obj) {
+    var key = obj[property];
+    if (!acc[key]) {
+      acc[key] = [];
+    }
+    acc[key].push(obj);
+    return acc;
+  }, {});
+}
+
+var groupedPeople = groupBy(people, 'age');
+// groupedPeople is:
+// {
+//   20: [
+//     { name: 'Max', age: 20 },
+//     { name: 'Jane', age: 20 }
+//   ],
+//   21: [{ name: 'Alice', age: 21 }]
+// }
+```
+
+使用扩展运算符和initialValue绑定包含在对象数组中的数组
+
+```js
+// friends - 对象数组
+// where object field "books" - list of favorite books
+var friends = [{
+  name: 'Anna',
+  books: ['Bible', 'Harry Potter'],
+  age: 21
+}, {
+  name: 'Bob',
+  books: ['War and peace', 'Romeo and Juliet'],
+  age: 26
+}, {
+  name: 'Alice',
+  books: ['The Lord of the Rings', 'The Shining'],
+  age: 18
+}];
+
+// allbooks - list which will contain all friends' books +
+// additional list contained in initialValue
+var allbooks = friends.reduce(function(prev, curr) {
+  return [...prev, ...curr.books];
+}, ['Alphabet']);
+
+// allbooks = [
+//   'Alphabet', 'Bible', 'Harry Potter', 'War and peace',
+//   'Romeo and Juliet', 'The Lord of the Rings',
+//   'The Shining'
+// ]
+```
+
+数组去重
+
+注意： 如果你正在使用一个可以兼容Set 和 Array.from() 的环境， 你可以使用let orderedArray = Array.from(new Set(myArray)); 来获得一个相同元素被移除的数组。
+
+```js
+let myArray = ['a', 'b', 'a', 'b', 'c', 'e', 'e', 'c', 'd', 'd', 'd', 'd']
+let myOrderedArray = myArray.reduce(function (accumulator, currentValue) {
+  if (accumulator.indexOf(currentValue) === -1) {
+    accumulator.push(currentValue)
+  }
+  return accumulator
+}, [])
+
+console.log(myOrderedArray)
+let arr = [1,2,1,2,3,5,4,5,3,4,4,4,4];
+let result = arr.sort().reduce((init, current) => {
+    if(init.length === 0 || init[init.length-1] !== current) {
+        init.push(current);
+    }
+    return init;
+}, []);
+console.log(result); //[1,2,3,4,5]
+```
+
+按顺序运行`Promise`
+
+```js
+/**
+ * Runs promises from array of functions that can return promises
+ * in chained manner
+ *
+ * @param {array} arr - promise arr
+ * @return {Object} promise object
+ */
+function runPromiseInSequence(arr, input) {
+  return arr.reduce(
+    (promiseChain, currentFunction) => promiseChain.then(currentFunction),
+    Promise.resolve(input)
+  );
+}
+
+// promise function 1
+function p1(a) {
+  return new Promise((resolve, reject) => {
+    resolve(a * 5);
+  });
+}
+
+// promise function 2
+function p2(a) {
+  return new Promise((resolve, reject) => {
+    resolve(a * 2);
+  });
+}
+
+// function 3  - will be wrapped in a resolved promise by .then()
+function f3(a) {
+ return a * 3;
+}
+
+// promise function 4
+function p4(a) {
+  return new Promise((resolve, reject) => {
+    resolve(a * 4);
+  });
+}
+
+const promiseArr = [p1, p2, f3, p4];
+runPromiseInSequence(promiseArr, 10)
+  .then(console.log);   // 1200
+```
+
+功能型函数管道
+
+```js
+// Building-blocks to use for composition
+const double = x => x + x;
+const triple = x => 3 * x;
+const quadruple = x => 4 * x;
+
+// Function composition enabling pipe functionality
+const pipe = (...functions) => input => functions.reduce(
+    (acc, fn) => fn(acc),
+    input
+);
+
+// Composed functions for multiplication of specific values
+const multiply6 = pipe(double, triple);
+const multiply9 = pipe(triple, triple);
+const multiply16 = pipe(quadruple, quadruple);
+const multiply24 = pipe(double, triple, quadruple);
+
+// Usage
+multiply6(6); // 36
+multiply9(9); // 81
+multiply16(16); // 256
+multiply24(10); // 240
+```
+
+使用 reduce实现map
+
+```js
+if (!Array.prototype.mapUsingReduce) {
+  Array.prototype.mapUsingReduce = function(callback, thisArg) {
+    return this.reduce(function(mappedArray, currentValue, index, array) {
+      mappedArray[index] = callback.call(thisArg, currentValue, index, array)
+      return mappedArray
+    }, [])
+  }
+}
+
+[1, 2, , 3].mapUsingReduce(
+  (currentValue, index, array) => currentValue + index + array.length
+) // [5, 7, , 10]
+```
+
+:::
+
+9. `Array.prototype.reduceRight()`
+
+`reduceRight()` 方法接受一个函数作为累加器（`accumulator`）和数组的每个值（从右到左）将其减少为单个值。
+
+10. `Array.prototype.entries()`
+
+`entries()` 方法返回一个新的`Array Iterator`对象，该对象包含数组中每个索引的键/值对。
+
+11. `Array.prototype.keys()`
+
+`keys()` 方法返回一个包含数组中每个索引键的`Array Iterator`对象。
+
+12. `Array.prototype.values()`
+
+`values()` 方法返回一个新的`Array Iterator` 对象，该对象包含数组每个索引的值
+
 ## Function
 
+每个 `JavaScript` 函数实际上都是一个 `Function` 对象。运行 `(function(){}).constructor === Function // true` 便可以得到这个结论。
+
 - 函数 `Function` 执行具体功能的代码块
-函数 也是一种数据类型 引用类型 Fuction
+
+函数 也是一种数据类型 引用类型 `Fuction`
 作用：函数是由事件驱动或者主动调用时可重复执行的代码块
+
+- 构造函数
+
+`Function` 构造函数创建一个新的 `Function` 对象。直接调用此构造函数可用动态创建函数，但会遇到和 `eval` 类似的的安全问题和(相对较小的)性能问题。然而，与 `eval` 不同的是，`Function` 创建的函数只能在全局作用域中运行。
+
+- 语法
+
+`new Function ([arg1[, arg2[, ...argN]], functionBody)`
+`function demo(){functionBody }`
+
+- 参数
+  - `arg1, arg2, ... argN`:被函数使用的参数的名称必须是合法命名的。参数名称是一个有效的`JavaScript`标识符的字符串，或者一个用逗号分隔的有效字符串的列表;例如`×`，`theValue`，或`a,b`。
+  - `functionBody`:一个含有包括函数定义的 `JavaScript` 语句的字符串。
+- 描述
+
+使用 `Function` 构造器生成的 `Function` 对象是在函数创建时解析的。这比你使用函数声明或者函数表达式并在你的代码中调用更为低效，因为使用后者创建的函数是跟其他代码一起解析的。
+
+所有被传递到构造函数中的参数，都将被视为将被创建的函数的参数，并且是相同的标示符名称和传递顺序。
+
+以调用函数的方式调用 `Function` 的构造函数（而不是使用 `new` 关键字) 跟以构造函数来调用是一样的。
+
+- 属性和方法
+
+全局的 `Function` 对象没有自己的属性和方法，但是，因为它本身也是一个函数，所以它也会通过原型链从自己的原型链 `Function.prototype` 上继承一些属性和方法。
+
+### 属性
+
+- `Function.length`:获取函数的接收参数个数。
+- `Function.name`:获取函数的名称。
+- `Function.prototype.constructor`:原型对象
+
+### 方法
+
+1. `Function.prototype.apply(thisArg, [argumentsArray])` 改变函数`this`指向
+
+:::details
+`apply()` 方法调用一个具有给定`this`值的函数，以及以一个数组（或类数组对象）的形式提供的参数。
+
+- 参数
+  - `Function`:调用并执行的函
+  - `thisArg`(必选的):将`Function`里的`this`指向替代为`thisArg`的`this`。请注意，`this`可能不是该方法看到的实际值：如果这个函数处于非严格模式下，则指定为 `null` 或 `undefined` 时会自动替换为指向全局对象，原始值会被包装。
+  - `argsArray`(可选的):数组或者类数组对象，其中的数组元素将作为单独的参数传给 `func` 函数。如果该参数的值为 `null` 或  `undefined`，则表示不需要传入任何参数。从`ECMAScript 5` 开始可以使用类数组对象。 浏览器兼容性 请参阅本文底部内容。
+
+- 返回值
+调用有指定`this`值和参数的函数的结果。
+
+- 描述
+
+在调用一个存在的函数时，你可以为其指定一个 this 对象。 this 指当前对象，也就是正在调用这个函数的对象。 使用 apply， 你可以只写一次这个方法然后在另一个对象中继承它，而不用在新对象中重复写该方法。
+
+`apply()` 与 `call()` 非常相似，不同之处在于提供参数的方式。`apply` 使用参数数组而不是一组参数列表。apply 可以使用数组字面量（`array literal`），如 `fun.apply(this, ['eat', 'bananas'])`，或数组对象， 如  `fun.apply(this, new Array('eat', 'bananas'))`。
+
+你也可以使用 `arguments` 对象作为 `argsArray` 参数。 `arguments`是一个函数的局部变量。 它可以被用作被调用对象的所有未指定的参数。 这样，你在使用`apply`函数的时候就不需要知道被调用对象的所有参数。 你可以使用`arguments`来把所有的参数传递给被调用对象。 被调用对象接下来就负责处理这些参数。
+
+从 `ECMAScript` 第5版开始，可以使用任何种类的类数组对象，就是说只要有一个 `length` 属性和`(0..length-1)`范围的整数属性。例如现在可以使用 `NodeList` 或一个自己定义的类似 `{'length': 2, '0': 'eat', '1': 'bananas'}` 形式的对象。
+
+- 示例
+
+```js
+    // 还是调用的obj.fn的方法，但用apply改变了的指向，this.name和arguments都是ojb1和新传递的值了
+    let obj = {
+        name: "zhang",
+        fn: function() {
+            console.log(arguments);
+            console.log(this.name);
+        },
+    };
+    let obj1 = {
+        name: "wang",
+    };
+    obj.fn.apply(obj1, [1, 2, 3, 4]);
+```
+
+:::
+
+2. `Function.prototype.call(thisArg, arg1, arg2, ...)` 与`apply()` 方法类似，只是 `call()` 方法接受的是一个参数列表，而不是包含个参数的数组。
+
+:::details
+
+- 参数
+  - `thisArg`(可选的):在 `function` 函数运行时使用的 `this` 值。请注意，`this`可能不是该方法看到的实际值：如果这个函数处于非严格模式下，则指定为 `null` 或 `undefined` 时会自动替换为指向全局对象，原始值会被包装。
+  - `arg1, arg2, ...`:指定的参数列表。
+- 返回值
+使用调用者提供的 `this` 值和参数调用该函数的返回值。若该方法没有返回值，则返回 `undefined`。
+- 描述
+`call()` 允许为不同的对象分配和调用属于一个对象的函数/方法。
+
+`call()` 提供新的 `this` 值给当前调用的函数/方法。你可以使用 `call` 来实现继承：写一个方法，然后让另外一个新的对象来继承它（而不是在新对象中再写一次这个方法）。
+
+- 示例
+使用 `call` 方法调用父构造函数
+
+在一个子构造函数中，你可以通过调用父构造函数的 `call` 方法来实现继承，类似于 `Java` 中的写法。下例中，使用 `Food` 和 `Toy` 构造函数创建的对象实例都会拥有在 `Product` 构造函数中添加的 `name` 属性和 `price` 属性,但 `category` 属性是在各自的构造函数中定义的。
+
+```js
+function Product(name, price) {
+  this.name = name;
+  this.price = price;
+}
+
+function Food(name, price) {
+  Product.call(this, name, price);
+  this.category = 'food';
+}
+
+function Toy(name, price) {
+  Product.call(this, name, price);
+  this.category = 'toy';
+}
+
+var cheese = new Food('feta', 5);
+var fun = new Toy('robot', 40);
+```
+
+使用 `call` 方法调用匿名函数
+
+在下例中的 `for` 循环体内，我们创建了一个匿名函数，然后通过调用该函数的 `call` 方法，将每个数组元素作为指定的 `this` 值执行了那个匿名函数。这个匿名函数的主要目的是给每个数组元素对象添加一个 `print` 方法，这个 `print` 方法可以打印出各元素在数组中的正确索引号。当然，这里不是必须得让数组元素作为 `this` 值传入那个匿名函数（普通参数就可以），目的是为了演示 `call` 的用法。
+
+```js
+var animals = [
+  { species: 'Lion', name: 'King' },
+  { species: 'Whale', name: 'Fail' }
+];
+
+for (var i = 0; i < animals.length; i++) {
+  (function(i) {
+    this.print = function() {
+      console.log('#' + i + ' ' + this.species
+                  + ': ' + this.name);
+    }
+    this.print();
+  }).call(animals[i], i);
+}
+```
+
+使用 `call` 方法调用函数并且指定上下文的 `this`
+在下面的例子中，当调用 `greet` 方法的时候，该方法的`this`值会绑定到 `obj` 对象。
+
+```js
+function greet() {
+  var reply = [this.animal, 'typically sleep between', this.sleepDuration].join(' ');
+  console.log(reply);
+}
+
+var obj = {
+  animal: 'cats', sleepDuration: '12 and 16 hours'
+};
+
+greet.call(obj);  // cats typically sleep between 12 and 16 hours
+```
+
+使用 `call` 方法调用函数并且不指定第一个参数（`argument`）
+在下面的例子中，我们调用了 `display` 方法，但并没有传递它的第一个参数。如果没有传递第一个参数，this 的值将会被绑定为全局对象。
+
+```js
+var sData = 'Wisen';
+
+function display() {
+  console.log('sData value is %s ', this.sData);
+}
+
+display.call();  // sData value is Wisen
+注意：在严格模式下，this 的值将会是 undefined。见下文。
+
+'use strict';
+
+var sData = 'Wisen';
+
+function display() {
+  console.log('sData value is %s ', this.sData);
+}
+
+display.call(); // Cannot read the property of 'sData' of undefined
+```
+
+:::
+
+3. `Function.prototype.bind()` 方法创建一个新的函数，在 `bind()` 被调用时，这个新函数的 `this` 被指定为 `bind()` 的第一个参数，而其余参数将作为新函数的参数，供调用时使用。
+
+:::details
+
+- 参数
+  - `thisArg`:调用绑定函数时作为 `this` 参数传递给目标函数的值。 如果使用`new`运算符构造绑定函数，则忽略该值。当使用 `bind` 在 `setTimeout` 中创建一个函数（作为回调提供）时，作为 `thisArg` 传递的任何原始值都将转换为 `object`。如果 `bind` 函数的参数列表为空，或者`thisArg`是`null`或`undefined`，执行作用域的 `this` 将被视为新函数的 `thisArg`。
+  - `arg1, arg2, ...`:当目标函数被调用时，被预置入绑定函数的参数列表中的参数。
+
+- 返回值
+返回一个原函数的拷贝，并拥有指定的 `this` 值和初始参数。
+
+`bind()`方法会创建一个新函数,称为绑定函数.当调用这个绑定函数时,绑定函数会以创建它时传入 `bind()`方法的第一个参数作为 `this`,传入
+
+`bind()`方法的第二个以及以后的参数加上绑定函数运行时本身的参数按照顺序作为原函数的参数来调用原函数.
+
+- 示例
+
+创建绑定函数
+`bind()` 最简单的用法是创建一个函数，不论怎么调用，这个函数都有同样的 `this` 值。`JavaScript`新手经常犯的一个错误是将一个方法从对象中拿出来，然后再调用，期望方法中的 `this` 是原来的对象（比如在回调中传入这个方法）。如果不做特殊处理的话，一般会丢失原来的对象。基于这个函数，用原始的对象创建一个绑定函数，巧妙地解决了这个问题：
+
+```js
+this.x = 9;    // 在浏览器中，this 指向全局的 "window" 对象
+var module = {
+  x: 81,
+  getX: function() { return this.x; }
+};
+
+module.getX(); // 81
+
+var retrieveX = module.getX;
+retrieveX();
+// 返回 9 - 因为函数是在全局作用域中调用的
+
+// 创建一个新函数，把 'this' 绑定到 module 对象
+// 新手可能会将全局变量 x 与 module 的属性 x 混淆
+var boundGetX = retrieveX.bind(module);
+boundGetX(); // 81
+```
+
+:::
+
+:::warning 三者区别
+
+- `call()`方法的作用和 `apply()` 方法类似，区别就是`call()`方法接受的是参数列表`call(thisArg,1,2,3,4)`，而`apply()`方法接受的是一个参数数组`apply(thisArg,[1,2,3,4])`。
+
+- `apply()` 与 `call()` 非常相似，不同之处在于提供参数的方式。`apply()` 使用参数数组而不是一组参数列表。`apply` 可以使用数组字面量（`array literal`），如 `fun.apply(this, ['eat', 'bananas'])`，或数组对象， 如  `fun.apply(this, new Array('eat', 'bananas'))`。
+
+`apply()`中：`Chrome 14` 以及 `Internet Explorer 9` 不接受类数组对象。如果传入类数组对象，它们会抛出异常。
+:::
+
+在一个对象的上下文中应用另一个对象的方法；参数能够以列表形式传入。
+
+4. `Function.prototype.toString()` 方法返回一个表示当前函数源代码的字符串。
+:::details
+
+- 无参数
+- 返回值
+表示函数源代码的一个字符串
+- 示例
+
+```js
+    let a = function(value) {
+        this.name = "a";
+        return value;
+    };
+    console.log(a.toString());
+```
+
+:::
+
+- `Function` 构造器与函数声明之间的不同
+
+由 `Function` 构造器创建的函数不会创建当前环境的闭包，它们总是被创建于全局环境，因此在运行时它们只能访问全局变量和自己的局部变量，不能访问它们被 `Function` 构造器创建时所在的作用域的变量。这一点与使用 `eval` 执行创建函数的代码不同。
+
+```js
+var x = 10;
+
+function createFunction1() {
+    var x = 20;
+    return new Function('return x;'); // 这里的 x 指向最上面全局作用域内的 x
+}
+
+function createFunction2() {
+    var x = 20;
+    function f() {
+        return x; // 这里的 x 指向上方本地作用域内的 x
+    }
+    return f;
+}
+
+var f1 = createFunction1();
+console.log(f1());          // 10
+var f2 = createFunction2();
+console.log(f2());          // 20
+```
+
+虽然这段代码可以在浏览器中正常运行，但在 `Node.js` 中 `f1()` 会产生一个“`找不到变量 x` ”的 `ReferenceError`。这是因为在 `Node` 中顶级作用域不是全局作用域，而 x 其实是在当前模块的作用域之中。
+
+(明天继续·······)
+
+### 示例
 
 ```js
  //函数基本写法

@@ -32,6 +32,13 @@ npm install pm2 @ latest -g
 pm2 start app.js
 ```
 
+- 启动`vue`项目
+
+```js
+pm2 start npm -- run serve
+
+```
+
 - 添加变量启动程序(`esay-mock`，生产模式启动)
 
 ```js
