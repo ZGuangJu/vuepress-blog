@@ -182,6 +182,7 @@ module.exports = {
                     { text: 'vite', link: '/Tools/vite' },
                     { text: 'Eslint', link: '/Tools/eslint' },
                     { text: 'vuepress', link: '/Tools/vuepress' },
+                    { text: 'vitepress', link: '/Tools/vitepress' },
                     { text: '升级依赖包', link: '/Tools/upgrade' },
                     { text: 'regex 正则', link: '/Tools/regex' },
                     { text: 'Typecho 安装建站', link: '/Tools/typecho' },
