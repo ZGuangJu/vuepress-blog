@@ -9,7 +9,7 @@ publish: true
 showSponsor: true
 ---
 
-## vue的打包上线--小记
+## vue2.0的打包上线--小记
 
 ### vue-cli
 

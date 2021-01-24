@@ -1455,14 +1455,30 @@ console.log(x.valueOf()); // Displays 'Hello world'
 
 ### Object
 
-`Object` 构造函数创建一个对象包装器。
+- 创建一个对象的三种方法
+
+  1. 字面量标记（初始化标记）初始化对象。
+  2. 通过`new Object()`
+  3. `Object.create()`,根据自定义原型创建新对象
+
+一个对象初始化器，由花括号/大括号 (`{}`) 包含的一个由零个或多个对象属性名和其关联值组成的一个逗号分隔的列表构成.说人话就是，由`{}`包含的键值
 
 ```js
-// 对象初始化器（Object initialiser）或对象字面量（literal）
-{ key:value,key1:value2,key3:value3,... }
-
-// 以构造函数形式来调用
-new Object([value])
+    // 对象初始化器（Object initialiser）或对象字面量（literal）
+    let obj1 = { key:value,key1:value2,key3:value3,... }
+    // 以构造函数形式来调用
+    let obj2 = new Object([value])
+    // Object.create() 使用现有的对象来提供新创建的对象的__proto__
+    const person = {
+        isHuman: false,
+        printIntroduction: function() {
+        console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`);
+  }
+};
+    let obj3 = Object.create(person)
+    obj3.name = 'Matthew'; // "name" is a property set on "me", but not on "person"
+    obj3.isHuman = true; // inherited properties can be overwritten
+    obj3.printIntroduction(); // "My name is Matthew. Am I human? true"
 ```
 
 - 参数
@@ -1473,8 +1489,24 @@ new Object([value])
 在`JavaScript`中，几乎所有的对象都是`Object`类型的实例，它们都会从`Object.prototype`继承属性和方法。`Object` 构造函数为给定值创建一个对象包装器。`Object`构造函数，会根据给定的参数创建对象，具体有以下情况：
 - 字面量创建对象
 `Object` 是以大括号`{}`表示 对象里面放的是键值对（`key:value` ）每一项还是以逗号分割 `key`(键名)和`value`(键值)以：分割
+  - 如果给定值是 `null` 或 `undefined`，将会创建并返回一个空对象
+  - 如果传进去的是一个基本类型的值，则会构造其包装类型的对象
+  - 如果传进去的是引用类型的值，仍然会返回这个值，经他们复制的变量保有和源对象相同的引用地址
+
+\* 当以非构造函数形式被调用时，`Object` 的行为等同于 `new Object()`。
+
+### Object 构造函数的属性
+
+- `Object.length`:值为 `1`。
+- `Object.prototype`:可以为所有 `Object` 类型的对象添加属性。
+
+### Object 实例和原型对象的属性
 
 ### Object 方法分类
+
+### Object 构造函数的方法
+
+#### 原型链
 
 ### Array
 

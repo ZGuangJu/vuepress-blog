@@ -98,6 +98,56 @@ npx create-react-app myappname
 
 `npx` 是运行本地 `node_modules` 包里依赖的，如果没找到，就临时下载，使用完之后把下载的依赖删掉，用 `npx` 好处是保证了依赖版本的新鲜度【每次都是最新版本】，`npm` 先运行本地项目，如果没找到去本机全局里找
 
+:::details 另一种创建(eject)
+
+```js
+npx create-react-app myappname
+```
+
+```js
+git add --all
+```
+
+```js
+git commit -m 'sss'
+```
+
+```js
+yarn eject
+```
+
+```js
+yarn
+//或
+npm i // 安装依赖（感觉此项多余）
+```
+
+安装`scss`
+
+```js
+yarn add node-sass-chokidar
+```
+
+```js
+yarn add npm-run-all
+```
+
+修改`package.json`
+
+```js
+ "scripts": {
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "start-js": "node scripts/start.js",
+    "start": "npm-run-all -p watch-css start-js",
+    "build-js": "node scripts/build.js",
+    "build": "npm-run-all build-css build-js",
+    "test": "node scripts/test.js --env=jsdom"
+  },
+```
+
+:::
+
 ## 项目结构
 
 ```js

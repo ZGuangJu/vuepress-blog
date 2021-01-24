@@ -10,12 +10,30 @@ publish: true
 # 打赏
 showSponsor: true
 ---
+## Vue 3.0 优势
+
+- `Performance`:性能比`Vue2.x`快`1.2~2`倍
+- `Tree shaking support`:按需编译，体积比`Vue2`小
+- `Composition Api` :组合`Api`(类似`React Hooks`)
+- `Better TypeScript Support`: 更好的`Ts`支持
+- `Custom Renderer Api`: 暴露了自定义渲染`Api`
+- `Fragment, Teleport(Protal), suspense` :更先进的组件
+
+### Vue3.0是如何变快的？
+
+- `diff`方法优化：
+  - `Vue2.x`中的虚拟`DOM`是进行全量的对比
+  - `Vue3.0`新增了补丁标记(`PatchFlag`)
+在与上一次虚拟节点进行对比时，只对比带有`patchflag`的节点，并且可以通过flag的信息得知当前节点要对比的具体内容
+
+[Vue2源码解析页](https://template-explorer.vuejs.org/)
+[Vue3源码解析页](https://vue-next-template-explorer.netlify.app)
 
 ## 创建 `Vue3.0`
 
 1. `vite`方式(暂定 )
 
-本方法是用vite构建工具创建项目。
+本方法是用`vite`构建工具创建项目。
 
 ```s
 npm init vite-app [projectname]
