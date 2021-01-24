@@ -1,29 +1,29 @@
 ---
-title: Vuepress
+title: VuePress
 date: 2019-06-15
 sidebar: 'auto'
 categories:
  - 工具
 tags:
- - Vuepress
+ - VuePress
 publish: true
 # 打赏
 showSponsor: true
 ---
 
-:::tip Vuepress 的优点
+:::tip VuePress 的优点
 
-- 界面简洁优雅（个人感觉比 HEXO 好看）
+- 界面简洁优雅（个人感觉比 `HEXO` 好看）
 - 容易上手（半小时能搭好整个项目）
-- 更好的兼容、扩展 Markdown 语法
-- 响应式布局，PC端、手机端
-- Google Analytics 集成
-- 支持 PWA
+- 更好的兼容、扩展 `Markdown` 语法
+- 响应式布局，`PC`端、手机端
+- `Google Analytics` 集成
+- 支持 `PWA`
 :::
 
 ## 一、 创建 vuepress 项目(新版)
 
-1. 创建VuePress 项目最快的方法是使用 `create-VuePress-site [Name]`，帮您建立基本的 VuePress 站点结构，运行：
+1. 创建 `VuePress` 项目最快的方法是使用 `create-VuePress-site [Name]`，帮您建立基本的 VuePress 站点结构，运行：
 
 ```js
 yarn create vuepress-site [Name]
@@ -31,7 +31,7 @@ yarn create vuepress-site [Name]
 
 *如果您的项目使用 webpack 3.x，您可能会注意到 npm 的一些安装问题。在这种情况下，我们建议使用yarn*
 
-然后你就可以配置你的 VuePress 网站的元数据
+然后你就可以配置你的 `VuePress` 网站的元数据
 
 - `Project Name` 项目名称
 - `Description` 描述
@@ -66,7 +66,7 @@ yarn dev
 
 ### 以下是旧版里新建vuepress项目的步骤
 
-::: details 旧版里新建vuepress项目
+::: details 旧版里新建`vuepress`项目
 
 ### 创建项目
 
