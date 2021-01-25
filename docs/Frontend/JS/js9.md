@@ -12,6 +12,25 @@ showSponsor: true
 ---
 ## 实现功能
 
+### 用原生js给DOM元素添加一个类名
+
+方法一：给DOM元素添加类名会覆盖原有的类名
+
+`DOM.setAttribute("class","类名")`
+
+方法二：可以给DOM元素添加一个类名后 还可以在继续给DOM元素添加新的类名 并且不会覆盖已有的类名
+
+```js
+//1.为 <div> 元素添加一个类:
+document.getElementById("div").classList.add("类名");
+//2.为 <div> 元素添加多个类:
+document.getElementById("div").classList.add("类名1","类名2","类名3",...);
+//3.为 <div> 元素移除一个类:
+document.getElementById("div").classList.remove("类名");
+//4.为 <div> 元素移除多个类:
+document.getElementById("div").classList.remove("类名1","类名2","类名3",...);
+```
+
 ### 透明遮罩(兼容IE8+)
 
 请用原生js实现一个函数,给页面制定的任意一个元素添加一个透明遮罩(透明度可变,默认0.2),使这个区域点击无效,要求兼容IE8+及各主流浏览器,遮罩层效果如下图所示

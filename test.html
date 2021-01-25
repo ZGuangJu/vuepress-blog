@@ -31,32 +31,8 @@
         <p>这是不无聊也不有趣的文字</p>
         <div class="ab"></div>
         <script>
-            function debounce(func, wait) {
-                let timer;
-                return function() {
-                    let _this = this;
-                    let args = arguments;
-                    if (tiemr) {
-                        clearTimeout(timer);
-                    }
-                    timer = setTimeout(function() {
-                        func.apply(_this, agrs);
-                    }, wait);
-                };
-            }
-            function de(func, wait) {
-                let timer;
-                return function() {
-                    let _this = this;
-                    let args = arguments;
-                    if (!timer) {
-                        timer = setTimeout(function() {
-                            timer = null;
-                            func.apply(_this, args);
-                        }, wait);
-                    }
-                };
-            }
+            var a = (200 + 100) * 2;
+            console.log(a);
         </script>
     </body>
 </html>

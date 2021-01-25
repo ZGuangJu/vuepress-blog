@@ -648,3 +648,87 @@ background:red;
 另外谈谈目前显示设备中的网页宽度问题（由于篇幅问题，就不从工业革命开始扯了），目前最为常见的宽度基本上都是：大于或等于960px的PC端（1920px、1600px、1440px、1280px、1140px、960px）、960px至640px之间的平板端（768px、640px）以及640px以下的手机端（480px、320px），以上宽度存在已久，且显示设备中的网页宽度会长期处于这样的状态下，在响应式网页宽度设计上，基本从这几个尺寸考虑就已经足够。
 
 8. 扩展——在CSS2中同样有媒体查询
+
+## 案例
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            .box {
+                width: 100%;
+            }
+
+            @media screen and (max-width: 599px) {
+                .left {
+                    display: inline-block;
+                    background: yellowgreen;
+                    width: 200px;
+                    height: 100px;
+                }
+                .right {
+                    display: inline-block;
+                    background: orange;
+                    width: 290px;
+                    height: 100px;
+                }
+            }
+            @media (min-width: 600px) and (max-width: 850px) {
+                .left {
+                    display: inline-block;
+                    background: yellowgreen;
+                    width: 200px;
+                    height: 100px;
+                }
+                .right {
+                    display: inline-block;
+                    background: orange;
+                    width: 350px;
+                    height: 100px;
+                }
+            }
+            @media (min-width: 851px) and (max-width: 1200px) {
+                .left {
+                    display: inline-block;
+                    background: yellowgreen;
+                    width: 200px;
+                    height: 100px;
+                }
+                .right {
+                    display: inline-block;
+                    background: orange;
+                    width: 600px;
+                    height: 100px;
+                }
+            }
+            @media screen and (min-width: 1201px) {
+                .left {
+                    display: inline-block;
+                    background: yellowgreen;
+                    width: 200px;
+                    height: 100px;
+                }
+                .right {
+                    display: inline-block;
+                    background: orange;
+                    width: calc(100% - 210px);
+                    height: 100px;
+                }
+            }
+        </style>
+    </head>
+    <body class="box">
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </body>
+</html>
+
+```
