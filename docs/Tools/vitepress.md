@@ -1,6 +1,6 @@
 ---
 title: VitePress
-date: 2019-06-15
+date: 2020-01-15
 sidebar: 'auto'
 categories:
  - 工具
