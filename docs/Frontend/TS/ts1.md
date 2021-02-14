@@ -38,7 +38,26 @@ showSponsor: true
    - 进入`ts`文件所在目录
    - 执行命令 `tsc xxx.ts`
 
-## TS 基本类型
+## ts在vscode中编译
+
+1. 在项目地址的命令行中输入,生成`tsconfig.json`
+
+```js
+  tsc --init
+```
+
+2. 在`tsconfig.json`中配置相应设置。比如：指定`js`编译的输出文件夹
+
+```js
+"target": "ES2015" //编译的js版本 如果不指定默认 ES3
+"outDir": "./js" //输出的目录
+···
+```
+
+3. 在`vscode`中使用<kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>B</kbd>，打开脚本命令
+输入或选择 `tsc build(构建) XX项目名`，就会输出编译后的文件
+
+## TS 类型
 
 - 类型声明
   - 类型声明是`TS`非常重要的一个特点
@@ -87,28 +106,8 @@ function fn():number | boolean{
   - `TS`拥有自动的类型判断机制
   - 当对变量的声明和赋值是同时进行的，`TS`编译器会自动判断变量的类型
   - 所以如果你的变量的声明稍赋值时同时进行的，可以省略掉类型声明
-- 类型：
 
-## ts在vscode中编译
-
-1. 在项目地址的命令行中输入,生成`tsconfig.json`
-
-```js
-  tsc --init
-```
-
-2. 在`tsconfig.json`中配置相应设置。比如：指定`js`编译的输出文件夹
-
-```js
-"target": "ES2015" //编译的js版本 如果不指定默认 ES3
-"outDir": "./js" //输出的目录
-···
-```
-
-3. 在`vscode`中使用<kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>B</kbd>，打开脚本命令
-输入或选择 `tsc build(构建) XX项目名`，就会输出编译后的文件
-
-## TS 的类型
+### TS 基本类型
 
 - TS 中的类型
 
@@ -122,7 +121,7 @@ function fn():number | boolean{
 | unknown | *               | 类型安全的any                  |
 | void    | 空值(undefined) | 没有值(或undefined)            |
 | never   | 没有值          | 不能是任何值                   |
-| object  | {name:"张广聚"} | 任意的js对象                   |
+| object  | {name:"zhang"}  | 任意的js对象                   |
 | array   | [1,2,3]         | 任意js数组                     |
 | tuple   | [4,5]           | 元素，TS新增类型，固定长度数组 |
 | enum    | enum{A,B}       | 枚举，TS中新增类型             |
@@ -267,11 +266,16 @@ throw new Error("报错了");
 ```
 
 6. `object`
-`{}`用来指定对象中可以包含哪些属性。
+`a:object` 只是指定变量是一个对象，而`a:{}`用来指定对象中可以包含哪些具体属性。
 语法：{属性名:属性值,属性名:属性值}
 
 ```ts
-// 用来指定对象的属性，多或者少都不行
+// 指定为 a:object 时，变量可以赋值任何对此的值
+let a:object
+a = {}
+a = function(){}
+
+// 指定为 b:{} 用来指定对象的属性，多或者少都不行
 let b :{name:string}
 b ={} // 报错
 b = {name:"zhang",age:110}; //报错
