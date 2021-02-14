@@ -1,5 +1,5 @@
 ---
-title: TypeScript
+title: TS 基础
 date: 2020-12-31
 sidebar: 'auto'
 categories:
@@ -13,7 +13,7 @@ showSponsor: true
 
 ## TS 介绍
 
-`TypeScript`是已`Javascript`为基础架构的语言，可以在任何`javaScript`平台中执行。是`js`的超集，它扩展了`javascript`并添加了类型；但是ts不能被`js`解析器(浏览器)直接执行，必须编译中`js`代码，再执行。
+`TypeScript`是已`Javascript`为基础架构的语言，可以在任何`javaScript`平台中执行。是`js`的超集，它扩展了`javascript`并添加了类型；但是`ts`不能被`js`解析器(浏览器)直接执行，必须编译中`js`代码，再执行。
 
 ### 特点
 
@@ -144,18 +144,35 @@ h = true
 
 ```
 
-1. 字面量
-
-用字面量的方式进行类型声明(类似声明一个常量 如用const c = 10)
+1. number
 
 ```ts
+let d:number = 50 //数字
+let c:number = oxfood
+let big:bigint = 100n
+```
+
+2. string
+
+```ts
+let color:string = "blue"
+let fullName:string = "bob"
+```
+
+3. 字面量
+
+用字面量的方式进行类型声明(类似声明一个常量 如用`const c = 10`)
+
+```ts
+let colr = "red" | "blue" | "black"
+let num = 1|2|3|4|5
 let c = 10 // 可以指定为具体的值，但是c不能重新赋值其他数字值，只能是10了。基本不会这么用！！
 c = 11 //报错
 ```
 
 2. `any` 尽量避免使用
 
-表示是任意类型，可以任意赋值。一个类型设置类型为any后，相对于对该变量关闭了TS类型检测。使用TS时不建议使用any类型。
+表示是任意类型，可以任意赋值。一个类型设置类型为`any`后，相对于对该变量关闭了`TS`类型检测。使用`TS`时不建议使用any类型。
 
 ```ts
 // 显式 any
@@ -173,8 +190,8 @@ d = true
 ```
 
 3. `unknown`
-unknown 是一个类型安全的any，unknown类型的变量，不能直接赋值给其他变量。
-类似any,但是any可以影响别人，unknown不会影响
+`unknown` 是一个类型安全的`any`，`unknown`类型的变量，不能直接赋值给其他变量。
+类似`any`,但是`any`可以影响别人，`unknown`不会影响
 
 ```ts
 // any 时
@@ -327,7 +344,7 @@ g = [1,2,3,4,]
 
 8. `tuple` 元组
 
-元组:固定长度的数组。
+元组:固定长度的数组。数组内容时固定的时候，适合用元组。
 
 ```ts
 // 创建元组
@@ -405,6 +422,16 @@ type asType = 1|2|3|4|5
 let x :asType  // 1|2|3|4|5
 let k :asType  // 1|2|3|4|5
 let l :asType  // 1|2|3|4|5
+```
+
+- 断言语法：
+
+```ts
+变量 as 类型
+s = f as string
+// 或者
+变量 = <类型>变量
+s = <string>f
 ```
 
 ## 英文解释

@@ -37,6 +37,21 @@ features:
 
 ## [网易音乐接口](http://123.56.171.43:7301)
 <!-- 首页首屏下拉按钮 并在vuepress-theme-reco homeblog 添加<div class="anchor-down"></div> -->
+
+## 常用
+
+`js` 或 `webpack` 中的配置：
+
+- `development` : 开发模式
+
+- `production` : 生产模式
+
+`package.json` 依赖安装的区别：
+
+- `devDependencies` : 开发阶段
+
+- `dependencies` : 生产阶段
+
 <style>
 .anchor-down {
   display: block;

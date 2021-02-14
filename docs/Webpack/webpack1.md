@@ -21,7 +21,7 @@ webpack是一个 **模块打包工具**，支持所有的打包语法，比如 `
 
 ### 类似的打包工具
 
-gulp//
+`gulp` ···
 
 ## webpack能做什么
 
@@ -42,7 +42,7 @@ gulp//
 
 初始化npm包文件，配置package.json文件 & -y表示所有配置都是yes
 
-```
+```s
  npm init -y
 ```
 
@@ -50,32 +50,32 @@ gulp//
 
 1. 全局安装
 
-```
+```s
 npm i -g webpack webpack-cli
 ```
 
 卸载
 
-```
+```s
 npm uninstall -g webpack  webpack-cli
 ```
 
 2. 局部安装
 
-```
+```s
 npm i -D webpack webpack-cli
 ```
 
 卸载
 
-```
+```s
 npm uninstall -D/-S webpack  webpack-cli
 ```
 
 - 优先使用局部，优点是：便于管理版本
 【webpack-cli只在v4x版以后可用】
 
-```
+```s
 --save-dev  /  -D    //开发环境
 --save      /  -S    //生产环境 （生产环境和开发环境都要用的依赖）
 --global    /  -g    //全局安装
@@ -91,13 +91,14 @@ npm uninstall -D/-S webpack  webpack-cli
 - npx是用来运行本地项目中的依赖，如果本地项目依赖不存在，会自动下载，用完后，会默认删除掉，下载的依赖包
 - npm 是运行package.json。 文件中的script命令的，默认会在当前目录的node_modules包中找，找不到就去全局找，直到找到，实在找不到报错给你看
 
-- 五大组成部分
+- 五大组成部分(1~5)
     1. 入口 entry
     2. 出口 output
     3. 装载机 module-loader
     4. 插件 plugins
     5. 模式 mode
     6. 优化 optimization
+    7. 模块规则 resolve
 
 ### webpack 打包
 
@@ -107,7 +108,7 @@ webpack默认就是打包js的，默认只能是编译es6的模块【export impo
 - 当我们在项目里创建了webpack.config.js后，在使用npx webpacck的话，它会优先执行我们创建的这个配置文件
 - 我们可以用命令指定webpack加载别名的配置文件
 
-```
+```s
   npx webpack --config webpack.config.dev.js
 ```
 
@@ -121,3 +122,39 @@ webpack默认就是打包js的，默认只能是编译es6的模块【export impo
 
 - 是一个插件，写在webpack配置中的plugins数组中
 - 它是将html模板进行编译，并把webpack编译好的脚本注入到html页面里
+
+## resolve
+
+当一个`js`或`ts`文件作为模块引入另一个文件时，默认不能自己识别是否时模块，要自己配置
+例如
+
+```ts
+// 导出
+export const hi = "你好"
+```
+
+```ts
+// 引入
+import {hi} from './m'
+console.log(hi);
+```
+
+配置webapck：
+
+```js
+module.exports = {
+    mode: 'production',
+    // 入口文件
+    entry: "./src/index.ts",
+    // 出口
+    output: {},
+    // 指定webpack 打包要使用的模块
+    module: {},
+    // 插件
+    plugins: [],
+    //用来设置引用模块
+    resolve: {
+        extensions: [".ts", ".js"] // 告诉 webpack 凡是ts、js文件结尾的文件都可以作为模块使用
+    }
+}
+```

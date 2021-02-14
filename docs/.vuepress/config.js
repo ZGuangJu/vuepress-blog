@@ -285,7 +285,7 @@ module.exports = {
                 {
                     title: 'TypeScript',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['TS/ts1']
+                    children: ['TS/ts1', 'TS/ts2']
                 },
             ],
             '/Framework/Vue/': [
@@ -315,7 +315,7 @@ module.exports = {
             '/Backend/': ['api'],
             // 项目
             '/Project/': ['shopingapp', 'admin', 'project', 'todolist'],
-            '/Webpack/': ['webpack1', 'webpack2', 'webpackconfigjs'],
+            '/Webpack/': ['webpack1', 'webpack2', 'webpack3', 'webpack4', 'webpackconfigjs'],
             // linux系统
             '/Linux/': ['debian', 'centos', 'screen', '宝塔', 'vim'],
             // 工具
