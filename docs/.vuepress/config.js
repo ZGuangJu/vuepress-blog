@@ -141,6 +141,7 @@ module.exports = {
                     { text: 'JQuery', link: '/Frontend/JQuery/JQuery' },
                     { text: 'Ajax', link: '/Frontend/Ajax/Ajax' },
                     { text: 'Axios', link: '/Frontend/Axios/axios' },
+                    { text: 'Class', link: '/Frontend/Class/class1' },
                     { text: 'TypeScript', link: '/Frontend/TS/ts1' },
                     { text: 'Webpack4.0', link: '/Webpack/webpack1' }
                 ]
@@ -283,9 +284,14 @@ module.exports = {
                     children: ['Axios/axios', 'Axios/axios2', 'Axios/axios3', 'Axios/axios4', 'Axios/axios5']
                 },
                 {
+                    title: 'Class',
+                    collapsable: true, //是否折叠侧边栏
+                    children: ['Class/class1']
+                },
+                {
                     title: 'TypeScript',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['TS/ts1', 'TS/ts2']
+                    children: ['TS/ts1', 'TS/ts2', 'TS/ts3', 'TS/ts4']
                 },
             ],
             '/Framework/Vue/': [

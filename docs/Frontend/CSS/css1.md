@@ -1,5 +1,5 @@
 ---
-title: CSS 选择器
+title: CSS 基础和选择器
 date: 2018-09-23
 sidebar: 'auto'
 categories:
@@ -10,6 +10,110 @@ tags:
  - CSS3
 publish: true
 ---
+## 基础
+
+### 块元素，行元素，行内块元素
+
+1. 块元素(`block element`)
+
+块级元素特点
+
+   1. 每个块级元素都从新的一行开始，并且其后的元素也另起一行。
+   2. 元素的`width` `height`、行高以及顶和底边距都可设置。
+   3. 元素宽度在不设置的情况下，是它本身父容器的100%，除非设定一个宽度。
+
+- 块级元素会独占一行 默认的宽度占满父级元素，行内元素不会换行，
+- 块级元素可以设置`margin`和`padding`属性
+
+\* 注意：块级元素即使设置了宽度，仍然是独占一行的
+
+块级元素：`div p table ul lo li h1-h6 dl dt`
+
+:::details
+
+- dir - 目录列表
+- div - 常用块级容易，也是css layout的主要标签
+- dl - 定义列表
+- fieldset - form控制组
+- form - 交互表单
+- h1 - 大标题
+- h2 - 副标题
+- h3 - 3级标题
+- h4 - 4级标题
+- h5 - 5级标题
+- h6 - 6级标题
+- hr - 水平分隔线
+- isindex - input prompt
+- menu - 菜单列表
+- noframes - frames可选内容，（对于不支持frame的浏览器显示此区块内容
+- noscript - 可选脚本内容（对于不支持script的浏览器显示此内容）
+- ol - 排序表单
+- p - 段落
+- pre - 格式化文本
+- table - 表格
+- ul - 非排序列表
+:::
+
+2. 行内元素又叫内联元素(`inline element`)
+
+行内元素特点
+
+   1. 和其他元素都在一行上；
+   2. 元素的高度、宽度、行高及顶部和底部边距不可设置；
+   3. 元素的宽度就是它包含的文字或图片的宽度，不可改变。
+
+- 行内元素不会独占一行，相邻的行内元素会排列在同一行里，知道一行排不下，才会换行，其宽度随元素的内容而变化;
+- 行内元素的`width` `height` 无效
+- 行内元素`padding-left、padding-right，margin-left，margin-right`（水平方向），有边距效果，`padding-top，padding-bottom，margin-top，margin-bototm`（水平方向有效，竖直方向无效）.
+
+行内元素：`a img span b strong input select section`
+
+:::details
+
+- a - 锚点
+- abbr - 缩写
+- acronym - 首字
+- b - 粗体(不推荐)
+- br - 换行
+- code - 计算机代码(在引用源码的时候需要)
+- dfn - 定义字段
+- em - 强调
+- font - 字体设定(不推荐)
+- i - 斜体
+- img - 图片
+- input - 输入框
+- kbd - 定义键盘文本
+- label - 表格标签
+- q - 短引用
+- s - 中划线(不推荐)
+- samp - 定义范例计算机代码
+- select - 项目选择
+- small - 小字体文本
+- span - 常用内联容器，定义文本内区块
+- strike - 中划线
+- strong - 粗体强调
+- sub - 下标
+- sup - 上标
+- textarea - 多行文本输入框
+- tt - 电传文本
+- u - 下划线
+:::
+
+3. 行内块
+    - 行内元素，可以改变宽和高的。如 `img,input`
+    - 可以通过`display: inline-block;`改变为行内块元素，但没有默认是行内块的元素.
+
+4. 空元素
+
+空元素：`br hr img input link meta`
+
+:::warning
+
+* 浏览器将块级元素的`dispaly`属性默认为`block`，行内元素属性默认为`inline`，因此行内元素与块级元素的切换可以通过修改`display`属性实现
+* 我们常用的 `display` 属性值有：`inline \ block \ inline-block \ none`
+
+:::
+
 ## CSS选择器
 
 [CSS 可视化文档](http://cssreference.parryqiu.com/)
