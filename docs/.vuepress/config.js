@@ -199,6 +199,7 @@ module.exports = {
                     { text: '学习内容', link: '/Other/' },
                     { text: '知识点', link: '/Other/知识点' },
                     { text: '面试题', link: '/Other/面试题' },
+                    { text: '面试题2', link: '/Other/面试题2' },
                     { text: 'export区别', link: '/Other/export' },
                     { text: '变量常用名', link: '/Other/name' },
                     { text: '问题和报错', link: '/Other/问题' },
