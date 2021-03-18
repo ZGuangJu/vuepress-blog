@@ -197,12 +197,12 @@ module.exports = {
                 items: [
                     { text: '项目总结', link: '/Project/shopingapp' },
                     { text: '学习内容', link: '/Other/' },
+                    { text: '报错总结', link: '/Other/报错总结' },
                     { text: '知识点', link: '/Other/知识点' },
                     { text: '面试题', link: '/Other/面试题' },
                     { text: '面试题2', link: '/Other/面试题2' },
                     { text: 'export区别', link: '/Other/export' },
                     { text: '变量常用名', link: '/Other/name' },
-                    { text: '问题和报错', link: '/Other/问题' },
                     { text: 'token 是什么', link: '/Other/token' },
                     { text: '网站黑白', link: '/Other/网站黑白' },
                     { text: 'Chrome 使用', link: '/Other/Chrome' },
@@ -329,7 +329,7 @@ module.exports = {
             '/Tools/': ['git', 'yarn', 'npm', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'vitepress', 'upgrade', 'regex', 'typecho', 'vscode', 'wsl'],
             //小知识
             '/Other/': [
-                '', '问题', 'error', '知识点', '面试题', '面试题2', 'export', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome', '验证码'
+                '', 'error', '报错总结', '知识点', '面试题', '面试题2', 'export', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome', '验证码'
             ],
         },
         // 友链
