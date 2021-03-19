@@ -228,14 +228,6 @@ npm ls -g  //查看全局安装的模块及依赖 aliases: list, la, ll
 `Node` 模块搜索是从代码执行的当前目录开始的，搜索结果取决于当前使用的目录中的 `node_modules` 下的内容。`npm list parseable=true` 可以目录的形式来展现当前安装的所有包
 :::
 
-- 查看全局安装的node包
-
-```js
-npm list -g --depth 0
-```
-
-如果不加`--depth 0`会显示出所用的包及其子目录。
-
 ## 3. 卸载安装的包
 
 - 卸载模块
@@ -677,7 +669,15 @@ npm set <key> <value> [-g|--global]
 > npm install -g cnpm --registry=https://registry.npm.taobao.org
 > ```
 
-## 12. 帮助命令
+## 12. 查看全局安装的node包
+
+```js
+npm list -g --depth 0
+```
+
+如果不加`--depth 0`会显示出所用的包及其子目录。
+
+## 13. 帮助命令
 
 - 查看帮助命令
 
