@@ -172,6 +172,7 @@ module.exports = {
                     { text: 'git', link: '/Tools/git' },
                     { text: 'yarn', link: '/Tools/yarn' },
                     { text: 'npm', link: '/Tools/npm' },
+                    { text: 'npm模块', link: '/Tools/npm模块' },
                     { text: 'cmd', link: '/Tools/cmd' },
                     { text: 'nrm', link: '/Tools/nrm' },
                     { text: 'nvm', link: '/Tools/nvm' },
@@ -326,7 +327,7 @@ module.exports = {
             // linux系统
             '/Linux/': ['debian', 'centos', 'screen', '宝塔', 'vim'],
             // 工具
-            '/Tools/': ['git', 'yarn', 'npm', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'vitepress', 'upgrade', 'regex', 'typecho', 'vscode', 'wsl'],
+            '/Tools/': ['git', 'yarn', 'npm', 'npm模块', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'vitepress', 'upgrade', 'regex', 'typecho', 'vscode', 'wsl'],
             //小知识
             '/Other/': [
                 '', 'error', '报错总结', '知识点', '面试题', '面试题2', 'export', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome', '验证码'
