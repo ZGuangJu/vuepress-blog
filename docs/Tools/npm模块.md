@@ -22,17 +22,32 @@ showSponsor: true
 ```js
  "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-```
-
-```js
- "husky": {
-    "hooks": {
       "pre-commit": "npm run lint"
     }
   },
 ```
 
-### 2 runjs
+结合`lint-staged`
+
+```js
+
+{
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.js": "prettier --write --ignore-unknown"
+  }
+```
+
+### 2 lint-staged
+
+`lint-staged`是一个在 `git` 暂存文件上（也就是被 `git add` 的文件）运行已配置的 `linter`（或其他）任务。`lint-staged` 总是将所有暂存文件的列表传递给任务
+
+### 3 runjs
+
+### 4 fuse.js
+
+模糊搜索

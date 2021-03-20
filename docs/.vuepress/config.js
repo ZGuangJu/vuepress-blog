@@ -358,6 +358,12 @@ module.exports = {
                 desc: '王杰笔记',
                 email: "",//可用头像地址替换
                 link: 'http://wj199624.gitee.io/wangjie/'
+            },
+            {
+                title: '木萨江笔记',
+                desc: '木萨江笔记',
+                email: "",//可用头像地址替换
+                link: 'http://function-217.gitee.io/'
             }
             // ...
         ],

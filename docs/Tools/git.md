@@ -197,6 +197,58 @@ git pull origin master --allow-unrelated-histories
 git remote add origin git@xx.xx.xx.xx:repos/xxx/xxx/xxx.git
 ```
 
+## Git Hooks
+
+`Git Hooks`是定制化的脚本程序，所以它实现的功能与相应的git动作相关；在实际工作中，`Git Hooks`还是相对比较万能的
+
+### `hooks` 的位置
+
+每一个`Git repo`下都包含有`.git/hoooks`目录：
+
+这个目录（本地和远程都是这样），这里面就是放置`Hooks`的地方。你可以在这个目录下自由定制`Hooks`的功能，当触发一些`Git`行为时，相应地`Hooks`将被执行。
+
+这里是一个`Git Hooks`列表：
+
+```js
+applypatch-msg
+pre-applypatch
+post-applypatch
+pre-commit
+prepare-commit-msg
+commit-msg
+post-commit
+pre-rebase
+post-checkout
+post-merge
+pre-receive
+update
+post-receive
+post-update
+pre-auto-gc
+post-rewrite
+···
+```
+
+所示的文件，是由本地执行的脚本语言写成的，尽管这些文件默认会是`Shell Script`，你完全可以给它替换成自己喜欢的`Ruby`，`Python`或者`Perl`。
+
+### 开始使用
+
+把文件的后缀`.sample`去掉或者以列表中的名字直接命名，就会把该脚本绑定到特定的Git行为上。
+
+- Client Side :也就是上面提到的本地hooks。 其实本地hooks还是占大多数的，可以给它们分成三类：
+  - commit hooks
+  - e-mail hooks
+  - 其他
+
+- Commit Hooks :与git commit相关的hooks一共有四个，均由git commit
+命令触发调用，按照一次发生的顺序分别是：
+  - pre-commit
+  - prepare-commit-msg
+  - commit-msg
+  - post-commit
+
+详情百度
+
 ## 升级git版本
 
 版本 > `2.16.1` 则使用：
