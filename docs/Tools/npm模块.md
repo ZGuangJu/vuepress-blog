@@ -53,3 +53,15 @@ showSponsor: true
 模糊搜索
 
 ### 5 jsonwebtoken
+
+## 插件
+
+- vue-cropperjs
+
+上传头像时，压缩图片用的
+
+- 安装
+
+```js
+yarn add vue-cropperjs
+```
