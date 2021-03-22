@@ -92,6 +92,12 @@ console.log({} instanceof Object);                   // true
 
 不能用 `instanceof` 方法检测 `null` 和 `undefined`.
 
+`instanceof`是用来判断引用类型的具体类型的，因此判断的对象首先得是个`“引用类型”`，所以下面的结果是`false`：
+
+```js
+console.log(true instanceof Boolean);   // false
+```
+
 当检测`Array`实例时, `Array.isArray` 优于 `instanceof`,因为`Array.isArray`能检测`iframes`。
 
 - `constructor` 通过原型判断类型
@@ -132,6 +138,10 @@ console.log(a.call(null));
 ```
 
 :::
+
+- `typeof`和`instanceof`的区别。
+  - `typeof`是判断变量类型的,用来判断基本数据类型；
+  - `instanceof`是用来判断引用数据类型；
 
 ## Number
 

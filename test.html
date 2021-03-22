@@ -16,8 +16,8 @@
             .ab {
                 width: 0;
                 height: 0;
-                border-left: 50px solid red;
-                border-right: 50px solid transparent;
+                border-left: 50px solid transparent;
+                border-right: 50px solid red;
                 border-bottom: 50px solid transparent;
             }
         </style>
@@ -31,8 +31,12 @@
         <p>这是不无聊也不有趣的文字</p>
         <div class="ab"></div>
         <script>
-            var a = (200 + 100) * 2;
-            console.log(a);
+            console.log(typeof true);
+            var a = true;
+            console.log(typeof a);
+            var b = new Boolean(false);
+            console.log(a instanceof Boolean);
+            console.log(b instanceof Boolean);
         </script>
     </body>
 </html>

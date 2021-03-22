@@ -301,7 +301,7 @@ module.exports = {
                 {
                     title: 'Vue',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['vue3-1', 'vue01', 'vue02', 'vue03', 'vue04', 'vue05', 'vue06', 'vue07', 'vue08', 'vue09', 'vue10', 'vue11', 'vue12', 'vue13', 'vuers-1', 'vuers-2', 'vuers-3']
+                    children: ['vue3-1', 'vue01', 'vue02', 'vue03', 'vue04', 'vue05', 'vue06', 'vue07', 'vue08', 'vue09', 'vue10', 'vue11', 'vue12', 'vue13', 'vuers-1', 'vuers-2', 'vuers-3', 'fragment']
                 }
             ],
             '/Framework/React/': [

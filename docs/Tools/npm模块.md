@@ -56,12 +56,13 @@ showSponsor: true
 
 ## 插件
 
-- vue-cropperjs
+- cropperjs
 
 上传头像时，压缩图片用的
 
 - 安装
 
 ```js
-yarn add vue-cropperjs
+yarn add cropperjs
+
 ```
