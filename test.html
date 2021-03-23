@@ -31,12 +31,26 @@
         <p>这是不无聊也不有趣的文字</p>
         <div class="ab"></div>
         <script>
-            console.log(typeof true);
-            var a = true;
-            console.log(typeof a);
-            var b = new Boolean(false);
-            console.log(a instanceof Boolean);
-            console.log(b instanceof Boolean);
+            var a = Object(null);
+            console.log(a.prototype);
+            var b = Object.create(null);
+            console.log(b.prototype);
+            var c = function() {};
+            console.log(c.prototype);
+            var items = ["Edward", "Sharpe", "And", "The", "Magnetic", "Zeros"];
+            var d = items.sort(function(a, b) {
+                var nameA = a.toUpperCase();
+                var nameB = b.toUpperCase();
+                if (nameA < nameB) {
+                    return -1;
+                }
+                if (nameA > nameB) {
+                    return 1;
+                }
+                return 0;
+            });
+            console.log(items);
+            console.log(d);
         </script>
     </body>
 </html>
