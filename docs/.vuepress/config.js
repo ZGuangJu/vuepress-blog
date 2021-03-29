@@ -135,7 +135,7 @@ module.exports = {
                     { text: 'HTML & H5', link: '/Frontend/HTML/HTML' },
                     { text: 'CSS & C3', link: '/Frontend/CSS/css1', },
                     { text: 'CSS 教程', link: '/Frontend/CSS2/css1' },
-                    { text: 'JavaScript', link: '/Frontend/JS/js1' },
+                    { text: 'JavaScript', link: '/Frontend/JS/js2' },
                     { text: 'ES6', link: '/Frontend/ES6/ES01' },
                     { text: 'Promise', link: '/Frontend/Promise/promise' },
                     { text: 'JQuery', link: '/Frontend/JQuery/JQuery' },
@@ -196,8 +196,8 @@ module.exports = {
             {
                 text: '小知识',
                 items: [
+                    { text: '学习目标', link: '/Other/target' },
                     { text: '项目总结', link: '/Project/shopingapp' },
-                    { text: '学习内容', link: '/Other/' },
                     { text: '报错总结', link: '/Other/报错总结' },
                     { text: '知识点', link: '/Other/知识点' },
                     { text: '面试题', link: '/Other/面试题' },
@@ -215,6 +215,7 @@ module.exports = {
                     { text: '验证码 是什么', link: '/Other/验证码' },
                     { text: '电脑故障', link: '/Other/电脑故障' },
                     { text: '实例或片段', link: '/Other/example' },
+                    { text: '中国历史朝代年表', link: '/Other/chronology' },
                 ]
             },
             {
@@ -332,7 +333,7 @@ module.exports = {
             '/Tools/': ['git', 'yarn', 'npm', 'npm模块', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'vitepress', 'upgrade', 'regex', 'typecho', 'vscode', 'wsl'],
             //小知识
             '/Other/': [
-                '', 'error', '报错总结', '知识点', '面试题', '面试题2', 'export', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome', '验证码', '电脑故障', 'example'
+                'target', 'error', '报错总结', '知识点', '面试题', '面试题2', 'export', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome', '验证码', '电脑故障', 'example', 'chronology'
             ],
         },
         // 友链
