@@ -143,7 +143,8 @@ module.exports = {
                     { text: 'Axios', link: '/Frontend/Axios/axios' },
                     { text: 'Class', link: '/Frontend/Class/class1' },
                     { text: 'TypeScript', link: '/Frontend/TS/ts1' },
-                    { text: 'Webpack4.0', link: '/Webpack/webpack1' }
+                    { text: 'Webpack4.0', link: '/Webpack/webpack1' },
+                    { text: '常用代码', link: '/Frontend/common' }
                 ]
             },
             {
