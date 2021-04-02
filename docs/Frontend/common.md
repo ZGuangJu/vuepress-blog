@@ -11,8 +11,58 @@ publish: true
 # 打赏
 showSponsor: true
 ---
-## 清除 `margin padding`
+## 设置 `margin padding` 为 0
 
 ```css
-body, div, img,dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, table, th, td {margin:0; padding:0;}
+    html,
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    div,
+    dl,
+    dt,
+    dd,
+    ul,
+    ol,
+    li,
+    p,
+    blockquote,
+    pre,
+    hr,
+    figure,
+    table,
+    caption,
+    th,
+    td,
+    img,
+    form,
+    fieldset,
+    legend,
+    input,
+    button,
+    textarea,
+    menu {
+        padding: 0;
+        margin: 0;
+    }
+```
+
+## 字体
+
+```css
+    body,
+    textarea,
+    input,
+    button,
+    select,
+    keygen,
+    legend {
+        color: rgb(0, 0, 0);
+        font: 12px / 1.14 黑体;
+        outline: 0px;
+    }
 ```

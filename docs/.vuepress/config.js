@@ -216,6 +216,7 @@ module.exports = {
                     { text: '验证码 是什么', link: '/Other/验证码' },
                     { text: '电脑故障', link: '/Other/电脑故障' },
                     { text: '实例或片段', link: '/Other/example' },
+                    { text: `兼容代码`, link: '/Other/兼容' },
                     { text: '中国历史朝代年表', link: '/Other/chronology' },
                 ]
             },
@@ -261,49 +262,54 @@ module.exports = {
                 },
                 {
                     title: 'JavaScript',
-                    collapsable: true, //是否折叠侧边栏
+                    collapsable: true,
                     children: ['JS/js1', 'JS/js2', 'JS/js3', 'JS/js4', 'JS/js5', 'JS/js6', 'JS/js7', 'JS/js8', 'JS/js9', 'JS/Array']
                 },
                 {
                     title: 'ES6',
-                    collapsable: true, //是否折叠侧边栏
+                    collapsable: true,
                     children: ['ES6/ES01', 'ES6/ES02', 'ES6/ES03', 'ES6/ES04', 'ES6/ES05']
                 },
                 {
                     title: 'Promise',
-                    collapsable: true, //是否折叠侧边栏
+                    collapsable: true,
                     children: ['Promise/promise', 'Promise/promise2', 'Promise/promise3', 'Promise/promise4']
                 },
                 {
                     title: 'JQuery',
-                    collapsable: true, //是否折叠侧边栏
+                    collapsable: true,
                     children: ['JQuery/JQuery', 'JQuery/JQuery2', 'JQuery/JQuery3', 'JQuery/JQuery4']
                 },
                 {
                     title: 'Ajax',
-                    collapsable: true, //是否折叠侧边栏
+                    collapsable: true,
                     children: ['Ajax/Ajax']
                 },
                 {
                     title: 'Axios',
-                    collapsable: true, //是否折叠侧边栏
+                    collapsable: true,
                     children: ['Axios/axios', 'Axios/axios2', 'Axios/axios3', 'Axios/axios4', 'Axios/axios5']
                 },
                 {
                     title: 'Class',
-                    collapsable: true, //是否折叠侧边栏
+                    collapsable: true,
                     children: ['Class/class1']
                 },
                 {
                     title: 'TypeScript',
-                    collapsable: true, //是否折叠侧边栏
+                    collapsable: true,
                     children: ['TS/ts1', 'TS/ts2', 'TS/ts3', 'TS/ts4']
                 },
+                {
+                    title: '常用代码',
+                    collapsable: true,
+                    children: ['/Frontend/common']
+                }
             ],
             '/Framework/Vue/': [
                 {
                     title: 'Vue',
-                    collapsable: true, //是否折叠侧边栏
+                    collapsable: true,
                     children: ['vue3-1', 'vue01', 'vue02', 'vue03', 'vue04', 'vue05', 'vue06', 'vue07', 'vue08', 'vue09', 'vue10', 'vue11', 'vue12', 'vue13', 'vuers-1', 'vuers-2', 'vuers-3', 'fragment']
                 }
             ],
@@ -334,7 +340,7 @@ module.exports = {
             '/Tools/': ['git', 'yarn', 'npm', 'npm模块', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'vitepress', 'upgrade', 'regex', 'typecho', 'vscode', 'wsl'],
             //小知识
             '/Other/': [
-                'target', 'error', '报错总结', '知识点', '面试题', '面试题2', 'export', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome', '验证码', '电脑故障', 'example', 'chronology'
+                'target', 'error', '报错总结', '知识点', '面试题', '面试题2', 'export', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome', '验证码', '电脑故障', 'example', '兼容', 'chronology'
             ],
         },
         // 友链
@@ -405,7 +411,7 @@ module.exports = {
         // 项目开始时间，只填写年份
         startYear: '2017',
         // author
-        author: 'GuangJu',
+        author: 'ZGuangJu',
         //导航栏左侧可以显示logo
         // logo: '/head.png',
         // 替换首页的 faceImage 来设置头像
