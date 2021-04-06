@@ -32,10 +32,12 @@ features:
 |         感谢支持          |              💰              |
 |           匿名            |            ￥5.0             |
 |           王*豪           |            ￥0.1             |
+|            陈*            |             ￥1              |
 
 ## [Easy Mock](http://123.56.171.43:7300/)模拟数据接口
 
 ## [网易音乐接口](http://123.56.171.43:7301)
+
 <!-- 首页首屏下拉按钮 并在vuepress-theme-reco homeblog 添加<div class="anchor-down"></div> -->
 
 ## 常用
