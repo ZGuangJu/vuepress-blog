@@ -55,7 +55,7 @@ app.listen(3010, () => console.log("启动--http://localhost:3010"));
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "imageinfo": "^1.0.4",
-    "mongoose": "^5.10.17"
+    "mongoose": "^5.10.17",
     "nodemon": "^2.0.7"
   }
 }
@@ -71,8 +71,10 @@ var App = express()
 // 允许跨域的地址数组
 // App.use(cors({ origin: ["https://xxxx", "https://xxxxxx"] }))
 App.listen(3000, () => { console.log("已启动-localhost:3000"); })
-App.get('/', (req, res) => {
+App.get('/demo', (req, res) => {
     res.json({ code: 1, msg: ok })
 })
 
 ```
+
+以上简易后台下载[https://wwa.lanzous.com/i4bZYnu0peh](https://wwa.lanzous.com/i4bZYnu0peh)

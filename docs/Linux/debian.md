@@ -12,6 +12,23 @@ sticky: 9
 # 打赏
 showSponsor: true
 ---
+
+## 更新和升级软件包
+
+```js
+sudo apt-get update
+
+sudo apt-get upgrade
+```
+
+`update` 是更新软件列表，`upgrade` 是更新软件。
+
+## 查看开发的端口
+
+```js
+netstat -ntlp
+```
+
 ## 报错
 
 - `sudo`不能使用的错误
@@ -325,4 +342,32 @@ PONG
 
 ```js
 redis-cli shutdown
+```
+
+## 安装svn
+
+安装命令
+
+```js
+apt-get install subversion subversion-tools
+```
+
+验证是否安装成功
+
+```js
+svnserve --version
+```
+
+\* 出现版本号，表示安装成功
+
+创建仓库存放路径
+
+```js
+mkdir /svn
+```
+
+创建项目（可创建多个）
+
+```js
+svnadmin create /svn/project
 ```
