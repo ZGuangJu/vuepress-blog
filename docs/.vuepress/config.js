@@ -25,8 +25,8 @@ module.exports = {
     ],
     // 主题使用的插件的设置
     plugins: [
+        // 看板娘
         [
-            // 看板娘
             "@vuepress-reco/vuepress-plugin-kan-ban-niang",
             {
                 theme: ['shizuku', 'wanko', 'haruto', 'blackCat', 'whiteCat', 'haru1', 'haru2', 'koharu', 'izumi', 'shizuku', 'miku', 'z16'],
@@ -39,8 +39,8 @@ module.exports = {
                 }
             }
         ],
+        // 彩带
         [
-            // 彩带
             "ribbon",
             {
                 size: 70,     // width of the ribbon, default: 90
@@ -48,8 +48,8 @@ module.exports = {
                 zIndex: -1    // z-index property of the background, default: -1
             }
         ],
+        // 打赏
         [
-            // 打赏
             'vuepress-plugin-sponsor',
             {
                 theme: 'simple', // Drinks  \ simple
@@ -82,6 +82,7 @@ module.exports = {
         //     }
         // ]
     ],
+
     // 主题设置
     themeConfig: {
         // 主题样式
@@ -95,6 +96,12 @@ module.exports = {
             appId: 'HphnXJO6NChHtY50Di9q039D-MdYXbMMI',// your appId
             appKey: 'eGw2p5VfR348442nSkdL3ta6', // your appKey
         },
+        // 密钥
+        // keyPage: {
+        //     keys: ['a906449d5769fa7361d7ecc6aa3f6d28'], // 123abc
+        //     color: '#42b983', // 登录页动画球的颜色
+        //     lineColor: '#42b983' // 登录页动画线的颜色
+        // },
         // 分类和标签导航
         blogConfig: {
             // category: {
@@ -331,7 +338,7 @@ module.exports = {
             // 后端
             '/Backend/Node/': ['node1', 'node2', 'package'],
             '/Backend/Mongodb/': ['mongodb1', 'mongodb2', 'mongodb3', 'mongodb4', 'mongodb5'],
-            '/Backend/Mysql/': ['mysql01', 'mysql02'],
+            '/Backend/Mysql/': ['mysql01', 'mysql02', 'mysql03', 'mysql04'],
             '/Backend/': ['api'],
             // 项目
             '/Project/': ['shopingapp', 'admin', 'project', 'todolist'],
