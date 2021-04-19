@@ -11,7 +11,20 @@ publish: true
 # 打赏
 showSponsor: true
 ---
-## 设置 `margin padding` 为 0
+## HTML
+
+### 边框中包含文字
+
+```html
+    <fieldset>
+        <legend>在边框上的字</legend>
+        可以输入内容：<input type="text" />
+    </fieldset>
+```
+
+## CSS
+
+### 设置 `margin padding` 为 0
 
 ```css
     html,
@@ -51,7 +64,7 @@ showSponsor: true
     }
 ```
 
-## 字体
+### 字体
 
 ```css
     body,
@@ -65,4 +78,9 @@ showSponsor: true
         font: 12px / 1.14 黑体;
         outline: 0px;
     }
+```
+
+### a 标签 伪类
+
+```js
 ```
