@@ -151,7 +151,7 @@ module.exports = {
                     { text: 'Class', link: '/Frontend/Class/class1' },
                     { text: 'TypeScript', link: '/Frontend/TS/ts1' },
                     { text: 'Webpack4.0', link: '/Webpack/webpack1' },
-                    { text: '常用代码', link: '/Frontend/common' }
+                    { text: '常用代码', link: '/Frontend/Piece/common' }
                 ]
             },
             {
@@ -223,7 +223,6 @@ module.exports = {
                     { text: '报 error 的本质和处理', link: '/Other/error' },
                     { text: '验证码 是什么', link: '/Other/验证码' },
                     { text: '电脑故障', link: '/Other/电脑故障' },
-                    { text: '实例或片段', link: '/Other/example' },
                     { text: `兼容代码`, link: '/Other/兼容' },
                     { text: '中国历史朝代年表', link: '/Other/chronology' },
                 ]
@@ -309,9 +308,9 @@ module.exports = {
                     children: ['TS/ts1', 'TS/ts2', 'TS/ts3', 'TS/ts4']
                 },
                 {
-                    title: '常用代码',
+                    title: '常用和代码片段',
                     collapsable: true,
-                    children: ['/Frontend/common']
+                    children: ['/Frontend/Piece/common', '/Frontend/Piece/example',]
                 }
             ],
             '/Framework/Vue/': [
@@ -349,7 +348,7 @@ module.exports = {
             '/Tools/': ['git', 'yarn', 'npm', 'npm模块', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'vitepress', 'upgrade', 'regex', 'typecho', 'vscode', 'wsl'],
             //小知识
             '/Other/': [
-                'target', 'error', '报错总结', '知识点', '面试题', '面试题2', 'export', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome', '验证码', '电脑故障', 'example', '兼容', 'chronology'
+                'target', 'error', '报错总结', '知识点', '面试题', '面试题2', 'export', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome', '验证码', '电脑故障', '兼容', 'chronology'
             ],
         },
         // 友链
