@@ -4,7 +4,7 @@ module.exports = {
     // 主页图片下第二行字
     description: '欢迎，大爷儿来玩~',
     // 端口配置 80是默认端口(手动部署服务器时用)
-    // port: 80,
+    port: 80,
     theme: 'reco', //启动主题 已安装的有  默认 / reco
     // 标题栏图标
     head: [
@@ -25,8 +25,8 @@ module.exports = {
     ],
     // 主题使用的插件的设置
     plugins: [
-        // 看板娘
         [
+            // 看板娘
             "@vuepress-reco/vuepress-plugin-kan-ban-niang",
             {
                 theme: ['shizuku', 'wanko', 'haruto', 'blackCat', 'whiteCat', 'haru1', 'haru2', 'koharu', 'izumi', 'shizuku', 'miku', 'z16'],
@@ -39,8 +39,8 @@ module.exports = {
                 }
             }
         ],
-        // 彩带
         [
+            // 彩带
             "ribbon",
             {
                 size: 70,     // width of the ribbon, default: 90
@@ -48,8 +48,8 @@ module.exports = {
                 zIndex: -1    // z-index property of the background, default: -1
             }
         ],
-        // 打赏
         [
+            // 打赏
             'vuepress-plugin-sponsor',
             {
                 theme: 'simple', // Drinks  \ simple
@@ -82,7 +82,6 @@ module.exports = {
         //     }
         // ]
     ],
-
     // 主题设置
     themeConfig: {
         // 主题样式
@@ -117,7 +116,7 @@ module.exports = {
         // sidebarDepth: 2,
 
         // 允许你获取每个文件的最后一次 git 提交的 UNIX 时间戳（ms）
-        lastUpdated: 'Last Updated',
+        lastUpdated: '最后提交',
 
         //显示所有页面的标题链接
         displayAllHeaders: true,// 默认值：false
@@ -151,7 +150,7 @@ module.exports = {
                     { text: 'Class', link: '/Frontend/Class/class1' },
                     { text: 'TypeScript', link: '/Frontend/TS/ts1' },
                     { text: 'Webpack4.0', link: '/Webpack/webpack1' },
-                    { text: '常用代码', link: '/Frontend/Piece/common' }
+                    { text: '常用代码', link: '/Frontend/Piece/commons' }
                 ]
             },
             {
@@ -219,12 +218,13 @@ module.exports = {
                     { text: '浏览器和内核', link: '/Other/浏览器内核' },
                     { text: 'URI & URL', link: '/Other/URI&URL' },
                     { text: 'Apache 是什么', link: '/Other/Apache' },
-                    { text: 'Nginx 是什么', link: '/Other/Nginx' },
+                    { text: 'Nginx 是什么', link: '/Other/nginx' },
                     { text: '报 error 的本质和处理', link: '/Other/error' },
                     { text: '验证码 是什么', link: '/Other/验证码' },
                     { text: '电脑故障', link: '/Other/电脑故障' },
                     { text: `兼容代码`, link: '/Other/兼容' },
                     { text: '中国历史朝代年表', link: '/Other/chronology' },
+                    // { text: '996', link: '/Other/996' },
                 ]
             },
             {
@@ -308,9 +308,9 @@ module.exports = {
                     children: ['TS/ts1', 'TS/ts2', 'TS/ts3', 'TS/ts4']
                 },
                 {
-                    title: '常用和代码片段',
+                    title: '常用代码片段',
                     collapsable: true,
-                    children: ['/Frontend/Piece/common', '/Frontend/Piece/example',]
+                    children: ['/Frontend/Piece/commons', '/Frontend/Piece/example']
                 }
             ],
             '/Framework/Vue/': [
@@ -345,11 +345,11 @@ module.exports = {
             // linux系统
             '/Linux/': ['debian', 'centos', 'screen', '宝塔', 'vim'],
             // 工具
-            '/Tools/': ['git', 'yarn', 'npm', 'npm模块', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'vitepress', 'upgrade', 'regex', 'typecho', 'vscode', 'wsl'],
+            '/Tools/': ['git', 'yarn', 'npm', 'npm模块', 'node', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'vitepress', 'upgrade', 'regex', 'typecho', 'vscode', 'wsl'],
             //小知识
             '/Other/': [
-                'target', 'error', '报错总结', '知识点', '面试题', '面试题2', 'export', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome', '验证码', '电脑故障', '兼容', 'chronology'
-            ],
+                'target', 'error', '报错总结', '知识点', '面试题', '面试题2', '算法', 'export', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'nginx', 'Chrome', '浏览器内核', '验证码', '电脑故障', '兼容', 'chronology'
+            ],//,'996'
         },
         // 友链
         friendLink: [
