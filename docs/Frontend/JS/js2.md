@@ -1530,6 +1530,16 @@ console.log(x.valueOf()); // Displays 'Hello world'
    [] 空数组
     var students = ['学生1','学生2','学生3' ]
     var goods =['牙膏'，'牙刷'，'苹果','洗衣机']
+
+// 创建数组的方法
+    var arr1 = [1, 2, 3, 4, 5];
+    var arr2 = Array(1, 2, 3);
+    var arr3 = Array.of(1, 2, 3, 5);
+    var arr4 = new Array([1, 2, 3]);
+    console.log(arr1);
+    console.log(arr2);
+    console.log(arr3);
+    console.log(arr4);
 ```
 
 - `Array`构造函数属性
@@ -3756,7 +3766,7 @@ if (!Array.prototype.mapUsingReduce) {
 
 所有被传递到构造函数中的参数，都将被视为将被创建的函数的参数，并且是相同的标示符名称和传递顺序。
 
-以调用函数的方式调用 `Function` 的构造函数（而不是使用 `new` 关键字) 跟以构造函数来调用是一样的。
+以调用函数的方式调用 `Function` 的构造函数(而不是使用 `new` 关键字) 跟以构造函数来调用是一样的。
 
 - 属性和方法
 
@@ -4051,7 +4061,69 @@ funciton a(){
 a() // a执行的结果就是1
 ```
 
-## 常用内置对象
+## Date
+
+- 获取当前时间获取当前时间
+
+```js
+var myDate = new Date();
+```
+
+- 获取时间中的年月日时分秒
+
+```js
+myDate.getYear();    // 获取当前年份(2位)
+myDate.getFullYear();  // 获取完整的年份(4位,1970-????)
+myDate.getMonth();    // 获取当前月份(0-11,0代表1月)
+myDate.getDate();    // 获取当前日(1-31)
+myDate.getDay();     // 获取当前星期X(0-6,0代表星期天)
+myDate.getTime();    // 获取当前时间(从1970.1.1开始的毫秒数)
+myDate.getHours();    // 获取当前小时数(0-23)
+myDate.getMinutes();   // 获取当前分钟数(0-59)
+myDate.getSeconds();   // 获取当前秒数(0-59)
+myDate.getMilliseconds();  // 获取当前毫秒数(0-999)
+myDate.toLocaleDateString();   // 获取当前日期
+var mytime=myDate.toLocaleTimeString();   // 获取当前时间
+myDate.toLocaleString( );    // 获取日期与时间
+```
+
+- 时间的格式化
+
+```js
+// 对Date的扩展，将 Date 转化为指定格式的String
+// 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，
+// 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)
+// 例子：
+// (new Date()).Format("yyyy-MM-dd hh:mm:ss.S") ==> 2006-07-02 08:09:04.423
+// (new Date()).Format("yyyy-M-d h:m:s.S") ==> 2006-7-2 8:9:4.18
+
+Date.prototype.Format = function (fmt) { // author: meizz
+  var o = {
+    "M+": this.getMonth() + 1, // 月份
+    "d+": this.getDate(), // 日
+    "h+": this.getHours(), // 小时
+    "m+": this.getMinutes(), // 分
+    "s+": this.getSeconds(), // 秒
+    "q+": Math.floor((this.getMonth() + 3) / 3), // 季度
+    "S": this.getMilliseconds() // 毫秒
+  };
+  if (/(y+)/.test(fmt))
+    fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+  for (var k in o)
+    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+      return fmt;
+}
+```
+
+- 调用方法·
+
+```js
+var time1 = new Date().Format("yyyy-MM-dd");
+
+var time2 = new Date().Format("yyyy-MM-dd hh:mm:ss");
+```
+
+## 常用内对象
 
 1. `parseInt(string, radix)`
 转换为一个整数 或 `NaN`（`radix` 小于 2 或大于 36 ，或第一个非空格字符不能转换为数字则返回`NaN`）
