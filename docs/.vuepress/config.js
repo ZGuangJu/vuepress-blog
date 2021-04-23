@@ -95,6 +95,12 @@ module.exports = {
             appId: 'HphnXJO6NChHtY50Di9q039D-MdYXbMMI',// your appId
             appKey: 'eGw2p5VfR348442nSkdL3ta6', // your appKey
         },
+        // 密钥
+        // keyPage: {
+        //     keys: ['a906449d5769fa7361d7ecc6aa3f6d28'], // 123abc
+        //     color: '#42b983', // 登录页动画球的颜色
+        //     lineColor: '#42b983' // 登录页动画线的颜色
+        // },
         // 分类和标签导航
         blogConfig: {
             // category: {
@@ -110,7 +116,7 @@ module.exports = {
         // sidebarDepth: 2,
 
         // 允许你获取每个文件的最后一次 git 提交的 UNIX 时间戳（ms）
-        lastUpdated: 'Last Updated',
+        lastUpdated: '最后提交',
 
         //显示所有页面的标题链接
         displayAllHeaders: true,// 默认值：false
@@ -144,7 +150,7 @@ module.exports = {
                     { text: 'Class', link: '/Frontend/Class/class1' },
                     { text: 'TypeScript', link: '/Frontend/TS/ts1' },
                     { text: 'Webpack4.0', link: '/Webpack/webpack1' },
-                    { text: '常用代码', link: '/Frontend/common' }
+                    { text: '常用代码', link: '/Frontend/Piece/commons' }
                 ]
             },
             {
@@ -204,6 +210,7 @@ module.exports = {
                     { text: '知识点', link: '/Other/知识点' },
                     { text: '面试题', link: '/Other/面试题' },
                     { text: '面试题2', link: '/Other/面试题2' },
+                    { text: '算法', link: '/Other/算法' },
                     { text: 'export区别', link: '/Other/export' },
                     { text: '变量常用名', link: '/Other/name' },
                     { text: 'token 是什么', link: '/Other/token' },
@@ -212,13 +219,13 @@ module.exports = {
                     { text: '浏览器和内核', link: '/Other/浏览器内核' },
                     { text: 'URI & URL', link: '/Other/URI&URL' },
                     { text: 'Apache 是什么', link: '/Other/Apache' },
-                    { text: 'Nginx 是什么', link: '/Other/Nginx' },
+                    { text: 'Nginx 是什么', link: '/Other/nginx' },
                     { text: '报 error 的本质和处理', link: '/Other/error' },
                     { text: '验证码 是什么', link: '/Other/验证码' },
                     { text: '电脑故障', link: '/Other/电脑故障' },
-                    { text: '实例或片段', link: '/Other/example' },
                     { text: `兼容代码`, link: '/Other/兼容' },
                     { text: '中国历史朝代年表', link: '/Other/chronology' },
+                    // { text: '996', link: '/Other/996' },
                 ]
             },
             {
@@ -302,9 +309,9 @@ module.exports = {
                     children: ['TS/ts1', 'TS/ts2', 'TS/ts3', 'TS/ts4']
                 },
                 {
-                    title: '常用代码',
+                    title: '常用代码片段',
                     collapsable: true,
-                    children: ['/Frontend/common']
+                    children: ['/Frontend/Piece/commons', '/Frontend/Piece/example']
                 }
             ],
             '/Framework/Vue/': [
@@ -331,7 +338,7 @@ module.exports = {
             // 后端
             '/Backend/Node/': ['node1', 'node2', 'package'],
             '/Backend/Mongodb/': ['mongodb1', 'mongodb2', 'mongodb3', 'mongodb4', 'mongodb5'],
-            '/Backend/Mysql/': ['mysql01', 'mysql02'],
+            '/Backend/Mysql/': ['mysql01', 'mysql02', 'mysql03', 'mysql04'],
             '/Backend/': ['api'],
             // 项目
             '/Project/': ['shopingapp', 'admin', 'project', 'todolist'],
@@ -339,11 +346,11 @@ module.exports = {
             // linux系统
             '/Linux/': ['debian', 'centos', 'screen', '宝塔', 'vim'],
             // 工具
-            '/Tools/': ['git', 'yarn', 'npm', 'npm模块', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'vitepress', 'upgrade', 'regex', 'typecho', 'vscode', 'wsl'],
+            '/Tools/': ['git', 'yarn', 'npm', 'npm模块', 'node', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'vitepress', 'upgrade', 'regex', 'typecho', 'vscode', 'wsl'],
             //小知识
             '/Other/': [
-                'target', 'error', '报错总结', '知识点', '面试题', '面试题2', 'export', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'Nginx', 'Chrome', '验证码', '电脑故障', 'example', '兼容', 'chronology'
-            ],
+                'target', 'error', '报错总结', '知识点', '面试题', '面试题2', '算法', 'export', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'nginx', 'Chrome', '浏览器内核', '验证码', '电脑故障', 'example', '兼容', 'chronology'
+            ],//,'996'
         },
         // 友链
         friendLink: [

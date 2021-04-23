@@ -7,7 +7,6 @@ categories:
 tags:
  - vue
  - 项目
- - 后台管理系统
 publish: true
 # 打赏
 showSponsor: true
