@@ -4,7 +4,7 @@ module.exports = {
     // 主页图片下第二行字
     description: '欢迎，大爷儿来玩~',
     // 端口配置 80是默认端口(手动部署服务器时用)
-    port: 80,
+    // port: 80,
     theme: 'reco', //启动主题 已安装的有  默认 / reco
     // 标题栏图标
     head: [
@@ -25,20 +25,20 @@ module.exports = {
     ],
     // 主题使用的插件的设置
     plugins: [
-        [
-            // 看板娘
-            "@vuepress-reco/vuepress-plugin-kan-ban-niang",
-            {
-                theme: ['shizuku', 'wanko', 'haruto', 'blackCat', 'whiteCat', 'haru1', 'haru2', 'koharu', 'izumi', 'shizuku', 'miku', 'z16'],
-                clean: false,
-                messages: {
-                    welcome: '我是guangju欢迎你的关注 ',
-                    home: '心里的花，想要带你回家.',
-                    theme: '好吧，希望你能喜欢其他小伙伴！',
-                    close: '那再见了哦~'
-                }
-            }
-        ],
+        // [
+        //     // 看板娘
+        //     "@vuepress-reco/vuepress-plugin-kan-ban-niang",
+        //     {
+        //         theme: ['shizuku', 'wanko', 'haruto', 'blackCat', 'whiteCat', 'haru1', 'haru2', 'koharu', 'izumi', 'shizuku', 'miku', 'z16'],
+        //         clean: false,
+        //         messages: {
+        //             welcome: '我是guangju欢迎你的关注 ',
+        //             home: '心里的花，想要带你回家.',
+        //             theme: '好吧，希望你能喜欢其他小伙伴！',
+        //             close: '那再见了哦~'
+        //         }
+        //     }
+        // ],
         [
             // 彩带
             "ribbon",
@@ -349,11 +349,7 @@ module.exports = {
             '/Tools/': ['git', 'yarn', 'npm', 'npm模块', 'node', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'vitepress', 'upgrade', 'regex', 'typecho', 'vscode', 'wsl'],
             //小知识
             '/Other/': [
-<<<<<<< HEAD
                 'target', 'error', '报错总结', '知识点', '面试题', '面试题2', '算法', 'export', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'nginx', 'Chrome', '浏览器内核', '验证码', '电脑故障', 'example', '兼容', 'chronology'
-=======
-                'target', 'error', '报错总结', '知识点', '面试题', '面试题2', '算法', 'export', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'nginx', 'Chrome', '浏览器内核', '验证码', '电脑故障', '兼容', 'chronology'
->>>>>>> 6b0a123e51ebebb004ba701279d4cfeda99e9df4
             ],//,'996'
         },
         // 友链
