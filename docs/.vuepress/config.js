@@ -311,7 +311,7 @@ module.exports = {
                 {
                     title: '常用代码片段',
                     collapsable: true,
-                    children: ['/Frontend/Piece/commons', '/Frontend/Piece/example']
+                    children: ['/Frontend/Piece/commons', '/Frontend/Piece/example', '/Frontend/Piece/html字符']
                 }
             ],
             '/Framework/Vue/': [
