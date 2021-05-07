@@ -13,6 +13,59 @@ showSponsor: true
 ---
 ## HTML
 
+### `<head>`内部的标签
+
+1. `<title>` 标签定义文档的标题
+
+`title` 元素在所有 `HTML/XHTML` 文档中都是必需的。
+
+`title` 元素能够：A定义浏览器工具栏中的标题;B提供页面被添加到收藏夹时显示的标题;C显示在搜索引擎结果中的页面标题.
+
+2. `<base>` 标签为页面上的所有链接规定默认地址或默认目标
+
+```html
+<base href="https://www.baidu.com/" />
+<base target="_blank" />
+
+```
+
+\* 注意：<base> 标签会影响相对路径，会在其前面添加上默认地址
+
+3. `<link>` 标签定义文档与外部资源之间的关系(常用于连接样式表)
+
+```html
+<!-- css引入 -->
+<link rel="stylesheet" type="text/css" href="mystyle.css" />
+```
+
+4. `<style>` 标签用于为 HTML 文档定义样式信息
+
+```html
+<style type="text/css">
+body {background-color:yellow}
+p {color:blue}
+</style>
+
+```
+
+5. `<meta>` 标签提供关于 `HTML` 文档的元数据。
+    - 元数据不会显示在页面上，但是对于机器是可读的。
+    - 典型的情况是，`meta` 元素被用于规定页面的描述、关键词、文档的作者、最后修改时间以及其他元数据。
+    - `<meta>` 标签始终位于 `head` 元素中。
+
+```html
+<!-- 下面的 meta 元素定义页面的描述（告诉搜索引擎你的站点的主要内容） -->
+<meta name="description" content="Web tutorials on HTML, CSS, XML" />
+<!-- 下面的 meta 元素定义页面的关键词： -->
+<meta name="keywords" content="HTML, CSS, XML" />
+<!-- name 和 content 属性的作用是描述页面的内容。 -->
+<meta charset="utf-8">
+<!-- charset 属性规定 HTML 文档的字符编码  且可以通过任意元素的lang属性重写-->
+```
+
+\* 一些搜索引擎会利用 meta 元素的 name 和 content 属性来索引您的页面。
+6. `<script>` 标签用于定义客户端脚本
+
 ### 边框中包含文字
 
 ```html
