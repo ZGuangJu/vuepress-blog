@@ -2287,12 +2287,11 @@ console.log(a); // [3, 2, 1]
 
 <font size="5" color="red">访问方法:</font><font size="5" color="green">不改变原数组，会返回新的数组或者返回其它的期望值。</font>
 
-1. `Array.prototype.concat(val,val2 ...)` 合并数组,合并两个或多个数组,不修改原数组返回一个新数组
+1. `Array.prototype.concat(val,val2 ...)` 合并数组,合并两个或多个数组(包括但不限于数组，可以是任何数据类型的值),不修改原数组返回一个新数组
 
-:::details
+:::detai
 
-- 参数
-  - `valueN`(可选):数组和/或值，将被合并到一个新的数组中。若不传参，则 `concat` 会返回调用此方法的现存数组的一个浅拷贝。
+- `valueN`(可选):数组和/或值，将被合并到一个新的数组中。若不传参，则 `concat` 会返回调用此方法的现存数组的一个浅拷贝。
 - 返回值
   - 新的 `Array` 实例
 - 描述
@@ -2741,9 +2740,9 @@ prices.toLocaleString('ja-JP', { style: 'currency', currency: 'JPY' });
 
 - 参数
   - `callback`:为数组中每个元素执行的函数，该函数接收一至三个参数：
-  - `currentValue`:数组中正在处理的当前元素。
-  - `index`(可选):数组中正在处理的当前元素的索引。
-  - `array`(可选):`forEach()` 方法正在操作的数组。
+    - `currentValue`:数组中正在处理的当前元素。
+    - `index`(可选):数组中正在处理的当前元素的索引。
+    - `array`(可选):`forEach()` 方法正在操作的数组。
   - `thisArg`(可选):可选参数。当执行回调函数 `callback` 时，用作 `this` 的值。
 - 返回值:`undefined`
 - 描述
@@ -2898,7 +2897,7 @@ console.log(sum);
 
 `findIndex()`
 
-译者注：只要条件允许，也可以使用 `filter()` 提前过滤出需要遍历的部分，再用 `forEach(`) 处理。
+译者注：只要条件允许，也可以使用 `filter()` 提前过滤出需要遍历的部分，再用 `forEach()` 处理。
 
 :::
 
@@ -2925,12 +2924,12 @@ var new_array = arr.map(function callback(currentValue[, index[, array]]) {
 - 描述
 `map` 方法会给原数组中的每个元素都按顺序调用一次  `callback` 函数。`callback` 每次执行后的返回值（包括 `undefined`）组合起来形成一个新数组。 `callback` 函数只会在有值的索引上被调用；
 
-因为`map`生成一个新数组，当你不打算使用返回的新数组却使用map是违背设计初衷的，请用`forEach`或者`for-of`替代。你不该使用`map: A`)你不打算使用返回的新数组，或`/`且 `B`) 你没有从回调函数中返回值。
+因为`map`生成一个新数组，当你不打算使用返回的新数组却使用map是违背设计初衷的，请用`forEach`或者`for-of`替代。你不该使用`map: A`你不打算使用返回的新数组，或`/`且 `B` 你没有从回调函数中返回值。
 `callback` 函数会被自动传入三个参数：数组元素，元素索引，原数组本身。
 
 如果 `thisArg` 参数提供给`map`，则会被用作回调函数的`this`值。否则`undefined`会被用作回调函数的`this`值。`this`的值最终相对于`callback`函数的可观察性是依据`the usual rules for determining the this seen by a function`决定的
 
-`map` 不修改调用它的原数组本身（当然可以在 callback 执行时改变原数组）
+`map` 不修改调用它的原数组本身（当然可以在 `callback` 执行时改变原数组）
 
 `map` 方法处理数组元素的范围是在 `callback` 方法第一次调用之前就已经确定了。调用`map`方法之后追加的数组元素不会被`callback`访问。如果存在的数组元素改变了，那么传给`callback`的值是`map`访问该元素时的值。在`map`函数调用后但在访问该元素前，该元素被删除的话，则无法被访问到。
 
@@ -2969,7 +2968,7 @@ var reformattedArray = kvArray.map(function(obj) {
 //  {key: 3, value: 30}]
 ```
 
-下面的例子演示如何在一个 String  上使用 map 方法获取字符串中每个字符所对应的 ASCII 码组成的数组：
+下面的例子演示如何在一个 `String`  上使用 `map` 方法获取字符串中每个字符所对应的`ASCII` 码组成的数组：
 
 ```js
 var map = Array.prototype.map
@@ -2979,7 +2978,7 @@ var a = map.call("Hello World", function(x) {
 // a的值为[72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100]
 ```
 
-下面代码展示了如何去遍历用 querySelectorAll 得到的动态对象集合。在这里，我们获得了文档里所有选中的选项，并将其打印：
+下面代码展示了如何去遍历用 `querySelectorAll` 得到的动态对象集合。在这里，我们获得了文档里所有选中的选项，并将其打印：
 
 ```js
 var elems = document.querySelectorAll('select option:checked');
@@ -3001,26 +3000,26 @@ var values = Array.prototype.map.call(elems, function(obj) {
     - `element`:用于测试的当前值。
     - `index`(可选):用于测试的当前值的索引。
     - `array`(可选):调用 `every` 的当前数组。
-  - `hisArg`:执行 `callback` 时使用的 `this` 值。
+  - `thisArg`:执行 `callback` 时使用的 `this` 值。
 - 返回值
-如果回调函数的每一次返回都为 `truthy` 值，返回 `true` ，否则返回 `false`。
+如果回调函数的每一次返回都为 `true` 值，返回 `true` ，否则返回 `false`。
 
 - 描述
-every 方法为数组中的每个元素执行一次 callback 函数，直到它找到一个会使 callback 返回 falsy 的元素。如果发现了一个这样的元素，every 方法将会立即返回 false。否则，callback 为每一个元素返回 true，every 就会返回 true。callback 只会为那些已经被赋值的索引调用。不会为那些被删除或从未被赋值的索引调用。
+`every` 方法为数组中的每个元素执行一次 `callback` 函数，直到它找到一个会使 `callback` 返回 `false` 的元素。如果发现了一个这样的元素，`every` 方法将会立即返回 `false`。否则，`callback` 为每一个元素返回 `true`，`every` 就会返回 `true`。`callback` 只会为那些已经被赋值的索引调用。不会为那些被删除或从未被赋值的索引调用。
 
-callback 在被调用时可传入三个参数：元素值，元素的索引，原数组。
+`callback` 在被调用时可传入三个参数：元素值，元素的索引，原数组。
 
-如果为 every 提供一个 thisArg 参数，则该参数为调用 callback 时的 this 值。如果省略该参数，则 callback 被调用时的 this 值，在非严格模式下为全局对象，在严格模式下传入 undefined。详见 this 条目。
+如果为 `every` 提供一个 `thisArg` 参数，则该参数为调用 `callback` 时的 `this` 值。如果省略该参数，则 `callback` 被调用时的 `this` 值，在非严格模式下为全局对象，在严格模式下传入 `undefined`。详见 `this` 条目。
 
-every 不会改变原数组。
+`every` 不会改变原数组。
 
-every 遍历的元素范围在第一次调用 callback 之前就已确定了。在调用 every 之后添加到数组中的元素不会被 callback 访问到。如果数组中存在的元素被更改，则他们传入 callback 的值是 every 访问到他们那一刻的值。那些被删除的元素或从来未被赋值的元素将不会被访问到。
+`every` 遍历的元素范围在第一次调用 `callback` 之前就已确定了。在调用 `every` 之后添加到数组中的元素不会被 `callback` 访问到。如果数组中存在的元素被更改，则他们传入 `callback` 的值是 `every` 访问到他们那一刻的值。那些被删除的元素或从来未被赋值的元素将不会被访问到。
 
-every 和数学中的"所有"类似，当所有的元素都符合条件才会返回true。正因如此，若传入一个空数组，无论如何都会返回 true。（这种情况属于无条件正确：正因为一个空集合没有元素，所以它其中的所有元素都符合给定的条件。)
+`every` 和数学中的"所有"类似，当所有的元素都符合条件才会返回`true`。正因如此，若传入一个空数组，无论如何都会返回 `true`。（这种情况属于无条件正确：正因为一个空集合没有元素，所以它其中的所有元素都符合给定的条件。
 
 - 示例
 
-检测所有数组元素的大小 ;下例检测数组中的所有元素是否都大于 10。
+检测所有数组元素的大小 ;下例检测数组中的所有元素是否都大于`10`。
 
 ```js
 function isBigEnough(element, index, array) {

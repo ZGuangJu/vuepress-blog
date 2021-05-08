@@ -233,6 +233,25 @@ console.log(arr.sort(compare));
 
 :::
 
+### 反转字符串
+
+```js
+var str = '12345';
+Array.prototype.map.call(str, function(x) {   //同时利用了call()方法
+  return x;
+}).reverse().join('');
+```
+
+### 字符串循环转数字（数字字符串）
+
+```js
+function returnInt(element){
+  return parseInt(element,10);
+}
+
+["1", "2", "3"].map(returnInt);　
+```
+
 ### 递归求和
 
 :::details
