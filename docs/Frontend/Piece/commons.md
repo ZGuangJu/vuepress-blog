@@ -64,6 +64,16 @@ p {color:blue}
 ```
 
 \* 一些搜索引擎会利用 meta 元素的 name 和 content 属性来索引您的页面。
+
+- html页面禁止缩放
+
+```html
+<!-- html5页面中默认都允许用户缩放页面，或者在屏幕双击放大或缩小。即默认设置为：  -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=yes" /> 
+<!-- 若要禁止缩放可以更改成如下设置： -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"/>
+```
+
 6. `<script>` 标签用于定义客户端脚本
 
 ### 边框中包含文字

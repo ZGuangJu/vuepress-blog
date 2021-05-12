@@ -5,6 +5,7 @@ module.exports = {
     description: '欢迎，大爷儿来玩~',
     // 端口配置 80是默认端口(手动部署服务器时用)
     // port: 80,
+    // base: '/',
     theme: 'reco', //启动主题 已安装的有  默认 / reco
     // 标题栏图标
     head: [
@@ -27,39 +28,37 @@ module.exports = {
     plugins: [
         // [
         //     // 看板娘
-        //     "@vuepress-reco/vuepress-plugin-kan-ban-niang",
-        //     {
-        //         theme: ['shizuku', 'wanko', 'haruto', 'blackCat', 'whiteCat', 'haru1', 'haru2', 'koharu', 'izumi', 'shizuku', 'miku', 'z16'],
-        //         clean: false,
-        //         messages: {
-        //             welcome: '我是guangju欢迎你的关注 ',
-        //             home: '心里的花，想要带你回家.',
-        //             theme: '好吧，希望你能喜欢其他小伙伴！',
-        //             close: '那再见了哦~'
-        //         }
-        //     }
-        // ],
-        [
-            // 彩带
-            "ribbon",
-            {
-                size: 70,     // width of the ribbon, default: 90
-                opacity: 0.4, // opacity of the ribbon, default: 0.3
-                zIndex: -1    // z-index property of the background, default: -1
+        "@vuepress-reco/vuepress-plugin-kan-ban-niang",
+        // 彩带
+        "ribbon",
+        // 打赏
+        'vuepress-plugin-sponsor',
+        {
+            theme: ['shizuku', 'wanko', 'haruto', 'blackCat', 'whiteCat', 'haru1', 'haru2', 'koharu', 'izumi', 'shizuku', 'miku', 'z16'],
+            clean: false,
+            messages: {
+                welcome: '我是guangju欢迎你的关注 ',
+                home: '心里的花，想要带你回家.',
+                theme: '好吧，希望你能喜欢其他小伙伴！',
+                close: '那再见了哦~'
             }
-        ],
-        [
-            // 打赏
-            'vuepress-plugin-sponsor',
-            {
-                theme: 'simple', // Drinks  \ simple
-                alipay: '/img/alipay.png',
-                wechat: '/img/wechat.png',
-                // qq: '',
-                // paypal: '',
-                duration: 2000
-            }
-        ],
+        },
+
+        // 彩带
+        {
+            size: 70,     // width of the ribbon, default: 90
+            opacity: 0.4, // opacity of the ribbon, default: 0.3
+            zIndex: -1    // z-index property of the background, default: -1
+        },
+        // 打赏
+        {
+            theme: 'simple', // Drinks  \ simple
+            alipay: '/img/alipay.png',
+            wechat: '/img/wechat.png',
+            // qq: '',
+            // paypal: '',
+            duration: 2000
+        }
         // gitee时启用
         // [
         //     // 公告窗
@@ -82,6 +81,7 @@ module.exports = {
         //     }
         // ]
     ],
+
     // 主题设置
     themeConfig: {
         // 主题样式

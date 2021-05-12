@@ -483,6 +483,13 @@ git branch --set-upstream [branch] [remote-branch]
 git merge [branch]
 ```
 
+例子
+
+```js
+// 在 master 分支中
+git merge guangju  //将 guangju 合并到 master分支中
+```
+
 - 选择一个`commit`，合并进当前分支
 
 ```js
