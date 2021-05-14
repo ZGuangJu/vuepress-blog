@@ -27,17 +27,9 @@
         <dt>5</dt>
         <dd>5</dd>
         <script>
-            var a = [1, 2, 3];
-            var b = [0, 1, 2, 3, 4].reduceRight(function(
-                accumulator,
-                currentValue,
-                currentIndex,
-                array
-            ) {
-                return accumulator + currentValue;
-            },
-            5);
-            // console.log(a);
+            var a = [1, 2, [1, 2, [1, 2, 3]]];
+            var b = a.flat(2);
+            console.log(a);
             console.log(b);
         </script>
     </body>
