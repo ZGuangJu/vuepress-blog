@@ -10,11 +10,9 @@ publish: true
 # 打赏
 showSponsor: true
 ---
+
 ## 开启服务端权限
 
-<<<<<<< HEAD
-1. 查看`user,password,host`信息
-=======
 1. 先要在本机登录`MySQL`系统
 
 ```js
@@ -28,7 +26,6 @@ use mysql;   //选择 mysql 数据库进行操作
 ```
 
 3. 查看`user,password,host`信息
->>>>>>> 6b0a123e51ebebb004ba701279d4cfeda99e9df4
 
 ```js
 select user,password,host from user;
@@ -53,15 +50,9 @@ mysql> select user,password,host from user;
 
 ```
 
-<<<<<<< HEAD
-\* 通过以上输出可以看出数据库默认只允许用户root在本地服务器（localhost）上登录，不允许其他主机远程连接。
-
-2. 输入以下命令 将允许用户root使用密码(zguangju)在任何主机上连接该数据库，并赋予该用户所有权限。
-=======
 \* 通过以上输出可以看出数据库默认只允许用户`root`在本地服务器（`localhost`）上登录，不允许其他主机远程连接。
 
-2. 输入以下命令 将允许用户`root`使用密码(`zguangju`)在任何主机上连接该数据库，并赋予该用户所有权限。
->>>>>>> 6b0a123e51ebebb004ba701279d4cfeda99e9df4
+4. 输入以下命令 将允许用户`root`使用密码(`zguangju`)在任何主机上连接该数据库，并赋予该用户所有权限。
 
 ```js
 grant all privileges on *.* to root@"%" identified by "zguangju";
@@ -73,7 +64,7 @@ grant all privileges on *.* to root@"%" identified by "zguangju";
 Query OK, 0 rows affected (0.00 sec)
 ```
 
-3. 配置好权限之后,刷新使之生效
+5. 配置好权限之后,刷新使之生效
 
 ```js
 flush privileges;
@@ -86,7 +77,7 @@ mysql> flush privileges;
 Query OK, 0 rows affected (0.00 sec)
 ```
 
-4. 查看`root` 的 `host` 配置是否有`%`,如果有了就可以远程连接数据库了
+6. 查看`root` 的 `host` 配置是否有`%`,如果有了就可以远程连接数据库了
 
 ```js
 mysql> select user,password,host from user;
@@ -110,8 +101,6 @@ mysql> select user,password,host from user;
 如果是远程的云服务器，不要忘了开启端口！！！
 :::
 
-<<<<<<< HEAD
-=======
 - `MySQL` `my.ini`文件注释
 
 :::details
@@ -284,5 +273,4 @@ max_allowed_packet = 2M  #设定在网络传输中一次消息传输量的最大
 ```
 
 :::
->>>>>>> 6b0a123e51ebebb004ba701279d4cfeda99e9df4
 [参考](https://cloud.tencent.com/developer/article/1406541)
