@@ -111,7 +111,7 @@ git status
 git push origin master
 ```
 
-### 11、查看历史提交记录
+### 11、查看历史提交记录 / 版本号
 
 ```js
 git log
@@ -120,8 +120,13 @@ git log
 加上参数查看就比较清晰了
 
 ```js
+// 简写（版本号）
+git log --oneline
+// 详情
 git log --pretty=oneline
 ```
+
+\* 输入<kbd>w</kbd><kbd>q</kbd>退出
 
 ### 12、退回版本
 
@@ -740,6 +745,8 @@ git push [remote] --all
 
 ### 撤销
 
+#### 命令
+
 - 恢复暂存区的指定文件到工作区
 
 ```js
@@ -794,6 +801,61 @@ git revert [commit]
 git stash
 git stash pop
 ```
+
+#### 恢复的常用命令
+
+对于恢复修改的文件，就是将文件从仓库中拉到本地工作区，即 仓库区 `---->` 暂存区 `---->` 工作区。
+
+对于修改的文件有两种情况：
+
+- 只是修改了文件，没有任何 `git` 操作
+- 修改了文件，并提交到暂存区（即编辑之后，`git add` 但没有 `git commit -m ....`）
+- 修改了文件，并提交到仓库区（即编辑之后，`git add` 和 `git commit -m ....`）
+
+1. 情况I：
+只是修改了文件，没有任何 git 操作，直接一个命令就可回退：
+
+```js
+git checkout -- aaa.txt # aaa.txt为文件名
+```
+
+2. 情况II：
+
+修改了文件，并提交到暂存区（即编辑之后，`git add` 但没有 `git commit -m ....`）
+
+```js
+git log --oneline    # 可以省略
+git reset HEAD    # 回退到当前版本
+git checkout -- aaa.txt    # aaa.txt为文件名
+```
+
+3. 情况III：
+
+修改了文件，并提交到仓库区（即编辑之后，`git add` 和 `git commit -m ....`）
+
+```js
+git log --oneline    # 可以省略
+git reset HEAD^    # 回退到上一个版本
+git checkout -- aaa.txt    # aaa.txt为文件名
+```
+
+:::warning 注1
+
+1. 情况II 和 情况III 只有回退的版本不一样，
+
+对于 情况II，并没有  `git commit`，仓库版本也就不会更新和记录，所以回退的是当前版本
+![注意1](https://z3.ax1x.com/2021/05/20/gTcp1f.png)
+对于情况III，一旦  `git commit`，仓库版本就会更新并记录，所以要回退的也就是上一个版本
+![注意2](https://z3.ax1x.com/2021/05/20/gTc9c8.png)
+:::
+:::warning 注2
+`git reset 版本号`    ----  将暂缓区回退到指定版本
+
+根据 `git log --oneline` 显示的版本号（下图黄色的字），可以回退到任何一个版本，也可通过 `HEAD` 来指定版本（下图红色的字）。
+
+以旧图举例：
+![注意3](https://z3.ax1x.com/2021/05/20/gTcCjS.png)
+:::
 
 ### 修改远程仓库地址
 
