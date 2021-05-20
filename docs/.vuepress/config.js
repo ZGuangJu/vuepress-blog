@@ -14,7 +14,7 @@ module.exports = {
             'link',
             {
                 rel: 'icon',
-                href: '/img/linktolink.png',//图片放在.vuepress/public文件夹下，直接'/图片名 '
+                href: '/img/ju.png',//图片放在.vuepress/public文件夹下，直接'/图片名 '
             },
         ],
         // 在移动端，搜索框在获得焦点时会放大，并且在失去焦点后可以左右滚动，这可以通过设置元来优化。

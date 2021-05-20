@@ -8,20 +8,16 @@
     </head>
     <body>
         <button onClick="setCookie()">设置</button>
-        <button>获取</button>
+        <button onClick="Seta()">获取</button>
+        <div>1</div>
         <script>
-            function setCookie(name, value, expiredays) {
-                var exdate = new Date();
-
-                exdate.setDate(exdate.getDate() + expiredays);
-
-                document.cookie =
-                    name +
-                    "=" +
-                    escape(value) +
-                    (expiredays == null
-                        ? ""
-                        : ";expires=" + exdate.toGMTString());
+            function setCookie() {
+                var divs = document.createElement("div");
+                document.body.appendChild(divs);
+                divs.classList.add("box");
+                var texts = document.createTextNode("第一个文本节点");
+                var getDiv = document.getElementsByTagName("div");
+                getDiv[0].appendChild(texts);
             }
         </script>
     </body>
