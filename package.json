@@ -6,7 +6,7 @@
     "scripts": {
         "blog": "vuepress dev docs",
         "build": "vuepress build docs",
-        "deploy": "bash deploy.sh",
+        "deploy": "deploy.sh",
         "up": "update.sh"
     },
     "keywords": [],
