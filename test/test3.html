@@ -5,20 +5,29 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <style>
+            .order {
+                width: 300px;
+                height: 10px;
+                border-bottom: 1px solid #000;
+            }
+            .box {
+                border-bottom: 1px solid #000;
+            }
+        </style>
     </head>
     <body>
-        <button onClick="setCookie()">设置</button>
-        <button onClick="Seta()">获取</button>
-        <div>1</div>
+        <div class="order">
+            <div class="textCo">123</div>
+        </div>
+        <div class="box"></div>
         <script>
-            function setCookie() {
-                var divs = document.createElement("div");
-                document.body.appendChild(divs);
-                divs.classList.add("box");
-                var texts = document.createTextNode("第一个文本节点");
-                var getDiv = document.getElementsByTagName("div");
-                getDiv[0].appendChild(texts);
-            }
+            var str = "Elongtian";
+            var newstr = str
+                .split("")
+                .reverse()
+                .join("");
+            console.log(newstr);
         </script>
     </body>
 </html>

@@ -171,6 +171,7 @@ module.exports = {
                     { text: 'MongoDB', link: '/Backend/Mongodb/mongodb1' },
                     { text: 'MySQL', link: '/Backend/Mysql/mysql01' },
                     { text: 'Node.js', link: '/Backend/Node/node2' },
+                    { text: 'Express', link: '/Backend/Node/express' },
                     { text: 'Api', link: '/Backend/api' }
                 ],
             },
@@ -336,7 +337,7 @@ module.exports = {
                 }
             ],
             // 后端
-            '/Backend/Node/': ['node1', 'node2', 'package'],
+            '/Backend/Node/': ['node1', 'node2', 'package', 'express'],
             '/Backend/Mongodb/': ['mongodb1', 'mongodb2', 'mongodb3', 'mongodb4', 'mongodb5'],
             '/Backend/Mysql/': ['mysql01', 'mysql02', 'mysql03', 'mysql04'],
             '/Backend/': ['api'],
