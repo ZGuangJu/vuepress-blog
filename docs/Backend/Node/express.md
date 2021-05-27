@@ -33,3 +33,29 @@ npm install express-generator -g
 ```js
 express --version
 ```
+
+## 创建express 项目
+
+1. 创建
+
+```js
+express testapp
+```
+
+2. 进入项目
+
+```js
+cd testapp
+```
+
+3. 安装依赖包
+
+```js
+npm i
+```
+
+4. 启动项目
+
+```js
+npm start
+```

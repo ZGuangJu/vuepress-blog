@@ -12,34 +12,12 @@ showSponsor: true
 ---
 centos
 
-## 安装Wget
-
-要检查系统上是否安装了`Wget`软件包，请打开控制台，键入`wget`，然后按`Enter`。如果已安装`wget`，则系统将打印 `wget: missing URL` ，否则，将打印 `wget command not found`
-
-- 在`CentOS`和`Fedora`上安装`Wget`
-
-```js
-sudo yum install wget
-```
-
-- 在`Ubuntu`和`Debian`上安装`Wget`
-
-```js
-sudo apt install wget
-```
-
-- `wget`实用程序表达式采用以下形式：
-
-```js
-wget [options] [url]
-```
-
 ## 防火墙
 
 - 查看默认防火墙状态
 
 ```js
-firewall-cmd --state
+firewall -cmd --state
 ```
 
 - 检查防火墙的状态
@@ -173,52 +151,6 @@ systemctl list-unit-files|grep enabled
 ```js
 [root@localhost ~]#systemctl unmask firewalld
 这是反屏蔽FirewallD服务，它会移除屏蔽FirewallD服务时创建的符号链接，故能重新启用服务。
-```
-
-## 查看端口占用和解除占用
-
-### netstat查看(推荐)
-
-- 查看`8081`端口是否被占用
-
-```s
-netstat -anp | grep 8081
-```
-
-- 查看占用`8081`端口的进程
-
-```s
-fuser -v -n tcp 8081
-```
-
-- 杀死占用`8081`端口的进程
-
-```s
-kill -s 9 1154(自己的进程号).
-```
-
-`9`参数表示告诉操作系统直接杀死进程, 无论进程的状态是否可杀死;
-
-### 使用`lsof`
-
-- `lsof`查看端口的占用情况
-
-```s
-lsof -i
-```
-
-注意: 若提示无此命令, 则需要安装, 命令`yum install -y lsof`
-
-- 查看某一端口的占用情况
-
-```s
-lsof -i:8081
-```
-
-- 杀死某个端口的所有进程
-
-```s
-killall sshd[就是端口的COMMAND]
 ```
 
 ## 安装 Visual Studio Code

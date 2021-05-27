@@ -172,6 +172,7 @@ module.exports = {
                     { text: 'MySQL', link: '/Backend/Mysql/mysql01' },
                     { text: 'Node.js', link: '/Backend/Node/node2' },
                     { text: 'Express', link: '/Backend/Node/express' },
+                    { text: 'Docker', link: '/Backend/docker' },
                     { text: 'Api', link: '/Backend/api' }
                 ],
             },
@@ -340,7 +341,7 @@ module.exports = {
             '/Backend/Node/': ['node1', 'node2', 'package', 'express'],
             '/Backend/Mongodb/': ['mongodb1', 'mongodb2', 'mongodb3', 'mongodb4', 'mongodb5'],
             '/Backend/Mysql/': ['mysql01', 'mysql02', 'mysql03', 'mysql04'],
-            '/Backend/': ['api'],
+            '/Backend/': ['docker', 'api'],
             // 项目
             '/Project/': ['shopingapp', 'admin', 'project', 'todolist'],
             '/Webpack/': ['webpack1', 'webpack2', 'webpack3', 'webpack4', 'webpackconfigjs'],

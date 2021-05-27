@@ -27,3 +27,11 @@ showSponsor: true
 ![windows商店](https://s1.ax1x.com/2020/09/28/0E1Hns.png)
 
 到这里就已经安装完成了，是不是特别简单~
+
+- 修改`root`密码
+
+如果打开`wsl` 进入的是`root`用户可以直接修改
+
+```js
+root@GuangJu:~# passwd
+```

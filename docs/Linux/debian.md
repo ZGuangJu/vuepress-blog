@@ -29,6 +29,86 @@ sudo apt-get upgrade
 netstat -ntlp
 ```
 
+## 安装软件包 rpm
+
+-RPM 包默认安装路径
+| 安装路径        | 含义                       |
+| :-------------- | :------------------------- |
+| /etc/           | 配置文件安装目录           |
+| /usr/bin/       | 可执行的命令安装目录       |
+| /usr/lib/       | 程序所使用的函数库保存位置 |
+| /usr/share/doc/ | 基本的软件使用手册保存位置 |
+| /usr/share/man/ | 帮助文件保存位置           |
+
+```js
+// 在包所在位置执行rpm命令
+[root@localhost ~]# rpm -ivh 包全名
+// -i：安装（install）;
+// -v：显示更详细的信息（verbose）;
+// -h：打印 #，显示安装进度（hash）;
+```
+
+:::warning
+注意一定是包全名。涉及到包全名的命令，一定要注意路径，可能软件包在光盘中，因此需提前做好设备的挂载工作。
+:::
+
+## 更改软件安装源
+
+备份一下软件源
+
+```js
+sudo cp /etc/apt/sources.list /etc/apt/sources.list_bak
+```
+
+将`/etc/apt/sources.list` 文件中 `Debian` 默认的源地址 <http://deb.debian.org/> 替换为 <http://mirrors.ustc.edu.cn> 即可。
+
+当然也可以直接编辑`vi /etc/apt/sources.list` 文件(需要使用 `sudo`)
+
+加入如下内容即可
+
+```js
+deb http://mirrors.ustc.edu.cn/debian stable main contrib non-free
+# deb-src http://mirrors.ustc.edu.cn/debian stable main contrib non-free
+deb http://mirrors.ustc.edu.cn/debian stable-updates main contrib non-free
+# deb-src http://mirrors.ustc.edu.cn/debian stable-updates main contrib non-free
+deb http://mirrors.ustc.edu.cn/debian stable-proposed-updates main contrib non-free
+# deb-src http://mirrors.ustc.edu.cn/debian stable-proposed-updates main contrib non-free
+```
+
+中科大软件
+
+```js
+cat > /etc/apt/sources.list << EOF
+deb http://mirrors.ustc.edu.cn/debian/ buster main contrib non-free
+# deb-src http://mirrors.ustc.edu.cn/debian/ buster main contrib non-free
+deb http://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free
+# deb-src http://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free
+deb http://mirrors.ustc.edu.cn/debian/ buster-backports main contrib non-free
+# deb-src http://mirrors.ustc.edu.cn/debian/ buster-backports main contrib non-free
+deb http://mirrors.ustc.edu.cn/debian-security buster/updates main contrib non-free
+# deb-src http://mirrors.ustc.edu.cn/debian-security buster/updates main contrib non-free
+EOF
+
+```
+
+网易
+
+```js
+cat > /etc/apt/sources.list << EOF
+deb http://mirrors.163.com/debian/ buster main contrib non-free
+# deb-src http://mirrors.163.com/debian/ buster main contrib non-free
+deb http://mirrors.163.com/debian/ buster-updates main contrib non-free
+# deb-src http://mirrors.163.com/debian/ buster-updates main contrib non-free
+deb http://mirrors.163.com/debian/ buster-backports main contrib non-free
+# deb-src http://mirrors.163.com/debian/ buster-backports main contrib non-free
+deb http://mirrors.163.com/debian-security buster/updates main contrib non-free
+# deb-src http://mirrors.163.com/debian-security buster/updates main contrib non-free
+EOF
+```
+
+敲击i键进入插入模式，组合键<kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>v</kbd>将复制内容粘贴至源文件中，敲击两次`esc`键进入命令模式，输入引号内键`：wq!`保存并退出
+更改完 `sources.list` 文件后请运行 `sudo apt-get update` 更新索引以生效。
+
 ## 报错
 
 - `sudo`不能使用的错误
@@ -127,62 +207,73 @@ service redis-server stop
 service redis-server start
 ```
 
-## 更改软件安装源
+## 查看端口占用和解除占用
 
-备份一下软件源
+### netstat查看(推荐)
 
-```js
-sudo cp /etc/apt/sources.list /etc/apt/sources.list_bak
+- 查看`8081`端口是否被占用
+
+```s
+netstat -anp | grep 8081
 ```
 
-将`/etc/apt/sources.list` 文件中 `Debian` 默认的源地址 <http://deb.debian.org/> 替换为 <http://mirrors.ustc.edu.cn> 即可。
+- 查看占用`8081`端口的进程
 
-当然也可以直接编辑`vi /etc/apt/sources.list` 文件(需要使用 `sudo`)
-
-加入如下内容即可
-
-```js
-deb http://mirrors.ustc.edu.cn/debian stable main contrib non-free
-# deb-src http://mirrors.ustc.edu.cn/debian stable main contrib non-free
-deb http://mirrors.ustc.edu.cn/debian stable-updates main contrib non-free
-# deb-src http://mirrors.ustc.edu.cn/debian stable-updates main contrib non-free
-deb http://mirrors.ustc.edu.cn/debian stable-proposed-updates main contrib non-free
-# deb-src http://mirrors.ustc.edu.cn/debian stable-proposed-updates main contrib non-free
+```s
+fuser -v -n tcp 8081
 ```
 
-中科大软件
+- 杀死占用`8081`端口的进程
 
-```js
-cat > /etc/apt/sources.list << EOF
-deb http://mirrors.ustc.edu.cn/debian/ buster main contrib non-free
-# deb-src http://mirrors.ustc.edu.cn/debian/ buster main contrib non-free
-deb http://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free
-# deb-src http://mirrors.ustc.edu.cn/debian/ buster-updates main contrib non-free
-deb http://mirrors.ustc.edu.cn/debian/ buster-backports main contrib non-free
-# deb-src http://mirrors.ustc.edu.cn/debian/ buster-backports main contrib non-free
-deb http://mirrors.ustc.edu.cn/debian-security buster/updates main contrib non-free
-# deb-src http://mirrors.ustc.edu.cn/debian-security buster/updates main contrib non-free
-EOF
-
+```s
+kill -s 9 1154(自己的进程号).
 ```
 
-网易
+`9`参数表示告诉操作系统直接杀死进程, 无论进程的状态是否可杀死;
 
-```js
-cat > /etc/apt/sources.list << EOF
-deb http://mirrors.163.com/debian/ buster main contrib non-free
-# deb-src http://mirrors.163.com/debian/ buster main contrib non-free
-deb http://mirrors.163.com/debian/ buster-updates main contrib non-free
-# deb-src http://mirrors.163.com/debian/ buster-updates main contrib non-free
-deb http://mirrors.163.com/debian/ buster-backports main contrib non-free
-# deb-src http://mirrors.163.com/debian/ buster-backports main contrib non-free
-deb http://mirrors.163.com/debian-security buster/updates main contrib non-free
-# deb-src http://mirrors.163.com/debian-security buster/updates main contrib non-free
-EOF
+### 使用`lsof`
+
+- `lsof`查看端口的占用情况
+
+```s
+lsof -i
 ```
 
-敲击i键进入插入模式，组合键<kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>v</kbd>将复制内容粘贴至源文件中，敲击两次`esc`键进入命令模式，输入引号内键`：wq!`保存并退出
-更改完 `sources.list` 文件后请运行 `sudo apt-get update` 更新索引以生效。
+注意: 若提示无此命令, 则需要安装, 命令`yum install -y lsof`
+
+- 查看某一端口的占用情况
+
+```s
+lsof -i:8081
+```
+
+- 杀死某个端口的所有进程
+
+```s
+killall sshd[就是端口的COMMAND]
+```
+
+## 安装 Wget
+
+要检查系统上是否安装了`Wget`软件包，请打开控制台，键入`wget`，然后按`Enter`。如果已安装`wget`，则系统将打印 `wget: missing URL` ，否则，将打印 `wget command not found`
+
+- 在`CentOS`和`Fedora`上安装`Wget`
+
+```js
+sudo yum install wget
+```
+
+- 在`Ubuntu`和`Debian`上安装`Wget`
+
+```js
+sudo apt install wget
+```
+
+- `wget`实用程序表达式采用以下形式：
+
+```js
+wget [options] [url]
+```
 
 ## 安装curl
 
@@ -273,6 +364,28 @@ nvm which 4.2.2
 ```js
 nvm exec 12.18.3 server.js
 ```
+
+## 安装 git
+
+```js
+sudo apt-get install git
+```
+
+如果提示错误:
+
+```a
+E: Failed to eftch http://archives.....
+....
+E: Unable to fetch http.....
+```
+
+就要先更新安装依赖包地址
+
+```js
+sudo apt-get update
+```
+
+再次执行安装命令，就可以了。
 
 ## 安装 pm2
 

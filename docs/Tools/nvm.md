@@ -99,6 +99,12 @@ npm config ls
 
 我们需要在设置--高级系统设置--环境变量--用户变量\系统变量中设置`path`，添加一下`npm`指定安装全局包的路径(就是你上面设置的全局安装位置)`C:\Program Files\npm_global\`(路径最后的斜杠不要忘了)。
 
+## Ubuntu 安装nvm
+
+```js
+curl -o- https://gitee.com/mirrors/nvm/raw/v0.33.2/install.sh | bash
+```
+
 ## Debian 安装 nvm
 
 安装前，虽然在`linux`中影响不大，但还是建议最好先卸载之前安装过的`node`，
