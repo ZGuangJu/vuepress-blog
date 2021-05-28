@@ -339,7 +339,7 @@ module.exports = {
             ],
             // 后端
             '/Backend/Node/': ['node1', 'node2', 'package', 'express'],
-            '/Backend/Mongodb/': ['mongodb1', 'mongodb2', 'mongodb3', 'mongodb4', 'mongodb5'],
+            '/Backend/Mongodb/': ['mongodb1', 'mongodb2', 'mongodb3', 'mongodb4', 'mongodb5', 'mongodb6'],
             '/Backend/Mysql/': ['mysql01', 'mysql02', 'mysql03', 'mysql04'],
             '/Backend/': ['docker', 'api'],
             // 项目

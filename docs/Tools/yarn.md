@@ -40,7 +40,7 @@ choco install yarn
 scoop install yarn
 ```
 
-- 使用 `npm` 安装
+- 使用 `npm` 安装(常用)
 
 ```js
 npm install -g yarn
@@ -144,21 +144,36 @@ deunpm --- http://registry.enpmjs.org/
 
 [yarn 2 文档](https://www.yarnpkg.com.cn/)
 
-- 安装 `yarn 2`
-
-```js
-npm install -g yarn@berry
-```
-
 - 从`yarn 1.x` 迁移到`yarn 2`(启用 `yarn 2`)
 [官方迁移指南](https://www.yarnpkg.com.cn/advanced/migration#step-by-step)
+
+- 项目中安装 `yarn 2`(官方建议 全局安装的`1.x` 项目中安装`2.x`)
+
+```js
+// 官方 已修改，不用这种方式了
+// npm install -g yarn@berry
+```
+
+1. 安装`yarn` ,已装忽略
+
+```js
+npm install -g yarn
+```
+
+2. 进入项目
+
+```js
+cd /abc/d
+```
+
+3. 运行命令
 
 ```js
 yarn set version berry
 ```
 
 :::danger
-`yarn 2` 不时`yarn 1.x`的升级版，它们是两个不同的东西，[了解`yarn2`](https://blog.csdn.net/u010730126/article/details/107857940)
+`yarn 2` 不是`yarn 1.x`的升级版，它们是两个不同的东西，[了解`yarn2`](https://blog.csdn.net/u010730126/article/details/107857940)
 :::
 
 - 工程中升级为`Yarn 2`
@@ -173,13 +188,21 @@ yarn set version berry # B1
 yarn policies set-version berry # B2
 ```
 
+- 升级yarn 2
+
+```js
+yarn set version latest
+// or
+yarn set version from sources
+```
+
 [yarn 2 的安装和使用](https://blog.csdn.net/u010730126/article/details/107857940)
 
 显示版本号，证明安装成功。
 
 ## Yarn 常用命令
 
-yarn的一些常见命令。
+`yarn`的一些常见命令。
 
 - 初始化包(等价于`npm init`)
 

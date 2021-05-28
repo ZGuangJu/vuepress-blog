@@ -33,6 +33,22 @@ showSponsor: true
 安装完毕后，第一次打开，可能会有错误提示，让你升级WSL2,打开链接，下载升级包安装即可，然后再次打开docker 就可以了。
 :::
 
+### 镜像源
+
+- `docker for windows`
+软件设置 -> `daemon`
+
+```js
+{
+    "registry-mirrors":[
+        "http://hub-mirror.c.163.com/",
+        "https://registry.docker-cn.com",
+        "https://3laho3y3.mirror.aliyuncs.com",
+        "http://f1361db2.m.daocloud.io",
+        "https://mirror.ccs.tencentyun.com"]
+}
+```
+
 ## 使用
 
 ### 挂载 vue 或react 、node项目
