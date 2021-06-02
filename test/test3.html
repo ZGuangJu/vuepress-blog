@@ -6,29 +6,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
         <style>
-            .order {
-                width: 300px;
-                height: 10px;
-                border-bottom: 1px solid #000;
-            }
             .box {
-                border-bottom: 1px solid #000;
+                height: 100px;
+                box-sizing: border-box;
+                width: 100px;
+                padding: 10px;
+                margin: 10px;
+                border: 1px dashed #ccc;
             }
         </style>
     </head>
     <body>
-        <div class="order">
-            <div class="textCo">123</div>
-        </div>
-        <div class="box"></div>
+        <header></header>
+        <main>
+            <article>
+                <section></section>
+            </article>
+            <aside></aside>
+        </main>
+        <footer></footer>
+        <img src="123.png" alt="" />
         <script>
-            var str = "Elongtian";
-            var newstr = str
-                .split("")
-                .reverse()
-                .join("");
-
-            console.log(newstr);
+            console.log(0 == "0");
+            console.log([] == 0);
         </script>
     </body>
 </html>

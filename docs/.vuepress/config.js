@@ -149,6 +149,7 @@ module.exports = {
                     { text: 'Axios', link: '/Frontend/Axios/axios' },
                     { text: 'Class', link: '/Frontend/Class/class1' },
                     { text: 'TypeScript', link: '/Frontend/TS/ts1' },
+                    { text: '正则', link: '/Frontend/regex' },
                     { text: 'Webpack4.0', link: '/Webpack/webpack1' },
                     { text: '常用代码', link: '/Frontend/Piece/commons' }
                 ]
@@ -196,7 +197,6 @@ module.exports = {
                     { text: 'vuepress', link: '/Tools/vuepress' },
                     { text: 'vitepress', link: '/Tools/vitepress' },
                     { text: '升级依赖包', link: '/Tools/upgrade' },
-                    { text: 'regex 正则', link: '/Tools/regex' },
                     { text: 'Typecho 安装建站', link: '/Tools/typecho' },
                     { text: 'Eslint 的使用和禁用', link: '/Tools/Eslint' },
                     { text: 'VScode等配置文件', link: '/Tools/vscode' },
@@ -311,6 +311,11 @@ module.exports = {
                     children: ['TS/ts1', 'TS/ts2', 'TS/ts3', 'TS/ts4']
                 },
                 {
+                    // 正则
+                    title: '正则',
+                    link: "regex"
+                },
+                {
                     title: '常用代码片段',
                     collapsable: true,
                     children: ['/Frontend/Piece/commons', '/Frontend/Piece/example', '/Frontend/Piece/html字符']
@@ -348,7 +353,7 @@ module.exports = {
             // linux系统
             '/Linux/': ['debian', 'centos', 'screen', '宝塔', 'vim'],
             // 工具
-            '/Tools/': ['git', 'yarn', 'npm', 'npm模块', 'node', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'vitepress', 'upgrade', 'regex', 'typecho', 'vscode', 'wsl'],
+            '/Tools/': ['git', 'yarn', 'npm', 'npm模块', 'node', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'vitepress', 'upgrade', 'typecho', 'vscode', 'wsl'],
             //小知识
             '/Other/': [
                 'target', 'error', '报错总结', '知识点', '面试题', '面试题2', '算法', 'export', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'nginx', 'Chrome', '浏览器内核', '验证码', '电脑故障', '兼容', 'chronology'
