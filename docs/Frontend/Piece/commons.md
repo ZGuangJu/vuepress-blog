@@ -173,7 +173,7 @@ text-decoration : none ;//无装饰
     }
 ```
 
-### 字体
+### 通用字体设置
 
 ```css
     body,
@@ -187,6 +187,62 @@ text-decoration : none ;//无装饰
         font: 12px / 1.14 黑体;
         outline: 0px;
     }
+```
+
+### 全站灰度(黑白)
+
+将网站整体的色调换成灰色、黑色色调，在纪念一些日子的时候会有用到，
+
+可以根据实际的需要选择合适的CSS代码样式添加到自己的网页模板的代码中实现网页灰色、黑白样式。
+
+- 样式一
+
+```css
+<style type="text/css">
+html {
+　　filter:grayscale(100%);//给网站加灰度的滤镜
+　　-webkit-filter:grayscale(100%);//属于使用webkit内核的浏览器，兼容chrome和safari浏览器
+　　-moz-filter:grayscale(100%);
+　　-ms-filter:grayscale(100%);
+　　-o-filter:grayscale(100%);
+　　filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+　　-webkit-filter:grayscale(1)
+}
+</style>
+```
+
+- 样式二
+
+```css
+//和第一种类似，实现全站效果，可以将代码添加到head中
+<style>
+body, html {
+-webkit-filter: grayscale(100%);
+-moz-filter: grayscale(100%);
+-ms-filter: grayscale(100%);
+-o-filter: grayscale(100%);
+filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+_filter:none;
+}
+</style>
+```
+
+- 样式三
+
+```css
+//同样的可以添加到样式style中
+html {
+    filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+-webkit-filter: grayscale(100%);
+}
+```
+
+- 样式三
+
+```html
+//这是直接添加到行内样式中
+<html style="filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+-webkit-filter: grayscale(100%);">
 ```
 
 ## JavaScript

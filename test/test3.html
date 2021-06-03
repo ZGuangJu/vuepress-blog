@@ -6,27 +6,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
         <style>
-            .box {
-                height: 100px;
-                box-sizing: border-box;
-                width: 100px;
-                padding: 10px;
-                margin: 10px;
-                border: 1px dashed #ccc;
+            .abc,
+            .ab {
+                color: red;
+            }
+            li,
+            strong {
+                font-style: italic;
+                font-weight: normal;
+            }
+            div p {
+                color: red;
+            }
+            [title] {
+                color: blue;
             }
         </style>
     </head>
     <body>
-        <figure>
-            <img src="123.png" alt="" />
-            <figcaption>123图片</figcaption>
-        </figure>
-        <details>
-            <summary>
-                123
-            </summary>
-            1234654646546
-        </details>
-        <mark>abc</mark>
+        <p title="ab">1</p>
+        <p>2</p>
+        <p>3</p>
+        <div>
+            <p title="p">123</p>
+        </div>
     </body>
 </html>
