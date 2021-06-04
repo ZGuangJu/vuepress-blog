@@ -6,29 +6,51 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
         <style>
-            .abc,
-            .ab {
-                color: red;
+            img.top {
+                vertical-align: middle;
             }
-            li,
-            strong {
-                font-style: italic;
-                font-weight: normal;
+            img.bottom {
+                vertical-align: text-bottom;
             }
-            div p {
-                color: red;
-            }
-            [title] {
-                color: blue;
+            img.middle {
+                vertical-align: middle;
             }
         </style>
     </head>
+
     <body>
-        <p title="ab">1</p>
-        <p>2</p>
-        <p>3</p>
         <div>
-            <p title="p">123</p>
+            An
+            <img
+                class="top"
+                src="https://mdn.mozillademos.org/files/12245/frame_image.svg"
+                alt="link"
+                width="32"
+                height="32"
+            />
+            image with a text-top alignment.
+        </div>
+        <div>
+            An
+            <img
+                class="bottom"
+                src="https://mdn.mozillademos.org/files/12245/frame_image.svg"
+                alt="link"
+                width="32"
+                height="32"
+            />
+            image with a text-bottom alignment.
+        </div>
+        <div>
+            An
+            <img
+                class="middle"
+                src="https://mdn.mozillademos.org/files/12245/frame_image.svg"
+                alt="link"
+                width="32"
+                height="32"
+            />
+            image with a middle alignment.
         </div>
     </body>
 </html>

@@ -133,9 +133,12 @@ text-decoration : none ;//无装饰
 
 ## CSS
 
-### 设置 `margin padding` 为 0
+### 设置全局通用样式
+
+- 全局样式比其他自定义样式权重低，所以要先引入全局通用样式，再引入其他样式：
 
 ```css
+/* reset.css */
     html,
     body,
     h1,
@@ -170,6 +173,21 @@ text-decoration : none ;//无装饰
     menu {
         padding: 0;
         margin: 0;
+    }
+    body {
+        text-align:center;
+        font-family: "宋体";
+        /* font-size:12px; */
+    }
+    ul,ol,li {
+        list-style:none;
+    }
+    a {
+    text-decoration:none;
+    }
+    input,button,img {
+        border:none;
+        vertical-align:middle;
     }
 ```
 
