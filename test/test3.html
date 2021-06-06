@@ -6,51 +6,42 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
         <style>
-            img.top {
-                vertical-align: middle;
+            li {
+                font-weight: bold;
             }
-            img.bottom {
-                vertical-align: text-bottom;
+            li:first-child {
+                color: red;
             }
-            img.middle {
-                vertical-align: middle;
+            p:first-child {
+                font-weight: bold;
+                color: red;
+            }
+            p:last-child {
+                color: blue;
+            }
+            li:first-child {
+                text-transform: uppercase;
             }
         </style>
     </head>
 
     <body>
         <div>
-            An
-            <img
-                class="top"
-                src="https://mdn.mozillademos.org/files/12245/frame_image.svg"
-                alt="link"
-                width="32"
-                height="32"
-            />
-            image with a text-top alignment.
+            <p>1</p>
+            <p>2</p>
+            <p>2</p>
+            <p>2</p>
+            <p>2</p>
+            <p>2</p>
         </div>
         <div>
-            An
-            <img
-                class="bottom"
-                src="https://mdn.mozillademos.org/files/12245/frame_image.svg"
-                alt="link"
-                width="32"
-                height="32"
-            />
-            image with a text-bottom alignment.
-        </div>
-        <div>
-            An
-            <img
-                class="middle"
-                src="https://mdn.mozillademos.org/files/12245/frame_image.svg"
-                alt="link"
-                width="32"
-                height="32"
-            />
-            image with a middle alignment.
+            <div>5</div>
+            <p>3</p>
+            <p>3</p>
+            <p>3</p>
+            <p>3</p>
+            <p>3</p>
+            <span>6</span>
         </div>
     </body>
 </html>

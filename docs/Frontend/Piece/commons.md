@@ -96,7 +96,7 @@ p {color:blue}
 - ④ `a:hover`： 鼠标移到链接上时 ,如 `a:hover {color:blue}`
 - 一般`a:hover`和`a:visited`链接的状态（颜色、下划线等）应该是相同的。
 - 前三者分别对应`body`元素的`link`、`vlink`、`alink`这三个属性。
-- 四个“状态”的先后过程是：`a:link` ->`a:hover` ->`a:active`->`a:visited`
+- 四个“状态”的先后过程是：`a:link` -> `a:visited` -> `a:hover` -> `a:active` ( 先爱后恨 `L V H A` )
 另外，`a:active`不能设置有无下划线（总是有的）。
 
 ```html
