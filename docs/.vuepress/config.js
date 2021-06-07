@@ -190,6 +190,7 @@ module.exports = {
                     { text: 'pm2', link: '/Tools/pm2' },
                     { text: 'serve', link: '/Tools/serve' },
                     { text: 'MarkDown', link: '/Tools/markdown' },
+                    { text: 'Svg', link: '/Tools/svg' },
                     { text: 'Terminal', link: '/Tools/terminal' },
                     { text: 'Trojan', link: '/Tools/Trojan' },
                     { text: 'vite', link: '/Tools/vite' },
@@ -353,7 +354,7 @@ module.exports = {
             // linux系统
             '/Linux/': ['debian', 'centos', 'screen', '宝塔', 'vim'],
             // 工具
-            '/Tools/': ['git', 'yarn', 'npm', 'npm模块', 'node', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'vitepress', 'upgrade', 'typecho', 'vscode', 'wsl'],
+            '/Tools/': ['git', 'yarn', 'npm', 'npm模块', 'node', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'svg', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'vitepress', 'upgrade', 'typecho', 'vscode', 'wsl'],
             //小知识
             '/Other/': [
                 'target', 'error', '报错总结', '知识点', '面试题', '面试题2', '算法', 'export', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'nginx', 'Chrome', '浏览器内核', '验证码', '电脑故障', '兼容', 'chronology'
