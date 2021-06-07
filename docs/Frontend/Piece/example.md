@@ -242,6 +242,67 @@ var time1 = new Date().Format("yyyy-MM-dd");
 var time2 = new Date().Format("yyyy-MM-dd hh:mm:ss");
 ```
 
+## 获取当前时 \ 将时间戳转换为时间格式
+
+```js
+// 获取当前时间，可以存入数据库（除以1000 是为了存储时空间小，精确到秒即可）
+    var timer = parseInt(new Date().getTime() / 1000);
+    console.log(timer);
+// 将数据库中的时间戳，转换为日期时间格式
+    // 方法一
+    function getTime(nS) {
+        var date = new Date(parseInt(nS) * 1000);
+        var year = date.getFullYear();
+        var mon =
+            date.getMonth() + 1 < 10
+                ? "0" + (date.getMonth() + 1)
+                : date.getMonth() + 1;
+        // 将月份个位加 0
+        var day = date.getDate();
+        var hours = date.getHours();
+        var minu = date.getMinutes();
+        var sec =
+            date.getSeconds().toString().length < 2
+                ? "0" + date.getSeconds()
+                : date.getSeconds();
+        // 秒数 个位加 0
+
+        return (
+            year +
+            "/" +
+            mon +
+            "/" +
+            day +
+            " " +
+            hours +
+            ":" +
+            minu +
+            ":" +
+            sec
+        );
+    }
+    console.log(getTime(timer));
+    // 方法二
+    function timestampToTime(timestamp) {
+        var date = new Date(timestamp * 1000); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        var Y = date.getFullYear() + "-";
+        var M =
+            (date.getMonth() + 1 < 10
+                ? "0" + (date.getMonth() + 1)
+                : date.getMonth() + 1) + "-";
+        var D = date.getDate() + " ";
+        var h = date.getHours() + ":";
+        var m = date.getMinutes() + ":";
+        var s =
+            date.getSeconds().toString().length < 2
+                ? "0" + date.getSeconds()
+                : date.getSeconds();
+        console.log(s);
+        return Y + M + D + h + m + s;
+    }
+    console.log(timestampToTime(timer));
+```
+
 ## 用原生js给DOM元素添加一个类名
 
 方法一：给DOM元素添加类名会覆盖原有的类名
