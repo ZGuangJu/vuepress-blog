@@ -189,6 +189,10 @@ text-decoration : none ;//无装饰
         border:none;
         vertical-align:middle;
     }
+    /* 清除浮动 */
+    .clear{
+        clear:both;
+    }
 ```
 
 ### 通用字体设置
