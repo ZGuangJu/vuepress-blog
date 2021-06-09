@@ -214,7 +214,6 @@ module.exports = {
                     { text: '面试题', link: '/Other/面试题' },
                     { text: '面试题2', link: '/Other/面试题2' },
                     { text: '算法', link: '/Other/算法' },
-                    { text: 'export区别', link: '/Other/export' },
                     { text: '变量常用名', link: '/Other/name' },
                     { text: 'token 是什么', link: '/Other/token' },
                     { text: '网站黑白', link: '/Other/网站黑白' },
@@ -344,7 +343,7 @@ module.exports = {
                 }
             ],
             // 后端
-            '/Backend/Node/': ['node1', 'node2', 'package', 'express'],
+            '/Backend/Node/': ['node1', 'node2', 'package', 'express', 'exports'],
             '/Backend/Mongodb/': ['mongodb1', 'mongodb2', 'mongodb3', 'mongodb4', 'mongodb5', 'mongodb6'],
             '/Backend/Mysql/': ['mysql01', 'mysql02', 'mysql03', 'mysql04'],
             '/Backend/': ['docker', 'api'],
@@ -357,7 +356,7 @@ module.exports = {
             '/Tools/': ['git', 'yarn', 'npm', 'npm模块', 'node', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'svg', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'vitepress', 'upgrade', 'typecho', 'vscode', 'wsl'],
             //小知识
             '/Other/': [
-                'target', 'error', '报错总结', '知识点', '面试题', '面试题2', '算法', 'export', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'nginx', 'Chrome', '浏览器内核', '验证码', '电脑故障', '兼容', 'chronology'
+                'target', 'error', '报错总结', '知识点', '面试题', '面试题2', '算法', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'nginx', 'Chrome', '浏览器内核', '验证码', '电脑故障', '兼容', 'chronology'
             ],//,'996'
         },
         // 友链
