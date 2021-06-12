@@ -25,15 +25,24 @@ module.exports = {
             }]
     ],
     // 主题使用的插件的设置
-    plugins: [
-        // [
-        //     // 看板娘
-        "@vuepress-reco/vuepress-plugin-kan-ban-niang",
-        // 彩带
-        "ribbon",
+    plugins: {
         // 打赏
-        'vuepress-plugin-sponsor',
-        {
+        'vuepress-plugin-sponsor': {
+            theme: 'simple', // Drinks  \ simple
+            alipay: '/img/alipay.png',
+            wechat: '/img/wechat.png',
+            // qq: '',
+            // paypal: '',
+            duration: 2000
+        },
+        // 彩带
+        "ribbon": {
+            size: 70,     // width of the ribbon, default: 90
+            opacity: 0.4, // opacity of the ribbon, default: 0.3
+            zIndex: -1    // z-index property of the background, default: -1
+        },
+        // 看板娘
+        "@vuepress-reco/vuepress-plugin-kan-ban-niang": {
             theme: ['shizuku', 'wanko', 'haruto', 'blackCat', 'whiteCat', 'haru1', 'haru2', 'koharu', 'izumi', 'shizuku', 'miku', 'z16'],
             clean: false,
             messages: {
@@ -43,27 +52,9 @@ module.exports = {
                 close: '那再见了哦~'
             }
         },
-
-        // 彩带
-        {
-            size: 70,     // width of the ribbon, default: 90
-            opacity: 0.4, // opacity of the ribbon, default: 0.3
-            zIndex: -1    // z-index property of the background, default: -1
-        },
-        // 打赏
-        {
-            theme: 'simple', // Drinks  \ simple
-            alipay: '/img/alipay.png',
-            wechat: '/img/wechat.png',
-            // qq: '',
-            // paypal: '',
-            duration: 2000
-        }
         // gitee时启用
-        // [
-        //     // 公告窗
-        //     "@vuepress-yard/vuepress-plugin-window",
-        //     {
+        // 公告窗
+        //     "@vuepress-yard/vuepress-plugin-window":{
         //         title: "公告",
         //         windowStyle: { left: '41%', top: '200px', width: '260px', },
         //         contentInfo: {
@@ -79,9 +70,7 @@ module.exports = {
         //         },
         //         closeOnce: true
         //     }
-        // ]
-    ],
-
+    },
     // 主题设置
     themeConfig: {
         // 主题样式
