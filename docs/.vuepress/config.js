@@ -6,7 +6,7 @@ module.exports = {
     // 端口配置 80是默认端口(手动部署服务器时用)
     // port: 80,
     // base: '/',
-    theme: 'reco', //启动主题 已安装的有  默认 / reco
+    theme: 'reco', //启动主题 已安装的有  默认reco
     // 标题栏图标
     head: [
         // 改变title的图标，图标放在public文件夹中，herf后直接 '/图片.格式' ，不要./
