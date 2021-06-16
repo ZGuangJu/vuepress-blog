@@ -46,8 +46,8 @@ showSponsor: true
 ## 数据类型检测方法(4种)
 
 1. `typeof(value)` 检测数据类型的逻辑运算符
-2. `instanceof` 判断一个对象是否是数据类型的实例
-3. `constructor` 检测构造函数
+2. `value instanceof Number` 判断一个对象是否是数据类型的实例
+3. `(value).constructor === Number` 检测构造函数
 4. `Object.prototype.toString.call(value)` 检测数据类型的方法库
 
 :::details 检测方法详解
