@@ -139,6 +139,7 @@ module.exports = {
                     { text: 'Class', link: '/Frontend/Class/class1' },
                     { text: 'TypeScript', link: '/Frontend/TS/ts1' },
                     { text: '正则', link: '/Frontend/regex' },
+                    { text: '算法', link: '/Frontend/algorithm' },
                     { text: 'Webpack4.0', link: '/Webpack/webpack1' },
                     { text: '常用代码', link: '/Frontend/Piece/commons' }
                 ]
@@ -154,7 +155,7 @@ module.exports = {
             },
             //后端，暂未启用
             {
-                text: '后端技术',
+                text: '后端',
                 items: [
                     // { text: 'JAVA 的了解', link: '/Backend/JAVA' },
                     { text: 'Linux', link: '/Linux/debian' },
@@ -303,6 +304,11 @@ module.exports = {
                     // 正则
                     title: '正则',
                     link: "regex"
+                },
+                {
+                    // 算法
+                    title: '算法',
+                    link: "algorithm"
                 },
                 {
                     title: '常用代码片段',

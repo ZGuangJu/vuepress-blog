@@ -34,180 +34,41 @@
             padding: 0;
         }
 
-        .box {
-            width: 85%;
-            margin: 30px auto;
-            background: blue;
-        }
-
-        .box>div {
-            height: 300px;
-            margin-bottom: 15px;
-            float: left;
-
-            background: chocolate;
-        }
-
-
-
-
-        @media screen and (min-width: 992px) {
-            .box>div {
-                width: 31%;
-            }
-
-            .box>div:nth-child(2),
-            .box>div:nth-child(5) {
-                margin-left: 2%;
-                margin-right: 2%;
-            }
-        }
-
-        @media screen and (min-width: 768px) and (max-width:991px) {
-            .box>div {
-                width: 49%;
-            }
-
-            .box>div:nth-child(odd) {
-                margin-right: 2%;
-
-            }
-        }
-
-        @media screen and (max-width: 767px) {
-            .box>div {
-                width: 98%;
-            }
-
-        }
-
-        .boxa>ul>li {
-            float: left;
-            position: relative;
-            list-style: none;
-        }
-
-
-
-        .boxa>ul>li:hover .one {
-            display: block;
-        }
-
-        .boxa>ul>li>a {
-            margin: 2px;
-            padding: 5px 20px;
-            background: aquamarine;
-            text-decoration: none;
-        }
-
-        .drop>a:hover {
-            background: white;
-        }
-
-
-        .boxa>ul::after {
-            content: "";
-            display: block;
-            clear: both;
-        }
-
-        .aaa {
-            /* display: none; */
-            position: absolute;
-            height: 0px;
-            width: 200px;
-            background: cadetblue;
-            box-shadow: 0 0 5px;
-            top: 28px;
-            left: -55px;
-            /* display: none; */
-            overflow: hidden;
-            transition: all .2s;
-            line-height: 200px;
-        }
-
-        .boxa>ul>li:hover .aaa {
+        div {
             height: 200px;
-            line-height: 200px;
+            /* line-height: 200px; */
         }
 
-        .one {
-            width: 200px;
-            height: 200px;
-            background: rgb(0, 196, 130);
-            position: absolute;
-            top: 26px;
-            left: 2px;
-            display: none;
-        }
-
-        .demo {
-            width: 0;
-            height: 0;
-            border-bottom: 10px solid red;
-            /* border-top: 10px solid blue; */
-            border-left: 10px solid transparent;
-
-            border-right: 10px solid rgb(120, 163, 76, 0);
+        input {
+            height: 40px;
         }
     </style>
     <script src="js.js"></script>
+
+
 </head>
 
 <body>
-    <div class="boxa">
-        <ul>
-            <li>
-                <a href="#">首页</a>
-                <div class="one">
-                </div>
-            </li>
-            <li>
-                <a href="#">首页</a>
-                <div class="one"></div>
-            </li>
-            <li>
-                <a href="#">首页</a>
-                <div class="one"></div>
-            </li>
-            <li>
-                <a href="#">首页</a>
-                <div class="one"></div>
-            </li>
-            <li>
-                <a href="#">首页</a>
-            </li>
-            <li class="drop">
-                <a class="target" href="#">首页</a>
-                <div class="aaa">后双方就安分
-                </div>
-            </li>
-            <li class="divider"><a href="#">首页</a></li>
-        </ul>
+    <div>
+
+        123
+        <input type="text">
     </div>
-    <!--  -->
-    <div class="box">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-    <div class="demo"></div>
     <script>
-        var x = 5
-        var y = "2"
-        var z = true
-        console.log(++x);
-        // console.log(y--);
-        console.log(y + z);
-        console.log(z + y);
-        console.log(y + z);
-        console.log(y - z);
-        console.log(y * z);
-        console.log(y / z);
+        var a = "123456789"
+        var b = a.split("").reverse().join("")
 
 
+        var i = Number("a");
+        console.log(i);
+        if (i == undefined) {
+            console.log(1);
+
+        } else {
+            console.log(2);
+        }
+        console.log(undefined === null);
+        console.log(typeof undefined);
     </script>
 </body>
 
