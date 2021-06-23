@@ -142,21 +142,55 @@ console.log(newarr);
 ### 获取数组中最大的一项
 
 ```js
-var array = [1, 2, 3];
-var max = Math.max.apply(null, array);
+var arr = [1, 2, 3];
+var max = Math.max.apply(null, arr);
 console.log(max);//3
-// 或
-var array = [1, 2, 3];
-var max = Math.max.apply(this, array);
+```
+
+或
+
+```js
+var arr = [1, 2, 3];
+var max = Math.max.apply(this, arr);
 console.log(max);//3
+```
+
+或
+
+```js
+var arr = [1, 2, 3];
+console.log(Math.max(...arr))
+var
 ```
 
 ### 获取数组中最小的一项
 
 ```js
-var array = [1, 2, 3];
-var max = Math.min.apply(null, array);
-console.log(max); //3
+var arr = [1, 2, 3];
+var max = Math.min.apply(null, arr);
+console.log(max); //1
+```
+
+```js
+ var a = [1, 2, 3, 4, 5]
+console.log(Math.min(...a));
+```
+
+### 随机取数组中一项
+
+```js
+ var a = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
+
+        for (let i = 0; i < 50; i++) {
+            function randoms(arr) {
+                function ran(max, min) {
+                    return Math.floor(Math.random() * (max - min)) + min
+                }
+                var b = ran(arr.length, 0)
+                return arr[b]
+            }
+            console.log(randoms(a));
+        }
 ```
 
 ### 数组去重
@@ -336,4 +370,31 @@ obj.addElem({});
 obj.addElem({});
 console.log(obj.length);
 // → 2
+```
+
+## Math
+
+### 随机数(伪)
+
+```js
+// 0-9
+    Math.floor(Math.random()*10)
+```
+
+### 两数随机(伪)
+
+```js
+    function Randoms(max,min){
+    return Math.floor(Math.random()*(max-min)+min)
+    }
+    Randoms(10,1)
+```
+
+### 真随机
+
+```js
+// 可以用 Int8Array 2位 Uint8Array 2位 Int16Array 5位  Uint16Array 5位 Int32Array +-10位 或 Uint32Array 10位
+    var arr = new Uint32Array(1)
+    var a = window.crypto.getRandomValues(arr)
+    console.log(a);
 ```
