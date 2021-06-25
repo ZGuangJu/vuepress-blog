@@ -17,7 +17,8 @@ showSponsor: true
 - 反转字符串
 
 ```js
-
+var str = "abcdefgh"
+console.log(str.split("").reverse().join(""))
 ```
 
 ## 数组
@@ -94,12 +95,19 @@ flatten(problem); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ### 数组去重合并
 
 ```js
-function combine(){
-    let arr = [].concat.apply([], arguments);  //没有去重复的新数组
-    return Array.from(new Set(arr));
-}
-var m = [1, 2, 2], n = [2,3,3];
-console.log(combine(m,n));
+    function combine(){
+        let arr = [].concat.apply([], arguments);  //没有去重复的新数组
+        return Array.from(new Set(arr));
+    }
+    var m = [1, 2, 2], n = [2,3,3];
+    console.log(combine(m,n));
+```
+
+```js
+    var arr1 = [1, 2, 1, 2, 1, 3, 5, 4, 6, 8]
+    var arr2 = ["a", "b", "a", "b", "c", "d", "e", "f"]
+    var arrAll = arr1.concat(arr2)
+    console.log([...new Set(arrAll)]);
 ```
 
 ### 合并两个数组
