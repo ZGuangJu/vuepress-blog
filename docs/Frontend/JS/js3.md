@@ -21,6 +21,12 @@ var str = "abcdefgh"
 console.log(str.split("").reverse().join(""))
 ```
 
+### 字符串去重
+
+```js
+
+```
+
 ## 数组
 
 ### 伪数组转真数组
@@ -91,6 +97,42 @@ flatten(problem); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
  var arr = [1, 2, 3, [4, 5, [6, 7], 8, 9]].flat(2);
  console.log(arr); //[1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
+
+### 数组去重
+
+:::details
+
+1. `js` 方式
+
+```js
+var arr=['12','32','89','12','12','78','12','32'];
+    // 最简单数组去重法
+    function unique1(array){
+        var n = []; //一个新的临时数组
+        for(var i = 0; i < array.length; i++){ //遍历当前数组
+            if (n.indexOf(array[i]) == -1)
+                n.push(array[i]);
+        }
+        return n;
+    }
+    arr=unique1(arr);
+```
+
+2. 扩展运算符，`Set`类型
+
+```js
+    // 数组去重1
+    var a = ["1", "2", "3", "4", "5", "1", "2", "3", "4", "5"];
+    let b = Array.from(new Set(a));
+    console.log([...b]);
+
+    // 数组去重2
+    var a = ["1", "2", "3", "4", "5", "1", "2", "3", "4", "5"];
+    let b = new Set(a);
+    console.log(b);
+```
+
+:::
 
 ### 数组去重合并
 
@@ -200,42 +242,6 @@ console.log(Math.min(...a));
             console.log(randoms(a));
         }
 ```
-
-### 数组去重
-
-:::details
-
-1. `js` 方式
-
-```js
-var arr=['12','32','89','12','12','78','12','32'];
-    // 最简单数组去重法
-    function unique1(array){
-        var n = []; //一个新的临时数组
-        for(var i = 0; i < array.length; i++){ //遍历当前数组
-            if (n.indexOf(array[i]) == -1)
-                n.push(array[i]);
-        }
-        return n;
-    }
-    arr=unique1(arr);
-```
-
-2. 扩展运算符，`Set`类型
-
-```js
-    // 数组去重1
-    var a = ["1", "2", "3", "4", "5", "1", "2", "3", "4", "5"];
-    let b = Array.from(new Set(a));
-    console.log([...b]);
-
-    // 数组去重2
-    var a = ["1", "2", "3", "4", "5", "1", "2", "3", "4", "5"];
-    let b = new Set(a);
-    console.log(b);
-```
-
-:::
 
 ### 数组的排序
 
