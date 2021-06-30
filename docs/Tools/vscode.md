@@ -18,6 +18,77 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
 
 ## 自定义代码片段
 
+### 语法简介
+
+```js
+"Print to 代码块名称": {
+    "prefix": "对应触发代码片段的字符",
+    "body": [
+      "代码块内容，必须使用双引号引起来",
+      "此处为光标首次所在: $1",
+      "此处为光标二次所在: $2",
+      "此处为当前时间: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}"
+    ],
+    "description": "代码块描述，会在快捷键右侧注释处展示"
+
+```
+
+其他语法：
+
+1. 占位符之光标  `$number`
+
+`$`后面紧跟数字可指定代买片段触发并落入编辑器之后的光标位置，光标位置按照从小到大排序,可以使用 `tab` 键切换到下一个。
+
+如上，代码片段添加到文件中后，光标首`1`先落在`$1`处，按`Tab`键，光标落在`$2`位置
+
+2. 占位符之可选值  `${ number | a }`
+
+括号中的 `number`  对应的是按 `tab` 之后的光标落点顺序， `abc` 为可选的项，
+
+如果只有一个默认值，可以写成：`${ 1: default }`
+
+支持嵌套模式，例如：`${ 1: another  ${ 2: company } }`
+
+3. 占位符之变量 `$variable` , `${ variable : default }`
+
+使用`$variable`，可以插入变量的值，`${ variable : default }`可以在未赋值的情况下提供默认值
+
+可使用变量如下：
+
+a. 文本或文件相关类:
+
+| 变量名             | 含义                           |
+| :----------------- | :----------------------------- |
+| `TM_SELECTED_TEXT` | 当前选定的文本或空字符串       |
+| `TM_CURRENT_LINE`  | 当前行的内容                   |
+| `TM_CURRENT_WORD`  | 光标所处单词或空字符串         |
+| `TM_LINE_INDEX`    | 行号（从零开始）               |
+| `TM_LINE_NUMBER`   | 行号（从一开始）               |
+| `TM_FILENAME`      | 当前文档的文件名（含后缀名）   |
+| `TM_FILENAME_BASE` | 当前文档的文件名（不含后缀名） |
+| `TM_DIRECTORY`     | 当前文档所在目录               |
+| `TM_FILEPATH`      | 当前文档的完整文件路径         |
+| `CLIPBOARD`        | 当前剪贴板中内容               |
+| `WORKSPACE_NAME`   | 打开的工作区或文件夹的名称     |
+| `WORKSPACE_FOLDER` | 打开的工作区或文件夹的路径     |
+
+b. 日期和时间类
+| 变量名                     | 含义                                |
+| :------------------------- | :---------------------------------- |
+| `CURRENT_YEAR`             | 当前年份                            |
+| `CURRENT_YEAR_SHORT`       | 当前年份的后两位                    |
+| `CURRENT_MONTH`            | 格式化为两位数字的当前月份，如 `02` |
+| `CURRENT_MONTH_NAME`       | 当前月份的全称，如 `July`           |
+| `CURRENT_MONTH_NAME_SHORT` | 当前月份的简称，如 `Jul`            |
+| `CURRENT_DATE`             | 当天月份第几天                      |
+| `CURRENT_DAY_NAME`         | 当天周几，如 `Monday`               |
+| `CURRENT_DAY_NAME_SHORT`   | 当天周几的简称，如 `Mon`            |
+| `CURRENT_HOUR`             | 当前小时（`24` 小时制）             |
+| `CURRENT_MINUTE`           | 当前分钟                            |
+| `CURRENT_SECOND`           | 当前秒数                            |
+
+4. 转义字符，作普通字符使用时，`$` ,  `}` , `"`  ,`\`  等 可使用 `\`（反斜杠）转义。
+
 :::details
 
 ```js
@@ -28,230 +99,260 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
     // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
     // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
     // Placeholders with the same ids are connected.
-    // Example:
+    // Example(例子):
+    //  模板名称
     // "Print to console": {
+    //  需生效文件
     //  "scope": "javascript,typescript",
+    //  触发字符
     //  "prefix": "log",
+    //  主体内容
     //  "body": [
     //   "console.log('$1');",
     //   "$2"
     //  ],
+    //  描述
     //  "description": "Log output to console"
     // }
+
+    // 全局用
     "DOCTYPE": {
-        "prefix": "h",
+        "prefix": "html",
+        "description": "HTML常用标签模板",
         "body": [
-            "<!DOCTYPE html>"
-   "<html lang=\"en\">"
-
-   "<head>"
-    "<meta charset=\"UTF-8\">"
-    "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">"
-    "<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">"
-    "<!-- <meta http-equiv=\"refresh\" content=\"5\"> -->"
-    "<title>$1Document</title>"
-    "\t<script src=\"$2../vue.js\"></script>"
-   "</head>"
-
-   "<body>"
-    "<div id=\"app\">"
-     "$3"
-    "</div>"
-    "<script>"
-     "$4"
-    "</script>"
-   "</body>"
-
-   "</html>$5"
-        ],
-        "description": "HTML常用标签模板"
-    },
-    "Vue模板": {
-        "prefix": "vt",
-        "body": [
-            "<template>",
-            "  <section class=\"$TM_FILENAME_BASE\">",
-            "    $1",
-            "  </section>",
-            "</template>\n",
+            "<!DOCTYPE html>",
+            "<html lang=\"en\">",
+            "<head>",
+            "<meta charset=\"UTF-8\">",
+            "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+            "<meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">",
+            "<!-- <meta http-equiv=\"refresh\" content=\"5\"> -->",
+            "<title>$1Document</title>",
+            "\t<script src=\"$2../vue.js\"></script>",
+            "</head>",
+            "<body>",
+            "<div id=\"app\">",
+            "$3",
+            "</div>",
             "<script>",
-            "export default {",
-            " name: '$TM_FILENAME_BASE',",
-            "  data() {",
-            "    return {\n",
-            "    }",
-            "  },",
-            "  components: {},",
-            "  watch: {},",
-            "  mounted() {},",
-            "  methods: {}",
-            "}",
-            "</script>\n",
-            "<style scoped lang=\"less\">\n",
-            "</style>",
-            "$0"
-        ],
-        "description": "Vue模板"
+            "$4",
+            "</script>",
+            "</body>",
+            "</html>$5"
+        ]
     },
-    "components": {
-        "prefix": "components",
-        "body": [
-            "components: {"
-   "\"${1|parent-component,child-component|}\": {"
-    "template: `"
-     "<div>"
-      "<div></div>$2"
-     "</div>`,"
-     "props: {""
-      "\"$4msg\": {"
-       "type: ${5|Number,String,[Number String]|}"
-      "}"
-     "}"
-    "}"
-   "}"
-        ],
-        "description": "vue创建子组件"
-    },
-    "component全局": {
-        "prefix": "Vcomponent",
-        "body": [
-            "Vue.component(\"$1component-name\", {"
-               " template: `"
-                   " <div>"
-                      "  $2"
-                  "  </div>"
-              " `,"
-             "   data() {"
-                    "return {"
-                        "$3"
-                "}"
-            "},"
-                "methods: {"
-                   " $4"
-            "},"
 
-                "props: {"
-                    "$5"
-            "},"
-                "components: {"
-                "\"$6component-name-two\": {"
-                        "template: `"
-                            "<div>"
-                                "$7"
-                            "</div>"
-                        "`,"
-                        "data() {"
-                            "return {"
-                                "$8"
-                    "}"
-                "},"
-                        "props: {"
-                            "$9"
-                "},"
-                        "methods: {"
-                            "$10"
-                "},"
-            "}"
-        "}"
-    "})"
-        ],
-        "description": "vue创建子组件"
-    },
-    "Vue实例模板": {
-        "prefix": "vm",
-        "body": [
-            "var vm = new Vue({"
-    "el: \"#$1app\","
-    "data: {"
-     "$2"
-
-    "},"
-    "props: {"
-     "$3"
-
-    "},"
-    "methods: {"
-     "$4"
-
-    "},"
-    "computed: {"
-     "$5"
-
-    "},"
-    "watch: {"
-     "$6"
-
-    "},"
-    "components: {"
-     "$7"
-
-    "}"
-   "})"
-        ],
-        "description": "Vue实例模板"
-    },
-    "console.log": {
+    "console.log 选中项": {
         "prefix": "cl",
-        "body": [
-            "console.log($1);",
-        ],
-        "description": "console.log输出控制台"
+        "description": "console.log输出控制台",
+        "body": ["console.log($TM_SELECTED_TEXT,\"$TM_LINE_NUMBER行\")"]
     },
+    "console.log 选中项+时间": {
+        "prefix": "cl",
+        "description": "console.log输出控制台",
+        "body": [
+            "console.log($TM_SELECTED_TEXT,\"$TM_LINE_NUMBER行,$CURRENT_HOUR点$CURRENT_MINUTE:$CURRENT_SECOND\")"
+        ]
+    },
+
+    "console.log 剪贴板": {
+        "prefix": "clc",
+        "description": "console.log输出控制台",
+        "body": ["console.log($CLIPBOARD,\"$TM_LINE_NUMBER行\")"]
+    },
+    "console.log 剪贴板+时间": {
+        "prefix": "clc",
+        "description": "console.log输出控制台",
+        "body": [
+            "console.log($CLIPBOARD,\"$TM_LINE_NUMBER行,$CURRENT_HOUR点$CURRENT_MINUTE:$CURRENT_SECOND\")"
+        ]
+    },
+
     "function": {
         "prefix": "fun",
-        "body": [
-            "function ($1) {"
-    " $2"
-   "}"
-        ],
-        "description": "function模板01"
+        "description": "function模板01",
+        "body": ["function ${1:Dosome}() {", "${2:console.log()}", "}"]
     },
-    "function2": {
-        "prefix": "func",
-        "body": [
-            "name$1(){return$2};"
-        ],
-        "description": "function模板02"
+
+    "箭头函数": {
+        "prefix": "=>",
+        "description": "箭头函数1",
+        "body": ["($1)=>{", "$2", "}"]
     },
-    "template": {
-        "prefix": "template",
-        "body": [
-            "<template>"
-       "$1"
-   "</template>"
-   "<script>"
-       "export default {"
-       "$2"
-      "};"
-   "</script>"
-   "<style>"
-       "$3"
-   "</style>"
-        ],
-        "description": "template VUE组件"
+
+    "箭头函数2": {
+        "prefix": "req=",
+        "description": "箭头函数2",
+        "body": ["(req,res $1)=>{", "$2", "}"]
     },
-    "props": {
-        "prefix": "props",
-        "body": [
-            "props: {"
-                    "$1"
-                "},"
-        ],
-        "description": "props VUE组件"
+
+    "for循环": {
+        "prefix": "for",
+        "description": "for循环",
+        "body": ["for (let i = 0; i < ${1:array}.length; i++) {", "$2", "}"]
     },
-    "jquery": {
-        "prefix": "$",
+
+    "forin循环": {
+        "prefix": "forin",
+        "description": "forin循环",
+        "body": ["for (let key in ${1:obj}) {", "$2", "}"]
+    },
+
+    "forof循环": {
+        "prefix": "forof",
+        "description": "forof循环",
+        "body": ["for (let iterator of ${1:arr}) {", "$2", "}"]
+    },
+
+    // vue 用
+    "components": {
+        "scope": "vue",
+        "prefix": "components",
+        "description": "vue创建子组件",
         "body": [
-            "$(function () {"
-            "$1"
+            "components: {",
+            "\"${1|parent-component,child-component|}\": {",
+            "template: `",
+            "<div>",
+            "<div></div>$2",
+            "</div>`,",
+            "props: {",
+            "\"$4msg\": {",
+            "type: ${5|Number,String,[Number String]|}",
+            "}",
+            "}",
+            "}",
+            "}"
+        ]
+    },
+
+    "component全局": {
+        "scope": "vue",
+        "prefix": "Vcomponent",
+        "description": "vue创建子组件",
+        "body": [
+            "Vue.component(\"$1component-name\", {",
+            "template: `<div>$2</div>`,",
+            "data() {",
+            "return {",
+            "$3",
+            "}",
+            "},",
+            " methods: {",
+            "$4",
+            "},",
+            "props: {",
+            "$5",
+            "},",
+            "components: {",
+            "\"$6component-name-two\": {",
+            "template: `<div>$7</div>`,",
+            "data() {",
+            "return {",
+            "$8",
+            "}",
+            "},",
+            "props: {",
+            "$9",
+            "},",
+            "methods: {",
+            "$10",
+            "},",
+            "}",
+            "}",
             "})"
-        ],
-        "description": "props VUE组件"
+        ]
+    },
+
+    "Vue实例模板": {
+        "scope": "vue",
+        "prefix": "vm",
+        "description": "Vue实例模板",
+        "body": [
+            "var vm = new Vue({",
+            "el: \"#$1app\",",
+            "data: {",
+            "$2",
+            "},",
+            "props: {",
+            "$3",
+            "},",
+            " methods: {",
+            "$4",
+            "},",
+            "computed: {",
+            "$5",
+            "},",
+            "watch: {",
+            "$6",
+            "},",
+            "components: {",
+            "$7",
+            "}",
+            "})",
+            ""
+        ]
+    },
+
+    "Vue template框架": {
+        "scope": "vue",
+        "prefix": "temp",
+        "description": "template框架 VUE组件",
+        "body": [
+            "<template>",
+            "<div class=\"$TM_FILENAME_BASE\">$1</div>",
+            "</template>",
+            "<script>",
+            "// import {} from '/'",
+            "export default {",
+            " name: \"$TM_FILENAME_BASE\",",
+            "data() {",
+            "return {$2};",
+            "},",
+            "components: {},",
+            "watch: {},",
+            "mounted() {},",
+            "methods: {},",
+            "};",
+            "</script>",
+            "<style scoped>",
+            "$3",
+            "</style>"
+        ]
+    },
+
+    "props": {
+        "scope": "vue",
+        "prefix": "props",
+        "description": "props VUE组件",
+        "body": ["props: {", "$1", "},"]
+    },
+
+    "jquery": {
+        "prefix": "$(",
+        "description": "props VUE组件",
+        "body": ["$(function () {", "$1", "}"]
+    },
+
+    "irr": {
+        "scope": "react",
+        "prefix": "irr",
+        "description": "React片段",
+        "body": ["import React from 'react'"]
+    },
+
+    "ird": {
+        "scope": "react",
+        "prefix": "ird",
+        "description": "React片段",
+        "body": ["import ReactDOM from 'react-dom'"]
     }
 }
+
 ```
 
 :::
+[参考](https://code.visualstudio.com/docs/editor/userdefinedsnippets)
 
 ## VScode 设置 settings.json 文档
 
@@ -259,11 +360,6 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
 
 ```js
 {
-    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻windows设置开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
-    // 窗口放大倍数
-    "window.zoomLevel": 0,
-    // "activityBar.activeBorder": "",
-    // 建议控件--底部显示它自己的状态栏
     "editor.suggest.showStatusBar": true,
     "editor.suggest.insertMode": "replace", // insert 插入 replace 替换
     "editor.formatOnPaste": true, //自动格式化
@@ -274,7 +370,7 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
     "editor.fontWeight": 500, // 字体宽度从1到1000的值，以及字符串值“ normal”和“ bold”。
     // 已安装字体 Source Code Pro \ DejaVu Sans Code \Sarasa Term SC \Hasklig \JetBrains Mono \ Fira Code \ Victor Mono \ Monoid \ Cascadia Code \ Iosevka
     // "editor.fontFamily": "Consolas,'Source Code Pro', monospace,'Sarasa Term SC'", // 原字体
-    "editor.fontFamily": "DejaVu Sans Code, monospace,'Sarasa Term SC'", // 字体 Fira Code \ Victor Mono \ Cascadia Code \ DejaVu Sans Code
+    "editor.fontFamily": "DejaVu Sans Code, monospace,'Sarasa Term SC'", // 字体 Cascadia Code \ Fira Code \ Victor Mono \  DejaVu Sans Code
     "editor.fontLigatures": true, // 启用连体字
     "editor.fontSize": 20, // 字体大小
     "editor.detectIndentation": false, // vscode默认启用了根据文件类型自动设置tabsize的选项
@@ -344,6 +440,11 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
     },
     // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺全局编辑器editor设置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
     // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于eslint插件配置🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于window插件配置🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+    // 自定义对话框样式  button.secondaryBackground
+    "window.dialogStyle": "custom",
+
+    // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺全局编辑器window设置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
     //保存时eslint自动修复错误/是否根据eslint进行格式化
     "eslint.codeActionsOnSave.mode": "problems", // all | problems
     // eslint配置文件
@@ -351,6 +452,7 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
         "extensions": [
             ".js",
             ".vue",
+            "ts",
             ".html" //???
         ]
         // 外部的 eslint 配置文件位置 （未启用）
@@ -365,6 +467,7 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
         "css",
         "css3",
         "vue",
+        "ts",
         "vue-html",
         "jsx",
         "json"
@@ -391,6 +494,15 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
         "editor.formatOnSave": true
     },
     // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺stylelint和prettier设置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "compressed", //expanded
+            "extensionName": ".min.css",
+            "savePath": "/dist/css"
+        }
+    ],
+    // 不输出地图文件
+    "liveSassCompile.settings.generateMap": false,
     // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻Markdownlint设置开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
     "markdownlint.config": {
         "MD003": false,
@@ -465,8 +577,7 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
             "editor.selectionHighlightBackground": "#999999", //#e3dede
             // 选中高亮的颜色
             "editor.selectionBackground": "#004e66", //"#434e61c9",
-            // terminal 终端中的光标
-            "terminalCursor.foreground": "#CCFF00",
+
             // //侧边栏资源管理器区域的标题栏颜色
             "sideBarSectionHeader.background": "#32363d"
             //区域获取焦点时
@@ -529,6 +640,10 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
     // },
     // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺关于files配置结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
     // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于terminal配置🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+    //在重新加载窗口时保留终端进程
+    "terminal.integrated.enablePersistentSessions": true,
+    // terminal 终端中的光标
+    "terminalCursor.foreground": "#CCFF00",
     // terminal 光标样式
     "terminal.integrated.cursorBlinking": true,
     // "terminal.integrated.cursorStyle": "line",
@@ -536,6 +651,19 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
     // "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe", //cmd
     // "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe", //powershell 5.x
     "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe", //powershell 7.1.0
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "overrideName": true
+            // "icon": "terminal-powershell",
+            // "env": {
+            //     "TEST_VAR": "value"
+            // }
+        }
+    },
+    // "terminal.integrated.defaultProfile.windows": "PowerShell",
+    //终端选项卡可以作为预览功能
+    "terminal.integrated.tabs.enabled": true,
     // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺关于terminal结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
     // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于emmet配置开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
     "emmet.includeLanguages": {
@@ -545,7 +673,8 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
 
     // (未启用)
     // // 配置emmet是否启用tab展开缩写
-    // "emmet.triggerExpansionOnTab": true,
+    "emmet.triggerExpansionOnTab": true,
+
     // 在vue文件里设置html关联配置 -- emmet对文件类型的支持
     "emmet.syntaxProfiles": {
         "javascript": "jsx",
@@ -573,6 +702,73 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
     //注：Vetur自带了格式化，规范就是使用prettier如果你有装prettier插件，并且在设置或setting.json里配置了prettier的话是无效的
     // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺关于vetur插件结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
     // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于Easy Sass插件开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+    // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于 TODO 插件开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
+    "todohighlight.isEnable": true,
+    "todohighlight.isCaseSensitive": true,
+    "todohighlight.keywords": [
+        "DEBUG:",
+        "REVIEW:",
+        {
+            "text": "NOTE:",
+            "color": "blue",
+            "backgroundColor": "blue",
+            "overviewRulerColor": "grey"
+        },
+        {
+            "text": "HACK:",
+            "color": "#000",
+            "isWholeLine": false
+        },
+        {
+            "text": "TODO:",
+            "color": "red",
+            "border": "2px solid red",
+            "borderRadius": "2px", //NOTE: using borderRadius along with `border` or you will see nothing change
+            "backgroundColor": "rgba(0,0,0,.2)"
+            //other styling properties goes here ...
+        }
+    ],
+    // 自定义
+    "todohighlight.keywordsPattern": "TODO:|FIXME:|NOTE:",
+    // 原版设置
+    //  "todohighlight.keywordsPattern": "TODO:|FIXME:|\\(([^)]+)\\)", //highlight `TODO:`,`FIXME:` or content between parentheses
+    "todohighlight.defaultStyle": {
+        "color": "red",
+        "backgroundColor": "#ffab00",
+        "overviewRulerColor": "#42A5F5",
+        // "cursor": "pointer",
+        "border": "2px solid #eee",
+        "borderRadius": "20px",
+        "isWholeLine": true
+        //other styling properties goes here ...
+    },
+    "todohighlight.include": [
+        "**/*.vue",
+        "**/*.js",
+        "**/*.jsx",
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.html",
+        "**/*.php",
+        "**/*.css",
+        "**/*.scss"
+    ],
+    "todohighlight.exclude": [
+        "**/node_modules/**",
+        "**/bower_components/**",
+        "**/dist/**",
+        "**/build/**",
+        "**/.vscode/**",
+        "**/.github/**",
+        "**/_output/**",
+        "**/*.min.*",
+        "**/*.map",
+        "**/*.json",
+        "**/.next/**"
+    ],
+    "todohighlight.maxFilesForSearch": 5120,
+    "todohighlight.toggleURI": false,
+    // 🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺关于 TODO 插件结束🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺🔺
     // (未启用)
     // "easysass.formats": [
     //     {
@@ -607,7 +803,7 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
         // "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "vscode.html-language-features"
     },
     "[css]": {
         // 自动保存
@@ -677,9 +873,15 @@ Consolas,'Source Code Pro', monospace,'Sarasa Term SC'
     "[vue]": {
         "editor.defaultFormatter": "octref.vetur"
     },
-    "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImxhbmd1YWdlXCI6XCJcIixcImN1c3RvbUZvbnRzXCI6W10sXCJsaWJyYXJpZXNcIjpcImdlbmVyYWxcIixcImN1c3RvbUxpYnJhcmllc1wiOltcIkwuc2NyYXRjaHBhZFwiXSxcInBsdWdpbnNcIjpbXSxcInJlY2VudENvbG9yc1wiOltdLFwiZm9ybWF0V2lkdGhcIjpcIjI0MFwiLFwiY3JlYXRlVGFyZ2V0XCI6ZmFsc2UsXCJwYWdlRm9ybWF0XCI6e1wieFwiOjAsXCJ5XCI6MCxcIndpZHRoXCI6ODI3LFwiaGVpZ2h0XCI6MTE2OX0sXCJzZWFyY2hcIjp0cnVlLFwic2hvd1N0YXJ0U2NyZWVuXCI6dHJ1ZSxcImdyaWRDb2xvclwiOlwiI2QwZDBkMFwiLFwiZGFya0dyaWRDb2xvclwiOlwiIzZlNmU2ZVwiLFwiYXV0b3NhdmVcIjp0cnVlLFwicmVzaXplSW1hZ2VzXCI6bnVsbCxcIm9wZW5Db3VudGVyXCI6MCxcInZlcnNpb25cIjoxOCxcInVuaXRcIjoxLFwiaXNSdWxlck9uXCI6ZmFsc2UsXCJ1aVwiOlwiXCJ9In0="
+    "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImxhbmd1YWdlXCI6XCJcIixcImN1c3RvbUZvbnRzXCI6W10sXCJsaWJyYXJpZXNcIjpcImdlbmVyYWxcIixcImN1c3RvbUxpYnJhcmllc1wiOltcIkwuc2NyYXRjaHBhZFwiXSxcInBsdWdpbnNcIjpbXSxcInJlY2VudENvbG9yc1wiOltdLFwiZm9ybWF0V2lkdGhcIjpcIjI0MFwiLFwiY3JlYXRlVGFyZ2V0XCI6ZmFsc2UsXCJwYWdlRm9ybWF0XCI6e1wieFwiOjAsXCJ5XCI6MCxcIndpZHRoXCI6ODI3LFwiaGVpZ2h0XCI6MTE2OX0sXCJzZWFyY2hcIjp0cnVlLFwic2hvd1N0YXJ0U2NyZWVuXCI6dHJ1ZSxcImdyaWRDb2xvclwiOlwiI2QwZDBkMFwiLFwiZGFya0dyaWRDb2xvclwiOlwiIzZlNmU2ZVwiLFwiYXV0b3NhdmVcIjp0cnVlLFwicmVzaXplSW1hZ2VzXCI6bnVsbCxcIm9wZW5Db3VudGVyXCI6MCxcInZlcnNpb25cIjoxOCxcInVuaXRcIjoxLFwiaXNSdWxlck9uXCI6ZmFsc2UsXCJ1aVwiOlwiXCJ9In0=",
+    "editor.accessibilitySupport": "off",
+    "editor.linkedEditing": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "terminal.external.windowsExec": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    }
 }
-
 ```
 
 :::
