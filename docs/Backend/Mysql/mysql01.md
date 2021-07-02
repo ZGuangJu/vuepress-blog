@@ -7,6 +7,7 @@ categories:
 tags:
  - MySQL
 publish: true
+sticky: 8
 # 打赏
 showSponsor: true
 ---
@@ -16,6 +17,8 @@ showSponsor: true
 - [下载](https://downloads.mysql.com/archives/community/)
 
 下载的时候最好用5.7 之前的版本，听说5.8后的是收费的了
+
+<!-- more -->
 
 ## MySQL 启动服务
 

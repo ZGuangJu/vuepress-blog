@@ -8,7 +8,6 @@ tags:
  - 前端框架
  - 微信小程序
 publish: true
-sticky: 6
 # 打赏
 showSponsor: true
 ---

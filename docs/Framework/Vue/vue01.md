@@ -7,7 +7,7 @@ categories:
 tags:
  - vue
 publish: true
-sticky: 1
+sticky: 7
 # 打赏
 showSponsor: true
 ---

@@ -7,24 +7,106 @@ categories:
 tags:
 - JavaScript
 publish: true
+sticky: 2
 # 打赏
 showSponsor: true
 ---
-## 数字
+
+收集的`js`方法和轮子
+
+<!-- more -->
+
+## HTML
+
+### 将 html 标签转为字符串
+
+```js
+    function HTMLDOMtoString(HTMLDOM) {
+        const div = document.createElement("div");
+        div.appendChild(HTMLDOM);
+        return div.innerHTML;
+    }
+```
+
+### 获取 dom 标签元素的所有属性和属性值
+
+```js
+    var div = document.getElementsByTagName("div")[0]
+
+    function HTMLDOMtoString(HTMLDOM) {
+        const div = document.createElement("div");
+        div.appendChild(HTMLDOM);
+        let str = div.innerHTML;
+        let num = str.indexOf(">");
+        let arr = str.slice(1, num).split(" ").slice(1);
+        return arr
+    }
+
+    console.log(HTMLDOMtoString(div));
+```
 
 ## 字符串
 
 - 反转字符串
+
+1. `reverse()`
 
 ```js
 var str = "abcdefgh"
 console.log(str.split("").reverse().join(""))
 ```
 
-### 字符串去重
+2. `unshift()`
 
 ```js
+    var str = "abcdefgh"
+    function Reverse(str) {
+        let arr = []
+        let restr = str.split("")
+        for (let i = 0; i < restr.length; i++) {
+            arr.unshift(restr[i])
+        }
+        return arr.join("")
+    }
+    console.log(Reverse(str));
+```
 
+### 字符串去重
+
+   1. `for`循环
+
+```js
+    var str = "abcabcabc"
+    function DeRepet(str) {
+        var newStr = ""
+        for (let i = 0; i < str.length; i++) {
+            if (newStr.indexOf(str[i]) == -1) {
+                newStr += str[i]
+            }
+        }
+        return newStr
+    }
+```
+
+2. `Set()`
+
+```js
+    var str = "abcabcabc"
+    Array.from(new Set(str)).join("")
+```
+
+```js
+    var str = "abcabcabc"
+    [...new Set(str)].join("")
+```
+
+### 反转字符串
+
+```js
+var str = '12345';
+Array.prototype.map.call(str, function(x) {   //同时利用了call()方法
+  return x;
+}).reverse().join('');
 ```
 
 ## 数组
@@ -100,9 +182,21 @@ flatten(problem); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 ### 数组去重
 
-:::details
+1. 扩展运算符，`Set`类型
 
-1. `js` 方式
+```js
+    // 数组去重 1
+    var a = ["1", "2", "3", "4", "5", "1", "2", "3", "4", "5"];
+    let b = Array.from(new Set(a));
+    console.log(b);
+
+    // 数组去重 2
+    var a = ["1", "2", "3", "4", "5", "1", "2", "3", "4", "5"];
+    let b = [...new Set(a)];
+    console.log(b);
+```
+
+2. `js` 方式
 
 ```js
 var arr=['12','32','89','12','12','78','12','32'];
@@ -117,22 +211,6 @@ var arr=['12','32','89','12','12','78','12','32'];
     }
     arr=unique1(arr);
 ```
-
-2. 扩展运算符，`Set`类型
-
-```js
-    // 数组去重1
-    var a = ["1", "2", "3", "4", "5", "1", "2", "3", "4", "5"];
-    let b = Array.from(new Set(a));
-    console.log([...b]);
-
-    // 数组去重2
-    var a = ["1", "2", "3", "4", "5", "1", "2", "3", "4", "5"];
-    let b = new Set(a);
-    console.log(b);
-```
-
-:::
 
 ### 数组去重合并
 
@@ -156,7 +234,25 @@ var arr=['12','32','89','12','12','78','12','32'];
 
 - 合并到原数组（改变原数组）
 
-1
+1. `concat`
+
+```js
+var vegetables = ['parsnip', 'potato'];
+var moreVegs = ['celery', 'beetroot'];
+var newarr = vegetables.concat(moreVegs)
+console.log(newarr);
+```
+
+2. 展开操作符
+
+```js
+var vegetables = ["parsnip", "potato"];
+var moreVegs = ["celery", "beetroot"];
+vegetables.push(...moreVegs);
+console.log(vegetables);
+```
+
+3. `apply`
 
 ```js
 var vegetables = ['parsnip', 'potato'];
@@ -166,30 +262,27 @@ var moreVegs = ['celery', 'beetroot'];
 Array.prototype.push.apply(vegetables, moreVegs);
 // 或者另一个写法
 // vegetables.push.apply(vegetables, moreVegs);
-
 console.log(vegetables);
 // ['parsnip', 'potato', 'celery', 'beetroot']
 ```
 
-2
-
-```js
-var vegetables = ["parsnip", "potato"];
-var moreVegs = ["celery", "beetroot"];
-vegetables.push(...moreVegs);
-console.log(vegetables);
-```
-
-- 合并,并返回新数组
-
-```js
-var vegetables = ['parsnip', 'potato'];
-var moreVegs = ['celery', 'beetroot'];
-var newarr = vegetables.concat(moreVegs)
-console.log(newarr);
-```
-
 ### 获取数组中最大的一项
+
+1. for
+
+```js
+    function Max(arr) {
+        let maxNum = arr[0]
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] > maxNum) {
+                maxNum = arr[i]
+            }
+        }
+        return maxNum
+    }
+```
+
+2. Math
 
 ```js
 var arr = [1, 2, 3];
@@ -214,6 +307,22 @@ var
 ```
 
 ### 获取数组中最小的一项
+
+1. for
+
+```js
+    function Min(){
+        let minNum =arr[0]
+        for(let i=0 ;i<arr.length; i++){
+            if(arr[i]<minNum){
+                minNum = arr[i]
+            }
+        }
+        return minNum
+    }
+```
+
+2. Math
 
 ```js
 var arr = [1, 2, 3];
@@ -244,8 +353,6 @@ console.log(Math.min(...a));
 ```
 
 ### 数组的排序
-
-:::details
 
 1. `sort` 方法
 
@@ -285,30 +392,17 @@ var compare = function (obj1, obj2) {
 console.log(arr.sort(compare));
 ```
 
-:::
-
-### 反转字符串
+### 数组求和  `reducer()`
 
 ```js
-var str = '12345';
-Array.prototype.map.call(str, function(x) {   //同时利用了call()方法
-  return x;
-}).reverse().join('');
-```
-
-### 字符串循环转数字（数字字符串）
-
-```js
-function returnInt(element){
-  return parseInt(element,10);
-}
-
-["1", "2", "3"].map(returnInt);　
+    function Reduce(arr) {
+        return arr.reduce((start, item, index, arr) => {
+            return start += item
+        }, 0)
+    }
 ```
 
 ### 递归求和
-
-:::details
 
 1. `js`
 
@@ -324,34 +418,25 @@ function returnInt(element){
      var sum =add(1,2)
 ```
 
-2. 数组求和 方法 `reducer()`
-
-？
-:::
-
 ### 计算数组各项的重复次数
 
-:::details
-
 ```js
-var arr=['胡将','胡将','hujiang','胡将','胡江','hujiang'];
-var obj={};
-arr.sort();    //先排序
-for(var i=0;i<arr.length;){
- var con=0;
- for(var j=i;j<arr.length;j++){
-  if(arr[i]===arr[j]){
-   con++
-  }
- }
- obj[arr[i]]=con;
- i=i+con;    //跳过重复的值
-}
+    var arr = ['胡将', '胡将', 'hujiang', '胡将', '胡江', 'hujiang'];
+    var obj = {};
+    arr.sort();    //先排序
+    for (var i = 0; i < arr.length;) {
+        var count = 0;
+        for (var j = i; j < arr.length; j++) {
+            if (arr[i] === arr[j]) {
+                count++
+            }
+        }
+        obj[arr[i]] = count;
+        i = i + count;    //跳过重复的值
+    }
 
-console.log(obj);  //{ hujiang: 2, '胡将': 3, '胡江': 1 }
+    console.log(obj); //{ hujiang: 2, '胡将': 3, '胡江': 1 }
 ```
-
-:::
 
 - `shift()` 下例中每个循环将要从一个数组中移除下一项元素，直至它成为空数组。
 
@@ -364,9 +449,26 @@ while( (i = names.shift()) !== undefined ) {
 // Andrew, Edward, Paul, Chris, John
 ```
 
+### 数组中的字符串循环转数字（数字字符串）
+
+```js
+    var arr = ["1", "2", " 3"]
+    function toNumber(arr) {
+        return arr.map((item) => {
+            return parseInt(item, 10)
+        })
+    }
+```
+
+### 数组中的数字转字符串
+
+```js
+[1,2,3,4,5,6].join("").split("")
+```
+
 ## 对象
 
-- 像数组一样使用对象
+### 像数组一样使用对象
 
 ```js
 var obj = {

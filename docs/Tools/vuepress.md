@@ -7,6 +7,7 @@ categories:
 tags:
  - VuePress
 publish: true
+sticky: 11
 # 打赏
 showSponsor: true
 ---
@@ -20,6 +21,8 @@ showSponsor: true
 - `Google Analytics` 集成
 - 支持 `PWA`
 :::
+
+<!-- more -->
 
 ## 一、 创建 vuepress 项目(新版)
 

@@ -7,7 +7,7 @@ categories:
 tags:
  - npm
 publish: true
-sticky: 3
+sticky: 9
 # 打赏
 showSponsor: true
 ---
@@ -15,6 +15,8 @@ showSponsor: true
 :::tip 介绍
 NPM的全称是`Node Package Manager`，是随同`NodeJS`一起安装的包管理和分发工具，它很方便让`JavaScript`开发者下载、安装、上传以及管理已经安装的包，类似的还有 `cnpm`、[yarn](http://zguangju.gitee.io/Tools/yarn.html)、`tyarn` ···
 :::
+
+<!-- more -->
 
 ## npm常用
 

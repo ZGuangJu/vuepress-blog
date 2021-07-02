@@ -7,6 +7,7 @@ categories:
 tags:
  - 前端基础
  - Ajax
+sticky: 5
 publish: true
 ---
 

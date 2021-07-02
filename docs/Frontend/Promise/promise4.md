@@ -5,11 +5,14 @@ sidebar: 'auto'
 tags:
  - Promise
 publish: true
+sticky: 3
 # 打赏
 showSponsor: true
 ---
 
 最简单的`Promise`实现有7个主要属性, `state`(状态), `value`(成功返回值), `reason`(错误信息), `resolve`方法, `reject`方法, `then`方法,`catch`方法.
+
+<!-- more -->
 
 ## 面试够用版 Promise
 

@@ -7,7 +7,6 @@ categories:
 tags:
  - Promise
 publish: true
-sticky: 7
 # 打赏
 showSponsor: true
 ---

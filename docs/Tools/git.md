@@ -7,7 +7,7 @@ categories:
 tags:
  - Git
 publish: true
-sticky: 2
+sticky: 4
 # 打赏
 showSponsor: true
 ---

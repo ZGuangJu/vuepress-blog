@@ -79,6 +79,15 @@ module.exports = {
         authorAvatar: '/img/headimg.jpeg',
         // 代码显示样式
         codeTheme: 'solarizedlight', // 'funky' \ 'okaidia' \ 'solarizedlight' \ 'tomorrow'
+        // vssue 评论设置
+        // vssueConfig: {
+        //     platform: 'gitee',
+        //     owner: 'ZGuangJu', //创建一个仓库 https://gitee.com/${owner}/${repo}
+        //     repo: 'vssue',
+        //     clientId: '125232a6deee8e0c9fb852ad090527b5a26cc6dad043352262cab979ee7703b0',
+        //     clientSecret: '36e120238f2917d5c52dd824fcbb70244ca92f2fd2cb9effd95ee8213988108e',
+        //     autoCreateIssue: true // 自动创建评论，默认是false，最好开启，这样首次进入页面的时候就不用去点击创建评论的按钮了。
+        // },
         // valine 评论设置
         valineConfig: {
             appId: 'HphnXJO6NChHtY50Di9q039D-MdYXbMMI',// your appId
@@ -198,8 +207,8 @@ module.exports = {
                 text: '小知识',
                 items: [
                     { text: '学习目标', link: '/Other/target' },
-                    { text: '项目总结', link: '/Project/shopingapp' },
                     { text: '报错总结', link: '/Other/报错总结' },
+                    { text: '项目总结', link: '/Project/shopingapp' },
                     { text: '知识点', link: '/Other/知识点' },
                     { text: '面试题', link: '/Other/面试题' },
                     { text: '面试题2', link: '/Other/面试题2' },
@@ -212,7 +221,6 @@ module.exports = {
                     { text: 'URI & URL', link: '/Other/URI&URL' },
                     { text: 'Apache 是什么', link: '/Other/Apache' },
                     { text: 'Nginx 是什么', link: '/Other/nginx' },
-                    { text: '报 error 的本质和处理', link: '/Other/error' },
                     { text: '验证码 是什么', link: '/Other/验证码' },
                     { text: '电脑故障', link: '/Other/电脑故障' },
                     { text: `兼容代码`, link: '/Other/兼容' },
@@ -263,7 +271,7 @@ module.exports = {
                 {
                     title: 'JavaScript',
                     collapsable: true,
-                    children: ['JS/js1', 'JS/js2', 'JS/js3', 'JS/js4', 'JS/js5', 'JS/js6', 'JS/js7', 'JS/js8', 'JS/js9', 'JS/Array']
+                    children: ['JS/js1', 'JS/js2', 'JS/js3', 'JS/js4', 'JS/js5', 'JS/js6', 'JS/js7', 'JS/js8', 'JS/js9', 'JS/js10', 'JS/Array']
                 },
                 {
                     title: 'ES6',
@@ -351,7 +359,7 @@ module.exports = {
             '/Tools/': ['git', 'yarn', 'npm', 'npm模块', 'node', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'svg', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'vitepress', 'upgrade', 'typecho', 'vscode', 'wsl'],
             //小知识
             '/Other/': [
-                'target', 'error', '报错总结', '知识点', '面试题', '面试题2', '算法', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'nginx', 'Chrome', '浏览器内核', '验证码', '电脑故障', '兼容', 'chronology'
+                'target', '报错总结', '知识点', '面试题', '面试题2', '算法', 'name', '网站黑白', 'token', 'URI&URL', 'Apache', 'nginx', 'Chrome', '浏览器内核', '验证码', '电脑故障', '兼容', 'chronology'
             ],//,'996'
         },
         // 友链
@@ -360,7 +368,7 @@ module.exports = {
                 title: '我的博客',
                 desc: '我的博客地址.',
                 email: "guangju@126.com",//可用头像地址替换
-                link: 'http://www.91guangju.com'
+                link: 'https://www.zguangju.com'
             },
             {
                 title: '陈旭笔记',

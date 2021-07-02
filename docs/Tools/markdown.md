@@ -7,6 +7,7 @@ categories:
 tags:
  - MarkDown
 publish: true
+sticky: 10
 # 打赏
 showSponsor: true
 ---
@@ -14,6 +15,8 @@ showSponsor: true
 :::tip 介绍
 关于 `VuePress` 中的 `MarkDown` 语法及 `VuePress` 自带语法，可以看[这里](https://vuepress.vuejs.org/zh/guide/markdown.html#header-anchors)
 :::
+
+<!-- more -->
 
 [MarkDownlint错误原因](https://www.jianshu.com/p/51523a1c6fe1)
 

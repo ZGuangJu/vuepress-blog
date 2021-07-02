@@ -7,6 +7,7 @@ categories:
 tags:
  - TypeScript
 publish: true
+sticky: 6
 # 打赏
 showSponsor: true
 ---
@@ -14,6 +15,8 @@ showSponsor: true
 ## TS 介绍
 
 `TypeScript`是已`Javascript`为基础架构的语言，可以在任何`javaScript`平台中执行。是`js`的超集，它扩展了`javascript`并添加了类型；但是`ts`不能被`js`解析器(浏览器)直接执行，必须编译中`js`代码，再执行。
+
+<!-- more -->
 
 ### 特点
 

@@ -7,7 +7,6 @@ categories:
 tags:
  - 升级依赖
 publish: true
-sticky: 4
 # 打赏
 showSponsor: true
 ---

@@ -7,7 +7,6 @@ categories:
 tags:
  - npm模块
 publish: true
-sticky: 3
 # 打赏
 showSponsor: true
 ---
