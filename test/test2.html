@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="Vue2.6.12.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{message}}
+        <button @click="ABC()">设置</button>
+        <button @click="abc()">获取</button>
+    </div>
+    <script>
+        for (let i = 1; i <= 5; i++) {
+            for (let a = i; a <= 5; a++) {
+                document.write("&nbsp")
+            }
+            for (let j = 1; j <= i; j++) {
+                document.write(" * ")
+
+            }
+            document.write("<br/>")
+        }
+        for (let i = 1; i <= 5; i++) {
+            for (let j = i; j <= 5; j++) {
+                document.write("*")
+
+            }
+            document.write("<br/>")
+        }
+
+        for (let i = 100; i <= 999; i++) {
+            var a = parseInt(i / 100)
+            var b = parseInt(i / 10) % 10
+            var c = i % 10
+            // console.log(String(a) + String(b) + String(c));
+            // console.log(i);
+            var dd = Math.pow(a, 3) + Math.pow(b, 3) + Math.pow(c, 3)
+
+            // console.log(dd);
+            if (i == dd) {
+                console.log(i);
+            } x
+        }
+        // var sum = prompt("输入数字")
+        // var a = parseInt(sum / 1000);
+        // var b = parseInt(sum / 100) % 10
+        // var c = parseInt(sum / 10) % 10
+        // var d = parseInt(sum % 10);
+        // var e = a * b * c * d
+
+        // console.log(e);
+        var sum1 = parseInt(prompt("第一个"))
+        var sum2 = parseInt(prompt("第二个"))
+        var sum3 = parseInt(prompt("第三个"))
+        if (sum1 == sum2 && sum2 == sum3) {
+            console.log(2);
+        } else if (sum1 != sum2 && sum2 != sum3 && sum3 != sum1) {
+            console.log(0);
+        } else if (sum1 == sum2 || sum2 == sum3 || sum3 == sum12
+        ) {
+            console.log(1);
+        }
+
+        // 000000000000000
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "hello",
+            },
+            methods: {
+                ABC() {
+                    document.cookie = "name=赵子龙";
+
+                    localStorage.setItem("abc", "localStorage");
+                    sessionStorage.setItem("abc", "sessionStorage");
+                },
+
+                abc() {
+                    console.log(localStorage.getItem("abc"));
+                    console.log(sessionStorage.getItem("abc"));
+                    console.log(document.cookie);
+                },
+            },
+        });
+    </script>
+</body>
+
+</html>
