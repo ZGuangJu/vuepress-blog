@@ -8,7 +8,7 @@ set -e
 cd D:/github/blog-vuepress
 git add .
 git commit -m '提交了源码'
-git push origin master
+git push -f git@github.com:ZGuangJu/vuepress-blog.git
 # 提交源码到github结束
 
 git push -f git@gitee.com:zguangju/vuepress-blog.git master
