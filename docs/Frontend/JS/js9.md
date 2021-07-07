@@ -32,6 +32,7 @@ showSponsor: true
 |              | onscroll           | IE4、N     | 浏览器的滚动条位置发生变化时触发此事件                                                     |
 |              | onstop             | IE5、N     | 浏览器的停止按钮被按下时触发此事件或者正在下载的文件被中断                                 |
 |              | onunload           | IE3、N2    | 当前页面将被改变时触发此事件(页面关闭)                                                     |
+|              | onreadystatechange | IE3、N2    | 当前页面状态改变时触发                                                                     |
 | 表单相关事件 | onblur             | IE3、N2    | 当前元素失去焦点时触发此事件                                                               |
 |              | onchange           | IE3、N2    | 当前元素失去焦点并且元素的内容发生改变而触发此事件                                         |
 |              | onfocus            | IE3 、N2   | 当某个元素获得焦点时触发此事件                                                             |

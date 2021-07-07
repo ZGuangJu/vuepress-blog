@@ -45,6 +45,113 @@ showSponsor: true
     console.log(HTMLDOMtoString(div));
 ```
 
+### 封装 事件绑定和取消事件绑定
+
+```js
+//事件绑定
+function on(dom, eventType, fn) {
+    if(dom.addEventListener) {
+        dom.addEventListener(eventType, fn);
+    } else {
+        if(dom.attachEvent) {
+            dom.attachEvent('on' + eventType, fn);
+        }
+}
+//取消事件绑定
+function un(dom, eventType, fn) {
+     if(dom.removeEventListener) {
+         dom.removeEventListener(eventType, fn, false);
+     } else {
+         if(dom.detachEvent) {
+             dom.detachEvent("on" + eventType, fn)
+         }
+     }
+
+ }
+```
+
+兼容ie的事件绑定
+
+```js
+ var div1 = document.getElementById("div1")
+        var div2 = document.getElementById("div2")
+        function AddEvent(obj, val) {
+            function fun(e) {
+                console.log(val, "参数")
+                if (obj.addEventListener) {
+                    event.stopPropagation()
+                    // event.preventDefault()
+                } else if (obj.attachEvent) {
+                    event.cancelBubble = true
+                    // event.returnValue = false
+                }
+            }
+            if (obj.addEventListener) {
+                obj.addEventListener('click', fun)
+            } else if (obj.attachEvent) {
+                obj.attachEvent("onclick", fun)
+            }
+        }
+        AddEvent(div1, "div1")
+        AddEvent(div2, "div2")
+```
+
+### 页面加载过程
+
+```js
+    // 执行时一定是 loading
+    console.log(document.readyState)
+    // 当页面的readyState 状态发生改变时，readystatechange事件自动触发
+    document.onreadystatechange = function () {
+        console.log(document.readyState, "---63行")
+    }
+    // dom tree 加载完成时，DOMContentLoaded事件自动触发
+    document.addEventListener("DOMContentLoaded", function () { console.log("doc tree加载完成", "---66行") })
+    // 页面彻底加载完成 locd事件，window.onload 固定写法
+    window.onload = function () {
+        console.log("load 整个页面加载完成")
+    }
+    // 外部资源 load事件，图片加载完毕后触发
+    document.querySelector("img").onload = function () {
+        console.log("外部资源加载完成")
+    }
+```
+
+### 模拟 DOMContentLoaded 事件的 readystatechange
+
+```js
+// 模拟 DOMContentLoaded/ jquery ready
+document.onreadystatechange = function () {
+  if (document.readyState === "interactive") {
+    initApplication();
+  }
+}
+```
+
+### 模拟 load 事件的 readystatechange
+
+```js
+// 模拟 load 事件
+document.onreadystatechange = function () {
+  if (document.readyState === "complete") {
+    initApplication();
+  }
+}
+```
+
+### 在 DOMContentLoaded 之前使用 readystatechange 作为事件处理程序以插入或修改DOM
+
+```js
+document.addEventListener('readystatechange', event => {
+  if (event.target.readyState === 'interactive') {
+    initLoader();
+  }
+  else if (event.target.readyState === 'complete') {
+    initApp();
+  }
+});
+```
+
 ## 字符串
 
 - 反转字符串
@@ -141,14 +248,51 @@ var lists2 = list2(1, 2, 3); // [2, 3]
 除了使用`Array.prototype.slice.call(arguments)`，你也可以简单的使用 `[].slice.call(arguments)` 来代替。另外，你可以使用 `bind` 来简化该过程。
 
 ```js
-var unboundSlice = Array.prototype.slice;
-var slice = Function.prototype.call.bind(unboundSlice);
+    var unboundSlice = Array.prototype.slice;
+    var slice = Function.prototype.call.bind(unboundSlice);
+    function list() {
+    return slice(arguments);
+    }
+    var list1 = list(1, 2, 3); // [1, 2, 3]
+```
 
-function list() {
-  return slice(arguments);
+### 数组随机取值
+
+```js
+    var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    var index = Math.floor(Math.random() * arr.length)
+    console.log(arr[index]);
+```
+
+### 数组随机排列
+
+- 洗牌算法(改变原数组)
+
+```js
+Array.prototype.shuffle = function () {
+    var arr = this
+    for (var i = arr.length - 1; i >= 0; i--) {
+        var randomIdx = Math.floor(Math.random() * (i + 1))
+        var itemAtIdx = arr[randomIdx]
+        arr[randomIdx] = arr[i]
+        arr[i] = itemAtIdx
+    }
+    return arr
 }
+var tempArr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+console.log(tempArr.shuffle())//[ 5, 9, 6, 8, 4, 7, 3, 1, 2 ]
+```
 
-var list1 = list(1, 2, 3); // [1, 2, 3]
+- 其他(改变原数组)
+
+```js
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        function randomSort(a, b) {
+
+            return Math.random() > 0.5 ? 1 : -1
+        }
+        console.log(arr.sort(randomSort));
+        console.log(arr);
 ```
 
 ### 扁平化数组
@@ -513,4 +657,81 @@ console.log(obj.length);
     var arr = new Uint32Array(1)
     var a = window.crypto.getRandomValues(arr)
     console.log(a);
+```
+
+## 函数 算法
+
+- 递归求和
+
+```js
+    function sum(n) {
+        if (n == 1) {
+            return 1
+        }
+        return sum(n - 1) + n;
+    }
+    console.log(sum(100));
+```
+
+```js
+    function sum(n) {
+        if (n == 1) return n
+        return n + sum(n - 1)
+    }
+    console.log(sum(100));
+```
+
+- 函数防抖
+
+```js
+    var div = document.querySelector("#div1")
+        div.addEventListener('click', function () {
+            debounce(demo)()
+        })
+        function demo() {
+            console.log(window, "---45行")
+        }
+        function debounce(fn, interval) {
+            let timer = null; // 定时器
+            // console.log(1, "---44行")
+            return function () {
+                // 清除上一次的定时器
+                clearTimeout(timer);
+                // 拿到当前的函数作用域
+                let _this = this;
+                // 拿到当前函数的参数数组
+                // let fl = Array.prototype.slice.call(arguments, 0)
+                let args = Array.from(arguments)
+                // 开启倒计时定时器
+                timer = setTimeout(function () {
+                    // 通过apply传递当前函数this，以及参数
+                    fn.apply(_this, args);
+                    // 默认300ms执行
+                }, interval || 300)
+            }
+        }
+```
+
+## 其他
+
+- 避免闭包引起的内存泄漏：避免变量的循环赋值和引用
+
+```js
+//这段代码会导致内存泄露
+    window.onload = function(){
+        var el = document.getElementById("id");
+        el.onclick = function(){
+            alert(el.id);
+        }
+    }
+
+//解决方法为
+    window.onload = function(){
+        var el = document.getElementById("id");
+        var id = el.id; //解除循环引用
+        el.onclick = function(){
+            alert(id);
+        }
+        el = null; // 将闭包引用的外部函数中活动对象清除
+    }
 ```
