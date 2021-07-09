@@ -975,6 +975,48 @@ console.log(obj.length);
 callback("我的数据")
 ```
 
+### 检测当前浏览器所在的环境
+
+```js
+    var os = function (){
+    var ua = navigator.userAgent,
+        isWindowsPhone = /(?:Windows Phone)/.test(ua),
+        isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone,
+        isAndroid = /(?:Android)/.test(ua),
+        isFireFox = /(?:Firefox)/.test(ua),
+        isChrome = /(?:Chrome|CriOS)/.test(ua),
+        isTablet = /(?:iPad|PlayBook)/.test(ua) || (isAndroid && !/(?:Mobile)/.test(ua)) || (isFireFox && /(?:Tablet)/.test(ua)),
+        isPhone = /(?:iPhone)/.test(ua) && !isTablet,
+        isPc = !isPhone && !isAndroid && !isSymbian;
+    return {
+        isTablet: isTablet,
+        isPhone: isPhone,
+        isAndroid: isAndroid,
+        isPc: isPc
+    };
+    }();
+
+    if (os.isAndroid || os.isPhone) {
+    alert("手机" );
+    } else if (os.isTablet) {
+        alert("平板" );
+    } else {
+        alert("电脑" );
+// 或
+    //  switch (true) {
+    //         case os.isAndroid:
+    //         case os.isPhone:
+    //             alert("手机");
+    //             break;
+    //         case os.isTablet:
+    //             alert("平板");
+    //             break;
+    //         default: // os.isPc
+    //             alert("电脑");
+    //             break;
+    //     }
+```
+
 ## 兼容
 
 ### 事件兼容
