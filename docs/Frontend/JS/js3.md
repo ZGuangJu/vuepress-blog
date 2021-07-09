@@ -735,3 +735,272 @@ console.log(obj.length);
         el = null; // 将闭包引用的外部函数中活动对象清除
     }
 ```
+
+### 三级联动
+
+- js - 1
+
+:::details
+
+```js
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>三级联动</title>
+</head>
+
+<body>
+    <select id="sheng">
+        <option value=""></option>
+        <!--先创建三个下拉栏，分别对应 省 市 县-->
+    </select>
+
+    <select id="shi">
+        <option value=""></option>
+    </select>
+
+    <select id="xian">
+        <option value=""></option>
+    </select>
+    <script>
+        var osheng = document.getElementById("sheng");
+        var oshi = document.getElementById("shi");
+        var oxian = document.getElementById("xian");
+
+        var arr_sheng = ["陕西省", "云南省", "四川省", "山西省"];//创建一个一维数组，存入省的值
+        // 创建一个二维数组，最外层每一个元素对应省
+        var arr_shi = [
+            ["西安市", "咸阳市", "宝鸡市", "渭南市"],//数组中的第一个元素内又定义一个数组存的市的值
+            ["昆明市", "大理市", "丽江市", "西双版纳市"],
+            ["乐山市", "成都市", "大同市", "高新市"],
+            ["太原市", "屏显市", "乐宝市", "李伟市"]
+        ];
+        // 创建一个三维数组，最外层每一个元素（对应省）
+        // 数组中定义四个数组（对应市）
+        var arr_xian = [
+            [
+                ["西安县1", "西安县2"], ["咸阳市1", "咸阳市2"], ["宝鸡市1", "宝鸡市2"], ["渭南市1", "渭南市2"]
+            ],
+            // 数组中定义两个元素（对应县）
+            [
+                ["昆明市1", "昆明市2"], ["大理市1", "大理市2"], ["丽江市1", "丽江市2"], ["西双版纳市1", "西双版纳市2"]
+            ],
+            [
+                ["乐山市1", "乐山市2"], ["成都市1", "成都市2"], ["大同市1", "大同市2"], ["高新市1", "高新市2"]
+            ],
+            [
+                ["太原市1", "太原市2"], ["屏显市1", "屏显市2"], ["乐宝市1", "乐宝市2"], ["李伟市1", "李伟市2"]
+            ]
+        ];
+
+        var quanju_arr;//创建一个全局对象，用于存储一个中间数组
+
+        function input_arr(arr, event) {//封装一个函数，用于向下拉栏中添加元素
+            for (var i = 0; i < arr.length; i++) {//下拉栏内的元素来源于数组中的元素，遍历数组
+                var option = new Option(arr[i], i);//创建Option对象（这个O要大写），存入值
+                event.appendChild(option);//把option添加到event对象的末尾
+            }
+        }
+
+        input_arr(arr_sheng, osheng);//调用,给省下拉栏添元素
+
+        osheng.onchange = function () {//给下拉栏绑定事件（当下拉栏元素改变时执行）
+            oshi.options.length = 1;//当省下拉栏改变时，清空市的下拉栏内元素
+            oxian.options.length = 1;//当省下拉栏改变时，清空县的下拉栏内元素
+            var index = this.value;//每一个option标签都有一个value值索引，获取索引，用于数组中元素的选择
+            var arr_shi_next = arr_shi[index];//获取当前选择省的市元素并赋给一个数组
+            quanju_arr = arr_xian[index];//获取当前选择省中市的县元素并赋给定义的中间数组
+            input_arr(arr_shi_next, oshi);//调用,给市下拉栏添元素
+        }
+
+        oshi.onchange = function () {
+            oxian.options.length = 1;
+            var index = this.value;
+            var arr_xian_next = quanju_arr[index];
+            input_arr(arr_xian_next, oxian);//调用,给县下拉栏添元素
+        }
+    </script>
+</body>
+
+</html>
+```
+
+:::
+
+- js - 2
+
+:::details
+
+```js
+<!DOCTYPE html>
+<html>
+
+<head>        
+    <meta charset="utf-8">
+            <title></title>    
+</head>
+
+<body>
+            省：
+            <select style="width: 100px;" id="pre" onchange="chg(this);">
+                    <option value="-1">请选择</option>
+                </select>
+            市：
+            <select style="width: 100px;" id="city" onchange="chg2(this)" ;></select>
+            区：
+            <select style="width: 100px;" id="area"></select>
+        </body>  
+<script>
+
+    //声明省
+    var pres = ["北京", "上海", "山东"]; //直接声明Array
+    //声明市
+    var cities = [
+        ["东城", "昌平", "海淀"],
+
+        ["浦东", "高区"],
+
+        ["济南", "青岛"]
+    ];
+    var areas = [
+        [
+            ["东城1", "东城2", "东城3"],
+            ["昌平1", "昌平2", "昌平3"],
+            ["海淀1", "海淀2", "海淀3"]
+
+        ],
+        [
+            ["浦东1", "浦东2", "浦东3"],
+            ["高区1", "高区2", "高区3"]
+        ],
+        [
+            ["济南1", "济南2"],
+            ["青岛1", "青岛2"]
+        ]
+
+    ]
+    //设置一个省的公共下标
+    var pIndex = -1;
+    var preEle = document.getElementById("pre");
+    var cityEle = document.getElementById("city");
+    var areaEle = document.getElementById("area");
+    //先设置省的值
+    for (var i = 0; i < pres.length; i++) {
+        //声明option.<option value="pres[i]">Pres[i]</option>
+        var op = new Option(pres[i], i);
+        //添加
+        preEle.options.add(op);
+    }
+    function chg(obj) {
+        if (obj.value == -1) {
+            cityEle.options.length = 0;
+            areaEle.options.length = 0;
+        }
+        //获取值
+        var val = obj.value;
+        pIndex = obj.value;
+        //获取ctiry
+        var cs = cities[val];
+        //获取默认区
+        var as = areas[val][0];
+        //先清空市
+        cityEle.options.length = 0;
+        areaEle.options.length = 0;
+        for (var i = 0; i < cs.length; i++) {
+            var op = new Option(cs[i], i);
+            cityEle.options.add(op);
+        }
+        for (var i = 0; i < as.length; i++) {
+            var op = new Option(as[i], i);
+            areaEle.options.add(op);
+        }
+    }
+    function chg2(obj) {
+        var val = obj.selectedIndex;
+        var as = areas[pIndex][val];
+        areaEle.options.length = 0;
+        for (var i = 0; i < as.length; i++) {
+            var op = new Option(as[i], i);
+            areaEle.options.add(op);
+        }
+    }
+
+</script>
+
+</html>
+```
+
+:::
+
+### 跨域 1 (`window.name iframe` )
+
+通过window.name 和iframe
+
+```js
+// 页面 a 中存储数据
+  window.name = "var a = 12"
+```
+
+```js
+// 页面 b 中通过 iframe 读取数据
+    window.onload = function () {
+        var iframe = document.createElement('iframe');
+        iframe.src = "test3.html"//项目地址不能是本地地址，要 http：xxx
+        iframe.style.display = 'none'
+        document.body.appendChild(iframe);
+        iframe.onload = function () {
+            var vname = iframe.contentWindow.name
+            eval(vname)
+            console.log(a);
+        }
+    }
+```
+
+### 跨域 2 (`jsonp`)
+
+```js
+// 本机代码
+    <script>
+            window.callback = function (data) {
+                console.log(data, "data"); // 使用参数
+            }
+    </script>
+    <script type="text/javascript" src="http://127.0.0.1:5500/test/js.js"></script>
+```
+
+```js
+// 远程服务器调用，并传参
+callback("我的数据")
+```
+
+## 兼容
+
+### 事件兼容
+
+```js
+var eventTool = {
+    // target: window.event.target || window.event.srcElements,
+    // 兼容阻止冒泡
+    STOPPG: function () {
+        let event = window.event
+        if (event.stopPropagation) {
+            event.stopPropagation()
+        } else {
+            event.cancelBubble = true
+        }
+    },
+    // 兼容阻止默认事件
+    PREVENT: function () {
+        let event = window.event
+        if (event.preventDefault) {
+            event.preventDefault()
+        } else {
+            event.returnValue = false
+        }
+    }
+}
+// eventTool.STOPPG() 阻止冒泡
+// eventTool.PREVENT() 阻止默认
+```
