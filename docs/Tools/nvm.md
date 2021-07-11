@@ -16,6 +16,7 @@ showSponsor: true
 - 下载
 
 打开[链接](https://github.com/coreybutler/nvm-windows/releases) 下载第三个包--`nvm-setup.zip`，然后安装在本机。
+
 打不开 `Github`,可以用蓝奏云 [地址](https://wwa.lanzoui.com/i1DX1r748ab)
 
 :::danger 警告
