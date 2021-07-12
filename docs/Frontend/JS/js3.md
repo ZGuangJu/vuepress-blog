@@ -96,6 +96,75 @@ function un(dom, eventType, fn) {
         AddEvent(div2, "div2")
 ```
 
+### 封装2 处理js默认事件的代码
+
+```js
+//跨浏览器的事件处理程序
+//调用时候直接用domEvent.addEvent( , , );直接调用
+//使用时候，先用addEvent添加事件，然后在handleFun里面直接写其他函数方法，如getEvent；
+//addEventListener和attachEvent---都是dom2级事件处理程序
+var domEvent = {
+  //element:dom对象，event:待处理的事件，handleFun:处理函数
+  //事件名称，不含“on”，比如“click”、“mouseover”、“keydown”等
+  addEvent:function(element,event,handleFun){
+    //addEventListener----应用于mozilla
+    if(element.addEventListener){
+      element.addEventListener(event,handleFun,false);
+    }//attachEvent----应用于IE
+    else if(element.attachEvent){
+      element.attachEvent("on"+event,handleFun);
+    }//其他的选择dom0级事件处理程序
+    else{
+      //element.onclick===element["on"+event];
+      element["on"+event] = handleFun;
+    }
+  },
+  //事件名称，含“on”，比如“onclick”、“onmouseover”、“onkeydown”等
+  removeEvent:function(element,event,handleFun){
+    //removeEventListener----应用于mozilla
+    if (element.removeEventListener) {
+      element.removeEventListener(event,handleFun,false);
+    }//detachEvent----应用于IE
+    else if (element.detachEvent) {
+      element.detachEvent("on"+event,handleFun);
+    }//其他的选择dom0级事件处理程序
+    else {
+      element["on"+event] = null;
+    }
+  },
+  //阻止事件冒泡
+  stopPropagation:function(event){
+    if(event.stopPropagation){
+      event.stopPropagation();
+    }else{
+      event.cancelBubble = true;//IE阻止事件冒泡，true代表阻止
+    }
+  },
+  //阻止事件默认行为
+  preventDefault:function(event){
+    if(event.preventDefault){
+      event.preventDefault();
+    }else{
+      event.returnValue = false;//IE阻止事件冒泡，false代表阻止
+    }
+  },
+  //获得事件元素
+  //event.target--非IE
+  //event.srcElement--IE
+  getElement:function(event){
+    return event.target || event.srcElement;
+  },
+  //获得事件
+  getEvent:function(event){
+    return event? event : window.event;
+  },
+  //获得事件类型
+  getType:function(event){
+    return event.type;
+  }
+};
+```
+
 ### 页面加载过程
 
 ```js
@@ -150,6 +219,33 @@ document.addEventListener('readystatechange', event => {
     initApp();
   }
 });
+```
+
+### 自执行函数循环添加事件(鼠标移入移出)
+
+```js
+ var documentFragment = document.createDocumentFragment()
+        var ul = document.createElement("ul")
+        ul.style.cssText = "list-style ：none; padding:0;"
+        documentFragment.appendChild(ul)
+        var titleArr = ["首页", "视频", "音乐", "我的"]
+        for (let i = 0; i < titleArr.length; i++) {
+            var li = document.createElement("li")
+            li.style.cssText = "display:inline-block;width:100px;height:35px;text-align :center;line-height:35px;background: blue;"
+            li.innerHTML = titleArr[i]
+            li.onmouseenter = (function (temp) {
+                return function () {
+                    temp.style.backgroundColor = "red"
+                }
+            })(li)
+            li.onmouseleave = (function (temp) {
+                return function () {
+                    temp.style.backgroundColor = "blue"
+                }
+            })(li)
+            ul.appendChild(li)
+        }
+        document.body.appendChild(documentFragment)
 ```
 
 ## 字符串
@@ -996,12 +1092,15 @@ callback("我的数据")
     };
     }();
 
-    if (os.isAndroid || os.isPhone) {
-    alert("手机" );
-    } else if (os.isTablet) {
-        alert("平板" );
-    } else {
-        alert("电脑" );
+   if (os.isAndroid || os.isPhone) {
+            alert("手机");
+        } else if (os.isTablet) {
+            alert("平板");
+        } else if (os.isPc) {
+            alert("电脑");
+        } else {
+            alert("其他类型 或 error")
+        }
 // 或
     //  switch (true) {
     //         case os.isAndroid:
@@ -1011,8 +1110,11 @@ callback("我的数据")
     //         case os.isTablet:
     //             alert("平板");
     //             break;
-    //         default: // os.isPc
+    //         case os.isPc:
     //             alert("电脑");
+    //             break;
+    //         default:
+    //             alert("其他 或 error")
     //             break;
     //     }
 ```

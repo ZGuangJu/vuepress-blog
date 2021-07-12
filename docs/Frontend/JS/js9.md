@@ -179,7 +179,7 @@ document.getElementById("btn").click();
 
 ## 事件委托
 
-对“事件处理程序过多”问题的解决方案就是事件委托。事件委托利用了事件冒泡，只制定一个事件处理程序，就可以管理某一类型的所有事件。例如click事件一直会冒泡到document层。也就是我们可以只指定onclick事件处理程序，而不必给每个事件分别添加处理程序。
+对“事件处理程序过多”问题的解决方案就是事件委托。事件委托利用了事件冒泡，只制定一个事件处理程序，就可以管理某一类型的所有事件。例如`click`事件一直会冒泡到`document`层。也就是我们可以只指定`onclick`事件处理程序，而不必给每个事件分别添加处理程序。
 下面我们来看一个阿里巴巴笔试题的例子。
 
 通过原生js实现删除功能
@@ -189,7 +189,7 @@ document.getElementById("btn").click();
 | 2    | 李四 | 女   | 13788887777 | 四川 | 删除 |
 | 3    | 王二 | 男   | 13788889999 | 广东 | 删除 |
 
-- 样式以及DOM结构
+- 样式以及`DOM`结构
 
 ```html
  <style>
@@ -270,4 +270,172 @@ Contact.prototype.init = function(){
  })
 }
 new Contact();
+```
+
+## 事件级别
+
+### HTML0
+
+在标签中添加事件，没有兼容问题
+
+### DOM0
+
+`DOM0`级事件，是在`html0`的基础上扩展的新的试验性质的新功能，没有制定标准。具有极好的跨浏览器优势，会以最快的速度绑定。
+
+### DOM1
+
+`DOM1`是一种标准，只是设计规范没有具体的体现，所以一般跳过。
+
+### DOM2
+
+- 非IE 中`addEventListener`,`removeEventListener`
+
+- IE `attachEvent`,`detachEvent`
+
+### DOM3
+
+`DOM3`进一步扩展了`DOM`，在`DOM3`中引入了以下模块：
+
+- `DOM`加载和保存模块（`DOM Load and Save`）：引入了以统一方式加载和保存文档的方法
+- `DOM`验证模块（`DOM Validation`）：定义了验证文档的方法
+- `DOM`核心的扩展（`DOM Style`）：支持`XML 1.0`规范，涉及`XML Infoset`、`XPath`和`XML Base`.
+
+`DOM3` 级还定义了自定义事件，自定义事件不是由`DOM`原生触发的，它的目的是让开发人员创建自己的事件。
+
+## 自定义事件
+
+### 方法创建
+
+1. 事件的创建
+
+`JS`中，最简单的创建事件方法，是使用`Event`构造器：
+
+```js
+var myEvent = new Event('event_name');
+```
+
+但是为了能够传递数据，就需要使用 `CustomEvent` 构造器：
+
+```js
+var myEvent = new CustomEvent('event_name', {
+    detail:{
+        // 将需要传递的数据写在detail中，以便在EventListener中获取
+        // 数据将会在event.detail中得到
+    },
+});
+```
+
+2. 事件的监听
+
+`JS`的`EventListener`是根据事件的名称来进行监听的，比如我们在上文中已经创建了一个名称为`‘event_name’` 的事件，那么当某个元素需要监听它的时候，就需要创建相应的监听器：
+
+```js
+//假设listener注册在window对象上
+window.addEventListener('event_name', function(event){
+    // 如果是CustomEvent，传入的数据在event.detail中
+    console.log('得到数据为：', event.detail);
+
+    // ...后续相关操作
+});
+```
+
+至此，`window`对象上就有了对`‘event_name’` 这个事件的监听器，当`window`上触发这个事件的时候，相关的`callback`就会执行。
+
+3. 事件的触发
+
+对于一些内置（`built-in`）的事件，通常都是有一些操作去做触发，比如鼠标单击对应`MouseEvent`的`click`事件，利用鼠标（`ctrl` + 滚轮上下）去放大缩小页面对应`WheelEvent`的`resize`事件。
+然而，自定义的事件由于不是`JS`内置的事件，所以我们需要在`JS`代码中去显式地触发它。方法是使用 `dispatchEvent` 去触发（`IE8`低版本兼容，使用`fireEvent`）：
+
+```js
+// 首先需要提前定义好事件，并且注册相关的EventListener
+var myEvent = new CustomEvent('event_name', {
+    detail: { title: 'This is title!'},
+    bubbles: true,    //是否冒泡
+    cancelable: false //是否取消默认事件
+});
+window.addEventListener('event_name', function(event){
+    console.log('得到标题为：', event.detail.title);
+});
+// 随后在对应的元素上触发该事件
+if(window.dispatchEvent) {
+    window.dispatchEvent(myEvent);
+} else {
+    window.fireEvent(myEvent);
+}
+// 根据listener中的callback函数定义，应当会在console中输出 "得到标题为： This is title!"
+```
+
+\* 需要特别注意的是，当一个事件触发的时候，如果相应的`element`及其上级元素没有对应的`EventListener`，就不会有任何回调操作。
+对于子元素的监听，可以对父元素添加事件托管，让事件在事件冒泡阶段被监听器捕获并执行。这时候，使用`event.target`就可以获取到具体触发事件的元素。
+
+- 移出事件
+
+```js
+dom.detachEvent("onpropertychange", evt);
+
+var fireEvent = function(element,event){
+   if (document.createEventObject){
+       // IE浏览器支持fireEvent方法
+       var evt = document.createEventObject();
+       return element.fireEvent('on'+event,evt)
+   }
+   else{
+       // 其他标准浏览器使用dispatchEvent方法
+       var evt = document.createEvent( 'HTMLEvents' );
+       evt.initEvent(event, true, true);
+       return !element.dispatchEvent(evt);
+   }
+};
+```
+
+[应用场景](https://zhuanlan.zhihu.com/p/108447200)
+
+### document 方式
+
+`DOM3` 级还定义了自定义事件，自定义事件不是由DOM原生触发的，它的目的是让开发人员创建自己的事件。要创建的自定义事件可以由`createEvent("CustomEvent");` 返回的对象有一个`initCustomEvent（）`方法接收如下四个参数。
+
+- 1 `type`：字符串，触发的事件类型，自定义。例如`“keyDown”`，`“selectedChange”`;
+- 2 `bubble`（布尔值）：标示事件是否应该冒泡；
+- 3 `cancelable`(布尔值)：标示事件是否可以取消；
+- 4 `detail`（对象）：任意值，保存在`event`对象的`detail`属性中；
+
+可以像分配其他事件一样在`DOM`中分派创建的自定义事件对象。如：
+
+```js
+var  div = document.getElementById("myDiv");
+　　EventUtil.addEventHandler(div,"myEvent", function () {
+　　　　alert("div myEvent!");
+　　});
+　　EventUtil.addEventHandler(document,"myEvent",function(){
+　　　　alert("document myEvent!");
+　　});
+　　if(document.implementation.hasFeature("CustomEvents","3.0")){
+　　　　var e = document.createEvent("CustomEvent");
+　　　　e.initCustomEvent("myEvent",true,false,"hello world!");
+　　　　div.dispatchEvent(e);
+　　}
+```
+
+这个例子中创建了一个冒泡事件`“myEvent”`。而`event.detail`的值被设置成了一个简单的字符串，然后在`div`和`document`上侦听该事件，因为在`initCustomEvent`中设置了事件冒泡。所以当div激发该事件时，浏览器会将该事件冒泡到`document`。
+`IE`中的事件模拟(`IE8`及之前版本中)：
+与`DOM`中事件模拟的思路类似，先创建`event`对象，再为其指定相应信息，然后再使用该对象来触发事件。当然`IE`在实现以下每个步骤都不太一样。
+
+例如：
+
+```js
+var btn = document.getElementById("myBtn");
+　　//创建事件对象,不接受任何参数，结果会返回一个通用的event对象，你必须为该event对象指定所有必要的信息。
+　　var event  = document.createEventObject();
+　　//初始化事件对象
+　　event.screenX = 100；
+　　event.screenY = 0;
+　　event.clientX = 0;
+　　event.clientY =0;
+　　event.ctrlKey = false;
+　　event.altKey = false;
+　　event.shiftKey = false;
+　　event.button = 0;
+
+　　//触发事件
+　　btn.fireEvent("onclick",event);
 ```
