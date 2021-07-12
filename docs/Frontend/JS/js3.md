@@ -755,6 +755,18 @@ console.log(obj.length);
     console.log(a);
 ```
 
+### 取数组最大值
+
+```js
+ console.log(Math.max.apply(null, [1, 23, 78, 5, 6, 8, 4]));
+```
+
+### 取数组最小值
+
+```js
+ console.log(Math.min.apply(null, [1, 23, 78, 5, 6, 8, 4]));
+```
+
 ## 函数 算法
 
 - 递归求和
