@@ -307,3 +307,25 @@ publish: true
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+### 本页源码例子
+
+[使用的在线编辑器地址](https://codepen.io/pen/)
+
+[其他在线编辑器 w3schools](https://www.w3schools.com/html/tryit.asp?filename=tryhtml_default)
+
+[其他在线编辑器 notion](https://www.notion.so/)
+
+[其他在线编辑器 animpen](https://animpen.com/pen/d15Dwev8)
+
+```html
+ <!-- 使用`line-height`做垂直居中 -->
+
+<p class="codepen" data-height="300" data-theme-id="0" data-default-tab="result" data-user="whjin" data-slug-hash="EMdevR" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="使用line-height做垂直居中">
+  <span>See the Pen <a href="https://codepen.io/whjin/pen/EMdevR/">
+  使用line-height做垂直居中</a> by whjin (<a href="https://codepen.io/whjin">@whjin</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+```

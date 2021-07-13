@@ -258,7 +258,7 @@ module.exports = {
                 {
                     title: 'HTML',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['HTML/HTML', 'HTML/HTML_meta', 'HTML/HTML_emmet', 'HTML/HTML_webkit']
+                    children: ['HTML/HTML', 'HTML/HTML_meta', 'HTML/HTML_emmet', 'HTML/HTML_渲染']
                 },
                 {
                     title: 'CSS',
