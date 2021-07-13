@@ -8,572 +8,249 @@ tags:
  - 前端基础
  - HTML
  - HTML5
-sticky: 1
 # 打赏
 showSponsor: true
 publish: true
 ---
 
-## Emmet简述
+## HTML文档 概念
 
-`Emmet` (前身为 `Zen Coding`) 是一个能大幅度提高前端开发效率的一个工具. 在前端开发的过程中，一大部分的工作是写 `HTML`、`CSS` 代码。特别是手动编写 `HTML` 代码的时候，效率会特别低下，因为需要敲打很多尖括号，而且很多标签都需要闭合标签等。于是，就有了 `Emmet`，它可以极大的提高代码编写的效率，它提供了一种非常简练的语法规则，然后立刻生成对应的 `HTML` 结构或者 `CSS` 代码，同时还有多种实用的功能帮助进行前端开发。
+>HTML指的是超文本标记语言 (Hyper Text Markup Language)，HTML文档就是我们常说的网页，一个标准的HTML文档由**文档元素**和**元数据元素**组成，二者用来创建HTML文档以及其内容。
 
-<!-- more -->
+顺便说一下什么是元数据元素: 用来构建HTML文档的基本结构，以及就如何处理文档向浏览器提供信息和指示，它们本身不是文档内容，但提供了关于后面文档内容的信息。包含在head内，如title、base、meta等都是元数据元素。本文不做重点介绍。
 
-`VsCode`内置了`Emmet`语法,在后缀为`.html/.css`中输入缩写后按`Tab`键即会自动生成相应代码
+## 文档元素
 
-请注意在`VsCode`新版本中按`Tab`不再默认启用`Emmet`展开缩写!需要在首选项配置中设置为`emmet.triggerExpansionOnTab:true`!
+文档元素一共有四个**DOCTYPE**、**html**、**head**、**body**
 
-语法基本规则如下:
-| 语法        | 说明                    |
-| :---------- | :---------------------- |
-| E#id        | 代表id属性              |
-| E.class     | 代表class属性           |
-| E[attr=foo] | 代表某一个特定属性      |
-| E{foo}      | 代表标签包含的内容是foo |
-| E>N         | 代表N是E的子元素        |
-| E+N         | 代表N是E的同级元素      |
-| E^N         | 代表N是E的上级元素      |
-\* E :代表HTML标签
+### DOCTYPE
 
-本文仅介绍了在`Html`使用`Emmet`,
-如果想`CSS`缩写的语法请参考[这里](https://docs.emmet.io/css-abbreviations/)
+每一个HTML文档都必须由DOCTYPE元素开头，告诉浏览器要处理的是HTML文档，在HTML5中DOCTYPE 声明变得非常简单而且唯一，不用写版本号浏览器也能识别这是HTML5文档，因为和之前的HTML版本有所差异
+    <!DOCTYPE html> //HTML5声明
 
-## 基础用法
+在 HTML 4.01 中，<!DOCTYPE> 声明引用 DTD，因为 HTML 4.01 基于 SGML。DTD 规定了标记语言的规则，这样浏览器才能正确地呈现内容。HTML5 不基于 SGML，所以不需要引用 DTD。--[W3school](http://www.w3school.com.cn/tags/tag_doctype.asp)
 
-- 元素(`Elements`)
-您可以使用元素的名称，如`div`或`p`来生成`HTML`标签。`Emmet`没有一组可用的标签名称，可以写任何单词并将其转换为标签。也就是只要知道元素的缩写,`Emmet`会自动转换成对应标签.
-形如:
+**HTML4中声明如下:**
 
-| 快捷键           | 标签                                           |
-| :--------------- | :--------------------------------------------- |
-| `div`            | `<div> </div>`                                 |
-| `foo`            | `<foo> </foo>`                                 |
-| `html:5`         | 将生成`html5`标准的包含`body`为空基本`dom`     |
-| `html:xt`        | 生成`XHTML`过渡文档类型,`DOCTYPE`为`XHTML`     |
-| `html:4s`        | 生成`HTML4`严格文档类型,`DOCTYPE`为`HTML 4.01` |
-| `a:mail`         | `<a href="mailto:"></a>`                       |
-| `a:link`         | `<a href="http://"></a>`                       |
-| `base`           | `<base href="">`                               |
-| `br`             | `<br>`                                         |
-| `link`           | `<link rel="stylesheet" href="">`              |
-| `script:src`     | `<script src=""></script>`                     |
-| `form:get`       | `<form action="" method="get"></form>`         |
-| `label`          | `<label for=""></label>`                       |
-| `input`          | `<input type="text">`                          |
-| `inp`            | `<input type="text" name="" id="">`            |
-| `input:hidden`   | `<input type="hidden" name="">`(`input:h`亦可) |
-| `input:email`    | `<input type="email" name="" id="">`           |
-| `input:password` | `<input type="password" name="" id="">`        |
-| `input:checkbox` | `<input type=" checkbox" name="" id="">`       |
-| `input:radio`    | `<input type="radio" name="" id="">`           |
-| `select`         | `<select name="" id=""></select>`              |
-| `option`         | `<option value=""></option>`                   |
-| `bq`             | `<blockquote></blockquote>`                    |
-| `btn`            | `<button></button>`                            |
-| `btn:s`          | <`button type="submit"></button>`              |
-| `btn:r`          | `<button type="reset"></button>`               |
+HTML 4.01 Strict(不允许使用框架集):
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 
-- 文本操作符(`{Text}`)
-如果想在生成元素的同时添加文本内容可以使用`{}`(标签内的内容):
+HTML 4.01 Frameset(允许使用框架集):
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
 
-即：标签要不要带内容的快速生成
+### html
+
+html表示根元素，表示HTML文档的开始，必须需要的元素，html具有如下属性:
+
+| 属性     | 值                             | 功能                                                                        |
+| -------- | ------------------------------ | --------------------------------------------------------------------------- |
+| manifest | url                            | 定义一个url，描述文档的缓存信息                                             |
+| xmlns    | "http://www.w3.org/1999/xhtml" | 定义 XML namespace 属性(其实这个我也没用过不懂啊)，感兴趣的大神自己研究下吧 |
+
+### head
+
+>包含文档的元数据，向浏览器提供文档内容和标记的信息，还包括脚本和对外资源的引用，如引入外联.css文件、js文件等。
+
+| 包含元素 | 是否必须 | 功能                                                                                                    |
+| -------- | -------- | ------------------------------------------------------------------------------------------------------- |
+| title    | 是       | 必须有一个title元素，定义网站的标题                                                                     |
+| base     | 否       | 设置一个基准URL，让HTML文档中的相对链接在此基础上解析                                                   |
+| meta     | 否       | 定义各种文档元数据，可见我的上一篇文章[<meta>常用属性总结](https://segmentfault.com/a/1190000010342600) |
+| style    | 否       | 1. 指定样式类型; 2. 指定样式作用范围; 3. 指定样式使用的媒体类型                                         |
+| link     | 否       | 1. 载入外部样式表; 2. 为页面定义网站标志; 3. 预先获取关联资源                                           |
+| script   | 否       | 1. 定义文档内嵌脚本; 2. 载入外部脚本                                                                    |
+| noscript | 否       | 可以向禁用或不知JavaScript的浏览器展示一些内容                                                          |
+
+- **<base>介绍:**
+如果在浏览器地址为"https://segmentfault.com/demo/index.html"中载入一个文档，代码如下:
 
 ```html
-<!-- a{Click me} -->
-<a href="">Click me</a>
-<!-- div{这是一段文本} -->
-<div>这是一段文本</div>
-<!-- a{点我点我} -->
-<a href="">点我点我</a>
+<DOCTYPE html>
+<html>
+    <head>
+        <base href="https://segmentfault.com/">
+    </head>
+    <body>
+        <a href="page2.html">跳转</a>
+    </body>
+</html>
 ```
 
-:::warning 注
-当`{}`作为单独的一个操作符使用时，`a{click}`和`a>{click}`将生成相同的标签，但当使用了多个，或用了其它操作符时将会生成不同的标签
-:::
+正常点击a链接，浏览器将从"https://segmentfault.com/page2.html"中加载文档
+**如果不包含<base>元素**，浏览器将从"https://segmentfault.com/demo/index.html"中加载文档地址
 
-- 属性操作符(`Attribute operators`)
-属性运算符用于修改输出元素的属性.
+- **style**
 
-> - 选择器：`Id`和`Class` `(#id and .class)`
->
->给标签指定`id`和`class`选择器，只需在标签的后面直接添加，但必需以`.`或`#`开头。
->
->```html
-><!-- div.test -->>
-><div class="test"></div>
-><!-- div#pageId  -->>
-><div id="pageId"></div>
-><!-- div#header+div.page+div#footer.class1.class2.class3 -->
-><div id="header"></div>
-><div class="page"></div>
-><div id="footer" class="class1 class2 class3"></div>
->```
->
->隐式标签则会自动联想生成对应元素,根据配置规则不同生成的结果也是不同的，`.`是表示生成的是：`<div class="className">第N个盒子</div>`。
->
->```html
-><!-- .class -->
-><div class></div>
-><!-- em>.class -->
-><em><span class></span></em>
-><!-- table>.row>.col -->
-><table>
->    <tr class="row">
->        <td class="col"></td>
->    </tr>
-></table>
->```
->
->绑定多个类名用`.`符号连续起来即可
->
->```html
-><!-- div.className{第$个盒子}*5 -->
-><div class="className">第1个盒子</div>
-><div class="className">第2个盒子</div>
-><div class="className">第3个盒子</div>
-><div class="className">第4个盒子</div>
-><div class="className">第5个盒子</div>
-><!-- div.test1.test2.test3 -->
-><div class="test1 test2 test3"></div>
->```
->
->- 自定义属性：`[]`（英文下的中括号）
->
->使用`[]`操作符给标签添加自定义属性：自定义属性使用 `[attr1='' attr2='']`.
->
->```html
-><!--div[class=className]{第$个盒子}*5-->
-><div class="className">第1个盒子</div>
-><div class="className">第2个盒子</div>
-><div class="className">第3个盒子</div>
-><div class="className">第4个盒子</div>
-><div class="className">第5个盒子</div>
-><!-- a[href='#' data-title='customer' target='_blank'] -->
-><a href="#" data-title="customer" target="_blank"></a>
-> <!-- td[title="Hello world!" colspan=3] -->
-><td title="Hello world!" colspan="3"></td>
-> ```
->
->可以把你喜欢的一些属性放在`[]`内，如果不指定属性值，代码将生成不带属性值的`HTML`默认标签：
->
->属性值必需使用单引号或双引号，不然就会出现你可能想到的效果。
->
->```html
-><!-- 错误示范，实际是想要一个 colspan="title" 的属性 -->
-><!-- td[colspan title] -->
-> <td colspan="" title=""></td>
->```
->
-- 嵌套操作符(`Nesting operators`)
-嵌套操作符用于将缩写元素放置在生成的树中,是否应放置在上下文元素的内部或附近.
+style元素拥有局部属性:type、scoped、media，其对应作用如下:
 
->- 父子关系:`>`
->
->通过`>`标识元素可以生成嵌套子级元素,可以配合元素属性进行连写,使用`>`操作符在内部相互嵌套的标签：
->
->```html
-><!-- ul>li>a -->
-><ul>
->    <li><a href=""></a></li>
-></ul>
->-------------------------
-><!--  div#pageId>ul>li -->
-><div id="pageId">
->    <ul>
->        <li></li>
->    </ul>
-></div>
->```
->
->- 兄弟关系 \ 同级:`+`
->
->使用`+`操作符将标签处于同一个层级：
->
->```html
-><!-- div#pageId+div.child  -->
-><div id="pageId"></div>
-><div class="child"></div>
-><!-- div+p+footer -->
-><div></div>
-><p></p>
-><footer></footer>
->```
->
->像`ul` `dl`这样的列表标签，使用`+`操作符将生成>一个标准的列表结构(vscode无效):
->
->```html
-><!-- ul+ -->
-><ul>
->    <li></li>
-></ul>
-><!-- dl+ -->
-><dl>
->    <dt></dt>
->    <dd></dd>
-></dl>
-><!-- 本项在vscode中无效 -->
-> ```
->
-> - 父级:`^`
->
-> 用于生成父级元素的同级元素,从这个字符所在位置开始,查找左侧最近的元素的父级元素并生成其兄弟级元素.
->
-> ```html
-> <!-- 使用 `^` 操作符使标签与前一标签的父级处于相同的级别： -->
-> <!-- div>p.parent>span.child^ul.brother>li -->>
-> <div>
->     <p class="parent"><span class="child"></span></p>
->     <ul class="brother">
->         <li></li>
->     </ul>
-> </div>
-><!-- div+div>p>span+em^bq -->
-><div></div>
-><div>
->    <p><span></span><em></em></p>
->    <blockquote></blockquote>
-></div>
->
-><!-- 使用两^操作符就与前一标签的爷爷级是相同级>别，依此类推： -->
-><!-- div+div>p>span+em^^bq -->
-><div></div>
-><div>
->    <p><span></span><em></em></p>
-></div>
-><blockquote></blockquote>
-> ```
->
-- 分组操作符(`Grouping`)
-
-分组使用`()`来实现缩写的分离.比如这个例子,如果不加括号那么`a`将作为`span`的子级元素生成.加上括号`a`将于`()`内的元素同级.
+**1.指定内嵌样式，type属性是高速浏览器文档所定义的类型、这个值只有一种text/css**
 
 ```html
-<!-- 可以使用多个`()`，并使用乘法`*`操作符 -->
-<!-- div>(ul>li+span)>a -->
-<div>
-    <ul>
-        <li></li>
-        <span></span>
-    </ul>
-    <a href=""></a>
-</div>
-<!-- div>(header>ul>li*2>a)+footer>p -->
-<div>
-    <header>
-        <ul>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-        </ul>
-    </header>
-    <footer>
-        <p></p>
-    </footer>
-</div>
-<!-- (div>dl>(dt+dd)*3)+footer>p -->
-<div>
-    <dl>
-        <dt></dt>
-        <dd></dd>
-        <dt></dt>
-        <dd></dd>
-        <dt></dt>
-        <dd></dd>
-    </dl>
-</div>
-<footer>
-    <p></p>
-</footer>
+<style>
+    .box {
+        width: 200px;
+        height: 200px;
+        background: red;
+    }
+</style>
 ```
 
-- 乘法(`Multiplication`)
+**2.指定样式范围，scoped属性的作用为style元素内定义的样式只作用于该元素的父级及其所有兄弟元素**
 
-`*`:要生成多少个一样的标签，后面加数字
-
-使用`*N`即可自动生成重复项.`N`是一个正整数.在使用时请注意`N`所在位置,位置不同生成的结果不同.
+**3.media属性表明文档在指定的设备下显示其定义的样式**
 
 ```html
-<!-- div>ul>li*5 -->
-<div>
-    <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
-</div>
-<!-- ul>li.item$*5 -->
-<ul>
-    <li class="item1"></li>
-    <li class="item2"></li>
-    <li class="item3"></li>
-    <li class="item4"></li>
-    <li class="item5"></li>
-</ul>
-<!-- ul>(li>a)*3 -->
- <ul>
-    <li><a href=""></a></li>
-    <li><a href=""></a></li>
-    <li><a href=""></a></li>
-</ul>
-<!-- ul>(li>a[click="#"])*3 -->
-<ul>
-    <li><a href=""click="#"></a></li>
-    <li><a href=""click="#"></a></li>
-    <li><a href=""click="#"></a></li>
-</ul>
-<!-- h[title=item]{Header $}*3 -->
-<h1 title="item1">Header 1</h1>
-<h2 title="item2">Header 2</h2>
-<h3 title="item3">Header 3</h3>
+<style media="screen" type="text/css">
+    .box {
+        width: 200px;
+        height: 200px;
+        background: red;
+    }
+</style>
 ```
 
-- `$`：标签的名称序号
+media属性所有的设备值如下表(--HTML5权威指南)，很多在工作中几乎都用不上，列出来了解一下及以备查阅:
 
-即：生成的标签要不要自动生成带序号的
+| 设备(media的值) | 说明                               |
+| :-------------- | :--------------------------------- |
+| all             | 将样式用于所有设备(默认值)         |
+| aural           | 将样式用于语音合成器               |
+| braille         | 将样式用于盲文设备                 |
+| handheld        | 将样式用于手持设备                 |
+| projection      | 讲样式用于投影机                   |
+| print           | 将样式用于打印预览和打印页面时     |
+| screen          | 将样式用于计算机显示屏幕           |
+| tty             | 将样式用于电传打印机之类的等宽设备 |
+| tv              | 将样式用于电视机                   |
 
-```html
-<!-- ul>li.item${item number:$}*3 -->
-<ul>
-    <li class="item1">item number:1</li>
-    <li class="item2">item number:2</li>
-    <li class="item3">item number:3</li>
-</ul>
-```
-
-如果生成两位数则使用两个连续的`$$`,更多位数以此类推...
-
-使用多个`$`操作符用`0`来分填充数字：
-
-```html
-<!-- ul>li.item$$$*5 -->
-<ul>
-    <li class="item001"></li>
-    <li class="item002"></li>
-    <li class="item003"></li>
-    <li class="item004"></li>
-    <li class="item005"></li>
-</ul>
-```
-
-使用`@`修饰符，可以更改编号方向（升序或降序）和基数（例如起始值）.注意这个操作符在`$`之后添加
-
-`@-`表示降序,`@+`表示升序,默认使用升序.
-
-`@N`可以改变起始值.需要注意的是如果配合升降序使用的话`N`是放到`+` \ `-`符后.
-
-起始数字，在前添加@起始数字：`*`
+media不只能规定设备，还能定义更具体的使用条件，举例如下:
 
 ```html
-<!-- ul>li.item$@3*5 -->
-<ul>
-    <li class="item3"></li>
-    <li class="item4"></li>
-    <li class="item5"></li>
-    <li class="item6"></li>
-    <li class="item7"></li>
-</ul>
-```
-
-从起始数字为`3`的列表倒序，只需把上面的Emmet代码`item`后面的数字写成`@-3*5`。
-
-```html
-<!-- ul>li.item$@-*5 -->
-<ul>
-    <li class="item5"></li>
-    <li class="item4"></li>
-    <li class="item3"></li>
-    <li class="item2"></li>
-    <li class="item1"></li>
-</ul>
-<!-- ul>li.item$@-*3 -->
-<ul>
-    <li class="item3"></li>
-    <li class="item2"></li>
-    <li class="item1"></li>
-</ul>
----------------------------
-<!-- ul>li.item$@-10*3 -->
-<ul>
-    <li class="item12"></li>
-    <li class="item11"></li>
-    <li class="item10"></li>
-</ul>
-```
-
-\* 倒序在vscode中无效
-
-另外如果你的编辑器中已经有了一些`html`智能提示代码段,比如我的`VsCode`还装了`HTML Snippets`插件,这个与`Emmet`语法有部分冲突,使用`Tab`键时会优先使用插件的代码提示,建议禁用.
-
-组合起来看看效果:
-
-```html
-<!-- table.table-row[role='table']>(thead>tr>td{item $@120}*5)+(tbody>tr>(td.item$$@-)lorem10*5) -->
-<table class="table-row" role="table">
-    <thead>
-        <tr>
-            <td>item 120</td>
-            <td>item 121</td>
-            <td>item 122</td>
-            <td>item 123</td>
-            <td>item 124</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-                <td class="item05">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, assumenda.</td>
-            </td>
-            <td>
-                <td class="item04">Magnam possimus molestias ipsum animi rem placeat, ut obcaecati laudantium.</td>
-            </td>
-            <td>
-                <td class="item03">Consequuntur, labore ad optio cupiditate iusto dolores fugit quidem officiis.</td>
-            </td>
-            <td>
-                <td class="item02">Veniam, explicabo consequuntur blanditiis at dicta fuga ratione eos beatae.</td>
-            </td>
-            <td>
-                <td class="item01">Fuga voluptatum illo quis ducimus ad eveniet non. Saepe, eveniet.</td>
-            </td>
-        </tr>
-    </tbody>
-</table>
-```
-
-这段目的在于生成一个类名为`table-row`,且自定义了属性`role`的`table`标签,内部包含了`thead`与`tbody`,分别生成`5`个`td`.
-
-`thead`中`td`的内容是`item`加上自增序号,自增序号基数从`120`开始.
-
-`tbody`中`td`拥有一个名为`item`加降序自增符号类名,且每个`td`内容随机填充`10`个单词.
-
-配合嵌套元素和计数的例子.
-
-```html
-<!-- div.nav>(nav#navbar>(ul>li>(a[href="/xxx/product/$" data-index=$]>lorem4)*5))+div.btn[type='button']>span{--}^^div#main -->
-<div class="nav">
-    <nav id="navbar">
-        <ul>
-            <li>
-                <a href="/xxx/product/1" data-index="1">Lorem ipsum dolor sit.</a>
-                <a href="/xxx/product/2" data-index="2">Dolor vel, quia quas.</a>
-                <a href="/xxx/product/3" data-index="3">Qui hic, corrupti eum!</a>
-                <a href="/xxx/product/4" data-index="4">Necessitatibus perspiciatis, corrupti. Praesentium!</a>
-                <a href="/xxx/product/5" data-index="5">Nostrum quos, voluptate. Velit!</a>
-            </li>
-        </ul>
-    </nav>
-    <div class="btn" type="button"><span>--</span></div>
-</div>
-<div id="main"></div>
-```
-
-## 进阶高级用法
-
-- 模拟文本/随机文本
-
-在开发时经常要填充一些文本内容占位,`Emmet`内置了`Lorem Ipsum`功能来实现.`loremN`或者`lipsumN`,`N`表示生成的单词数,正整数.可以不填.
-
-```html
-lorem
-=> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit quia commodi vero sint omnis fugiat excepturi reiciendis necessitatibus totam asperiores, delectus saepe nulla consequuntur nostrum! Saepe suscipit recusandae repellendus assumenda.
-
-p>lorem4
-=>
-<p>Lorem ipsum dolor sit.</p>
-
-(p>lorem4)*3
-=>
-<p>Lorem ipsum dolor sit.</p>
-<p>Labore aperiam, consequuntur architecto.</p>
-<p>Quidem nisi, cum odio!</p>
-```
-
-- 包装文本
-
-听起来可能有点绕,通俗点解释就是把一段指定的文本包装成我们想要的结构.注意这个功能需要编辑器的支持,举个大栗子:
-比如`PM`给了这样一段文本
-
-```html
-首页
-产品介绍
-相关案例
-关于我们
-联系我们
-而我们预期的效果是这样
-<nav>
-    <ul>
-        <li>首页</li>
-        <li>产品介绍</li>
-        <li>相关案例</li>
-        <li>关于我们</li>
-        <li>联系我们</li>
-    </ul>
-</nav>
-```
-
-  1. 选中文本,按下`ctrl+shift+p`打开命令窗口输入`ewrap`
-  2. 选择`Emmet:`使用缩写进行包装(`Wrap with Abbreviation`)选项
-  ![ewrap图片](https://s3.ax1x.com/2020/11/13/DSdMOH.png)
-  3. 输入缩写字符`nav>ul>li*`按下回车键即可看到效果.
-     当然也可以在菜单`=>`编辑`=>` `Emmet(M).`.然后输入.
-
-这里需要的注意的地方是输入的缩写代码中`*`所在位置不同得到的效果也是不同的
-另外如果给的文本带有序号的情况,我们也是可以通过缩写来处理,而不是手动删除,主要用的是`|t`来处理.
-比如:
-
-```html
-    1.首页
-    2.产品介绍
-    3.相关案例
-    4.关于我们
-    5.联系我们
-    <!-- 输入包装字符命令 -->
-    <!-- nav>ul>li*|t -->
-    <!-- 即可看到生成的html中自动去掉了序号 -->
-```
-
-\* 以上例子中在vscode中是以下效果,可能是和插件有冲突，有部分效果有差异~
-
-```html
-<nav>
-    <ul>
-        <li>
-            首页
-            产品介绍
-            相关案例
-            关于我们
-            联系我们
-        </li>
-    </ul>
-</nav>
-```
-
-## 其他例子
-
-```html
-<!-- link:css 加tab键-->
- <link rel="stylesheet" href="style.css">
+<style media="screen AND (max-width:500px)" type="text/css">
+//只在浏览器宽度小于500px的情况下生效
+    .box {
+        width: 200px;
+        height: 200px;
+        background: red;
+    }
+</style>
 ```
 
 ```html
-<!-- script:src  -->
- <script src=""></script>
+<style media="screen AND (mix-width:500px)" type="text/css">
+//只在浏览器宽度大于500px的情况下生效
+    .box {
+        width: 200px;
+        height: 200px;
+        background: blue;
+    }
+</style>
 ```
+
+除了用AND来定义具体条件，还可以使用NOT和OR(','表示)，另外还有其他供media使用的特性就不列举了，大家可以自己去百度了，再补充一个吧，device-width，这些特性都可以结合max-/mix-来使用
+
+- **link**
+
+拥有的局部属性如下表:
+
+| 属性     | 说明                                                                                                                |
+| :------- | :------------------------------------------------------------------------------------------------------------------ |
+| href     | 指定引入资源的URL                                                                                                   |
+| hreflang | 说明关联资源使用的语言                                                                                              |
+| media    | 说明关联内容用于哪种设备                                                                                            |
+| rel      | 说明文档与关联资源的关系类型，属性值决定了浏览器如何解析link元素                                                    |
+| sizes    | HTML5中新增，指定网站图标大小                                                                                       |
+| type     | 指定所关联资源的[MIME](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/MIME_types)类型，如text/css |
+
+rel属性常用值[rel值列表](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Link_types)及其表示的link元素功能
+
+| 属性       | 说明             |
+| :--------- | :--------------- |
+| stylesheet | 载入外部样式表   |
+| icon       | 指定图标资源     |
+| prefetch   | 预先获取一个资源 |
+
+**1.引入外联样式表**
 
 ```html
-<!--input:button -->
-<input type="button" value="">
+<link rel="stylesheet" type="text/css" href="index.css">
 ```
+
+**2.添加网站图标**
 
 ```html
-<!--form:get-->
-<form action="" method="get"></form>
-<!--form:post-->
-<form action="" method="post"></form>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 ```
 
-:::warning 注
-上述的操作是可以搭配使用进而得出酷炫的效果,使用时请注意空格的问题,缩写代码不要有空格否则是不会进行转换的.
-:::
+     //href属性值为图片路径
+**3.预先获取关联的资源**
+
+```html
+<link rel="prefetch"  href="demo.html">
+```
+
+rel属性值设置为prefetch，可以预先加载demo.html，如果页面存在链接如下，为需要demo.html页面的操作做好准备
+
+```html
+<a href="demo.html">demo</a>
+```
+
+- **script**
+
+>script元素可以定义页面内嵌脚本、引入外部文件脚本并通过script本身局部属性值设定加载脚本的各种方式
+
+script的常用局部属性及其说明如下表:
+
+| 属性    | 说明                                                                                                         |
+| :------ | :----------------------------------------------------------------------------------------------------------- |
+| type    | 表示引用或定义的脚本类型，如果是javascript脚本，此属性可以省略，省略type属性时浏览器默认为使用JavaScript脚本 |
+| src     | 指定加载外部脚本资源的URL                                                                                    |
+| defer   | 设定脚本执行的方式为延迟执行，告诉浏览器等页面载入和解析完毕才能执行此脚本，只能与src属性一起使用            |
+| async   | 设定脚本执行的方式为异步执行，只能与src属性一起使用                                                          |
+| charset | 说明外部脚本资源的字符编码，只能与src属性一起使用                                                            |
+
+**1.定义文档内嵌脚本**
+
+```html
+<script>
+    window.onload = function() {
+        alert('页面加载完成');
+    }
+</script>
+```
+
+一般情况下script元素应该放在文档最后，等页面全部加载完成后才去执行，保证脚本文件内可以获取到当前页面的全部内容。
+
+如果script元素在head内，如果是当前内嵌脚本，则可以添加window.onload来告诉浏览器当所有页面全部加载完成才去执行。
+
+**2.载入外部脚本**
+
+```html
+<script src="index.js"></script>
+```
+
+**3.使用defer属性延迟加载外部脚本**
+
+```html
+<script defer src="index.js"></script>
+```
+
+如果在head中使用script元素，defer属性将会在HTML文档所有元素都解析完毕之后才加载和执行。
+
+*注意*:defer属性只能处理外部脚本，对内嵌脚本无效。
+
+**4.使用async属性异步执行脚本**
+
+```html
+<script async src="index.js"></script>
+```
+
+浏览器在解析script元素时的默认行为是加载和执行脚本的时候暂停处理页面，各script元素按顺序同步执行。
+
+使用async属性可以使外部脚本在加载HTML时异步执行，如何使用需结合具体产品功能需求，不过带来的影响是，页面中的脚本不能再按次序同步执行，所以如果当前脚本中与其他脚本有关联，则不适合使用async属性
+
+### body
+
+HTML文档的元数据和文档信息都包含在head内，文档内容包含在body内，body紧跟在head后面，具体不在赘述！
+
+本文很多概念和属性表格结合《HTML5权威指南》、W3school、MDN，由于博主能力有限，很多概念直接拿过来引用，并附上相关链接，以保证其正确性，对HTML文档的相关知识作一个简单的总结，希望能帮助到需要的人，同时也方便自己后续查阅。

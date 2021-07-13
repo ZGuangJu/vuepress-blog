@@ -25,16 +25,17 @@ module.exports = {
             }]
     ],
     // 主题使用的插件的设置
+
     plugins: {
         // 打赏
-        'vuepress-plugin-sponsor': {
-            theme: 'simple', // Drinks  \ simple
-            alipay: '/img/alipay.png',
-            wechat: '/img/wechat.png',
-            // qq: '',
-            // paypal: '',
-            duration: 2000
-        },
+        // 'vuepress-plugin-sponsor': {
+        //     theme: 'Drinks', // Drinks  \ simple
+        //     alipay: '/img/alipay.png',
+        //     wechat: '/img/wechat.png',
+        //     qq: '',
+        //     paypal: '',
+        //     duration: 2000
+        // },
         // 彩带
         "ribbon": {
             size: 70,     // width of the ribbon, default: 90
@@ -54,22 +55,22 @@ module.exports = {
         },
         // gitee时启用
         // 公告窗
-        //     "@vuepress-yard/vuepress-plugin-window":{
-        //         title: "公告",
-        //         windowStyle: { left: '41%', top: '200px', width: '260px', },
-        //         contentInfo: {
-        //             title: '本站声明',
-        //             // imgUrl: '',
-        //             needImg: false,
-        //             content: '🎉本站最新地址请点击按钮访问 www.zguangju.com 👇 另，可在关于页面扫码加公众号，感谢关注',
-        //             contentStyle: {}
-        //         },
-        //         bottomInfo: {
-        //             btnText: '最新',
-        //             linkTo: 'http://www.zguangju.com'
-        //         },
-        //         closeOnce: true
-        //     }
+        // "@vuepress-yard/vuepress-plugin-window":{
+        //     title: "公告",
+        //     windowStyle: { left: '41%', top: '200px', width: '260px', },
+        //     contentInfo: {
+        //         title: '本站声明',
+        //         // imgUrl: '',
+        //         needImg: false,
+        //         content: '🎉本站最新地址请点击按钮访问 www.zguangju.com 👇 另，可在关于页面扫码加公众号，感谢关注',
+        //         contentStyle: {}
+        //     },
+        //     bottomInfo: {
+        //         btnText: '最新',
+        //         linkTo: 'http://www.zguangju.com'
+        //     },
+        //     closeOnce: true
+        // }
     },
     // 主题设置
     themeConfig: {
@@ -147,6 +148,7 @@ module.exports = {
                     { text: 'Axios', link: '/Frontend/Axios/axios' },
                     { text: 'Class', link: '/Frontend/Class/class1' },
                     { text: 'TypeScript', link: '/Frontend/TS/ts1' },
+                    { text: 'HTTP', link: '/Frontend/http' },
                     { text: '正则', link: '/Frontend/regex' },
                     { text: '算法', link: '/Frontend/algorithm' },
                     { text: 'Webpack4.0', link: '/Webpack/webpack1' },
@@ -256,7 +258,7 @@ module.exports = {
                 {
                     title: 'HTML',
                     collapsable: true, //是否折叠侧边栏
-                    children: ['HTML/HTML']
+                    children: ['HTML/HTML', 'HTML/HTML_meta', 'HTML/HTML_emmet', 'HTML/HTML_webkit']
                 },
                 {
                     title: 'CSS',
