@@ -105,7 +105,7 @@
         var sendGiftBtn = document.querySelector(".sendGift");
         var selectedItem = "";//用户选中的礼物，用来保存类名
         var giftListArr = ["鲜花", "手机", "飞机", "火箭"]
-        var giftClass_listArr = ["Flower", "Phone", "Plane", "Huojian"]
+        var giftClass_listArr = ["flower", "Phone", "plane", "Huojian"]
         //    选中
         for (let i = 0; i < giftListArr.length; i++) {
             var giftItemDiv = document.createElement("div");
@@ -129,9 +129,9 @@
                     selectedItem = null
                 } else {
                     // 如果选中了，取消选中
+
                     this.id = "selectGift"
-                    console.log(this.className.split(" ")[0])
-                    selectedItem = this.className.split(" ")[0]
+                    selectedItem = this.className
                     // console.log(selectedItem)
                 }
             }
@@ -140,85 +140,7 @@
         }
         // 赠送按钮
         sendGiftBtn.onclick = function () {
-            // var gift
-            // if (selectedItem == "Flower") {
-            //     gift = new Flower()
-            // } else if (selectedItem == "Phone") {
-            //     gift = new Phone()
-
-            // } else if (selectedItem == "Plane") {
-            //     gift = new Plane()
-            // } else if (selectedItem == "Huojian") {
-            //     gift = new Huojian()
-            // } else {
-            //     alert("选择正确礼物")
-            // }
-
-            //🔺🔺🔺 以上方式是普通方式，和下面的方式功能一致，但是，下面的工厂模式可以降低耦合度，可以将公共方法封装 🔺🔺🔺
-
-            // 根据selectdItem 创建相应类型的对象，并执行其send方法
-            var gift = giftFactory.createGift(selectedItem)
-            gift.send()
-        }
-
-
-        // 创建礼物
-        function Gift() { }
-        Gift.prototype.send = function () {
-            console.log("在页面送出礼物" + this.getGiftName())
-        }
-        function Flower() {
-            var gname = "鲜花"
-            this.getGiftName = function () {
-                return gname;
-            }
-        }
-        function Phone() {
-            var gname = "手机"
-            this.getGiftName = function () {
-                return gname;
-            }
-        }
-        function Plane() {
-            var gname = "飞机"
-            this.getGiftName = function () {
-                return gname;
-            }
-        }
-        function Huojian() {
-            var gname = "火箭"
-            this.getGiftName = function () {
-                return gname;
-            }
-        }
-        //    建立父子关系
-        Flower.prototype = new Gift()
-        Phone.prototype = new Gift()
-        Plane.prototype = new Gift()
-        Huojian.prototype = new Gift()
-        // 建立礼物工厂模式
-        var giftFactory = {
-            createGift: function (selectedItem) {
-                var gift;
-                switch (selectedItem) {
-                    case "Flower":
-                        gift = new Flower()
-                        break
-                    case "Phone":
-                        gift = new Phone()
-                        break
-                    case "Plane":
-                        gift = new Plane()
-                        break
-                    case "Huojian":
-                        gift = new Huojian()
-                        break
-                    default:
-                        alert("选择正确的礼物")
-                        break
-                }
-                return gift
-            }
+            console.log(selectedItem)
         }
 
     </script>

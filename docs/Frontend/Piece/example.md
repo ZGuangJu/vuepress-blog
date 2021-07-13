@@ -176,6 +176,238 @@ window.onresize = function(){
 
 :::
 
+## 工厂模式应用(选择礼物并发送)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <meta http-equiv="refresh" content="5"> -->
+    <title>Document</title>
+    <style>
+        html,
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        div,
+        dl,
+        dt,
+        dd,
+        ul,
+        ol,
+        li,
+        p,
+        blockquote,
+        pre,
+        hr,
+        figure,
+        table,
+        caption,
+        th,
+        td,
+        img,
+        form,
+        fieldset,
+        legend,
+        input,
+        button,
+        textarea,
+        menu {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            width: 800px;
+            height: 300px;
+            border: 1px solid blueviolet;
+        }
+
+        .c_giftList {
+            width: 100%;
+            height: 260px;
+        }
+
+        .c_giftMenu {
+            width: 100%;
+            height: 40px;
+            border: 1px solid skyblue;
+            line-height: 40px;
+            position: relative;
+        }
+
+        .c_giftMenu .sendGift {
+            width: 100px;
+            height: 30px;
+            font-style: 22px;
+            text-align: center;
+            line-height: 30px;
+            letter-spacing: 5px;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+        }
+
+        .dome1 {
+            width: 350px;
+            height: 120px;
+            border: 3px solid orange;
+            display: inline-block;
+            margin: 2px;
+            text-align: center;
+            line-height: 120px
+        }
+
+        .c_giftList #selectGift {
+            border: 3px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="c_giftList">
+            <!-- 通过后台获取 -->
+        </div>
+        <div class="c_giftMenu">
+            <button class="sendGift">赠送</button>
+        </div>
+    </div>
+    <script>
+        var giftListDiv = document.querySelector(".c_giftList");
+        var sendGiftBtn = document.querySelector(".sendGift");
+        var selectedItem = "";//用户选中的礼物，用来保存类名
+        var giftListArr = ["鲜花", "手机", "飞机", "火箭"]
+        var giftClass_listArr = ["Flower", "Phone", "Plane", "Huojian"]
+        //    选中
+        for (let i = 0; i < giftListArr.length; i++) {
+            var giftItemDiv = document.createElement("div");
+            giftItemDiv.className = giftClass_listArr[i]
+            giftItemDiv.innerHTML = giftListArr[i];
+            giftItemDiv.classList.add("dome1")
+            // 给每个礼物item都添加点击事件，点击时表示选中，再次点击表示取消
+            giftItemDiv.onclick = function () {
+                var giftListAll = document.querySelectorAll(".c_giftList div")
+
+                for (let j = 0; j < giftListAll.length; j++) {
+                    // 如果列表中 不是当前选中的礼物
+                    if (giftListAll[j] != this) {
+                        // 就清除id
+                        giftListAll[j].id = null;
+                    }
+                }
+                // 如果未选中，就选中
+                if (this.id == "selectGift") {
+                    this.id = null
+                    selectedItem = null
+                } else {
+                    // 如果选中了，取消选中
+                    this.id = "selectGift"
+                    console.log(this.className.split(" ")[0])
+                    selectedItem = this.className.split(" ")[0]
+                    // console.log(selectedItem)
+                }
+            }
+            giftListDiv.appendChild(giftItemDiv)
+
+        }
+        // 赠送按钮
+        sendGiftBtn.onclick = function () {
+            // var gift
+            // if (selectedItem == "Flower") {
+            //     gift = new Flower()
+            // } else if (selectedItem == "Phone") {
+            //     gift = new Phone()
+
+            // } else if (selectedItem == "Plane") {
+            //     gift = new Plane()
+            // } else if (selectedItem == "Huojian") {
+            //     gift = new Huojian()
+            // } else {
+            //     alert("选择正确礼物")
+            // }
+
+            //🔺🔺🔺 以上方式是普通方式，和下面的方式功能一致，但是，下面的工厂模式可以降低耦合度，可以将公共方法封装 🔺🔺🔺
+
+            // 根据selectdItem 创建相应类型的对象，并执行其send方法
+            var gift = giftFactory.createGift(selectedItem)
+            gift.send()
+        }
+
+
+        // 创建礼物
+        function Gift() { }
+        Gift.prototype.send = function () {
+            console.log("在页面送出礼物" + this.getGiftName())
+        }
+        function Flower() {
+            var gname = "鲜花"
+            this.getGiftName = function () {
+                return gname;
+            }
+        }
+        function Phone() {
+            var gname = "手机"
+            this.getGiftName = function () {
+                return gname;
+            }
+        }
+        function Plane() {
+            var gname = "飞机"
+            this.getGiftName = function () {
+                return gname;
+            }
+        }
+        function Huojian() {
+            var gname = "火箭"
+            this.getGiftName = function () {
+                return gname;
+            }
+        }
+        //    建立父子关系
+        Flower.prototype = new Gift()
+        Phone.prototype = new Gift()
+        Plane.prototype = new Gift()
+        Huojian.prototype = new Gift()
+        // 建立礼物工厂模式
+        var giftFactory = {
+            createGift: function (selectedItem) {
+                var gift;
+                switch (selectedItem) {
+                    case "Flower":
+                        gift = new Flower()
+                        break
+                    case "Phone":
+                        gift = new Phone()
+                        break
+                    case "Plane":
+                        gift = new Plane()
+                        break
+                    case "Huojian":
+                        gift = new Huojian()
+                        break
+                    default:
+                        alert("选择正确的礼物")
+                        break
+                }
+                return gift
+            }
+        }
+
+    </script>
+</body>
+
+</html>
+```
+
 ## js截取日期的年月日
 
 ```js
