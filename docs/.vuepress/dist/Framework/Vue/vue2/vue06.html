@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vue 生命周期 | ZGuangJu&#39;S NoteBook</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/img/ju.png">
+    <meta name="description" content="欢迎，大爷儿来玩~">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.60d54bb8.css" as="style"><link rel="preload" href="/assets/js/app.8c1ab967.js" as="script"><link rel="preload" href="/assets/js/3.c2781672.js" as="script"><link rel="preload" href="/assets/js/1.8d211e71.js" as="script"><link rel="preload" href="/assets/js/56.072691ec.js" as="script"><link rel="prefetch" href="/assets/js/10.263aed46.js"><link rel="prefetch" href="/assets/js/100.17390e79.js"><link rel="prefetch" href="/assets/js/101.fa66cbff.js"><link rel="prefetch" href="/assets/js/102.f0cb40b7.js"><link rel="prefetch" href="/assets/js/103.33c2444c.js"><link rel="prefetch" href="/assets/js/104.50811e74.js"><link rel="prefetch" href="/assets/js/105.a21ed81e.js"><link rel="prefetch" href="/assets/js/106.9b53ab54.js"><link rel="prefetch" href="/assets/js/107.e73e8201.js"><link rel="prefetch" href="/assets/js/108.baf08896.js"><link rel="prefetch" href="/assets/js/109.e00fc88b.js"><link rel="prefetch" href="/assets/js/11.dfe4d5f4.js"><link rel="prefetch" href="/assets/js/110.ce41ae21.js"><link rel="prefetch" href="/assets/js/111.d9dfd84e.js"><link rel="prefetch" href="/assets/js/112.46b496b0.js"><link rel="prefetch" href="/assets/js/113.77ca4df6.js"><link rel="prefetch" href="/assets/js/114.70a81a21.js"><link rel="prefetch" href="/assets/js/115.da4ec8c3.js"><link rel="prefetch" href="/assets/js/116.d3c38375.js"><link rel="prefetch" href="/assets/js/117.dc4bfbb8.js"><link rel="prefetch" href="/assets/js/118.b9fd3374.js"><link rel="prefetch" href="/assets/js/119.8b6e3eed.js"><link rel="prefetch" href="/assets/js/12.e1f371a9.js"><link rel="prefetch" href="/assets/js/120.4a57976d.js"><link rel="prefetch" href="/assets/js/121.8ce9f119.js"><link rel="prefetch" href="/assets/js/122.42968bf7.js"><link rel="prefetch" href="/assets/js/123.033e32e7.js"><link rel="prefetch" href="/assets/js/124.d483b0ce.js"><link rel="prefetch" href="/assets/js/125.cb85150e.js"><link rel="prefetch" href="/assets/js/126.0b21d810.js"><link rel="prefetch" href="/assets/js/127.56605e8f.js"><link rel="prefetch" href="/assets/js/128.b75db581.js"><link rel="prefetch" href="/assets/js/129.206618d1.js"><link rel="prefetch" href="/assets/js/13.22c170f6.js"><link rel="prefetch" href="/assets/js/130.720ecc39.js"><link rel="prefetch" href="/assets/js/131.b88f58b5.js"><link rel="prefetch" href="/assets/js/132.12d0d2dd.js"><link rel="prefetch" href="/assets/js/133.5c10512c.js"><link rel="prefetch" href="/assets/js/134.952714ee.js"><link rel="prefetch" href="/assets/js/135.c330b53d.js"><link rel="prefetch" href="/assets/js/136.0797cada.js"><link rel="prefetch" href="/assets/js/137.8612af4d.js"><link rel="prefetch" href="/assets/js/138.6b05e253.js"><link rel="prefetch" href="/assets/js/139.fd7244a3.js"><link rel="prefetch" href="/assets/js/14.474f7802.js"><link rel="prefetch" href="/assets/js/140.23b284e1.js"><link rel="prefetch" href="/assets/js/141.2332b6b3.js"><link rel="prefetch" href="/assets/js/142.a0cdb886.js"><link rel="prefetch" href="/assets/js/143.69019074.js"><link rel="prefetch" href="/assets/js/144.bb46e358.js"><link rel="prefetch" href="/assets/js/145.01ecd06c.js"><link rel="prefetch" href="/assets/js/146.249950e4.js"><link rel="prefetch" href="/assets/js/147.fc7aa686.js"><link rel="prefetch" href="/assets/js/148.9fe86ae7.js"><link rel="prefetch" href="/assets/js/149.786676a3.js"><link rel="prefetch" href="/assets/js/15.a5e8d1e1.js"><link rel="prefetch" href="/assets/js/150.5d8d28d4.js"><link rel="prefetch" href="/assets/js/151.12caeef8.js"><link rel="prefetch" href="/assets/js/152.c7cb516d.js"><link rel="prefetch" href="/assets/js/153.507c62f1.js"><link rel="prefetch" href="/assets/js/154.ec888417.js"><link rel="prefetch" href="/assets/js/155.d48d994d.js"><link rel="prefetch" href="/assets/js/156.ce7ca55c.js"><link rel="prefetch" href="/assets/js/157.fba475f1.js"><link rel="prefetch" href="/assets/js/158.a650c1f8.js"><link rel="prefetch" href="/assets/js/159.ed84d7b3.js"><link rel="prefetch" href="/assets/js/16.82c30894.js"><link rel="prefetch" href="/assets/js/160.1c6edfd1.js"><link rel="prefetch" href="/assets/js/161.0daa0ec1.js"><link rel="prefetch" href="/assets/js/162.a70dc42d.js"><link rel="prefetch" href="/assets/js/163.304740e5.js"><link rel="prefetch" href="/assets/js/164.56907d34.js"><link rel="prefetch" href="/assets/js/165.f255fe70.js"><link rel="prefetch" href="/assets/js/166.10581f4a.js"><link rel="prefetch" href="/assets/js/167.612082b1.js"><link rel="prefetch" href="/assets/js/168.704d1053.js"><link rel="prefetch" href="/assets/js/169.5f426bea.js"><link rel="prefetch" href="/assets/js/17.ee839064.js"><link rel="prefetch" href="/assets/js/170.f945c482.js"><link rel="prefetch" href="/assets/js/171.4f0f0c49.js"><link rel="prefetch" href="/assets/js/172.6b9843fe.js"><link rel="prefetch" href="/assets/js/173.1155cb53.js"><link rel="prefetch" href="/assets/js/174.a2732174.js"><link rel="prefetch" href="/assets/js/175.5353fd3e.js"><link rel="prefetch" href="/assets/js/176.531db22c.js"><link rel="prefetch" href="/assets/js/177.e3903a97.js"><link rel="prefetch" href="/assets/js/178.56162123.js"><link rel="prefetch" href="/assets/js/179.a8c62c5a.js"><link rel="prefetch" href="/assets/js/18.3d13fb7d.js"><link rel="prefetch" href="/assets/js/180.3efc2192.js"><link rel="prefetch" href="/assets/js/181.68e09f9a.js"><link rel="prefetch" href="/assets/js/182.a2ba78fd.js"><link rel="prefetch" href="/assets/js/183.a1913aee.js"><link rel="prefetch" href="/assets/js/184.4d9b41be.js"><link rel="prefetch" href="/assets/js/185.8fc94f4b.js"><link rel="prefetch" href="/assets/js/186.1d538cfa.js"><link rel="prefetch" href="/assets/js/187.4362dbe0.js"><link rel="prefetch" href="/assets/js/188.4480dfd9.js"><link rel="prefetch" href="/assets/js/189.1c425e11.js"><link rel="prefetch" href="/assets/js/19.0f5e6de0.js"><link rel="prefetch" href="/assets/js/190.4d314ed7.js"><link rel="prefetch" href="/assets/js/191.0be7788b.js"><link rel="prefetch" href="/assets/js/192.9e00e120.js"><link rel="prefetch" href="/assets/js/193.290cf998.js"><link rel="prefetch" href="/assets/js/194.3efe4cb9.js"><link rel="prefetch" href="/assets/js/195.8729413c.js"><link rel="prefetch" href="/assets/js/196.ab44c49f.js"><link rel="prefetch" href="/assets/js/197.3b0994cf.js"><link rel="prefetch" href="/assets/js/198.de84b78c.js"><link rel="prefetch" href="/assets/js/199.dcc0958d.js"><link rel="prefetch" href="/assets/js/20.89650b8a.js"><link rel="prefetch" href="/assets/js/200.07306184.js"><link rel="prefetch" href="/assets/js/201.c9ad579d.js"><link rel="prefetch" href="/assets/js/202.93c2e4ec.js"><link rel="prefetch" href="/assets/js/203.1a6c7ac8.js"><link rel="prefetch" href="/assets/js/204.385b93aa.js"><link rel="prefetch" href="/assets/js/205.0b9aef42.js"><link rel="prefetch" href="/assets/js/206.f366bc08.js"><link rel="prefetch" href="/assets/js/207.fb960003.js"><link rel="prefetch" href="/assets/js/208.f05f7a7b.js"><link rel="prefetch" href="/assets/js/209.f9a87ff2.js"><link rel="prefetch" href="/assets/js/21.5de084f3.js"><link rel="prefetch" href="/assets/js/210.455d4865.js"><link rel="prefetch" href="/assets/js/211.f8cb84ef.js"><link rel="prefetch" href="/assets/js/212.c57c7de0.js"><link rel="prefetch" href="/assets/js/213.47c01304.js"><link rel="prefetch" href="/assets/js/214.5bc21d5d.js"><link rel="prefetch" href="/assets/js/215.f5f4b1f7.js"><link rel="prefetch" href="/assets/js/216.59ce45c0.js"><link rel="prefetch" href="/assets/js/217.62a651d0.js"><link rel="prefetch" href="/assets/js/218.ad7e60e8.js"><link rel="prefetch" href="/assets/js/219.e5f37839.js"><link rel="prefetch" href="/assets/js/22.a22c3430.js"><link rel="prefetch" href="/assets/js/220.01d3b7d8.js"><link rel="prefetch" href="/assets/js/23.32633fd5.js"><link rel="prefetch" href="/assets/js/24.4031c798.js"><link rel="prefetch" href="/assets/js/25.80264476.js"><link rel="prefetch" href="/assets/js/26.97de4d89.js"><link rel="prefetch" href="/assets/js/27.575d551b.js"><link rel="prefetch" href="/assets/js/28.b1428a67.js"><link rel="prefetch" href="/assets/js/29.fe71b314.js"><link rel="prefetch" href="/assets/js/30.2385bf38.js"><link rel="prefetch" href="/assets/js/31.bafb702b.js"><link rel="prefetch" href="/assets/js/32.dd02f2fa.js"><link rel="prefetch" href="/assets/js/33.9487ec23.js"><link rel="prefetch" href="/assets/js/34.879cc775.js"><link rel="prefetch" href="/assets/js/35.3d6477dd.js"><link rel="prefetch" href="/assets/js/36.dad8726e.js"><link rel="prefetch" href="/assets/js/37.15d904ab.js"><link rel="prefetch" href="/assets/js/38.d1756378.js"><link rel="prefetch" href="/assets/js/39.cf10f154.js"><link rel="prefetch" href="/assets/js/4.6e963f02.js"><link rel="prefetch" href="/assets/js/40.5080d464.js"><link rel="prefetch" href="/assets/js/41.08bcdc38.js"><link rel="prefetch" href="/assets/js/42.b5874ca6.js"><link rel="prefetch" href="/assets/js/43.2d4fe1e0.js"><link rel="prefetch" href="/assets/js/44.9ebccdfb.js"><link rel="prefetch" href="/assets/js/45.cc4a69a5.js"><link rel="prefetch" href="/assets/js/46.f6ed7032.js"><link rel="prefetch" href="/assets/js/47.c714a5fa.js"><link rel="prefetch" href="/assets/js/48.4914e986.js"><link rel="prefetch" href="/assets/js/49.877d4a4e.js"><link rel="prefetch" href="/assets/js/5.c463df78.js"><link rel="prefetch" href="/assets/js/50.2de7f7fe.js"><link rel="prefetch" href="/assets/js/51.33f030a7.js"><link rel="prefetch" href="/assets/js/52.ec9a7f83.js"><link rel="prefetch" href="/assets/js/53.d6252112.js"><link rel="prefetch" href="/assets/js/54.2eb3499f.js"><link rel="prefetch" href="/assets/js/55.371a7b00.js"><link rel="prefetch" href="/assets/js/57.5d398bb9.js"><link rel="prefetch" href="/assets/js/58.abb5b7ae.js"><link rel="prefetch" href="/assets/js/59.188e0509.js"><link rel="prefetch" href="/assets/js/6.088a9c66.js"><link rel="prefetch" href="/assets/js/60.69530af5.js"><link rel="prefetch" href="/assets/js/61.9e582bde.js"><link rel="prefetch" href="/assets/js/62.d0e752a8.js"><link rel="prefetch" href="/assets/js/63.b78f20f0.js"><link rel="prefetch" href="/assets/js/64.ec678de7.js"><link rel="prefetch" href="/assets/js/65.1e29849b.js"><link rel="prefetch" href="/assets/js/66.b2ff92d5.js"><link rel="prefetch" href="/assets/js/67.0ead0922.js"><link rel="prefetch" href="/assets/js/68.6737d377.js"><link rel="prefetch" href="/assets/js/69.ef3fcbae.js"><link rel="prefetch" href="/assets/js/7.c127c129.js"><link rel="prefetch" href="/assets/js/70.cec1c2d2.js"><link rel="prefetch" href="/assets/js/71.28974873.js"><link rel="prefetch" href="/assets/js/72.03eb5b36.js"><link rel="prefetch" href="/assets/js/73.8cc84259.js"><link rel="prefetch" href="/assets/js/74.de47db41.js"><link rel="prefetch" href="/assets/js/75.acc6ae8f.js"><link rel="prefetch" href="/assets/js/76.480005ef.js"><link rel="prefetch" href="/assets/js/77.a6d39afc.js"><link rel="prefetch" href="/assets/js/78.cf5049ac.js"><link rel="prefetch" href="/assets/js/79.16331b26.js"><link rel="prefetch" href="/assets/js/8.bcc98f3e.js"><link rel="prefetch" href="/assets/js/80.db8c41ed.js"><link rel="prefetch" href="/assets/js/81.b2746a85.js"><link rel="prefetch" href="/assets/js/82.8721edb8.js"><link rel="prefetch" href="/assets/js/83.2385965f.js"><link rel="prefetch" href="/assets/js/84.cfd744db.js"><link rel="prefetch" href="/assets/js/85.891f3962.js"><link rel="prefetch" href="/assets/js/86.c81e6488.js"><link rel="prefetch" href="/assets/js/87.b8c64780.js"><link rel="prefetch" href="/assets/js/88.100bb3df.js"><link rel="prefetch" href="/assets/js/89.fc752f64.js"><link rel="prefetch" href="/assets/js/9.82a1831e.js"><link rel="prefetch" href="/assets/js/90.d6f48bf8.js"><link rel="prefetch" href="/assets/js/91.2175f9ab.js"><link rel="prefetch" href="/assets/js/92.266da429.js"><link rel="prefetch" href="/assets/js/93.dde623c6.js"><link rel="prefetch" href="/assets/js/94.8feb994e.js"><link rel="prefetch" href="/assets/js/95.4ea82ff9.js"><link rel="prefetch" href="/assets/js/96.80c93184.js"><link rel="prefetch" href="/assets/js/97.a6ec298f.js"><link rel="prefetch" href="/assets/js/98.8aa5ab9d.js"><link rel="prefetch" href="/assets/js/99.36b18caf.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.60d54bb8.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-1aefc0b4><div data-v-1aefc0b4><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1aefc0b4 data-v-1aefc0b4><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>ZGuangJu'S NoteBook</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2>欢迎，大爷儿来玩~</p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>ZGuangJu</span>
+            
+          <span data-v-25ba6db2>2017 - </span>
+          2022
+        </a></span></div></div> <div class="hide" data-v-1aefc0b4><header class="navbar" data-v-1aefc0b4><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">ZGuangJu'S NoteBook</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  首页
+</a></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      前端基础
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Frontend/HTML/HTML.html" class="nav-link"><i class="undefined"></i>
+  HTML &amp; H5
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/CSS/css1.html" class="nav-link"><i class="undefined"></i>
+  CSS &amp; C3
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/CSS2/css1.html" class="nav-link"><i class="undefined"></i>
+  CSS 教程
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/JS/js2.html" class="nav-link"><i class="undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/ES6/ES01.html" class="nav-link"><i class="undefined"></i>
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/Promise/promise.html" class="nav-link"><i class="undefined"></i>
+  Promise
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/JQuery/JQuery.html" class="nav-link"><i class="undefined"></i>
+  JQuery
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/Ajax/Ajax.html" class="nav-link"><i class="undefined"></i>
+  Ajax
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/Axios/axios.html" class="nav-link"><i class="undefined"></i>
+  Axios
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/Class/class01.html" class="nav-link"><i class="undefined"></i>
+  Class
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/cross_Domain/cross_domain01.html" class="nav-link"><i class="undefined"></i>
+  跨域
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/TS/ts1.html" class="nav-link"><i class="undefined"></i>
+  TypeScript
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/Webpack/webpack1.html" class="nav-link"><i class="undefined"></i>
+  Webpack 4
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/http.html" class="nav-link"><i class="undefined"></i>
+  HTTP
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/regex.html" class="nav-link"><i class="undefined"></i>
+  正则
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/algorithm.html" class="nav-link"><i class="undefined"></i>
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/storage.html" class="nav-link"><i class="undefined"></i>
+  storage
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/less.html" class="nav-link"><i class="undefined"></i>
+  less
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/Piece/js2.html" class="nav-link"><i class="undefined"></i>
+  常用代码
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      前端框架
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Framework/Vue/vue2/vue01.html" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/Framework/Vue/vue3/vue3-1.html" class="nav-link"><i class="undefined"></i>
+  Vue3
+</a></li><li class="dropdown-item"><!----> <a href="/Framework/React/react01.html" class="nav-link"><i class="undefined"></i>
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/Framework/Wechat/wechat.html" class="nav-link"><i class="undefined"></i>
+  Wechat
+</a></li><li class="dropdown-item"><!----> <a href="/Project/project.html" class="nav-link"><i class="undefined"></i>
+  项目
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      后端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Linux/debian.html" class="nav-link"><i class="undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/Backend/Mongodb/mongodb1.html" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li><li class="dropdown-item"><!----> <a href="/Backend/Mysql/mysql01.html" class="nav-link"><i class="undefined"></i>
+  MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/Backend/Node/node2.html" class="nav-link"><i class="undefined"></i>
+  Node.js
+</a></li><li class="dropdown-item"><!----> <a href="/Backend/express.html" class="nav-link"><i class="undefined"></i>
+  Express
+</a></li><li class="dropdown-item"><!----> <a href="/Backend/docker.html" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/Backend/api.html" class="nav-link"><i class="undefined"></i>
+  Api
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      工具
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Tools/git.html" class="nav-link"><i class="undefined"></i>
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/yarn.html" class="nav-link"><i class="undefined"></i>
+  yarn
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/npm.html" class="nav-link"><i class="undefined"></i>
+  npm
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/npm_modules.html" class="nav-link"><i class="undefined"></i>
+  npm模块
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/node.html" class="nav-link"><i class="undefined"></i>
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/cmd.html" class="nav-link"><i class="undefined"></i>
+  cmd
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/nrm.html" class="nav-link"><i class="undefined"></i>
+  nrm
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/nvm.html" class="nav-link"><i class="undefined"></i>
+  nvm
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/pm2.html" class="nav-link"><i class="undefined"></i>
+  pm2
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/serve.html" class="nav-link"><i class="undefined"></i>
+  serve
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/markdown.html" class="nav-link"><i class="undefined"></i>
+  MarkDown
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/svg.html" class="nav-link"><i class="undefined"></i>
+  Svg
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/terminal.html" class="nav-link"><i class="undefined"></i>
+  Terminal
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Trojan.html" class="nav-link"><i class="undefined"></i>
+  Trojan
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/vite.html" class="nav-link"><i class="undefined"></i>
+  vite
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/eslint.html" class="nav-link"><i class="undefined"></i>
+  Eslint
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/vuepress.html" class="nav-link"><i class="undefined"></i>
+  vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/upgrade.html" class="nav-link"><i class="undefined"></i>
+  升级依赖包
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/typecho.html" class="nav-link"><i class="undefined"></i>
+  Typecho 安装建站
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/vscode.html" class="nav-link"><i class="undefined"></i>
+  VScode等配置文件
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/wsl.html" class="nav-link"><i class="undefined"></i>
+  Win子系统
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      小知识
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Other/target.html" class="nav-link"><i class="undefined"></i>
+  学习目标
+</a></li><li class="dropdown-item"><!----> <a href="/Other/errorSummarize.html" class="nav-link"><i class="undefined"></i>
+  报错总结
+</a></li><li class="dropdown-item"><!----> <a href="/Other/knowledgePoint.html" class="nav-link"><i class="undefined"></i>
+  知识点
+</a></li><li class="dropdown-item"><!----> <a href="/Other/interviewQuestion1.html" class="nav-link"><i class="undefined"></i>
+  面试题
+</a></li><li class="dropdown-item"><!----> <a href="/Other/interviewQuestion2.html" class="nav-link"><i class="undefined"></i>
+  面试题2
+</a></li><li class="dropdown-item"><!----> <a href="/Other/algorithm.html" class="nav-link"><i class="undefined"></i>
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/Other/dict.html" class="nav-link"><i class="undefined"></i>
+  字典
+</a></li><li class="dropdown-item"><!----> <a href="/Other/token.html" class="nav-link"><i class="undefined"></i>
+  token 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/Other/verificationCode.html" class="nav-link"><i class="undefined"></i>
+  验证码 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Chrome.html" class="nav-link"><i class="undefined"></i>
+  Chrome 使用
+</a></li><li class="dropdown-item"><!----> <a href="/Other/browserKernel.html" class="nav-link"><i class="undefined"></i>
+  浏览器和内核
+</a></li><li class="dropdown-item"><!----> <a href="/Other/URI&amp;URL.html" class="nav-link"><i class="undefined"></i>
+  URI &amp; URL
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Apache.html" class="nav-link"><i class="undefined"></i>
+  Apache 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/Other/nginx.html" class="nav-link"><i class="undefined"></i>
+  Nginx 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/Other/computerBreakdown.html" class="nav-link"><i class="undefined"></i>
+  电脑故障
+</a></li><li class="dropdown-item"><!----> <a href="/Other/chronology.html" class="nav-link"><i class="undefined"></i>
+  中国历史朝代年表
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  Timeline
+</a></div><div class="nav-item"><a href="/messages/" class="nav-link"><i class="iconfont reco-suggestion"></i>
+  留言
+</a></div><div class="nav-item"><a href="/About/" class="nav-link"><i class="undefined"></i>
+  关于
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1aefc0b4></div> <aside class="sidebar" data-v-1aefc0b4><div class="personal-info-wrapper" data-v-39576ba9 data-v-1aefc0b4><img src="/img/headimg.jpeg" alt="author-avatar" class="personal-img" data-v-39576ba9> <h3 class="name" data-v-39576ba9>
+    ZGuangJu
+  </h3> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>208</h3> <h6 data-v-39576ba9>Articles</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>109</h3> <h6 data-v-39576ba9>Tags</h6></div></div> <ul class="social-links" data-v-39576ba9></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  首页
+</a></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      前端基础
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Frontend/HTML/HTML.html" class="nav-link"><i class="undefined"></i>
+  HTML &amp; H5
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/CSS/css1.html" class="nav-link"><i class="undefined"></i>
+  CSS &amp; C3
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/CSS2/css1.html" class="nav-link"><i class="undefined"></i>
+  CSS 教程
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/JS/js2.html" class="nav-link"><i class="undefined"></i>
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/ES6/ES01.html" class="nav-link"><i class="undefined"></i>
+  ES6
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/Promise/promise.html" class="nav-link"><i class="undefined"></i>
+  Promise
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/JQuery/JQuery.html" class="nav-link"><i class="undefined"></i>
+  JQuery
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/Ajax/Ajax.html" class="nav-link"><i class="undefined"></i>
+  Ajax
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/Axios/axios.html" class="nav-link"><i class="undefined"></i>
+  Axios
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/Class/class01.html" class="nav-link"><i class="undefined"></i>
+  Class
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/cross_Domain/cross_domain01.html" class="nav-link"><i class="undefined"></i>
+  跨域
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/TS/ts1.html" class="nav-link"><i class="undefined"></i>
+  TypeScript
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/Webpack/webpack1.html" class="nav-link"><i class="undefined"></i>
+  Webpack 4
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/http.html" class="nav-link"><i class="undefined"></i>
+  HTTP
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/regex.html" class="nav-link"><i class="undefined"></i>
+  正则
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/algorithm.html" class="nav-link"><i class="undefined"></i>
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/storage.html" class="nav-link"><i class="undefined"></i>
+  storage
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/less.html" class="nav-link"><i class="undefined"></i>
+  less
+</a></li><li class="dropdown-item"><!----> <a href="/Frontend/Piece/js2.html" class="nav-link"><i class="undefined"></i>
+  常用代码
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      前端框架
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Framework/Vue/vue2/vue01.html" class="nav-link"><i class="undefined"></i>
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/Framework/Vue/vue3/vue3-1.html" class="nav-link"><i class="undefined"></i>
+  Vue3
+</a></li><li class="dropdown-item"><!----> <a href="/Framework/React/react01.html" class="nav-link"><i class="undefined"></i>
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/Framework/Wechat/wechat.html" class="nav-link"><i class="undefined"></i>
+  Wechat
+</a></li><li class="dropdown-item"><!----> <a href="/Project/project.html" class="nav-link"><i class="undefined"></i>
+  项目
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      后端
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Linux/debian.html" class="nav-link"><i class="undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/Backend/Mongodb/mongodb1.html" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li><li class="dropdown-item"><!----> <a href="/Backend/Mysql/mysql01.html" class="nav-link"><i class="undefined"></i>
+  MySQL
+</a></li><li class="dropdown-item"><!----> <a href="/Backend/Node/node2.html" class="nav-link"><i class="undefined"></i>
+  Node.js
+</a></li><li class="dropdown-item"><!----> <a href="/Backend/express.html" class="nav-link"><i class="undefined"></i>
+  Express
+</a></li><li class="dropdown-item"><!----> <a href="/Backend/docker.html" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/Backend/api.html" class="nav-link"><i class="undefined"></i>
+  Api
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      工具
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Tools/git.html" class="nav-link"><i class="undefined"></i>
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/yarn.html" class="nav-link"><i class="undefined"></i>
+  yarn
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/npm.html" class="nav-link"><i class="undefined"></i>
+  npm
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/npm_modules.html" class="nav-link"><i class="undefined"></i>
+  npm模块
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/node.html" class="nav-link"><i class="undefined"></i>
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/cmd.html" class="nav-link"><i class="undefined"></i>
+  cmd
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/nrm.html" class="nav-link"><i class="undefined"></i>
+  nrm
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/nvm.html" class="nav-link"><i class="undefined"></i>
+  nvm
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/pm2.html" class="nav-link"><i class="undefined"></i>
+  pm2
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/serve.html" class="nav-link"><i class="undefined"></i>
+  serve
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/markdown.html" class="nav-link"><i class="undefined"></i>
+  MarkDown
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/svg.html" class="nav-link"><i class="undefined"></i>
+  Svg
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/terminal.html" class="nav-link"><i class="undefined"></i>
+  Terminal
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Trojan.html" class="nav-link"><i class="undefined"></i>
+  Trojan
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/vite.html" class="nav-link"><i class="undefined"></i>
+  vite
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/eslint.html" class="nav-link"><i class="undefined"></i>
+  Eslint
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/vuepress.html" class="nav-link"><i class="undefined"></i>
+  vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/upgrade.html" class="nav-link"><i class="undefined"></i>
+  升级依赖包
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/typecho.html" class="nav-link"><i class="undefined"></i>
+  Typecho 安装建站
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/vscode.html" class="nav-link"><i class="undefined"></i>
+  VScode等配置文件
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/wsl.html" class="nav-link"><i class="undefined"></i>
+  Win子系统
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      小知识
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Other/target.html" class="nav-link"><i class="undefined"></i>
+  学习目标
+</a></li><li class="dropdown-item"><!----> <a href="/Other/errorSummarize.html" class="nav-link"><i class="undefined"></i>
+  报错总结
+</a></li><li class="dropdown-item"><!----> <a href="/Other/knowledgePoint.html" class="nav-link"><i class="undefined"></i>
+  知识点
+</a></li><li class="dropdown-item"><!----> <a href="/Other/interviewQuestion1.html" class="nav-link"><i class="undefined"></i>
+  面试题
+</a></li><li class="dropdown-item"><!----> <a href="/Other/interviewQuestion2.html" class="nav-link"><i class="undefined"></i>
+  面试题2
+</a></li><li class="dropdown-item"><!----> <a href="/Other/algorithm.html" class="nav-link"><i class="undefined"></i>
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/Other/dict.html" class="nav-link"><i class="undefined"></i>
+  字典
+</a></li><li class="dropdown-item"><!----> <a href="/Other/token.html" class="nav-link"><i class="undefined"></i>
+  token 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/Other/verificationCode.html" class="nav-link"><i class="undefined"></i>
+  验证码 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Chrome.html" class="nav-link"><i class="undefined"></i>
+  Chrome 使用
+</a></li><li class="dropdown-item"><!----> <a href="/Other/browserKernel.html" class="nav-link"><i class="undefined"></i>
+  浏览器和内核
+</a></li><li class="dropdown-item"><!----> <a href="/Other/URI&amp;URL.html" class="nav-link"><i class="undefined"></i>
+  URI &amp; URL
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Apache.html" class="nav-link"><i class="undefined"></i>
+  Apache 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/Other/nginx.html" class="nav-link"><i class="undefined"></i>
+  Nginx 是什么
+</a></li><li class="dropdown-item"><!----> <a href="/Other/computerBreakdown.html" class="nav-link"><i class="undefined"></i>
+  电脑故障
+</a></li><li class="dropdown-item"><!----> <a href="/Other/chronology.html" class="nav-link"><i class="undefined"></i>
+  中国历史朝代年表
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  Timeline
+</a></div><div class="nav-item"><a href="/messages/" class="nav-link"><i class="iconfont reco-suggestion"></i>
+  留言
+</a></div><div class="nav-item"><a href="/About/" class="nav-link"><i class="undefined"></i>
+  关于
+</a></div> <!----></nav> <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Vue2</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Framework/Vue/vue2/vue01.html" class="sidebar-link">Vue 介绍和使用</a></li><li><a href="/Framework/Vue/vue2/vue02.html" class="sidebar-link">Vue &amp; vue 以及基础语法</a></li><li><a href="/Framework/Vue/vue2/vue03.html" class="sidebar-link">Vue 指令</a></li><li><a href="/Framework/Vue/vue2/vue04.html" class="sidebar-link">Vue 组件</a></li><li><a href="/Framework/Vue/vue2/vue05.html" class="sidebar-link">Vue 组件通信</a></li><li><a href="/Framework/Vue/vue2/vue06.html" aria-current="page" class="active sidebar-link">Vue 生命周期</a></li><li><a href="/Framework/Vue/vue2/vue07.html" class="sidebar-link">Vue 路由模式</a></li><li><a href="/Framework/Vue/vue2/vue08.html" class="sidebar-link">Vue 路由生命周期</a></li><li><a href="/Framework/Vue/vue2/vue09.html" class="sidebar-link">Vue 路由传参</a></li><li><a href="/Framework/Vue/vue2/vue10.html" class="sidebar-link">Vue 动态路由</a></li><li><a href="/Framework/Vue/vue2/vue11.html" class="sidebar-link">Vue 编程式的导航</a></li><li><a href="/Framework/Vue/vue2/vue12.html" class="sidebar-link">Vue vuex</a></li><li><a href="/Framework/Vue/vue2/vue13.html" class="sidebar-link">Vue 使用Echarts</a></li><li><a href="/Framework/Vue/vue2/vue14.html" class="sidebar-link">Vue 打包部署</a></li><li><a href="/Framework/Vue/vue2/vue15.html" class="sidebar-link">Vue 常用功能实现</a></li><li><a href="/Framework/Vue/vue2/vue16.html" class="sidebar-link">Vue vue.config.js</a></li><li><a href="/Framework/Vue/vue2/vue17.html" class="sidebar-link">Vue 请求的流程</a></li><li><a href="/Framework/Vue/vue2/vue18.html" class="sidebar-link">Vue 双向数据绑定原理(2/3)</a></li><li><a href="/Framework/Vue/vue2/vuers-1.html" class="sidebar-link">Vue 基础（总结复习）</a></li><li><a href="/Framework/Vue/vue2/vuers-2.html" class="sidebar-link">Vue 路由（总结复习）</a></li><li><a href="/Framework/Vue/vue2/vuers-3.html" class="sidebar-link">Vue vuex（总结复习）</a></li><li><a href="/Framework/Vue/vue2/vuers-4.html" class="sidebar-link">Vue 复习</a></li><li><a href="/Framework/Vue/vue2/fragment.html" class="sidebar-link">Vue 代码片段</a></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>Vue 生命周期</h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>ZGuangJu</span>
+            
+          <span data-v-25ba6db2>2017 - </span>
+          2022
+        </a></span></div></div> <div data-v-1aefc0b4><main class="page"><section><div class="page-title"><h1 class="title">Vue 生命周期</h1> <div data-v-f875f3fc><i class="iconfont reco-account" data-v-f875f3fc><span data-v-f875f3fc>ZGuangJu</span></i> <i class="iconfont reco-date" data-v-f875f3fc><span data-v-f875f3fc>12/12/2020</span></i> <!----> <i class="tags iconfont reco-tag" data-v-f875f3fc><span class="tag-item" data-v-f875f3fc>vue</span></i></div></div> <div class="theme-reco-content content__default"><h2 id="vue-生命周期"><a href="#vue-生命周期" class="header-anchor">#</a> Vue 生命周期</h2> <ul><li>生命周期</li></ul> <p>生命周期： <code>Vue</code>是一个构造函数，当执行执行这个函数时，相当于初始化<code>vue</code>实例;</p> <p>在创建实例过程中，需要设置数据监听，编译模板，将实例挂载到<code>DOM</code>上，数据更新能够让<code>DOM</code>也更新，在这个初始化，又会不同阶段默认调用一些函数执行，这些函数就是生命周期的钩子函数；</p> <ul><li>生命周期钩子函数</li></ul> <p>生命周期钩子函数，让够让我们在初始化实例时，添加自己的代码；</p> <p>生命周期的钩子函数中的<code>this</code>，会默认指向<code>vue</code>的实例;</p> <details class="custom-block details"><summary>生命周期代码展示</summary> <div class="language-html extra-class"><pre class="language-html"><code><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Vue父子组件生命周期<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>app<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>https://cdn.bootcss.com/vue/2.4.2/vue.js<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>text/javascript<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">&quot;counter&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">count</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token literal-property property">type</span><span class="token operator">:</span> Number<span class="token punctuation">,</span>
+                <span class="token keyword">default</span><span class="token operator">:</span> <span class="token number">0</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">beforeCreate</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Child&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;BeforeCreate&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">created</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Child&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Created&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">beforeMount</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Child&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;BeforeMount&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">mounted</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Child&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Mounted&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">beforeUpdate</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Child&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;BeforeUpdate&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">updated</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Child&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Updated&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">beforeDestroy</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Child&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;BeforeDestroy&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">destroyed</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Child&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Destroyed&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+            &lt;div&gt;
+                &lt;div&gt;{{count}}&lt;/div&gt;
+            &lt;/div&gt;
+        </span><span class="token template-punctuation string">`</span></span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">data</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token punctuation">{</span>
+                <span class="token literal-property property">count</span><span class="token operator">:</span> <span class="token number">1</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">beforeCreate</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Parent&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;BeforeCreate&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">created</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Parent&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Created&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">beforeMount</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Parent&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;BeforeMount&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">mounted</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Parent&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Mounted&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">beforeUpdate</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Parent&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;BeforeUpdate&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">updated</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Parent&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Updated&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">beforeDestroy</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Parent&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;BeforeDestroy&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">destroyed</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;Parent&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Destroyed&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">template</span><span class="token operator">:</span>  <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+            &lt;div&gt;
+                &lt;counter :count=&quot;count&quot;&gt;&lt;/counter&gt;
+                &lt;button @click=&quot;count++&quot;&gt;++&lt;/button&gt;
+            &lt;/div&gt;
+       </span><span class="token template-punctuation string">`</span></span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div></details> <p><code>Vue</code>生命周期钩子函数功能示例，其中<code>this.msg</code>初始化赋值<code>Vue Lifecycle</code>，在更新过程中赋值为<code>Vue Update</code>。</p> <ul><li><p>钩子函数</p> <ul><li><code>beforeCreate</code> <code>created</code> [可以获取数据及方法]</li> <li><code>beforeMount</code> <code>mounted</code> [可以获取到真实的DOM]</li> <li><code>beforeUpdate</code> <code>updated</code> [数据更新执行]</li> <li><code>beforeDestroy</code> <code>destroyed</code> [销毁vue实例，不再具有双向数据绑定的特点]</li></ul></li> <li><p>主要的八个生命周期钩子</p></li></ul> <ol><li><code>beforeCreate</code>:设置数据监听之前执行，此时没有 <code>data</code> ，<code>methods</code></li></ol> <p><code>Vue</code>实例开始创建到<code>beforeCreate</code>钩子执行的过程中主要进行了一些初始化操作，例如组件的事件与生命周期钩子的初始化。在此生命周期钩子执行时组件并未挂载，<code>data</code>、<code>methods</code>等也并未绑定，此时主要可以用来加载一些与<code>Vue</code>数据无关的操作，例如展示一个<code>loading</code>等。</p> <p>每个vue组件实例化过程中，会在 beforeCreate 钩子前调用 vuexInit 方法。</p> <div class="language-js extra-class"><pre class="language-js"><code>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;beforeCreate&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$el<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//undefined</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$data<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//undefined</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// undefined</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;--------------------&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><ol start="2"><li><code>created</code>:设置数据监听之后执行，此时可以使用 <code>data</code> 和 <code>methods</code> 但没有 <code>el</code></li></ol> <p>从<code>beforeCreate</code>到<code>created</code>的过程中主要完成了数据绑定的配置、计算属性与方法的挂载、<code>watch/event</code>事件回调等。在此生命周期钩子执行时组件未挂载到到<code>DOM</code>，属性<code>$el</code>目前仍然为<code>undefined</code>，但此时已经可以开始操作<code>data</code>与<code>methods</code>等，只是页面还未渲染，在此阶段通常用来发起一个<code>XHR</code>请求。</p> <div class="language-js extra-class"><pre class="language-js"><code>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;created&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$el<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//undefined</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$data<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//{__ob__: Observer}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Vue Lifecycle</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;--------------------&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><ol start="3"><li><code>beforeMount</code>: 编译模板之前执行， <code>template</code> 模版已经编译好，但还未挂载到页面，此时页面还是上一个状态</li></ol> <p>从<code>created</code>到<code>beforeMount</code>的过程中主要完成了页面模板的解析，在内存中将页面的数据与指令等进行解析，当页面解析完成，页面模板就存在于内存中。在此生命周期钩子执行时<code>$el</code>被创建，但是页面只是在内存中，并未作为<code>DOM</code>渲染。</p> <div class="language-js extra-class"><pre class="language-js"><code>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;beforeMount&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$el<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&lt;div id=&quot;app&quot;&gt;...&lt;/div&gt;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$data<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// {__ob__: Observer}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Vue Lifecycle</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;--------------------&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><ol start="4"><li><code>mounted</code>: 此时<code>Vue</code>实例初始化完成了，<code>DOM</code>挂载完毕，可以直接操作<code>dom</code>或者使用第三发<code>dom</code>库</li></ol> <p>从<code>beforeMount</code>到<code>mounted</code>的过程中执行的是将页面从内存中渲染到<code>DOM</code>的操作。在此生命周期钩子执行时页面已经渲染完成，组件正式完成创建阶段的最后一个钩子，即将进入运行中阶段。此外关于渲染的页面模板的优先级，是<code>render</code>函数 <code>&gt;</code> <code>template</code>属性<code>&gt;</code> 外部<code>HTML</code>。</p> <div class="language-js extra-class"><pre class="language-js"><code>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;mounted&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$el<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&lt;div id=&quot;app&quot;&gt;...&lt;/div&gt;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$data<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//{__ob__: Observer}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Vue Lifecycle</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;--------------------&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><ol start="5"><li><code>beforeUpdate</code>:数据变化时更新<code>DOM</code>之前执行，此时<code>data</code>已更新，但还未同步页面</li></ol> <p>当数据发生更新时<code>beforeUpdate</code>钩子便会被调用，此时<code>Vue</code>实例中数据已经是最新的，但是在页面中的数据还是旧的，在此时可以进一步地更改状态，这不会触发附加的重渲染过程。在上述例子中加入了<code>debugger</code>断点，可以观察到<code>Vue</code>实例中数据已经是最新的，但是在页面中的数据还是旧的。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// this.msg = &quot;Vue Update&quot;;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;beforeUpdate&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$el<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&lt;div id=&quot;app&quot;&gt;...&lt;/div&gt;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$data<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//{__ob__: Observer}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Vue Update</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;--------------------&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><ol start="6"><li><code>updated</code>: 数据变化时更新<code>DOM</code>之后执行，<code>data</code>和页面都已经更新完成</li></ol> <p>当数据发生更新并在<code>DOM</code>渲染完成后<code>updated</code>钩子便会被调用，在此时组件的<code>DOM</code>已经更新，可以执行依赖于<code>DOM</code>的操作</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// this.msg = &quot;Vue Update&quot;;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;updated&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$el<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&lt;div id=&quot;app&quot;&gt;...&lt;/div&gt;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$data<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//{__ob__: Observer}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Vue Update</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;--------------------&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><ol start="7"><li><code>beforeDestroy</code>: 卸载实例之前执行，<code>Vue</code>实例进入销毁阶段，但所有的 <code>data</code> 和 <code>methods</code> ，指令， 过滤器等都处于可用状态</li></ol> <p>在<code>Vue</code>实例被销毁之前<code>beforeDestroy</code>钩子便会被调用，在此时实例仍然完全可用，定时器在这里清除</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// this.$destroy();</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;beforeDestroy&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$el<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&lt;div id=&quot;app&quot;&gt;...&lt;/div&gt;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$data<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//{__ob__: Observer}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Vue Update</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;--------------------&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><ol start="8"><li><code>destroyed</code>:卸载实例之后执行，此时<code>data</code>仍可以修改，但视图无法更新</li></ol> <p>在Vue实例被销毁之后destroyed钩子便会被调用，在此时Vue实例绑定的所有东西都会解除绑定，所有的事件监听器会被移除，所有的子实例也会被销毁，组件无法使用，data和methods也都不可使用，即使更改了实例的属性，页面的DOM也不会重新渲染。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// this.$destroy();</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;destroyed&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$el<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//&lt;div id=&quot;app&quot;&gt;...&lt;/div&gt;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$data<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//{__ob__: Observer}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Vue Update</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;--------------------&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>页面第一次加载时会执行 <code>beforeCreate</code>，<code>created</code>， <code>beforeMount</code>，<code>mounted</code> <code>created</code>阶段一般用来处理<code>http</code>请求获取数据或者对<code>data</code>做一定的处理，
+<code>mounted</code>阶段操作<code>dom</code>，比如使用<code>jquery</code>，或其他第三方<code>dom</code>库</p> <p><img src="https://s3.ax1x.com/2020/12/17/r38pe1.png" alt="生命周期"> <img src="https://s3.ax1x.com/2020/12/17/r389dx.jpg" alt="生命周期2"></p> <ol start="9"><li><code>activated</code></li></ol> <p>被 <code>keep-alive</code> 缓存的组件激活时调用。</p> <p>该钩子在服务器端渲染期间不被调用。</p> <p>作用类似 <code>mounted</code> 钩子</p> <h2 id="父子组件间的生命周期"><a href="#父子组件间的生命周期" class="header-anchor">#</a> 父子组件间的生命周期</h2> <ol start="10"><li><code>deactivated</code></li></ol> <p>被 <code>keep-alive</code> 缓存的组件停用时调用。</p> <p>该钩子在服务器端渲染期间不被调用。</p> <ol start="11"><li><code>errorCaptured</code></li></ol> <p>当捕获一个来自子孙组件的错误时被调用</p> <h3 id="创建过程"><a href="#创建过程" class="header-anchor">#</a> 创建过程</h3> <p>创建过程主要涉及<code>beforeCreate</code>、<code>created</code>、<code>beforeMount</code>、<code>mounted</code>四个钩子函数。</p> <div class="language-js extra-class"><pre class="language-js"><code>Parent beforeCreate <span class="token operator">-</span><span class="token operator">&gt;</span> Parent Created <span class="token operator">-</span><span class="token operator">&gt;</span> Parent BeforeMount <span class="token operator">-</span><span class="token operator">&gt;</span> Child BeforeCreate <span class="token operator">-</span><span class="token operator">&gt;</span> Child Created <span class="token operator">-</span><span class="token operator">&gt;</span> Child BeforeMount <span class="token operator">-</span><span class="token operator">&gt;</span> Child Mounted <span class="token operator">-</span><span class="token operator">&gt;</span> Parent Mounted
+</code></pre></div><h3 id="更新过程"><a href="#更新过程" class="header-anchor">#</a> 更新过程</h3> <p>更新过程主要涉及<code>beforeUpdate</code>、<code>updated</code>两个钩子函数，当父子组件有数据传递时才会有生命周期的比较。</p> <div class="language-js extra-class"><pre class="language-js"><code>Parent BeforeUpdate <span class="token operator">-</span><span class="token operator">&gt;</span> Child BeforeUpdate <span class="token operator">-</span><span class="token operator">&gt;</span> Child Updated <span class="token operator">-</span><span class="token operator">&gt;</span> Parent Updated
+</code></pre></div><h3 id="销毁过程"><a href="#销毁过程" class="header-anchor">#</a> 销毁过程</h3> <p>销毁过程主要涉及<code>beforeDestroy</code>、<code>destroyed</code>两个钩子函数，本例直接调用<code>vm.$destroy()</code>销毁整个实例以达到销毁父子组件的目的。</p> <div class="language-js extra-class"><pre class="language-js"><code>Parent BeforeDestroy <span class="token operator">-</span><span class="token operator">&gt;</span> Child BeforeDestroy <span class="token operator">-</span><span class="token operator">&gt;</span> Child Destroyed <span class="token operator">-</span><span class="token operator">&gt;</span> Parent Destroyed
+</code></pre></div></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">最后提交: </span> <span class="time">2/8/2022, 11:01:13 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/Framework/Vue/vue2/vue05.html" class="prev">
+            Vue 组件通信
+          </a></span> <span class="next"><a href="/Framework/Vue/vue2/vue07.html">
+            Vue 路由模式
+          </a></span></p></div> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-cb1513f6><li class="level-2" data-v-cb1513f6><a href="/Framework/Vue/vue2/vue06.html#vue-生命周期" class="sidebar-link reco-side-vue-生命周期" data-v-cb1513f6>Vue 生命周期</a></li><li class="level-2" data-v-cb1513f6><a href="/Framework/Vue/vue2/vue06.html#父子组件间的生命周期" class="sidebar-link reco-side-父子组件间的生命周期" data-v-cb1513f6>父子组件间的生命周期</a></li><li class="level-3" data-v-cb1513f6><a href="/Framework/Vue/vue2/vue06.html#创建过程" class="sidebar-link reco-side-创建过程" data-v-cb1513f6>创建过程</a></li><li class="level-3" data-v-cb1513f6><a href="/Framework/Vue/vue2/vue06.html#更新过程" class="sidebar-link reco-side-更新过程" data-v-cb1513f6>更新过程</a></li><li class="level-3" data-v-cb1513f6><a href="/Framework/Vue/vue2/vue06.html#销毁过程" class="sidebar-link reco-side-销毁过程" data-v-cb1513f6>销毁过程</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><canvas id="vuepress-canvas-ribbon"></canvas><div class="kanbanniang" data-v-5775ee02><div class="banniang-container" style="display:;" data-v-5775ee02><div class="messageBox" style="right:68px;bottom:190px;display:none;" data-v-5775ee02>
+      我是guangju欢迎你的关注 
+    </div> <div class="operation" style="right:90px;bottom:40px;display:;" data-v-5775ee02><i class="kbnfont kbn-ban-home ban-home" data-v-5775ee02></i> <i class="kbnfont kbn-ban-message message" data-v-5775ee02></i> <i class="kbnfont kbn-ban-close close" data-v-5775ee02></i> <a target="_blank" href="https://vuepress-theme-reco.recoluan.com/views/plugins/kanbanniang.html" data-v-5775ee02><i class="kbnfont kbn-ban-info info" data-v-5775ee02></i></a> <i class="kbnfont kbn-ban-theme skin" style="display:;" data-v-5775ee02></i></div> <canvas id="banniang" width="150" height="220" class="live2d" style="right:90px;bottom:-20px;opacity:0.9;" data-v-5775ee02></canvas></div> <div class="showBanNiang" style="display:none;" data-v-5775ee02>
+    看板娘
+  </div></div></div></div>
+    <script src="/assets/js/app.8c1ab967.js" defer></script><script src="/assets/js/3.c2781672.js" defer></script><script src="/assets/js/1.8d211e71.js" defer></script><script src="/assets/js/56.072691ec.js" defer></script>
+  </body>
+</html>
