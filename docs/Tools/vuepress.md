@@ -12,6 +12,8 @@ sticky: 11
 showSponsor: true
 ---
 
+## VuePress
+
 :::tip VuePress 的优点
 
 - 界面简洁优雅（个人感觉比 `HEXO` 好看）
@@ -24,7 +26,7 @@ showSponsor: true
 
 <!-- more -->
 
-## 一、 创建 vuepress 项目(新版)
+### 一、 创建 vuepress 项目(新版)
 
 1. 创建 `VuePress` 项目最快的方法是使用 `create-VuePress-site [Name]`，帮您建立基本的 VuePress 站点结构，运行：
 
@@ -67,11 +69,11 @@ yarn
 yarn dev
 ```
 
-### 以下是旧版里新建vuepress项目的步骤
+#### 以下是旧版里新建vuepress项目的步骤
 
 ::: details 旧版里新建`vuepress`项目
 
-### 创建项目
+#### 创建项目
 
 1. 全局安装 `vuepress` 。
 
@@ -103,7 +105,7 @@ vuepressBlogDemo
        └── package.json
 ```
 
-### 发布
+#### 发布
 
 部署到`github`上托管，具体本页的步骤二
 
@@ -260,7 +262,7 @@ module.exports = {
 
 完成了基础搭建后，就可以在`docs`目录下新建 `.md` 文件写文章了,至此，可以在本地运行了。
 
-### 我的 vuepress 的 config.js 文件
+#### 我的 vuepress 的 config.js 文件
 
 :::details config.js
 
@@ -635,7 +637,7 @@ module.exports = {
 
 :::
 
-### 在原有项目中添加vuepress
+#### 在原有项目中添加vuepress
 
 1. 在项目中安装`vuepress`
 
@@ -666,17 +668,17 @@ mkdir docs && echo '# Hello VuePress' > docs/README.md
 yarn docs:dev
 ```
 
-## 二、 vuepress部署到github或gitee
+### 二、 vuepress部署到github或gitee
 
 部署到`github`或`gitee`只在创建仓库名时有区别，其他基本一样的。
 
-### 部署到 Github
+#### 部署到 Github
 
 打开 `github` 网站，登陆自己的 `github` 账号
 
 接着新建两个仓库：
 
-### 新建仓库一
+#### 新建仓库一
 
 - `USERNAME.github.io` （不用克隆到本地，同时这个是你输入地址栏的访问博客地址）
 
@@ -687,7 +689,7 @@ yarn docs:dev
 <img src="https://s2.ax1x.com/2020/02/28/3DDwfx.png" alt="typecho01">
 这个仓库建好后，不用克隆到本地，内容更新修改都在下面的仓库（本地的）中进行。
 
-### 新建仓库二
+#### 新建仓库二
 
 - 随便起名字，比如：`Blog` （这个要克隆到本地或者从本地直接远程提交代码，用来保存源代码）
 
@@ -845,13 +847,13 @@ npm run deploy
 
 - 在浏览器输入 `https://你用户名.github.io/` 即可看到自己的主页
 
-### 部署到gitee上
+#### 部署到gitee上
 
 - 部署`gitee`上时，新建的gitee仓库名：`username` (`username`就是你的账户用户名，也就是用用户名创建仓库)，
 - 和`github`一样，提交项目后，仓库也要开启`gitee Pages`，从项目页找`服务`=>`gitee Pages`，点击部署。
 - `gitee`和`github`不同的是，你在`github`上更新内容时，不用任何操作，网址会自动更新成新的内容（通常提交后等几分钟即可）；`gietee`每次都要手动，在`gitee Pages`中点击更新按钮，才会更新到最新内容。
 
-## 部署到自己的域名上（要有自己的域名啊）
+### 部署到自己的域名上（要有自己的域名啊）
 
 - 找到购买域名的网站，进入管理后台，点击 `解析` 按钮，添加下面两条内容：
 
@@ -875,9 +877,9 @@ npm run deploy
 
 - 完成后，在地址栏输入自己的域名 看一下吧
 
-## 报错的问题
+### 报错的问题
 
-### 运行 `yarn build` 报错
+#### 运行 `yarn build` 报错
 
 ```s
 FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
@@ -898,3 +900,112 @@ npm run start --max_old_space_size=4096
 执行命令：`npx cross-env LIMIT=4096 increase-memory-limit`
 
 通过 `log` 可以发现它会将所有执行 `node` 命令的地方加上`--max-old-space-size=4096` 参数
+
+## `VitePress` 是 `VuePress` 的下一代框架
+
+`VuePress`应该有人用过，而 `VitePress` 是 `VuePress`  的下一代框架 ，是支持`vue 3.0` 的`web`网站框架。
+
+在它的文档中被称为 `Vuepress 的兄弟`,对比有一些优势,我觉的主要是启动速度快！
+
+- 基于 `Vite` 而不是 `Webpack` 所以更快的启动时间，热重载等
+- 使用 `Vue3` 来减少 `JS` 的有效负载
+
+### 创建
+
+1. 首先，我们要做的第一件事就是创建目录。
+
+```js
+mkdir blog-vitepress
+cd blog-vitepress
+```
+
+2. 初始化  `package.json`  ，并安装 `viteppress`
+
+```js
+npm init
+npm i --save-dev vitepress
+```
+
+3. 将 `VitePress` 脚本添加到 `package.json` 文件中。
+
+```js
+"scripts": {
+  "dev": "vitepress dev docs --open",
+  "build": "vitepress build docs",
+  "serve": "vitepress serve docs"
+},
+```
+
+4. 根目录下创建 `docs` 文件夹，并创建第一个`md`文件(这个是网站首页的配置和内容)，可以用命令行或在文件夹手动创建。
+
+```js
+mkdir docs
+echo '# Hello World' > docs/index.md
+```
+
+5. 启动项目
+
+```js
+npm run dev
+```
+
+到这里，最基本的项目搭建好了
+
+### 简单配置
+
+添加一些导航到我们的网站侧边栏和导航栏。创建一个配置文件，在`docs`中新建一个`.vitepress`文件夹，里面创建一个`config.js`文件
+
+```js
+// vitepress/config.js
+module.exports = {
+    title: "GuangJu's Blog",// 网站标题
+    description: '我的vitepress博客.', //网站描述
+    base: '/', //  部署时的路径 默认 /  可以使用二级地址 /base/
+    // lang: 'en-US', //语言
+    repo: 'vuejs/vitepress',
+    head: [
+        // 改变title的图标
+        [
+            'link',
+            {
+                rel: 'icon',
+                href: '/img/linktolink.png',//图片放在public文件夹下
+            },
+        ],
+    ],
+    // 主题配置
+    themeConfig: {
+        //   头部导航
+        nav: [
+            { text: '首页', link: '/' },
+            { text: '关于', link: '/about/' },
+        ],
+        //   侧边导航
+        sidebar: [
+            { text: '我的', link: '/mine/' }
+        ]
+    }
+}
+```
+
+这时的项目结构:
+
+```js
+vitepress
+    │
+    ├─── docs
+    │     │
+    │     ├── .vuepress
+    │     │     └── config.js
+    │     ├── public
+    │     ├── about
+    │     │     └── index.js
+    │     ├── mine
+    │     │     └── index.js
+    │     └── index.md
+    └── package.json
+```
+
+项目基本创建好了，可以根据自己的需要，自定义其他目录。
+
+`vitepress` 刚出来没多久，功能还正在完善，也就是说还有好多不支持的东西，正式版发布后，我也会更新。

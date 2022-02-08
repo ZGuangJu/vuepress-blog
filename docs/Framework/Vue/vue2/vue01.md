@@ -84,8 +84,8 @@ export default {
 - 代码校验，强制养成我们写规范代码的习惯等等
 
 ```js
-//用 vue-cli 创建 vue 项目
-  vue create [projectname]
+//用 vue-cli 创建 vue 项目 projectname是你创建的项目名称
+  vue create projectname
 ```
 
 - 使用 `vue-cli` 脚手架，首先要 安装 `npm` 和 `vue-cli`
@@ -161,7 +161,8 @@ npm cache clean --force
 新建项目方式
 
 ```js
-vue create 【projcetanme】
+vue create projectname
+// projectname是你创建的项目名称
 ```
 
 :::danger 警告
@@ -410,35 +411,36 @@ npm run serve
 `vue-cli2` 的命令创建，示例：
 
 ```js
-vue init [template-name] [project-name]
+vue init templatename projectname
 ```
 
 > `init`：表示我要用 `vue-cli` 来初始化项目
 >
-> `[template-name]`:表示模板名称，`vue-cli` 官方为我们提供了5种模板:
+> `templatename`:表示模板名称，`vue-cli` 官方为我们提供了5种模板:
 >
-> - webpack --- 一个全面的 `webpack+vue-loader` 的模板，功能包括热加载，linting ,检测和 CSS 扩展。
+> - `webpack` --- 一个全面的 `webpack+vue-loader` 的模板，功能包括热加载，`linting` ,检测和 `CSS` 扩展。
 >
-> - webpack-simple --- 一个简单 `webpack+vue-loader` 的模板，不包含其他功能，让你快速的搭建vue的开发环境。
+> - `webpack-simple` --- 一个简单 `webpack+vue-loader` 的模板，不包含其他功能，让你快速的搭建vue的开发环境。
 >
-> - browserify --- 一个全面的 `Browserify+vueify` 的模板，功能包括热加> 载，linting,单元检测。
+> - `browserify` --- 一个全面的 `Browserify+vueify` 的模板，功能包括热加> 载，linting,单元检测。
 >
-> - browserify-simple --- 一个简单 `Browserify+vueify` 的模板，不包含其他功能，让你快速的搭建vue的开发环境。
+> - `browserify-simple` --- 一个简单 `Browserify+vueify` 的模板，不包含其他功能，让你快速的搭建vue的开发环境。
 >
-> - simple-一个最简单的单页应用模板。
+> - `simple` --- 一个最简单的单页应用模板。
 >
 > `[project-name]`：标识项目名称，这个你可以根据自己的项目来起名字。
 
 在实际开发中，一般我们都会使用 `webpack` 这个模板，那我们这里也安装这个模板，在命令行输入以下命令：
 
 ```js
-vue init webpack vuename
+vue init webpack projectname
+// projectname是你创建的项目名称
 ```
 
 输入命令后，会询问我们几个简单的选项，我们根据自己的需要进行填写就可以了。
 
 ```js
-? Project name vuename
+? Project name projectname
 //项目名字，如果确定用默认名字 回车即可 注意不能使用大写
 ? Project description (A Vue.js project)
 //项目描述，默认为A Vue.js project,直接回车，不用编写
@@ -472,7 +474,7 @@ Airbnb (https://github.com/airbnb/javascript) none (configure it yourself)
 用以上两种命令行的方式安装好以后，要 `cd` 进项目目录，再运行项目：
 
 ```js
-cd vuename  //进入项目目录
+cd projectname  //进入项目目录
 npm run dev  //运行项目
 ```
 

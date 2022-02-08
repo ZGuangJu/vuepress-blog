@@ -181,7 +181,6 @@ module.exports = {
           { text: 'vite', link: '/Tools/vite' },
           { text: 'Eslint', link: '/Tools/eslint' },
           { text: 'vuepress', link: '/Tools/vuepress' },
-          { text: 'vitepress', link: '/Tools/vitepress' },
           { text: '升级依赖包', link: '/Tools/upgrade' },
           { text: 'Typecho 安装建站', link: '/Tools/typecho' },
           { text: 'VScode等配置文件', link: '/Tools/vscode' },
@@ -345,7 +344,7 @@ module.exports = {
       // linux系统
       '/Linux/': ['debian', 'centos', 'screen', 'baota', 'vim'],
       // 工具
-      '/Tools/': ['git', 'yarn', 'npm', 'npm_modules', 'node', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'svg', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'vitepress', 'upgrade', 'typecho', 'vscode', 'wsl'],
+      '/Tools/': ['git', 'yarn', 'npm', 'npm_modules', 'node', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'svg', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'upgrade', 'typecho', 'vscode', 'wsl'],
       // 小知识
       '/Other/': [
         'target', 'errorSummarize', 'knowledgePoint', 'interviewQuestion1', 'interviewQuestion2', 'algorithm', 'token', 'URI&URL', 'Apache', 'nginx', 'Chrome', 'browserKernel', 'verificationCode', 'dict', 'computerBreakdown', 'chronology'
