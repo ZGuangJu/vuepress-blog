@@ -1,4 +1,5 @@
 # git提交时筛选文件用（以下文件夹内容git不提交）
 node_modules
-docs/.vuepress/dist/
-docs/.vuepress/dist.zip
+/docs/.vuepress/dist/*
+/docs/.vuepress/dist.zip
+# git rm -r --cached .
