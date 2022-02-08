@@ -181,7 +181,7 @@ npm run serve
 npm run build
 ```
 
-更多`npm`使用教程，参考本站工具菜单下的 [npm 常用命令](http://zguangju.gitee.io/Tools/npm.html)
+更多`npm`使用教程，参考本站工具菜单下的 [npm常用命令](http://zguangju.gitee.io/Tools/npm.html)
 
 ## Vue 新建项目
 
