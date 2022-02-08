@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- <meta http-equiv="refresh" content="5"> -->
+        <title>Document</title>
+        <style>
+            .box {
+                width: 100%;
+                height: 200px;
+                background: pink;
+            }
+
+            .boxitem {
+                width: 30%;
+                height: 200px;
+                background: yellowgreen;
+            }
+
+            @media screen and (max-width: 320px) {
+                .boxitem {
+                    width: 30%;
+                    height: 100%;
+                    background: red;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="box">
+            <div class="boxitem">1</div>
+        </div>
+        <script>
+            const PENDING = "pending";
+            const FULFILLED = "fulfilled";
+            const REJECTED = "rejected";
+            function Mypromise(fn) {
+                _this = this;
+                _this.status = PENDING;
+                _this.value = undefined;
+                _this.reason = undefined;
+                function resolve(value) {
+                    if (_this.status === PENDING) {
+                        _this.status = FULFILLED;
+                        _this.value = value;
+                    }
+                }
+                function reject(reason) {
+                    if (_this.status === PENDING) {
+                        _this.status = REJECTED;
+                        _this.reason = reason;
+                    }
+                }
+                try {
+                    fn(resolve, reject);
+                } catch (e) {
+                    console.log(e);
+                }
+            }
+            Mypromise.prototype.then = function(onResolved, onRejected) {
+                _this = this;
+                switch (_this.status) {
+                    case "fulfilled":
+                        onResolved(_this.value);
+                        break;
+                    case "rejected":
+                        onRejected(_this.reason);
+                        break;
+                    default:
+                }
+            };
+            let a = new Mypromise((resolve, reject) => {
+                resolve(1);
+            });
+            a.then(console.log);
+        </script>
+    </body>
+</html>
