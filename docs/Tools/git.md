@@ -197,6 +197,55 @@ git pull --rebase origin master
 git pull origin master --allow-unrelated-histories
 ```
 
+17. `.gitignore`文件的使用
+
+作用：`.gitignore`文件的作用是决定项目中哪些文件夹或者文件不需要提交到仓库
+
+```s
+# 行首加# 代表注释
+
+# / 表示 当前文件所在的目录
+
+# 忽略public下的所有目录及文件
+/public/*
+#不忽略/public/assets，就是特例的意思，assets文件不忽略
+!/public/assets
+
+# 忽略具体的文件
+
+index.php
+
+# 忽略所有的php
+*.php
+
+# 忽略 a.php b.php
+[ab].php
+
+#匹配规则和linux文件匹配一样
+#以斜杠“/”开头表示目录；
+#以星号“*”通配多个字符；
+#以问号“?”通配单个字符
+#以方括号“[]”包含单个字符的匹配列表；
+#以叹号“!”表示不忽略(跟踪)匹配到的文件或目录；
+```
+
+:::warning .gitignore文件不起作用的解决方法
+
+- 项目开发中使用`Git`作为版本管理工具时，有时并非在项目一开始就添加了`.gitignore`文件来管理`Git`忽略规则，或是在项目开发过程中添加或移除了忽略规则，这时由于Git在本地维护着一份遵从创建本地项目时的`.gitignore`规则的`Git`缓存，因此会造成`.gitignore`文件不起作用的现象。
+
+- 解决这个问题的方式就是清除掉本地项目的`Git`缓存，通过重新创建`Git`索引的方式来生成遵从新`.gitignore`文件中规则的本地`Git`版本，再将该`Git`版本提交到主干。
+
+例如，如果先使用`npm`创建了项目，然后才创建了如下内容的`.gitignore`文件，那么在提交时本地`Git`并不会忽略相应的文件和路径。
+
+在`git`中运行以下命令：
+
+```js
+git rm -r --cached .
+// 类似仓库暂存区清空，需要重新git add . git commit -m '' ...
+```
+
+:::
+
 ## 生成git密钥  sshkey
 
 为了和`github`或`gitee`建立连接，要在`github`或`gitee`里添加公钥。下面的命令会在本机用户文件夹下创建一个`.ssh`文件夹，里面有`id_rsa.pub`文件（邮箱是你的`github\gitee`注册邮箱）。密钥类型可以用 `-t` 选项指定。如果没有指定则默认生成用于`SSH-2`的`RSA`密钥。这里使用的是`rsa`。
