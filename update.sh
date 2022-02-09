@@ -11,10 +11,12 @@ cd D:/Project/vuepress-blog
 
 git add .
 git commit -m '提交源码'
-git push origin master
-# 提交源码到github结束
+
+# git push origin dev
+git push -f git@gitee.com:zguangju/vuepress-blog.git master
+# 提交源码到gitee结束
 
 git push -f git@github.com:ZGuangJu/vuepress-blog.git master
+# 提交源码到github结束
 
-# 提交源码到gitee结束
 # 源码提交结束
