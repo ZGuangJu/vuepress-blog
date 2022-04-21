@@ -10,7 +10,7 @@ cd D:/Project/vuepress-blog
 # 开始提交源码
 
 git add .
-git commit -m '提交源码'
+git commit -m '修改'
 
 # git push origin dev
 git push -f git@gitee.com:zguangju/vuepress-blog.git master
