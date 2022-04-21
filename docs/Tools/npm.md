@@ -13,7 +13,7 @@ showSponsor: true
 ---
 
 :::tip 介绍
-NPM的全称是`Node Package Manager`，是随同`NodeJS`一起安装的包管理和分发工具，它很方便让`JavaScript`开发者下载、安装、上传以及管理已经安装的包，类似的还有 `cnpm`、[yarn](http://zguangju.gitee.io/Tools/yarn.html)、`tyarn` ···
+NPM的全称是`Node Package Manager`，是随同`NodeJS`一起安装的包管理和分发工具，它很方便让`JavaScript`开发者下载、安装、上传以及管理已经安装的包，类似的还有 `cnpm`、[yarn](https://www.zguangju.com/Tools/yarn.html)、`tyarn` ···
 :::
 
 <!-- more -->
@@ -25,7 +25,7 @@ NPM的全称是`Node Package Manager`，是随同`NodeJS`一起安装的包管�
 ## 1. 切换淘宝源、官方源
 
 :::warning 强烈建议
-**[安装 nrm](http://zguangju.gitee.io/Tools/nrm.html)** :npm 的源管理器
+**[安装 nrm](https://www.zguangju.com/Tools/nrm.html)** :npm 的源管理器
 :::
 
 切换 npm 镜像源
@@ -49,13 +49,23 @@ npm config set registry http://registry.npmjs.org
 b 淘宝源
 
 ```js
-npm config set registry https://registry.npm.taobao.org
+npm config set registry https://registry.npmmirror.com
+
+// 其他
+
+npm ---------- https://registry.npmjs.org/
+yarn --------- https://registry.yarnpkg.com/
+tencent ------ https://mirrors.cloud.tencent.com/npm/
+cnpm --------- https://r.cnpmjs.org/
+taobao ------- https://registry.npmmirror.com/
+npmMirror ---- https://skimdb.npmjs.com/registry/
 ```
 
-c 使用cnpm(用`cnpm -v`检测是否成功)
+c 使用 `cnpm` **不推荐使用cnpm**
 
 ```js
 npm install -g cnpm --registry=https://registry.npm.taobao.org
+// 用`cnpm -v`检测是否成功
 ```
 
 d 手动修改设置淘宝源
