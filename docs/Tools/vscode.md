@@ -387,13 +387,13 @@ b. 日期和时间类
   // "editor.links": false,
   // "editor.renderWhitespace": "trailing",//??
   // 编辑器保存时要执行的动作
-  // "editor.codeActionsOnSave": {
-  // "source.fixAll": true, //打开 ESLint 的所有支持的自动修复：
-  // "source.fixAll.eslint": true, //保存自动修复 eslint 格式错误
-  // "source.fixAll.markdownlint": true, //保存自动修复 markdownlint  格式错误
-  // "source.fixAll.stylelint": true, //保存自动修复 stylelint 格式错误
-  // "source.fixAll.prettier": true //保存自动修复 stylelint 格式错误
-  // },
+  "editor.codeActionsOnSave": {
+    // "source.fixAll": true, // 打开 ESLint 的所有支持的自动修复（失效）
+    // "source.fixAll.eslint": true, // 保存自动修复 eslint 格式错误
+    "source.fixAll.markdownlint": true, // 🔺 保存自动修复 markdownlint 格式错误
+    // "source.fixAll.stylelint": true, //保存自动修复 stylelint 格式错误
+    // "source.fixAll.prettier": true //保存自动修复 stylelint 格式错误
+  },
   /*﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋编辑器颜色主题及配置﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋*/
   // 当前主题
   "workbench.colorTheme": "One Dark Pro Darker",
@@ -676,7 +676,7 @@ b. 日期和时间类
   // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于Easy Sass插件开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
   // 🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻关于 TODO 插件开始🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻🔻
   "todohighlight.isEnable": true,
-  "todohighlight.isCaseSensitive": true,
+  "todohighlight.isCaseSensitive": false,
   "todohighlight.keywords": [
     "DEBUG:",
     "REVIEW:",
@@ -685,6 +685,8 @@ b. 日期和时间类
       "color": "blue",
       "backgroundColor": "blue",
       "overviewRulerColor": "grey"
+
+      //FIXME:
     },
     {
       "text": "HACK:",
@@ -709,8 +711,8 @@ b. 日期和时间类
     "backgroundColor": "#ffab00",
     "overviewRulerColor": "#42A5F5",
     // "cursor": "pointer",
-    "border": "2px solid #eee",
-    "borderRadius": "20px",
+    "border": "1px solid #eee",
+    "borderRadius": "8px",
     "isWholeLine": true
     //other styling properties goes here ...
   },
@@ -860,6 +862,8 @@ b. 日期和时间类
   "files.autoSave": "onFocusChange",
   "editor.unicodeHighlight.ambiguousCharacters": false,
   "vscode-edge-devtools.mirrorEdits": true,
+  // 全局保存格式化
+  // "editor.formatOnSave": true,
 }
 ```
 

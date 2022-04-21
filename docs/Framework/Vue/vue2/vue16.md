@@ -101,7 +101,7 @@ configureWebpack: (config) => {
 
 #### 规则rules的配置
 
-- rules的新增
+- `rules`的新增
 
 在 `webpack` 中 `rules` 是 `module` 的配置项，而所有的配置的都是挂载到 `config` 下的，所以新增一个 `rule` 方式：
 
@@ -144,9 +144,9 @@ module.exports = {
 }
 ```
 
-- rules的修改
+- `rules`的修改
 
-针对已经存在的 rule , 如果需要修改它的参数, 可以使用 tap 方法：
+针对已经存在的 `rule` , 如果需要修改它的参数, 可以使用 `tap` 方法：
 
 ```js
 config.module
@@ -174,14 +174,14 @@ module.exports = {
 }
 ```
 
-#### 插件plugins 的配置
+#### 插件 plugins 的配置
 
-关于 plugins 的配置，我会分别从新增/修改/删除进行介绍。
+关于 `plugins` 的配置，我会分别从新增/修改/删除进行介绍。
 
-- plugins的新增
+- `plugins`的新增
 
 -
-\* 注意：这里WebpackPlugin不需要通过new WebpackPlugin()使用。
+\* 注意：这里`WebpackPlugin`不需要通过`new WebpackPlugin()`使用。
 
 ```js
 config
@@ -190,7 +190,7 @@ config
 ```
 
 - 案例：
-新增hot-hash-webpack-plugin
+新增`hot-hash-webpack-plugin`
 
 ```js
 const HotHashWebpackPlugin = require('hot-hash-webpack-plugin');
@@ -204,9 +204,9 @@ module.exports = {
 }
 ```
 
-- plugins的修改
+- `plugins`的修改
 
-同理, plugin 参数的修改也是通过 tap 去修改。
+同理, `plugin` 参数的修改也是通过 `tap` 去修改。
 
 ```js
 config
@@ -215,8 +215,8 @@ config
 ```
 
 - 案例
-  1. 修改打包后css抽离后的filename及抽离所属目录
-  2. 删除console和debugger
+  1. 修改打包后`css`抽离后的`filename`及抽离所属目录
+  2. 删除`console`和`debugger`
 
 ```js
 const HotHashWebpackPlugin = require('hot-hash-webpack-plugin');
@@ -243,15 +243,15 @@ module.exports = {
 }
 ```
 
-- plugins的删除
-对于一些webpack默认的 plugin ，如果不需要可以进行删除
+- `plugins` 的删除
+对于一些`webpack`默认的 `plugin` ，如果不需要可以进行删除
 
 ```js
 config.plugins.delete(name)
 ```
 
 - 案例：
-删除 vue-cli3.X 模块的自动分割抽离
+删除 `vue-cli3.X`模块的自动分割抽离
 
 ```js
 module.exports = {
@@ -261,6 +261,67 @@ module.exports = {
 
     }
 }
+```
+
+## 打包时去除`console.log`
+
+安装依赖  `"terser-webpack-plugin": "^4.2.2"`,根据`webpack`版本,`webpack`是`4`，最好按钮`4.x.x`,否则报错!。
+
+```js
+'use strict'
+const path = require('path')
+const defaultSettings = require('./src/settings.js')
+const TerserPlugin = require("terser-webpack-plugin");
+
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
+
+const name = defaultSettings.title // 网址标题
+const port = 8016 // 端口配置
+
+
+const BASE_URL = process.env.VUE_APP_PROJECT_NAME
+module.exports = {
+  publicPath: BASE_URL,
+  outputDir: 'dist',
+  assetsDir: 'static',
+  lintOnSave: process.env.NODE_ENV === 'development',
+  productionSourceMap: false,
+  devServer: {
+  // ...
+  },
+  configureWebpack: {
+    // provide the app's title in webpack's name field, so that
+    // it can be accessed in index.html to inject the correct title.
+    // 定义别名
+    name: name,
+    resolve: {
+      alias: {
+        '@': resolve('src'),
+        '@crud': resolve('src/components/Crud')
+      }
+    },
+    // 打包时去除 console
+    optimization: {
+      minimizer: [
+        new TerserPlugin({
+          parallel: true, // 多进程
+          terserOptions: {
+            compress: {
+              drop_console: true,
+              pure_funcs: ["console.log"] //去除console.log
+            }
+          }
+        })
+      ]
+    }
+  },
+  chainWebpack(config) {
+    // ...
+  }
+}
+
 ```
 
 ## 其他配置
@@ -276,7 +337,7 @@ config.entry('test').add(getPath('./test/main.ts')); // 重新设置
 
 ### DefinePlugin
 
-定义全局全局变量，DefinePlugin 是 webpack 已经默认配置的，我们可以对参数进行修改
+定义全局全局变量，`DefinePlugin` 是 `webpack` 已经默认配置的，我们可以对参数进行修改
 
 ```js
 config.plugin('define').tap(args => [{
@@ -285,7 +346,7 @@ config.plugin('define').tap(args => [{
     }]);
 ```
 
-### 自定义filename 及 chunkFilename
+### 自定义`filename` 及 `chunkFilename`
 
 自定义打包后js文件的路径及文件名字
 
@@ -294,9 +355,9 @@ config.output.filename('./js/[name].[chunkhash:8].js');
 config.output.chunkFilename('./js/[name].[chunkhash:8].js');
 ```
 
-### 修改html-webpack-plugin参数
+### 修改`html-webpack-plugin`参数
 
-html-webpack-plugin 是 webpack 已经默认配置的，默认的源模版文件是 public/index.html ;我们可以对其参数进行修改
+`html-webpack-plugin` 是 `webpack` 已经默认配置的，默认的源模版文件是 `public/index.html` ;我们可以对其参数进行修改
 
 ```js
  config.plugin('html')
@@ -310,7 +371,7 @@ html-webpack-plugin 是 webpack 已经默认配置的，默认的源模版文件
 
 ### alias设置
 
-webpack默认是将src的别名设置为@, 此外，我们可以进行添加
+`webpack`默认是将`src`的别名设置为`@`, 此外，我们可以进行添加
 
 ```js
 const path = require('path');
@@ -450,6 +511,176 @@ module.exports = {
         }
     }
 };
+```
+
+:::
+
+:::details rtzh 项目用`vue.config.js`文件
+
+```js
+'use strict'
+const path = require('path')
+const defaultSettings = require('./src/settings.js')
+const TerserPlugin = require("terser-webpack-plugin");
+
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
+
+const name = defaultSettings.title // 网址标题
+const port = 8016 // 端口配置
+// const port = 8014 // 端口配置
+
+const BASE_URL = process.env.VUE_APP_PROJECT_NAME
+//
+// All configuration item explanations can be find in https://cli.vuejs.org/config/
+module.exports = {
+  // hash 模式下可使用
+  // publicPath: process.env.NODE_ENV === 'development' ? '/' : './',
+  publicPath: BASE_URL,
+  outputDir: 'dist',
+  assetsDir: 'static',
+  lintOnSave: process.env.NODE_ENV === 'development',
+  productionSourceMap: false,
+  devServer: {
+    port: port,
+    open: true,
+    overlay: {
+      warnings: false,
+      errors: false
+    },
+    // proxy: {
+    //   '/common': {
+    //     target: 'https://dev.isszwy.com:28101/analysis-admin-server',
+    //     changeOrigin: true,
+    //     pathRewrite: {
+    //       '^common': ''
+    //     }
+    //   },
+    //   // '': {
+    //   //   target: process.env.VUE_APP_FORM_API,
+    //   //   changeOrigin: true,
+    //   //   pathRewrite: {
+    //   //     '': ''
+    //   //   }
+    //   // },
+    //   // '': {
+    //   //   target: process.env.VUE_APP_STORE_API,
+    //   //   changeOrigin: true,
+    //   //   pathRewrite: {
+    //   //     '': ''
+    //   //   }
+    //   // },
+    // }
+  },
+  configureWebpack: {
+    // provide the app's title in webpack's name field, so that
+    // it can be accessed in index.html to inject the correct title.
+    name: name,
+    resolve: {
+      alias: {
+        '@': resolve('src'),
+        '@crud': resolve('src/components/Crud')
+      }
+    },
+    // 打包时去除 console
+    optimization: {
+      minimizer: [
+        new TerserPlugin({
+          parallel: true, // 多进程
+          terserOptions: {
+            compress: {
+              drop_console: true,
+              pure_funcs: ["console.log"] //去除console.log
+            }
+          }
+        })
+      ]
+    }
+  },
+  chainWebpack(config) {
+    config.plugins.delete('preload') // TODO: need test
+    config.plugins.delete('prefetch') // TODO: need test
+
+    // set svg-sprite-loader
+    config.module
+      .rule('svg')
+      .exclude.add(resolve('src/assets/icons'))
+      .end()
+    config.module
+      .rule('icons')
+      .test(/\.svg$/)
+      .include.add(resolve('src/assets/icons'))
+      .end()
+      .use('svg-sprite-loader')
+      .loader('svg-sprite-loader')
+      .options({
+        symbolId: 'icon-[name]'
+      })
+      .end()
+
+    // set preserveWhitespace
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .loader('vue-loader')
+      .tap(options => {
+        options.compilerOptions.preserveWhitespace = true
+        return options
+      })
+      .end()
+
+    config
+      // https://webpack.js.org/configuration/devtool/#development
+      .when(process.env.NODE_ENV === 'development',
+        config => config.devtool('cheap-source-map')
+      )
+
+    config
+      .when(process.env.NODE_ENV !== 'development',
+        config => {
+          config
+            .plugin('ScriptExtHtmlWebpackPlugin')
+            .after('html')
+            .use('script-ext-html-webpack-plugin', [{
+              // `runtime` must same as runtimeChunk name. default is `runtime`
+              inline: /runtime\..*\.js$/
+            }])
+            .end()
+          config
+            .optimization.splitChunks({
+              chunks: 'all',
+              cacheGroups: {
+                libs: {
+                  name: 'chunk-libs',
+                  test: /[\\/]node_modules[\\/]/,
+                  priority: 10,
+                  chunks: 'initial' // only package third parties that are initially dependent
+                },
+                elementUI: {
+                  name: 'chunk-elementUI', // split elementUI into a single package
+                  priority: 20, // the weight needs to be larger than libs and app or it will be packaged into libs or app
+                  test: /[\\/]node_modules[\\/]_?element-ui(.*)/ // in order to adapt to cnpm
+                },
+                commons: {
+                  name: 'chunk-commons',
+                  test: resolve('src/components'), // can customize your rules
+                  minChunks: 3, //  minimum common number
+                  priority: 5,
+                  reuseExistingChunk: true
+                }
+              }
+            })
+          config.optimization.runtimeChunk('single')
+        }
+      )
+  },
+  transpileDependencies: [
+    'vue-echarts',
+    'resize-detector'
+  ]
+}
+
 ```
 
 :::
