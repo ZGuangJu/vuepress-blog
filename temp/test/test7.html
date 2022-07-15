@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- <meta http-equiv="refresh" content="5"> -->
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+
+  </div>
+  <script>
+    const data = {
+      name: "zhang",
+      age: 20,
+      color: ["blue", "red"]
+    }
+    // 获取 原生array 对象的push等方法
+    const oldArrayProto = Array.prototype;
+    const newArrayProto = Object.create(oldArrayProto);
+
+    ['push', 'pop', 'shift', 'unshift', 'splice'].forEach(methodName => {
+      newArrayProto[methodName] = function () {
+        console.log("更新");
+        oldArrayProto[methodName].call(this, ...arguments);
+      }
+    })
+    observer(data)
+    function observer(target) {
+      if (typeof target !== "object" || target === null) {
+        return target;
+      }
+      // 添加判断
+      if (Array.isArray(target)) {
+        target.__proto__ = newArrayProto;
+      }
+      for (let key in target) {
+        defineReactive(target, key, target[key]);
+      }
+    }
+    function defineReactive(target, key, value) {
+      // 劫持深层次的值 属性值为对象的情况
+      observer(value);
+      // 添加上一行代码
+      Object.defineProperty(target, key, {
+        get() {
+          return value;
+        },
+        set(newval) {
+          observer(newval);
+          value = newval;
+          console.log("更新");
+        }
+      })
+    }
+    data.color.push("green")
+  </script>
+</body>
+
+</html>

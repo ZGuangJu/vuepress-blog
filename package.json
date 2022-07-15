@@ -1,0 +1,21 @@
+{
+  "name": "blog-vuepress",
+  "version": "1.0.0",
+  "description": "zguangju notebook(reco主题+自定义样式)",
+  "main": "index.js",
+  "author": "zguangju",
+  "license": "MIT",
+  "scripts": {
+    "blog": "vuepress dev docs",
+    "build": "vuepress build docs",
+    "deploy": "deploy.sh",
+    "up": "update.sh"
+  },
+  "devDependencies": {
+    "@vuepress-reco/vuepress-plugin-kan-ban-niang": "^1.0.5",
+    "vuepress": "^1.9.7",
+    "vuepress-plugin-ribbon": "^1.0.4",
+    "vuepress-theme-reco": "^1.6.10"
+  },
+  "dependencies": {}
+}

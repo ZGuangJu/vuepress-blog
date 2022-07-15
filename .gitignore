@@ -1,0 +1,6 @@
+# git提交时筛选文件用（以下文件夹内容git不提交）
+node_modules
+/docs/.vuepress/dist/*
+/docs/.vuepress/dist.zip
+# git中运行以下命令 清除 .gitignore的缓存
+# git rm -r --cached .
