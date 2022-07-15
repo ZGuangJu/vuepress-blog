@@ -6,6 +6,7 @@
 
 ## 部署发布
 
+- v1.0
 - 最新地址-[www.zguangju.com](www.zguangju.com)
 
 - 本地启动项目
