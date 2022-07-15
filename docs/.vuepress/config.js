@@ -207,6 +207,7 @@ module.exports = {
           { text: 'Apache 是什么', link: '/Other/Apache' },
           { text: 'Nginx 是什么', link: '/Other/nginx' },
           { text: '电脑故障', link: '/Other/computerBreakdown' },
+          { text: 'TODO', link: '/Other/todo' },
           { text: '中国历史朝代年表', link: '/Other/chronology' },
           //  // { text: '996', link: '/Other/996' },
         ]
@@ -349,7 +350,7 @@ module.exports = {
       '/Tools/': ['git', 'yarn', 'npm', 'npm_modules', 'node', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'svg', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'upgrade', 'typecho', 'vscode', 'wsl'],
       // 小知识
       '/Other/': [
-        'target', 'errorSummarize', 'knowledgePoint', 'interviewQuestion1', 'interviewQuestion2', 'algorithm', 'token', 'URIandURL', 'Apache', 'nginx', 'Chrome', 'browserKernel', 'verificationCode', 'dict', 'computerBreakdown', 'chronology'
+        'target', 'errorSummarize', 'knowledgePoint', 'interviewQuestion1', 'interviewQuestion2', 'algorithm', 'token', 'URIandURL', 'Apache', 'nginx', 'Chrome', 'browserKernel', 'verificationCode', 'dict', 'computerBreakdown', 'todo', 'chronology'
       ],//,'996'
     },
     // 友链

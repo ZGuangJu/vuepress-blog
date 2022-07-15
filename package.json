@@ -9,6 +9,7 @@
     "blog": "vuepress dev docs",
     "build": "vuepress build docs",
     "deploy": "deploy.sh",
+    "uptags": "update-tags.sh",
     "up": "update.sh"
   },
   "devDependencies": {
