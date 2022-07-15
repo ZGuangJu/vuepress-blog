@@ -6,9 +6,6 @@
 
 ## 部署发布
 
-现发布在`github`个人页--`zguangju.github.io`；
-由于国内访问`github`速度过慢，又部署在 `gitee` 上--`zguangju.gitee.io`
-
 - 最新地址-[www.zguangju.com](www.zguangju.com)
 
 - 本地启动项目
