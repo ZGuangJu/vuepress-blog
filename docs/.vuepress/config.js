@@ -305,7 +305,7 @@ module.exports = {
         {
           title: '常用代码片段',
           collapsable: true,
-          children: ['/Frontend/Piece/css', '/Frontend/Piece/html', '/Frontend/Piece/js0', '/Frontend/Piece/js1', '/Frontend/Piece/js2', '/Frontend/Piece/compatibility', '/Frontend/Piece/example', '/Frontend/Piece/namespace', '/Frontend/Piece/namespace2', '/Frontend/Piece/html_string']
+          children: ['/Frontend/Piece/css', '/Frontend/Piece/html', '/Frontend/Piece/js0', '/Frontend/Piece/js1', '/Frontend/Piece/js2', '/Frontend/Piece/compatibility', '/Frontend/Piece/example', '/Frontend/Piece/example2', '/Frontend/Piece/namespace', '/Frontend/Piece/namespace2', '/Frontend/Piece/html_string']
         },
       ],
       '/Framework/Vue/vue2/': [

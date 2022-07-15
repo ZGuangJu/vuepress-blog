@@ -5,7 +5,7 @@ sidebar: 'auto'
 categories:
  - 小知识
 tags:
- - 报错总结
+ - 公共方法
 publish: true
 # 打赏
 showSponsor: true
@@ -13,7 +13,115 @@ showSponsor: true
 
 ## vue
 
-### 过滤并去除空参数并挂载到vue对象中
+### 公共方法挂载方式
+
+#### 方式一 直接`install`
+
+- 公共方法 `common.js`
+
+```js
+// common.js
+export default {
+  install(Vue) {
+    Vue.prototype.filterParams = function (obj) {
+      let paramsObj = {};
+      for (let i in obj) {
+        // 保留非空串（''）参数
+        if (obj[i] !== "" ) {
+          paramsObj[i] = obj[i];
+        }
+      }
+      // 过滤空参数并转为字符串
+      // return JSON.stringify(paramsObj);
+      // 过滤空参数返回obj对象
+      return paramsObj;
+    }
+  }
+}
+```
+
+- 使用
+
+```js
+// 不用引入，直接使用 this.filterParams()
+  let params = this.filterParams({
+    // 搜索后数据显示的首页条数
+    current: 0,
+    size: 10,
+    // 搜索的参数
+    keyword: this.screenForm.superviseName,
+    orderTypeValue: this.screenForm.businessType,
+    superviseStatus: this.screenForm.workOrderStatus,
+  });
+```
+
+#### 方式二 通过`main.js`注册
+
+- 公共方法 `common.js`
+
+```js
+// common.js
+export default {
+  test(){
+      return "test"
+  },
+}
+
+```
+
+- 注册到`main.js`
+
+挂载(注册)在`main.js`
+
+```js
+// main.js
+import utils from './common/util/utils.js'
+Vue.prototype.$utils = utils
+```
+
+- 使用
+
+在任意页面中使用
+
+```js
+let text = this.$utils.test()
+```
+
+#### 方式三 各页面引入
+
+```js
+// common.js
+export function uniqueArr(arr) {
+  return Array.from(new Set(arr))
+}
+```
+
+```js
+let uniqueArr = arr => {
+   return Array.from(new Set(arr))
+}
+export { uniqueArr }
+```
+
+- 页面引入 使用
+
+```vue
+// DemoPage.vue
+<script>
+import { uniqueArr } from '@/utils/utils'; // A.引用其中某几个方法
+//const utils = require('@/utils/utils'); // B.全部引用
+export default {
+  methods:{
+    // A
+    let relativePath = uniqueArr([1,11,1,2]);
+    // B
+    // let relativePath = utils.uniqueArr([1,11,1,2]);
+  }
+}
+</script>
+```
+
+### 过滤并去除空参数
 
 ```js
 // common.js
@@ -54,21 +162,6 @@ export default {
 
   }
 }
-```
-
-- 使用
-
-```js
-// 不用引入，直接使用 this.filterParams()
-  let params = this.filterParams({
-    // 搜索后数据显示的首页条数
-    current: 0,
-    size: 10,
-    // 搜索的参数
-    keyword: this.screenForm.superviseName,
-    orderTypeValue: this.screenForm.businessType,
-    superviseStatus: this.screenForm.workOrderStatus,
-  });
 ```
 
 ### 表格高度根据窗口变化自适应改变
