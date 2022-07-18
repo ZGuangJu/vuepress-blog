@@ -326,7 +326,7 @@ module.exports = {
 
 ## 其他配置
 
-### 修改`enter`文件
+### 修改`entry`文件
 
 `webpack` 默认的 `entry` 入口是 `scr/main.ts`
 

@@ -107,7 +107,7 @@ yarn config get registry
 - 设置为淘宝镜像
 
 ```s
-yarn config set registry http://registry.npm.taobao.org/
+yarn config set registry https://registry.npmmirror.com/
 ```
 
 - 设置默认为镜像
@@ -119,25 +119,23 @@ yarn config set registry https://registry.yarnpkg.com
 - 其他镜像地址
 
 ```js
-npm --- https://registry.npmjs.org/
+npm ---------- https://registry.npmjs.org/
 
-npm --- https://registry.npm.taobao.org/
+yarn --------- https://registry.yarnpkg.com/
 
-yarn --- https://registry.yarnpkg.com/
+cnpm --------- https://r.cnpmjs.org/
 
-yarn --- https://registry.npm.taobao.org/
+taobao ------- https://registry.npm.taobao.org/
 
-cnpm --- https://r.cnpmjs.org/
+taobao(新地址)- https://registry.npmmirror.com/
 
-taobao --- https://registry.npm.taobao.org/
+nj ----------- https://registry.nodejitsu.com/
 
-nj --- https://registry.nodejitsu.com/
+rednpm ------- https://registry.mirror.cqupt.edu.cn/
 
-rednpm --- https://registry.mirror.cqupt.edu.cn/
+npmMirror ---- https://skimdb.npmjs.com/registry/
 
-npmMirror --- https://skimdb.npmjs.com/registry/
-
-deunpm --- http://registry.enpmjs.org/
+deunpm ------- http://registry.enpmjs.org/
 ```
 
 ### yarn 2
