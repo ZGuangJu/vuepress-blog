@@ -146,6 +146,7 @@ module.exports = {
           { text: 'Vue3', link: '/Framework/Vue/vue3/vue3-1' },
           { text: 'React', link: '/Framework/React/react01' },
           { text: 'Wechat', link: '/Framework/Wechat/wechat' },
+          { text: '微前端', link: '/Framework/miniFrontEnd/miniFE' },
           { text: '项目', link: '/Project/project' }
         ]
       },
@@ -335,6 +336,13 @@ module.exports = {
           title: '微信小程序',
           collapsable: true, //是否折叠侧边栏
           children: ['wechat', 'wechat2', 'wechat3', 'wechat4', 'wechat5', 'wechat6', 'wechat7', 'wechat8', 'wechat9', 'wechat10', 'wechat11', 'wechat12']
+        }
+      ],
+      '/Framework/miniFrontEnd/': [
+        {
+          title: '微前端',
+          collapsable: true, //是否折叠侧边栏
+          children: ['miniFE', 'qiankun']
         }
       ],
       // 后端
