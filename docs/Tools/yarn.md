@@ -127,7 +127,7 @@ cnpm --------- https://r.cnpmjs.org/
 
 taobao ------- https://registry.npm.taobao.org/
 
-taobao(新地址)- https://registry.npmmirror.com/
+taobao(新)- https://registry.npmmirror.com/
 
 nj ----------- https://registry.nodejitsu.com/
 
