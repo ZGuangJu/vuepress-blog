@@ -1049,11 +1049,52 @@ showSponsor: true
 
 ### 分屏和快捷键
 
-| 操作                   | 快捷键                                            |
-| :--------------------- | :------------------------------------------------ |
-| 添加分屏(垂直水平交替) | <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>D</kbd>  |
-| 垂直分屏               | <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>+</kbd>  |
-| 水平分屏               | <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>-</kbd>  |
-| 调整分屏               | <kbd>Shift</kbd> + <kbd>Alt</kbd> + `方向键`      |
-| 切换分屏               | <kbd>Alt</kbd> +  `方向键`                        |
-| 关闭分屏               | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd> |
+- 全局
+
+| 操作                             | 快捷键                                                                                              |
+| :------------------------------- | :-------------------------------------------------------------------------------------------------- |
+| 清除屏幕                         | <kbd>Ctrl</kbd> + <kbd>l</kbd> \ `clear`                                                            |
+| 打开新终端窗口                   | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>t</kbd> \ <kbd>Ctrl</kbd> + <kbd>shift</kbd> + <kbd>n</kbd> |
+| 打开新终端标签页                 | <kbd>Ctrl</kbd> + <kbd>shift</kbd> + <kbd>t</kbd> \ <kbd>d</kbd>                                    |
+| 左右切换标签页                   | <kbd>Ctrl</kbd> + <kbd>PageUp/PageDown</kbd>                                                        |
+| 复制                             | <kbd>Ctrl</kbd> + <kbd>shift</kbd> + <kbd>c</kbd>                                                   |
+| 粘贴                             | <kbd>Ctrl</kbd> + <kbd>shift</kbd> + <kbd>v</kbd>                                                   |
+| 暂停屏幕输出                     | <kbd>Ctrl</kbd> + <kbd>S</kbd>                                                                      |
+| 继续屏幕输出                     | <kbd>Ctrl</kbd> + <kbd>Q</kbd>                                                                      |
+| 删除当前光标位置至末尾的所有内容 | <kbd>Ctrl</kbd> + <kbd>K</kbd>                                                                      |
+| 删除当前光标位置至开头的所有内容 | <kbd>Ctrl</kbd> + <kbd>U</kbd>                                                                      |
+| 上下滚动屏幕                     | <kbd>Shift</kbd> + <kbd>PageUp/PageDown</kbd>                                                       |
+| 全屏切换                         | <kbd> F11</kbd>                                                                                     |
+| 上下滚动屏幕                     | <kbd>win</kbd> + <kbd>PageUp/PageDown</kbd>                                                         |
+| 上下滚动屏幕                     | <kbd>Shift</kbd> + <kbd>PageUp/PageDown</kbd>                                                       |
+| 水平分屏                         | <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>-</kbd>                                                    |
+| 调整分屏                         | <kbd>Shift</kbd> + <kbd>Alt</kbd> + `方向键`                                                        |
+| 切换分屏                         | <kbd>Alt</kbd> +  `方向键`                                                                          |
+| 关闭分屏                         | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>W</kbd>                                                   |
+
+- 控制台
+
+| 操作                      | 快捷键                                                          |
+| :------------------------ | :-------------------------------------------------------------- |
+| 切换console控制台的最大化 | <kbd>Ctrl</kbd> + <kbd>win</kbd> + <kbd>上下键</kbd>            |
+| 切换打开的控制台          | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>数字</kbd>              |
+| 打开新的控制台            | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>数字</kbd>            |
+| 横向打开新控制台          | <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>+</kbd> \ <kbd>=</kbd> |
+| 纵向打开新控制台          | <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>-</kbd> \ <kbd>_</kbd> |
+| 控制控制台尺寸            | <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>方向键</kbd>           |
+| 在本标签内切换控制台      | <kbd>Alt</kbd> + <kbd>方向键</kbd>                              |
+| 关闭当前控制台            | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>w</kbd>               |
+
+- 光标移动
+
+| 操作                                       | 快捷键                                               |
+| :----------------------------------------- | :--------------------------------------------------- |
+| 移动到本行开头                             | <kbd>Ctrl</kbd> + <kbd>a</kbd>                       |
+| 移动到本行结尾                             | <kbd>Ctrl</kbd> + <kbd>e</kbd>                       |
+| 上一个命令                                 | <kbd>Ctrl</kbd> + <kbd>p</kbd> \ `上箭头`            |
+| 下一个命令                                 | <kbd>Ctrl</kbd> + <kbd>n</kbd> \ `下箭头`            |
+| 往回移动一个word                           | <kbd>Alt</kbd> + <kbd>b</kbd> \ `Option+Right-Arrow` |
+| 往前移动一个word                           | <kbd>Alt</kbd> + <kbd>f</kbd> \ `Option+Left-Arrow`  |
+| 往前移动光标                               | <kbd>Ctrl</kbd> + <kbd>f</kbd>                       |
+| 往回移动光标                               | <kbd>Ctrl</kbd> + <kbd>b</kbd>                       |
+| 选中当前光标字符与本行首字符之间的所有内容 | <kbd>Ctrl</kbd> + <kbd>xx</kbd>                      |
