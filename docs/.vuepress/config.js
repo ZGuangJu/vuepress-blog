@@ -135,7 +135,8 @@ module.exports = {
           { text: '算法', link: '/Frontend/algorithm' },
           { text: 'storage', link: '/Frontend/storage' },
           { text: 'less', link: '/Frontend/less' },
-          { text: '常用代码', link: '/Frontend/Piece/js2' }
+          { text: '常用代码', link: '/Frontend/Piece/js2' },
+          { text: 'CoolStyle', link: '/Frontend/amazingCSS/button' }
         ]
       },
       {
