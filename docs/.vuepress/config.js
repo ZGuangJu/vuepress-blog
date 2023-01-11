@@ -2,7 +2,7 @@ module.exports = {
   // 主页图片下第一行字、标题栏名称、左上角名称
   title: "ZGuangJu'S NoteBook",
   // 主页图片下第二行字
-  description: '欢迎，大爷儿来玩~',
+  description: '欢迎 ~  常来 ~ ',
   // 端口配置 80是默认端口(手动部署服务器时用)
   // port: 80,
   // base: '/',
@@ -136,7 +136,7 @@ module.exports = {
           { text: 'storage', link: '/Frontend/storage' },
           { text: 'less', link: '/Frontend/less' },
           { text: '常用代码', link: '/Frontend/Piece/js2' },
-          { text: 'CoolStyle', link: '/Frontend/amazingCSS/button' }
+          // { text: 'CoolStyle', link: '/Frontend/amazingCSS/button' }
         ]
       },
       {

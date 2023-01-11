@@ -1,5 +1,4 @@
 <template>
-  <!-- 第一个 KuStyle -->
   <div>
     <div class="animated-border1">按钮1</div>
     <div class="animated-border2">按钮2</div>
@@ -8,42 +7,16 @@
 </template>
 
 <script>
-import Driver from 'driver.js' // import driver.js
-import 'driver.js/dist/driver.min.css' // import driver.js css
-import steps from './steps'
-
-export default {
-  name: 'Guide',
-  data() {
-    return {
-      driver: null
-    }
-  },
-  mounted() {
-    this.driver = new Driver()
-  },
-  methods: {
-    guide() {
-      this.driver.defineSteps(steps)
-      this.driver.start()
-    }
-  }
-}
+export default {};
 </script>
+
 <style lang="scss">
 $button_width: 100px;
 $border_width: 2px;
 $clip_width: 30px;
 $button_color: #fed75a;
 $animate-duration: 10s;
-/* // html{ height: 100% } */
-body,
-html {
-  height: 100%;
-}
-body {
-  background-color: #1d1d1d;
-}
+
 // 按钮1
 .animated-border1 {
   // 按钮样式

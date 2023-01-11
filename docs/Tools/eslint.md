@@ -187,8 +187,11 @@ module.exports = {
     "qq": true,
   },
   "settings": {
-    "react": {
-      "version": "16.2.0",
+    // "react": {
+    //   "version": "16.2.0",
+    // }
+    "vue": {
+      "version": "2.6.10",
     }
   },
   /**
@@ -196,6 +199,9 @@ module.exports = {
    * "warn" 或 1 - 开启规则，使用警告级别的错误：warn (不会导致程序退出),
    * "error" 或 2 - 开启规则，使用错误级别的错误：error (当被触发的时候，程序会退出)
    */
+
+  // add your custom rules here
+  //it is base on https://github.com/vuejs/eslint-config-vue
   "rules": {
     "no-cond-assign": 2,
     "no-console": [
@@ -203,10 +209,16 @@ module.exports = {
         "allow": ["log", "warn", "error", "info"]
       }
     ],
-    // 禁止 function 定义中出现重名参数
-    "no-dupe-args": 2,
-    // 禁止对象字面量中出现重复的 key
-    "no-dupe-keys": 2,
+    // 禁用 alert、confirm、prompt、console、debugger
+    "no-alert": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "eqeqeq":"warn",  // 要求使用 = = = 和 ! = =   ?
+    "no-dupe-args": 2,// 禁止 function 定义中出现重名参数
+    "no-dupe-args": "error", // 禁止 function 定义中出现重名参数
+    "no-eval": "error", // 禁用 eval()
+    "no-dupe-keys": 2, // 禁止对象字面量中出现重复的 key
+    "no-dupe-keys": "error", // 禁止对象字面量中出现重复的 key
     // 禁止重复的 case 标签
     "no-duplicate-case": 2,
     // 禁止空语句块
@@ -217,7 +229,21 @@ module.exports = {
     "no-extra-boolean-cast": 2,
     // 禁止不必要的括号 //(a * b) + c;//报错
     "no-extra-parens": 0,
-
+    "no-self-compare": "error", // 禁止自身比较
+    "no-self-assign": "error", // 禁止自我赋值
+    "no-unused-vars": 0,    // 禁止出现未使用过的变量
+    "no-unused-vars": "error",  // 禁止出现未使用过的变量
+    "no-const-assign": 2, // 禁止修改 const 声明的变量
+    "no-const-assign": "error",  // 禁止修改 const 声明的变量
+    "no-func-assign": "error",  // 禁止对 function 声明重新赋值
+    "camelcase": "error",  // 强制使用骆驼拼写法命名约定
+    "no-mixed-spaces-and-tabs": "error", //禁止混用tab和空格
+    "no-mixed-spaces-and-tabs": [ //禁止空格和 tab 的混合缩进
+      "error", "smart-tabs"
+    ],
+    "indent": ["warn", 2], //缩进风格这里不做硬性规定，但是产品组内要达成统一
+    "quotes": ["warn", "single"], //要求引号类型 `` ' "
+    "semi": ["error", "always"], //语句强制分号结尾
     //强制所有控制语句使用一致的括号风格
     "curly": [2, "all"],
     // 禁止 catch 子句的参数与外层作用域中的变量同名
@@ -328,10 +354,6 @@ module.exports = {
     "no-lonely-if": 0,
     // 禁止混合使用不同的操作符
     "no-mixed-operators": 0,
-    //禁止空格和 tab 的混合缩进
-    "no-mixed-spaces-and-tabs": [
-      "error", "smart-tabs"
-    ],
     // 不允许多个空行
     "no-multiple-empty-lines": [2, {
       "max": 2
@@ -427,8 +449,6 @@ module.exports = {
     "no-class-assign": 2,
     // 不允许箭头功能，在那里他们可以混淆的比较
     "no-confusing-arrow": 0,
-    // 禁止修改 const 声明的变量
-    "no-const-assign": 2,
     // 禁止类成员中出现重复的名称
     "no-dupe-class-members": 2,
     // 每个模块只能使用一个import
@@ -463,9 +483,6 @@ module.exports = {
     "template-curly-spacing": 1,
     // 强制在 yield* 表达式中 * 周围使用空格
     "yield-star-spacing": 2,
-
-
-
     // 强制使用一致的换行风格
     "linebreak-style": [2, "unix"],
     //在JSX中强制布尔属性符号
@@ -520,8 +537,6 @@ module.exports = {
     "react/jsx-filename-extension": [2, {
       "extensions": [".js", ".jsx"]
     }],
-    // 禁止未使用的变量
-    "no-unused-vars": 0,
   }
 };
 ```

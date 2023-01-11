@@ -31,6 +31,10 @@ showSponsor: true
 
 ## 常用设置
 
+<!-- <ClientOnly>
+  <my-demo></my-demo>
+</ClientOnly> -->
+
 1. 查看`git`账户邮箱
 
 ```js
