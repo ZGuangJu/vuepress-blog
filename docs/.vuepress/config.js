@@ -189,6 +189,7 @@ module.exports = {
           { text: 'Typecho 安装建站', link: '/Tools/typecho' },
           { text: 'VScode等配置文件', link: '/Tools/vscode' },
           { text: 'Win子系统', link: '/Tools/wsl' },
+          { text: 'Bitwarden', link: '/Tools/bitwarden' },
         ],
       },
       {
@@ -356,7 +357,7 @@ module.exports = {
       // linux系统
       '/Linux/': ['debian', 'centos', 'screen', 'baota', 'vim'],
       // 工具
-      '/Tools/': ['git', 'yarn', 'npm', 'npm_modules', 'node', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'svg', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'upgrade', 'typecho', 'vscode', 'wsl'],
+      '/Tools/': ['git', 'yarn', 'npm', 'npm_modules', 'node', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'svg', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'upgrade', 'typecho', 'vscode', 'wsl', 'bitwarden'],
       // 小知识
       '/Other/': [
         'target', 'errorSummarize', 'knowledgePoint', 'interviewQuestion1', 'interviewQuestion2', 'algorithm', 'token', 'URIandURL', 'Apache', 'nginx', 'Chrome', 'browserKernel', 'verificationCode', 'dict', 'computerBreakdown', 'todo', 'chronology'
