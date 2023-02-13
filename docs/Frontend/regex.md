@@ -10,6 +10,33 @@ publish: true
 # 打赏
 showSponsor: true
 ---
+## 验证数字和范围
+
+- 1~10000
+
+```js
+/^([1-9]\d{0,3}|10000)$/
+/^[1-9]\d{0,3}$|10000/
+/^[1-9]\d{0,4}|10000$/
+
+//  严谨点的
+
+1~1000
+
+/^(?!0)(?:[0-9]{1,3}|1000)$/
+
+1~10000
+
+/^(?!0)(?:[0-9]{1,4}|10000)$/
+```
+
+- 1-24
+
+```js
+1-24
+/^(([1-9])|(1\d)|(2[0-4]))$/
+```
+
 ## 手机号正则
 
 - 最新
@@ -106,3 +133,41 @@ showSponsor: true
 - `g` : `global` - 全局匹配 查找所有的匹配项。
 - `m` : `multi line` - 多行匹配 使边界字符 `^` 和 `$` 匹配每一行的开头和结尾，记住是多行，而不是整个字符串的开头和结尾。
 - `s` : 特殊字符圆点 . 中包含换行符 `\n`
+
+## 其他验证方式
+
+- 1
+
+```js
+// utils.js 公共方法
+  /**
+    * 只能输入大于0的正整数（不能以0开头）
+    * @param {string} value
+    * @returns {string | number} 返回空字符或数字
+    */
+  integerFn(value) {
+    const reg = /[1-9]{1}[0-9]*$/
+    const strArray = value.split('')
+    let newStrs = ''
+    for (let i = 0; i < strArray.length; i++) {
+      if (reg.test(strArray[i])) {
+        newStrs += strArray[i]
+      } else if (i > 0 && strArray[i] === '0') {
+        newStrs += strArray[i]
+      }
+    }
+    if (newStrs - 0 > 0) {
+      return newStrs - 0
+    } else {
+      return ''
+    }
+  }
+```
+
+- 2
+
+```js
+// main.js 挂载公共方法
+import limit from './utils/util.js'
+Vue.prototype.$limit = limit
+```

@@ -167,6 +167,12 @@ nvm install unstable
 nvm use 8.9.0
 ```
 
+- MAC 切换好node版本，但是每次打开，版本号会变掉，这个时候可以设置默认版本上切换版本后需要再设置默认版本
+
+```js
+nvm alias default [version]
+```
+
 :::warning `nvm use` 报错 `“exit status 1 乱码”`
 
 1. 安装路径有中文

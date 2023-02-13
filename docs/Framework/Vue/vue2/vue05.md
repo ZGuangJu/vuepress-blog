@@ -324,13 +324,13 @@ props: ["msg", "changeMsgFn"],
 
 ```js
     <About ref="childref" />
-    <button @click="Dosome"></button>
+    <button @click="doSome"></button>
 
   methods: {
-    Dosome() {
+    doSome() {
       console.log(this.$refs.childref.childdata);
     },
-
+  }
 ```
 
 2. 子组件的数据
@@ -396,6 +396,21 @@ import eventBus from "./eventBus";
     eventBus.$off("addItem", this.handleAddTitle);
   },
 
+```
+
+#### 例
+
+- 绑定到vue原型上
+
+```js
+// main.js
+Vue.prototype.$bus = new Vue()
+// 绑定   created() {} 中
+this.$bus.$emit('dowloadCurrent', this.tableDatas, formHead)
+// 使用   created() {} 中
+this.$bus.$off('dowloadCurrent').$on('dowloadCurrent', (tableDatas, formHead) => {
+      //  ······
+    })
 ```
 
 ### 同级之间

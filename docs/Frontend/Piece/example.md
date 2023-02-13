@@ -121,6 +121,28 @@ export default {
 </script>
 ```
 
+### lodash 引入
+
+```js
+// main.js
+import _ from 'lodash'
+Vue.prototype._ = _
+
+```
+
+### $bus
+
+```js
+// main.js
+Vue.prototype.$bus = new Vue()
+// 绑定
+this.$bus.$emit('dowloadCurrent', this.tableDatas, formHead)
+// 使用
+this.$bus.$off('dowloadCurrent').$on('dowloadCurrent', (tableDatas, formHead) => {
+      //  ······
+    })
+```
+
 ### 过滤并去除空参数
 
 ```js
@@ -1031,6 +1053,214 @@ export default {
 ::v-deep .el-table__body {
   height: 100%;
 }
+```
+
+### form 下拉框 树搜索 vue
+
+```html
+  <el-row :gutter="20">
+    <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="12">
+      <el-form-item label="事项选择" prop="treeValue">
+        <el-select
+          v-model="envData.treeValue"
+          placeholder="请选择事项"
+          clearable
+          style="width: 100%"
+        >
+          <el-option
+            :key="1"
+            hidden
+            :value="1"
+          />
+          <span class="inputOut">
+            <el-input
+              v-model.trim="filterText"
+              class="treeInput"
+              placeholder="请输入关键字搜索"
+              @keyup.enter.native="searchDataTree(filterText)"
+            />
+            <i class="el-icon-search searchIcon" @click="searchDataTree(filterText)" />
+          </span>
+          <el-tree
+            highlight-current
+            class="filter_Tree"
+            :data="treeData"
+            :load="loadNode"
+            lazy
+            :props="defaultProps"
+            :filter-node-method="filterNode"
+            @node-click="nodeClick"
+          >
+            <template #default="{data}">
+              <div v-html="textHtml(data)" />
+            </template>
+          </el-tree>
+        </el-select>
+      </el-form-item>
+    </el-col>
+  </el-row>
+```
+
+```js
+<script>
+import {
+  findAllTree
+} from '@/api/cyythApi/v2/common'
+import * as _ from 'lodash'
+
+export default {
+  data() {
+    return {
+      // 下拉组合树数据
+      filterText: '',
+      treeData: [],
+      defaultProps: {
+        value: 'code',
+        label: 'name'
+      },
+      rules: {
+        // ······
+         // 事项分类下拉树
+        treeValue: [
+          { required: true, message: '请选择事项', trigger: 'change' }
+        ],
+        // ······
+      }
+
+    }
+  }
+  watch: {
+    // 事项选择下拉树值改变时执行搜索
+    filterText: {
+      handler(newVal) {
+        if (newVal === '') {
+          this.init()
+        } else {
+          this.searchDataTree(newVal)
+        }
+      }
+    },
+  },
+  created(){
+      // 下拉树初始加载
+    this.init()
+  },
+  methods(){
+      // 下拉组合树
+    init() {
+      findAllTree({}).then(res => {
+        if (res.code === '200') {
+          this.treeData = res.data
+        }
+      })
+    },
+    searchDataTree(value) {
+      if (!value) {
+        this.$nextTick(() => {
+          this.init()
+        })
+      } else {
+        findAllTree({ name: value }).then(res => {
+          if (res.code === '200') {
+            this.$nextTick(() => {
+              this.treeData = res.data
+              this.treeData.forEach(item => {
+                item.name = item.namePath.slice(0, item.namePath.length - 1).replace(/\//g, '-')
+              })
+            })
+          }
+        })
+      }
+    },
+    // 过滤方法
+    filterNode(value, data) {
+      if (!value) return true
+      return data.label.indexOf(value) !== -1
+    },
+    // 事项分类和事项名称下拉树懒加载数据
+    loadNode(node, resolve) {
+      this.$nextTick(() => {
+        if (node && node.data && node.data.type && node.data.type !== '2') {
+          findAllTree({ parentCode: node.data.code }).then(res => {
+            if (res.code === '200') {
+              if (res.data.length === 0) {
+                this.$set(node.data, 'isParent', 'n')
+                this.$message('分类下暂无可选事项数据！')
+              } else {
+                res.data.forEach(item => {
+                  this.$set(item, 'isParent', 'y')
+                })
+              }
+              return resolve(res.data)
+            }
+          })
+        } else {
+          return resolve([])
+        }
+      })
+    },
+    // 下拉树的值填写到下拉框
+    nodeClick(val) {
+      // 树中选项为事项是可选中，为分类是不能选中
+      if (val.type === '2') {
+        // 事项分类赋值
+        this.envData.itemCategories = _.compact(val.categoryCodePath.split('/'))
+        // 事项名称code赋值
+        this.envData.itemCode = val.code
+        // 事项选择下拉框展示文字赋值
+        this.envData.treeValue = val.namePath.slice(0, val.namePath.length - 1).replace(/\//g, '-')
+      }
+      if (val.isParent && val.isParent === 'n') {
+        this.$message('分类下暂无可选事项数据！')
+      }
+    },
+    // 下拉树搜索时关键字变色
+    textHtml(data) {
+      let html = ''
+      if (this.filterText) {
+        const reg = new RegExp(this.filterText, 'g')
+        html = data.name.replace(reg, '<span style="font-weight: 700;color: #0170CC;">' + this.filterText + '</span>')
+      } else {
+        html = '<span>' + data.name
+        '</span>'
+      }
+      return html
+    },
+  }
+
+}
+</script>
+```
+
+```css
+// 下拉组合树
+.filter_Tree{
+  height: 200px;
+  overflow: auto;
+}
+.inputOut{
+  position: relative;
+  .searchIcon{
+    position: absolute;
+    top: 4px;
+    right: 15px;
+
+  }
+}
+.treeInput{
+  padding: 8px;
+  ::v-deep .el-input__inner{
+    padding-right: 26px !important;
+  }
+}
+.el-tree{
+  font-size: 12px !important;
+}
+/* 下拉树选中颜色修改，不能加scoped，所以会影响全局 修改此处请到全局修改 - app.vue*/
+/* .el-tree-node.is-current > .el-tree-node__content {
+    background-color: #ececee !important;
+    color:black !important;
+} */
 ```
 
 ## echarts
