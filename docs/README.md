@@ -15,7 +15,7 @@ actionLink: /About/
 features:
 # 主页小标题及内容
 
-# footer:  Copyright © 2020 | guangju's blog | 91guangju.com
+# footer:  Copyright © 2020 | guangju's blog | guangju.com
 # 打赏
 # showSponsor: true
 ---
