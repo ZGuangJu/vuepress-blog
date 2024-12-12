@@ -17,7 +17,7 @@ git config --global user.email "guangjug@gmail.com"
 #
 git add .
 
-git commit -m "updated${current_date}_zgj"
+git commit -m "更新-${current_date}_zgj_out"
 
 git push -f git@gitee.com:zguangju/vuepress-blog.git master
 ## 提交源码到gitee结束

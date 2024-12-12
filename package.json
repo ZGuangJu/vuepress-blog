@@ -9,7 +9,9 @@
     "blog": "vuepress dev docs",
     "build": "vuepress build docs",
     "deploy": "deploy.sh",
-    "up": "update.sh"
+    "up:old": "update.sh",
+    "up:self": "update-self.sh",
+    "up": "update-out.sh"
   },
   "devDependencies": {
     "@vuepress-reco/vuepress-plugin-kan-ban-niang": "^1.0.5",
