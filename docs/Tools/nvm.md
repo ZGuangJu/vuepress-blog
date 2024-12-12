@@ -49,6 +49,8 @@ npm_mirror: https://npm.taobao.org/mirrors/npm/
 nvm install 8.9.0   // 安装的版本
 ```
 
+[查看 node 发行的所有版本](https://nodejs.org/dist/)
+
 - 常用命令
 
 | 命令                  | 作用                   |
@@ -164,6 +166,14 @@ nvm install unstable
 ```js
 nvm use 8.9.0
 ```
+
+:::warning `nvm use` 报错 `“exit status 1 乱码”`
+
+1. 安装路径有中文
+2. 安装路径有空格
+3. `cmd`窗口不是管理员打开方式
+4. 配置文件和实际安装路径不符
+:::
 
 - 给某个`node`版本设置别名
 

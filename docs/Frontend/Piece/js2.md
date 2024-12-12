@@ -1331,3 +1331,215 @@ Vue.use(common) // 将公共方法实例化
 // index.vue
 this.filterParams(this.screenForm)
 ```
+
+### elementui + FormData 上传组件使用
+
+- 基础版 手动上传文件
+
+```html
+    <el-upload
+    class="upload"
+    ref="upload"
+    action="#"
+    :accept="fileType"
+    :file-list="fileList"
+    :auto-upload="false"
+    :on-change="handleChange"
+    :on-exceed="handleExceed"
+    :on-remove="handleRemove"
+    multiple="multiple"
+    :limit="4"
+  >
+    <el-button slot="trigger" size="small" type="primary"
+      >选择文件</el-button
+    >
+    <div slot="tip" class="el-upload__tip">
+      仅支持xlsx,docx,pdf,jpg,jpeg,png格式的最多4个文件，且单文件不超过10M
+    </div>
+    <!-- 手动上传 使用以下按钮或者在表单提交时调用上传附件事件 -->
+    <el-button
+      style="margin-left: 10px"
+      size="small"
+      type="success"
+      @click="submitUpload"
+      >上传到服务器</el-button
+    >
+  </el-upload>
+```
+
+```js
+export default {
+  name: "myhanderPage",
+  data() {
+    return {
+
+      limitNum: 4, //上传个数
+      fileType: ".xlsx,.xls,.doc,.docx,.jpg,.jpeg,.png,.pdf", //上传文件类型
+      // 上传文件列表
+      fileList: [],
+      // 附件上传
+      accessory: false,
+      // 督办工单分页
+    }
+  },
+
+  methods: {
+    // 上传文件添加到 this.fileList （类似暂存数组里）
+    handleChange(file, fileList) {
+      this.fileList = fileList;
+      //   // 这里限制不大于10M
+      const FileSize = file.size / 1024 / 1024 < 10;
+      // 判断上传的文件类型
+      const testMsgArr = [
+        "doc",
+        "docx",
+        "DOC",
+        "DOCX",
+        "pdf",
+        "PDF",
+        "xlsx",
+        "XLSX",
+        "xls",
+        "XLS",
+        "jpg",
+        "JPG",
+        "jpeg",
+        "JPEG",
+        "png",
+        "PNG",
+      ];
+      let keys = file.name.substring(file.name.lastIndexOf(".") + 1);
+      let testMsg = testMsgArr.some((item) => {
+        return item == keys;
+      });
+      if (testMsg && FileSize) {
+        this.$message({
+          type: "success",
+          message: `已选择 ${fileList.length} 个文件，最多选择 4 个附件！`,
+        });
+      } else {
+        this.$message({
+          type: "warning",
+          message: "文件类型不支持或文件大小超出10M",
+        });
+        this.fileList.splice(this.fileList.length - 1, 1);
+      }
+    },
+    // 删除某上传文件
+    handleRemove(file, fileList) {
+    // 删除后的列表的列表数据重新赋值给暂存数组
+      this.fileList = fileList;
+    },
+    // 超出上传文件个数
+    handleExceed() {
+      this.$message.warning(
+        `当前限制选择 4 个文件，已选择了 ${this.fileList.length} 个附件！`
+      );
+    },
+    // 手动上传
+    submitUpload() {
+      let formData = new FormData();
+      // 上传文件时的其他参数 id 用户名 ...
+      formData.append("superviseTaskCode", this.taskForm.code);
+      // 将上传列表中的文件挨个添加到 FormData 对象中
+      for (let i = 0; i < this.fileList.length; i++) {
+        formData.append("files", this.fileList[i].raw);
+      }
+      superviseUpload(formData)
+        .then((res) => {
+          // 根据后端返回的值判断是否上传成功
+          if (res == true) {
+            this.$message({
+              type: "success",
+              message: "提交成功！",
+            });
+          } else {
+            this.$message({
+              type: "error",
+              message: "提交失败！",
+            });
+          }
+        })
+        .catch(() => {
+          this.$message({
+            type: "error",
+            message: "提交或附件上传失败！",
+          });
+        });
+    },
+    // 督办任务提交按钮
+    submitTaskForm(formName) {
+      this.$refs[formName].validate((valid) => {
+          // 上传附件
+          this.submitUpload();
+          // 提交表单
+          this.$nextTick(() => {
+            addTaskSupervise(params)
+              .then((res) => {
+              })
+              .catch(() => {
+                this.$message({
+                  type: "error",
+                  message: "失败！",
+                });
+              });
+          });
+      });
+    },
+  },
+};
+```
+
+### FormData 简单使用(方法)
+
+文件上传`formData`上传之前查看对象里的值
+
+- 获取一个`form`表单对象
+
+```js
+let form = document.getElementById("form");
+let formData = new FormData(form);
+```
+
+- 添加数据 `formdata.append(key,value)`
+
+```js
+formdata.append("a","a");
+formdata.append("a","b");
+formdata.append("a","c");
+formdata.append("b","c");
+```
+
+- 删除数据 `formdata.delete(key);`
+
+```js
+formdata.delete("a");
+```
+
+- 设置/修改数据 `formdata.set(key,value)` 如果`key`不存在则新增一条数据，如果存在，则会修改对应的`value`值。
+
+```js
+formdata.set("a","b2");
+```
+
+- 获取(查看)数据 `formdata.get(key)`
+
+```js
+var formData = new FormData();
+formData.append("a",'a');
+formData.append("a",'b');
+formData.append("a",'c');
+formData.append("b",'b');
+formData.append('c','c');
+console.log(formData.getAll('a'));// ['a','b','c']
+console.log(formData.get('b'));// b
+console.log(formData.get('c'));// c
+```
+
+- 判断是否存在某条数据 `formdata.has(key)`,存在返回`true`，不存在返回`false`。
+
+```js
+formdata.append("a","b");
+formdata.has("a");  // true
+formdata.has("b");  // false
+```

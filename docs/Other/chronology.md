@@ -4,8 +4,6 @@ date: 2019-06-09
 sidebar: 'auto'
 categories:
 - 小知识
-tags:
-- URI、URL、URN
 publish: true
 # 打赏
 showSponsor: true

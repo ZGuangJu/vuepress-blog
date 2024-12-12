@@ -1,5 +1,5 @@
 ---
-title: 框架和其他(vue,echarts...)
+title: vue,echarts...(库/框架)
 date: 2020-05-15
 sidebar: 'auto'
 categories:
@@ -13,12 +13,130 @@ showSponsor: true
 
 ## vue
 
-二次 封装的`element-ui` 组件
+### 过滤并去除空参数并挂载到vue对象中
+
+```js
+// common.js
+export default {
+  install(Vue) {
+    Vue.prototype.filterParams = function (obj) {
+      let paramsObj = {};
+      for (let i in obj) {
+        // 保留非空串（''）参数
+        if (obj[i] !== "" ) {
+          paramsObj[i] = obj[i];
+        }
+      }
+      // 过滤空参数并转为字符串
+      // return JSON.stringify(paramsObj);
+      // 过滤空参数返回obj对象
+      return paramsObj;
+    }
+
+    Vue.prototype.filterParams0 = function (obj) {
+      let paramsObj = {};
+      for (let i in obj) {
+        // 保留非空串（''）和等0参数
+        if (obj[i] !== "" ||obj[i] == 0) {
+          paramsObj[i] = obj[i];
+        }
+      }
+      return paramsObj;
+    }
+
+    Vue.prototype.getArrDifferent = function (a, b) {
+      const arr = [...a, ...b];
+      const newArr = arr.filter(item => {
+        return !(a.includes(item) && b.includes(item));
+      });
+      return newArr;
+    }
+
+  }
+}
+```
+
+- 使用
+
+```js
+// 不用引入，直接使用 this.filterParams()
+  let params = this.filterParams({
+    // 搜索后数据显示的首页条数
+    current: 0,
+    size: 10,
+    // 搜索的参数
+    keyword: this.screenForm.superviseName,
+    orderTypeValue: this.screenForm.businessType,
+    superviseStatus: this.screenForm.workOrderStatus,
+  });
+```
+
+### 表格高度根据窗口变化自适应改变
+
+```vue {7,}
+<template >
+  <el-table
+    border
+    stripe
+    v-loading="loading"
+    :data="tableData"
+    :height="tableHeight"
+    ref="superviseTable"
+    style="width: 100%"
+    @select="superviseTableSelect"
+    @row-click="openDetail"
+    :default-sort="{ prop: 'date', order: 'descending' }"
+  >
+  // ...
+  </el-table>
+</template>
+<script>
+export default {
+  name:"page",
+  data() {
+    return {
+      // 表格高初始默认
+      tableHeight: 360,
+      // 屏幕高
+      screenHeight: null,
+    }
+  },
+  watch: {
+    // 监听屏幕高改变表格高度
+    screenHeight: {
+      handler: function (val) {
+        this.tableHeight = val - 260;
+      },
+      immediate: true,
+    },
+  },
+  mounted() {
+    // 获取高度
+    this.getScreenHeight();
+  },
+  methods: {
+    // 获取屏幕高度方法
+    getScreenHeight() {
+      // 页面初始时获取屏幕高度
+      this.screenHeight = document.body.clientHeight;
+      // 屏幕尺寸变化就重新赋值
+      window.onresize = () => {
+        return (() => {
+          this.screenHeight = document.body.clientHeight;
+        })();
+      };
+    },
+  },
+}
+</script>
+```
+
+### 二次封装的`element-ui` 组件
 
 - 组件内容
 
 ```vue
-// 组件
+// 分页组件
 <template>
   <div :class="{'hidden': hidden}" class="pagination-container">
     <el-pagination
@@ -152,10 +270,12 @@ export function scrollTo(to, duration, callback) {
 
 - 使用
 
-```s
-<pagination v-show="" :total="total" :page.sync="queryParams.pageNum" :limit.sync="queryParams.pageSize" @pagination='getList'></pagination>
-//getList 获取数据列表
-
+```vue
+<template>
+  <pagination v-show="" :total="total" :page.sync="queryParams.pageNum" :limit.sync="queryParams.pageSize" @pagination='getList'>
+  </pagination>
+</template>
+// getList 获取数据列表
 <script>
 export default {
   data() {
@@ -183,9 +303,613 @@ export default {
 </script>
 ```
 
-## `element-ui`样式
+### common方法
 
-- vue 框架修改element样式
+:::details 公共方法
+
+```js
+/**
+ * Created by PanJiaChen on 16/11/18.
+ */
+
+/**
+ * Parse the time to string
+ * @param {(Object|string|number)} time
+ * @param {string} cFormat
+ * @returns {string}
+ */
+import request from '@/utils/request'
+export function parseTime(time, cFormat) {
+  if (arguments.length === 0) {
+    return null
+  }
+  const format = cFormat || '{y}-{m}-{d} {h}:{i}:{s}'
+  let date
+  if (typeof time === 'undefined' || time === null || time === 'null') {
+    return ''
+  } else if (typeof time === 'object') {
+    date = time
+  } else {
+    if ((typeof time === 'string') && (/^[0-9]+$/.test(time))) {
+      time = parseInt(time)
+    }
+    if ((typeof time === 'number') && (time.toString().length === 10)) {
+      time = time * 1000
+    }
+    date = new Date(time)
+  }
+  const formatObj = {
+    y: date.getFullYear(),
+    m: date.getMonth() + 1,
+    d: date.getDate(),
+    h: date.getHours(),
+    i: date.getMinutes(),
+    s: date.getSeconds(),
+    a: date.getDay()
+  }
+  const time_str = format.replace(/{(y|m|d|h|i|s|a)+}/g, (result, key) => {
+    let value = formatObj[key]
+    // Note: getDay() returns 0 on Sunday
+    if (key === 'a') {
+      return ['日', '一', '二', '三', '四', '五', '六'][value]
+    }
+    if (result.length > 0 && value < 10) {
+      value = '0' + value
+    }
+    return value || 0
+  })
+  return time_str
+}
+
+/**
+ * Parse the time to string
+ * @param {(Object|string|number)} time
+ * @param {string} cFormat
+ * @returns {string}
+ */
+export function parseTimeMs(time, cFormat) {
+  if (arguments.length === 0) {
+    return null
+  }
+  const format = cFormat || '{y}-{m}-{d} {h}:{i}:{s}.{b}'
+  let date
+  if (typeof time === 'undefined' || time === null || time === 'null') {
+    return ''
+  } else if (typeof time === 'object') {
+    date = time
+  } else {
+    if ((typeof time === 'string') && (/^[0-9]+$/.test(time))) {
+      time = parseInt(time)
+    }
+    if ((typeof time === 'number') && (time.toString().length === 10)) {
+      time = time * 1000
+    }
+    date = new Date(time)
+  }
+  const formatObj = {
+    y: date.getFullYear(),
+    m: date.getMonth() + 1,
+    d: date.getDate(),
+    h: date.getHours(),
+    i: date.getMinutes(),
+    s: date.getSeconds(),
+    b: date.getMilliseconds(),
+    a: date.getDay()
+  }
+  const time_str = format.replace(/{(y|m|d|h|i|s|b|a)+}/g, (result, key) => {
+    let value = formatObj[key]
+    // Note: getDay() returns 0 on Sunday
+    if (key === 'a') {
+      return ['日', '一', '二', '三', '四', '五', '六'][value]
+    }
+    if (result.length > 0 && value < 10 && result !== '{b}') {
+      value = '0' + value
+    } else if (result === '{b}') {
+      if (value < 10) {
+        value = '00' + value
+      } else if (value > 9 && value < 100) {
+        value = '0' + value
+      }
+    }
+    return value || 0
+  })
+  return time_str
+}
+export function parseTimeYRSF(time, cFormat) {
+  if (arguments.length === 0) {
+    return null
+  }
+  const format = cFormat || '{m}-{d} {h}:{i}'
+  let date
+  if (typeof time === 'undefined' || time === null || time === 'null') {
+    return ''
+  } else if (typeof time === 'object') {
+    date = time
+  } else {
+    if ((typeof time === 'string') && (/^[0-9]+$/.test(time))) {
+      time = parseInt(time)
+    }
+    if ((typeof time === 'number') && (time.toString().length === 10)) {
+      time = time * 1000
+    }
+    date = new Date(time)
+  }
+  const formatObj = {
+    m: date.getMonth() + 1,
+    d: date.getDate(),
+    h: date.getHours(),
+    i: date.getMinutes()
+  }
+  const time_str = format.replace(/{(m|d|h|i)+}/g, (result, key) => {
+    let value = formatObj[key]
+    // Note: getDay() returns 0 on Sunday
+    if (key === 'a') {
+      return ['日', '一', '二', '三', '四', '五', '六'][value]
+    }
+    if (result.length > 0 && value < 10 && result !== '{b}') {
+      value = '0' + value
+    } else if (result === '{b}') {
+      if (value < 10) {
+        value = '00' + value
+      } else if (value > 9 && value < 100) {
+        value = '0' + value
+      }
+    }
+    return value || 0
+  })
+  return time_str
+}
+
+/**
+ * @param {number} time
+ * @param {string} option
+ * @returns {string}
+ */
+export function formatTime(time, option) {
+  if (('' + time).length === 10) {
+    time = parseInt(time) * 1000
+  } else {
+    time = +time
+  }
+  const d = new Date(time)
+  const now = Date.now()
+
+  const diff = (now - d) / 1000
+
+  if (diff < 30) {
+    return '刚刚'
+  } else if (diff < 3600) {
+    // less 1 hour
+    return Math.ceil(diff / 60) + '分钟前'
+  } else if (diff < 3600 * 24) {
+    return Math.ceil(diff / 3600) + '小时前'
+  } else if (diff < 3600 * 24 * 2) {
+    return '1天前'
+  }
+  if (option) {
+    return parseTime(time, option)
+  } else {
+    return (
+      d.getMonth() +
+      1 +
+      '月' +
+      d.getDate() +
+      '日' +
+      d.getHours() +
+      '时' +
+      d.getMinutes() +
+      '分'
+    )
+  }
+}
+
+/**
+ * @param {string} url
+ * @returns {Object}
+ */
+export function getQueryObject(url) {
+  url = url == null ? window.location.href : url
+  const search = url.substring(url.lastIndexOf('?') + 1)
+  const obj = {}
+  const reg = /([^?&=]+)=([^?&=]*)/g
+  search.replace(reg, (rs, $1, $2) => {
+    const name = decodeURIComponent($1)
+    let val = decodeURIComponent($2)
+    val = String(val)
+    obj[name] = val
+    return rs
+  })
+  return obj
+}
+
+/**
+ * @param {string} input value
+ * @returns {number} output value
+ */
+export function byteLength(str) {
+  // returns the byte length of an utf8 string
+  let s = str.length
+  for (var i = str.length - 1; i >= 0; i--) {
+    const code = str.charCodeAt(i)
+    if (code > 0x7f && code <= 0x7ff) s++
+    else if (code > 0x7ff && code <= 0xffff) s += 2
+    if (code >= 0xDC00 && code <= 0xDFFF) i--
+  }
+  return s
+}
+
+/**
+ * @param {Array} actual
+ * @returns {Array}
+ */
+export function cleanArray(actual) {
+  const newArray = []
+  for (let i = 0; i < actual.length; i++) {
+    if (actual[i]) {
+      newArray.push(actual[i])
+    }
+  }
+  return newArray
+}
+
+/**
+ * @param {Object} json
+ * @returns {Array}
+ */
+export function param(json) {
+  if (!json) return ''
+  return cleanArray(
+    Object.keys(json).map(key => {
+      if (json[key] === undefined) return ''
+      return encodeURIComponent(key) + '=' + encodeURIComponent(json[key])
+    })
+  ).join('&')
+}
+
+/**
+ * @param {string} url
+ * @returns {Object}
+ */
+export function param2Obj(url) {
+  const search = url.split('?')[1]
+  if (!search) {
+    return {}
+  }
+  return JSON.parse(
+    '{"' +
+    decodeURIComponent(search)
+    .replace(/"/g, '\\"')
+    .replace(/&/g, '","')
+    .replace(/=/g, '":"')
+    .replace(/\+/g, ' ') +
+    '"}'
+  )
+}
+
+/**
+ * @param {string} val
+ * @returns {string}
+ */
+export function html2Text(val) {
+  const div = document.createElement('div')
+  div.innerHTML = val
+  return div.textContent || div.innerText
+}
+
+/**
+ * Merges two objects, giving the last one precedence
+ * @param {Object} target
+ * @param {(Object|Array)} source
+ * @returns {Object}
+ */
+export function objectMerge(target, source) {
+  if (typeof target !== 'object') {
+    target = {}
+  }
+  if (Array.isArray(source)) {
+    return source.slice()
+  }
+  Object.keys(source).forEach(property => {
+    const sourceProperty = source[property]
+    if (typeof sourceProperty === 'object') {
+      target[property] = objectMerge(target[property], sourceProperty)
+    } else {
+      target[property] = sourceProperty
+    }
+  })
+  return target
+}
+
+/**
+ * @param {HTMLElement} element
+ * @param {string} className
+ */
+export function toggleClass(element, className) {
+  if (!element || !className) {
+    return
+  }
+  let classString = element.className
+  const nameIndex = classString.indexOf(className)
+  if (nameIndex === -1) {
+    classString += '' + className
+  } else {
+    classString =
+      classString.substr(0, nameIndex) +
+      classString.substr(nameIndex + className.length)
+  }
+  element.className = classString
+}
+
+/**
+ * @param {string} type
+ * @returns {Date}
+ */
+export function getTime(type) {
+  if (type === 'start') {
+    return new Date().getTime() - 3600 * 1000 * 24 * 90
+  } else {
+    return new Date(new Date().toDateString())
+  }
+}
+
+/**
+ * @param {Function} func
+ * @param {number} wait
+ * @param {boolean} immediate
+ * @return {*}
+ */
+export function debounce(func, wait, immediate) {
+  let timeout, args, context, timestamp, result
+
+  const later = function () {
+    // 据上一次触发时间间隔
+    const last = +new Date() - timestamp
+
+    // 上次被包装函数被调用时间间隔 last 小于设定时间间隔 wait
+    if (last < wait && last > 0) {
+      timeout = setTimeout(later, wait - last)
+    } else {
+      timeout = null
+      // 如果设定为immediate===true，因为开始边界已经调用过了此处无需调用
+      if (!immediate) {
+        result = func.apply(context, args)
+        if (!timeout) context = args = null
+      }
+    }
+  }
+
+  return function (...args) {
+    context = this
+    timestamp = +new Date()
+    const callNow = immediate && !timeout
+    // 如果延时不存在，重新设定延时
+    if (!timeout) timeout = setTimeout(later, wait)
+    if (callNow) {
+      result = func.apply(context, args)
+      context = args = null
+    }
+
+    return result
+  }
+}
+
+/**
+ * This is just a simple version of deep copy
+ * Has a lot of edge cases bug
+ * If you want to use a perfect deep copy, use lodash's _.cloneDeep
+ * @param {Object} source
+ * @returns {Object}
+ */
+export function deepClone(source) {
+  if (!source && typeof source !== 'object') {
+    throw new Error('error arguments', 'deepClone')
+  }
+  const targetObj = source.constructor === Array ? [] : {}
+  Object.keys(source).forEach(keys => {
+    if (source[keys] && typeof source[keys] === 'object') {
+      targetObj[keys] = deepClone(source[keys])
+    } else {
+      targetObj[keys] = source[keys]
+    }
+  })
+  return targetObj
+}
+
+/**
+ * @param {Array} arr
+ * @returns {Array}
+ */
+export function uniqueArr(arr) {
+  return Array.from(new Set(arr))
+}
+
+/**
+ * @returns {string}
+ */
+export function createUniqueString() {
+  const timestamp = +new Date() + ''
+  const randomNum = parseInt((1 + Math.random()) * 65536) + ''
+  return (+(randomNum + timestamp)).toString(32)
+}
+
+/**
+ * Check if an element has a class
+ * @param {HTMLElement} elm
+ * @param {string} cls
+ * @returns {boolean}
+ */
+export function hasClass(ele, cls) {
+  return !!ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'))
+}
+
+/**
+ * Add class to element
+ * @param {HTMLElement} elm
+ * @param {string} cls
+ */
+export function addClass(ele, cls) {
+  if (!hasClass(ele, cls)) ele.className += ' ' + cls
+}
+
+/**
+ * Remove class from element
+ * @param {HTMLElement} elm
+ * @param {string} cls
+ */
+export function removeClass(ele, cls) {
+  if (hasClass(ele, cls)) {
+    const reg = new RegExp('(\\s|^)' + cls + '(\\s|$)')
+    ele.className = ele.className.replace(reg, ' ')
+  }
+}
+
+// 替换邮箱字符
+export function regEmail(email) {
+  if (String(email).indexOf('@') > 0) {
+    const str = email.split('@')
+    let _s = ''
+    if (str[0].length > 3) {
+      for (var i = 0; i < str[0].length - 3; i++) {
+        _s += '*'
+      }
+    }
+    var new_email = str[0].substr(0, 3) + _s + '@' + str[1]
+  }
+  return new_email
+}
+
+// 替换手机字符
+export function regMobile(mobile) {
+  if (mobile.length > 7) {
+    var new_mobile = mobile.substr(0, 3) + '****' + mobile.substr(7)
+  }
+  return new_mobile
+}
+
+// 下载文件
+export function downloadFile(obj, name, suffix) {
+  const url = window.URL.createObjectURL(new Blob([obj]))
+  const link = document.createElement('a')
+  link.style.display = 'none'
+  link.href = url
+  const fileName = parseTime(new Date()) + '-' + name + '.' + suffix
+  link.setAttribute('download', fileName)
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+}
+// 下载文件
+export function downloadFilePdf(obj, name) {
+  request({
+    url: obj,
+    method: 'get',
+    responseType: 'blob' // 约定是二进制流
+  }).then(res => {
+    const url = window.URL.createObjectURL(new Blob([res]))
+    const link = document.createElement('a')
+    link.style.display = 'none'
+    link.href = url
+    link.setAttribute('download', name)
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  })
+
+}
+// 无日期的文件下载
+// 下载文件
+export function noDatedownloadFile(obj, name, suffix) {
+  const url = window.URL.createObjectURL(new Blob([obj]))
+  const link = document.createElement('a')
+  link.style.display = 'none'
+  link.href = url
+  const fileName = name + '.' + suffix
+  link.setAttribute('download', fileName)
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+}
+
+/**
+ * 工单进度判断
+ * @param {(Object|string|number)} cutoffTime 工单截止时间
+ * @param {(string|number)} warningTime 工单警告时间
+ 0 超时
+ 1 正常
+ 2 预警
+ */
+// export function time(cutoffTime, warningTime, callback) {
+//   let timer
+//   timer = setInterval(function(callback) {
+//     if (new Date() < new Date(warningTime)) {
+//       console.log('正常')
+//       callback(1)
+//     } else if ((new Date(cutoffTime) > new Date()) && (new Date() > new Date(warningTime))) {
+//       console.log('预警')
+//       callback(2)
+//     } else if (new Date() > new Date(cutoffTime)) {
+//       console.log('超时')
+//       callback(0)
+//       clearInterval(timer)
+//     }
+//   }, 1000)
+// }
+
+export function caseProgress(cutoffTime, warningTime) {
+  // let timer, status
+  if (cutoffTime && warningTime) {
+    // time(cutoffTime, warningTime, function(a) {
+    //   console.log(a)
+    // })
+    if (new Date() < new Date(warningTime)) {
+      return 1
+    } else if ((new Date(cutoffTime) > new Date()) && (new Date() > new Date(warningTime))) {
+      return 2
+    } else if (+new Date() === cutoffTime) {
+      return 2
+    } else if (new Date() > new Date(cutoffTime)) {
+      return 0
+    }
+  } else {
+    // status = 1
+    return 1
+  }
+  // return status
+}
+
+```
+
+使用
+
+```vue
+<template slot-scope="scope">
+  <div>
+    {{ parseTime(scope.row.startTime, "{y}-{m}-{d}") }}
+  </div>
+</template>
+<script>
+// 日期格式化方法
+import { parseTime } from "@/utils/index";
+export default {
+ data() {
+    return {
+      parseTime,
+    }
+  }
+}
+</script>
+```
+
+:::
+
+## `element-ui`
+
+### `vue` 框架中用样式穿透修改`element`样式
+
+:::warning 注意!
+
+- vue中最好直接用`::v-deep`, 在`vue3`中其他的方式可能会失效！
+:::
 
 ```css
 // 表单边距
@@ -194,20 +918,31 @@ export default {
 }
 ```
 
-- `element`的`table` 鼠标移入变色(修改颜色)
+- `element`的`table` 鼠标移入时变色(自定义颜色)
 
 ```css
-    // 固定列背景色
-    .el-table__fixed-body-wrapper tr.el-table__row td{
-        background-color: #fff;
-    }
-    // 鼠标移入颜色
-    .el-table__fixed-body-wrapper tr.el-table__row td,.el-table__body tbody tr.el-table__row.hover-row >td{
-        background-color: #fff;
-    }
+// 固定列背景色
+.el-table__fixed-body-wrapper tr.el-table__row td{
+    background-color: #fff;
+}
+// 鼠标移入颜色
+.el-table__fixed-body-wrapper tr.el-table__row td,.el-table__body tbody tr.el-table__row.hover-row >td{
+    background-color: #fff;
+}
 ```
 
-## echarts 简单使用和自适应窗口大小
+- `element`的`table` 数据不满整页时显示样式，高度拉伸
+
+```css
+// 表格高度样式
+::v-deep .el-table__body {
+  height: 100%;
+}
+```
+
+## echarts
+
+### echarts 简单使用和自适应窗口大小
 
 :::details
 
@@ -316,22 +1051,22 @@ export default {
         myEcharts.setOption(option);
     </script>
     <script>
-        /* echarts基于Canvas，纯Javascript图表库，提供直观，生动，可交互，可个性化定制的数据统计图表 */
-        //绘制步骤
-        /*
-         1.准备一个具备宽高的容器用来盛放图表
-         2.初始化一个echarts实例 ->echarts.init(),这个方法需要传dom元素作为参数,dom元素是这个容器
-         3.
-         */
-        // echarts 自适应窗口
-        window.onresize = myEcharts.resize;
+      /*
+      echarts基于Canvas，纯Javascript图表库，提供直观，生动，可交互，可个性化定制的数据统计图表
+      绘制步骤:
+        1.准备一个具备宽高的容器用来盛放图表
+        2.初始化一个echarts实例 ->echarts.init(),这个方法需要传dom元素作为参数,dom元素是这个容器
+        3.
+        */
+      // echarts 自适应窗口
+      window.onresize = myEcharts.resize;
     </script>
 </html>
 ```
 
 当页面只有一个图表的时候直接用 `window.onresize = myChart.resize` 就可以了
 
-- resize 用来改变图表尺寸，在容器大小发生改变时需要手动调用。
+- `resize` 用来改变图表尺寸，在容器大小发生改变时需要手动调用。
 
 ```js
 var myChart = echarts.init(document.getElementById('main'));
@@ -385,7 +1120,7 @@ window.onresize = function(){
     }
 ```
 
-### 获取 dom 标签元素的所有属性和属性值
+### 获取 dom 标签的所有属性和属性值
 
 ```js
     var div = document.getElementsByTagName("div")[0]
@@ -402,27 +1137,34 @@ window.onresize = function(){
     console.log(HTMLDOMtoString(div));
 ```
 
+## CSS
+
+TODO
+
+## JS
+
 ### 封装 事件绑定和取消事件绑定
 
 ```js
 //事件绑定
 function on(dom, eventType, fn) {
-    if(dom.addEventListener) {
-        dom.addEventListener(eventType, fn);
-    } else {
-        if(dom.attachEvent) {
-            dom.attachEvent('on' + eventType, fn);
-        }
+  if(dom.addEventListener) {
+      dom.addEventListener(eventType, fn);
+  } else {
+      if(dom.attachEvent) {
+          dom.attachEvent('on' + eventType, fn);
+    }
+  }
 }
 //取消事件绑定
 function un(dom, eventType, fn) {
-     if(dom.removeEventListener) {
-         dom.removeEventListener(eventType, fn, false);
-     } else {
-         if(dom.detachEvent) {
-             dom.detachEvent("on" + eventType, fn)
-         }
-     }
+  if(dom.removeEventListener) {
+      dom.removeEventListener(eventType, fn, false);
+  } else {
+      if(dom.detachEvent) {
+          dom.detachEvent("on" + eventType, fn)
+    }
+  }
 
  }
 ```
@@ -456,23 +1198,25 @@ function un(dom, eventType, fn) {
 ### 封装2 处理js默认事件的代码
 
 ```js
-//跨浏览器的事件处理程序
-//调用时候直接用domEvent.addEvent( , , );直接调用
-//使用时候，先用addEvent添加事件，然后在handleFun里面直接写其他函数方法，如getEvent；
-//addEventListener和attachEvent---都是dom2级事件处理程序
+/*
+  跨浏览器的事件处理程序
+  调用时候直接用domEvent.addEvent( , , );直接调用
+  使用时候，先用addEvent添加事件，然后在handleFun里面直接写其他函数方法，如getEvent；
+  addEventListener和attachEvent---都是dom2级事件处理程序
+*/
 var domEvent = {
   //element:dom对象，event:待处理的事件，handleFun:处理函数
   //事件名称，不含“on”，比如“click”、“mouseover”、“keydown”等
   addEvent:function(element,event,handleFun){
-    //addEventListener----应用于mozilla
+    // addEventListener----应用于mozilla
     if(element.addEventListener){
       element.addEventListener(event,handleFun,false);
-    }//attachEvent----应用于IE
+    }// attachEvent----应用于IE
     else if(element.attachEvent){
       element.attachEvent("on"+event,handleFun);
-    }//其他的选择dom0级事件处理程序
+    }// 其他的选择dom0级事件处理程序
     else{
-      //element.onclick===element["on"+event];
+      // element.onclick===element["on"+event];
       element["on"+event] = handleFun;
     }
   },
@@ -528,50 +1272,50 @@ var domEvent = {
 
 ```js
 // trimQueryParams.js
-  export function trimQueryParams(queryParams) {
-            if (typeof queryParams !== 'object') {
-                return queryParams
-            }
-            for (let key of Object.keys(queryParams)) {
-                if (queryParams[key] && typeof queryParams[key] === 'string') {
-                    queryParams[key] = queryParams[key].trim()
-                }
-                if (queryParams[key] && typeof queryParams[key] === 'object') {
-                    queryParams[key] = trimQueryParams(queryParams[key])
-                }
-            }
-            return queryParams
-        }
+export function trimQueryParams(queryParams) {
+  if (typeof queryParams !== 'object') {
+      return queryParams
+  }
+  for (let key of Object.keys(queryParams)) {
+    if (queryParams[key] && typeof queryParams[key] === 'string') {
+        queryParams[key] = queryParams[key].trim()
+    }
+    if (queryParams[key] && typeof queryParams[key] === 'object') {
+        queryParams[key] = trimQueryParams(queryParams[key])
+    }
+  }
+  return queryParams
+}
 ```
 
 - 使用
 
-```vue
+```js
 
 import { trimQueryParams }  from  /-/trimQueryParams.js
 
 trimQueryParams(objval)
 ```
 
-### 页面加载过程
+### 获取页面每个加载过程
 
 ```js
-    // 执行时一定是 loading
-    console.log(document.readyState)
-    // 当页面的readyState 状态发生改变时，readystatechange事件自动触发
-    document.onreadystatechange = function () {
-        console.log(document.readyState, "---63行")
-    }
-    // dom tree 加载完成时，DOMContentLoaded事件自动触发
-    document.addEventListener("DOMContentLoaded", function () { console.log("doc tree加载完成", "---66行") })
-    // 页面彻底加载完成 locd事件，window.onload 固定写法
-    window.onload = function () {
-        console.log("load 整个页面加载完成")
-    }
-    // 外部资源 load事件，图片加载完毕后触发
-    document.querySelector("img").onload = function () {
-        console.log("外部资源加载完成")
-    }
+  // 执行时一定是 loading
+  console.log(document.readyState)
+  // 当页面的readyState 状态发生改变时，readystatechange事件自动触发
+  document.onreadystatechange = function () {
+      console.log(document.readyState, "---63行")
+  }
+  // dom tree 加载完成时，DOMContentLoaded事件自动触发
+  document.addEventListener("DOMContentLoaded", function () { console.log("doc tree加载完成", "---66行") })
+  // 页面彻底加载完成 locd事件，window.onload 固定写法
+  window.onload = function () {
+      console.log("load 整个页面加载完成")
+  }
+  // 外部资源 load事件，图片加载完毕后触发
+  document.querySelector("img").onload = function () {
+      console.log("外部资源加载完成")
+  }
 ```
 
 ### 模拟 DOMContentLoaded 事件的 readystatechange
@@ -596,7 +1340,9 @@ document.onreadystatechange = function () {
 }
 ```
 
-### 在 DOMContentLoaded 之前使用 readystatechange 作为事件处理程序以插入或修改DOM
+### 在 DOMContentLoaded 之前
+
+在 DOMContentLoaded 之前使用 readystatechange 作为事件处理程序以插入或修改DOM
 
 ```js
 document.addEventListener('readystatechange', event => {
@@ -636,7 +1382,7 @@ document.addEventListener('readystatechange', event => {
         document.body.appendChild(documentFragment)
 ```
 
-## 工厂模式应用(选择礼物并发送)
+### 工厂模式应用(选择礼物并发送)
 
 ```html
 <!DOCTYPE html>
@@ -868,37 +1614,37 @@ document.addEventListener('readystatechange', event => {
 </html>
 ```
 
-## js截取日期的年月日
+### js截取日期的年月日
 
 ```js
  function getYearMonth(date) {
-                // 将日期以空格隔开，即['2020-06-13', '17:10:09']
-                date = (date + "").split(/[ ]+/);
-                let result = [];
-                let reg = /^(\d{4})-(\d{1,2})-(\d{1,2})$/;
-                // 用截取出来的年月日进行正则表达式匹配
-                reg.exec(date[0]);
-                result.push(RegExp.$1); //获取匹配到的第一个子匹配，即‘2020’
-                result.push(RegExp.$2);
-                result.push(RegExp.$3);
-                result.push(RegExp.$4);
-                return result;
-            }
-            console.log(getYearMonth("2020-06-13 17:10:09"));
+    // 将日期以空格隔开，即['2020-06-13', '17:10:09']
+    date = (date + "").split(/[ ]+/);
+    let result = [];
+    let reg = /^(\d{4})-(\d{1,2})-(\d{1,2})$/;
+    // 用截取出来的年月日进行正则表达式匹配
+    reg.exec(date[0]);
+    result.push(RegExp.$1); //获取匹配到的第一个子匹配，即‘2020’
+    result.push(RegExp.$2);
+    result.push(RegExp.$3);
+    result.push(RegExp.$4);
+    return result;
+}
+console.log(getYearMonth("2020-06-13 17:10:09"));
 ```
 
 或
 
 ```js
- var dateStr = "2017-10-22";// 只能截取这种格式的字符
-            var reg = /^(\d{4})-(\d{1,2})-(\d{1,2})$/;
-            console.log(dateStr.match(reg));
-            console.log(RegExp.$1);
-            console.log(RegExp.$2);
-            console.log(RegExp.$3);
+var dateStr = "2017-10-22";// 只能截取这种格式的字符
+var reg = /^(\d{4})-(\d{1,2})-(\d{1,2})$/;
+console.log(dateStr.match(reg));
+console.log(RegExp.$1);
+console.log(RegExp.$2);
+console.log(RegExp.$3);
 ```
 
-## 时间的格式化
+### 时间的格式化
 
 ```js
 // 对Date的扩展，将 Date 转化为指定格式的String
@@ -934,87 +1680,68 @@ var time1 = new Date().Format("yyyy-MM-dd");
 var time2 = new Date().Format("yyyy-MM-dd hh:mm:ss");
 ```
 
-## 获取当前时 \ 将时间戳转换为时间格式
+### 获取当前时\将时间戳转换为时间格式
 
 ```js
 // 获取当前时间，可以存入数据库（除以1000 是为了存储时空间小，精确到秒即可）
-    var timer = parseInt(new Date().getTime() / 1000);
-    console.log(timer);
+  var timer = parseInt(new Date().getTime() / 1000);
+  console.log(timer);
 // 将数据库中的时间戳，转换为日期时间格式
-    // 方法一
-    function getTime(nS) {
-        var date = new Date(parseInt(nS) * 1000);
-        var year = date.getFullYear();
-        var mon =
-            date.getMonth() + 1 < 10
-                ? "0" + (date.getMonth() + 1)
-                : date.getMonth() + 1;
-        // 将月份个位加 0
-        var day = date.getDate();
-        var hours = date.getHours();
-        var minu = date.getMinutes();
-        var sec =
-            date.getSeconds().toString().length < 2
-                ? "0" + date.getSeconds()
-                : date.getSeconds();
-        // 秒数 个位加 0
+  // 方法一
+  function getTime(nS) {
+      var date = new Date(parseInt(nS) * 1000);
+      var year = date.getFullYear();
+      var mon =
+          date.getMonth() + 1 < 10
+              ? "0" + (date.getMonth() + 1)
+              : date.getMonth() + 1;
+      // 将月份个位加 0
+      var day = date.getDate();
+      var hours = date.getHours();
+      var minu = date.getMinutes();
+      var sec =
+          date.getSeconds().toString().length < 2
+              ? "0" + date.getSeconds()
+              : date.getSeconds();
+      // 秒数 个位加 0
 
-        return (
-            year +
-            "/" +
-            mon +
-            "/" +
-            day +
-            " " +
-            hours +
-            ":" +
-            minu +
-            ":" +
-            sec
-        );
-    }
-    console.log(getTime(timer));
-    // 方法二
-    function timestampToTime(timestamp) {
-        var date = new Date(timestamp * 1000); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
-        var Y = date.getFullYear() + "-";
-        var M =
-            (date.getMonth() + 1 < 10
-                ? "0" + (date.getMonth() + 1)
-                : date.getMonth() + 1) + "-";
-        var D = date.getDate() + " ";
-        var h = date.getHours() + ":";
-        var m = date.getMinutes() + ":";
-        var s =
-            date.getSeconds().toString().length < 2
-                ? "0" + date.getSeconds()
-                : date.getSeconds();
-        console.log(s);
-        return Y + M + D + h + m + s;
-    }
-    console.log(timestampToTime(timer));
+      return (
+          year +
+          "/" +
+          mon +
+          "/" +
+          day +
+          " " +
+          hours +
+          ":" +
+          minu +
+          ":" +
+          sec
+      );
+  }
+  console.log(getTime(timer));
+  // 方法二
+  function timestampToTime(timestamp) {
+      var date = new Date(timestamp * 1000); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+      var Y = date.getFullYear() + "-";
+      var M =
+          (date.getMonth() + 1 < 10
+              ? "0" + (date.getMonth() + 1)
+              : date.getMonth() + 1) + "-";
+      var D = date.getDate() + " ";
+      var h = date.getHours() + ":";
+      var m = date.getMinutes() + ":";
+      var s =
+          date.getSeconds().toString().length < 2
+              ? "0" + date.getSeconds()
+              : date.getSeconds();
+      console.log(s);
+      return Y + M + D + h + m + s;
+  }
+  console.log(timestampToTime(timer));
 ```
 
-## 用原生js给DOM元素添加一个类名
-
-方法一：给DOM元素添加类名会覆盖原有的类名
-
-`DOM.setAttribute("class","类名")`
-
-方法二：可以给DOM元素添加一个类名后 还可以在继续给DOM元素添加新的类名 并且不会覆盖已有的类名
-
-```js
-//1.为 <div> 元素添加一个类:
-document.getElementById("div").classList.add("类名");
-//2.为 <div> 元素添加多个类:
-document.getElementById("div").classList.add("类名1","类名2","类名3",...);
-//3.为 <div> 元素移除一个类:
-document.getElementById("div").classList.remove("类名");
-//4.为 <div> 元素移除多个类:
-document.getElementById("div").classList.remove("类名1","类名2","类名3",...);
-```
-
-## 透明遮罩(兼容IE8+)
+### 透明遮罩(兼容IE8+)
 
 请用原生js实现一个函数,给页面制定的任意一个元素添加一个透明遮罩(透明度可变,默认0.2),使这个区域点击无效,要求兼容IE8+及各主流浏览器,遮罩层效果如下图所示
 
@@ -1068,9 +1795,7 @@ target.addEventListener('click', function () {
 
 :::
 
-## 今天是星期x
-
-请用代码写出(今天是星期x)其中x表示当天是星期几,如果当天是星期一,输出应该是"今天是星期一"
+### 当天星期x
 
 ```js
 var days = ['日','一','二','三','四','五','六'];
@@ -1079,30 +1804,7 @@ var date = new Date();
 console.log('今天是星期' + days[date.getDay()]);
 ```
 
-## 下面这段代码想要循环延时输出结果0 1 2 3 4,请问输出结果是否正确,如果不正确,请说明为什么,并修改循环内的代码使其输出正确结果
-
-```js
-for (var i = 0; i < 5; ++i) {
-  setTimeout(function () {
-    console.log(i + ' ');
-  }, 100);
-}
-```
-
-不能输出正确结果，因为循环中`setTimeout`接受的参数函数通过闭包访问变量i。`javascript`运行环境为单线程，`setTimeout`注册的函数需要等待线程空闲才能执行，此时`for`循环已经结束，`i`值为`5`.五个定时输出都是`5`
-修改方法：将`setTimeout`放在函数立即调用表达式中，将i值作为参数传递给包裹函数，创建新闭包
-
-```js
-for (var i = 0; i < 5; ++i) {
-  (function (i) {
-    setTimeout(function () {
-      console.log(i + ' ');
-    }, 100);
-  }(i));
-}
-```
-
-## 为每个postXXX方法增加拦截验证功能
+### 为每个postXXX方法增加拦截验证功能
 
 现有一个Page类,其原型对象上有许多以post开头的方法(如postMsg);另有一拦截函数chekc,只返回ture或false.请设计一个函数,该函数应批量改造原Page的postXXX方法,在保留其原有功能的同时,为每个postXXX方法增加拦截验证功能,当chekc返回true时继续执行原postXXX方法,返回false时不再执行原postXXX方法
 
@@ -1150,7 +1852,7 @@ obj.postB('checkfy');
 obj.postC('checkfy');
 ```
 
-## 编写javascript深度克隆函数deepClone
+### 深拷贝函数
 
 :::details
 
@@ -1213,118 +1915,58 @@ obj.postC('checkfy');
 
 :::
 
-## 补充代码,鼠标单击Button1后将Button1移动到Button2的后面
+### 实时动态显示年终倒计时
 
 :::details
 
 ```html
-    <!doctype html>
-    <html>
-    <head>
-        <meta charset="utf-8">
-        <title>TEst</title>
-    </head>
-    <body>
-
-    <div>
-       <input type="button" id ="button1" value="1" />
-       <input type="button" id ="button2" value="2" />
-    </div>
-
-    <script type="text/javascript">
-        var btn1 = document.getElementById('button1');
-        var btn2 = document.getElementById('button2');
-
-        addListener(btn1, 'click', function (event) {
-            btn1.parentNode.insertBefore(btn2, btn1);
-        });
-
-        function addListener(elem, type, handler) {
-            if (elem.addEventListener) {
-                elem.addEventListener(type, handler, false);
-                return handler;
-            } else if (elem.attachEvent) {
-                function wrapper() {
-                    var event = window.event;
-                    event.target = event.srcElement;
-                    handler.call(elem, event);
-                }
-                elem.attachEvent('on' + type, wrapper);
-                return wrapper;
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>test</title>
+</head>
+<body>
+    <span id="target"></span>
+<script type="text/javascript">
+    // 为了简化。每月默认30天
+    function getTimeString() {
+        var start = new Date();
+        var end = new Date(start.getFullYear() + 1, 0, 1);
+        var elapse = Math.floor((end - start) / 1000);
+        var seconds = elapse % 60 ;
+        var minutes = Math.floor(elapse / 60) % 60;
+        var hours = Math.floor(elapse / (60 * 60)) % 24;
+        var days = Math.floor(elapse / (60 * 60 * 24)) % 30;
+        var months = Math.floor(elapse / (60 * 60 * 24 * 30)) % 12;
+        var years = Math.floor(elapse / (60 * 60 * 24 * 30 * 12));
+        return start.getFullYear() + '年还剩' + years + '年' + months + '月' + days + '日'
+            + hours + '小时' + minutes + '分' + seconds + '秒';
+    }
+    function domText(elem, text) {
+        if (text == undefined) {
+            if (elem.textContent) {
+                return elem.textContent;
+            } else if (elem.innerText) {
+                return elem.innerText;
             }
-        }
-
-    </script>
-    </body>
-    </html>
-```
-
-:::
-
-## 实时动态显示"××年还剩××天××时××分××秒"
-
-网页中实现一个计算当年还剩多少时间的倒数计时程序,要求网页上实时动态显示"××年还剩××天××时××分××秒"
-
-:::details
-
-```html
-    <!doctype html>
-    <html>
-    <head>
-        <meta charset="utf-8">
-        <title>TEst</title>
-    </head>
-    <body>
-
-        <span id="target"></span>
-
-
-    <script type="text/javascript">
-        // 为了简化。每月默认30天
-        function getTimeString() {
-            var start = new Date();
-            var end = new Date(start.getFullYear() + 1, 0, 1);
-            var elapse = Math.floor((end - start) / 1000);
-
-            var seconds = elapse % 60 ;
-            var minutes = Math.floor(elapse / 60) % 60;
-            var hours = Math.floor(elapse / (60 * 60)) % 24;
-            var days = Math.floor(elapse / (60 * 60 * 24)) % 30;
-            var months = Math.floor(elapse / (60 * 60 * 24 * 30)) % 12;
-            var years = Math.floor(elapse / (60 * 60 * 24 * 30 * 12));
-
-            return start.getFullYear() + '年还剩' + years + '年' + months + '月' + days + '日'
-                + hours + '小时' + minutes + '分' + seconds + '秒';
-        }
-
-        function domText(elem, text) {
-            if (text == undefined) {
-
-                if (elem.textContent) {
-                    return elem.textContent;
-                } else if (elem.innerText) {
-                    return elem.innerText;
-                }
+        } else {
+            if (elem.textContent) {
+                elem.textContent = text;
+            } else if (elem.innerText) {
+                elem.innerText = text;
             } else {
-                if (elem.textContent) {
-                    elem.textContent = text;
-                } else if (elem.innerText) {
-                    elem.innerText = text;
-                } else {
-                    elem.innerHTML = text;
-                }
+                elem.innerHTML = text;
             }
         }
-
-        var target = document.getElementById('target');
-
-        setInterval(function () {
-            domText(target, getTimeString());
-        }, 1000)
+    }
+    var target = document.getElementById('target');
+    setInterval(function () {
+        domText(target, getTimeString());
+    }, 1000)
     </script>
-
-    </body>
-    </html>
+  </body>
+</html>
 ```
 
 :::

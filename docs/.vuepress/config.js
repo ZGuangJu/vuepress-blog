@@ -203,7 +203,7 @@ module.exports = {
           { text: '验证码 是什么', link: '/Other/verificationCode' },
           { text: 'Chrome 使用', link: '/Other/Chrome' },
           { text: '浏览器和内核', link: '/Other/browserKernel' },
-          { text: 'URI & URL', link: '/Other/URI&URL' },
+          { text: 'URI & URL', link: '/Other/URIandURL' },
           { text: 'Apache 是什么', link: '/Other/Apache' },
           { text: 'Nginx 是什么', link: '/Other/nginx' },
           { text: '电脑故障', link: '/Other/computerBreakdown' },
@@ -244,7 +244,7 @@ module.exports = {
         {
           title: 'CSS',
           collapsable: true,//是否折叠侧边栏
-          children: ['CSS/css1', 'CSS/css2', 'CSS/css3', 'CSS/css4', 'CSS/css5', 'CSS/css6', 'CSS/css7', 'CSS/css8', 'CSS/css9', 'CSS/css10', 'CSS/css11', 'CSS/css12']
+          children: ['CSS/css1', 'CSS/css2', 'CSS/css3', 'CSS/css4', 'CSS/css5', 'CSS/css6', 'CSS/css7', 'CSS/css8', 'CSS/css9', 'CSS/css10', 'CSS/css11', 'CSS/css12', 'CSS/css13']
         },
         {
           title: 'CSS教程',
@@ -279,7 +279,7 @@ module.exports = {
         {
           title: 'Axios',
           collapsable: true,
-          children: ['Axios/axios', 'Axios/axios2', 'Axios/axios3', 'Axios/axios4', 'Axios/axios5']
+          children: ['Axios/axios', 'Axios/axios2', 'Axios/axios3', 'Axios/axios4', 'Axios/axios5', 'Axios/axios6']
         },
         {
           title: 'Class',
@@ -326,7 +326,7 @@ module.exports = {
         {
           title: 'React',
           collapsable: true, //是否折叠侧边栏
-          children: ['react01', 'react02', 'react03', 'react04', 'react05', 'react06', 'react07', 'react08', 'react09', 'react10', 'react11', 'react12', 'react13', 'react14', 'react15', 'react&vue', 'react', 'router_doc']
+          children: ['react01', 'react02', 'react03', 'react04', 'react05', 'react06', 'react07', 'react08', 'react09', 'react10', 'react11', 'react12', 'react13', 'react14', 'react15', 'reactandvue', 'react', 'router_doc']
         },
       ],
       '/Framework/Wechat/': [
@@ -349,7 +349,7 @@ module.exports = {
       '/Tools/': ['git', 'yarn', 'npm', 'npm_modules', 'node', 'cmd', 'nrm', 'nvm', 'pm2', 'serve', 'markdown', 'svg', 'terminal', 'Trojan', 'vite', 'eslint', 'vuepress', 'upgrade', 'typecho', 'vscode', 'wsl'],
       // 小知识
       '/Other/': [
-        'target', 'errorSummarize', 'knowledgePoint', 'interviewQuestion1', 'interviewQuestion2', 'algorithm', 'token', 'URI&URL', 'Apache', 'nginx', 'Chrome', 'browserKernel', 'verificationCode', 'dict', 'computerBreakdown', 'chronology'
+        'target', 'errorSummarize', 'knowledgePoint', 'interviewQuestion1', 'interviewQuestion2', 'algorithm', 'token', 'URIandURL', 'Apache', 'nginx', 'Chrome', 'browserKernel', 'verificationCode', 'dict', 'computerBreakdown', 'chronology'
       ],//,'996'
     },
     // 友链

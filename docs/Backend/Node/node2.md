@@ -8,6 +8,14 @@ publish: true
 # 打赏
 showSponsor: true
 ---
+## 安装
+
+- node 下载
+
+[英文官网](https://nodejs.org/en/)
+[中文官网](https://nodejs.org/zh-cn/)
+
+[查看和下载 node 发行的所有版本](https://nodejs.org/dist/)
 
 ## 创建一个后台
 
