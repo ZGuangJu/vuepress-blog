@@ -14,7 +14,7 @@
 - 本地启动项目
 
 ```js
-yarn blog
+    yarn blog
 ```
 
 - 提交代码到仓库
