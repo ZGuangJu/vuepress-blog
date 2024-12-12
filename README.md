@@ -13,22 +13,23 @@
 
 - 本地启动项目
 
-```js
-    yarn blog
+```sh
+  yarn blog
+
 ```
 
 - 提交代码到仓库
 
-```js
-git add .
-git commit -m 'msg'
-git push
+```sh
+  git add .
+  commit -m 'msg'
+  git push
 ```
 
 - 发布更新到`github`和`gitee`(在deploy.sh中改为你自己的仓库地址)
 
-```js
-yarn deploy
+```sh
+  yarn deploy
 ```
 
 发布项目使用的自动化脚本，最开始是只发布到`github`上，用项目根目录的`deploy.sh`的脚本。
