@@ -5,7 +5,7 @@ set -e
 
 # 调整到项目目录中
 
-cd D:/Project/vuepress-blog22-7-14
+cd D:/Project/vuepress-blog
 
 # 开始提交源码
 
